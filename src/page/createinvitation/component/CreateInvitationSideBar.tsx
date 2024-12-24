@@ -31,7 +31,7 @@ function CreateInvitationSideBar(
                     const record = createInvitationSideBarRecords[item];
                     const foreground = selected === item ? colors.g600 : colors.g300;
                     return (
-                        <S.item onClick={() => {
+                        <S.item key={`${item}`} onClick={() => {
                             onChange(item);
                         }}>
                             <Icon tint={foreground} size={20} type={record.icon}/>

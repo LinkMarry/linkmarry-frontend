@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import colors from "../../../../designsystem/foundation/colors";
 
-interface OptionLabelProps {
+interface OptionLabelProps extends HTMLAttributes<HTMLDivElement> {
     label: string;
 }
 
 function OptionLabel(
     {
-        label
+        label,
+        ...props
     }: OptionLabelProps
 ) {
     return (
-        <S.wrapper>
+        <S.wrapper {...props}>
             <S.label>{label}</S.label>
         </S.wrapper>
     );

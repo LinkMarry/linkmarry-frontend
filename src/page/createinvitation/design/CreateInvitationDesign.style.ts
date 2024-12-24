@@ -10,6 +10,7 @@ const S = {
     optionContainer: styled.div`
         display: flex;
         flex: 1;
+        min-width: 618px;
         flex-direction: column;
         background: ${colors.g100};
         padding: 48px 44px 109px 44px;
@@ -29,7 +30,6 @@ const S = {
     options: styled.ul`
         display: flex;
         flex-direction: column;
-        gap: 20px;
         justify-self: stretch;
         margin-top: 20px;
     `

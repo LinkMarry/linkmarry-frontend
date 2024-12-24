@@ -10,7 +10,7 @@ function Header() {
         <S.container>
             <Row
                 flex={1}
-                alignItems={'center'}
+                $alignItems={'center'}
                 style={{
                     marginLeft: 128,
                     marginRight: 128,

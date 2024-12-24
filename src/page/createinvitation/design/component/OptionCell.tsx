@@ -1,41 +1,57 @@
-import React, {HTMLAttributes, useEffect, useState} from 'react';
+import React, {ForwardedRef, forwardRef, HTMLAttributes, useState} from 'react';
 import styled from "styled-components";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import colors from "../../../../designsystem/foundation/colors";
 import Icon, {IconType} from "../../../../designsystem/foundation/icon";
 import Spacer from "../../../../designsystem/component/spacer";
+import {Row} from "../../../../designsystem/component/flexLayout";
+import {DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 
 interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {
     title: string;
+    dragHandleProps: DraggableProvidedDragHandleProps | null | undefined;
     children?: React.ReactNode;
 }
 
 function OptionCell(
     {
         title,
+        dragHandleProps,
         children,
         ...props
-    }: OptionCellProps
+    }: OptionCellProps,
+    ref?: ForwardedRef<HTMLDivElement>
 ) {
     const [opened, setOpened] = useState(false);
 
     return (
-        <S.container {...props}>
+        <S.container ref={ref} {...props}>
             <S.titleWrapper style={{
                 outline: opened ? `1px solid ${colors.g100}` : undefined
             }}>
-                <Icon
-                    onClick={() => setOpened(opened => !opened)}
+                <Row
+                    $alignItems={'center'}
+                    gap={12}
+                    flex={1}
                     style={{
-                        rotate: opened ? '90deg' : '-90deg'
-                    }} 
-                    type={IconType.ExpandArrow} 
-                    size={24}
-                    tint={colors.g600}
-                />
-                <S.title>{title}</S.title>
-                <Spacer/>
-                <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
+                        cursor: 'pointer',
+                    }}
+                    onClick={() => setOpened(opened => !opened)}
+                >
+                    <Icon
+                        style={{
+                            rotate: opened ? '90deg' : '-90deg'
+                        }}
+                        type={IconType.ExpandArrow}
+                        size={24}
+                        tint={colors.g600}
+                    />
+                    <S.title>{title}</S.title>
+                    <Spacer/>
+                </Row>
+                <div style={{display: 'flex'}} {...dragHandleProps}>
+                    <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
+                </div>
             </S.titleWrapper>
             {opened && children}
         </S.container>
@@ -48,8 +64,9 @@ const S = {
         flex-direction: column;
         background: ${colors.white};
         border-radius: 4px;
+        margin-bottom: 20px;
     `,
-    titleWrapper: styled.a`
+    titleWrapper: styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -58,7 +75,6 @@ const S = {
         gap: 12px;
         padding-left: 36px;
         padding-right: 32px;
-        cursor: pointer;
     `,
     title: styled.span`
         ${makeText(TextType.p2)};
@@ -66,4 +82,4 @@ const S = {
     `
 }
 
-export default OptionCell;
+export default forwardRef(OptionCell);

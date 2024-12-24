@@ -52,6 +52,7 @@ import Moon from "./icon/Moon";
 import AddRing from "./icon/AddRing";
 import ArcticonsSpotistats from "./icon/ArcticonsSpotistats";
 import Hamburger from "./icon/Hamburger";
+import Clock from "./icon/Clock";
 
 export enum IconType {
     AddEmoji,
@@ -70,6 +71,7 @@ export enum IconType {
     CheckFill,
     CheckLine,
     CheckRing,
+    Clock,
     Copy,
     CrossFill,
     CrossLine,
@@ -156,6 +158,8 @@ export default function Icon(
             return <CheckLine fill={tint} width={size} height={size} {...props}/>;
         case IconType.CheckRing:
             return <CheckRing fill={tint} width={size} height={size} {...props}/>;
+        case IconType.Clock:
+            return <Clock fill={tint} width={size} height={size} {...props}/>;
         case IconType.Copy:
             return <Copy fill={tint} width={size} height={size} {...props}/>;
         case IconType.CrossFill:
