@@ -21,8 +21,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.WEB_GITHUB_KEY }}
         with:
           source-directory: 'output'
-          destination-github-username: your-github-username
-          destination-repository-name: your-github-repository-name
+          destination-github-username: hhhello0507
+          destination-repository-name: Linkmarry-web
           user-email: ${{ secrets.WEB_ACCOUNT_EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
