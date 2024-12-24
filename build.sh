@@ -1,5 +1,5 @@
 #!/bin/sh
 cd ../
 mkdir output
-cp -R ./team-repository-name/* ./output
-cp -R ./output ./team-repository-name/
+cp -R ./linkmarry-web/* ./output
+cp -R ./output ./linkmarry-web/
