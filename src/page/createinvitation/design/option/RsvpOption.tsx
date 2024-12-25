@@ -9,7 +9,7 @@ import makeText, {TextType} from "../../../../designsystem/foundation/text/textT
 import colors from "../../../../designsystem/foundation/colors";
 import OptionTextarea from "../component/OptionTextarea";
 
-function RSVPOption() {
+function RsvpOption() {
     return (
         <S.container>
             <Column gap={32} flex={1}>
@@ -61,4 +61,4 @@ const S = {
     `
 }
 
-export default RSVPOption;
+export default RsvpOption;

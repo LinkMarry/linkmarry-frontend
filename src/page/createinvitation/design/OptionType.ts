@@ -9,7 +9,7 @@ import LinkShareOption from "./option/LinkShareOption";
 import MoneyInfoOption from "./option/MoneyInfoOption";
 import VideoOption from "./option/VideoOption";
 import PhoneOption from "./option/PhoneOption";
-import RSVPOption from "./option/RSVPOption";
+import RsvpOption from "./option/RsvpOption";
 
 export enum OptionType {
     Template,
@@ -23,7 +23,7 @@ export enum OptionType {
     MoneyInfo,
     Video,
     Phone,
-    RSVP
+    Rsvp
 }
 
 export const options: {
@@ -76,8 +76,8 @@ export const options: {
         title: '연락처',
         children: PhoneOption
     },
-    [OptionType.RSVP]: {
+    [OptionType.Rsvp]: {
         title: '참석 의사',
-        children: RSVPOption
+        children: RsvpOption
     },
 }

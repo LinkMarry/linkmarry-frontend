@@ -1,4 +1,4 @@
-export default interface RSVP {
+export default interface Rsvp {
     rsvpTitle: string; // 제목
     rsvpContent: string; // 내용
     attendStatus: boolean; // 참석 수집 여부
