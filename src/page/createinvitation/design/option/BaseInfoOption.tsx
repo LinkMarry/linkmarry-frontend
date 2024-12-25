@@ -2,8 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import {BaseFlex, Column, Row} from "../../../../designsystem/component/flexLayout";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "./OptionLabel";
-import OptionTextField from "./OptionTextField";
+import OptionLabel from "../component/OptionLabel";
+import OptionTextField from "../component/OptionTextField";
 import Checkbox from "../../../../designsystem/component/checkbox";
 
 function BaseInfoOption() {
@@ -13,14 +13,14 @@ function BaseInfoOption() {
                 <Column gap={16} $alignItems={'stretch'}>
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'신랑'}/>
-                        <OptionTextField placeholder={'성'} style={{width: 82}}/>
-                        <OptionTextField placeholder={'이름'}/>
-                        <OptionTextField placeholder={'관계'}/>
+                        <OptionTextField placeholder={'성'} width={82}/>
+                        <OptionTextField placeholder={'이름'} width={98}/>
+                        <OptionTextField placeholder={'관계'} width={98}/>
                     </Row>
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'아버지'}/>
-                        <OptionTextField placeholder={'성'} style={{width: 82}}/>
-                        <OptionTextField placeholder={'이름'}/>
+                        <OptionTextField placeholder={'성'} width={82}/>
+                        <OptionTextField placeholder={'이름'} width={98}/>
                         <BaseFlex
                             style={{height: 44}}
                             $alignItems={'center'}
@@ -33,8 +33,8 @@ function BaseInfoOption() {
                     </Row>
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'어머니'}/>
-                        <OptionTextField placeholder={'성'} style={{width: 82}}/>
-                        <OptionTextField placeholder={'이름'}/>
+                        <OptionTextField placeholder={'성'} width={82}/>
+                        <OptionTextField placeholder={'이름'} width={98}/>
                         <BaseFlex
                             style={{height: 44}}
                             $alignItems={'center'}
@@ -50,14 +50,14 @@ function BaseInfoOption() {
                 <Column gap={16} $alignItems={'stretch'}>
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'신부'}/>
-                        <OptionTextField placeholder={'성'} style={{width: 82}}/>
-                        <OptionTextField placeholder={'이름'}/>
-                        <OptionTextField placeholder={'관계'}/>
+                        <OptionTextField placeholder={'성'} width={82}/>
+                        <OptionTextField placeholder={'이름'} width={98}/>
+                        <OptionTextField placeholder={'관계'} width={98}/>
                     </Row>
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'아버지'}/>
-                        <OptionTextField placeholder={'성'} style={{width: 82}}/>
-                        <OptionTextField placeholder={'이름'}/>
+                        <OptionTextField placeholder={'성'} width={82}/>
+                        <OptionTextField placeholder={'이름'} width={98}/>
                         <BaseFlex
                             style={{height: 44}}
                             $alignItems={'center'}
@@ -70,8 +70,8 @@ function BaseInfoOption() {
                     </Row>
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'어머니'}/>
-                        <OptionTextField placeholder={'성'} style={{width: 82}}/>
-                        <OptionTextField placeholder={'이름'}/>
+                        <OptionTextField placeholder={'성'} width={82}/>
+                        <OptionTextField placeholder={'이름'} width={98}/>
                         <BaseFlex
                             style={{height: 44}}
                             $alignItems={'center'}

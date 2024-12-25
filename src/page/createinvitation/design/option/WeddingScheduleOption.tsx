@@ -2,10 +2,10 @@ import React, {useRef} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "../../../../designsystem/component/flexLayout";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "./OptionLabel";
-import OptionTextField from "./OptionTextField";
+import OptionLabel from "../component/OptionLabel";
+import OptionTextField from "../component/OptionTextField";
 import Checkbox from "../../../../designsystem/component/checkbox";
-import OptionField from "./OptionField";
+import OptionField from "../component/OptionField";
 import {IconType} from "../../../../designsystem/foundation/icon";
 
 function WeddingScheduleOption() {

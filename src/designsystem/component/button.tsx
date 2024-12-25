@@ -1,13 +1,13 @@
 import Icon, {IconType} from "../foundation/icon";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import makeText, {TextType} from "../foundation/text/textType";
 import colors from "../foundation/colors";
-import {CSSProperties} from "react";
+import {ButtonHTMLAttributes, CSSProperties} from "react";
 
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonRole = 'primary' | 'secondary' | 'assistive';
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
     size?: ButtonSize;
     role?: ButtonRole;
@@ -23,7 +23,8 @@ export default function Button(
         role = 'primary',
         leadingIcon,
         trailingIcon,
-        enabled = true
+        enabled = true,
+        ...props
     }: ButtonProps
 ) {
     let background: string, foreground: string;
@@ -44,9 +45,10 @@ export default function Button(
 
     let borderRadius: number,
         contentPadding: CSSProperties['padding'],
-        iconSize: CSSProperties['width'],
-        height: CSSProperties['height'],
-        textType: TextType;
+        iconSize: number,
+        height: number,
+        textType: TextType,
+        gap: number;
 
     switch (size) {
         case 'large':
@@ -55,6 +57,7 @@ export default function Button(
             iconSize = 20;
             height = 46;
             textType = TextType.p4;
+            gap = 6;
             break;
         case 'medium':
             borderRadius = 10;
@@ -62,6 +65,7 @@ export default function Button(
             iconSize = 18;
             height = 37;
             textType = TextType.btn1;
+            gap = 5;
             break;
         case 'small':
             borderRadius = 8;
@@ -69,62 +73,79 @@ export default function Button(
             iconSize = 16;
             height = 29;
             textType = TextType.caption2;
+            gap = 4;
             break;
     }
 
     return (
         <S.container
-            style={{
-                opacity: enabled ? 1 : 0.5,
-                background,
-                color: foreground,
-                borderRadius,
-                padding: contentPadding,
-                height
-            }} 
-            enabled={enabled}
+            opacity={enabled ? 1 : 0.5}
+            background={background}
+            color={foreground}
+            borderRadius={borderRadius}
+            padding={contentPadding}
+            height={height}
+            gap={gap}
             disabled={!enabled}
             textType={textType}
+            {...props}
         >
-            {leadingIcon && (
+            {leadingIcon ? (
                 <Icon type={leadingIcon} tint={foreground} size={iconSize}/>
-            )}
+            ) : <div style={{width: iconSize}}></div>}
             {text}
-            {trailingIcon && (
+            {trailingIcon ? (
                 <Icon type={trailingIcon} tint={foreground} size={iconSize}/>
-            )}
+            ) : <div style={{width: iconSize}}></div>}
         </S.container>
     )
 }
 
 const S = {
     container: styled.button<{
-        enabled: boolean,
-        textType: TextType
+        textType: TextType,
+        opacity: CSSProperties['opacity'],
+        background: CSSProperties['background'],
+        color: CSSProperties['color'],
+        borderRadius: number,
+        padding: CSSProperties['padding'],
+        height: number,
+        gap: number,
     }>`
         display: inline-flex;
-
+        align-items: center;
+        justify-content: center;
         outline: none;
         border: none;
-        ${({textType}) => makeText(textType)};
-        
+        word-break: keep-all;
+        ${({textType, opacity, background, color, borderRadius, padding, height, gap}) => css`
+            ${makeText(textType)};
+            opacity: ${opacity};
+            background: ${background};
+            color: ${color};
+            border-radius: ${borderRadius}px;
+            padding: ${padding};
+            height: ${height}px;
+            gap: ${gap}px;
+        `};
+
         &:disabled {
             opacity: 1;
             background: black;
         }
-        
+
         &:enabled {
             cursor: pointer;
         }
-        
+
         &:hover {
             opacity: 0.5;
         }
-        
+
         &:active {
             scale: 0.96;
         }
-        
+
         transition: 0.1s scale ease-in-out;
     `
 }

@@ -28,6 +28,7 @@ export interface BaseFlexProps {
     columnGap?: number;
     rowGap?: number;
     $alignItems?: CSSProperties['alignItems'];
+    $alignSelf?: CSSProperties['alignSelf'];
     $justifyContent?: CSSProperties['justifyContent'];
     flex?: CSSProperties['flex'];
     fill?: string;
@@ -39,11 +40,12 @@ export interface BaseFlexProps {
 
 export const BaseFlex = styled.div<BaseFlexProps>`
     display: flex;
-    ${({gap, rowGap, columnGap, $alignItems, $justifyContent, flex, fill, padding, wrap, background, $customStyle}) => css`
+    ${({gap, rowGap, columnGap, $alignItems, $alignSelf, $justifyContent, flex, fill, padding, wrap, background, $customStyle}) => css`
         ${gap !== undefined ? css`gap: ${gap}px;` : undefined}
         ${rowGap !== undefined ? css`row-gap: ${rowGap}px;` : undefined}
         ${columnGap !== undefined ? css`column-gap: ${columnGap}px;` : undefined}
         align-items: ${$alignItems || 'flex-start'};
+        align-self: ${$alignSelf};
         justify-content: ${$justifyContent || 'flex-start'};
         flex: ${flex};
         flex-wrap: ${wrap ? 'wrap' : 'nowrap'};

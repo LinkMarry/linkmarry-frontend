@@ -31,6 +31,7 @@ function OptionCell(
             }}>
                 <Row
                     $alignItems={'center'}
+                    $alignSelf={'stretch'}
                     gap={12}
                     flex={1}
                     style={{
