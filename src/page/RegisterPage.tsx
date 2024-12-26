@@ -1,18 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import * as S from './RegisterPage.style';
-import config from "../config/config";
 
-const {kakao, Kakao} = window as any;
+const {kakao} = window as any;
 
 function RegisterPage() {
-
     const kakaoMap = useRef<HTMLDivElement>(null);
-    const loginWithKakao = () => {
-        console.log(Kakao)
-        Kakao?.Auth?.authorize({
-            redirectUri: config.kakao.redirectUri
-        });
-    };
 
     useEffect(() => {
         setTimeout(() => {
@@ -77,10 +69,6 @@ function RegisterPage() {
 
     return (
         <S.Container>
-            <button onClick={() => {
-                loginWithKakao();
-            }}>Login
-            </button>
             <div ref={kakaoMap} id="map" style={{
                 width: 500,
                 height: 400

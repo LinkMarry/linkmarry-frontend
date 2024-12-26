@@ -37,7 +37,7 @@ const errorResponseHandler = async (error: AxiosError) => {
         }
         const newAccessToken = response?.accessToken ?? ""
 
-        customApi.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+        customApi.defaults.headers.common.Authorization = newAccessToken;
         Cookies.set('accessToken', newAccessToken);
 
         // 리프레쉬 작업을 마침
@@ -51,7 +51,7 @@ const errorResponseHandler = async (error: AxiosError) => {
             const {config} = error;
             if (!config) return;
 
-            config.headers.Authorization = `Bearer ${accessToken}`;
+            config.headers.Authorization = accessToken;
             resolve(customApi(config));
         })
     });

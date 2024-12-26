@@ -82,32 +82,32 @@ export default function Button(
             opacity={enabled ? 1 : 0.5}
             background={background}
             color={foreground}
-            borderRadius={borderRadius}
+            $borderRadius={borderRadius}
             padding={contentPadding}
             height={height}
             gap={gap}
             disabled={!enabled}
-            textType={textType}
+            $textType={textType}
             {...props}
         >
             {leadingIcon ? (
                 <Icon type={leadingIcon} tint={foreground} size={iconSize}/>
-            ) : <div style={{width: iconSize}}></div>}
+            ) : trailingIcon ? <div style={{width: iconSize}}></div> : <></>}
             {text}
             {trailingIcon ? (
                 <Icon type={trailingIcon} tint={foreground} size={iconSize}/>
-            ) : <div style={{width: iconSize}}></div>}
+            ) : leadingIcon ? <div style={{width: iconSize}}></div> : <></>}
         </S.container>
     )
 }
 
 const S = {
     container: styled.button<{
-        textType: TextType,
+        $textType: TextType,
         opacity: CSSProperties['opacity'],
         background: CSSProperties['background'],
         color: CSSProperties['color'],
-        borderRadius: number,
+        $borderRadius: number,
         padding: CSSProperties['padding'],
         height: number,
         gap: number,
@@ -118,12 +118,12 @@ const S = {
         outline: none;
         border: none;
         word-break: keep-all;
-        ${({textType, opacity, background, color, borderRadius, padding, height, gap}) => css`
-            ${makeText(textType)};
+        ${({$textType, opacity, background, color, $borderRadius, padding, height, gap}) => css`
+            ${makeText($textType)};
             opacity: ${opacity};
             background: ${background};
             color: ${color};
-            border-radius: ${borderRadius}px;
+            border-radius: ${$borderRadius}px;
             padding: ${padding};
             height: ${height}px;
             gap: ${gap}px;

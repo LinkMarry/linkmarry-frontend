@@ -10,7 +10,7 @@ const requestHandler = (config: InternalAxiosRequestConfig) => {
         if (config.url?.includes(url)) return config;
     }
 
-    config.headers.Authorization = `Bearer ${Cookies.get('accessToken')}`;
+    config.headers.Authorization = Cookies.get('accessToken');
     
     return config;
 };
