@@ -3,7 +3,7 @@ export default interface BaseInfo {
     groomFatherName: string; // 신랑 아빠 이름
     groomFatherStatus: boolean; // 신랑 아빠 생존 상태
     groomMotherName: string; // 신랑 엄마 이름
-    groomMotherStatus: string; // 신랑 엄마 생존 상태
+    groomMotherStatus: boolean; // 신랑 엄마 생존 상태
     groomFamilyName: string; // 관계 (기본값 : 아들)
     brideName: string; // 신부 이름
     brideFatherName: string; // 신부 아빠 이름

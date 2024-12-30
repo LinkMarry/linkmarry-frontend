@@ -1,16 +1,27 @@
-import React, {useRef} from 'react';
+import React, {RefObject, useRef} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "../../../../designsystem/component/flexLayout";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
 import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
 import Checkbox from "../../../../designsystem/component/checkbox";
 import OptionField from "../component/OptionField";
 import {IconType} from "../../../../designsystem/foundation/icon";
 
-function WeddingScheduleOption() {
-    const weddingDateRef = useRef<HTMLInputElement>(null);
-    const weddingTimeRef = useRef<HTMLInputElement>(null);
+interface WeddingScheduleOptionProps {
+    refs: {
+        weddingDateRef?: RefObject<HTMLInputElement>,
+        weddingTimeRef?: RefObject<HTMLInputElement>,
+    }
+}
+
+function WeddingScheduleOption(
+    {
+        refs: {
+            weddingDateRef,
+            weddingTimeRef
+        }
+    }: WeddingScheduleOptionProps
+) {
 
     return (
         <S.container>

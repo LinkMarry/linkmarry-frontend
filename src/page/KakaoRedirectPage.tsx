@@ -3,8 +3,8 @@ import {useSearchParams} from "react-router-dom";
 import useAuth from "../hook/useAuth";
 
 function KakaoRedirectPage() {
-    const [searchParams] = useSearchParams();
     const {signIn} = useAuth();
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         const code = searchParams.get('code');

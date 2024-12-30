@@ -11,7 +11,8 @@ import Rsvp from "./Rsvp";
 import GuestComment from "./GuestComment";
 
 export default interface Wedding {
-    url: String; // URL 값
+    url: string; // URL 값
+    position: number[] // 아래 내용 위치
     baseInfo: BaseInfo; // 기본 정보
     weddingSchedule: WeddingSchedule; // 예식 일시
     weddingPlace: WeddingPlace; // 예식 장소
@@ -23,4 +24,5 @@ export default interface Wedding {
     video: Video; // 영상
     phone: Phone; // 전화번호
     rsvp: Rsvp; // 참석의사
+    imgList: string[] // 갤러리
 }

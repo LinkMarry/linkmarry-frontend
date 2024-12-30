@@ -4,6 +4,7 @@ import CreateInvitationSideBar from "./component/CreateInvitationSideBar";
 import {CreateInvitationSideBarType} from "./component/CreateInvitationSideBarType";
 import CreateInvitationDesign from "./design/CreateInvitationDesign";
 import HasHeader from "../../designsystem/component/header/hasHeader";
+import CreateInvitationDashboard from "./dashboard/CreateInvitationDashboard";
 
 function CreateInvitationPage() {
     const [selectedSideBarType, setSelectedSideBarType] = useState<CreateInvitationSideBarType>('dashboard');
@@ -11,7 +12,7 @@ function CreateInvitationPage() {
     const subPage = () => {
         switch (selectedSideBarType) {
             case 'dashboard':
-                return <div>Dashboard</div>
+                return <CreateInvitationDashboard/>
             case 'design':
                 return <CreateInvitationDesign/>;
             case 'statistics':

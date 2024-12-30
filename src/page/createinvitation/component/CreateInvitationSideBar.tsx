@@ -48,13 +48,14 @@ const S = {
     container: styled.div`
         display: flex;
         height: 100%;
+        min-width: 284px;
         width: 284px;
         background: ${colors.white};
+        border-right: 1px solid ${colors.g200};
     `,
     items: styled.ul`
         width: 98px;
         margin-top: 80px;
-        margin-right: 62px;
     `,
     item: styled.li`
         display: flex;

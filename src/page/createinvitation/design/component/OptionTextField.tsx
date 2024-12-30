@@ -1,4 +1,4 @@
-import React, {InputHTMLAttributes, ReactNode} from 'react';
+import React, {ForwardedRef, forwardRef, InputHTMLAttributes, ReactNode} from 'react';
 import styled, {css} from "styled-components";
 import colors from "../../../../designsystem/foundation/colors";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
@@ -13,12 +13,13 @@ function OptionTextField(
         width = 98,
         leadingContent,
         ...props
-    }: OptionTextFieldProps
+    }: OptionTextFieldProps,
+    ref: ForwardedRef<HTMLInputElement>
 ) {
     return (
         <S.container width={width}>
             {leadingContent}
-            <S.textField {...props}/>
+            <S.textField ref={ref} {...props}/>
         </S.container>
     );
 }
@@ -49,4 +50,4 @@ const S = {
     `
 }
 
-export default OptionTextField;
+export default forwardRef(OptionTextField);

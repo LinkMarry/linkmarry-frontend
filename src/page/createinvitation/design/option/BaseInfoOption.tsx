@@ -5,8 +5,17 @@ import HorizontalDivider from "../../../../designsystem/component/horizontalDivi
 import OptionLabel from "../component/OptionLabel";
 import OptionTextField from "../component/OptionTextField";
 import Checkbox from "../../../../designsystem/component/checkbox";
+import BaseInfo from "../../../../remote/data/value/BaseInfo";
 
-function BaseInfoOption() {
+interface BaseInfoOptionProps {
+    refs: {}
+}
+
+function BaseInfoOption(
+    {
+        refs: {}
+    }: BaseInfoOptionProps
+) {
     return (
         <S.container>
             <Column flex={1} gap={32}>

@@ -6,7 +6,7 @@ import makeText, {TextType} from "../foundation/text/textType";
 
 interface CheckboxProps {
     checked: boolean;
-    onChange: (value: boolean) => void;
+    onChange: (checked: boolean) => void;
     label?: string;
     rounded?: boolean;
     style?: CSSProperties;
