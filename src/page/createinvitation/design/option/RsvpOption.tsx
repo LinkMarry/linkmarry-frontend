@@ -8,6 +8,7 @@ import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import colors from "../../../../designsystem/foundation/colors";
 import OptionTextarea from "../component/OptionTextarea";
+import Text from "../../../../designsystem/component/text";
 
 interface RsvpOptionProps {
     refs: {
@@ -67,7 +68,7 @@ function RsvpOption(
                         <Column gap={15}>
                             <Row gap={16}>
                                 <Checkbox ref={startPopupStatusRef}/>
-                                <S.popUpInfoCheckboxLabel>청첩장 열 때 팝업 안내</S.popUpInfoCheckboxLabel>
+                                <Text text={'청첩장 열 때 팝업 안내'} type={TextType.caption1} color={colors.g300}/>
                             </Row>
                             <OptionTextarea ref={startPopupMessageRef} width={264}/>
                         </Column>
@@ -83,10 +84,6 @@ const S = {
         display: flex;
         padding: 36px;
     `,
-    popUpInfoCheckboxLabel: styled.span`
-        ${makeText(TextType.caption1)};
-        color: ${colors.g300};
-    `
 }
 
 export default RsvpOption;

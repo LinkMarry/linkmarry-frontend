@@ -1,7 +1,7 @@
 import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import colors from "../../../../designsystem/foundation/colors";
+import {TextType} from "../../../../designsystem/foundation/text/textType";
+import Text from "../../../../designsystem/component/text";
 
 interface OptionLabelProps extends HTMLAttributes<HTMLDivElement> {
     label: string;
@@ -15,7 +15,7 @@ function OptionLabel(
 ) {
     return (
         <S.wrapper {...props}>
-            <S.label>{label}</S.label>
+            <Text text={label} type={TextType.p4}/>
         </S.wrapper>
     );
 }
@@ -28,11 +28,6 @@ const S = {
         align-self: stretch;
         align-items: center;
     `,
-    label: styled.span`
-        display: flex;
-        ${makeText(TextType.p4)};
-        color: ${colors.black};
-    `
 }
 
 export default OptionLabel;

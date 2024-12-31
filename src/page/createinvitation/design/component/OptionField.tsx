@@ -3,6 +3,7 @@ import styled from "styled-components";
 import colors from "../../../../designsystem/foundation/colors";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import Icon, {IconType} from "../../../../designsystem/foundation/icon";
+import Text from "../../../../designsystem/component/text";
 
 interface OptionFieldProps extends HTMLAttributes<HTMLDivElement> {
     leadingIcon: IconType;
@@ -53,7 +54,7 @@ function OptionField(
                 onChange={handleInputChange}
             />
             <Icon tint={colors.g600} size={20} type={leadingIcon}/>
-            <S.label>{formattedValue}</S.label>
+            <Text text={formattedValue ?? ''} type={TextType.p5}/>
         </S.field>
     );
 }
@@ -74,11 +75,6 @@ const S = {
         border: 1px solid ${colors.g200};
         background: ${colors.white};
         cursor: pointer;
-    `,
-    label: styled.span`
-        display: flex;
-        ${makeText(TextType.p5)};
-        color: ${colors.black};
     `,
     fakeInput: styled.input`
         position: absolute;

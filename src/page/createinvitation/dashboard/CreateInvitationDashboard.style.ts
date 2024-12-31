@@ -9,14 +9,6 @@ const S = {
         background: ${colors.white};
         overflow-y: scroll;
     `,
-    title: styled.span`
-        ${makeText(TextType.h5)};
-        color: ${colors.black};
-    `,
-    titleDescription: styled.span`
-        ${makeText(TextType.p3)};
-        color: ${colors.g500};
-    `,
     items: styled.ul`
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
@@ -34,10 +26,6 @@ const S = {
         border-radius: 12px;
         background: ${colors.white};
         cursor: pointer;
-    `,
-    createDesignButtonLabel: styled.span`
-        ${makeText(TextType.p4)};
-        color: ${colors.g500};
     `
 };
 

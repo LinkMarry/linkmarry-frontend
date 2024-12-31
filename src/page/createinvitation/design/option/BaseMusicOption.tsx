@@ -4,10 +4,11 @@ import {Column, Row} from "../../../../designsystem/component/flexLayout";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
 import OptionLabel from "../component/OptionLabel";
 import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
+import {TextType} from "../../../../designsystem/foundation/text/textType";
 import colors from "../../../../designsystem/foundation/colors";
 import Icon, {IconType} from "../../../../designsystem/foundation/icon";
 import OptionSegmentedButton from "../component/OptionSegmentedButton";
+import Text from "../../../../designsystem/component/text";
 
 type SelectMode = 'select' | 'direct';
 const selectModeRecord: Record<SelectMode, string> = {
@@ -49,8 +50,8 @@ function BaseMusicOption(
                 return <S.addAudioFileContainer $alignSelf={'stretch'} gap={20} $alignItems={'center'}>
                     <Icon type={IconType.AddLine} size={24} tint={colors.g600}/>
                     <Column gap={4} $alignItems={'center'}>
-                        <S.addAudioFileLabel>음원 파일 추가</S.addAudioFileLabel>
-                        <S.addAudioFileLabel>최대 4.5MB MP3 파일만 가능</S.addAudioFileLabel>
+                        <Text text={'음원 파일 추가'} type={TextType.caption1} color={colors.g400}/>
+                        <Text text={'최대 4.5MB MP3 파일만 가능'} type={TextType.caption1} color={colors.g400}/>
                     </Column>
                 </S.addAudioFileContainer>;
         }
@@ -75,7 +76,7 @@ function BaseMusicOption(
                     <OptionLabel label={'효과'}/>
                     <Row gap={12} $alignItems={'center'}>
                         <Checkbox ref={effectRef} label={'자동 재생'}/>
-                        <S.effectAutoPlayLabel>브라우저</S.effectAutoPlayLabel> {/* TODO: Fix dummy text */}
+                        <Text text={'브라우저'} type={TextType.caption1} color={colors.g300}/> {/* TODO: Fix dummy text */}
                     </Row>
                 </Row>
             </Column>
@@ -88,20 +89,12 @@ const S = {
         display: flex;
         padding: 36px;
     `,
-    effectAutoPlayLabel: styled.span`
-        ${makeText(TextType.caption1)};
-        color: ${colors.g300};
-    `,
     addAudioFileContainer: styled(Column)`
         background: ${colors.g100};
         border-radius: 8px;
         padding: 30px 0;
         cursor: pointer;
     `,
-    addAudioFileLabel: styled.span`
-        ${makeText(TextType.caption1)};
-        color: ${colors.g400};
-    `
 }
 
 export default BaseMusicOption;

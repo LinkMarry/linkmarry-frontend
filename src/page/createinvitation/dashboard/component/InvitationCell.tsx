@@ -7,6 +7,7 @@ import Button from "../../../../designsystem/component/button";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import Icon, {IconType} from "../../../../designsystem/foundation/icon";
 import Spacer from "../../../../designsystem/component/spacer";
+import Text from "../../../../designsystem/component/text";
 
 interface InvitationCellProps {
     weddingDashboard: WeddingDashboard;
@@ -37,7 +38,7 @@ function InvitationCell(
                             }}
                         />
                     </Row>
-                    <S.dateLabel>{weddingDashboard.weddingInfo[0].createdDate}</S.dateLabel>
+                    <Text text={weddingDashboard.weddingInfo[0].createdDate} type={TextType.caption1} color={colors.g500}/>
                 </Column>
                 <Row gap={10}>
                     <Button text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}/>
@@ -71,10 +72,6 @@ const S = {
         white-space: nowrap;
         text-overflow: ellipsis;
     `,
-    dateLabel: styled.span`
-        ${makeText(TextType.caption1)};
-        color: ${colors.g500};
-    `
 };
 
 export default InvitationCell;
