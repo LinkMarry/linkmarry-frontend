@@ -7,6 +7,7 @@ const S = {
         display: flex;
         flex: 1;
         background: ${colors.white};
+        overflow-y: scroll;
     `,
     title: styled.span`
         ${makeText(TextType.h5)};
@@ -17,9 +18,26 @@ const S = {
         color: ${colors.g500};
     `,
     items: styled.ul`
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
+        gap: 28px;
+        justify-items: start;
+    `,
+    createDesignButton: styled.button`
         display: flex;
-        column-count: 3;
-        break-inside: avoid-column; // column 잘림 방지
+        width: 300px;
+        height: 420px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid ${colors.p800};
+        outline: none;
+        border-radius: 12px;
+        background: ${colors.white};
+        cursor: pointer;
+    `,
+    createDesignButtonLabel: styled.span`
+        ${makeText(TextType.p4)};
+        color: ${colors.g500};
     `
 };
 

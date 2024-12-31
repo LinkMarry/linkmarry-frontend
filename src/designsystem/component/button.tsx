@@ -118,6 +118,7 @@ const S = {
         outline: none;
         border: none;
         word-break: keep-all;
+        white-space: nowrap;
         ${({$textType, opacity, background, color, $borderRadius, padding, height, gap}) => css`
             ${makeText($textType)};
             opacity: ${opacity};
