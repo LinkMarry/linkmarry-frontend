@@ -3,14 +3,16 @@ import styled from "styled-components";
 import {Column, Row} from "../../../../designsystem/component/flexLayout";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
 import OptionLabel from "../component/OptionLabel";
-import Checkbox from "../../../../designsystem/component/checkbox";
+import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
 import OptionField from "../component/OptionField";
 import {IconType} from "../../../../designsystem/foundation/icon";
 
 interface WeddingScheduleOptionProps {
     refs: {
-        weddingDateRef?: RefObject<HTMLInputElement>,
-        weddingTimeRef?: RefObject<HTMLInputElement>,
+        weddingDateRef: RefObject<HTMLInputElement>,
+        weddingTimeRef: RefObject<HTMLInputElement>,
+        calendarRef: RefObject<CheckboxRef>,
+        dDayRef: RefObject<CheckboxRef>,
     }
 }
 
@@ -18,7 +20,9 @@ function WeddingScheduleOption(
     {
         refs: {
             weddingDateRef,
-            weddingTimeRef
+            weddingTimeRef,
+            calendarRef,
+            dDayRef
         }
     }: WeddingScheduleOptionProps
 ) {
@@ -40,10 +44,8 @@ function WeddingScheduleOption(
                 <Row gap={12}>
                     <OptionLabel style={{alignSelf: 'flex-start'}} label={'표시'}/>
                     <Column gap={12}>
-                        <Checkbox label={'캘린더'} checked={false} onChange={() => {
-                        }}/>
-                        <Checkbox label={'디데이'} checked={false} onChange={() => {
-                        }}/>
+                        <Checkbox ref={calendarRef} label={'캘린더'}/>
+                        <Checkbox ref={dDayRef} label={'디데이'}/>
                     </Column>
                 </Row>
             </Column>

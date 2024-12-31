@@ -1,10 +1,18 @@
-import React, {ChangeEventHandler, CSSProperties, HTMLAttributes, LegacyRef, useState} from 'react';
+import React, {
+    ChangeEventHandler,
+    CSSProperties,
+    HTMLAttributes,
+    InputHTMLAttributes,
+    LegacyRef,
+    useState
+} from 'react';
 import styled, {css} from "styled-components";
 import makeText, {TextType} from "../foundation/text/textType";
 import Icon, {IconType} from "../foundation/icon";
 import colors from "../foundation/colors";
 
 interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
+    fieldProps?: InputHTMLAttributes<HTMLInputElement>;
     label: string;
     supportingText?: string;
     placeholder?: string;
@@ -17,6 +25,7 @@ interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
 
 export const TextField = (
     {
+        fieldProps,
         label,
         supportingText,
         placeholder,
@@ -64,6 +73,7 @@ export const TextField = (
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
                     disabled={!enabled}
+                    {...fieldProps}
                 />
                 {isError ? (
                     <Icon type={IconType.ExclamationFill} tint={'#FF4242'}/>

@@ -15,7 +15,7 @@ const dummyWeddingDashboard: WeddingDashboard[] = [
         ],
         invitation: 1
     }
-]
+];
 
 interface DashboardProps {
 
@@ -32,8 +32,8 @@ function CreateInvitationDashboard(
                     <S.titleDescription>원하는 청첩장을 만들어보세요!</S.titleDescription>
                 </Column>
                 <S.items>
-                    {dummyWeddingDashboard.map(weddingDashboard =>
-                        <InvitationCell weddingDashboard={weddingDashboard}/>
+                    {dummyWeddingDashboard.map((weddingDashboard, index) =>
+                        <InvitationCell key={index} weddingDashboard={weddingDashboard}/>
                     )}
                 </S.items>
             </Column>

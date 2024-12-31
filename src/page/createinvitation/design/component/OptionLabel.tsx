@@ -23,6 +23,7 @@ function OptionLabel(
 const S = {
     wrapper: styled.div`
         display: flex;
+        min-width: 72px;
         width: 72px;
         align-self: stretch;
         align-items: center;

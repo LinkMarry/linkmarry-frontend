@@ -1,4 +1,4 @@
-import React, {TextareaHTMLAttributes} from 'react';
+import React, {ForwardedRef, forwardRef, TextareaHTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import colors from "../../../../designsystem/foundation/colors";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
@@ -7,19 +7,20 @@ interface OptionTextFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
     width?: number;
 }
 
-function OptionTextarea(
+function OptionTextArea(
     {
         width = 98,
         ...props
-    }: OptionTextFieldProps
+    }: OptionTextFieldProps,
+    ref: ForwardedRef<HTMLTextAreaElement>
 ) {
     return (
-        <S.textarea width={width} {...props}/>
+        <S.textArea ref={ref} width={width} {...props}/>
     );
 }
 
 const S = {
-    textarea: styled.textarea<{ width: number }>`
+    textArea: styled.textarea<{ width: number }>`
         display: flex;
         min-height: 100px;
         border: 1px solid ${colors.g200};
@@ -35,4 +36,4 @@ const S = {
     `
 }
 
-export default OptionTextarea;
+export default forwardRef(OptionTextArea);

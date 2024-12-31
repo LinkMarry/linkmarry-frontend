@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {RefObject, useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "../../../../designsystem/component/flexLayout";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
 import OptionLabel from "../component/OptionLabel";
-import Checkbox from "../../../../designsystem/component/checkbox";
+import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import colors from "../../../../designsystem/foundation/colors";
 import Icon, {IconType} from "../../../../designsystem/foundation/icon";
@@ -17,7 +17,19 @@ const selectModeRecord: Record<SelectMode, string> = {
 const selectModes: SelectMode[] = ['select', 'direct'];
 const selectModesTitle = selectModes.map(mode => selectModeRecord[mode]);
 
-function BaseMusicOption() {
+interface BaseMusicOptionProps {
+    refs: {
+        effectRef: RefObject<CheckboxRef>
+    }
+}
+
+function BaseMusicOption(
+    {
+        refs: {
+            effectRef
+        }
+    }: BaseMusicOptionProps
+) {
     const [selectedSelectMode, setSelectedSelectMode] = useState(0);
 
     const selectModeContent = () => {
@@ -26,8 +38,7 @@ function BaseMusicOption() {
                 return <Column gap={16}>
                     {['Wedding opening', 'Wow', 'Hello World'].map(music => (
                         <Row gap={16} $alignItems={'center'}>
-                            <Checkbox rounded={true} label={music} checked={false} onChange={() => {
-                            }}/>
+                            <Checkbox rounded={true} label={music}/>
                             <Icon style={{
                                 cursor: 'pointer',
                             }} type={IconType.LoudSpeaker} size={20} tint={colors.g400}/>
@@ -63,8 +74,7 @@ function BaseMusicOption() {
                 <Row gap={12} $alignItems={'center'}>
                     <OptionLabel label={'효과'}/>
                     <Row gap={12} $alignItems={'center'}>
-                        <Checkbox label={'자동 재생'} checked={false} onChange={() => {
-                        }}/>
+                        <Checkbox ref={effectRef} label={'자동 재생'}/>
                         <S.effectAutoPlayLabel>브라우저</S.effectAutoPlayLabel> {/* TODO: Fix dummy text */}
                     </Row>
                 </Row>
