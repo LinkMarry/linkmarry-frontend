@@ -17,7 +17,7 @@ import VideoOption from "./option/VideoOption";
 import PhoneOption from "./option/PhoneOption";
 import RsvpOption from "./option/RsvpOption";
 import {CheckboxRef} from "../../../designsystem/component/checkbox";
-import Design from "../../../remote/data/enumeration/Design";
+import Design from "../../../remote/enumeration/Design";
 
 interface CreateInvitationDesignProps {
 }

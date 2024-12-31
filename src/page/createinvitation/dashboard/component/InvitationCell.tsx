@@ -1,5 +1,5 @@
 import React from 'react';
-import WeddingDashboard from "../../../../remote/data/value/WeddingDashboard";
+import WeddingDashboard from "../../../../remote/value/WeddingDashboard";
 import styled from "styled-components";
 import colors from "../../../../designsystem/foundation/colors";
 import {Column, Row} from "../../../../designsystem/component/flexLayout";

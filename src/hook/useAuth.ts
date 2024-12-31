@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import {useCallback} from "react";
 import config from "../config/config";
-import kakaoApi from "../remote/data/api/KakaoApi";
+import kakaoApi from "../remote/api/KakaoApi";
 
 const {Kakao} = window as any;
 

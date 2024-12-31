@@ -1,5 +1,5 @@
 import axios from "axios";
-import config from "../../../../config/config";
+import config from "../../../config/config";
 import requestHandler from "./requestHandler";
 import errorResponseHandler from "./errorResponseHandler";
 

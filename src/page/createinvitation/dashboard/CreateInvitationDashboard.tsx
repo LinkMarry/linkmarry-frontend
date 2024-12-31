@@ -1,7 +1,7 @@
 import React from 'react';
 import S from './CreateInvitationDashboard.style';
 import {Column} from "../../../designsystem/component/flexLayout";
-import WeddingDashboard from "../../../remote/data/value/WeddingDashboard";
+import WeddingDashboard from "../../../remote/value/WeddingDashboard";
 import InvitationCell from "./component/InvitationCell";
 
 const dummyWeddingDashboard: WeddingDashboard[] = [
