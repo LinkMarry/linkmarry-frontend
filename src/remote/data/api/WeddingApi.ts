@@ -1,6 +1,6 @@
 import Wedding from "../value/Wedding";
 import customApi from "./foundation/customApi";
-import {ResponseData} from "../value/Response";
+import {ResponseData, ResponseVoid} from "../value/Response";
 import WeddingDashboard from "../value/WeddingDashboard";
 import WeddingRequest from "../value/request/WeddingRequest";
 import RsvpRequest from "../value/request/RsvpRequest";
@@ -15,7 +15,7 @@ class WeddingApi {
     /**
      * URL 중복 확인
      */
-    async checkUrlConflict(url: string): Promise<Response> {
+    async checkUrlConflict(url: string): Promise<ResponseVoid> {
         const {data} = await customApi.post(`${WeddingApi.PATH}/check/${url}`);
         return data;
     }
@@ -39,7 +39,7 @@ class WeddingApi {
     /**
      * 청첩장 생성 (첫 생성)
      */
-    async createWedding(req: Wedding): Promise<Response> {
+    async createWedding(req: Wedding): Promise<ResponseVoid> {
         const {data} = await customApi.post(WeddingApi.PATH, req);
         return data;
     }
@@ -47,7 +47,7 @@ class WeddingApi {
     /**
      * 청첩장 수정
      */
-    async editWedding(req: Wedding): Promise<Response> {
+    async editWedding(req: Wedding): Promise<ResponseVoid> {
         const {data} = await customApi.put(WeddingApi.PATH, req);
         return data;
     }
@@ -63,7 +63,7 @@ class WeddingApi {
     /**
      * 기존 청첩장 URL 변경
      */
-    async changeWeddingUrl(originUrl: string, newUrl: string): Promise<Response> {
+    async changeWeddingUrl(originUrl: string, newUrl: string): Promise<ResponseVoid> {
         const {data} = await customApi.patch(`${WeddingApi.PATH}/${originUrl}/${newUrl}`);
         return data;
     }
@@ -71,7 +71,7 @@ class WeddingApi {
     /**
      * 참석여부
      */
-    async createRsvp(req: RsvpRequest): Promise<Response> {
+    async createRsvp(req: RsvpRequest): Promise<ResponseVoid> {
         const {data} = await customApi.post(`${WeddingApi.PATH}/rsvp`, req);
         return data;
     }
@@ -79,7 +79,7 @@ class WeddingApi {
     /**
      * 방명록 작성
      */
-    async createComment(req: GuestCommentRequest): Promise<Response> {
+    async createComment(req: GuestCommentRequest): Promise<ResponseVoid> {
         const {data} = await customApi.post(`${WeddingApi.PATH}/comment`, req);
         return data;
     }
@@ -87,7 +87,7 @@ class WeddingApi {
     /**
      * 방명록 수정
      */
-    async editComment(req: EditCommentRequest): Promise<Response> {
+    async editComment(req: EditCommentRequest): Promise<ResponseVoid> {
         const {data} = await customApi.patch(`${WeddingApi.PATH}/comment`, req);
         return data;
     }
@@ -95,7 +95,7 @@ class WeddingApi {
     /**
      * 방명록 삭제
      */
-    async removeComment(req: DeleteCommentRequest): Promise<Response> {
+    async removeComment(req: DeleteCommentRequest): Promise<ResponseVoid> {
         const {data} = await customApi.delete(`${WeddingApi.PATH}/comment`, req);
         return data;
     }
