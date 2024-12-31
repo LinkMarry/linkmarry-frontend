@@ -4,6 +4,7 @@ export default interface WeddingPlace {
     placeUrl: string; // 위치 URL (카카오)
     placeName: string; // 예식장 이름
     addressName: string; // 예식장 주소
+    floorHall: string; // 층/홀
     placeTel: string; // 예식장 전화번호
     placeTransportation: string; // 예식장 교통편
     placeStatus: boolean; // 지도 표시 여부

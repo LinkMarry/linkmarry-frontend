@@ -60,6 +60,7 @@ const S = {
     item: styled.li`
         display: flex;
         align-items: center;
+        align-self: stretch;
         gap: 8px;
         margin-bottom: 36px;
         cursor: pointer;

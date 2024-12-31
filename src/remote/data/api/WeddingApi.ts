@@ -2,7 +2,12 @@ import Wedding from "../value/Wedding";
 import customApi from "./foundation/customApi";
 import {ResponseData} from "../value/Response";
 import WeddingDashboard from "../value/WeddingDashboard";
-import Device from "../enumeration/Device";
+import WeddingRequest from "../value/request/WeddingRequest";
+import RsvpRequest from "../value/request/RsvpRequest";
+import GuestCommentRequest from "../value/request/GuestCommentRequest";
+import EditCommentRequest from "../value/request/EditCommentRequest";
+import DeleteCommentRequest from "../value/request/DeleteCommentRequest";
+import WeddingStatistics from "../value/WeddingStatistics";
 
 class WeddingApi {
     private static PATH = 'wedding';
@@ -50,8 +55,56 @@ class WeddingApi {
     /**
      * 청첩장 불러오기 (실제 모청 확인)
      */
-    async getWedding(url: string, req: { deviceType: Device, firstVisitor: boolean }): Promise<ResponseData<Wedding>> {
+    async getWedding(url: string, req: WeddingRequest): Promise<ResponseData<Wedding>> {
         const {data} = await customApi.post(`${WeddingApi.PATH}/${url}`, req);
+        return data;
+    }
+
+    /**
+     * 기존 청첩장 URL 변경
+     */
+    async changeWeddingUrl(originUrl: string, newUrl: string): Promise<Response> {
+        const {data} = await customApi.patch(`${WeddingApi.PATH}/${originUrl}/${newUrl}`);
+        return data;
+    }
+
+    /**
+     * 참석여부
+     */
+    async createRsvp(req: RsvpRequest): Promise<Response> {
+        const {data} = await customApi.post(`${WeddingApi.PATH}/rsvp`, req);
+        return data;
+    }
+
+    /**
+     * 방명록 작성
+     */
+    async createComment(req: GuestCommentRequest): Promise<Response> {
+        const {data} = await customApi.post(`${WeddingApi.PATH}/comment`, req);
+        return data;
+    }
+
+    /**
+     * 방명록 수정
+     */
+    async editComment(req: EditCommentRequest): Promise<Response> {
+        const {data} = await customApi.patch(`${WeddingApi.PATH}/comment`, req);
+        return data;
+    }
+
+    /**
+     * 방명록 삭제
+     */
+    async removeComment(req: DeleteCommentRequest): Promise<Response> {
+        const {data} = await customApi.delete(`${WeddingApi.PATH}/comment`, req);
+        return data;
+    }
+
+    /**
+     * 청첩장 통계 불러오기
+     */
+    async getStatistics(url: string): Promise<WeddingStatistics> {
+        const {data} = await customApi.get(`${WeddingApi.PATH}/statistics/${url}`);
         return data;
     }
 }
