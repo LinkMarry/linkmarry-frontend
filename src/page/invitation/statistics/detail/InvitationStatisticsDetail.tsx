@@ -8,6 +8,80 @@ import Text from "../../../../designsystem/component/text";
 import {TextType} from "../../../../designsystem/foundation/text/textType";
 import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
 import StatisticsValueCell from "./component/StatisticsValueCell";
+import {
+    Chart as ChartJS,
+    LineElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Tooltip,
+    Legend
+} from 'chart.js';
+import {Line} from "react-chartjs-2";
+
+ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
+
+const data = {
+    labels: [  // TODO: DUMMY
+        "12/16",
+        "12/17",
+        "12/18",
+        "12/19",
+        "12/20",
+        "12/21",
+        "12/22",
+        "12/23",
+    ],
+    datasets: [
+        {
+            label: "방문자 수",
+            data: [1, 5, 10, 12, 15, 12, 8, 18], // TODO: DUMMY
+            borderColor: colors.g400,
+            fill: true,
+            tension: 0,
+        },
+        {
+            label: "링크 공유 수",
+            data: [1, 3, 6, 8, 10, 9, 5, 3], // TODO: DUMMY
+            borderColor: colors.p800,
+            fill: true,
+            tension: 0,
+        },
+    ],
+};
+
+const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            display: false, // 범례 제거
+        },
+        tooltip: {
+            enabled: true, // 툴팁 활성화
+        },
+    },
+    scales: {
+        x: {
+            grid: {
+                display: false, // X축 그리드 제거
+            },
+        },
+        y: {
+            ticks: {
+                stepSize: 5, // Y축 간격 설정
+            },
+            grid: {
+                color: "#F2F2F2", // Y축 그리드 색상
+                // drawBorder: false
+            },
+        },
+    },
+    elements: {
+        point: {
+            radius: 0, // 데이터 포인트 제거
+        },
+    },
+};
 
 function InvitationStatisticsDetail() {
     const navigate = useNavigate();
@@ -23,7 +97,7 @@ function InvitationStatisticsDetail() {
                     size={24}
                     style={{cursor: 'pointer'}}
                     onClick={() => {
-                        navigate('/invitation/statistics')
+                        navigate('/invitation/statistics');
                     }}
                 />
                 <Column gap={8}>
@@ -32,6 +106,22 @@ function InvitationStatisticsDetail() {
                 </Column>
                 <Column gap={60} $alignItems={'stretch'}>
                     <Column gap={32} $alignItems={'stretch'}>
+                        <Column gap={8} $alignItems={'stretch'}>
+                            <Text text={'방문자 통계'} type={TextType.p2}/>
+                            <Column gap={8} style={{padding: 20, borderRadius: 12, border: `1px solid ${colors.g200}`}}>
+                                <Row gap={20}>
+                                    <Column gap={4}>
+                                        <Text text={`방문자 수 ${1}`} type={TextType.p4} color={colors.g600}/>
+                                        <HorizontalDivider color={colors.g400}/>
+                                    </Column>
+                                    <Column gap={4}>
+                                        <Text text={`링크 공유 수 ${1}`} type={TextType.p4} color={colors.g600}/>
+                                        <HorizontalDivider color={colors.p800}/>
+                                    </Column>
+                                </Row>
+                                <Line data={data} options={options}/>
+                            </Column>
+                        </Column>
                         <Column gap={8} $alignItems={'stretch'}>
                             <Row gap={12} $alignItems={'center'}>
                                 <Text text={'하객 통계'} type={TextType.p2}/>

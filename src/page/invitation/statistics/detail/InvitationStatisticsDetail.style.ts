@@ -7,7 +7,7 @@ const S = {
         flex: 1;
         overflow-y: scroll;
         background: ${colors.white};
-    `,
+    `
 };
 
 export default S;
