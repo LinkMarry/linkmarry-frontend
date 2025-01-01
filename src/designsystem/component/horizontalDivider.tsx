@@ -1,19 +1,22 @@
-import React, {CSSProperties} from 'react';
-import styled from "styled-components";
+import React, {CSSProperties, HTMLAttributes} from 'react';
+import styled, {css} from "styled-components";
 import colors from "../foundation/colors";
 
-export type HorizontalDividerSize = 'large' | 'medium' | 'small'; 
+export type HorizontalDividerSize = 'large' | 'medium' | 'small';
 
-interface HorizontalDividerProps {
+interface HorizontalDividerProps extends HTMLAttributes<HTMLDivElement> {
     size?: HorizontalDividerSize;
+    color?: CSSProperties['color'];
 }
 
 function HorizontalDivider(
     {
-        size = 'small'
+        size = 'small',
+        color = colors.g100,
+        ...props
     }: HorizontalDividerProps
 ) {
-    let height: CSSProperties['height'];
+    let height: number;
     switch (size) {
         case 'large':
             height = 12;
@@ -25,18 +28,19 @@ function HorizontalDivider(
             height = 1;
             break;
     }
-    
+
     return (
-        <S.Divider style={{
-            height
-        }}/>
+        <S.Divider height={height} background={color} {...props}/>
     );
 }
 
 const S = {
-    Divider: styled.div`
+    Divider: styled.div<{ height: number, background: CSSProperties['background'] }>`
         width: 100%;
-        background: ${colors.g100};
+        ${({height, background}) => css`
+            height: ${height}px;
+            background: ${background};
+        `}
     `
 }
 

@@ -1,9 +1,9 @@
-import React, {CSSProperties} from 'react';
+import React, {CSSProperties, HTMLAttributes} from 'react';
 import makeText, {TextType} from "../foundation/text/textType";
 import colors from "../foundation/colors";
 import styled, {css} from "styled-components";
 
-interface TextProps {
+interface TextProps extends HTMLAttributes<HTMLSpanElement> {
     text: string;
     type: TextType;
     color?: CSSProperties['color'];
@@ -14,10 +14,11 @@ function Text(
         text,
         type,
         color = colors.black,
+        ...props
     }: TextProps
 ) {
     return (
-        <TextStyle type={type} color={color}>{text}</TextStyle>
+        <TextStyle type={type} color={color} {...props}>{text}</TextStyle>
     );
 }
 

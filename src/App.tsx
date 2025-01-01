@@ -11,6 +11,7 @@ import InvitationDashboard from "./page/invitation/dashboard/InvitationDashboard
 import InvitationStatistics from "./page/invitation/statistics/InvitationStatistics";
 import InvitationDesign from "./page/invitation/design/InvitationDesign";
 import InvitationStatisticsDetail from "./page/invitation/statistics/detail/InvitationStatisticsDetail";
+import MyPage from "./page/mypage/MyPage";
 
 const {Kakao} = window as any;
 
@@ -37,6 +38,7 @@ function App() {
                         <Route path={'detail'} element={<InvitationStatisticsDetail/>}/>
                     </Route>
                 </Route>
+                <Route path={'my-page'} element={<MyPage/>}/>
 
                 {/*design-system*/}
                 <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>

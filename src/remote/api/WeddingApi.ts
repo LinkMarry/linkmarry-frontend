@@ -107,6 +107,14 @@ class WeddingApi {
         const {data} = await customApi.get(`${WeddingApi.PATH}/statistics/${url}`);
         return data;
     }
+
+    /**
+     * 링크 공유
+     */
+    async shareLink(url: string): Promise<ResponseVoid> {
+        const {data} = await customApi.post(`${WeddingApi.PATH}/link/${url}`);
+        return data;
+    }
 }
 
 const weddingApi = new WeddingApi();
