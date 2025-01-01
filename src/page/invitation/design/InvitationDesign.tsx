@@ -1,5 +1,5 @@
-import React, {Ref, RefObject, useRef, useState} from 'react';
-import S from './CreateInvitationDesign.style';
+import React, {useRef, useState} from 'react';
+import S from './InvitationDesign.style';
 import OptionCell from "./component/OptionCell";
 import Preview from "./component/Preview";
 import {allCasesOfEnum} from "../../../util/enum.util";
@@ -17,13 +17,12 @@ import VideoOption from "./option/VideoOption";
 import PhoneOption from "./option/PhoneOption";
 import RsvpOption from "./option/RsvpOption";
 import {CheckboxRef} from "../../../designsystem/component/checkbox";
-import Design from "../../../remote/enumeration/Design";
 
-interface CreateInvitationDesignProps {
+interface InvitationDesignProps {
 }
 
-function CreateInvitationDesign(
-    {}: CreateInvitationDesignProps
+function InvitationDesign(
+    {}: InvitationDesignProps
 ) {
     // BaseInfoOption refs
     const groomNameRef = useRef<HTMLInputElement>(null);
@@ -311,4 +310,4 @@ function CreateInvitationDesign(
     );
 }
 
-export default CreateInvitationDesign;
+export default InvitationDesign;

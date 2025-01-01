@@ -5,7 +5,7 @@ import ComponentDemo from "./designsystem/demo/component.demo";
 import RegisterPage from "./page/RegisterPage";
 import config from "./config/config";
 import KakaoRedirectPage from "./page/KakaoRedirectPage";
-import CreateInvitationPage from "./page/createinvitation/CreateInvitationPage";
+import InvitationPage from "./page/invitation/InvitationPage";
 import HomePage from "./page/home/HomePage";
 
 const {Kakao} = window as any;
@@ -25,7 +25,7 @@ function App() {
                 <Route path={'/register'} element={<RegisterPage/>}/>
                 <Route path={'/login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
                 <Route path={'/'} element={<HomePage/>}/>
-                <Route path={'/create-invitation'} element={<CreateInvitationPage/>}/>
+                <Route path={'/create-invitation'} element={<InvitationPage/>}/>
 
                 {/*design-system*/}
                 <Route path={'/design-system/foundation'} element={<FoundationDemo/>}/>

@@ -13,7 +13,7 @@ interface InvitationCellProps {
     weddingDashboard: WeddingDashboard;
 }
 
-function InvitationCell(
+function DashboardInvitationCell(
     {
         weddingDashboard
     }: InvitationCellProps
@@ -74,4 +74,4 @@ const S = {
     `,
 };
 
-export default InvitationCell;
+export default DashboardInvitationCell;

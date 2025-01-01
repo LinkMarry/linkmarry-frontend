@@ -2,22 +2,22 @@ import React from 'react';
 import styled from "styled-components";
 import Spacer from "../../../designsystem/component/spacer";
 import colors from "../../../designsystem/foundation/colors";
-import {createInvitationSideBarRecords, CreateInvitationSideBarType} from "./CreateInvitationSideBarType";
+import {invitationSideBarRecords, InvitationSideBarType} from "./InvitationSideBarType";
 import Icon from "../../../designsystem/foundation/icon";
 import makeText, {TextType} from "../../../designsystem/foundation/text/textType";
 
-interface CreateInvitationSideBarProps {
-    selected: CreateInvitationSideBarType;
-    onChange: (item: CreateInvitationSideBarType) => void;
+interface InvitationSideBarProps {
+    selected: InvitationSideBarType;
+    onChange: (item: InvitationSideBarType) => void;
 }
 
-const items: CreateInvitationSideBarType[] = ['dashboard', 'design', 'statistics'];
+const items: InvitationSideBarType[] = ['dashboard', 'design', 'statistics'];
 
-function CreateInvitationSideBar(
+function InvitationSideBar(
     {
         selected,
         onChange
-    }: CreateInvitationSideBarProps
+    }: InvitationSideBarProps
 ) {
 
     return (
@@ -28,7 +28,7 @@ function CreateInvitationSideBar(
             }} w={100}/>
             <S.items>
                 {items.map((item) => {
-                    const record = createInvitationSideBarRecords[item];
+                    const record = invitationSideBarRecords[item];
                     const foreground = selected === item ? colors.g600 : colors.g300;
                     return (
                         <S.item key={`${item}`} onClick={() => {
@@ -70,4 +70,4 @@ const S = {
     `
 }
 
-export default CreateInvitationSideBar;
+export default InvitationSideBar;

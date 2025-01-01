@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import S from './CreateInvitationDashboard.style';
+import S from './InvitationDashboard.style';
 import {Column} from "../../../designsystem/component/flexLayout";
-import WeddingDashboard from "../../../remote/value/WeddingDashboard";
-import InvitationCell from "./component/InvitationCell";
+import DashboardInvitationCell from "./component/DashboardInvitationCell";
 import Icon, {IconType} from "../../../designsystem/foundation/icon";
 import colors from "../../../designsystem/foundation/colors";
 import CreateDesignDialog from "./dialog/CreateDesignDialog";
@@ -10,51 +9,9 @@ import Text from "../../../designsystem/component/text";
 import {TextType} from "../../../designsystem/foundation/text/textType";
 import RemoveDesignDialog from "./dialog/RemoveDesignDialog";
 import EditDesignDialog from "./dialog/EditDesignDialog";
+import {dummyWeddingDashboard} from "../../../remote/value/WeddingDashboard";
 
-const dummyWeddingDashboard: WeddingDashboard[] = [
-    {
-        weddingInfo: [
-            {
-                img: 'https://i.namu.wiki/i/dHwukCxqwzULmsh1k48_d0qvcKL7bREJrvwxUNY9ncDmgqllBkSALCFyQVizMeK3zJLMk2J9ozDqpopxM9Yc6g.webp',
-                url: 'https://linkmarry-web/suasijsijsasdjisj',
-                createdDate: '2024-12-31 10:10:10'
-            }
-        ],
-        invitation: 1
-    },
-    {
-        weddingInfo: [
-            {
-                img: 'https://i.namu.wiki/i/dHwukCxqwzULmsh1k48_d0qvcKL7bREJrvwxUNY9ncDmgqllBkSALCFyQVizMeK3zJLMk2J9ozDqpopxM9Yc6g.webp',
-                url: 'https://linkmarry-web/suasijsijsasdjisj',
-                createdDate: '2024-12-31 10:10:10'
-            }
-        ],
-        invitation: 1
-    },
-    {
-        weddingInfo: [
-            {
-                img: 'https://i.namu.wiki/i/dHwukCxqwzULmsh1k48_d0qvcKL7bREJrvwxUNY9ncDmgqllBkSALCFyQVizMeK3zJLMk2J9ozDqpopxM9Yc6g.webp',
-                url: 'https://linkmarry-web/suasijsijsasdjisj',
-                createdDate: '2024-12-31 10:10:10'
-            }
-        ],
-        invitation: 1
-    },
-    {
-        weddingInfo: [
-            {
-                img: 'https://i.namu.wiki/i/dHwukCxqwzULmsh1k48_d0qvcKL7bREJrvwxUNY9ncDmgqllBkSALCFyQVizMeK3zJLMk2J9ozDqpopxM9Yc6g.webp',
-                url: 'https://linkmarry-web/suasijsijsasdjisj',
-                createdDate: '2024-12-31 10:10:10'
-            }
-        ],
-        invitation: 1
-    },
-];
-
-function CreateInvitationDashboard() {
+function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
     const [showRemoveDesignDialog, setShowRemoveDesignDialog] = useState(false);
     const [showEditDesignDialog, setShowEditDesignDialog] = useState(false);
@@ -72,11 +29,11 @@ function CreateInvitationDashboard() {
                     }}>
                         <Column gap={8} $alignItems={'center'}>
                             <Icon type={IconType.AddLine} tint={colors.g600} size={28}/>
-                            <Text text={'새 템플릿 만들기'} type={TextType.p4} color={colors.g500}/>
+                            <Text text={'새 디자인 만들기'} type={TextType.p4} color={colors.g500}/>
                         </Column>
                     </S.createDesignButton>
                     {dummyWeddingDashboard.map((weddingDashboard, index) =>
-                        <InvitationCell key={index} weddingDashboard={weddingDashboard}/>
+                        <DashboardInvitationCell key={index} weddingDashboard={weddingDashboard}/>
                     )}
                 </S.items>
             </Column>
@@ -87,4 +44,4 @@ function CreateInvitationDashboard() {
     );
 }
 
-export default CreateInvitationDashboard;
+export default InvitationDashboard;
