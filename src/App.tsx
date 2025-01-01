@@ -1,12 +1,16 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import FoundationDemo from "./designsystem/demo/foundation.demo";
 import ComponentDemo from "./designsystem/demo/component.demo";
 import RegisterPage from "./page/RegisterPage";
 import config from "./config/config";
 import KakaoRedirectPage from "./page/KakaoRedirectPage";
-import InvitationPage from "./page/invitation/InvitationPage";
+import InvitationLayout from "./page/invitation/InvitationLayout";
 import HomePage from "./page/home/HomePage";
+import InvitationDashboard from "./page/invitation/dashboard/InvitationDashboard";
+import InvitationStatistics from "./page/invitation/statistics/InvitationStatistics";
+import InvitationDesign from "./page/invitation/design/InvitationDesign";
+import InvitationStatisticsDetail from "./page/invitation/statistics/detail/InvitationStatisticsDetail";
 
 const {Kakao} = window as any;
 
@@ -22,17 +26,24 @@ function App() {
         <Router>
             <Routes>
                 {/*service*/}
-                <Route path={'/register'} element={<RegisterPage/>}/>
-                <Route path={'/login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
-                <Route path={'/'} element={<HomePage/>}/>
-                <Route path={'/create-invitation'} element={<InvitationPage/>}/>
+                <Route path={'register'} element={<RegisterPage/>}/>
+                <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
+                <Route path={''} element={<HomePage/>}/>
+                <Route path={'invitation'} element={<InvitationLayout/>}>
+                    <Route path={'dashboard'} element={<InvitationDashboard/>}/>
+                    <Route path={'design'} element={<InvitationDesign/>}/>
+                    <Route path={'statistics'}>
+                        <Route index={true} element={<InvitationStatistics/>}/>
+                        <Route path={'detail'} element={<InvitationStatisticsDetail/>}/>
+                    </Route>
+                </Route>
 
                 {/*design-system*/}
-                <Route path={'/design-system/foundation'} element={<FoundationDemo/>}/>
-                <Route path={'/design-system/component'} element={<ComponentDemo/>}/>
+                <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
+                <Route path={'design-system/component'} element={<ComponentDemo/>}/>
 
                 {/*not found*/}
-                <Route path={'*'} element={<div>404</div>}/>
+                <Route path={'*'} element={<Navigate to={'/'}/>}/>
             </Routes>
         </Router>
     );

@@ -1,25 +1,25 @@
-import React from 'react';
+import React, {HTMLAttributes} from 'react';
 import WeddingDashboard from "../../../../remote/value/WeddingDashboard";
 import styled from "styled-components";
 import colors from "../../../../designsystem/foundation/colors";
 import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import Button from "../../../../designsystem/component/button";
 import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
 import Icon, {IconType} from "../../../../designsystem/foundation/icon";
 import Spacer from "../../../../designsystem/component/spacer";
 import Text from "../../../../designsystem/component/text";
 
-interface InvitationCellProps {
+interface InvitationCellProps extends HTMLAttributes<HTMLDivElement> {
     weddingDashboard: WeddingDashboard;
 }
 
 function StatisticsInvitationCell(
     {
-        weddingDashboard
+        weddingDashboard,
+        ...props
     }: InvitationCellProps
 ) {
     return (
-        <S.container>
+        <S.container {...props}>
             <S.image src={weddingDashboard.weddingInfo[0].img} alt=""/>
             <Column gap={4} $alignItems={'stretch'} style={{padding: '20px 20px 32px 20px', background: colors.g100}}>
                 <Row gap={8}>
@@ -53,6 +53,7 @@ const S = {
         border-radius: 12px;
         overflow: hidden;
         break-inside: avoid-column; // column 잘림 방지
+        cursor: pointer;
     `,
     image: styled.img`
         display: flex;

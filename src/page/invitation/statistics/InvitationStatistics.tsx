@@ -6,8 +6,11 @@ import {TextType} from "../../../designsystem/foundation/text/textType";
 import colors from "../../../designsystem/foundation/colors";
 import {dummyWeddingDashboard} from "../../../remote/value/WeddingDashboard";
 import StatisticsInvitationCell from "./component/StatisticsInvitationCell";
+import {useNavigate} from "react-router-dom";
 
 function InvitationStatistics() {
+    const navigate = useNavigate();
+    
     return (
         <S.container>
             <Column gap={44} style={{marginLeft: 64}} flex={1}>
@@ -17,7 +20,13 @@ function InvitationStatistics() {
                 </Column>
                 <S.items>
                     {dummyWeddingDashboard.map((weddingDashboard, index) =>
-                        <StatisticsInvitationCell key={index} weddingDashboard={weddingDashboard}/>
+                        <StatisticsInvitationCell
+                            key={index}
+                            weddingDashboard={weddingDashboard}
+                            onClick={() => {
+                                navigate(`detail?url=wow`) // TODO: DUMMY
+                            }}
+                        />
                     )}
                 </S.items>
             </Column>

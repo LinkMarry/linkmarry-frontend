@@ -19,7 +19,6 @@ function InvitationSideBar(
         onChange
     }: InvitationSideBarProps
 ) {
-
     return (
         <S.container>
             <Spacer style={{
