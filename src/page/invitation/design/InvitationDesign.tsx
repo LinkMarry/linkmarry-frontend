@@ -18,12 +18,7 @@ import PhoneOption from "@page/invitation/design/option/PhoneOption";
 import RsvpOption from "@page/invitation/design/option/RsvpOption";
 import {CheckboxRef} from "@designsystem/component/checkbox";
 
-interface InvitationDesignProps {
-}
-
-function InvitationDesign(
-    {}: InvitationDesignProps
-) {
+function InvitationDesign() {
     // BaseInfoOption refs
     const groomNameRef = useRef<HTMLInputElement>(null);
     const groomFatherNameRef = useRef<HTMLInputElement>(null);

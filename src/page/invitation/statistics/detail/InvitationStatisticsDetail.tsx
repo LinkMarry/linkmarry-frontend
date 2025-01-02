@@ -1,6 +1,6 @@
 import React from 'react';
 import S from '@page/invitation/statistics/detail/InvitationStatisticsDetail.style';
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
@@ -85,8 +85,8 @@ const options = {
 
 function InvitationStatisticsDetail() {
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
-    const url = searchParams.get('url') ?? '';
+    // const [searchParams] = useSearchParams();
+    // const url = searchParams.get('url') ?? '';
 
     return (
         <S.container>

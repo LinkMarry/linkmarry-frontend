@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Header from "@designsystem/component/header/header";
 
-interface HasHeader {
+interface HasHeaderProps {
     children?: React.ReactNode;
 }
 
 function HasHeader(
     {
         children
-    }: HasHeader
+    }: HasHeaderProps
 ) {
     return (
         <S.container>

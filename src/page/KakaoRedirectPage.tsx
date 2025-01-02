@@ -8,11 +8,14 @@ function KakaoRedirectPage() {
 
     useEffect(() => {
         const code = searchParams.get('code');
-        
+
         if (code === null) return;
-        signIn(code);
+        (async () => {
+            await signIn(code);
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
+
     return (
         <div></div>
     );

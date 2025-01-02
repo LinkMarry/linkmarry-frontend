@@ -4,7 +4,7 @@ import Text from "@designsystem/component/text";
 import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 
-interface StatisticsValueCell {
+interface StatisticsValueCellProps {
     label: string;
     value: number;
     filtered: boolean;
@@ -15,7 +15,7 @@ function StatisticsValueCell(
         label,
         value,
         filtered
-    }: StatisticsValueCell
+    }: StatisticsValueCellProps
 ) {
     return (
         <S.container style={{background: filtered ? colors.g100 : colors.white}}>
