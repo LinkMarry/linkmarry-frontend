@@ -1,21 +1,21 @@
 import React, {useState} from 'react';
-import S from './InvitationDashboard.style';
-import {Column} from "../../../designsystem/component/flexLayout";
-import DashboardInvitationCell from "./component/DashboardInvitationCell";
-import Icon, {IconType} from "../../../designsystem/foundation/icon";
-import colors from "../../../designsystem/foundation/colors";
-import CreateDesignDialog from "./dialog/CreateDesignDialog";
-import Text from "../../../designsystem/component/text";
-import {TextType} from "../../../designsystem/foundation/text/textType";
-import RemoveDesignDialog from "./dialog/RemoveDesignDialog";
-import EditDesignDialog from "./dialog/EditDesignDialog";
-import {dummyWeddingDashboard} from "../../../remote/value/WeddingDashboard";
+import S from '@page/invitation/dashboard/InvitationDashboard.style';
+import {Column} from "@designsystem/component/flexLayout";
+import DashboardInvitationCell from "@page/invitation/dashboard/component/DashboardInvitationCell";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import colors from "@designsystem/foundation/colors";
+import CreateDesignDialog from "@page/invitation/dashboard/dialog/CreateDesignDialog";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
+import RemoveDesignDialog from "@page/invitation/dashboard/dialog/RemoveDesignDialog";
+import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
+import {dummyWeddingDashboard} from "@remote/value/WeddingDashboard";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
     const [showRemoveDesignDialog, setShowRemoveDesignDialog] = useState(false);
     const [showEditDesignDialog, setShowEditDesignDialog] = useState(false);
-    
+
     return (
         <S.container>
             <Column gap={44} style={{marginLeft: 64}} flex={1}>

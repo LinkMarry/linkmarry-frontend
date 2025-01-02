@@ -1,7 +1,7 @@
 import React, {CSSProperties, HTMLAttributes} from 'react';
-import makeText, {TextType} from "../foundation/text/textType";
-import colors from "../foundation/colors";
 import styled, {css} from "styled-components";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
     text: string;

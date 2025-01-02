@@ -7,9 +7,9 @@ import React, {
     useState
 } from 'react';
 import styled, {css} from "styled-components";
-import makeText, {TextType} from "../foundation/text/textType";
-import Icon, {IconType} from "../foundation/icon";
-import colors from "../foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import colors from "@designsystem/foundation/colors";
 
 interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;

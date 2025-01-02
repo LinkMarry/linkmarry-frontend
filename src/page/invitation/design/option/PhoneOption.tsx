@@ -1,9 +1,9 @@
 import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
 
 interface PhoneOptionProps {
     refs: {

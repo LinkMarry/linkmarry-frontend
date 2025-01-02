@@ -1,9 +1,9 @@
 import React from 'react';
-import S from './InvitationPage.style';
-import InvitationSideBar from "./component/InvitationSideBar";
-import HasHeader from "../../designsystem/component/header/hasHeader";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import {InvitationSideBarType} from "./component/InvitationSideBarType";
+import S from '@page/invitation/InvitationPage.style';
+import InvitationSideBar from "@page/invitation/component/InvitationSideBar";
+import HasHeader from "@designsystem/component/header/hasHeader";
+import {InvitationSideBarType} from "@page/invitation/component/InvitationSideBarType";
 
 function getSelectedSideBarType(pathname: string): InvitationSideBarType | null {
     if (pathname.startsWith('/invitation/dashboard')) {

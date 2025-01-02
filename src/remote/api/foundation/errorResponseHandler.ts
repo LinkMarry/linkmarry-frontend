@@ -1,7 +1,7 @@
 import {AxiosError} from "axios";
 import Cookies from "js-cookie";
-import customApi from "./customApi";
-import memberApi from "../MemberApi";
+import customApi from "@remote/api/foundation/customApi";
+import memberApi from "@remote/api/MemberApi";
 
 const refreshSubscribers: ((accessToken: string) => void)[] = [];
 let isRefreshing = false;

@@ -1,6 +1,6 @@
-import customApi from "./foundation/customApi";
-import Jwt from "../value/Jwt";
-import {ResponseData} from "../value/Response";
+import customApi from "@remote/api/foundation/customApi";
+import Jwt from "@remote/value/Jwt";
+import {ResponseData} from "@remote/value/Response";
 
 class KakaoApi {
     private static PATH = 'kakao'

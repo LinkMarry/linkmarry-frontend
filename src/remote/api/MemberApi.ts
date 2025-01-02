@@ -1,7 +1,7 @@
-import {ResponseData, ResponseVoid} from "../value/Response";
-import customApi from "./foundation/customApi";
-import InfoMember from "../value/InfoMember";
-import EditMemberRequest from "../value/request/EditMemberRequest";
+import {ResponseData, ResponseVoid} from "@remote/value/Response";
+import customApi from "@remote/api/foundation/customApi";
+import InfoMember from "@remote/value/InfoMember";
+import EditMemberRequest from "@remote/value/request/EditMemberRequest";
 
 class MemberApi {
     static PATH = 'member';

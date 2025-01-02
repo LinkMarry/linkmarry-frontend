@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Button, {ButtonRole, ButtonSize} from "../component/button";
-import HorizontalDivider, {HorizontalDividerSize} from "../component/horizontalDivider";
-import {TextField} from "../component/textField";
-import Checkbox from "../component/checkbox";
+import Button, {ButtonRole, ButtonSize} from "@designsystem/component/button";
+import HorizontalDivider, {HorizontalDividerSize} from "@designsystem/component/horizontalDivider";
+import {TextField} from "@designsystem/component/textField";
+import Checkbox from "@designsystem/component/checkbox";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];

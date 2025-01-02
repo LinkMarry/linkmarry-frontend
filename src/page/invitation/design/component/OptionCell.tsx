@@ -1,10 +1,10 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, useState} from 'react';
 import styled from "styled-components";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import colors from "../../../../designsystem/foundation/colors";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
-import Spacer from "../../../../designsystem/component/spacer";
-import {Row} from "../../../../designsystem/component/flexLayout";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import Spacer from "@designsystem/component/spacer";
+import {Row} from "@designsystem/component/flexLayout";
 import {DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 
 interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {

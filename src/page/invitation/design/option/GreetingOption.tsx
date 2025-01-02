@@ -1,9 +1,9 @@
 import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
-import OptionTextarea from "../component/OptionTextarea";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import OptionTextarea from "@page/invitation/design/component/OptionTextarea";
 
 interface GreetingOptionProps {
     refs: {

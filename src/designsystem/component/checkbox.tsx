@@ -7,9 +7,9 @@ import React, {
     useState
 } from 'react';
 import styled from "styled-components";
-import Icon, {IconType} from "../foundation/icon";
-import colors from "../foundation/colors";
-import makeText, {TextType} from "../foundation/text/textType";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
 
 interface CheckboxProps {
     checked?: boolean;

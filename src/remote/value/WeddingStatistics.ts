@@ -1,5 +1,5 @@
-import WeddingStatisticsInfo from "./WeddingStatisticsInfo";
-import RsvpInfo from "./RsvpInfo";
+import WeddingStatisticsInfo from "@remote/value/WeddingStatisticsInfo";
+import RsvpInfo from "@remote/value/RsvpInfo";
 
 export default interface WeddingStatistics {
     totalVisitorCnt: number; // 총 방문자 수

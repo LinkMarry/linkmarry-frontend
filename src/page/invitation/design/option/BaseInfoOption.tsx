@@ -1,10 +1,10 @@
-import React, {Ref, RefObject} from 'react';
+import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {BaseFlex, Column, Row} from "../../../../designsystem/component/flexLayout";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
-import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
+import {BaseFlex, Column, Row} from "@designsystem/component/flexLayout";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
 
 interface BaseInfoOptionProps {
     refs: {

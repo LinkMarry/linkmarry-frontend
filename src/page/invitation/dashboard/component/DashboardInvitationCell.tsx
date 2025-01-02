@@ -1,13 +1,13 @@
 import React from 'react';
-import WeddingDashboard from "../../../../remote/value/WeddingDashboard";
+import WeddingDashboard from "@remote/value/WeddingDashboard";
 import styled from "styled-components";
-import colors from "../../../../designsystem/foundation/colors";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import Button from "../../../../designsystem/component/button";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
-import Spacer from "../../../../designsystem/component/spacer";
-import Text from "../../../../designsystem/component/text";
+import colors from "@designsystem/foundation/colors";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import Button from "@designsystem/component/button";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import Spacer from "@designsystem/component/spacer";
+import Text from "@designsystem/component/text";
 
 interface InvitationCellProps {
     weddingDashboard: WeddingDashboard;

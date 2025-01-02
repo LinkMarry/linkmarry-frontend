@@ -1,7 +1,7 @@
 import axios from "axios";
-import config from "../../../config/config";
-import requestHandler from "./requestHandler";
-import errorResponseHandler from "./errorResponseHandler";
+import config from "@config/config";
+import requestHandler from "@remote/api/foundation/requestHandler";
+import errorResponseHandler from "@remote/api/foundation/errorResponseHandler";
 
 const customApi = axios.create({
     baseURL: config.baseUrl,

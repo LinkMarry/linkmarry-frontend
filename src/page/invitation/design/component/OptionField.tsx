@@ -1,9 +1,9 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, HTMLInputTypeAttribute, RefObject, useState} from 'react';
 import styled from "styled-components";
-import colors from "../../../../designsystem/foundation/colors";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
-import Text from "../../../../designsystem/component/text";
+import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import Text from "@designsystem/component/text";
 
 interface OptionFieldProps extends HTMLAttributes<HTMLDivElement> {
     leadingIcon: IconType;

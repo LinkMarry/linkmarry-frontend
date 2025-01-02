@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "./header";
+import Header from "@designsystem/component/header/header";
 
 interface HasHeader {
     children?: React.ReactNode;

@@ -1,8 +1,7 @@
-import {ResponseData, ResponseVoid} from "../value/Response";
-import customApi from "./foundation/customApi";
-import NotificationRequest from "../value/request/NotificationRequest";
-import Notification from "../value/Notification";
-import MemberApi from "./MemberApi";
+import {ResponseData, ResponseVoid} from "@remote/value/Response";
+import customApi from "@remote/api/foundation/customApi";
+import NotificationRequest from "@remote/value/request/NotificationRequest";
+import Notification from "@remote/value/Notification";
 
 class NotificationApi {
     static PATH = 'notification';

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
-import Text from "../../../../../designsystem/component/text";
-import {TextType} from "../../../../../designsystem/foundation/text/textType";
-import colors from "../../../../../designsystem/foundation/colors";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
 
 interface StatisticsValueCell {
     label: string;

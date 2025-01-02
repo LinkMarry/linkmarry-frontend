@@ -1,11 +1,11 @@
 import React from 'react';
-import BaseDialog, {applyBaseDialogContent} from "../../../../designsystem/component/dialog/baseDialog";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import Button from "../../../../designsystem/component/button";
-import colors from "../../../../designsystem/foundation/colors";
-import Text from "../../../../designsystem/component/text";
-import {TextType} from "../../../../designsystem/foundation/text/textType";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import Button from "@designsystem/component/button";
+import colors from "@designsystem/foundation/colors";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
 
 interface RemoveDesignDialogProps {
     dismiss: () => void;

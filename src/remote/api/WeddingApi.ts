@@ -1,13 +1,13 @@
-import Wedding from "../value/Wedding";
-import customApi from "./foundation/customApi";
-import {ResponseData, ResponseVoid} from "../value/Response";
-import WeddingDashboard from "../value/WeddingDashboard";
-import WeddingRequest from "../value/request/WeddingRequest";
-import RsvpRequest from "../value/request/RsvpRequest";
-import GuestCommentRequest from "../value/request/GuestCommentRequest";
-import EditCommentRequest from "../value/request/EditCommentRequest";
-import DeleteCommentRequest from "../value/request/DeleteCommentRequest";
-import WeddingStatistics from "../value/WeddingStatistics";
+import Wedding from "@remote/value/Wedding";
+import customApi from "@remote/api/foundation/customApi";
+import {ResponseData, ResponseVoid} from "@remote/value/Response";
+import WeddingDashboard from "@remote/value/WeddingDashboard";
+import WeddingRequest from "@remote/value/request/WeddingRequest";
+import RsvpRequest from "@remote/value/request/RsvpRequest";
+import GuestCommentRequest from "@remote/value/request/GuestCommentRequest";
+import EditCommentRequest from "@remote/value/request/EditCommentRequest";
+import DeleteCommentRequest from "@remote/value/request/DeleteCommentRequest";
+import WeddingStatistics from "@remote/value/WeddingStatistics";
 
 class WeddingApi {
     private static PATH = 'wedding';

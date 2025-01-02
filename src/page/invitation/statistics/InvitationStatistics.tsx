@@ -1,12 +1,12 @@
 import React from 'react';
-import S from './InvitationStatistics.style';
-import {Column} from "../../../designsystem/component/flexLayout";
-import Text from "../../../designsystem/component/text";
-import {TextType} from "../../../designsystem/foundation/text/textType";
-import colors from "../../../designsystem/foundation/colors";
-import {dummyWeddingDashboard} from "../../../remote/value/WeddingDashboard";
-import StatisticsInvitationCell from "./component/StatisticsInvitationCell";
 import {useNavigate} from "react-router-dom";
+import S from '@page/invitation/statistics/InvitationStatistics.style';
+import {Column} from "@designsystem/component/flexLayout";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import {dummyWeddingDashboard} from "@remote/value/WeddingDashboard";
+import StatisticsInvitationCell from "@page/invitation/statistics/component/StatisticsInvitationCell";
 
 function InvitationStatistics() {
     const navigate = useNavigate();

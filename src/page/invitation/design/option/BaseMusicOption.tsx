@@ -1,14 +1,14 @@
 import React, {RefObject, useState} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "../component/OptionLabel";
-import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
-import {TextType} from "../../../../designsystem/foundation/text/textType";
-import colors from "../../../../designsystem/foundation/colors";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
-import OptionSegmentedButton from "../component/OptionSegmentedButton";
-import Text from "../../../../designsystem/component/text";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
+import Text from "@designsystem/component/text";
 
 type SelectMode = 'select' | 'direct';
 const selectModeRecord: Record<SelectMode, string> = {

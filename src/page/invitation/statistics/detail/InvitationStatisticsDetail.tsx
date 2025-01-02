@@ -1,13 +1,13 @@
 import React from 'react';
-import S from './InvitationStatisticsDetail.style';
+import S from '@page/invitation/statistics/detail/InvitationStatisticsDetail.style';
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
-import colors from "../../../../designsystem/foundation/colors";
-import Text from "../../../../designsystem/component/text";
-import {TextType} from "../../../../designsystem/foundation/text/textType";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import StatisticsValueCell from "./component/StatisticsValueCell";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import colors from "@designsystem/foundation/colors";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import StatisticsValueCell from "@page/invitation/statistics/detail/component/StatisticsValueCell";
 import {
     Chart as ChartJS,
     LineElement,

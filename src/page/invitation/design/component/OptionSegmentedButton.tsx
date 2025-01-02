@@ -1,8 +1,8 @@
 import React, {HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
-import colors from "../../../../designsystem/foundation/colors";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import {Row} from "../../../../designsystem/component/flexLayout";
+import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import {Row} from "@designsystem/component/flexLayout";
 
 interface OptionSegmentedButtonProps extends HTMLAttributes<HTMLDivElement> {
     selectedIndex: number;

@@ -1,17 +1,17 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import FoundationDemo from "./designsystem/demo/foundation.demo";
-import ComponentDemo from "./designsystem/demo/component.demo";
-import RegisterPage from "./page/RegisterPage";
-import config from "./config/config";
-import KakaoRedirectPage from "./page/KakaoRedirectPage";
-import InvitationLayout from "./page/invitation/InvitationLayout";
-import HomePage from "./page/home/HomePage";
-import InvitationDashboard from "./page/invitation/dashboard/InvitationDashboard";
-import InvitationStatistics from "./page/invitation/statistics/InvitationStatistics";
-import InvitationDesign from "./page/invitation/design/InvitationDesign";
-import InvitationStatisticsDetail from "./page/invitation/statistics/detail/InvitationStatisticsDetail";
-import MyPage from "./page/mypage/MyPage";
+import RegisterPage from "@page/RegisterPage";
+import config from "@config/config";
+import KakaoRedirectPage from "@page/KakaoRedirectPage";
+import InvitationLayout from "@page/invitation/InvitationLayout";
+import HomePage from "@page/home/HomePage";
+import InvitationDashboard from "@page/invitation/dashboard/InvitationDashboard";
+import InvitationStatistics from "@page/invitation/statistics/InvitationStatistics";
+import InvitationDesign from "@page/invitation/design/InvitationDesign";
+import InvitationStatisticsDetail from "@page/invitation/statistics/detail/InvitationStatisticsDetail";
+import MyPage from "@page/mypage/MyPage";
+import ComponentDemo from "@designsystem/demo/component.demo";
+import FoundationDemo from "@designsystem/demo/foundation.demo";
 
 const {Kakao} = window as any;
 

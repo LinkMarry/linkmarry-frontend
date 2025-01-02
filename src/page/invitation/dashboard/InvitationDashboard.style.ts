@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import colors from "../../../designsystem/foundation/colors";
+import colors from "@designsystem/foundation/colors";
 
 const S = {
     container: styled.div`

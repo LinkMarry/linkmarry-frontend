@@ -1,13 +1,13 @@
 import React from 'react';
-import HasHeader from "../../designsystem/component/header/hasHeader";
-import S from './MyPage.style';
-import Text from "../../designsystem/component/text";
-import {TextType} from "../../designsystem/foundation/text/textType";
-import HorizontalDivider from "../../designsystem/component/horizontalDivider";
-import colors from "../../designsystem/foundation/colors";
-import {Column, Row} from "../../designsystem/component/flexLayout";
-import Button from "../../designsystem/component/button";
-import Spacer from "../../designsystem/component/spacer";
+import HasHeader from "@designsystem/component/header/hasHeader";
+import S from '@page/mypage/MyPage.style';
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import colors from "@designsystem/foundation/colors";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import Button from "@designsystem/component/button";
+import Spacer from "@designsystem/component/spacer";
 
 function MyPage() {
     return (

@@ -1,4 +1,4 @@
-import GuestType from "../../enumeration/GuestType";
+import GuestType from "@remote/enumeration/GuestType";
 
 export default interface RsvpRequest {
     url: string; // 청첩장 URL

@@ -1,4 +1,4 @@
-import Design from "../enumeration/Design";
+import Design from "@remote/enumeration/Design";
 
 export default interface GuestComment {
     title: string; // 방명록 제목 (청첩장 표시용 X)

@@ -1,7 +1,7 @@
-import Icon, {IconType} from "../foundation/icon";
 import styled, {css} from "styled-components";
-import makeText, {TextType} from "../foundation/text/textType";
-import colors from "../foundation/colors";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
 import {ButtonHTMLAttributes, CSSProperties} from "react";
 
 export type ButtonSize = 'large' | 'medium' | 'small';

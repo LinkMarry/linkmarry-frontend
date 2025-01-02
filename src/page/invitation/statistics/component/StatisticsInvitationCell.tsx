@@ -1,12 +1,12 @@
 import React, {HTMLAttributes} from 'react';
-import WeddingDashboard from "../../../../remote/value/WeddingDashboard";
 import styled from "styled-components";
-import colors from "../../../../designsystem/foundation/colors";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
-import Spacer from "../../../../designsystem/component/spacer";
-import Text from "../../../../designsystem/component/text";
+import WeddingDashboard from "@remote/value/WeddingDashboard";
+import colors from "@designsystem/foundation/colors";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import Spacer from "@designsystem/component/spacer";
+import Text from "@designsystem/component/text";
 
 interface InvitationCellProps extends HTMLAttributes<HTMLDivElement> {
     weddingDashboard: WeddingDashboard;

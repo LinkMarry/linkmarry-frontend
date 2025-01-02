@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
-import {Row} from "../flexLayout";
-import Spacer from "../spacer";
-import makeText, {TextType} from "../../foundation/text/textType";
-import colors from "../../foundation/colors";
-import useAuth from "../../../hook/useAuth";
-import Button from "../button";
+import {Row} from "@designsystem/component/flexLayout";
+import Spacer from "@designsystem/component/spacer";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import useAuth from "@hook/useAuth";
+import Button from "@designsystem/component/button";
 import {useNavigate} from "react-router-dom";
 
 function Header() {

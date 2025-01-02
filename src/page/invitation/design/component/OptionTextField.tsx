@@ -1,7 +1,7 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, InputHTMLAttributes, ReactNode} from 'react';
 import styled, {css} from "styled-components";
-import colors from "../../../../designsystem/foundation/colors";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
 
 interface OptionTextFieldProps extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;

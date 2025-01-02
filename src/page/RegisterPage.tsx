@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import * as S from './RegisterPage.style';
+import * as S from '@page/RegisterPage.style';
 
 const {kakao} = window as any;
 

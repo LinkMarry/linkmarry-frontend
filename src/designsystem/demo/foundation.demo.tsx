@@ -1,8 +1,8 @@
 import React from 'react';
-import makeText, {TextType} from "../foundation/text/textType";
-import Icon, {IconType} from "../foundation/icon";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import Icon, {IconType} from "@designsystem/foundation/icon";
 import styled from "styled-components";
-import {allCasesOfEnum} from "../../util/enum.util";
+import {allCasesOfEnum} from "@util/enum.util";
 
 function FoundationDemo() {
     return (

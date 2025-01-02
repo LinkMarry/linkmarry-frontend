@@ -1,6 +1,6 @@
 import React from 'react';
-import S from './HomePage.style';
-import HasHeader from "../../designsystem/component/header/hasHeader";
+import S from '@page/home/HomePage.style';
+import HasHeader from "@designsystem/component/header/hasHeader";
 
 function HomePage() {
     return (

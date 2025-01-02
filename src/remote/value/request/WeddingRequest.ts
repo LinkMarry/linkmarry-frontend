@@ -1,4 +1,4 @@
-import Device from "../../enumeration/Device";
+import Device from "@remote/enumeration/Device";
 
 export default interface WeddingRequest {
     deviceType: Device; // 모바일, 데탑 여부

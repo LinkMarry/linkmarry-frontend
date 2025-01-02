@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import OptionSegmentedButton from "../component/OptionSegmentedButton";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
-import colors from "../../../../designsystem/foundation/colors";
-import Icon, {IconType} from "../../../../designsystem/foundation/icon";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import colors from "@designsystem/foundation/colors";
+import Icon, {IconType} from "@designsystem/foundation/icon";
 
 type LinkShareMode = 'kakaotalk' | 'url';
 const linkShareModeRecord: Record<LinkShareMode, string> = {

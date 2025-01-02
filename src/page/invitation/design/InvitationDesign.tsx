@@ -1,22 +1,22 @@
 import React, {useRef, useState} from 'react';
-import S from './InvitationDesign.style';
-import OptionCell from "./component/OptionCell";
-import Preview from "./component/Preview";
-import {allCasesOfEnum} from "../../../util/enum.util";
 import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful-dnd';
-import {options, OptionType} from "./OptionType";
-import BaseInfoOption from "./option/BaseInfoOption";
-import WeddingScheduleOption from "./option/WeddingScheduleOption";
-import WeddingPlaceOption from "./option/WeddingPlaceOption";
-import GreetingOption from "./option/GreetingOption";
-import GuestCommentOption from "./option/GuestCommentOption";
-import BaseMusicOption from "./option/BaseMusicOption";
-import LinkShareOption from "./option/LinkShareOption";
-import MoneyInfoOption from "./option/MoneyInfoOption";
-import VideoOption from "./option/VideoOption";
-import PhoneOption from "./option/PhoneOption";
-import RsvpOption from "./option/RsvpOption";
-import {CheckboxRef} from "../../../designsystem/component/checkbox";
+import S from '@page/invitation/design/InvitationDesign.style';
+import OptionCell from "@page/invitation/design/component/OptionCell";
+import Preview from "@page/invitation/design/component/Preview";
+import {allCasesOfEnum} from "@util/enum.util";
+import {options, OptionType} from "@page/invitation/design/OptionType";
+import BaseInfoOption from "@page/invitation/design/option/BaseInfoOption";
+import WeddingScheduleOption from "@page/invitation/design/option/WeddingScheduleOption";
+import WeddingPlaceOption from "@page/invitation/design/option/WeddingPlaceOption";
+import GreetingOption from "@page/invitation/design/option/GreetingOption";
+import GuestCommentOption from "@page/invitation/design/option/GuestCommentOption";
+import BaseMusicOption from "@page/invitation/design/option/BaseMusicOption";
+import LinkShareOption from "@page/invitation/design/option/LinkShareOption";
+import MoneyInfoOption from "@page/invitation/design/option/MoneyInfoOption";
+import VideoOption from "@page/invitation/design/option/VideoOption";
+import PhoneOption from "@page/invitation/design/option/PhoneOption";
+import RsvpOption from "@page/invitation/design/option/RsvpOption";
+import {CheckboxRef} from "@designsystem/component/checkbox";
 
 interface InvitationDesignProps {
 }

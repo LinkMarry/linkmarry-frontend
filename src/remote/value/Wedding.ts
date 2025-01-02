@@ -1,14 +1,14 @@
-import BaseInfo from "./BaseInfo";
-import WeddingSchedule from "./WeddingSchedule";
-import WeddingPlace from "./WeddingPlace";
-import Greeting from "./Greeting";
-import BaseMusic from "./BaseMusic";
-import LinkShare from "./LinkShare";
-import MoneyInfo from "./MoneyInfo";
-import Video from "./Video";
-import Phone from "./Phone";
-import Rsvp from "./Rsvp";
-import GuestComment from "./GuestComment";
+import BaseInfo from "@remote/value/BaseInfo";
+import WeddingSchedule from "@remote/value/WeddingSchedule";
+import WeddingPlace from "@remote/value/WeddingPlace";
+import Greeting from "@remote/value/Greeting";
+import BaseMusic from "@remote/value/BaseMusic";
+import LinkShare from "@remote/value/LinkShare";
+import MoneyInfo from "@remote/value/MoneyInfo";
+import Video from "@remote/value/Video";
+import Phone from "@remote/value/Phone";
+import Rsvp from "@remote/value/Rsvp";
+import GuestComment from "@remote/value/GuestComment";
 
 export default interface Wedding {
     url: string; // URL 값

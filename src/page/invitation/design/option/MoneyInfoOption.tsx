@@ -1,12 +1,12 @@
 import React, {RefObject, useState} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
-import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
-import colors from "../../../../designsystem/foundation/colors";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
 
 interface MoneyInfoOptionProps {
     refs: {

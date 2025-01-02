@@ -1,14 +1,14 @@
 import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
-import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
-import makeText, {TextType} from "../../../../designsystem/foundation/text/textType";
-import colors from "../../../../designsystem/foundation/colors";
-import OptionTextarea from "../component/OptionTextarea";
-import Text from "../../../../designsystem/component/text";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import OptionTextarea from "@page/invitation/design/component/OptionTextarea";
+import Text from "@designsystem/component/text";
 
 interface RsvpOptionProps {
     refs: {

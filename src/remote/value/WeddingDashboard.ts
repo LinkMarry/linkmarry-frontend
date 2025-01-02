@@ -1,4 +1,4 @@
-import WeddingInfo from "./WeddingInfo";
+import WeddingInfo from "@remote/value/WeddingInfo";
 
 export default interface WeddingDashboard {
     weddingInfo: WeddingInfo[];

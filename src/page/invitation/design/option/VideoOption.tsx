@@ -1,10 +1,10 @@
 import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import OptionLabel from "../component/OptionLabel";
-import OptionTextField from "../component/OptionTextField";
-import Button from "../../../../designsystem/component/button";
-import {IconType} from "../../../../designsystem/foundation/icon";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import Button from "@designsystem/component/button";
+import {IconType} from "@designsystem/foundation/icon";
 
 interface VideoOptionProps {
     refs: {

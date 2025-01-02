@@ -1,11 +1,11 @@
 import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "../../../../designsystem/component/flexLayout";
-import HorizontalDivider from "../../../../designsystem/component/horizontalDivider";
-import OptionLabel from "../component/OptionLabel";
-import Checkbox, {CheckboxRef} from "../../../../designsystem/component/checkbox";
-import OptionTextField from "../component/OptionTextField";
-import Button from "../../../../designsystem/component/button";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import OptionLabel from "@page/invitation/design/component/OptionLabel";
+import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import Button from "@designsystem/component/button";
 
 interface WeddingPlaceOptionProps {
     refs: {

@@ -1,4 +1,4 @@
-import Tag from "../enumeration/Tag";
+import Tag from "@remote/enumeration/Tag";
 
 export default interface Notification {
     id: number; // 공지 ID (PK)

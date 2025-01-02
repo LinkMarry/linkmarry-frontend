@@ -1,6 +1,6 @@
 import React, {CSSProperties, HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
-import colors from "../foundation/colors";
+import colors from "@designsystem/foundation/colors";
 
 export type HorizontalDividerSize = 'large' | 'medium' | 'small';
 

@@ -1,4 +1,4 @@
-import Tag from "../../enumeration/Tag";
+import Tag from "@remote/enumeration/Tag";
 
 export default interface NotificationRequest {
     tag: Tag; // 공지 태그

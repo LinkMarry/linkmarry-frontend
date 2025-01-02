@@ -18,9 +18,38 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@designsystem/*": [
+        "src/designsystem/*"
+      ],
+      "@hook/*": [
+        "src/hook/*"
+      ],
+      "@page/*": [
+        "src/page/*"
+      ],
+      "@remote/*": [
+        "src/remote/*"
+      ],
+      "@util/*": [
+        "src/util/*"
+      ]
+    }
   },
   "include": [
-    "src"
+    "src",
+    "craco.config.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
   ]
 }

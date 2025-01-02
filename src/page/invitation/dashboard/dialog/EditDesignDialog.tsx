@@ -1,12 +1,12 @@
 import React from 'react';
-import BaseDialog, {applyBaseDialogContent} from "../../../../designsystem/component/dialog/baseDialog";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import styled from "styled-components";
-import {Column} from "../../../../designsystem/component/flexLayout";
-import Button from "../../../../designsystem/component/button";
-import colors from "../../../../designsystem/foundation/colors";
-import {TextField} from "../../../../designsystem/component/textField";
-import Text from "../../../../designsystem/component/text";
-import {TextType} from "../../../../designsystem/foundation/text/textType";
+import {Column} from "@designsystem/component/flexLayout";
+import Button from "@designsystem/component/button";
+import colors from "@designsystem/foundation/colors";
+import {TextField} from "@designsystem/component/textField";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
 
 interface EditDesignDialogProps {
     dismiss: () => void;

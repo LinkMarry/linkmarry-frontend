@@ -1,4 +1,4 @@
-import {IconType} from "../../../designsystem/foundation/icon";
+import {IconType} from "@designsystem/foundation/icon";
 
 export type InvitationSideBarType = 'dashboard' | 'design' | 'statistics';
 export const invitationSideBarRecords: Record<InvitationSideBarType, {

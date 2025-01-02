@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
-import useAuth from "../hook/useAuth";
+import useAuth from "@hook/useAuth";
 
 function KakaoRedirectPage() {
     const {signIn} = useAuth();
