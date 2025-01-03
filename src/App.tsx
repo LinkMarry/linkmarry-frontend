@@ -12,6 +12,7 @@ import InvitationStatisticsDetail from "@page/invitation/statistics/detail/Invit
 import MyPage from "@page/mypage/MyPage";
 import ComponentDemo from "@designsystem/demo/component.demo";
 import FoundationDemo from "@designsystem/demo/foundation.demo";
+import NotificationPage from "@page/notification/NotificationPage";
 
 const {Kakao} = window as any;
 
@@ -39,6 +40,7 @@ function App() {
                     </Route>
                 </Route>
                 <Route path={'my-page'} element={<MyPage/>}/>
+                <Route path={'notification'} element={<NotificationPage/>}/>
 
                 {/*design-system*/}
                 <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
