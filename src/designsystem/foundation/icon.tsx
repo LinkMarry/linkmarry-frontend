@@ -1,4 +1,4 @@
-import React, {CSSProperties, ReactElement} from "react";
+import React, {CSSProperties, ReactElement, SVGProps} from "react";
 import AddEmoji from "@designsystem/foundation/icon/AddEmoji";
 import AddFill from "@designsystem/foundation/icon/AddFill";
 import AddLine from "@designsystem/foundation/icon/AddLine";
@@ -53,6 +53,7 @@ import AddRing from "@designsystem/foundation/icon/AddRing";
 import ArcticonsSpotistats from "@designsystem/foundation/icon/ArcticonsSpotistats";
 import Hamburger from "@designsystem/foundation/icon/Hamburger";
 import Clock from "@designsystem/foundation/icon/Clock";
+import styled, {css} from "styled-components";
 
 export enum IconType {
     AddEmoji,
@@ -111,10 +112,10 @@ export enum IconType {
     Write,
 }
 
-interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
+interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
     type: IconType;
     tint?: CSSProperties['color'];
-    size?: CSSProperties['width'];
+    size?: number;
 }
 
 export default function Icon(
@@ -125,122 +126,129 @@ export default function Icon(
         ...props
     }: IconProps
 ): ReactElement {
-    const IconContent = () => {
+    const IconContent = (svgProps: SVGProps<SVGSVGElement>) => {
         switch (type) {
             case IconType.AddEmoji:
-                return <AddEmoji fill={tint} width={size} height={size} {...props}/>;
+                return <AddEmoji {...svgProps}/>;
             case IconType.AddFill:
-                return <AddFill fill={tint} width={size} height={size} {...props}/>;
+                return <AddFill {...svgProps}/>;
             case IconType.AddLine:
-                return <AddLine fill={tint} width={size} height={size} {...props}/>;
+                return <AddLine {...svgProps}/>;
             case IconType.AddRing:
-                return <AddRing fill={tint} width={size} height={size} {...props}/>;
+                return <AddRing {...svgProps}/>;
             case IconType.Alarm:
-                return <Alarm fill={tint} width={size} height={size} {...props}/>;
+                return <Alarm {...svgProps}/>;
             case IconType.AlarmDisabled:
-                return <AlarmDisabled fill={tint} width={size} height={size} {...props}/>;
+                return <AlarmDisabled {...svgProps}/>;
             case IconType.ArcticonsSpotistats:
-                return <ArcticonsSpotistats fill={tint} width={size} height={size} {...props}/>;
+                return <ArcticonsSpotistats {...svgProps}/>;
             case IconType.Book:
-                return <Book fill={tint} width={size} height={size} {...props}/>;
+                return <Book {...svgProps}/>;
             case IconType.BookmarkFill:
-                return <BookmarkFill fill={tint} width={size} height={size} {...props}/>;
+                return <BookmarkFill {...svgProps}/>;
             case IconType.BookmarkLine:
-                return <BookmarkLine fill={tint} width={size} height={size} {...props}/>;
+                return <BookmarkLine {...svgProps}/>;
             case IconType.Calendar:
-                return <Calendar fill={tint} width={size} height={size} {...props}/>;
+                return <Calendar {...svgProps}/>;
             case IconType.Camera:
-                return <Camera fill={tint} width={size} height={size} {...props}/>;
+                return <Camera {...svgProps}/>;
             case IconType.Chat:
-                return <Chat fill={tint} width={size} height={size} {...props}/>;
+                return <Chat {...svgProps}/>;
             case IconType.CheckFill:
-                return <CheckFill fill={tint} width={size} height={size} {...props}/>;
+                return <CheckFill {...svgProps}/>;
             case IconType.CheckLine:
-                return <CheckLine fill={tint} width={size} height={size} {...props}/>;
+                return <CheckLine {...svgProps}/>;
             case IconType.CheckRing:
-                return <CheckRing fill={tint} width={size} height={size} {...props}/>;
+                return <CheckRing {...svgProps}/>;
             case IconType.Clock:
-                return <Clock fill={tint} width={size} height={size} {...props}/>;
+                return <Clock {...svgProps}/>;
             case IconType.Copy:
-                return <Copy fill={tint} width={size} height={size} {...props}/>;
+                return <Copy {...svgProps}/>;
             case IconType.CrossFill:
-                return <CrossFill fill={tint} width={size} height={size} {...props}/>;
+                return <CrossFill {...svgProps}/>;
             case IconType.CrossLine:
-                return <CrossLine fill={tint} width={size} height={size} {...props}/>;
+                return <CrossLine {...svgProps}/>;
             case IconType.CrossRing:
-                return <CrossRing fill={tint} width={size} height={size} {...props}/>;
+                return <CrossRing {...svgProps}/>;
             case IconType.Crown:
-                return <Crown fill={tint} width={size} height={size} {...props}/>;
+                return <Crown {...svgProps}/>;
             case IconType.CurveArrow:
-                return <CurveArrow fill={tint} width={size} height={size} {...props}/>;
+                return <CurveArrow {...svgProps}/>;
             case IconType.Detail:
-                return <Detail fill={tint} width={size} height={size} {...props}/>;
+                return <Detail {...svgProps}/>;
             case IconType.ExclamationFill:
-                return <ExclamationFill fill={tint} width={size} height={size} {...props}/>;
+                return <ExclamationFill {...svgProps}/>;
             case IconType.ExclamationLine:
-                return <ExclamationLine fill={tint} width={size} height={size} {...props}/>;
+                return <ExclamationLine {...svgProps}/>;
             case IconType.ExpandArrow:
-                return <ExpandArrow fill={tint} width={size} height={size} {...props}/>;
+                return <ExpandArrow {...svgProps}/>;
             case IconType.File:
-                return <File fill={tint} width={size} height={size} {...props}/>;
+                return <File {...svgProps}/>;
             case IconType.Hamburger:
-                return <Hamburger fill={tint} width={size} height={size} {...props}/>;
+                return <Hamburger {...svgProps}/>;
             case IconType.HeartFill:
-                return <HeartFill fill={tint} width={size} height={size} {...props}/>;
+                return <HeartFill {...svgProps}/>;
             case IconType.HeartLine:
-                return <HeartLine fill={tint} width={size} height={size} {...props}/>;
+                return <HeartLine {...svgProps}/>;
             case IconType.Hide:
-                return <Hide fill={tint} width={size} height={size} {...props}/>;
+                return <Hide {...svgProps}/>;
             case IconType.Home:
-                return <Home fill={tint} width={size} height={size} {...props}/>;
+                return <Home {...svgProps}/>;
             case IconType.Logout:
-                return <Logout fill={tint} width={size} height={size} {...props}/>;
+                return <Logout {...svgProps}/>;
             case IconType.LoudSpeaker:
-                return <LoudSpeaker fill={tint} width={size} height={size} {...props}/>;
+                return <LoudSpeaker {...svgProps}/>;
             case IconType.Manage:
-                return <Manage fill={tint} width={size} height={size} {...props}/>;
+                return <Manage {...svgProps}/>;
             case IconType.Moon:
-                return <Moon fill={tint} width={size} height={size} {...props}/>;
+                return <Moon {...svgProps}/>;
             case IconType.NormalArrow:
-                return <NormalArrow fill={tint} width={size} height={size} {...props}/>;
+                return <NormalArrow {...svgProps}/>;
             case IconType.Pen:
-                return <Pen fill={tint} width={size} height={size} {...props}/>;
+                return <Pen {...svgProps}/>;
             case IconType.Person:
-                return <Person fill={tint} width={size} height={size} {...props}/>;
+                return <Person {...svgProps}/>;
             case IconType.Photo:
-                return <Photo fill={tint} width={size} height={size} {...props}/>;
+                return <Photo {...svgProps}/>;
             case IconType.Ping:
-                return <Ping fill={tint} width={size} height={size} {...props}/>;
+                return <Ping {...svgProps}/>;
             case IconType.RadioFill:
-                return <RadioFill fill={tint} width={size} height={size} {...props}/>;
+                return <RadioFill {...svgProps}/>;
             case IconType.RadioLine:
-                return <RadioLine fill={tint} width={size} height={size} {...props}/>;
+                return <RadioLine {...svgProps}/>;
             case IconType.Search:
-                return <Search fill={tint} width={size} height={size} {...props}/>;
+                return <Search {...svgProps}/>;
             case IconType.Send:
-                return <Send fill={tint} width={size} height={size} {...props}/>;
+                return <Send {...svgProps}/>;
             case IconType.Setting:
-                return <Setting fill={tint} width={size} height={size} {...props}/>;
+                return <Setting {...svgProps}/>;
             case IconType.Show:
-                return <Show fill={tint} width={size} height={size} {...props}/>;
+                return <Show {...svgProps}/>;
             case IconType.Star:
-                return <Star fill={tint} width={size} height={size} {...props}/>;
+                return <Star {...svgProps}/>;
             case IconType.StopArrow:
-                return <StopArrow fill={tint} width={size} height={size} {...props}/>;
+                return <StopArrow {...svgProps}/>;
             case IconType.Substack:
-                return <Substack fill={tint} width={size} height={size} {...props}/>;
+                return <Substack {...svgProps}/>;
             case IconType.Trash:
-                return <Trash fill={tint} width={size} height={size} {...props}/>;
+                return <Trash {...svgProps}/>;
             case IconType.Utensils:
-                return <Utensils fill={tint} width={size} height={size} {...props}/>;
+                return <Utensils {...svgProps}/>;
             case IconType.Write:
-                return <Write fill={tint} width={size} height={size} {...props}/>;
+                return <Write {...svgProps}/>;
         }
     }
 
     return (
-        <div style={{width: size, height: size}}>
-            <IconContent/>
-        </div>
+        <IconWrapper width={size} height={size} {...props}>
+            <IconContent fill={tint} width={size} height={size}/>
+        </IconWrapper>
     );
 };
+
+const IconWrapper = styled.div<{ width: number, height: number }>`
+    ${({width, height}) => css`
+        width: ${width}px;
+        height: ${height}px;
+    `}
+`

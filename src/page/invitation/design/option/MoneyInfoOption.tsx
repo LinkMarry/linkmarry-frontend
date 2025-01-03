@@ -122,7 +122,7 @@ function MoneyInfoOption(
                                             <img
                                                 width={20}
                                                 height={20}
-                                                src={'kakao.svg'}
+                                                src={'/kakao.svg'}
                                                 alt={'kakao logo'}
                                             />
                                         }
@@ -147,7 +147,7 @@ function MoneyInfoOption(
                                             <img
                                                 width={20}
                                                 height={20}
-                                                src={'kakao.svg'}
+                                                src={'/kakao.svg'}
                                                 alt={'kakao logo'}
                                             />
                                         }
@@ -172,7 +172,7 @@ function MoneyInfoOption(
                                             <img
                                                 width={20}
                                                 height={20}
-                                                src={'kakao.svg'}
+                                                src={'/kakao.svg'}
                                                 alt={'kakao logo'}
                                             />
                                         }
@@ -200,7 +200,7 @@ function MoneyInfoOption(
                                             <img
                                                 width={20}
                                                 height={20}
-                                                src={'kakao.svg'}
+                                                src={'/kakao.svg'}
                                                 alt={'kakao logo'}
                                             />
                                         }
@@ -225,7 +225,7 @@ function MoneyInfoOption(
                                             <img
                                                 width={20}
                                                 height={20}
-                                                src={'kakao.svg'}
+                                                src={'/kakao.svg'}
                                                 alt={'kakao logo'}
                                             />
                                         }
@@ -250,7 +250,7 @@ function MoneyInfoOption(
                                             <img
                                                 width={20}
                                                 height={20}
-                                                src={'kakao.svg'}
+                                                src={'/kakao.svg'}
                                                 alt={'kakao logo'}
                                             />
                                         }

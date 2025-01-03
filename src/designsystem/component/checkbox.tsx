@@ -76,7 +76,7 @@ function Checkbox(
                     }}
                 />
                 {localChecked && <Icon
-                    type={IconType.CheckLine} 
+                    type={IconType.CheckLine}
                     tint={colors.white}
                     size={18}
                     style={{

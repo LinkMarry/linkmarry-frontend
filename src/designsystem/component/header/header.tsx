@@ -23,7 +23,7 @@ function Header() {
                 }}
                 gap={66}
             >
-                <span style={{width: 134}}>logo</span>
+                <img src={'/logo.svg'} width={134} alt={'logo'}/>
                 <S.navItems>
                     <S.navItem>모바일 청첩장</S.navItem>
                     <S.navItem>스토어 이동</S.navItem>
