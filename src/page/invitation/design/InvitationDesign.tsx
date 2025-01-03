@@ -17,6 +17,13 @@ import VideoOption from "@page/invitation/design/option/VideoOption";
 import PhoneOption from "@page/invitation/design/option/PhoneOption";
 import RsvpOption from "@page/invitation/design/option/RsvpOption";
 import {CheckboxRef} from "@designsystem/component/checkbox";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import Text from "@designsystem/component/text";
+import {TextType} from "@designsystem/foundation/text/textType";
+import colors from "@designsystem/foundation/colors";
+import Spacer from "@designsystem/component/spacer";
+import Button from "@designsystem/component/button";
+import TemplateOption from "@page/invitation/design/option/TemplateOption";
 
 function InvitationDesign() {
     // BaseInfoOption refs
@@ -61,7 +68,7 @@ function InvitationDesign() {
 
     // BaseMusic refs
     const effectRef = useRef<CheckboxRef>(null);
-    
+
     // MoneyInfo refs
     const infoTitleRef = useRef<HTMLInputElement>(null);
     const infoContentRef = useRef<HTMLInputElement>(null);
@@ -90,11 +97,11 @@ function InvitationDesign() {
     const brideMotherBankNameRef = useRef<HTMLInputElement>(null);
     const brideMotherBankNumberRef = useRef<HTMLInputElement>(null);
     const brideMotherKakaoUrlRef = useRef<HTMLInputElement>(null);
-    
+
     // VideoOption refs
     const videoTitleRef = useRef<HTMLInputElement>(null);
     const videoUrlRef = useRef<HTMLInputElement>(null);
-    
+
     // PhoneOption refs
     const groomTelRef = useRef<HTMLInputElement>(null);
     const groomFatherTelRef = useRef<HTMLInputElement>(null);
@@ -113,7 +120,7 @@ function InvitationDesign() {
     const attendEtcStatusRef = useRef<CheckboxRef>(null);
     const startPopupStatusRef = useRef<CheckboxRef>(null);
     const startPopupMessageRef = useRef<HTMLTextAreaElement>(null);
-    
+
     // Drag and drop
     const [items, setItems] = useState(allCasesOfEnum(OptionType));
     const onDragEnd = (result: DropResult) => {
@@ -129,8 +136,14 @@ function InvitationDesign() {
     return (
         <S.container>
             <S.optionContainer>
-                <S.title>청첩장 제작</S.title>
-                <S.titleDescription>원하는 청첩장을 만들어보세요!</S.titleDescription>
+                <Row $alignItems={'flex-end'}>
+                    <Column gap={8}>
+                        <Text text={'청첩장 제작'} type={TextType.h5}/>
+                        <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
+                    </Column>
+                    <Spacer/>
+                    <Button text={'저장하기'} size={'small'}/>
+                </Row>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId={'droppable'}>
                         {(provided) => (
@@ -145,7 +158,7 @@ function InvitationDesign() {
                                             let children: React.ReactNode;
                                             switch (option) {
                                                 case OptionType.Template:
-                                                    children = <></>;
+                                                    children = <TemplateOption/>;
                                                     break;
                                                 case OptionType.BaseInfo:
                                                     children = <BaseInfoOption refs={{

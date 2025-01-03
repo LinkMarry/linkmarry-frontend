@@ -25,7 +25,6 @@ const S = {
         display: flex;
         ${makeText(TextType.p3)};
         color: ${colors.g500};
-        margin-top: 8px;
     `,
     options: styled.ul`
         display: flex;
