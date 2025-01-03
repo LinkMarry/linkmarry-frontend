@@ -14,16 +14,20 @@ function MyPage() {
         <HasHeader>
             <S.container>
                 <S.sideBar.container>
-                    <SideBarItem title={'프로필'} selected={false} onClick={() => {
+                    <S.sideBar.profileWrapper>
+                        <Text text={'프로필'} type={TextType.p2} onClick={() => {
 
-                    }}/>
-                    <SideBarItem title={'설정'} selected={false} onClick={() => {
+                        }}/>
+                    </S.sideBar.profileWrapper>
+                    <HorizontalDivider color={colors.g200}/>
+                    <Text text={'로그아웃'} type={TextType.p2} color={colors.g400} style={{cursor: 'pointer'}}
+                          onClick={() => {
 
-                    }}/>
-                    <HorizontalDivider color={colors.g200} style={{marginTop: 20}}/>
-                    <SideBarItem title={'로그아웃'} selected={false} onClick={() => {
+                          }}/>
+                    <Text text={'회원탈퇴'} type={TextType.p2} color={'#D65745'} style={{cursor: 'pointer'}}
+                          onClick={() => {
 
-                    }}/>
+                          }}/>
                 </S.sideBar.container>
                 <S.baseInfo.container>
                     <Text text={'기본 정보'} type={TextType.p2} style={{fontWeight: '700'}}/>
@@ -56,27 +60,6 @@ function MyPage() {
                 </S.baseInfo.container>
             </S.container>
         </HasHeader>
-    );
-}
-
-// SideBarItem
-interface SideBarItemProps {
-    title: string;
-    selected: boolean;
-    onClick: () => void;
-}
-
-function SideBarItem(
-    {
-        title,
-        selected,
-        onClick
-    }: SideBarItemProps
-) {
-    return (
-        <S.sideBar.item onClick={onClick}>
-            <Text text={title} type={TextType.p2} color={selected ? colors.black : colors.g400}/>
-        </S.sideBar.item>
     );
 }
 

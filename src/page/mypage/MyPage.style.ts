@@ -17,12 +17,12 @@ const S = {
             height: 100%;
             padding: 110px 24px 0 24px;
             align-items: stretch;
+            gap: 20px;
         `,
-        item: styled.div`
+        profileWrapper: styled.div`
             display: flex;
             height: 67px;
             align-items: center;
-            cursor: pointer;
         `
     },
     baseInfo: {
