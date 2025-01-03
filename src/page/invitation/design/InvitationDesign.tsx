@@ -142,7 +142,7 @@ function InvitationDesign() {
                         <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
                     </Column>
                     <Spacer/>
-                    <Button text={'저장하기'} size={'small'}/>
+                    <Button text={'저장하기'} size={'medium'}/>
                 </Row>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId={'droppable'}>

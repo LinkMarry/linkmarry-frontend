@@ -20,8 +20,10 @@ export default function useAuth() {
 
             Cookies.set('accessToken', data.accessToken);
             Cookies.set('refreshToken', data.refreshToken);
-        } catch (e) {
+        } catch (error) {
+            console.error(error);
         }
+        
         window.location.href = '/';
     }, []);
 

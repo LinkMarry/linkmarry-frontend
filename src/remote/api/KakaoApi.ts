@@ -11,7 +11,7 @@ class KakaoApi {
                 code
             },
             shouldAuthorizeRequest: false
-        })
+        });
         return data;
     }
 }

@@ -2,13 +2,14 @@ import Cookies from "js-cookie";
 import {InternalAxiosRequestConfig} from "axios";
 
 const requestHandler = (config: InternalAxiosRequestConfig) => {
+    const shouldAuthorizeRequest = config.shouldAuthorizeRequest ?? true;
+    if (!shouldAuthorizeRequest) return config;
+    
     if (Cookies.get('accessToken') === undefined || Cookies.get('refreshToken') === undefined) {
+        console.error('token is undefined');
         window.location.href = '/';
         return config;
     }
-
-    const shouldAuthorizeRequest = config.shouldAuthorizeRequest ?? true;
-    if (!shouldAuthorizeRequest) return config;
 
     config.headers.Authorization = Cookies.get('accessToken');
 

@@ -8,6 +8,7 @@ let isRefreshing = false;
 
 const errorResponseHandler = async (error: AxiosError) => {
     if (error.response === undefined) {
+        console.error('error.response is undefined');
         return Promise.reject(error);
     }
 
@@ -15,6 +16,7 @@ const errorResponseHandler = async (error: AxiosError) => {
     const refreshToken = Cookies.get('refreshToken');
 
     if (accessToken === undefined || refreshToken === undefined) {
+        console.error('token is undefined');
         return Promise.reject(error);
     }
 
@@ -28,6 +30,8 @@ const errorResponseHandler = async (error: AxiosError) => {
             Cookies.set('accessToken', newAccessToken);
             refreshSubscribers.forEach(callback => callback(newAccessToken));
         } catch (error) {
+            console.error('refresh 실패');
+            console.error(error);
             Cookies.remove('accessToken');
             Cookies.remove('refreshToken');
             window.location.href = '/';

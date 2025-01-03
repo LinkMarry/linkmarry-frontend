@@ -23,7 +23,9 @@ function Header() {
                 }}
                 gap={66}
             >
-                <img src={'/logo.svg'} width={134} alt={'logo'}/>
+                <img src={'/logo.svg'} width={134} alt={'logo'} style={{cursor: 'pointer'}} onClick={() => {
+                    navigate('/');
+                }}/>
                 <S.navItems>
                     <S.navItem>모바일 청첩장</S.navItem>
                     <S.navItem>스토어 이동</S.navItem>
