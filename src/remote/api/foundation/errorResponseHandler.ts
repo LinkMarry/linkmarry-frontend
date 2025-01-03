@@ -14,7 +14,7 @@ const errorResponseHandler = async (error: AxiosError) => {
     const accessToken = Cookies.get('accessToken');
     const refreshToken = Cookies.get('refreshToken');
 
-    if (accessToken === undefined || refreshToken === undefined || error.status === 401) {
+    if (accessToken === undefined || refreshToken === undefined) {
         return Promise.reject(error);
     }
 

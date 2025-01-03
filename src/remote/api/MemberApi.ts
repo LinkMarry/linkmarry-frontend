@@ -10,7 +10,9 @@ class MemberApi {
      * 토큰 refresh
      */
     async refresh(token: string): Promise<ResponseData<string>> {
-        const {data} = await customApi.get(`${MemberApi.PATH}/refresh?token=${token}`);
+        const {data} = await customApi.get(`${MemberApi.PATH}/refresh?token=${token}`, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 

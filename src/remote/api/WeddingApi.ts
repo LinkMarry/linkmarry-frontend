@@ -56,7 +56,9 @@ class WeddingApi {
      * 청첩장 불러오기 (실제 모청 확인)
      */
     async getWedding(url: string, req: WeddingRequest): Promise<ResponseData<Wedding>> {
-        const {data} = await customApi.post(`${WeddingApi.PATH}/${url}`, req);
+        const {data} = await customApi.post(`${WeddingApi.PATH}/${url}`, req, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
@@ -72,7 +74,9 @@ class WeddingApi {
      * 참석여부
      */
     async createRsvp(req: RsvpRequest): Promise<ResponseVoid> {
-        const {data} = await customApi.post(`${WeddingApi.PATH}/rsvp`, req);
+        const {data} = await customApi.post(`${WeddingApi.PATH}/rsvp`, req, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
@@ -80,7 +84,9 @@ class WeddingApi {
      * 방명록 작성
      */
     async createComment(req: GuestCommentRequest): Promise<ResponseVoid> {
-        const {data} = await customApi.post(`${WeddingApi.PATH}/comment`, req);
+        const {data} = await customApi.post(`${WeddingApi.PATH}/comment`, req, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
@@ -88,7 +94,9 @@ class WeddingApi {
      * 방명록 수정
      */
     async editComment(req: EditCommentRequest): Promise<ResponseVoid> {
-        const {data} = await customApi.patch(`${WeddingApi.PATH}/comment`, req);
+        const {data} = await customApi.patch(`${WeddingApi.PATH}/comment`, req, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
@@ -96,7 +104,10 @@ class WeddingApi {
      * 방명록 삭제
      */
     async removeComment(req: DeleteCommentRequest): Promise<ResponseVoid> {
-        const {data} = await customApi.delete(`${WeddingApi.PATH}/comment`, req);
+        const {data} = await customApi.delete(`${WeddingApi.PATH}/comment`, {
+            data: req,
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
@@ -112,7 +123,9 @@ class WeddingApi {
      * 링크 공유
      */
     async shareLink(url: string): Promise<ResponseVoid> {
-        const {data} = await customApi.post(`${WeddingApi.PATH}/link/${url}`);
+        const {data} = await customApi.post(`${WeddingApi.PATH}/link/${url}`, undefined, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 }

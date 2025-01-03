@@ -18,7 +18,9 @@ class NotificationApi {
      * 모든 공지 불러오기
      */
     async getNotifications(): Promise<ResponseData<Notification[]>> {
-        const {data} = await customApi.get(NotificationApi.PATH);
+        const {data} = await customApi.get(NotificationApi.PATH, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
@@ -26,7 +28,9 @@ class NotificationApi {
      * 공지 단건 조회하기
      */
     async getNotification(id: number): Promise<ResponseData<Notification>> {
-        const {data} = await customApi.get(`${NotificationApi.PATH}/${id}`);
+        const {data} = await customApi.get(`${NotificationApi.PATH}/${id}`, {
+            shouldAuthorizeRequest: false
+        });
         return data;
     }
 
