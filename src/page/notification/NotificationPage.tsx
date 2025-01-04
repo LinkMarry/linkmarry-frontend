@@ -8,9 +8,11 @@ import Notification from "@remote/value/Notification";
 import {tagToKoreanRecord} from "@remote/enumeration/Tag";
 import notificationApi from "@remote/api/NotificationApi";
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 
 function NotificationPage() {
     const [notifications, setNotifications] = useState<Notification[]>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -37,7 +39,9 @@ function NotificationPage() {
                             <S.header.cell>작성일</S.header.cell>
                         </S.header.row>
                         {notifications && notifications.map(notification => (
-                            <S.body.row key={notification.id}>
+                            <S.body.row key={notification.id} onClick={() => {
+                                navigate(`/notification/${notification.id}`);
+                            }}>
                                 <S.body.tagCell>{tagToKoreanRecord[notification.tag]}</S.body.tagCell>
                                 <S.body.titleCell>{notification.title}</S.body.titleCell>
                                 <S.body.nameCell>{notification.name}</S.body.nameCell>

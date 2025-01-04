@@ -13,6 +13,7 @@ import MyPage from "@page/mypage/MyPage";
 import ComponentDemo from "@designsystem/demo/component.demo";
 import FoundationDemo from "@designsystem/demo/foundation.demo";
 import NotificationPage from "@page/notification/NotificationPage";
+import NotificationDetailPage from "@page/notification/detail/NotificationDetailPage";
 
 const {Kakao} = window as any;
 
@@ -41,6 +42,7 @@ function App() {
                 </Route>
                 <Route path={'my-page'} element={<MyPage/>}/>
                 <Route path={'notification'} element={<NotificationPage/>}/>
+                <Route path={'notification/:id'} element={<NotificationDetailPage/>}/>
 
                 {/*design-system*/}
                 <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>

@@ -36,7 +36,9 @@ const S = {
         cell: BaseCell
     },
     body: {
-        row: BaseRow,
+        row: styled(BaseRow)`
+            cursor: pointer;
+        `,
         titleCell: styled(BaseCell)`
             flex: 1;
             justify-content: flex-start;

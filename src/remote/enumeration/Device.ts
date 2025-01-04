@@ -1,6 +1,6 @@
 enum Device {
-    MOBILE, 
-    DESKTOP
+    MOBILE = 'MOBILE', 
+    DESKTOP = 'DESKTOP',
 }
 
 export default Device;

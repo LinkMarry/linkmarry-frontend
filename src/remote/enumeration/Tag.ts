@@ -1,7 +1,7 @@
 enum Tag {
-    NOTIFICATION,
-    UPDATE,
-    ETC
+    NOTIFICATION = 'NOTIFICATION',
+    UPDATE = 'UPDATE',
+    ETC = 'ETC',
 }
 
 export const tagToKoreanRecord: Record<Tag, string> = {

@@ -1,6 +1,6 @@
 enum Design {
-    BASIC,
-    STICKER
+    BASIC = 'BASIC',
+    STICKER = 'STICKER',
 }
 
 export default Design;

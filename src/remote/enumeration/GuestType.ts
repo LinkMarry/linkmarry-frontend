@@ -1,6 +1,6 @@
 enum GuestType {
-    BIRDE,
-    GROOM
+    BRIDE = 'BRIDE',
+    GROOM = 'GROOM',
 }
 
 export default GuestType;
