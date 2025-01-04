@@ -30,7 +30,7 @@ export const TextField = (
         supportingText,
         placeholder,
         isError = false,
-        enabled = true,
+        enabled,
         ref,
         value,
         onChange,
@@ -57,7 +57,7 @@ export const TextField = (
     }
 
     return (
-        <S.textField enabled={enabled} {...props}>
+        <S.textField enabled={enabled ?? true} {...props}>
             <S.label style={{
                 color: labelColor
             }}>{label}</S.label>

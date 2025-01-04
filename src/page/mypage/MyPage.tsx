@@ -8,8 +8,12 @@ import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Button from "@designsystem/component/button";
 import Spacer from "@designsystem/component/spacer";
+import {useNavigate} from "react-router-dom";
+import Cookies from "js-cookie";
 
 function MyPage() {
+    const navigate = useNavigate();
+    
     return (
         <HasHeader>
             <S.container>
@@ -22,7 +26,9 @@ function MyPage() {
                     <HorizontalDivider color={colors.g200}/>
                     <Text text={'로그아웃'} type={TextType.p2} color={colors.g400} style={{cursor: 'pointer'}}
                           onClick={() => {
-
+                              Cookies.remove('accessToken');
+                              Cookies.remove('refreshToken');
+                              navigate('/');
                           }}/>
                     <Text text={'회원탈퇴'} type={TextType.p2} color={'#D65745'} style={{cursor: 'pointer'}}
                           onClick={() => {
