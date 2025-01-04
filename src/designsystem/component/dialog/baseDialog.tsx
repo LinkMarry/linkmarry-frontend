@@ -58,6 +58,7 @@ const S = {
 }
 
 export const applyBaseDialogContent = () => css`
+    display: flex;
     position: fixed;
     z-index: 3;
     ${popupAnimationStyle};

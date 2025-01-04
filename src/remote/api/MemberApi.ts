@@ -19,7 +19,7 @@ class MemberApi {
     /**
      * 자신의 프로필 불러오기
      */
-    async getMyProfile(): Promise<InfoMember> {
+    async getMyProfile(): Promise<ResponseData<InfoMember>> {
         const {data} = await customApi.get(`${MemberApi.PATH}/info`);
         return data;
     }

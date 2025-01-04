@@ -9,6 +9,7 @@ import {tagToKoreanRecord} from "@remote/enumeration/Tag";
 import notificationApi from "@remote/api/NotificationApi";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
+import Spacer from "@designsystem/component/spacer";
 
 function NotificationPage() {
     const [notifications, setNotifications] = useState<Notification[]>();
@@ -58,6 +59,7 @@ function NotificationPage() {
                             }}/>
                         )}
                     </Column>
+                    <Spacer h={32}/>
                 </Column>
             </S.container>
         </HasHeader>
