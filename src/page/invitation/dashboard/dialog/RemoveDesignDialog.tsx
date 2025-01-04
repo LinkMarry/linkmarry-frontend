@@ -33,11 +33,12 @@ function RemoveDesignDialog(
 
 const S = {
     container: styled.div`
+        ${applyBaseDialogContent()};
         width: 520px;
         padding: 88px 116px;
+        justify-content: center;
         background: ${colors.white};
         border-radius: 12px;
-        ${applyBaseDialogContent()};
     `
 }
 

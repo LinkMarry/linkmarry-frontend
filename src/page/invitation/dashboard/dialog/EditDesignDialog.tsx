@@ -35,11 +35,12 @@ function EditDesignDialog(
 
 const S = {
     container: styled.div`
+        ${applyBaseDialogContent()};
+        justify-content: center;
         width: 520px;
         padding: 88px 116px;
         background: ${colors.white};
         border-radius: 12px;
-        ${applyBaseDialogContent()};
     `
 }
 
