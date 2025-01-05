@@ -14,6 +14,7 @@ import ComponentDemo from "@designsystem/demo/component.demo";
 import FoundationDemo from "@designsystem/demo/foundation.demo";
 import NotificationPage from "@page/notification/NotificationPage";
 import NotificationDetailPage from "@page/notification/detail/NotificationDetailPage";
+import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestComment/InvitationDashboardGuestComment";
 
 const {Kakao} = window as any;
 
@@ -33,7 +34,10 @@ function App() {
                 <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
                 <Route path={''} element={<HomePage/>}/>
                 <Route path={'invitation'} element={<InvitationLayout/>}>
-                    <Route path={'dashboard'} element={<InvitationDashboard/>}/>
+                    <Route path={'dashboard'}>
+                        <Route index={true} element={<InvitationDashboard/>}/>
+                        <Route path={'guest-comment'} element={<InvitationDashboardGuestComment/>}/>
+                    </Route>
                     <Route path={'design'} element={<InvitationDesign/>}/>
                     <Route path={'statistics'}>
                         <Route index={true} element={<InvitationStatistics/>}/>

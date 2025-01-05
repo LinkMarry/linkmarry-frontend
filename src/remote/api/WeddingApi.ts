@@ -8,6 +8,7 @@ import GuestCommentRequest from "@remote/value/request/GuestCommentRequest";
 import EditCommentRequest from "@remote/value/request/EditCommentRequest";
 import DeleteCommentRequest from "@remote/value/request/DeleteCommentRequest";
 import WeddingStatistics from "@remote/value/WeddingStatistics";
+import WeddingDto from "@remote/value/WeddingDto";
 
 class WeddingApi {
     private static PATH = 'wedding';
@@ -39,7 +40,7 @@ class WeddingApi {
     /**
      * 청첩장 생성 (첫 생성)
      */
-    async createWedding(req: Wedding): Promise<ResponseVoid> {
+    async createWedding(req: WeddingDto): Promise<ResponseVoid> {
         const {data} = await customApi.post(WeddingApi.PATH, req);
         return data;
     }
@@ -47,7 +48,7 @@ class WeddingApi {
     /**
      * 청첩장 수정
      */
-    async editWedding(req: Wedding): Promise<ResponseVoid> {
+    async editWedding(req: WeddingDto): Promise<ResponseVoid> {
         const {data} = await customApi.put(WeddingApi.PATH, req);
         return data;
     }

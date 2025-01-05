@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import makeText, {TextType} from "@designsystem/foundation/text/textType";
 

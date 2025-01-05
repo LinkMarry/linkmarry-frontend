@@ -54,6 +54,7 @@ import ArcticonsSpotistats from "@designsystem/foundation/icon/ArcticonsSpotista
 import Hamburger from "@designsystem/foundation/icon/Hamburger";
 import Clock from "@designsystem/foundation/icon/Clock";
 import styled, {css} from "styled-components";
+import Share from "@designsystem/foundation/icon/Share";
 
 export enum IconType {
     AddEmoji,
@@ -103,6 +104,7 @@ export enum IconType {
     Search,
     Send,
     Setting,
+    Share,
     Show,
     Star,
     StopArrow,
@@ -222,6 +224,8 @@ export default function Icon(
                 return <Send {...svgProps}/>;
             case IconType.Setting:
                 return <Setting {...svgProps}/>;
+            case IconType.Share:
+                return <Share {...svgProps}/>;
             case IconType.Show:
                 return <Show {...svgProps}/>;
             case IconType.Star:
