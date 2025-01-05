@@ -9,7 +9,7 @@ import Text from "@designsystem/component/text";
 import {TextType} from "@designsystem/foundation/text/textType";
 import RemoveDesignDialog from "@page/invitation/dashboard/dialog/RemoveDesignDialog";
 import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
-import WeddingDashboard, {dummyWeddingDashboard} from "@remote/value/WeddingDashboard";
+import WeddingDashboard from "@remote/value/WeddingDashboard";
 import weddingApi from "@remote/api/WeddingApi";
 
 function InvitationDashboard() {

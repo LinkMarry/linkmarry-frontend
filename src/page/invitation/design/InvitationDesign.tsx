@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful-dnd';
 import S from '@page/invitation/design/InvitationDesign.style';
 import OptionCell from "@page/invitation/design/component/OptionCell";
@@ -27,8 +27,9 @@ import TemplateOption from "@page/invitation/design/option/TemplateOption";
 import weddingApi from "@remote/api/WeddingApi";
 import Design from "@remote/enumeration/Design";
 import {isAnyEmpty} from "@util/string.util";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
-function InvitationDesign() {
+function InvitationDesign() {    
     // BaseInfoOption refs
     const groomNameRef = useRef<HTMLInputElement>(null);
     const groomFatherNameRef = useRef<HTMLInputElement>(null);
@@ -124,6 +125,11 @@ function InvitationDesign() {
     const startPopupStatusRef = useRef<CheckboxRef>(null);
     const startPopupMessageRef = useRef<HTMLTextAreaElement>(null);
 
+    const [searchParams] = useSearchParams();
+    const url = searchParams.get('url');
+
+    const navigate = useNavigate();
+
     // Drag and drop
     const [items, setItems] = useState(allCasesOfEnum(OptionType));
     const onDragEnd = (result: DropResult) => {
@@ -136,8 +142,16 @@ function InvitationDesign() {
         setItems(reorderedItems);
     };
 
+    useEffect(() => {
+        if (url === null) {
+            navigate('/');
+        }
+    }, []);
+
     const saveDesign = async () => {
         // validation
+        if (!url) return;
+        
         const groomName = groomNameRef.current!!.value;
         const groomFatherName = groomFatherNameRef.current!!.value;
         const groomFatherStatus = groomFatherStatusRef.current!!.value;
@@ -260,7 +274,7 @@ function InvitationDesign() {
 
         // Request
         await weddingApi.createWedding({
-            url: 'test',
+            url,
             position: [],
             template: {
                 templateName: '',

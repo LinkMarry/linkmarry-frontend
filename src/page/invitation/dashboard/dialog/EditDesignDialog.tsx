@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
 import Button from "@designsystem/component/button";
 import colors from "@designsystem/foundation/colors";
-import {TextField} from "@designsystem/component/textField";
+import TextField from "@designsystem/component/textField";
 import Text from "@designsystem/component/text";
 import {TextType} from "@designsystem/foundation/text/textType";
 

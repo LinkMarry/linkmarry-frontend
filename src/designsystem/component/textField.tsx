@@ -1,9 +1,10 @@
 import React, {
+    ChangeEvent,
     ChangeEventHandler,
-    CSSProperties,
+    CSSProperties, ForwardedRef, forwardRef,
     HTMLAttributes,
     InputHTMLAttributes,
-    LegacyRef,
+    useRef,
     useState
 } from 'react';
 import styled, {css} from "styled-components";
@@ -18,25 +19,25 @@ interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
     placeholder?: string;
     isError?: boolean;
     enabled?: boolean;
-    ref?: LegacyRef<HTMLInputElement>;
     value?: string;
     onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
-export const TextField = (
+function TextField(
     {
         fieldProps,
         label,
         supportingText,
         placeholder,
         isError = false,
-        enabled,
-        ref,
+        enabled = true,
         value,
         onChange,
         ...props
-    }: TextFieldProps
-) => {
+    }: TextFieldProps,
+    ref: ForwardedRef<HTMLInputElement>
+) {
+    const localRef = useRef<HTMLInputElement>(null);
     const [focused, setFocused] = useState(false);
 
     let labelColor: CSSProperties['color'],
@@ -57,7 +58,7 @@ export const TextField = (
     }
 
     return (
-        <S.textField enabled={enabled ?? true} {...props}>
+        <S.textField $enabled={enabled} {...props}>
             <S.label style={{
                 color: labelColor
             }}>{label}</S.label>
@@ -67,7 +68,7 @@ export const TextField = (
             }}>
                 <input
                     placeholder={placeholder}
-                    ref={ref}
+                    ref={ref ?? localRef}
                     value={value}
                     onChange={onChange}
                     onFocus={() => setFocused(true)}
@@ -78,7 +79,17 @@ export const TextField = (
                 {isError ? (
                     <Icon type={IconType.ExclamationFill} tint={'#FF4242'}/>
                 ) : enabled ? (
-                    <Icon type={IconType.CrossFill} tint={'rgba(0,0,0,0.5)'}/>
+                    <Icon type={IconType.CrossFill} tint={'rgba(0,0,0,0.5)'} style={{cursor: 'pointer'}}
+                          onClick={() => {
+                              const event = {
+                                  target: {value: ''}, // 빈 문자열로 설정
+                              } as ChangeEvent<HTMLInputElement>;
+                              onChange?.(event);
+                              if (localRef && localRef.current) {
+                                  localRef.current.value = '';
+                              }
+                          }}
+                    />
                 ) : (
                     <></>
                 )}
@@ -92,7 +103,7 @@ export const TextField = (
 
 const S = {
     textField: styled.div<{
-        enabled: boolean,
+        $enabled: boolean,
     }>`
         display: flex;
         position: relative;
@@ -101,9 +112,8 @@ const S = {
         gap: 4px;
 
         width: 380px;
-        height: 80px;
-        
-        ${({enabled}) => !enabled && css`
+
+        ${({$enabled}) => !$enabled && css`
             opacity: 0.65;
         `}
     `,
@@ -113,7 +123,7 @@ const S = {
     `,
     supportingText: styled.span`
         position: absolute;
-        top: 85px;
+        bottom: -25px;
 
         font-feature-settings: 'ss10' on;
         ${makeText(TextType.btn1)};
@@ -143,3 +153,5 @@ const S = {
         }
     `
 };
+
+export default forwardRef(TextField);
