@@ -1,29 +1,29 @@
 import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
-import WeddingDashboard from "@remote/value/WeddingDashboard";
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import makeText, {TextType} from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Spacer from "@designsystem/component/spacer";
 import Text from "@designsystem/component/text";
+import WeddingInfo from "@remote/value/WeddingInfo";
 
 interface InvitationCellProps extends HTMLAttributes<HTMLDivElement> {
-    weddingDashboard: WeddingDashboard;
+    weddingInfo: WeddingInfo;
 }
 
 function StatisticsInvitationCell(
     {
-        weddingDashboard,
+        weddingInfo,
         ...props
     }: InvitationCellProps
 ) {
     return (
         <S.container {...props}>
-            <S.image src={weddingDashboard.weddingInfo[0].img} alt=""/>
+            <S.image src={weddingInfo.img} alt=""/>
             <Column gap={4} $alignItems={'stretch'} style={{padding: '20px 20px 32px 20px', background: colors.g100}}>
                 <Row gap={8}>
-                    <S.urlLabel>{weddingDashboard.weddingInfo[0].url}</S.urlLabel>
+                    <S.urlLabel>{weddingInfo.url}</S.urlLabel>
                     <Spacer/>
                     <Icon
                         type={IconType.Detail}
@@ -37,7 +37,7 @@ function StatisticsInvitationCell(
                         }}
                     />
                 </Row>
-                <Text text={weddingDashboard.weddingInfo[0].createdDate} type={TextType.caption1} color={colors.g500}/>
+                <Text text={weddingInfo.createdDate} type={TextType.caption1} color={colors.g500}/>
             </Column>
         </S.container>
     );

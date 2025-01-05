@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import S from '@page/invitation/dashboard/InvitationDashboard.style';
 import {Column} from "@designsystem/component/flexLayout";
 import DashboardInvitationCell from "@page/invitation/dashboard/component/DashboardInvitationCell";
@@ -9,12 +9,22 @@ import Text from "@designsystem/component/text";
 import {TextType} from "@designsystem/foundation/text/textType";
 import RemoveDesignDialog from "@page/invitation/dashboard/dialog/RemoveDesignDialog";
 import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
-import {dummyWeddingDashboard} from "@remote/value/WeddingDashboard";
+import WeddingDashboard, {dummyWeddingDashboard} from "@remote/value/WeddingDashboard";
+import weddingApi from "@remote/api/WeddingApi";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
     const [showRemoveDesignDialog, setShowRemoveDesignDialog] = useState(false);
     const [showEditDesignDialog, setShowEditDesignDialog] = useState(false);
+
+    const [weddingDashboard, setWeddingDashboard] = useState<WeddingDashboard>();
+
+    useEffect(() => {
+        (async () => {
+            const {data} = await weddingApi.getMyWedding();
+            setWeddingDashboard(data);
+        })();
+    }, []);
 
     return (
         <S.container>
@@ -32,9 +42,13 @@ function InvitationDashboard() {
                             <Text text={'새 디자인 만들기'} type={TextType.p4} color={colors.g500}/>
                         </Column>
                     </S.createDesignButton>
-                    {dummyWeddingDashboard.map((weddingDashboard, index) =>
-                        <DashboardInvitationCell key={index} weddingDashboard={weddingDashboard}/>
-                    )}
+                    {weddingDashboard ? (
+                        weddingDashboard.weddingInfo.map((weddingInfo, index) =>
+                            <DashboardInvitationCell key={index} weddingInfo={weddingInfo}/>
+                        )
+                    ) : (
+                        <div>...</div>
+                    )}{/* TODO: Shimmer */}
                 </S.items>
             </Column>
             {showCreateDesignDialog && <CreateDesignDialog dismiss={() => setShowCreateDesignDialog(false)}/>}

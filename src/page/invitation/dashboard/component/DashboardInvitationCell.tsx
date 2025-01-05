@@ -8,23 +8,24 @@ import makeText, {TextType} from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Spacer from "@designsystem/component/spacer";
 import Text from "@designsystem/component/text";
+import WeddingInfo from "@remote/value/WeddingInfo";
 
 interface InvitationCellProps {
-    weddingDashboard: WeddingDashboard;
+    weddingInfo: WeddingInfo;
 }
 
 function DashboardInvitationCell(
     {
-        weddingDashboard
+        weddingInfo
     }: InvitationCellProps
 ) {
     return (
         <S.container>
-            <S.image src={weddingDashboard.weddingInfo[0].img} alt=""/>
+            <S.image src={weddingInfo.img} alt=""/>
             <Column gap={12} $alignItems={'stretch'} style={{padding: 20, background: colors.g100}}>
                 <Column gap={4} $alignItems={'stretch'}>
                     <Row gap={8}>
-                        <S.urlLabel>{weddingDashboard.weddingInfo[0].url}</S.urlLabel>
+                        <S.urlLabel>{weddingInfo.url}</S.urlLabel>
                         <Spacer/>
                         <Icon
                             type={IconType.Detail}
@@ -38,7 +39,7 @@ function DashboardInvitationCell(
                             }}
                         />
                     </Row>
-                    <Text text={weddingDashboard.weddingInfo[0].createdDate} type={TextType.caption1} color={colors.g500}/>
+                    <Text text={weddingInfo.createdDate} type={TextType.caption1} color={colors.g500}/>
                 </Column>
                 <Row gap={10}>
                     <Button text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}/>
