@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import S from '@page/invitation/dashboard/InvitationDashboard.style';
 import {Column} from "@designsystem/component/flexLayout";
-import DashboardInvitationCell from "@page/invitation/dashboard/component/DashboardInvitationCell";
+import DashboardInvitationCell, {
+    DashboardInvitationCellClickType
+} from "@page/invitation/dashboard/component/DashboardInvitationCell";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 import CreateDesignDialog from "@page/invitation/dashboard/dialog/CreateDesignDialog";
@@ -11,6 +13,7 @@ import RemoveDesignDialog from "@page/invitation/dashboard/dialog/RemoveDesignDi
 import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
 import WeddingDashboard from "@remote/value/WeddingDashboard";
 import weddingApi from "@remote/api/WeddingApi";
+import WeddingInfo from "@remote/value/WeddingInfo";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -18,6 +21,7 @@ function InvitationDashboard() {
     const [showEditDesignDialog, setShowEditDesignDialog] = useState(false);
 
     const [weddingDashboard, setWeddingDashboard] = useState<WeddingDashboard>();
+    const [selectedWeddingInfo, setSelectedWeddingInfo] = useState<WeddingInfo>();
 
     useEffect(() => {
         (async () => {
@@ -26,13 +30,25 @@ function InvitationDashboard() {
         })();
     }, []);
 
-    const onClickRemove = async () => {
+    const onClickRemoveDashboard = async () => {
         try {
             // TODO
             // await weddingApi.de
             alert('remove');
         } catch (error) {
             console.error(error);
+        }
+    };
+
+    const onClickDashboardCell = async (type: DashboardInvitationCellClickType, cell: WeddingInfo) => {
+        setSelectedWeddingInfo(cell);
+        switch (type) {
+            case 'remove':
+                setShowRemoveDesignDialog(true);
+                break;
+            case 'edit':
+                setShowEditDesignDialog(true);
+                break;
         }
     };
 
@@ -54,8 +70,8 @@ function InvitationDashboard() {
                     </S.createDesignButton>
                     {weddingDashboard ? (
                         weddingDashboard.weddingInfo.map((weddingInfo, index) =>
-                            <DashboardInvitationCell key={index} weddingInfo={weddingInfo} onClickRemove={() => {
-                                setShowRemoveDesignDialog(true);
+                            <DashboardInvitationCell key={index} weddingInfo={weddingInfo} onClick={async type => {
+                                await onClickDashboardCell(type, weddingInfo);
                             }}/>
                         )
                     ) : (
@@ -64,8 +80,10 @@ function InvitationDashboard() {
                 </S.items>
             </Column>
             {showCreateDesignDialog && <CreateDesignDialog dismiss={() => setShowCreateDesignDialog(false)}/>}
-            {showRemoveDesignDialog && <RemoveDesignDialog dismiss={() => setShowRemoveDesignDialog(false)} confirm={onClickRemove}/>}
-            {showEditDesignDialog && <EditDesignDialog dismiss={() => setShowEditDesignDialog(false)}/>}
+            {showRemoveDesignDialog &&
+                <RemoveDesignDialog dismiss={() => setShowRemoveDesignDialog(false)} confirm={onClickRemoveDashboard}/>}
+            {showEditDesignDialog && selectedWeddingInfo &&
+                <EditDesignDialog originUrl={selectedWeddingInfo.url} dismiss={() => setShowEditDesignDialog(false)}/>}
         </S.container>
     );
 }

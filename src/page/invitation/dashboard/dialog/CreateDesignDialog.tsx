@@ -19,8 +19,9 @@ function CreateDesignDialog(
         dismiss
     }: CreateDesignDialogProps
 ) {
-    const [isError, setIsError] = useState(false);
     const domainFieldRef = useRef<HTMLInputElement>(null);
+    const [isError, setIsError] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
     const navigate = useNavigate();
 
     const createDesign = async () => {
@@ -32,12 +33,16 @@ function CreateDesignDialog(
             return;
         }
         
+        setIsFetching(true);
+        
         try {
             await weddingApi.checkUrlConflict(url);
             navigate(`/invitation/design?url=${url}`);
         } catch (error) {
             console.error(error);
             setIsError(true);
+        } finally {
+            setIsFetching(false);
         }
     };
 
@@ -50,7 +55,7 @@ function CreateDesignDialog(
                         <Text text={'청첩장에 사용할 도메인을 입력해주세요.'} type={TextType.p5} color={colors.g400}/>
                     </Column>
                     <TextField ref={domainFieldRef} label={''} isError={isError} supportingText={isError ? '이미 사용 중인 URL 입니다. 다른 URL을 입력해 주세요' : undefined}/>
-                    <Button text={'생성하기'} role={'assistive'} onClick={createDesign}/>
+                    <Button text={'생성하기'} role={'assistive'} onClick={createDesign} enabled={!isFetching}/>
                 </Column>
             </S.container>
         </BaseDialog>

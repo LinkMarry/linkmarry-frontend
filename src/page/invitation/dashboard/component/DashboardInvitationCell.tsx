@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import WeddingDashboard from "@remote/value/WeddingDashboard";
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
@@ -12,16 +11,19 @@ import WeddingInfo from "@remote/value/WeddingInfo";
 import DashboardPopover, {DashboardPopoverClickType} from "@page/invitation/dashboard/component/DashboardPopover";
 import {useNavigate} from "react-router-dom";
 
-interface InvitationCellProps {
+export type DashboardInvitationCellClickType = 'remove' | 'edit'; 
+
+interface DashboardInvitationCellProps {
     weddingInfo: WeddingInfo;
-    onClickRemove: () => void;
+    onClick: (type: DashboardInvitationCellClickType) => void;
+    
 }
 
 function DashboardInvitationCell(
     {
         weddingInfo,
-        onClickRemove
-    }: InvitationCellProps
+        onClick
+    }: DashboardInvitationCellProps
 ) {
     const [showPopover, setShowPopover] = useState(false);
     const navigate = useNavigate();
@@ -33,12 +35,13 @@ function DashboardInvitationCell(
             case 'copyLink':
                 break;
             case 'editLink':
+                onClick('edit');
                 break;
             case 'guestComment':
                 navigate(`guest-comment?url=${weddingInfo.url}`);
                 break;
             case 'remove':
-                onClickRemove();
+                onClick('remove');
                 break;
         }
     }

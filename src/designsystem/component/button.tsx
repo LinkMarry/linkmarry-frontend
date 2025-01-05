@@ -131,21 +131,22 @@ const S = {
         `};
 
         &:disabled {
-            opacity: 1;
-            background: black;
+            opacity: 0.4;
+            cursor: not-allowed;
         }
 
         &:enabled {
             cursor: pointer;
+            
+            &:active {
+                scale: 0.96;
+            }
+
+            &:hover {
+                opacity: 0.5;
+            }
         }
 
-        &:hover {
-            opacity: 0.5;
-        }
-
-        &:active {
-            scale: 0.96;
-        }
 
         transition: 0.1s scale ease-in-out;
     `

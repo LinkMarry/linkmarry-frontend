@@ -6,7 +6,7 @@ import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Text from "@designsystem/component/text";
 import makeText, {TextType} from "@designsystem/foundation/text/textType";
-import Comment, {dummyComments} from "@remote/value/Comment";
+import Comment from "@remote/value/Comment";
 import weddingApi from "@remote/api/WeddingApi";
 
 function InvitationDashboardGuestComment() {
