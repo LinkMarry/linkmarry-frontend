@@ -1,6 +1,11 @@
 export default interface Comment {
+    // 방명록 ID (PK)
     id?: number;
+    
+    // 방명록 작성자
     name: string;
+    
+    // 방명록 내용
     content: string;
 }
 

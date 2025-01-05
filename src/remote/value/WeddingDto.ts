@@ -12,19 +12,48 @@ import GuestComment from "@remote/value/GuestComment";
 import Template from "@remote/value/Template";
 
 export default interface WeddingDto {
-    url: string; // URL 값
-    position: number[] // 아래 내용 위치
+    // URL 값
+    url: string;
+    
+     // 아래 내용 위치
+    position: number[];
+    
+    // 템플릿 정보
     template: Template;
-    baseInfo: BaseInfo; // 기본 정보
-    weddingSchedule: WeddingSchedule; // 예식 일시
-    weddingPlace: WeddingPlace; // 예식 장소
-    greeting: Greeting; // 인사말
-    guestComment: GuestComment; // 방명록
-    baseMusic: BaseMusic; // 배경음악
-    linkShare: LinkShare; // 링크 공유
-    moneyInfo: MoneyInfo; // 축의금
-    video: Video; // 영상
-    phone: Phone; // 전화번호
-    rsvp: Rsvp; // 참석의사
-    imgList: string[] // 갤러리
+    
+    // 기본 정보
+    baseInfo: BaseInfo;
+    
+    // 예식 일시
+    weddingSchedule: WeddingSchedule;
+    
+    // 예식 장소
+    weddingPlace: WeddingPlace;
+    
+    // 인사말
+    greeting: Greeting;
+    
+    // 방명록
+    guestComment: GuestComment;
+    
+    // 배경음악
+    baseMusic: BaseMusic;
+    
+    // 링크 공유
+    linkShare: LinkShare;
+    
+    // 축의금
+    moneyInfo: MoneyInfo;
+    
+    // 영상
+    video: Video;
+    
+    // 전화번호
+    phone: Phone;
+    
+    // 참석의사
+    rsvp: Rsvp;
+    
+     // 갤러리
+    imgList: string[];
 }

@@ -1,7 +1,16 @@
 export default interface EditCommentRequest {
-    id: number; // 방명록 ID (PK)
-    url: string; // 청첩장 URL
-    name: string; // 수정할 이름
-    comment: string; // 수정할 내용
-    password: string; // 초기 비번
+    // 방명록 ID (PK)
+    id: number;
+    
+    // 청첩장 URL
+    url: string;
+    
+    // 수정할 이름
+    name: string;
+    
+    // 수정할 내용
+    comment: string;
+    
+    // 초기 비번
+    password: string;
 }

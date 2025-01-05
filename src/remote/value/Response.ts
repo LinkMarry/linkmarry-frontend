@@ -1,9 +1,12 @@
 export interface ResponseData<T> {
-    status: number; // ex. 200
+    // ex. 200
+    status: number;
     success: boolean;
-    state: string; // ex. “OK”
+    // ex. “OK”
+    state: string;
     message: string;
-    data: T; // Generics
+    // Generics
+    data: T;
 }
 
 export interface ResponseVoid {

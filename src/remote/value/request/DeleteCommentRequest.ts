@@ -1,5 +1,10 @@
 export default interface DeleteCommentRequest {
-    url: string; // 청첩장 URL
-    id: number; // 방명록 ID (PK)
-    password: string; // 초기 비번
+    // 청첩장 URL
+    url: string;
+    
+    // 방명록 ID (PK)
+    id: number;
+    
+    // 초기 비번
+    password: string;
 }

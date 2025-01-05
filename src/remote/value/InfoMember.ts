@@ -1,8 +1,15 @@
 import UserRole from "@remote/enumeration/UserRole";
 
 export default interface InfoMember {
-    picture: string; // 프사
-    name: string; // 이름
-    email: string; // 이메일
+    // 프사
+    picture: string;
+    
+    // 이름
+    name: string;
+    
+    // 이메일
+    email: string;
+    
+    // 유저 역할
     role: UserRole;
 }
