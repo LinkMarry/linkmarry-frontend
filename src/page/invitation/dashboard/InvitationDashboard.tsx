@@ -26,6 +26,16 @@ function InvitationDashboard() {
         })();
     }, []);
 
+    const onClickRemove = async () => {
+        try {
+            // TODO
+            // await weddingApi.de
+            alert('remove');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <S.container>
             <Column gap={44} style={{marginLeft: 64}} flex={1}>
@@ -44,7 +54,9 @@ function InvitationDashboard() {
                     </S.createDesignButton>
                     {weddingDashboard ? (
                         weddingDashboard.weddingInfo.map((weddingInfo, index) =>
-                            <DashboardInvitationCell key={index} weddingInfo={weddingInfo}/>
+                            <DashboardInvitationCell key={index} weddingInfo={weddingInfo} onClickRemove={() => {
+                                setShowRemoveDesignDialog(true);
+                            }}/>
                         )
                     ) : (
                         <div>...</div>
@@ -52,7 +64,7 @@ function InvitationDashboard() {
                 </S.items>
             </Column>
             {showCreateDesignDialog && <CreateDesignDialog dismiss={() => setShowCreateDesignDialog(false)}/>}
-            {showRemoveDesignDialog && <RemoveDesignDialog dismiss={() => setShowRemoveDesignDialog(false)}/>}
+            {showRemoveDesignDialog && <RemoveDesignDialog dismiss={() => setShowRemoveDesignDialog(false)} confirm={onClickRemove}/>}
             {showEditDesignDialog && <EditDesignDialog dismiss={() => setShowEditDesignDialog(false)}/>}
         </S.container>
     );

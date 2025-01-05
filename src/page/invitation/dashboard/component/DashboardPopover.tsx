@@ -36,24 +36,24 @@ function DashboardPopover(
         <S.relativeWrapper>
             <S.container ref={popoverRef}>
                 <S.item onClick={() => onClick('share')}>
-                    <Icon type={IconType.Share} size={12}/>
-                    <Text text={'공유'} type={TextType.caption2}/>
+                    <Icon type={IconType.Share} size={16}/>
+                    <Text text={'공유'} type={TextType.caption1}/>
                 </S.item>
                 <S.item onClick={() => onClick('copyLink')}>
-                    <Icon type={IconType.Copy} size={12}/>
-                    <Text text={'링크복사'} type={TextType.caption2}/>
+                    <Icon type={IconType.Copy} size={16}/>
+                    <Text text={'링크복사'} type={TextType.caption1}/>
                 </S.item>
                 <S.item onClick={() => onClick('editLink')}>
-                    <Icon type={IconType.Write} size={12}/>
-                    <Text text={'링크 수정'} type={TextType.caption2}/>
+                    <Icon type={IconType.Write} size={16}/>
+                    <Text text={'링크 수정'} type={TextType.caption1}/>
                 </S.item>
                 <S.item onClick={() => onClick('guestComment')}>
-                    <Icon type={IconType.Book} size={12}/>
-                    <Text text={'방문록 확인'} type={TextType.caption2}/>
+                    <Icon type={IconType.Book} size={16}/>
+                    <Text text={'방명록 확인'} type={TextType.caption1}/>
                 </S.item>
                 <S.item onClick={() => onClick('remove')} style={{background: colors.g100}}>
-                    <Icon type={IconType.Trash} size={12}/>
-                    <Text text={'삭제'} type={TextType.caption2}/>
+                    <Icon type={IconType.Trash} size={16}/>
+                    <Text text={'삭제'} type={TextType.caption1}/>
                 </S.item>
             </S.container>
         </S.relativeWrapper>
@@ -71,8 +71,8 @@ const S = {
         display: flex;
         position: absolute;
         flex-direction: column;
-        width: 100px;
-        padding: 10px 0;
+        width: 144px;
+        padding: 8px 0;
         bottom: 120px;
         right: -72px;
         border-radius: 8px;
@@ -85,7 +85,7 @@ const S = {
     item: styled.div`
         display: flex;
         align-items: center;
-        padding: 4px 12px;
+        padding: 6px 16px;
         gap: 8px;
         cursor: pointer;
     `

@@ -14,11 +14,13 @@ import {useNavigate} from "react-router-dom";
 
 interface InvitationCellProps {
     weddingInfo: WeddingInfo;
+    onClickRemove: () => void;
 }
 
 function DashboardInvitationCell(
     {
-        weddingInfo
+        weddingInfo,
+        onClickRemove
     }: InvitationCellProps
 ) {
     const [showPopover, setShowPopover] = useState(false);
@@ -36,6 +38,7 @@ function DashboardInvitationCell(
                 navigate(`guest-comment?url=${weddingInfo.url}`);
                 break;
             case 'remove':
+                onClickRemove();
                 break;
         }
     }

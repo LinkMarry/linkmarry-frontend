@@ -9,11 +9,13 @@ import {TextType} from "@designsystem/foundation/text/textType";
 
 interface RemoveDesignDialogProps {
     dismiss: () => void;
+    confirm: () => void;
 }
 
 function RemoveDesignDialog(
     {
-        dismiss
+        dismiss,
+        confirm
     }: RemoveDesignDialogProps
 ) {
     return (
@@ -22,8 +24,8 @@ function RemoveDesignDialog(
                 <Column gap={46} $alignItems={'center'}>
                     <Text text={'정말 삭제하시겠습니까?'} type={TextType.p1} color={colors.black}/>
                     <Row gap={16}>
-                        <Button text={'취소'} role={'assistive'}/>
-                        <Button text={'삭제'} role={'assistive'}/>
+                        <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
+                        <Button text={'삭제'} role={'assistive'} onClick={confirm}/>
                     </Row>
                 </Column>
             </S.container>

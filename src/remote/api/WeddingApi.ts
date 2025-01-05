@@ -9,6 +9,7 @@ import EditCommentRequest from "@remote/value/request/EditCommentRequest";
 import DeleteCommentRequest from "@remote/value/request/DeleteCommentRequest";
 import WeddingStatistics from "@remote/value/WeddingStatistics";
 import WeddingDto from "@remote/value/WeddingDto";
+import Comment from "@remote/value/Comment";
 
 class WeddingApi {
     private static PATH = 'wedding';
@@ -107,6 +108,16 @@ class WeddingApi {
     async removeComment(req: DeleteCommentRequest): Promise<ResponseVoid> {
         const {data} = await customApi.delete(`${WeddingApi.PATH}/comment`, {
             data: req,
+            shouldAuthorizeRequest: false
+        });
+        return data;
+    }
+
+    /**
+     * 방명록만 불러오기
+     */
+    async getComments(url: string): Promise<ResponseData<Comment[]>> {
+        const {data} = await customApi.get(`${WeddingApi.PATH}/comment/${url}`, {
             shouldAuthorizeRequest: false
         });
         return data;

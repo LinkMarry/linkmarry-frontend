@@ -6,13 +6,14 @@ import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Text from "@designsystem/component/text";
 import makeText, {TextType} from "@designsystem/foundation/text/textType";
-import {dummyComments} from "@remote/value/Comment";
+import Comment, {dummyComments} from "@remote/value/Comment";
+import weddingApi from "@remote/api/WeddingApi";
 
 function InvitationDashboardGuestComment() {
     const [searchParams] = useSearchParams();
     const url = searchParams.get('url');
     const navigate = useNavigate();
-    const [weddingDashboard, setWeddingDashboard] = useState();
+    const [comments, setComments] = useState<Comment[]>();
 
     useEffect(() => {
         if (!url) {
@@ -21,9 +22,8 @@ function InvitationDashboardGuestComment() {
         }
 
         (async () => {
-            // await weddingApi.getWedding(url, {
-            //    
-            // });
+            const {data} = await weddingApi.getComments(url);
+            setComments(data);
         })()
     }, []);
 
@@ -43,13 +43,13 @@ function InvitationDashboardGuestComment() {
                         <S.header.nameCell>작성인</S.header.nameCell>
                         <S.header.messageCell>메세지</S.header.messageCell>
                     </S.header.row>
-                    {dummyComments.map(comment => (
+                    {comments ? comments.map(comment => (
                         <S.body.row>
                             <S.body.dateCell>2024.dummy..</S.body.dateCell>
                             <S.body.nameCell>{comment.name}</S.body.nameCell>
                             <S.body.messageCell>{comment.content}</S.body.messageCell>
                         </S.body.row>
-                    ))}
+                    )) : <div>...</div>}{/* TODO: Shimmer */}
                 </Column>
             </Column>
         </S.container>
