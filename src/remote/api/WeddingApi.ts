@@ -33,7 +33,7 @@ class WeddingApi {
     /**
      * 청첩장 URL 로 불러오기  (수정을 위한)
      */
-    async getWeddingForEditing(url: string): Promise<ResponseData<Wedding>> {
+    async getWedding(url: string): Promise<ResponseData<Wedding>> {
         const {data} = await customApi.get(`${WeddingApi.PATH}/${url}`);
         return data;
     }
@@ -57,7 +57,7 @@ class WeddingApi {
     /**
      * 청첩장 불러오기 (실제 모청 확인)
      */
-    async getWedding(url: string, req: WeddingRequest): Promise<ResponseData<Wedding>> {
+    async getWeddingInvitation(url: string, req: WeddingRequest): Promise<ResponseData<Wedding>> {
         const {data} = await customApi.post(`${WeddingApi.PATH}/${url}`, req, {
             shouldAuthorizeRequest: false
         });

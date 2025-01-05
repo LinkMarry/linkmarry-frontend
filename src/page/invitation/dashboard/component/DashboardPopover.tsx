@@ -8,7 +8,7 @@ import {TextType} from "@designsystem/foundation/text/textType";
 export type DashboardPopoverClickType = 'share' | 'copyLink' | 'editLink' | 'guestComment' | 'remove'
 
 interface DashboardPopoverProps {
-    onClick: (type: DashboardPopoverClickType) => void;
+    onClick: (type: DashboardPopoverClickType) => Promise<void>;
     dismiss: () => void;
 }
 
@@ -41,7 +41,7 @@ function DashboardPopover(
                 </S.item>
                 <S.item onClick={() => onClick('copyLink')}>
                     <Icon type={IconType.Copy} size={16}/>
-                    <Text text={'링크복사'} type={TextType.caption1}/>
+                    <Text text={'링크 복사'} type={TextType.caption1}/>
                 </S.item>
                 <S.item onClick={() => onClick('editLink')}>
                     <Icon type={IconType.Write} size={16}/>

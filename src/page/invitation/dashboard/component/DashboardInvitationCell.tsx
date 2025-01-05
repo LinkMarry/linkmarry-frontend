@@ -10,13 +10,14 @@ import Text from "@designsystem/component/text";
 import WeddingInfo from "@remote/value/WeddingInfo";
 import DashboardPopover, {DashboardPopoverClickType} from "@page/invitation/dashboard/component/DashboardPopover";
 import {useNavigate} from "react-router-dom";
+import weddingApi from "@remote/api/WeddingApi";
 
-export type DashboardInvitationCellClickType = 'remove' | 'edit'; 
+export type DashboardInvitationCellClickType = 'remove' | 'edit';
 
 interface DashboardInvitationCellProps {
     weddingInfo: WeddingInfo;
     onClick: (type: DashboardInvitationCellClickType) => void;
-    
+
 }
 
 function DashboardInvitationCell(
@@ -28,11 +29,33 @@ function DashboardInvitationCell(
     const [showPopover, setShowPopover] = useState(false);
     const navigate = useNavigate();
 
-    const onClickPopover = (type: DashboardPopoverClickType) => {
+    const onClickPopover = async (type: DashboardPopoverClickType) => {
         switch (type) {
             case 'share':
+                if (navigator.canShare()) break;
+                try {
+                    const {data: {baseInfo}} = await weddingApi.getWedding(weddingInfo.url);
+
+                    await navigator.share({
+                        title: `안녕하세요.
+${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩장이 도착하였습니다.
+청첩장을 확인하시려면 아래 링크를 클릭해 주세요.
+따뜻한 축하와 함께 자리를 빛내 주시면 감사하겠습니다. 😊`,
+                        url: `${window.location.origin}/wedding/${weddingInfo.url}`,
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+
                 break;
             case 'copyLink':
+                try {
+                    await navigator.clipboard.writeText(weddingInfo.url);
+                    alert("복사되었습니다. 원하는 곳에 붙여넣기하여 주세요.");
+                } catch (error) {
+                    console.error(error);
+                    prompt("키보드의 ctrl+C 또는 마우스 오른쪽의 복사하기를 이용해주세요.", weddingInfo.url);
+                }
                 break;
             case 'editLink':
                 onClick('edit');
