@@ -14,11 +14,12 @@ function InvitationDashboardGuestComment() {
     const navigate = useNavigate();
     const [weddingDashboard, setWeddingDashboard] = useState();
 
-    if (!url) {
-        navigate(-1);
-    }
-
     useEffect(() => {
+        if (!url) {
+            navigate(-1);
+            return;
+        }
+
         (async () => {
             // await weddingApi.getWedding(url, {
             //    
@@ -29,7 +30,9 @@ function InvitationDashboardGuestComment() {
     return (
         <S.container>
             <Column gap={44} style={{marginLeft: 64, paddingTop: 64, width: 867}} $alignItems={'stretch'}>
-                <Icon type={IconType.ExpandArrow} tint={colors.g400}/>
+                <Icon type={IconType.ExpandArrow} tint={colors.g400} style={{cursor: 'pointer'}} onClick={() => {
+                    navigate('/invitation/dashboard');
+                }}/>
                 <Column>
                     <Text text={'방명록'} type={TextType.h5}/>
                     <Text text={`방명록 ${-1}건`} type={TextType.p3} color={colors.g500}/>

@@ -19,7 +19,7 @@ function InvitationStatistics() {
             setWeddings(data);
         })();
     }, []);
-    
+
     return (
         <S.container>
             <Column gap={44} style={{marginLeft: 64}} flex={1}>
@@ -34,7 +34,7 @@ function InvitationStatistics() {
                                 key={index}
                                 weddingInfo={weddingInfo}
                                 onClick={() => {
-                                    navigate(`detail?url=wow`) // TODO: DUMMY
+                                    navigate(`detail?url=${weddingInfo.url}`);
                                 }}
                             />
                         )

@@ -115,7 +115,7 @@ class WeddingApi {
     /**
      * 청첩장 통계 불러오기
      */
-    async getStatistics(url: string): Promise<WeddingStatistics> {
+    async getStatistics(url: string): Promise<ResponseData<WeddingStatistics>> {
         const {data} = await customApi.get(`${WeddingApi.PATH}/statistics/${url}`);
         return data;
     }
