@@ -65,6 +65,14 @@ class WeddingApi {
     }
 
     /**
+     * 청첩장 삭제
+     */
+    async removeWedding(url: string): Promise<ResponseVoid> {
+        const {data} = await customApi.delete(`${WeddingApi.PATH}/${url}`);
+        return data;
+    }
+
+    /**
      * 기존 청첩장 URL 변경
      */
     async changeWeddingUrl(originUrl: string, newUrl: string): Promise<ResponseVoid> {

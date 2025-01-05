@@ -14,6 +14,7 @@ import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog
 import WeddingDashboard from "@remote/value/WeddingDashboard";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingInfo from "@remote/value/WeddingInfo";
+import {useNavigate} from "react-router-dom";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -22,6 +23,8 @@ function InvitationDashboard() {
 
     const [weddingDashboard, setWeddingDashboard] = useState<WeddingDashboard>();
     const [selectedWeddingInfo, setSelectedWeddingInfo] = useState<WeddingInfo>();
+    
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -31,10 +34,11 @@ function InvitationDashboard() {
     }, []);
 
     const onClickRemoveDashboard = async () => {
+        if (!selectedWeddingInfo) return;
         try {
-            // TODO
-            // await weddingApi.de
-            alert('remove');
+            await weddingApi.removeWedding(selectedWeddingInfo.url);
+            alert('청첩장이 삭제 되었습니다.');
+            navigate(0);
         } catch (error) {
             console.error(error);
         }

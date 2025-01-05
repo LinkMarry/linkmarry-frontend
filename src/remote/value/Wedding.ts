@@ -57,4 +57,7 @@ export default interface Wedding {
 
     // 갤러리
     imgList: string[];
+
+    // 워터마크 제거 여부
+    waterMark: boolean;
 }
