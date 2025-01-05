@@ -21,7 +21,7 @@ function OptionSegmentedButton(
     return (
         <Row gap={8} {...props}>
             {items.map((item, index) => (
-                <S.segmentedButton onClick={() => {
+                <S.segmentedButton key={index} onClick={() => {
                     onClickItem(index);
                 }} selected={index === selectedIndex}>{item}</S.segmentedButton>
             ))}

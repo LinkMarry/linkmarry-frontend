@@ -113,21 +113,20 @@ function MoneyInfoOption(
                                     <OptionTextField ref={groomBankNameRef} width={128} placeholder={'은행'}/>
                                 </Row>
                                 <OptionTextField ref={groomBankNumberRef} width={264} placeholder={'계좌번호'}/>
-                                {kakaoStatus && (
-                                    <OptionTextField
-                                        ref={groomKakaoUrlRef}
-                                        width={264}
-                                        placeholder={'카카오페이 송금 링크'}
-                                        leadingContent={
-                                            <img
-                                                width={20}
-                                                height={20}
-                                                src={'/kakao.svg'}
-                                                alt={'kakao logo'}
-                                            />
-                                        }
-                                    />
-                                )}
+                                <OptionTextField
+                                    ref={groomKakaoUrlRef}
+                                    width={264}
+                                    placeholder={'카카오페이 송금 링크'}
+                                    leadingContent={
+                                        <img
+                                            width={20}
+                                            height={20}
+                                            src={'/kakao.svg'}
+                                            alt={'kakao logo'}
+                                        />
+                                    }
+                                    style={{display: kakaoStatus ? undefined : 'none'}}
+                                />
                             </Column>
                         </Row>
                         <Row gap={12}>
@@ -138,21 +137,20 @@ function MoneyInfoOption(
                                     <OptionTextField ref={groomFatherBankNameRef} width={128} placeholder={'은행'}/>
                                 </Row>
                                 <OptionTextField ref={groomFatherBankNumberRef} width={264} placeholder={'계좌번호'}/>
-                                {kakaoStatus && (
-                                    <OptionTextField
-                                        ref={groomFatherKakaoUrlRef}
-                                        placeholder={'카카오페이 송금 링크'}
-                                        width={264}
-                                        leadingContent={
-                                            <img
-                                                width={20}
-                                                height={20}
-                                                src={'/kakao.svg'}
-                                                alt={'kakao logo'}
-                                            />
-                                        }
-                                    />
-                                )}
+                                <OptionTextField
+                                    ref={groomFatherKakaoUrlRef}
+                                    placeholder={'카카오페이 송금 링크'}
+                                    width={264}
+                                    leadingContent={
+                                        <img
+                                            width={20}
+                                            height={20}
+                                            src={'/kakao.svg'}
+                                            alt={'kakao logo'}
+                                        />
+                                    }
+                                    style={{display: kakaoStatus ? undefined : 'none'}}
+                                />
                             </Column>
                         </Row>
                         <Row gap={12}>
@@ -163,21 +161,20 @@ function MoneyInfoOption(
                                     <OptionTextField ref={groomMotherBankNameRef} width={128} placeholder={'은행'}/>
                                 </Row>
                                 <OptionTextField ref={groomMotherBankNumberRef} width={264} placeholder={'계좌번호'}/>
-                                {kakaoStatus && (
-                                    <OptionTextField
-                                        ref={groomMotherKakaoUrlRef}
-                                        placeholder={'카카오페이 송금 링크'}
-                                        width={264}
-                                        leadingContent={
-                                            <img
-                                                width={20}
-                                                height={20}
-                                                src={'/kakao.svg'}
-                                                alt={'kakao logo'}
-                                            />
-                                        }
-                                    />
-                                )}
+                                <OptionTextField
+                                    ref={groomMotherKakaoUrlRef}
+                                    placeholder={'카카오페이 송금 링크'}
+                                    width={264}
+                                    leadingContent={
+                                        <img
+                                            width={20}
+                                            height={20}
+                                            src={'/kakao.svg'}
+                                            alt={'kakao logo'}
+                                        />
+                                    }
+                                    style={{display: kakaoStatus ? undefined : 'none'}}
+                                />
                             </Column>
                         </Row>
                     </Column>
@@ -191,21 +188,20 @@ function MoneyInfoOption(
                                     <OptionTextField ref={brideBankNameRef} width={128} placeholder={'은행'}/>
                                 </Row>
                                 <OptionTextField ref={brideBankNumberRef} width={264} placeholder={'계좌번호'}/>
-                                {kakaoStatus && (
-                                    <OptionTextField
-                                        ref={brideKakaoUrlRef}
-                                        placeholder={'카카오페이 송금 링크'}
-                                        width={264}
-                                        leadingContent={
-                                            <img
-                                                width={20}
-                                                height={20}
-                                                src={'/kakao.svg'}
-                                                alt={'kakao logo'}
-                                            />
-                                        }
-                                    />
-                                )}
+                                <OptionTextField
+                                    ref={brideKakaoUrlRef}
+                                    placeholder={'카카오페이 송금 링크'}
+                                    width={264}
+                                    leadingContent={
+                                        <img
+                                            width={20}
+                                            height={20}
+                                            src={'/kakao.svg'}
+                                            alt={'kakao logo'}
+                                        />
+                                    }
+                                    style={{display: kakaoStatus ? undefined : 'none'}}
+                                />
                             </Column>
                         </Row>
                         <Row gap={12}>
@@ -216,21 +212,20 @@ function MoneyInfoOption(
                                     <OptionTextField ref={brideFatherBankNameRef} width={128} placeholder={'은행'}/>
                                 </Row>
                                 <OptionTextField ref={brideFatherBankNumberRef} width={264} placeholder={'계좌번호'}/>
-                                {kakaoStatus && (
-                                    <OptionTextField
-                                        ref={brideFatherKakaoUrlRef}
-                                        placeholder={'카카오페이 송금 링크'}
-                                        width={264}
-                                        leadingContent={
-                                            <img
-                                                width={20}
-                                                height={20}
-                                                src={'/kakao.svg'}
-                                                alt={'kakao logo'}
-                                            />
-                                        }
-                                    />
-                                )}
+                                <OptionTextField
+                                    ref={brideFatherKakaoUrlRef}
+                                    placeholder={'카카오페이 송금 링크'}
+                                    width={264}
+                                    leadingContent={
+                                        <img
+                                            width={20}
+                                            height={20}
+                                            src={'/kakao.svg'}
+                                            alt={'kakao logo'}
+                                        />
+                                    }
+                                    style={{display: kakaoStatus ? undefined : 'none'}}
+                                />
                             </Column>
                         </Row>
                         <Row gap={12}>
@@ -240,22 +235,21 @@ function MoneyInfoOption(
                                     <OptionTextField ref={brideMotherNameMoneyInfoRef} width={128} placeholder={'예금주'}/>
                                     <OptionTextField ref={brideMotherBankNameRef} width={128} placeholder={'은행'}/>
                                 </Row>
-                                <OptionTextField width={264} placeholder={'계좌번호'}/>
-                                {kakaoStatus && (
-                                    <OptionTextField
-                                        ref={brideMotherKakaoUrlRef}
-                                        placeholder={'카카오페이 송금 링크'}
-                                        width={264}
-                                        leadingContent={
-                                            <img
-                                                width={20}
-                                                height={20}
-                                                src={'/kakao.svg'}
-                                                alt={'kakao logo'}
-                                            />
-                                        }
-                                    />
-                                )}
+                                <OptionTextField ref={brideMotherBankNumberRef} width={264} placeholder={'계좌번호'}/>
+                                <OptionTextField
+                                    ref={brideMotherKakaoUrlRef}
+                                    placeholder={'카카오페이 송금 링크'}
+                                    width={264}
+                                    leadingContent={
+                                        <img
+                                            width={20}
+                                            height={20}
+                                            src={'/kakao.svg'}
+                                            alt={'kakao logo'}
+                                        />
+                                    }
+                                    style={{display: kakaoStatus ? undefined : 'none'}}
+                                />
                             </Column>
                         </Row>
                     </Column>

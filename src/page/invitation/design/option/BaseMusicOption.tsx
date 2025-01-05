@@ -37,8 +37,8 @@ function BaseMusicOption(
         switch (selectModes[selectedSelectMode]) {
             case 'select':
                 return <Column gap={16}>
-                    {['Wedding opening', 'Wow', 'Hello World'].map(music => (
-                        <Row gap={16} $alignItems={'center'}>
+                    {['Wedding opening', 'Wow', 'Hello World'].map((music, index) => (
+                        <Row key={index} gap={16} $alignItems={'center'}>
                             <Checkbox rounded={true} label={music}/>
                             <Icon style={{
                                 cursor: 'pointer',

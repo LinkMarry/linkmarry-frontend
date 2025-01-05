@@ -26,6 +26,7 @@ import Button from "@designsystem/component/button";
 import TemplateOption from "@page/invitation/design/option/TemplateOption";
 import weddingApi from "@remote/api/WeddingApi";
 import Design from "@remote/enumeration/Design";
+import {isAnyEmpty} from "@util/string.util";
 
 function InvitationDesign() {
     // BaseInfoOption refs
@@ -137,115 +138,136 @@ function InvitationDesign() {
 
     const saveDesign = async () => {
         // validation
-        const groomName = groomNameRef.current?.value;
-        const groomFatherName = groomFatherNameRef.current?.value;
-        const groomFatherStatus = groomFatherStatusRef.current?.value;
-        const groomMotherName = groomMotherNameRef.current?.value;
-        const groomMotherStatus = groomMotherStatusRef.current?.value;
-        const groomFamilyName = groomFamilyNameRef.current?.value;
-        const brideName = brideNameRef.current?.value;
-        const brideFatherName = brideFatherNameRef.current?.value;
-        const brideFatherStatus = brideFatherStatusRef.current?.value;
-        const brideMotherName = brideMotherNameRef.current?.value;
-        const brideMotherStatus = brideMotherStatusRef.current?.value;
-        const brideFamilyName = brideFamilyNameRef.current?.value;
-        const statusFlower = statusFlowerRef.current?.value;
-        const brideMarkFirst = brideMarkFirstRef.current?.value;
-        if (
-            !groomName || !groomFatherName || !groomFatherStatus || !groomMotherName || !groomMotherStatus || !groomFamilyName ||
-            !brideName || !brideFatherName || !brideFatherStatus || !brideMotherName || !brideMotherStatus || !brideFamilyName ||
-            !statusFlower || !brideMarkFirst
-        ) return;
+        const groomName = groomNameRef.current!!.value;
+        const groomFatherName = groomFatherNameRef.current!!.value;
+        const groomFatherStatus = groomFatherStatusRef.current!!.value;
+        const groomMotherName = groomMotherNameRef.current!!.value;
+        const groomMotherStatus = groomMotherStatusRef.current!!.value;
+        const groomFamilyName = groomFamilyNameRef.current!!.value;
+        const brideName = brideNameRef.current!!.value;
+        const brideFatherName = brideFatherNameRef.current!!.value;
+        const brideFatherStatus = brideFatherStatusRef.current!!.value;
+        const brideMotherName = brideMotherNameRef.current!!.value;
+        const brideMotherStatus = brideMotherStatusRef.current!!.value;
+        const brideFamilyName = brideFamilyNameRef.current!!.value;
+        const statusFlower = statusFlowerRef.current!!.value;
+        const brideMarkFirst = brideMarkFirstRef.current!!.value;
+        if (isAnyEmpty(groomName, groomFatherName, groomMotherName, groomFamilyName, brideName, brideFatherName, brideMotherName, brideFamilyName)) {
+            alert('기본 정보를 입력해 주세요');
+            return;
+        }
 
-        const weddingDate = weddingDateRef.current?.value;
-        const weddingTime = weddingTimeRef.current?.value;
-        const calendar = calendarRef.current?.value;
-        const dDay = dDayRef.current?.value;
-        if (!weddingDate || !weddingTime || !calendar || !dDay) return;
+        const weddingDate = weddingDateRef.current!!.value;
+        const weddingTime = weddingTimeRef.current!!.value;
+        const calendar = calendarRef.current!!.value;
+        const dDay = dDayRef.current!!.value;
+        if (isAnyEmpty(weddingDate, weddingTime)) {
+            alert('예식 일시를 입력해 주세요');
+            return;
+        }
 
-        const greetingTitle = greetingTitleRef.current?.value;
-        const greetingContent = greetingContentRef.current?.value;
-        if (!greetingTitle || !greetingContent) return;
+        const greetingTitle = greetingTitleRef.current!!.value;
+        const greetingContent = greetingContentRef.current!!.value;
+        if (isAnyEmpty(greetingTitle, greetingContent)) {
+            alert('인사말을 입력해 주세요');
+            return;
+        }
 
-        const guestCommentTitle = guestCommentTitleRef.current?.value;
-        const guestCommentContent = guestCommentContentRef.current?.value;
-        const guestCommentDesign = guestCommentDesignRef.current?.value;
-        const guestCommentPrivateContent = guestCommentPrivateContentRef.current?.value;
-        const guestCommentPrivateDate = guestCommentPrivateDateRef.current?.value;
-        if (!guestCommentTitle || !guestCommentContent || !guestCommentDesign || !guestCommentPrivateContent || !guestCommentPrivateDate) return;
+        const guestCommentTitle = guestCommentTitleRef.current!!.value;
+        const guestCommentContent = guestCommentContentRef.current!!.value;
+        const guestCommentDesign = guestCommentDesignRef.current!!.value;
+        const guestCommentPrivateContent = guestCommentPrivateContentRef.current!!.value!!;
+        const guestCommentPrivateDate = guestCommentPrivateDateRef.current!!.value!!;
+        if (isAnyEmpty(guestCommentTitle, guestCommentContent, guestCommentDesign)) {
+            alert('방명록을 입력해 주세요');
+            return;
+        }
 
-        const effect = effectRef.current?.value;
-        if (!effect) return;
+        const effect = effectRef.current!!.value!!;
 
-        const infoTitle = infoTitleRef.current?.value;
-        const infoContent = infoContentRef.current?.value;
-        const kakaoStatus = kakaoStatusRef.current?.value;
-        const groomNameMoneyInfo = groomNameMoneyInfoRef.current?.value;
-        const groomBankName = groomBankNameRef.current?.value;
-        const groomBankNumber = groomBankNumberRef.current?.value;
-        const groomKakaoUrl = groomKakaoUrlRef.current?.value;
-        const groomFatherNameMoneyInfo = groomFatherNameMoneyInfoRef.current?.value;
-        const groomFatherBankName = groomFatherBankNameRef.current?.value;
-        const groomFatherBankNumber = groomFatherBankNumberRef.current?.value;
-        const groomFatherKakaoUrl = groomFatherKakaoUrlRef.current?.value;
-        const groomMotherNameMoneyInfo = groomMotherNameMoneyInfoRef.current?.value;
-        const groomMotherBankName = groomMotherBankNameRef.current?.value;
-        const groomMotherBankNumber = groomMotherBankNumberRef.current?.value;
-        const groomMotherKakaoUrl = groomMotherKakaoUrlRef.current?.value;
-        const brideNameMoneyInfo = brideNameMoneyInfoRef.current?.value;
-        const brideBankName = brideBankNameRef.current?.value;
-        const brideBankNumber = brideBankNumberRef.current?.value;
-        const brideKakaoUrl = brideKakaoUrlRef.current?.value;
-        const brideFatherNameMoneyInfo = brideFatherNameMoneyInfoRef.current?.value;
-        const brideFatherBankName = brideFatherBankNameRef.current?.value;
-        const brideFatherBankNumber = brideFatherBankNumberRef.current?.value;
-        const brideFatherKakaoUrl = brideFatherKakaoUrlRef.current?.value;
-        const brideMotherNameMoneyInfo = brideMotherNameMoneyInfoRef.current?.value;
-        const brideMotherBankName = brideMotherBankNameRef.current?.value;
-        const brideMotherBankNumber = brideMotherBankNumberRef.current?.value;
-        const brideMotherKakaoUrl = brideMotherKakaoUrlRef.current?.value;
+        const infoTitle = infoTitleRef.current!!.value;
+        const infoContent = infoContentRef.current!!.value;
+        const kakaoStatus = kakaoStatusRef.current!!.value;
+        const groomNameMoneyInfo = groomNameMoneyInfoRef.current!!.value;
+        const groomBankName = groomBankNameRef.current!!.value;
+        const groomBankNumber = groomBankNumberRef.current!!.value;
+        const groomKakaoUrl = groomKakaoUrlRef.current!!.value;
+        const groomFatherNameMoneyInfo = groomFatherNameMoneyInfoRef.current!!.value;
+        const groomFatherBankName = groomFatherBankNameRef.current!!.value;
+        const groomFatherBankNumber = groomFatherBankNumberRef.current!!.value;
+        const groomFatherKakaoUrl = groomFatherKakaoUrlRef.current!!.value;
+        const groomMotherNameMoneyInfo = groomMotherNameMoneyInfoRef.current!!.value;
+        const groomMotherBankName = groomMotherBankNameRef.current!!.value;
+        const groomMotherBankNumber = groomMotherBankNumberRef.current!!.value;
+        const groomMotherKakaoUrl = groomMotherKakaoUrlRef.current!!.value;
+        const brideNameMoneyInfo = brideNameMoneyInfoRef.current!!.value;
+        const brideBankName = brideBankNameRef.current!!.value;
+        const brideBankNumber = brideBankNumberRef.current!!.value;
+        const brideKakaoUrl = brideKakaoUrlRef.current!!.value;
+        const brideFatherNameMoneyInfo = brideFatherNameMoneyInfoRef.current!!.value;
+        const brideFatherBankName = brideFatherBankNameRef.current!!.value;
+        const brideFatherBankNumber = brideFatherBankNumberRef.current!!.value;
+        const brideFatherKakaoUrl = brideFatherKakaoUrlRef.current!!.value;
+        const brideMotherNameMoneyInfo = brideMotherNameMoneyInfoRef.current!!.value;
+        const brideMotherBankName = brideMotherBankNameRef.current!!.value;
+        const brideMotherBankNumber = brideMotherBankNumberRef.current!!.value;
+        const brideMotherKakaoUrl = brideMotherKakaoUrlRef.current!!.value;
 
-        if (
-            !infoTitle || !infoContent || !kakaoStatus ||
-            !groomNameMoneyInfo || !groomBankName || !groomBankNumber || !groomKakaoUrl || !groomFatherNameMoneyInfo || !groomFatherBankName || !groomFatherBankNumber || !groomFatherKakaoUrl || !groomMotherNameMoneyInfo || !groomMotherBankName || !groomMotherBankNumber || !groomMotherKakaoUrl ||
-            !brideNameMoneyInfo || !brideBankName || !brideBankNumber || !brideKakaoUrl || !brideFatherNameMoneyInfo || !brideFatherBankName || !brideFatherBankNumber || !brideFatherKakaoUrl || !brideMotherNameMoneyInfo || !brideMotherBankName || !brideMotherBankNumber || !brideMotherKakaoUrl
-        ) return;
+        if (isAnyEmpty(
+            infoTitle, infoContent,
+            groomNameMoneyInfo, groomBankName, groomBankNumber, groomFatherNameMoneyInfo, groomFatherBankName, groomFatherBankNumber, groomMotherNameMoneyInfo, groomMotherBankName, groomMotherBankNumber,
+            brideNameMoneyInfo, brideBankName, brideBankNumber, brideFatherNameMoneyInfo, brideFatherBankName, brideFatherBankNumber, brideMotherNameMoneyInfo, brideMotherBankName, brideMotherBankNumber
+        )) {
+            alert('축의금을 입력해 주세요');
+            return;
+        }
 
-        const videoTitle = videoTitleRef.current?.value;
-        const videoUrl = videoUrlRef.current?.value;
-        if (!videoTitle || !videoUrl) return;
+        const videoTitle = videoTitleRef.current!!.value;
+        const videoUrl = videoUrlRef.current!!.value;
+        if (isAnyEmpty(videoTitle, videoUrl)) {
+            alert('동영상을 입력해 주세요');
+            return;
+        }
 
-        const groomTel = groomTelRef.current?.value;
-        const groomFatherTel = groomFatherTelRef.current?.value;
-        const groomMotherTel = groomMotherTelRef.current?.value;
-        const brideTel = brideTelRef.current?.value;
-        const brideFatherTel = brideFatherTelRef.current?.value;
-        const brideMotherTel = brideMotherTelRef.current?.value;
-        if (
-            !groomTel || !groomFatherTel || !groomMotherTel ||
-            !brideTel || !brideFatherTel || !brideMotherTel
-        ) return;
+        const groomTel = groomTelRef.current!!.value;
+        const groomFatherTel = groomFatherTelRef.current!!.value;
+        const groomMotherTel = groomMotherTelRef.current!!.value;
+        const brideTel = brideTelRef.current!!.value;
+        const brideFatherTel = brideFatherTelRef.current!!.value;
+        const brideMotherTel = brideMotherTelRef.current!!.value;
+        if (isAnyEmpty(
+            groomTel, groomFatherTel, groomMotherTel,
+            brideTel, brideFatherTel, brideMotherTel
+        )) {
+            alert('연락처를 입력해 주세요');
+            return;
+        }
 
-        const rsvpTitle = rsvpTitleRef.current?.value;
-        const rsvpContent = rsvpContentRef.current?.value;
-        const attendStatus = attendStatusRef.current?.value;
-        const attendMealStatus = attendMealStatusRef.current?.value;
-        const attendGuestCntStatus = attendGuestCntStatusRef.current?.value;
-        const attendPhoneStatus = attendPhoneStatusRef.current?.value;
-        const attendEtcStatus = attendEtcStatusRef.current?.value;
-        const startPopupStatus = startPopupStatusRef.current?.value;
-        const startPopupMessage = startPopupMessageRef.current?.value;
+        const rsvpTitle = rsvpTitleRef.current!!.value;
+        const rsvpContent = rsvpContentRef.current!!.value;
+        // const attendStatus = attendStatusRef.current!!.value;
+        const attendMealStatus = attendMealStatusRef.current!!.value;
+        const attendGuestCntStatus = attendGuestCntStatusRef.current!!.value;
+        const attendPhoneStatus = attendPhoneStatusRef.current!!.value;
+        const attendEtcStatus = attendEtcStatusRef.current!!.value;
+        const startPopupStatus = startPopupStatusRef.current!!.value;
+        const startPopupMessage = startPopupMessageRef.current!!.value;
 
-        if (
-            !rsvpTitle || !rsvpContent ||
-            !attendStatus || !attendMealStatus || !attendGuestCntStatus || !attendPhoneStatus || !attendEtcStatus ||
-            !startPopupStatus || !startPopupMessage
-        ) return;
+        if (isAnyEmpty(rsvpTitle, rsvpContent, startPopupMessage)) {
+            alert('참석의사를 입력해 주세요');
+            return;
+        }
 
         // Request
         await weddingApi.createWedding({
             url: 'test',
             position: [],
+            template: {
+                templateName: '',
+                templateColor: '',
+                templateFont: '',
+                templateFontSize: '',
+            },
             baseInfo: {
                 groomName,
                 groomFatherName,
@@ -346,7 +368,7 @@ function InvitationDesign() {
             rsvp: {
                 rsvpTitle,
                 rsvpContent,
-                attendStatus,
+                attendStatus: true,
                 attendMealStatus,
                 attendGuestCntStatus,
                 attendPhoneStatus,

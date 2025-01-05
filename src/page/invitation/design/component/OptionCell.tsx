@@ -54,7 +54,11 @@ function OptionCell(
                     <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
                 </div>
             </S.titleWrapper>
-            {opened && children}
+            <div style={{
+                display: opened ? undefined : 'none'
+            }}>
+                {children}
+            </div>
         </S.container>
     );
 }

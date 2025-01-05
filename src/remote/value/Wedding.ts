@@ -9,10 +9,12 @@ import Video from "@remote/value/Video";
 import Phone from "@remote/value/Phone";
 import Rsvp from "@remote/value/Rsvp";
 import GuestComment from "@remote/value/GuestComment";
+import Template from "@remote/value/Template";
 
 export default interface Wedding {
-    url: string; // URL 값
+    url?: string; // URL 값
     position: number[] // 아래 내용 위치
+    template: Template;
     baseInfo: BaseInfo; // 기본 정보
     weddingSchedule: WeddingSchedule; // 예식 일시
     weddingPlace: WeddingPlace; // 예식 장소
