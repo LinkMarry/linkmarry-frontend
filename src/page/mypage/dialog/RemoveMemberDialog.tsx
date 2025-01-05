@@ -6,16 +6,32 @@ import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import {TextType} from "@designsystem/foundation/text/textType";
 import Button from "@designsystem/component/button";
+import memberApi from "@remote/api/MemberApi";
+import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 
-interface CancelMemberDialogProps {
+interface RemoveMemberDialogProps {
     dismiss: () => void;
 }
 
-function CancelMemberDialog(
+function RemoveMemberDialog(
     {
         dismiss
-    }: CancelMemberDialogProps
+    }: RemoveMemberDialogProps
 ) {
+    const navigate = useNavigate();
+    
+    const onClickConfirm = async () => {
+        try {
+            await memberApi.removeMember();
+            
+            Cookies.remove('accessToken');
+            Cookies.remove('refreshToken');
+            navigate('/');
+        } catch (e) {
+        }
+    }
+    
     return (
         <BaseDialog dismiss={dismiss}>
             <S.container>
@@ -23,9 +39,7 @@ function CancelMemberDialog(
                     <Text text={'정말 탈퇴하시겠습니까?'} type={TextType.p1}/>
                     <Row gap={16}>
                         <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
-                        <Button text={'확인'} role={'assistive'} onClick={() => {
-                            // TODO: 회원탈퇴 로직
-                        }}/>
+                        <Button text={'확인'} role={'assistive'} onClick={onClickConfirm}/>
                     </Row>
                 </Column>
             </S.container>
@@ -44,4 +58,4 @@ const S = {
     `
 }
 
-export default CancelMemberDialog;
+export default RemoveMemberDialog;

@@ -31,6 +31,14 @@ class MemberApi {
         const {data} = await customApi.patch(`${MemberApi.PATH}/edit`, req);
         return data;
     }
+
+    /**
+     * 멤버 탈퇴(삭제)
+     */
+    async removeMember(): Promise<ResponseVoid> {
+        const {data} = await customApi.delete(`${MemberApi.PATH}/remove`);
+        return data;
+    }
 }
 
 const memberApi = new MemberApi();

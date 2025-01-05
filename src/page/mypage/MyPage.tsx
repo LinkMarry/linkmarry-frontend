@@ -10,13 +10,13 @@ import Button from "@designsystem/component/button";
 import Spacer from "@designsystem/component/spacer";
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
-import CancelMemberDialog from "@page/mypage/dialog/CancelMemberDialog";
+import RemoveMemberDialog from "@page/mypage/dialog/RemoveMemberDialog";
 import InfoMember from "@remote/value/InfoMember";
 import memberApi from "@remote/api/MemberApi";
 
 function MyPage() {
     const [member, setMember] = useState<InfoMember>();
-    const [showCancelMemberDialog, setShowCancelMemberDialog] = useState(false);
+    const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -44,7 +44,7 @@ function MyPage() {
                           }}/>
                     <Text text={'회원탈퇴'} type={TextType.p2} color={'#D65745'} style={{cursor: 'pointer'}}
                           onClick={() => {
-                              setShowCancelMemberDialog(true);
+                              setShowRemoveMemberDialog(true);
                           }}/>
                 </S.sideBar.container>
                 <S.baseInfo.container>
@@ -84,8 +84,8 @@ function MyPage() {
                     )}
                 </S.baseInfo.container>
             </S.container>
-            {showCancelMemberDialog && (
-                <CancelMemberDialog dismiss={() => setShowCancelMemberDialog(false)}/>
+            {showRemoveMemberDialog && (
+                <RemoveMemberDialog dismiss={() => setShowRemoveMemberDialog(false)}/>
             )}
         </HasHeader>
     );

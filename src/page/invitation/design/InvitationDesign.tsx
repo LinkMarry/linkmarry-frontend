@@ -24,6 +24,8 @@ import colors from "@designsystem/foundation/colors";
 import Spacer from "@designsystem/component/spacer";
 import Button from "@designsystem/component/button";
 import TemplateOption from "@page/invitation/design/option/TemplateOption";
+import weddingApi from "@remote/api/WeddingApi";
+import Design from "@remote/enumeration/Design";
 
 function InvitationDesign() {
     // BaseInfoOption refs
@@ -60,11 +62,11 @@ function InvitationDesign() {
         = useRef<HTMLTextAreaElement>(null);
 
     // GuestComment refs
-    const titleRef = useRef<HTMLInputElement>(null);
-    const contentRef = useRef<HTMLInputElement>(null);
-    const designRef = useRef<HTMLInputElement>(null);
-    const privateContentRef = useRef<CheckboxRef>(null);
-    const privateDateRef = useRef<CheckboxRef>(null);
+    const guestCommentTitleRef = useRef<HTMLInputElement>(null);
+    const guestCommentContentRef = useRef<HTMLInputElement>(null);
+    const guestCommentDesignRef = useRef<HTMLInputElement>(null);
+    const guestCommentPrivateContentRef = useRef<CheckboxRef>(null);
+    const guestCommentPrivateDateRef = useRef<CheckboxRef>(null);
 
     // BaseMusic refs
     const effectRef = useRef<CheckboxRef>(null);
@@ -133,6 +135,229 @@ function InvitationDesign() {
         setItems(reorderedItems);
     };
 
+    const saveDesign = async () => {
+        // validation
+        const groomName = groomNameRef.current?.value;
+        const groomFatherName = groomFatherNameRef.current?.value;
+        const groomFatherStatus = groomFatherStatusRef.current?.value;
+        const groomMotherName = groomMotherNameRef.current?.value;
+        const groomMotherStatus = groomMotherStatusRef.current?.value;
+        const groomFamilyName = groomFamilyNameRef.current?.value;
+        const brideName = brideNameRef.current?.value;
+        const brideFatherName = brideFatherNameRef.current?.value;
+        const brideFatherStatus = brideFatherStatusRef.current?.value;
+        const brideMotherName = brideMotherNameRef.current?.value;
+        const brideMotherStatus = brideMotherStatusRef.current?.value;
+        const brideFamilyName = brideFamilyNameRef.current?.value;
+        const statusFlower = statusFlowerRef.current?.value;
+        const brideMarkFirst = brideMarkFirstRef.current?.value;
+        if (
+            !groomName || !groomFatherName || !groomFatherStatus || !groomMotherName || !groomMotherStatus || !groomFamilyName ||
+            !brideName || !brideFatherName || !brideFatherStatus || !brideMotherName || !brideMotherStatus || !brideFamilyName ||
+            !statusFlower || !brideMarkFirst
+        ) return;
+
+        const weddingDate = weddingDateRef.current?.value;
+        const weddingTime = weddingTimeRef.current?.value;
+        const calendar = calendarRef.current?.value;
+        const dDay = dDayRef.current?.value;
+        if (!weddingDate || !weddingTime || !calendar || !dDay) return;
+
+        const greetingTitle = greetingTitleRef.current?.value;
+        const greetingContent = greetingContentRef.current?.value;
+        if (!greetingTitle || !greetingContent) return;
+
+        const guestCommentTitle = guestCommentTitleRef.current?.value;
+        const guestCommentContent = guestCommentContentRef.current?.value;
+        const guestCommentDesign = guestCommentDesignRef.current?.value;
+        const guestCommentPrivateContent = guestCommentPrivateContentRef.current?.value;
+        const guestCommentPrivateDate = guestCommentPrivateDateRef.current?.value;
+        if (!guestCommentTitle || !guestCommentContent || !guestCommentDesign || !guestCommentPrivateContent || !guestCommentPrivateDate) return;
+
+        const effect = effectRef.current?.value;
+        if (!effect) return;
+
+        const infoTitle = infoTitleRef.current?.value;
+        const infoContent = infoContentRef.current?.value;
+        const kakaoStatus = kakaoStatusRef.current?.value;
+        const groomNameMoneyInfo = groomNameMoneyInfoRef.current?.value;
+        const groomBankName = groomBankNameRef.current?.value;
+        const groomBankNumber = groomBankNumberRef.current?.value;
+        const groomKakaoUrl = groomKakaoUrlRef.current?.value;
+        const groomFatherNameMoneyInfo = groomFatherNameMoneyInfoRef.current?.value;
+        const groomFatherBankName = groomFatherBankNameRef.current?.value;
+        const groomFatherBankNumber = groomFatherBankNumberRef.current?.value;
+        const groomFatherKakaoUrl = groomFatherKakaoUrlRef.current?.value;
+        const groomMotherNameMoneyInfo = groomMotherNameMoneyInfoRef.current?.value;
+        const groomMotherBankName = groomMotherBankNameRef.current?.value;
+        const groomMotherBankNumber = groomMotherBankNumberRef.current?.value;
+        const groomMotherKakaoUrl = groomMotherKakaoUrlRef.current?.value;
+        const brideNameMoneyInfo = brideNameMoneyInfoRef.current?.value;
+        const brideBankName = brideBankNameRef.current?.value;
+        const brideBankNumber = brideBankNumberRef.current?.value;
+        const brideKakaoUrl = brideKakaoUrlRef.current?.value;
+        const brideFatherNameMoneyInfo = brideFatherNameMoneyInfoRef.current?.value;
+        const brideFatherBankName = brideFatherBankNameRef.current?.value;
+        const brideFatherBankNumber = brideFatherBankNumberRef.current?.value;
+        const brideFatherKakaoUrl = brideFatherKakaoUrlRef.current?.value;
+        const brideMotherNameMoneyInfo = brideMotherNameMoneyInfoRef.current?.value;
+        const brideMotherBankName = brideMotherBankNameRef.current?.value;
+        const brideMotherBankNumber = brideMotherBankNumberRef.current?.value;
+        const brideMotherKakaoUrl = brideMotherKakaoUrlRef.current?.value;
+
+        if (
+            !infoTitle || !infoContent || !kakaoStatus ||
+            !groomNameMoneyInfo || !groomBankName || !groomBankNumber || !groomKakaoUrl || !groomFatherNameMoneyInfo || !groomFatherBankName || !groomFatherBankNumber || !groomFatherKakaoUrl || !groomMotherNameMoneyInfo || !groomMotherBankName || !groomMotherBankNumber || !groomMotherKakaoUrl ||
+            !brideNameMoneyInfo || !brideBankName || !brideBankNumber || !brideKakaoUrl || !brideFatherNameMoneyInfo || !brideFatherBankName || !brideFatherBankNumber || !brideFatherKakaoUrl || !brideMotherNameMoneyInfo || !brideMotherBankName || !brideMotherBankNumber || !brideMotherKakaoUrl
+        ) return;
+
+        const videoTitle = videoTitleRef.current?.value;
+        const videoUrl = videoUrlRef.current?.value;
+        if (!videoTitle || !videoUrl) return;
+
+        const groomTel = groomTelRef.current?.value;
+        const groomFatherTel = groomFatherTelRef.current?.value;
+        const groomMotherTel = groomMotherTelRef.current?.value;
+        const brideTel = brideTelRef.current?.value;
+        const brideFatherTel = brideFatherTelRef.current?.value;
+        const brideMotherTel = brideMotherTelRef.current?.value;
+        if (
+            !groomTel || !groomFatherTel || !groomMotherTel ||
+            !brideTel || !brideFatherTel || !brideMotherTel
+        ) return;
+
+        const rsvpTitle = rsvpTitleRef.current?.value;
+        const rsvpContent = rsvpContentRef.current?.value;
+        const attendStatus = attendStatusRef.current?.value;
+        const attendMealStatus = attendMealStatusRef.current?.value;
+        const attendGuestCntStatus = attendGuestCntStatusRef.current?.value;
+        const attendPhoneStatus = attendPhoneStatusRef.current?.value;
+        const attendEtcStatus = attendEtcStatusRef.current?.value;
+        const startPopupStatus = startPopupStatusRef.current?.value;
+        const startPopupMessage = startPopupMessageRef.current?.value;
+
+        if (
+            !rsvpTitle || !rsvpContent ||
+            !attendStatus || !attendMealStatus || !attendGuestCntStatus || !attendPhoneStatus || !attendEtcStatus ||
+            !startPopupStatus || !startPopupMessage
+        ) return;
+
+        // Request
+        await weddingApi.createWedding({
+            url: 'test',
+            position: [],
+            baseInfo: {
+                groomName,
+                groomFatherName,
+                groomFatherStatus,
+                groomMotherName,
+                groomMotherStatus,
+                groomFamilyName,
+                brideName,
+                brideFatherName,
+                brideFatherStatus,
+                brideMotherName,
+                brideMotherStatus,
+                brideFamilyName,
+                statusFlower,
+                brideMarkFirst,
+            },
+            weddingSchedule: {
+                weddingDate,
+                weddingTime,
+                calendar,
+                dDay
+            },
+            weddingPlace: {
+                x: 0,
+                y: 0,
+                placeUrl: '',
+                placeName: '',
+                addressName: '',
+                floorHall: '',
+                placeTel: '',
+                placeTransportation: '',
+                placeStatus: false,
+            },
+            greeting: {
+                greetingTitle,
+                greetingContent
+            },
+            guestComment: {
+                title: guestCommentTitle,
+                content: guestCommentContent,
+                design: Design.STICKER,
+                privateContent: guestCommentPrivateContent,
+                privateDate: guestCommentPrivateDate
+            },
+            baseMusic: {
+                musicUrl: '',
+                effect
+            },
+            linkShare: {
+                kakaoImgUrl: '',
+                kakaoTitle: '',
+                kakaoContent: '',
+                urlImg: '',
+                urlTitle: '',
+                urlContent: ''
+            },
+            moneyInfo: {
+                infoTitle,
+                infoContent,
+                kakaoStatus,
+                groomNameMoneyInfo,
+                groomBankName,
+                groomBankNumber,
+                groomKakaoUrl,
+                groomFatherNameMoneyInfo,
+                groomFatherBankName,
+                groomFatherBankNumber,
+                groomFatherKakaoUrl,
+                groomMotherNameMoneyInfo,
+                groomMotherBankName,
+                groomMotherBankNumber,
+                groomMotherKakaoUrl,
+                brideNameMoneyInfo,
+                brideBankName,
+                brideBankNumber,
+                brideKakaoUrl,
+                brideFatherNameMoneyInfo,
+                brideFatherBankName,
+                brideFatherBankNumber,
+                brideFatherKakaoUrl,
+                brideMotherNameMoneyInfo,
+                brideMotherBankName,
+                brideMotherBankNumber,
+                brideMotherKakaoUrl,
+            },
+            video: {
+                videoTitle,
+                videoUrl
+            },
+            phone: {
+                groomTel,
+                groomFatherTel,
+                groomMotherTel,
+                brideTel,
+                brideFatherTel,
+                brideMotherTel
+            },
+            rsvp: {
+                rsvpTitle,
+                rsvpContent,
+                attendStatus,
+                attendMealStatus,
+                attendGuestCntStatus,
+                attendPhoneStatus,
+                attendEtcStatus,
+                startPopupStatus,
+                startPopupMessage,
+            },
+            imgList: []
+        });
+    };
+
     return (
         <S.container>
             <S.optionContainer>
@@ -142,7 +367,7 @@ function InvitationDesign() {
                         <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
                     </Column>
                     <Spacer/>
-                    <Button text={'저장하기'} size={'medium'}/>
+                    <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>
                 </Row>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId={'droppable'}>
@@ -208,11 +433,11 @@ function InvitationDesign() {
                                                 case OptionType.GuestComment:
                                                     children = <GuestCommentOption
                                                         refs={{
-                                                            titleRef,
-                                                            contentRef,
-                                                            designRef,
-                                                            privateContentRef,
-                                                            privateDateRef,
+                                                            titleRef: guestCommentTitleRef,
+                                                            contentRef: guestCommentContentRef,
+                                                            designRef: guestCommentDesignRef,
+                                                            privateContentRef: guestCommentPrivateContentRef,
+                                                            privateDateRef: guestCommentPrivateDateRef,
                                                         }}
                                                     />
                                                     break;
