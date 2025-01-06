@@ -26,3 +26,15 @@ export default interface WeddingPlace {
     // 지도 표시 여부
     placeStatus: boolean;
 }
+
+export const dummyWeddingPlace: WeddingPlace = {
+    x: 126.972317,
+    y: 37.555946,
+    placeUrl: "https://kko.kakao.com/zLDNmwVavR",
+    placeName: "서울역",
+    addressName: "서울 용산구 한강대로 405",
+    floorHall: "1번 출구",
+    placeTel: "1544-7788",
+    placeTransportation: "그냥 기차타고 오시면 됩니다",
+    placeStatus: true,
+}

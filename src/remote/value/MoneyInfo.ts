@@ -80,3 +80,33 @@ export default interface MoneyInfo {
     // 카카오페이 URL
     brideMotherKakaoUrl?: string;
 }
+
+export const dummyMoneyInfo: MoneyInfo = {
+    brideBankName: "토스뱅크",
+    brideBankNumber: "1234567890",
+    brideFatherBankName: "카카오뱅크",
+    brideFatherBankNumber: "1234567890",
+    brideFatherKakaoUrl: "google.com",
+    brideFatherNameMoneyInfo: "가나다",
+    brideKakaoUrl: "google.com",
+    brideMotherBankName: "토스뱅크",
+    brideMotherBankNumber: "1234567890",
+    brideMotherKakaoUrl: "google.com",
+    brideMotherNameMoneyInfo: "라마바",
+    brideNameMoneyInfo: "1234567890",
+    groomBankName: "토스뱅크",
+    groomBankNumber: "",
+    groomFatherBankName: "신한은행",
+    groomFatherBankNumber: "1234567890",
+    groomFatherKakaoUrl: "google.com",
+    groomFatherNameMoneyInfo: "사아자",
+    groomKakaoUrl: "google.com",
+    groomMotherBankName: "토스뱅크",
+    groomMotherBankNumber: "1234567890",
+    groomMotherKakaoUrl: "google.com",
+    groomMotherNameMoneyInfo: "차카타",
+    groomNameMoneyInfo: "1234567890",
+    infoContent: "그래영",
+    infoTitle: "돈주세영",
+    kakaoStatus: true
+}

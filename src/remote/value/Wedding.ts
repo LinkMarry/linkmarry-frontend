@@ -1,16 +1,16 @@
-import BaseInfo from "@remote/value/BaseInfo";
-import WeddingSchedule from "@remote/value/WeddingSchedule";
-import WeddingPlace from "@remote/value/WeddingPlace";
-import Greeting from "@remote/value/Greeting";
-import BaseMusic from "@remote/value/BaseMusic";
-import LinkShare from "@remote/value/LinkShare";
-import MoneyInfo from "@remote/value/MoneyInfo";
-import Video from "@remote/value/Video";
-import Phone from "@remote/value/Phone";
-import Rsvp from "@remote/value/Rsvp";
-import GuestComment from "@remote/value/GuestComment";
-import Template from "@remote/value/Template";
-import Comment from "@remote/value/Comment";
+import BaseInfo, {dummyBaseInfo} from "@remote/value/BaseInfo";
+import WeddingSchedule, {dummyWeddingSchedule} from "@remote/value/WeddingSchedule";
+import WeddingPlace, {dummyWeddingPlace} from "@remote/value/WeddingPlace";
+import Greeting, {dummyGreeting} from "@remote/value/Greeting";
+import BaseMusic, {dummyBaseMusic} from "@remote/value/BaseMusic";
+import LinkShare, {dummyLinkShare} from "@remote/value/LinkShare";
+import MoneyInfo, {dummyMoneyInfo} from "@remote/value/MoneyInfo";
+import Video, {dummyVideo} from "@remote/value/Video";
+import Phone, {dummyPhone} from "@remote/value/Phone";
+import Rsvp, {dummyRsvp} from "@remote/value/Rsvp";
+import GuestComment, {dummyGuestComment} from "@remote/value/GuestComment";
+import Template, {dummyTemplate} from "@remote/value/Template";
+import Comment, {dummyComments} from "@remote/value/Comment";
 
 export default interface Wedding {
     // 아래 내용 위치
@@ -60,4 +60,28 @@ export default interface Wedding {
 
     // 워터마크 제거 여부
     waterMark: boolean;
+}
+
+export const dummyWedding: Wedding = {
+    position: [],
+    template: dummyTemplate,
+    baseInfo: dummyBaseInfo,
+    weddingSchedule: dummyWeddingSchedule,
+    weddingPlace: dummyWeddingPlace,
+    greeting: dummyGreeting,
+    guestComment: dummyGuestComment,
+    guestComments: dummyComments,
+    baseMusic: dummyBaseMusic,
+    linkShare: dummyLinkShare,
+    moneyInfo: dummyMoneyInfo,
+    video: dummyVideo,
+    phone: dummyPhone,
+    rsvp: dummyRsvp,
+    imgList: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1P5awDpltMID2v6ZF1G_z_PeLmwNLUFOONA&s',
+        'https://image.yes24.com/goods/62188206/XL',
+        'https://t1.daumcdn.net/news/202203/28/inews24/20220328094911808loli.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS83SarITbsNC6VM6iy5QOTRkh-7BaissTcrQ&s'
+    ],
+    waterMark: false
 }

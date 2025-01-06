@@ -15,6 +15,8 @@ import FoundationDemo from "@designsystem/demo/foundation.demo";
 import NotificationPage from "@page/notification/NotificationPage";
 import NotificationDetailPage from "@page/notification/detail/NotificationDetailPage";
 import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestComment/InvitationDashboardGuestComment";
+import Template1 from "@src/component/template/Template1";
+import {dummyWedding} from "@remote/value/Wedding";
 
 const {Kakao} = window as any;
 
@@ -54,6 +56,9 @@ function App() {
 
                 {/*not found*/}
                 <Route path={'*'} element={<Navigate to={'/'}/>}/>
+
+                {/*temp*/}
+                <Route path={'template1'} element={<Template1 wedding={dummyWedding}/>}/>
             </Routes>
         </Router>
     );

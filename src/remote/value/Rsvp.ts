@@ -26,3 +26,15 @@ export default interface Rsvp {
     // 청첩장 열 때 팝업에 메시지
     startPopupMessage: string;
 }
+
+export const dummyRsvp: Rsvp = {
+    rsvpTitle: "와주세여",
+    rsvpContent: "제발..................",
+    attendStatus: true,
+    attendMealStatus: true,
+    attendGuestCntStatus: true,
+    attendPhoneStatus: true,
+    attendEtcStatus: true,
+    startPopupStatus: true,
+    startPopupMessage: "ㅎㅇ",
+}
