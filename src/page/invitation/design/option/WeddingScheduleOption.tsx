@@ -26,7 +26,6 @@ function WeddingScheduleOption(
         }
     }: WeddingScheduleOptionProps
 ) {
-
     return (
         <S.container>
             <Column flex={1} gap={32}>

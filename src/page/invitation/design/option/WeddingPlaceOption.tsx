@@ -1,4 +1,4 @@
-import React, {RefObject} from 'react';
+import React, {RefObject, useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
@@ -6,6 +6,7 @@ import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Button from "@designsystem/component/button";
+import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 
 interface WeddingPlaceOptionProps {
     refs: {
@@ -26,6 +27,8 @@ function WeddingPlaceOption(
         }
     }: WeddingPlaceOptionProps
 ) {
+    const [showKakaoMapDialog, setShowKakaoMapDialog] = useState(false);
+    
     return (
         <S.container>
             <Column flex={1} gap={32}>
@@ -34,9 +37,8 @@ function WeddingPlaceOption(
                         <OptionLabel label={'주소'}/>
                         <Row gap={12} style={{width: 264, overflow: 'hidden'}}>
                             <OptionTextField width={184}/>
-                            <Button text={'검색'} role={'assistive'} style={{
-                                borderRadius: 8,
-                                width: 68
+                            <Button text={'검색'} role={'assistive'} style={{borderRadius: 8, width: 68}} onClick={() => {
+                                setShowKakaoMapDialog(true);
                             }}/>
                         </Row>
                     </Row>
@@ -63,6 +65,9 @@ function WeddingPlaceOption(
                     <Checkbox ref={placeStatusRef} label={'지도 표시'}/>
                 </Row>
             </Column>
+            {showKakaoMapDialog && (
+                <KakaoMapDialog dismiss={() => setShowKakaoMapDialog(false)}/>
+            )}
         </S.container>
     );
 }

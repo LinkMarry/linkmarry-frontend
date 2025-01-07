@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import RegisterPage from "@page/RegisterPage";
+import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 import config from "@config/config";
 import KakaoRedirectPage from "@page/KakaoRedirectPage";
 import InvitationLayout from "@page/invitation/InvitationLayout";
@@ -32,7 +32,6 @@ function App() {
         <Router>
             <Routes>
                 {/*service*/}
-                <Route path={'register'} element={<RegisterPage/>}/>
                 <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
                 <Route path={''} element={<HomePage/>}/>
                 <Route path={'invitation'} element={<InvitationLayout/>}>

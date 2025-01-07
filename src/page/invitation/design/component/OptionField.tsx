@@ -21,28 +21,9 @@ function OptionField(
     const [formattedValue, setFormattedValue] = useState<string>();
     const handleInputChange = () => {
         const current = (ref as RefObject<HTMLInputElement>).current;
-        if (!ref || !current?.value) return;
+        if (!ref) return;
 
-        const value = current.value!;
-        let formatted = value;
-
-        if (type === 'date') {
-            const date = new Date(value);
-            formatted = new Intl.DateTimeFormat('ko-KR', {
-                dateStyle: 'full',
-            }).format(date); // e.g., "2024년 12월 8일 수요일"
-        } else if (type === 'time') {
-            const [hour, minute] = value.split(':');
-            const date = new Date();
-            date.setHours(Number(hour), Number(minute));
-            formatted = new Intl.DateTimeFormat('ko-KR', {
-                hour: 'numeric',
-                minute: 'numeric',
-                hour12: true,
-            }).format(date); // e.g., "오후 1시 30분"
-        }
-
-        setFormattedValue(formatted);
+        setFormattedValue(current?.value);
     };
     return (
         <S.field onClick={() => {
