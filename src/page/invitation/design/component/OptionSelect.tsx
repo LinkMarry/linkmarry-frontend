@@ -20,9 +20,9 @@ function OptionSelect(
     return (
         <S.wrapper width={width}>
             <S.select ref={ref} {...props}>
-                      {items.map((item, index) => (
-                          <S.option key={index} value={item}>{item}</S.option>
-                      ))}
+                {items.map((item, index) => (
+                    <S.option key={index} value={item}>{item}</S.option>
+                ))}
             </S.select>
             <Icon type={IconType.ExpandArrow} size={20} tint={colors.g400} style={{rotate: '-90deg'}}/>
         </S.wrapper>
@@ -46,10 +46,12 @@ const S = {
     `,
     select: styled.select`
         display: flex;
+        min-width: 0;
         height: 44px;
-        padding: 12px 0 12px 16px;
+        padding: 12px 16px;
         align-items: center;
         flex: 1;
+        text-overflow: ellipsis;
         border: none;
         outline: none;
         ${makeText(TextType.p5)};

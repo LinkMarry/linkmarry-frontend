@@ -5,7 +5,7 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import colors from "@designsystem/foundation/colors";
 import OptionSelect from "@page/invitation/design/component/OptionSelect";
-import Template, {templateColors} from "@remote/value/Template";
+import Template, {templateColors, templateFonts} from "@remote/value/Template";
 
 interface TemplateOptionProps {
     template: Template;
@@ -43,7 +43,7 @@ function TemplateOption(
                 <Row gap={12}>
                     <OptionLabel label={'폰트'} style={{alignSelf: 'flex-start'}}/>
                     <Row gap={12}>
-                        <OptionSelect items={['돋움', '바탕체', '체체']} width={154}/>
+                        <OptionSelect items={templateFonts} width={154}/>
                         <OptionSelect items={['보통']}/>
                     </Row>
                 </Row>

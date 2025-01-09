@@ -35,7 +35,7 @@ function InvitationDashboardGuestComment() {
                 }}/>
                 <Column>
                     <Text text={'방명록'} type={TextType.h5}/>
-                    <Text text={`방명록 ${-1}건`} type={TextType.p3} color={colors.g500}/>
+                    <Text text={`방명록 ${comments?.length ?? 0}건`} type={TextType.p3} color={colors.g500}/>
                 </Column>
                 <Column $alignItems={'stretch'}>
                     <S.header.row>

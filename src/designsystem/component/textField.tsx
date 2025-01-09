@@ -121,7 +121,8 @@ const S = {
     `,
     supportingText: styled.span`
         position: absolute;
-        bottom: -25px;
+        bottom: -20px;
+        white-space: nowrap;
 
         font-feature-settings: 'ss10' on;
         ${makeText(TextType.btn1)};
