@@ -95,7 +95,7 @@ export const dummyMoneyInfo: MoneyInfo = {
     brideMotherNameMoneyInfo: "라마바",
     brideNameMoneyInfo: "1234567890",
     groomBankName: "토스뱅크",
-    groomBankNumber: "",
+    groomBankNumber: "123456890",
     groomFatherBankName: "신한은행",
     groomFatherBankNumber: "1234567890",
     groomFatherKakaoUrl: "google.com",
@@ -105,7 +105,7 @@ export const dummyMoneyInfo: MoneyInfo = {
     groomMotherBankNumber: "1234567890",
     groomMotherKakaoUrl: "google.com",
     groomMotherNameMoneyInfo: "차카타",
-    groomNameMoneyInfo: "1234567890",
+    groomNameMoneyInfo: "차카타",
     infoContent: "그래영",
     infoTitle: "돈주세영",
     kakaoStatus: true

@@ -114,7 +114,7 @@ function KakaoMapDialog(
                     }}/>
                     <Icon type={IconType.Search} size={28} tint={colors.g600} onClick={search}/>
                 </S.search>
-                <S.kakaoMap ref={kakaoMap} id={'map'}></S.kakaoMap>
+                <S.kakaoMap ref={kakaoMap}></S.kakaoMap>
             </S.container>
         </BaseDialog>
     );

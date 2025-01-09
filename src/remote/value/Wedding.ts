@@ -13,6 +13,9 @@ import Template, {dummyTemplate} from "@remote/value/Template";
 import Comment, {dummyComments} from "@remote/value/Comment";
 
 export default interface Wedding {
+    // URL 값
+    url: string;
+    
     // 아래 내용 위치
     position: number[];
 
@@ -63,6 +66,7 @@ export default interface Wedding {
 }
 
 export const dummyWedding: Wedding = {
+    url: 'test',
     position: [],
     template: dummyTemplate,
     baseInfo: dummyBaseInfo,

@@ -1,8 +1,8 @@
 export default interface WeddingSchedule {
-    // 예식 일시
+    // 예식 일시 (yyyy-MM-dd 형태)
     weddingDate: string;
     
-    // 예식 시간 (21:30 형태)
+    // 예식 시간 (hh:mm 형태)
     weddingTime: string;
     
     // 캘린더 표시 상태
@@ -13,7 +13,7 @@ export default interface WeddingSchedule {
 }
 
 export const dummyWeddingSchedule: WeddingSchedule = {
-    weddingDate: '2025년 2월 1일 토요일',
+    weddingDate: '2025-02-01',
     weddingTime: '21:30',
     calendar: true,
     dDay: true

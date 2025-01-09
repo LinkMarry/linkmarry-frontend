@@ -7,7 +7,7 @@ import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
 import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
-import OptionTextarea from "@page/invitation/design/component/OptionTextarea";
+import Textarea from "@designsystem/component/textarea";
 import Text from "@designsystem/component/text";
 
 interface RsvpOptionProps {
@@ -70,7 +70,7 @@ function RsvpOption(
                                 <Checkbox ref={startPopupStatusRef}/>
                                 <Text text={'청첩장 열 때 팝업 안내'} type={TextType.caption1} color={colors.g300}/>
                             </Row>
-                            <OptionTextarea ref={startPopupMessageRef} width={264}/>
+                            <Textarea ref={startPopupMessageRef} style={{width: 264}}/>
                         </Column>
                     </Row>
                 </Column>

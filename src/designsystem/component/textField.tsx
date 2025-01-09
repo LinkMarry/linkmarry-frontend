@@ -14,7 +14,7 @@ import colors from "@designsystem/foundation/colors";
 
 interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
-    label: string;
+    label?: string;
     supportingText?: string;
     placeholder?: string;
     isError?: boolean;
@@ -110,8 +110,6 @@ const S = {
         flex-direction: column;
         align-items: flex-start;
         gap: 4px;
-
-        width: 380px;
 
         ${({$enabled}) => !$enabled && css`
             opacity: 0.65;

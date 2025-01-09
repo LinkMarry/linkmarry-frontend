@@ -9,7 +9,7 @@ interface OptionTextFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
     width?: number;
 }
 
-function OptionTextArea(
+function OptionSelect(
     {
         items,
         width = 98,
@@ -62,4 +62,4 @@ const S = {
     `
 }
 
-export default forwardRef(OptionTextArea);
+export default forwardRef(OptionSelect);

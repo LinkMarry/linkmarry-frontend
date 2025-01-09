@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import OptionTextarea from "@page/invitation/design/component/OptionTextarea";
+import Textarea from "@designsystem/component/textarea";
 
 interface GreetingOptionProps {
     refs: {
@@ -29,7 +29,7 @@ function GreetingOption(
                 </Row>
                 <Row>
                     <OptionLabel label={'내용'} style={{alignSelf: 'flex-start'}}/>
-                    <OptionTextarea ref={greetingContentRef} width={264}/>
+                    <Textarea ref={greetingContentRef} style={{width: 264}}/>
                 </Row>
             </Column>
         </S.container>
