@@ -1,34 +1,27 @@
-import React, {RefObject, useState} from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import Checkbox from "@designsystem/component/checkbox";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Button from "@designsystem/component/button";
 import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
+import WeddingPlace from "@remote/value/WeddingPlace";
 
 interface WeddingPlaceOptionProps {
-    refs: {
-        placeNameRef: RefObject<HTMLInputElement>
-        placeTelRef: RefObject<HTMLInputElement>,
-        placeTransportationRef: RefObject<HTMLInputElement>,
-        placeStatusRef: RefObject<CheckboxRef>,
-    }
+    weddingPlace: WeddingPlace;
+    onChange: (weddingPlace: WeddingPlace) => void
 }
 
 function WeddingPlaceOption(
     {
-        refs: {
-            placeNameRef,
-            placeTelRef,
-            placeTransportationRef,
-            placeStatusRef
-        }
+        weddingPlace,
+        onChange
     }: WeddingPlaceOptionProps
 ) {
     const [showKakaoMapDialog, setShowKakaoMapDialog] = useState(false);
-    
+
     return (
         <S.container>
             <Column flex={1} gap={32}>
@@ -44,7 +37,7 @@ function WeddingPlaceOption(
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'예식장명'}/>
-                        <OptionTextField ref={placeNameRef} placeholder={'예식장 이름 입력'} width={264}/>
+                        <OptionTextField placeholder={'예식장 이름 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'층/홀'}/>
@@ -52,17 +45,21 @@ function WeddingPlaceOption(
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'연락처'}/>
-                        <OptionTextField ref={placeTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'교통편'}/>
-                        <OptionTextField ref={placeTransportationRef} placeholder={'주변 교통편 입력'} width={264}/>
+                        <OptionTextField placeholder={'주변 교통편 입력'} width={264}/>
                     </Row>
                 </Column>
                 <HorizontalDivider/>
                 <Row gap={12}>
                     <OptionLabel label={'표시'}/>
-                    <Checkbox ref={placeStatusRef} label={'지도 표시'}/>
+                    <Checkbox
+                        checked={weddingPlace.placeStatus}
+                        onChange={checked => onChange({...weddingPlace, placeStatus: checked})}
+                        label={'지도 표시'}
+                    />
                 </Row>
             </Column>
             {showKakaoMapDialog && (

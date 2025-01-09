@@ -8,7 +8,7 @@ const S = {
         flex: 1;
         background: ${colors.g200};
         overflow: hidden;
-    `
+    `,
 };
 
 export default S;

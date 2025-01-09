@@ -5,8 +5,7 @@ import {hideScrollBar} from "@util/css.util";
 export const container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    max-width: 436px;
+    width: 436px;
     align-items: stretch;
 `;
 

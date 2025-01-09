@@ -4,20 +4,17 @@ import {Column, Row} from "@designsystem/component/flexLayout";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Textarea from "@designsystem/component/textarea";
+import Greeting from "@remote/value/Greeting";
 
 interface GreetingOptionProps {
-    refs: {
-        greetingTitleRef: RefObject<HTMLInputElement>,
-        greetingContentRef: RefObject<HTMLTextAreaElement>
-    }
+    greeting: Greeting;
+    onChange: (greeting: Greeting) => void;
 }
 
 function GreetingOption(
     {
-        refs: {
-            greetingTitleRef,
-            greetingContentRef,
-        }
+        greeting,
+        onChange
     }: GreetingOptionProps
 ) {
     return (
@@ -25,11 +22,18 @@ function GreetingOption(
             <Column gap={16} flex={1}>
                 <Row>
                     <OptionLabel label={'제목'}/>
-                    <OptionTextField ref={greetingTitleRef} width={264}/>
+                    <OptionTextField fieldProps={{
+                        value: greeting.greetingTitle,
+                        onChange: event => onChange({...greeting, greetingTitle: event.target.value})
+                    }} width={264}/>
                 </Row>
                 <Row>
                     <OptionLabel label={'내용'} style={{alignSelf: 'flex-start'}}/>
-                    <Textarea ref={greetingContentRef} style={{width: 264}}/>
+                    <Textarea
+                        value={greeting.greetingContent}
+                        onChange={event => onChange({...greeting, greetingContent: event.target.value})}
+                        style={{width: 264}}
+                    />
                 </Row>
             </Column>
         </S.container>

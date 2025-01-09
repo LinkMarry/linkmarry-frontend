@@ -49,13 +49,12 @@ function KakaoMapDialog(
             }
         });
     }
-
-    function displayMarker(place: any) {
+    const displayMarker = (place: any) => {
         new maps.Marker({
             map,
             position: new maps.LatLng(place.y, place.x)
         });
-    }
+    };
 
     useEffect(() => {
         if (!maps) return;
@@ -88,7 +87,7 @@ function KakaoMapDialog(
     <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>경도:</strong> ${latLng.getLng().toFixed(6)}</p>
     <a href="https://map.kakao.com/link/to/${address},${latLng.getLat()},${latLng.getLng()}" target="_blank" style="display: inline-block; margin-top: 10px; padding: 5px 10px; background: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">길찾기</a>
 </div>`;
-
+            console.log(selectedPlaceOverlay)
             if (selectedPlaceOverlay) {
                 selectedPlaceOverlay.setContent(content);
                 selectedPlaceOverlay.setPosition(latLng);
@@ -125,6 +124,8 @@ const S = {
         display: flex;
         flex-direction: column;
         align-items: stretch;
+        width: 80vw;
+        max-width: 1100px;
         ${applyBaseDialogContent()};
         border-radius: 12px;
     `,
@@ -145,7 +146,6 @@ const S = {
     `,
     kakaoMap: styled.div`
         display: flex;
-        width: 1100px;
         height: 600px;
     `
 }

@@ -27,6 +27,18 @@ export default interface WeddingPlace {
     placeStatus: boolean;
 }
 
+export const defaultWeddingPlace: WeddingPlace = {
+    x: -1,
+    y: -1,
+    placeUrl: "",
+    placeName: "",
+    addressName: "",
+    floorHall: "",
+    placeTel: "",
+    placeTransportation: "",
+    placeStatus: false,
+}
+
 export const dummyWeddingPlace: WeddingPlace = {
     x: 126.972317,
     y: 37.555946,

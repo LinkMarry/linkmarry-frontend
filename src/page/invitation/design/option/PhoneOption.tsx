@@ -1,31 +1,20 @@
-import React, {RefObject} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import Phone from "@remote/value/Phone";
 
 interface PhoneOptionProps {
-    refs: {
-        groomTelRef: RefObject<HTMLInputElement>,
-        groomFatherTelRef: RefObject<HTMLInputElement>,
-        groomMotherTelRef: RefObject<HTMLInputElement>,
-        brideTelRef: RefObject<HTMLInputElement>,
-        brideFatherTelRef: RefObject<HTMLInputElement>,
-        brideMotherTelRef: RefObject<HTMLInputElement>,
-    }
+    phone: Phone;
+    onChange: (phone: Phone) => void;
 }
 
 function PhoneOption(
     {
-        refs: {
-            groomTelRef,
-            groomFatherTelRef,
-            groomMotherTelRef,
-            brideTelRef,
-            brideFatherTelRef,
-            brideMotherTelRef,
-        }
+        phone,
+        onChange
     }: PhoneOptionProps
 ) {
     return (
@@ -34,30 +23,48 @@ function PhoneOption(
                 <Column gap={16}>
                     <Row gap={12}>
                         <OptionLabel label={'신랑'}/>
-                        <OptionTextField ref={groomTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: phone.groomTel,
+                            onChange: event => onChange({...phone, groomTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'신랑 부'}/>
-                        <OptionTextField ref={groomFatherTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: phone.groomFatherTel,
+                            onChange: event => onChange({...phone, groomFatherTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'신랑 모'}/>
-                        <OptionTextField ref={groomMotherTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: phone.groomMotherTel,
+                            onChange: event => onChange({...phone, groomMotherTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                 </Column>
                 <HorizontalDivider/>
                 <Column gap={16}>
                     <Row gap={12}>
                         <OptionLabel label={'신부'}/>
-                        <OptionTextField ref={brideTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: phone.brideTel,
+                            onChange: event => onChange({...phone, brideTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'신부 부'}/>
-                        <OptionTextField ref={brideFatherTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: phone.brideFatherTel,
+                            onChange: event => onChange({...phone, brideFatherTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'신부 모'}/>
-                        <OptionTextField ref={brideMotherTelRef} placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: phone.brideMotherTel,
+                            onChange: event => onChange({...phone, brideMotherTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                 </Column>
             </Column>

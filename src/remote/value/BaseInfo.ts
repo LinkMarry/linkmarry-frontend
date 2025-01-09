@@ -42,6 +42,23 @@ export default interface BaseInfo {
     brideMarkFirst: boolean;
 }
 
+export const defaultBaseInfo: BaseInfo = {
+    groomName: "",
+    groomFatherName: "",
+    groomFatherStatus: false,
+    groomMotherName: "",
+    groomMotherStatus: false,
+    groomFamilyName: "아들",
+    brideName: "",
+    brideFatherName: "",
+    brideFatherStatus: false,
+    brideMotherName: "",
+    brideMotherStatus: false,
+    brideFamilyName: "딸",
+    statusFlower: false,
+    brideMarkFirst: false,
+}
+
 export const dummyBaseInfo: BaseInfo = {
     groomName: "이삼삼",
     groomFatherName: "이삼사",

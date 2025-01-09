@@ -81,6 +81,36 @@ export default interface MoneyInfo {
     brideMotherKakaoUrl?: string;
 }
 
+export const defaultMoneyInfo: MoneyInfo = {
+    brideBankName: "",
+    brideBankNumber: "",
+    brideFatherBankName: "",
+    brideFatherBankNumber: "",
+    brideFatherKakaoUrl: "",
+    brideFatherNameMoneyInfo: "",
+    brideKakaoUrl: "",
+    brideMotherBankName: "",
+    brideMotherBankNumber: "",
+    brideMotherKakaoUrl: "",
+    brideMotherNameMoneyInfo: "",
+    brideNameMoneyInfo: "",
+    groomBankName: "",
+    groomBankNumber: "",
+    groomFatherBankName: "",
+    groomFatherBankNumber: "",
+    groomFatherKakaoUrl: "",
+    groomFatherNameMoneyInfo: "",
+    groomKakaoUrl: "",
+    groomMotherBankName: "",
+    groomMotherBankNumber: "",
+    groomMotherKakaoUrl: "",
+    groomMotherNameMoneyInfo: "",
+    groomNameMoneyInfo: "",
+    infoContent: "",
+    infoTitle: "",
+    kakaoStatus: false
+}
+
 export const dummyMoneyInfo: MoneyInfo = {
     brideBankName: "토스뱅크",
     brideBankNumber: "1234567890",

@@ -5,14 +5,20 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import colors from "@designsystem/foundation/colors";
 import OptionSelect from "@page/invitation/design/component/OptionSelect";
+import Template, {templateColors} from "@remote/value/Template";
 
-// interface TemplateOptionProps {
-//     refs: {
-//        
-//     }
-// }
+interface TemplateOptionProps {
+    template: Template;
+    onChange: (template: Template) => void;
+}
 
-function TemplateOption() {
+
+function TemplateOption(
+    {
+        template,
+        onChange
+    }: TemplateOptionProps
+) {
     return (
         <S.container>
             <Column gap={32} flex={1}>
@@ -23,8 +29,13 @@ function TemplateOption() {
                 <Row gap={12}>
                     <OptionLabel label={'배경색상'} style={{alignSelf: 'flex-start'}}/>
                     <S.backgroundColor.container>
-                        {['#F7F7F2', '#FBF2F2', '#ECECEC', '#F6F2F2', '#F7F4FE', '#FFFEF5', '#EDF8F8', '#FFF4EB'].map((color, index) => (
-                            <S.backgroundColor.cell key={index} color={color}/>
+                        {templateColors.map((color, index) => (
+                            <S.backgroundColor.cell
+                                key={index}
+                                color={color}
+                                selected={color === template.templateColor}
+                                onClick={() => onChange({...template, templateColor: color})}
+                            />
                         ))}
                     </S.backgroundColor.container>
                 </Row>
@@ -53,13 +64,18 @@ const S = {
             grid-template-rows: repeat(2, 1fr); /* 세로로 2개의 행 */
             grid-gap: 12px;
         `,
-        cell: styled.span<{ color: CSSProperties['color'] }>`
-            ${({color}) => css`
-                width: 44px;
-                height: 44px;
-                background: ${color};
-            `};
-            border: 1px solid ${colors.g200};
+        cell: styled.span<{ color: CSSProperties['color'], selected: boolean }>`
+            width: 44px;
+            height: 44px;
+            background: ${({color}) => color};
+            ${({selected}) => selected
+                    ? css`
+                        border: 2px solid ${colors.g500};
+                    `
+                    : css`
+                        border: 1px solid ${colors.g200};
+                    `
+            }
             border-radius: 8px;
             cursor: pointer;
         `

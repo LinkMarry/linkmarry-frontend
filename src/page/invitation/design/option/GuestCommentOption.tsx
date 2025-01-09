@@ -1,32 +1,23 @@
-import React, {RefObject} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import Checkbox from "@designsystem/component/checkbox";
 import makeText, {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
+import GuestComment from "@remote/value/GuestComment";
 
 interface GuestCommentOptionProps {
-    refs: {
-        titleRef: RefObject<HTMLInputElement>,
-        contentRef: RefObject<HTMLInputElement>,
-        designRef: RefObject<HTMLInputElement>,
-        privateContentRef: RefObject<CheckboxRef>,
-        privateDateRef: RefObject<CheckboxRef>
-    }
+    guestComment: GuestComment;
+    onChange: (guestComment: GuestComment) => void;
 }
 
 function GuestCommentOption(
     {
-        refs: {
-            titleRef,
-            contentRef,
-            designRef,
-            privateContentRef,
-            privateDateRef,
-        }
+        guestComment,
+        onChange,
     }: GuestCommentOptionProps
 ) {
     return (
@@ -35,24 +26,41 @@ function GuestCommentOption(
                 <Column gap={16}>
                     <Row gap={12}>
                         <OptionLabel label={'제목'}/>
-                        <OptionTextField ref={titleRef} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: guestComment.title,
+                            onChange: event => onChange({...guestComment, title: event.target.value})
+                        }} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'설명'}/>
-                        <OptionTextField ref={contentRef} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: guestComment.content,
+                            onChange: event => onChange({...guestComment, content: event.target.value})
+                        }} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'디자인'}/>
-                        <OptionTextField ref={designRef} width={264}/>
+                        {/*<OptionTextField fieldProps={{*/}
+                        {/*    value: guestComment.design,*/}
+                        {/*}} width={264}/>*/}
+                        <span>TODO: Change selector</span>
                     </Row>
                 </Column>
                 <HorizontalDivider/>
                 <Row gap={12}>
                     <OptionLabel label={'표시'} style={{alignSelf: 'flex-start'}}/>
                     <Column gap={12}>
-                        <Checkbox ref={privateContentRef} label={'내용 공개'}/>
+                        <Checkbox
+                            label={'내용 공개'}
+                            checked={guestComment.privateContent}
+                            onChange={checked => onChange({...guestComment, privateContent: checked})}
+                        />
                         <Row gap={16}>
-                            <Checkbox ref={privateDateRef} label={'날짜 숨김'}/>
+                            <Checkbox
+                                label={'날짜 숨김'}
+                                checked={guestComment.privateDate}
+                                onChange={checked => onChange({...guestComment, privateDate: checked})}
+                            />
                             <S.hideDateLabel>방명록 작성 날짜를 숨김</S.hideDateLabel>
                         </Row>
                     </Column>

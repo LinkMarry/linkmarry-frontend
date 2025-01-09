@@ -6,6 +6,11 @@ export default interface Greeting {
     greetingContent: string;
 }
 
+export const defaultGreeting: Greeting = {
+    greetingTitle: '',
+    greetingContent: '',
+}
+
 export const dummyGreeting: Greeting = {
     greetingTitle: "반가워요",
     greetingContent: "그래요",

@@ -17,6 +17,14 @@ export default interface GuestComment {
     privateDate: boolean;
 }
 
+export const defaultGuestComment: GuestComment = {
+    title: "",
+    content: "",
+    design: Design.BASIC,
+    privateContent: false,
+    privateDate: false,
+}
+
 export const dummyGuestComment: GuestComment = {
     title: "환영 ~",
     content: "넹",

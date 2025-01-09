@@ -27,6 +27,18 @@ export default interface Rsvp {
     startPopupMessage: string;
 }
 
+export const defaultRsvp: Rsvp = {
+    rsvpTitle: "",
+    rsvpContent: "",
+    attendStatus: false,
+    attendMealStatus: false,
+    attendGuestCntStatus: false,
+    attendPhoneStatus: false,
+    attendEtcStatus: false,
+    startPopupStatus: false,
+    startPopupMessage: "",
+}
+
 export const dummyRsvp: Rsvp = {
     rsvpTitle: "와주세여",
     rsvpContent: "제발..................",
@@ -37,4 +49,4 @@ export const dummyRsvp: Rsvp = {
     attendEtcStatus: true,
     startPopupStatus: true,
     startPopupMessage: "ㅎㅇ",
-}
+};

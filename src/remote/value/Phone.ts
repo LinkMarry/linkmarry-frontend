@@ -18,6 +18,15 @@ export default interface Phone {
     brideMotherTel: string;
 }
 
+export const defaultPhone: Phone = {
+    groomTel: "",
+    groomFatherTel: "",
+    groomMotherTel: "",
+    brideTel: "",
+    brideFatherTel: "",
+    brideMotherTel: "",
+};
+
 export const dummyPhone: Phone = {
     groomTel: "01012345678",
     groomFatherTel: "01012345678",
@@ -25,4 +34,4 @@ export const dummyPhone: Phone = {
     brideTel: "01012345678",
     brideFatherTel: "01012345678",
     brideMotherTel: "01012345678",
-}
+};

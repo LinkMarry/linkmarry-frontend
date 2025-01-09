@@ -1,4 +1,11 @@
-import React, {ForwardedRef, forwardRef, HTMLAttributes, HTMLInputTypeAttribute, RefObject, useState} from 'react';
+import React, {
+    ForwardedRef,
+    forwardRef,
+    HTMLAttributes,
+    HTMLInputTypeAttribute,
+    InputHTMLAttributes,
+    RefObject, useEffect, useRef, useState,
+} from 'react';
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import makeText, {TextType} from "@designsystem/foundation/text/textType";
@@ -6,36 +13,32 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import Text from "@designsystem/component/text";
 
 interface OptionFieldProps extends HTMLAttributes<HTMLDivElement> {
+    fieldProps?: InputHTMLAttributes<HTMLInputElement>;
     leadingIcon: IconType;
     type?: HTMLInputTypeAttribute | undefined;
 }
 
 function OptionField(
     {
+        fieldProps,
         leadingIcon,
         type,
         ...props
-    }: OptionFieldProps,
-    ref: ForwardedRef<HTMLInputElement>
+    }: OptionFieldProps
 ) {
-    const [formattedValue, setFormattedValue] = useState<string>();
-    const handleInputChange = () => {
-        const current = (ref as RefObject<HTMLInputElement>).current;
-        if (!ref) return;
+    const fieldRef = useRef<HTMLInputElement>(null);
 
-        setFormattedValue(current?.value);
-    };
     return (
         <S.field onClick={() => {
-            (ref as RefObject<HTMLInputElement>).current?.showPicker();
+            fieldRef.current?.showPicker();
         }} {...props}>
             <S.fakeInput
+                {...fieldProps}
+                ref={fieldRef}
                 type={type}
-                ref={ref}
-                onChange={handleInputChange}
             />
             <Icon tint={colors.g600} size={20} type={leadingIcon}/>
-            <Text text={formattedValue ?? ''} type={TextType.p5}/>
+            <Text text={fieldProps?.value?.toString() ?? ''} type={TextType.p5}/>
         </S.field>
     );
 }
@@ -67,4 +70,4 @@ const S = {
     `
 }
 
-export default forwardRef(OptionField);
+export default OptionField;

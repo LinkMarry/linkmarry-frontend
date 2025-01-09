@@ -18,6 +18,15 @@ export default interface LinkShare {
     urlContent: string;
 }
 
+export const defaultLinkShare: LinkShare = {
+    kakaoImgUrl: "",
+    kakaoTitle: "",
+    kakaoContent: "",
+    urlImg: "",
+    urlTitle: "",
+    urlContent: "",
+}
+
 export const dummyLinkShare: LinkShare = {
     kakaoImgUrl: "google.com",
     kakaoTitle: "청첩장~~",

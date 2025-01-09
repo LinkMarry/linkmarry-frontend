@@ -6,6 +6,11 @@ export default interface BaseMusic {
     effect: boolean;
 }
 
+export const defaultBaseMusic: BaseMusic = {
+    musicUrl: '',
+    effect: true,
+}
+
 export const dummyBaseMusic: BaseMusic = {
     musicUrl: "https://www.youtube.com/watch?v=yBYZkJGKFyA&ab_channel=%EC%98%A4%EB%9E%98%EB%90%9C%ED%95%80",
     effect: true,

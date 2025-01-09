@@ -6,6 +6,7 @@ import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
+import LinkShare from "@remote/value/LinkShare";
 
 type LinkShareMode = 'kakaotalk' | 'url';
 const linkShareModeRecord: Record<LinkShareMode, string> = {
@@ -15,18 +16,29 @@ const linkShareModeRecord: Record<LinkShareMode, string> = {
 const linkShareModes: LinkShareMode[] = ['kakaotalk', 'url'];
 const linkShareModesTitle = linkShareModes.map(mode => linkShareModeRecord[mode]);
 
-function LinkShareOption() {
-    const [selectedShareMode, setSelectedShareMode] = useState(0);
+interface LinkShareOptionProps {
+    linkShare: LinkShare;
+    onChange: (linkShare: LinkShare) => void;
+}
+
+function LinkShareOption(
+    {
+        linkShare,
+        onChange
+    }: LinkShareOptionProps
+) {
+    const [selectedShareModeIndex, setSelectedShareModeIndex] = useState(0);
+    const selectedShareMode = linkShareModes[selectedShareModeIndex];
 
     return (
         <S.container>
             <Column gap={32}>
                 <OptionSegmentedButton
                     style={{width: 264}}
-                    selectedIndex={selectedShareMode}
+                    selectedIndex={selectedShareModeIndex}
                     items={linkShareModesTitle}
                     onClickItem={mode => {
-                        setSelectedShareMode(mode);
+                        setSelectedShareModeIndex(mode);
                     }}
                 />
                 <Column gap={20}>
@@ -38,11 +50,29 @@ function LinkShareOption() {
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'제목'}/>
-                        <OptionTextField width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: selectedShareMode === 'kakaotalk' ? linkShare.kakaoTitle : linkShare.urlTitle,
+                            onChange: event => onChange(selectedShareMode === 'kakaotalk' ? {
+                                ...linkShare,
+                                kakaoTitle: event.target.value
+                            } : {
+                                ...linkShare,
+                                urlTitle: event.target.value
+                            })
+                        }} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'내용'}/>
-                        <OptionTextField width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: selectedShareMode === 'kakaotalk' ? linkShare.kakaoContent : linkShare.urlContent,
+                            onChange: event => onChange(selectedShareMode === 'kakaotalk' ? {
+                                ...linkShare,
+                                kakaoContent: event.target.value
+                            } : {
+                                ...linkShare,
+                                urlContent: event.target.value
+                            })
+                        }} width={264}/>
                     </Row>
                 </Column>
             </Column>

@@ -1,29 +1,22 @@
-import React, {RefObject} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import Checkbox from "@designsystem/component/checkbox";
 import OptionField from "@page/invitation/design/component/OptionField";
 import {IconType} from "@designsystem/foundation/icon";
+import WeddingSchedule from "@remote/value/WeddingSchedule";
 
 interface WeddingScheduleOptionProps {
-    refs: {
-        weddingDateRef: RefObject<HTMLInputElement>,
-        weddingTimeRef: RefObject<HTMLInputElement>,
-        calendarRef: RefObject<CheckboxRef>,
-        dDayRef: RefObject<CheckboxRef>,
-    }
+    weddingSchedule: WeddingSchedule;
+    onChange: (weddingSchedule: WeddingSchedule) => void;
 }
 
 function WeddingScheduleOption(
     {
-        refs: {
-            weddingDateRef,
-            weddingTimeRef,
-            calendarRef,
-            dDayRef
-        }
+        weddingSchedule,
+        onChange
     }: WeddingScheduleOptionProps
 ) {
     return (
@@ -32,19 +25,35 @@ function WeddingScheduleOption(
                 <Column gap={16}>
                     <Row gap={12}>
                         <OptionLabel label={'예식일'}/>
-                        <OptionField ref={weddingDateRef} leadingIcon={IconType.Calendar} type={'date'}/>
+                        <OptionField fieldProps={{
+                            value: weddingSchedule.weddingDate,
+                            onChange: event => onChange({...weddingSchedule, weddingDate: event.target.value})
+                        }} leadingIcon={IconType.Calendar} type={'date'}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'예식 시간'}/>
-                        <OptionField ref={weddingTimeRef} leadingIcon={IconType.Clock} type={'time'}/>
+                        <OptionField fieldProps={{
+                            value: weddingSchedule.weddingTime,
+                            onChange: event => {
+                                onChange({...weddingSchedule, weddingTime: event.target.value});
+                            }
+                        }} leadingIcon={IconType.Clock} type={'time'}/>
                     </Row>
                 </Column>
                 <HorizontalDivider/>
                 <Row gap={12}>
                     <OptionLabel style={{alignSelf: 'flex-start'}} label={'표시'}/>
                     <Column gap={12}>
-                        <Checkbox ref={calendarRef} label={'캘린더'}/>
-                        <Checkbox ref={dDayRef} label={'디데이'}/>
+                        <Checkbox
+                            checked={weddingSchedule.calendar}
+                            onChange={checked => onChange({...weddingSchedule, calendar: checked})}
+                            label={'캘린더'}
+                        />
+                        <Checkbox
+                            checked={weddingSchedule.dDay}
+                            onChange={checked => onChange({...weddingSchedule, dDay: checked})}
+                            label={'디데이'}
+                        />
                     </Column>
                 </Row>
             </Column>

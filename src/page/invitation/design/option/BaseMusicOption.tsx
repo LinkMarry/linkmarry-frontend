@@ -1,14 +1,15 @@
-import React, {RefObject, useState} from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
+import Checkbox from "@designsystem/component/checkbox";
 import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
 import Text from "@designsystem/component/text";
+import BaseMusic from "@remote/value/BaseMusic";
 
 type SelectMode = 'select' | 'direct';
 const selectModeRecord: Record<SelectMode, string> = {
@@ -19,16 +20,14 @@ const selectModes: SelectMode[] = ['select', 'direct'];
 const selectModesTitle = selectModes.map(mode => selectModeRecord[mode]);
 
 interface BaseMusicOptionProps {
-    refs: {
-        effectRef: RefObject<CheckboxRef>
-    }
+    baseMusic: BaseMusic;
+    onChange: (baseMusic: BaseMusic) => void;
 }
 
 function BaseMusicOption(
     {
-        refs: {
-            effectRef
-        }
+        baseMusic,
+        onChange
     }: BaseMusicOptionProps
 ) {
     const [selectedSelectMode, setSelectedSelectMode] = useState(0);
@@ -37,6 +36,7 @@ function BaseMusicOption(
         switch (selectModes[selectedSelectMode]) {
             case 'select':
                 return <Column gap={16}>
+                    {/* TODO: DUMMY */}
                     {['Wedding opening', 'Wow', 'Hello World'].map((music, index) => (
                         <Row key={index} gap={16} $alignItems={'center'}>
                             <Checkbox rounded={true} label={music}/>
@@ -55,7 +55,7 @@ function BaseMusicOption(
                     </Column>
                 </S.addAudioFileContainer>;
         }
-    }
+    };
 
     return (
         <S.container>
@@ -75,7 +75,11 @@ function BaseMusicOption(
                 <Row gap={12} $alignItems={'center'}>
                     <OptionLabel label={'효과'}/>
                     <Row gap={12} $alignItems={'center'}>
-                        <Checkbox ref={effectRef} label={'자동 재생'}/>
+                        <Checkbox
+                            checked={baseMusic.effect}
+                            onChange={checked => onChange({...baseMusic, effect: checked})}
+                            label={'자동 재생'}
+                        />
                         <Text text={'브라우저'} type={TextType.caption1} color={colors.g300}/> {/* TODO: Fix dummy text */}
                     </Row>
                 </Row>

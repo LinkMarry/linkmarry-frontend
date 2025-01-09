@@ -6,6 +6,7 @@ const S = {
     container: styled.div`
         display: flex;
         flex: 1;
+        overflow: scroll;
     `,
     optionContainer: styled.div`
         display: flex;
@@ -31,6 +32,21 @@ const S = {
         flex-direction: column;
         justify-self: stretch;
         margin-top: 20px;
+    `,
+    preview: styled.div`
+        display: flex;
+        width: 604px;
+        justify-content: center;
+        background: ${colors.g200};
+    `,
+    previewScrollableContent: styled.div`
+        overflow-y: scroll;
+    `,
+    previewContent: styled.div`
+        display: flex;
+        margin: 52px 84px 0 84px;
+        border-radius: 12px;
+        overflow-y: hidden;
     `
 }
 

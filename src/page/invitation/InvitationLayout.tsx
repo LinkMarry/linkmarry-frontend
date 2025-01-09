@@ -1,6 +1,6 @@
 import React from 'react';
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import S from '@page/invitation/InvitationPage.style';
+import S from '@page/invitation/InvitationLayout.style';
 import InvitationSideBar from "@page/invitation/component/InvitationSideBar";
 import HasHeader from "@designsystem/component/header/hasHeader";
 import {InvitationSideBarType} from "@page/invitation/component/InvitationSideBarType";
