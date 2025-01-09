@@ -27,7 +27,7 @@ function Header() {
                     navigate('/');
                 }}/>
                 <S.navItems>
-                    <S.navItem>모바일 청첩장</S.navItem>
+                    <S.navItem onClick={() => navigate('/templates')}>모바일 청첩장</S.navItem>
                     <S.navItem>스토어 이동</S.navItem>
                     <S.navItem onClick={() => navigate('/notification')}>공지사항</S.navItem>
                     <Spacer/>

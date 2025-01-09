@@ -16,6 +16,7 @@ import NotificationDetailPage from "@page/notification/detail/NotificationDetail
 import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestComment/InvitationDashboardGuestComment";
 import Template1 from "@src/component/template/Template1";
 import {dummyWedding} from "@remote/value/Wedding";
+import TemplatesPage from "@page/templates/TemplatesPage";
 
 const {Kakao} = window as any;
 
@@ -47,6 +48,7 @@ function App() {
                 <Route path={'my-page'} element={<MyPage/>}/>
                 <Route path={'notification'} element={<NotificationPage/>}/>
                 <Route path={'notification/:id'} element={<NotificationDetailPage/>}/>
+                <Route path={'templates'} element={<TemplatesPage/>}/>
 
                 {/*design-system*/}
                 <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
