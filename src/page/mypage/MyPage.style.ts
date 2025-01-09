@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/textType";
 
 const S = {
     container: styled.div`
@@ -36,6 +37,17 @@ const S = {
             gap: 38px;
             border: 1px solid ${colors.g200};
             border-radius: 12px;
+        `,
+        editNameField: styled.input`
+            display: flex;
+            flex: 1;
+            height: 44px;
+            border: 1px solid ${colors.black};
+            padding: 0 24px;
+            border-radius: 8px;
+            ${makeText(TextType.p4)};
+            align-items: center;
+            outline: none;
         `,
         nameSettingButton: styled.button`
             display: flex;
