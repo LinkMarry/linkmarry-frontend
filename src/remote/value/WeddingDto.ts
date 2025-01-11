@@ -10,6 +10,7 @@ import Phone from "@remote/value/Phone";
 import Rsvp from "@remote/value/Rsvp";
 import GuestComment from "@remote/value/GuestComment";
 import Template from "@remote/value/Template";
+import ImgDesign from "@remote/enumeration/ImgDesign";
 
 export default interface WeddingDto {
     // URL 값
@@ -56,4 +57,7 @@ export default interface WeddingDto {
     
      // 갤러리
     imgList: string[];
+    
+    // 갤러리 디자인
+    imgDesign: ImgDesign;
 }

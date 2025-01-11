@@ -5,7 +5,7 @@ import makeText, {TextType} from "@designsystem/foundation/text/textType";
 import {Row} from "@designsystem/component/flexLayout";
 
 interface OptionSegmentedButtonProps extends HTMLAttributes<HTMLDivElement> {
-    selectedIndex: number;
+    selectedIndex?: number;
     items: string[];
     onClickItem: (index: number) => void;
 }

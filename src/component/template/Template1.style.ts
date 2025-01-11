@@ -1,12 +1,20 @@
 import styled, {css} from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import {hideScrollBar} from "@util/css.util";
+import {LinkMarryFont} from "@designsystem/foundation/text/textType";
+import {implementText} from "@designsystem/foundation/text/textProperties";
 
-export const container = styled.div`
+export const container = styled.div<{ $templateFont: LinkMarryFont }>`
     display: flex;
     flex-direction: column;
     width: 436px;
     align-items: stretch;
+
+    * {
+        ${({$templateFont}) => implementText({
+            fontFamily: $templateFont
+        })};
+    }
 `;
 
 export const container1 = {
@@ -42,6 +50,8 @@ export const container1 = {
         height: 512px;
         object-fit: cover;
         border-radius: 1000px 1000px 0 0;
+        border: none;
+        outline: none;
     `
 };
 

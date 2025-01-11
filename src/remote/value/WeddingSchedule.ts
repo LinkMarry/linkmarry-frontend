@@ -15,8 +15,8 @@ export default interface WeddingSchedule {
 export const defaultWeddingSchedule: WeddingSchedule = {
     weddingDate: '',
     weddingTime: '',
-    calendar: false,
-    dDay: false
+    calendar: true,
+    dDay: true
 }
 
 export const dummyWeddingSchedule: WeddingSchedule = {

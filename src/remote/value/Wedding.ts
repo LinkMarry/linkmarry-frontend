@@ -11,6 +11,7 @@ import Rsvp, {dummyRsvp} from "@remote/value/Rsvp";
 import GuestComment, {dummyGuestComment} from "@remote/value/GuestComment";
 import Template, {dummyTemplate} from "@remote/value/Template";
 import Comment, {dummyComments} from "@remote/value/Comment";
+import ImgDesign from "@remote/enumeration/ImgDesign";
 
 export default interface Wedding {
     // URL 값
@@ -60,6 +61,9 @@ export default interface Wedding {
 
     // 갤러리
     imgList: string[];
+    
+    // 갤러리 디자인
+    imgDesign: ImgDesign;
 
     // 워터마크 제거 여부
     waterMark: boolean;
@@ -87,5 +91,6 @@ export const dummyWedding: Wedding = {
         'https://t1.daumcdn.net/news/202203/28/inews24/20220328094911808loli.jpg',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS83SarITbsNC6VM6iy5QOTRkh-7BaissTcrQ&s'
     ],
+    imgDesign: ImgDesign.SLIDE,
     waterMark: false
 }

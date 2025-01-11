@@ -37,6 +37,8 @@ import Template1 from "@src/component/template/Template1";
 import LinkShare, {defaultLinkShare} from "@remote/value/LinkShare";
 import BaseMusic, {defaultBaseMusic} from "@remote/value/BaseMusic";
 import Video, {defaultVideo} from "@remote/value/Video";
+import GalleryOption from "@page/invitation/design/option/GalleryOption";
+import ImgDesign from "@remote/enumeration/ImgDesign";
 
 function InvitationDesign() {
     const [searchParams] = useSearchParams();
@@ -54,6 +56,8 @@ function InvitationDesign() {
     const [video, setVideo] = useState<Video>(defaultVideo);
     const [phone, setPhone] = useState<Phone>(defaultPhone);
     const [rsvp, setRsvp] = useState<Rsvp>(defaultRsvp);
+    const [imgList, setImgList] = useState<string[]>([]);
+    const [imgDesign, setImgDesign] = useState<ImgDesign>(ImgDesign.SLIDE);
 
     const navigate = useNavigate();
 
@@ -73,7 +77,8 @@ function InvitationDesign() {
         video,
         phone,
         rsvp,
-        imgList: [],
+        imgList,
+        imgDesign,
         waterMark: false
     }
     // Drag and drop
@@ -435,6 +440,14 @@ function InvitationDesign() {
                                                         rsvp={rsvp}
                                                         onChange={rsvp => setRsvp(rsvp)}
                                                     />;
+                                                    break;
+                                                case OptionType.Gallery:
+                                                    children = <GalleryOption
+                                                        imgList={imgList}
+                                                        imgDesign={imgDesign}
+                                                        onChangeImgDesign={imgDesign => setImgDesign(imgDesign)}
+                                                        onChangeImgList={imgList => setImgList(imgList)}
+                                                    />
                                                     break;
                                             }
                                             return (

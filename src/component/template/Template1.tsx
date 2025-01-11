@@ -13,8 +13,7 @@ import Comment from "@remote/value/Comment";
 import CreateGuestCommentDialog from "@src/component/template/dialog/CreateGuestCommentDialog";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/RemoveGuestCommentDialog";
 import Text from "@designsystem/component/text";
-import {templateFontSizeRecord, templateFontSizes} from "@remote/value/Template";
-import {LinkMarryFont} from "@designsystem/foundation/text/textType";
+import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 
@@ -24,7 +23,7 @@ interface Template1Props {
     wedding: Wedding;
 }
 
-function parseDate(dateString: string) {
+function parseDate(dateString: string): Date {
     const [year, month, day] = dateString.split('-').map(Number);
     return new Date(year, month - 1, day); // month는 0부터 시작하므로 1을 빼줍니다.
 }
@@ -97,26 +96,9 @@ function Template1(
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const kakaoMapRef = useRef<HTMLDivElement>(null);
 
-    const date = parseDate(wedding.weddingSchedule.weddingDate);  // 입력 날짜 파싱
-    const calendar = getCalendar(date);
-
-    const calculateRemainingTime = () => {
-        const now = new Date();
-        const timeDiff = date.getTime() - now.getTime();
-
-        // 시간 차가 음수일 경우 결혼식이 이미 지났다는 의미
-        if (timeDiff <= 0) {
-            setRemainingTime({days: 0, hours: 0, minutes: 0, seconds: 0});
-            return;
-        }
-
-        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 남은 일수
-        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // 남은 시간
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)); // 남은 분
-        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000); // 남은 초
-
-        setRemainingTime({days, hours, minutes, seconds});
-    };
+    const weddingDate = wedding.weddingSchedule.weddingDate;
+    const date = weddingDate ? parseDate(weddingDate) : null;  // 입력 날짜 파싱
+    const calendar = date ? getCalendar(date) : null;
 
     const handleScroll = () => {
         if (scrollContainerRef.current) {
@@ -133,8 +115,35 @@ function Template1(
     };
 
     useEffect(() => {
+        const calculateRemainingTime = () => {
+            if (!date) return;
+            
+            const now = new Date();
+            const timeDiff = date.getTime() - now.getTime();
+
+            // 시간 차가 음수일 경우 결혼식이 이미 지났다는 의미
+            if (timeDiff <= 0) {
+                setRemainingTime({days: 0, hours: 0, minutes: 0, seconds: 0});
+                return;
+            }
+            
+            setRemainingTime({
+                days: Math.floor(timeDiff / (1000 * 60 * 60 * 24)), // 남은 일수 
+                hours: Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((timeDiff % (1000 * 60)) / 1000)
+            });
+        };
+
         calculateRemainingTime();
         const interval = setInterval(calculateRemainingTime, 1000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [weddingDate]);
+
+    useEffect(() => {
         const container = scrollContainerRef.current;
         container?.addEventListener('scroll', handleScroll);
 
@@ -144,27 +153,26 @@ function Template1(
         });
 
         return () => {
-            clearInterval(interval); // 컴포넌트가 언마운트될 때 인터벌 해제}
             container?.removeEventListener('scroll', handleScroll);
-        };
+        }
     }, []);
 
     const {templateColor, templateFont, templateFontSize} = wedding.template;
     const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
 
     return (
-        <S.container ref={containerRef}>
+        <S.container ref={containerRef} $templateFont={templateFont}>
             <S.container1.root background={templateColor}>
                 <S.container1.titleWrapper>
                     {/*<Text text={'MIN라인LINE Seed*@ HYOLYN & TAFYANG'} font={'LINESeedKR'} weight={400}/>*/}
                     {/*<HorizontalDivider color={colors.black}/>*/}
                     <S.container1.descriptionWrapper>
                         <Text
-                            text={wedding.weddingSchedule.weddingDate} font={templateFont} size={18 + addFontSize}
+                            text={wedding.weddingSchedule.weddingDate} size={18 + addFontSize}
                             weight={300}
                         />
                         <Text
-                            text={wedding.weddingPlace.placeName} font={templateFont} size={18 + addFontSize}
+                            text={wedding.weddingPlace.placeName} size={18 + addFontSize}
                             weight={300}
                         />
                     </S.container1.descriptionWrapper>
@@ -173,98 +181,113 @@ function Template1(
                     <S.container1.img src={wedding.imgList[0]}/>
                     <Row gap={8} $alignItems={'center'}>
                         <Text
-                            text={`신랑 ${wedding.baseInfo.groomName}`} size={16 + addFontSize} font={templateFont}
+                            text={`신랑 ${wedding.baseInfo.groomName}`} size={16 + addFontSize}
                             weight={300}
                         />
                         <Icon type={IconType.HeartFill} size={16 + addFontSize} color={colors.white}/>
                         <Text
-                            text={`신부 ${wedding.baseInfo.brideName}`} size={16 + addFontSize} font={templateFont}
+                            text={`신부 ${wedding.baseInfo.brideName}`} size={16 + addFontSize}
                             weight={300}
                         />
                     </Row>
                 </Column>
             </S.container1.root>
             <S.container2.root>
-                <Text text={'WEDDING DAY'} font={templateFont} color={colors.g600} size={20 + addFontSize}
-                      weight={300}/>
-                <Column gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
-                    <HorizontalDivider/>
-                    <S.container2.table>
-                        <thead>
-                        <tr>
-                            {['일', '월', '화', '수', '목', '금', '토'].map(i => (
-                                <Text text={i} font={'Pretendard'} color={colors.g500} size={16 + addFontSize}
-                                      weight={300}/>
-                            ))}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {calendar.map((week, index) => (
-                            <tr key={index}>
-                                {week.map((day, dayIndex) => (
-                                    <td
-                                        key={dayIndex}
-                                        style={{
-                                            background: day.isWeddingDay ? colors.p300 : undefined,
-                                            borderRadius: 100
-                                        }}
-                                    >
+                <Text
+                    text={'WEDDING DAY'} color={colors.g600} size={20 + addFontSize}
+                    weight={300}
+                />
+                {wedding.weddingSchedule.calendar && (
+                    <Column gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
+                        <HorizontalDivider/>
+                        <S.container2.table>
+                            <thead>
+                            <tr>
+                                {['일', '월', '화', '수', '목', '금', '토'].map((i, index) => (
+                                    <th key={index}>
                                         <Text
-                                            text={`${day.day ?? ''}`}
+                                            text={i}
                                             font={'Pretendard'}
+                                            color={colors.g500}
                                             size={16 + addFontSize}
                                             weight={300}
                                         />
-                                    </td>
+                                    </th>
                                 ))}
                             </tr>
-                        ))}
-                        </tbody>
-                    </S.container2.table>
-                    <HorizontalDivider/>
-                </Column>
-                <Column gap={24} $alignItems={'center'}>
-                    <Row gap={12} $alignItems={'center'} style={{paddingLeft: 50, paddingRight: 50}}>
-                        <S.container2.dateCell>
-                            <Text text={'DAYS'} font={templateFont} size={12 + addFontSize} weight={400}
-                                  color={colors.g300}/>
-                            <Text text={`${remainingTime.days}`} font={templateFont} size={24 + addFontSize}
-                                  weight={300} color={colors.g600}/>
-                        </S.container2.dateCell>
-                        <S.container2.dateCell>
-                            <Text text={'HOUR'} font={templateFont} size={12 + addFontSize} weight={400}
-                                  color={colors.g300}/>
-                            <Text text={`${remainingTime.hours}`} font={templateFont} size={24 + addFontSize}
-                                  weight={300} color={colors.g600}/>
-                        </S.container2.dateCell>
-                        <S.container2.dateCell>
-                            <Text text={'MIN'} font={templateFont} size={12 + addFontSize} weight={400}
-                                  color={colors.g300}/>
-                            <Text text={`${remainingTime.minutes}`} font={templateFont} size={24 + addFontSize}
-                                  weight={300} color={colors.g600}/>
-                        </S.container2.dateCell>
-                        <S.container2.dateCell>
-                            <Text text={'SEC'} font={templateFont} size={12 + addFontSize} weight={400}
-                                  color={colors.g300}/>
-                            <Text text={`${remainingTime.seconds}`} font={templateFont} size={24 + addFontSize}
-                                  weight={300} color={colors.g600}/>
-                        </S.container2.dateCell>
-                    </Row>
-                    <Row gap={4}>
-                        <Text text={wedding.baseInfo.groomName} font={templateFont} size={14 + addFontSize}
-                              weight={300}/>
-                        <Icon
-                            type={IconType.HeartFill}
-                            size={16 + addFontSize}
-                            color={colors.black}
-                        />
-                        <Text text={`${wedding.baseInfo.brideName}의 결혼식이`} font={templateFont} size={14 + addFontSize}
-                              weight={300}/>
-                        <Text text={`${remainingTime.days}`} font={templateFont} size={14 + addFontSize} weight={300}
-                              color={colors.p800}/>
-                        <Text text={'일 남았습니다.'} font={templateFont} size={14 + addFontSize} weight={300}/>
-                    </Row>
-                </Column>
+                            </thead>
+                            <tbody>
+                            {calendar && calendar.map((week, index) => (
+                                <tr key={index}>
+                                    {week.map((day, dayIndex) => (
+                                        <td
+                                            key={dayIndex}
+                                            style={{
+                                                background: day.isWeddingDay ? colors.p300 : undefined,
+                                                borderRadius: 100
+                                            }}
+                                        >
+                                            <Text
+                                                text={`${day.day ?? ''}`}
+                                                font={'Pretendard'}
+                                                size={16 + addFontSize}
+                                                weight={300}
+                                            />
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                            </tbody>
+                        </S.container2.table>
+                        <HorizontalDivider/>
+                    </Column>
+                )}
+                {wedding.weddingSchedule.dDay && (
+                    <Column gap={24} $alignItems={'center'}>
+                        <Row gap={12} $alignItems={'center'} style={{paddingLeft: 50, paddingRight: 50}}>
+                            <S.container2.dateCell>
+                                <Text text={'DAYS'} size={12 + addFontSize} weight={400}
+                                      color={colors.g300}/>
+                                <Text text={`${remainingTime.days}`} size={24 + addFontSize}
+                                      weight={300} color={colors.g600}/>
+                            </S.container2.dateCell>
+                            <S.container2.dateCell>
+                                <Text text={'HOUR'} size={12 + addFontSize} weight={400}
+                                      color={colors.g300}/>
+                                <Text text={`${remainingTime.hours}`} size={24 + addFontSize}
+                                      weight={300} color={colors.g600}/>
+                            </S.container2.dateCell>
+                            <S.container2.dateCell>
+                                <Text text={'MIN'} size={12 + addFontSize} weight={400}
+                                      color={colors.g300}/>
+                                <Text text={`${remainingTime.minutes}`} size={24 + addFontSize}
+                                      weight={300} color={colors.g600}/>
+                            </S.container2.dateCell>
+                            <S.container2.dateCell>
+                                <Text text={'SEC'} size={12 + addFontSize} weight={400}
+                                      color={colors.g300}/>
+                                <Text text={`${remainingTime.seconds}`} size={24 + addFontSize}
+                                      weight={300} color={colors.g600}/>
+                            </S.container2.dateCell>
+                        </Row>
+                        <Row gap={4}>
+                            <Text text={wedding.baseInfo.groomName} size={14 + addFontSize}
+                                  weight={300}/>
+                            <Icon
+                                type={IconType.HeartFill}
+                                size={16 + addFontSize}
+                                color={colors.black}
+                            />
+                            <Text text={`${wedding.baseInfo.brideName}의 결혼식이`}
+                                  size={14 + addFontSize}
+                                  weight={300}/>
+                            <Text text={`${remainingTime.days}`} size={14 + addFontSize}
+                                  weight={300}
+                                  color={colors.p800}/>
+                            <Text text={'일 남았습니다.'} size={14 + addFontSize} weight={300}/>
+                        </Row>
+                    </Column>
+                )}
             </S.container2.root>
             <S.container3.root>
                 <Column gap={96} $alignItems={'stretch'}>
@@ -293,7 +316,7 @@ function Template1(
                             />
                             <Row gap={8} $alignItems={'center'}>
                                 <Text
-                                    text={`신부 `} font={'GangwonEduAll'} weight={100}
+                                    text={'신부 '} font={'GangwonEduAll'} weight={100}
                                     size={24 + addFontSize} color={colors.g600}
                                 />
                                 <Text
@@ -332,16 +355,16 @@ function Template1(
                           size={20 + addFontSize}
                           weight={300}/>
                     <Column $alignItems={'center'}>
-                        <Text text={wedding.weddingPlace.placeName} font={templateFont} size={16 + addFontSize}
+                        <Text text={wedding.weddingPlace.placeName} size={16 + addFontSize}
                               weight={300}/>
                         <Text text={`${wedding.weddingPlace.addressName} ${wedding.weddingPlace.floorHall}`}
-                              font={templateFont} size={16 + addFontSize} weight={300}/>
+                              size={16 + addFontSize} weight={300}/>
                     </Column>
                     <S.container5.kakaoMap ref={kakaoMapRef} style={{
                         display: wedding.weddingPlace.placeStatus ? 'flex' : 'none'
                     }}></S.container5.kakaoMap>
                     <Text
-                        text={wedding.weddingPlace.placeTransportation} font={templateFont} size={16 + addFontSize}
+                        text={wedding.weddingPlace.placeTransportation} size={16 + addFontSize}
                         weight={300}
                         style={{
                             marginLeft: 24,
@@ -354,7 +377,7 @@ function Template1(
             </S.container5.root>
             <S.container6.root>
                 <Column gap={40} $alignItems={'center'}>
-                    <Text text={'마음 전하실 곳'} font={templateFont} size={20 + addFontSize} weight={300}
+                    <Text text={'마음 전하실 곳'} size={20 + addFontSize} weight={300}
                           color={colors.g600}/>
                     <MoneyInfoInTemplate moneyInfo={wedding.moneyInfo}/>
                 </Column>
@@ -362,16 +385,15 @@ function Template1(
             <S.container7.root background={templateColor}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={12} $alignItems={'center'}>
-                        <Text text={'방명록'} font={templateFont} size={20 + addFontSize} weight={300}
+                        <Text text={'방명록'} size={20 + addFontSize} weight={300}
                               color={colors.g600}/>
                         <Text text={`${wedding.baseInfo.groomName}, ${wedding.baseInfo.brideName}에게 하고 싶은 말을 남겨주세요`}
-                              font={templateFont} size={16 + addFontSize} weight={300} color={colors.g600}/>
+                              size={16 + addFontSize} weight={300} color={colors.g600}/>
                     </Column>
                     <Column gap={12} $alignItems={'stretch'}>
                         <GuestCommentsTemplate
                             comments={wedding.guestComments}
                             design={wedding.guestComment.design}
-                            templateFont={templateFont}
                             background={colors.white}
                             addFontSize={addFontSize}
                             onRemove={comment => {
@@ -380,7 +402,7 @@ function Template1(
                             }}
                         />
                         <Text
-                            text={'전체보기'} style={{alignSelf: 'flex-end', paddingRight: 4}} font={templateFont}
+                            text={'전체보기'} style={{alignSelf: 'flex-end', paddingRight: 4}}
                             size={14 + addFontSize} weight={300} color={colors.g600}
                         />
                     </Column>
@@ -396,7 +418,6 @@ function Template1(
                     }/>
             </S.container7.root>
             <FooterTemplate
-                templateFont={templateFont}
                 addFontSize={addFontSize}
                 style={{
                     background: '#F7F7F2'

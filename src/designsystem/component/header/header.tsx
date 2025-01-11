@@ -62,6 +62,7 @@ const S = {
         display: flex;
         ${makeText(TextType.p5)};
         color: ${colors.black};
+        white-space: nowrap;
         cursor: pointer;
     `,
 };

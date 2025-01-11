@@ -1,17 +1,14 @@
 import React, {HTMLAttributes} from 'react';
 import {Column, Row} from "@designsystem/component/flexLayout";
-import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 import Text from "@designsystem/component/text";
 import colors from "@designsystem/foundation/colors";
 
 interface FooterTemplateProps extends HTMLAttributes<HTMLDivElement> {
-    templateFont: LinkMarryFont;
     addFontSize: number;
 }
 
 function FooterTemplate(
     {
-        templateFont,
         addFontSize,
         ...props
     }: FooterTemplateProps
@@ -29,17 +26,17 @@ function FooterTemplate(
                 <Row gap={8} $alignItems={'center'}>
                     <img src={'/kakao.svg'} alt={'kakao'} width={20} height={20}/>
                     <Text
-                        text={'카카오톡으로 청첩장 보내기'} font={templateFont} size={14 + addFontSize} weight={300}
+                        text={'카카오톡으로 청첩장 보내기'} size={14 + addFontSize} weight={300}
                         color={colors.g600}
                     />
                 </Row>
                 <Row gap={4} $alignItems={'center'}>
                     <Text
-                        text={'Copyrightⓒ2025.'} font={templateFont} size={14 + addFontSize} weight={300}
+                        text={'Copyrightⓒ2025.'} size={14 + addFontSize} weight={300}
                         color={colors.g300}
                     />
                     <Text
-                        text={'All rights reserved.'} font={templateFont} size={14 + addFontSize} weight={300}
+                        text={'All rights reserved.'} size={14 + addFontSize} weight={300}
                         color={colors.g300}
                     />
                 </Row>

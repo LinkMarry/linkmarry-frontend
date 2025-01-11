@@ -10,7 +10,8 @@ export enum OptionType {
     MoneyInfo,
     Video,
     Phone,
-    Rsvp
+    Rsvp,
+    Gallery
 }
 
 export const options: {
@@ -54,4 +55,7 @@ export const options: {
     [OptionType.Rsvp]: {
         title: '참석 의사',
     },
+    [OptionType.Gallery]: {
+        title: '갤러리'
+    }
 }

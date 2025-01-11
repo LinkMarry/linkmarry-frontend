@@ -14,7 +14,6 @@ import {trimString} from "@util/string.util";
 interface GuestCommentsTemplateProps {
     comments: Comment[];
     design: Design;
-    templateFont: LinkMarryFont;
     background: CSSProperties['background'];
     addFontSize: number;
     onRemove: (comment: Comment) => void;
@@ -24,7 +23,6 @@ function GuestCommentsTemplate(
     {
         comments,
         design,
-        templateFont,
         background,
         addFontSize,
         onRemove,
@@ -38,12 +36,12 @@ function GuestCommentsTemplate(
                         <S.basicContainer key={index} background={background}>
                             <Row gap={8} $alignItems={'center'}>
                                 <Text
-                                    text={`From. ${comment.name}`} font={templateFont} size={18 + addFontSize}
+                                    text={`From. ${comment.name}`} size={18 + addFontSize}
                                     color={colors.g600}
                                     weight={300}
                                 />
                                 <Text
-                                    text={comment.createdDate} font={templateFont} size={12 + addFontSize}
+                                    text={comment.createdDate} size={12 + addFontSize}
                                     color={colors.g300}
                                     weight={300}
                                 />
@@ -56,7 +54,7 @@ function GuestCommentsTemplate(
                                 />
                             </Row>
                             <Text
-                                text={comment.content} font={templateFont} size={16 + addFontSize} color={colors.g600}
+                                text={comment.content} size={16 + addFontSize} color={colors.g600}
                                 weight={300}
                             />
                         </S.basicContainer>
@@ -77,18 +75,18 @@ function GuestCommentsTemplate(
                             />
                             <Column flex={1}>
                                 <Text
-                                    text={comment.content} font={templateFont} size={16 + addFontSize} weight={300}
+                                    text={comment.content} size={16 + addFontSize} weight={300}
                                     color={colors.g600}
                                 />
                                 <Spacer/>
                                 <Column gap={4}>
                                     <Text
-                                        text={`from. ${comment.name}`} font={templateFont} size={16 + addFontSize}
+                                        text={`from. ${comment.name}`} size={16 + addFontSize}
                                         weight={300}
                                         color={colors.g600}
                                     />
                                     <Text
-                                        text={trimString(comment.createdDate, 10)} font={templateFont}
+                                        text={trimString(comment.createdDate, 10)}
                                         size={12 + addFontSize}
                                         weight={300}
                                         color={colors.g300}
