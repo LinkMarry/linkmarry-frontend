@@ -1,7 +1,7 @@
 import React, {HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import {Row} from "@designsystem/component/flexLayout";
 
 interface OptionSegmentedButtonProps extends HTMLAttributes<HTMLDivElement> {
@@ -39,11 +39,11 @@ const S = {
         ${({selected}) => selected ? css`
             border: 2px solid ${colors.p800};
             color: ${colors.p800};
-            ${makeText(TextType.p4)};
+            ${makeText('p4')};
         ` : css`
             border: 2px solid ${colors.g200};
             color: ${colors.g400};
-            ${makeText(TextType.p5)};
+            ${makeText('p5')};
         `}
     `,
 }

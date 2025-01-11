@@ -3,7 +3,6 @@ import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog
 import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import TextField from "@designsystem/component/textField";
 import Textarea from "@designsystem/component/textarea";
@@ -63,8 +62,8 @@ function CreateGuestCommentDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text text={'방명록 작성하기'} type={TextType.h6}/>
-                    <Text text={'저희에게 따뜻한 말을 남겨주세요'} type={TextType.caption1} color={colors.g400}/>
+                    <Text text={'방명록 작성하기'} type={'h6'}/>
+                    <Text text={'저희에게 따뜻한 말을 남겨주세요'} type={'caption1'} color={colors.g400}/>
                 </Column>
                 <Column gap={12} $alignItems={'stretch'}>
                     <TextField ref={nameRef} placeholder={'성함'}/>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 
 const S = {
     container: styled.div`
@@ -19,12 +19,12 @@ const S = {
     `,
     title: styled.span`
         display: flex;
-        ${makeText(TextType.h5)};
+        ${makeText('h5')};
         color: ${colors.black};
     `,
     titleDescription: styled.span`
         display: flex;
-        ${makeText(TextType.p3)};
+        ${makeText('p3')};
         color: ${colors.g500};
     `,
     options: styled.ul`

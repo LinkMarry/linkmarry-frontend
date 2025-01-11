@@ -4,7 +4,7 @@ import Spacer from "@designsystem/component/spacer";
 import colors from "@designsystem/foundation/colors";
 import {invitationSideBarRecords, InvitationSideBarType} from "@page/invitation/component/InvitationSideBarType";
 import Icon from "@designsystem/foundation/icon";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 
 interface InvitationSideBarProps {
     selected: InvitationSideBarType;
@@ -65,7 +65,7 @@ const S = {
         cursor: pointer;
     `,
     itemTitle: styled.span`
-        ${makeText(TextType.p1)};
+        ${makeText('p1')};
     `
 }
 

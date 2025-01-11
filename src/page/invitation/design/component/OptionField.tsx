@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Text from "@designsystem/component/text";
 
@@ -38,7 +38,7 @@ function OptionField(
                 type={type}
             />
             <Icon tint={colors.g600} size={20} type={leadingIcon}/>
-            <Text text={fieldProps?.value?.toString() ?? ''} type={TextType.p5}/>
+            <Text text={fieldProps?.value?.toString() ?? ''} type={'p5'}/>
         </S.field>
     );
 }
@@ -54,7 +54,7 @@ const S = {
         padding-right: 16px;
         align-items: center;
         gap: 8px;
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         outline: none;
         border: 1px solid ${colors.g200};
         background: ${colors.white};

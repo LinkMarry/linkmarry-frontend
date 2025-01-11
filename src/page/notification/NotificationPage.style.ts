@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 
 const BaseRow = styled.div`
     display: flex;
@@ -14,7 +14,7 @@ const BaseCell = styled.div`
     align-items: center;
     justify-content: center;
     width: 146px;
-    ${makeText(TextType.p4)};
+    ${makeText('p4')};
 `
 
 const S = {

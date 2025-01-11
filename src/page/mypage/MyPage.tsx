@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import HasHeader from "@designsystem/component/header/hasHeader";
 import S from '@page/mypage/MyPage.style';
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
@@ -58,13 +57,13 @@ function MyPage() {
             <S.container>
                 <S.sideBar.container>
                     <S.sideBar.profileWrapper>
-                        <Text text={'프로필'} type={TextType.p2} onClick={() => {
+                        <Text text={'프로필'} type={'p2'} onClick={() => {
 
                         }}/>
                     </S.sideBar.profileWrapper>
                     <HorizontalDivider color={colors.g200}/>
                     <Text
-                        text={'로그아웃'} type={TextType.p2} color={colors.g400} style={{cursor: 'pointer'}}
+                        text={'로그아웃'} type={'p2'} color={colors.g400} style={{cursor: 'pointer'}}
                         onClick={() => {
                             Cookies.remove('accessToken');
                             Cookies.remove('refreshToken');
@@ -72,14 +71,14 @@ function MyPage() {
                         }}
                     />
                     <Text
-                        text={'회원탈퇴'} type={TextType.p2} color={'#D65745'} style={{cursor: 'pointer'}}
+                        text={'회원탈퇴'} type={'p2'} color={'#D65745'} style={{cursor: 'pointer'}}
                         onClick={() => {
                             setShowRemoveMemberDialog(true);
                         }}
                     />
                 </S.sideBar.container>
                 <S.baseInfo.container>
-                    <Text text={'기본 정보'} type={TextType.p2} style={{fontWeight: '700'}}/>
+                    <Text text={'기본 정보'} type={'p2'} style={{fontWeight: '700'}}/>
                     {member && (
                         <Column gap={32} $alignItems={'stretch'}>
                             <Row gap={38}>
@@ -90,14 +89,14 @@ function MyPage() {
                                 }} alt={'member picture'}/>
                                 {/* TODO: DUMMY */}
                                 <Column gap={12}>
-                                    <Text text={'나의 프로필'} type={TextType.p5}/>
+                                    <Text text={'나의 프로필'} type={'p5'}/>
                                     <Button text={'사진 업로드'} role={'assistive'} style={{width: 264}}/>
                                 </Column>
                             </Row>
                             <Column $alignItems={'stretch'}>
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Row style={{height: 52}} $alignItems={'center'}>
-                                        <Text text={'이름'} type={TextType.p5} style={{width: 122}}/>
+                                        <Text text={'이름'} type={'p5'} style={{width: 122}}/>
                                         {isSettingMode ? (
                                             <S.baseInfo.editNameField
                                                 value={editMemberName}
@@ -107,7 +106,7 @@ function MyPage() {
                                             <>
                                                 <Text
                                                     text={member.name}
-                                                    type={TextType.p5}
+                                                    type={'p5'}
                                                     color={colors.g500}
                                                     style={{width: 122}}
                                                 />
@@ -115,7 +114,7 @@ function MyPage() {
                                                 <S.baseInfo.nameSettingButton
                                                     onClick={onClickSettingName}
                                                 >
-                                                    <Text text={'설정'} type={TextType.btn1} color={colors.g600}/>
+                                                    <Text text={'설정'} type={'btn1'} color={colors.g600}/>
                                                 </S.baseInfo.nameSettingButton>
                                             </>
                                         )}
@@ -131,8 +130,8 @@ function MyPage() {
                                     )}
                                 </Column>
                                 <Row style={{height: 52}}>
-                                    <Text text={'이메일'} type={TextType.p5} style={{width: 122}}/>
-                                    <Text text={member.email} type={TextType.p5} color={colors.g500}
+                                    <Text text={'이메일'} type={'p5'} style={{width: 122}}/>
+                                    <Text text={member.email} type={'p5'} color={colors.g500}
                                           style={{width: 122}}/>
                                 </Row>
                             </Column>

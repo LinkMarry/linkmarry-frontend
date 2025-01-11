@@ -1,7 +1,7 @@
 import React, {ForwardedRef, forwardRef, SelectHTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 
 interface OptionTextFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -54,7 +54,7 @@ const S = {
         text-overflow: ellipsis;
         border: none;
         outline: none;
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         line-height: calc(44px / 2);
         appearance: none;
         -webkit-appearance: none;

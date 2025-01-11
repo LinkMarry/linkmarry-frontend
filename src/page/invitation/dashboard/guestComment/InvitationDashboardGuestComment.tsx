@@ -5,7 +5,7 @@ import {Column} from "@designsystem/component/flexLayout";
 import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Text from "@designsystem/component/text";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Comment from "@remote/value/Comment";
 import weddingApi from "@remote/api/WeddingApi";
 
@@ -34,8 +34,8 @@ function InvitationDashboardGuestComment() {
                     navigate('/invitation/dashboard');
                 }}/>
                 <Column>
-                    <Text text={'방명록'} type={TextType.h5}/>
-                    <Text text={`방명록 ${comments?.length ?? 0}건`} type={TextType.p3} color={colors.g500}/>
+                    <Text text={'방명록'} type={'h5'}/>
+                    <Text text={`방명록 ${comments?.length ?? 0}건`} type={'p3'} color={colors.g500}/>
                 </Column>
                 <Column $alignItems={'stretch'}>
                     <S.header.row>
@@ -68,7 +68,7 @@ const BaseCell = styled.div`
     align-items: center;
     justify-content: center;
     width: 146px;
-    ${makeText(TextType.p4)};
+    ${makeText('p4')};
 `
 
 const S = {

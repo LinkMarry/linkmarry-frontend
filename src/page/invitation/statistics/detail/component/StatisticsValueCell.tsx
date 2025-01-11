@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 
 interface StatisticsValueCellProps {
@@ -19,8 +18,8 @@ function StatisticsValueCell(
 ) {
     return (
         <S.container style={{background: filtered ? colors.g100 : colors.white}}>
-            <Text text={label} type={TextType.p5}/>
-            <Text text={`${value}`} type={TextType.h2}/>
+            <Text text={label} type={'p5'}/>
+            <Text text={`${value}`} type={'h2'}/>
         </S.container>
     );
 }

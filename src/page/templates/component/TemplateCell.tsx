@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 
 interface TemplateCellProps {
     title: string;
@@ -20,8 +19,8 @@ function TemplateCell(
                 alt=""
             />
             <Column gap={4} style={{padding: 20}}>
-                <Text text={title} type={TextType.p2}/>
-                {/*<Text text={'title'} type={TextType.p5}/>*/}
+                <Text text={title} type={'p2'}/>
+                {/*<Text text={'title'} type={'p5}/>*/}
             </Column>
         </S.container>
     );

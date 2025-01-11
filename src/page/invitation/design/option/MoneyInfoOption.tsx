@@ -6,7 +6,7 @@ import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Checkbox from "@designsystem/component/checkbox";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import MoneyInfo from "@remote/value/MoneyInfo";
 
 interface MoneyInfoOptionProps {
@@ -336,7 +336,7 @@ const S = {
         padding: 36px;
     `,
     kakaoPayHelper: styled.span`
-        ${makeText(TextType.btn1)};
+        ${makeText('btn1')};
         color: ${colors.g300};
         text-decoration: underline;
         cursor: pointer;

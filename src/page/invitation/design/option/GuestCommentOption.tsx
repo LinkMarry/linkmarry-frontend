@@ -5,7 +5,7 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Checkbox from "@designsystem/component/checkbox";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import GuestComment from "@remote/value/GuestComment";
 
@@ -76,7 +76,7 @@ const S = {
         padding: 36px;
     `,
     hideDateLabel: styled.span`
-        ${makeText(TextType.caption1)};
+        ${makeText('caption1')};
         color: ${colors.g300};
     `
 }

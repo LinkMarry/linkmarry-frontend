@@ -5,7 +5,6 @@ import {Column, Row} from "@designsystem/component/flexLayout";
 import Button from "@designsystem/component/button";
 import colors from "@designsystem/foundation/colors";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 
 interface RemoveDesignDialogProps {
     dismiss: () => void;
@@ -22,7 +21,7 @@ function RemoveDesignDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={46} $alignItems={'center'}>
-                    <Text text={'정말 삭제하시겠습니까?'} type={TextType.p1} color={colors.black}/>
+                    <Text text={'정말 삭제하시겠습니까?'} type={'p1'} color={colors.black}/>
                     <Row gap={16}>
                         <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
                         <Button text={'삭제'} role={'assistive'} onClick={confirm}/>

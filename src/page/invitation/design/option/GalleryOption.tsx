@@ -8,7 +8,6 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import ImgDesign, {imgDesignRecord, imgDesigns} from "@remote/enumeration/ImgDesign";
 import fileApi from "@remote/api/FileApi";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 
 interface GalleryOptionProps {
     imgList: string[];
@@ -62,7 +61,7 @@ function GalleryOption(
                             multiple={true}
                         />
                     </Row>
-                    <Text text={'사진은 최대 30장까지 업로드 가능합니다.'} style={{marginLeft: 84}} type={TextType.caption1}
+                    <Text text={'사진은 최대 30장까지 업로드 가능합니다.'} style={{marginLeft: 84}} type={'caption1'}
                           color={colors.g300}/>
                 </Column>
                 <Row gap={12}>

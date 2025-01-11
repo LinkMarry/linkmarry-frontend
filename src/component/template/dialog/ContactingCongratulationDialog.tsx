@@ -4,7 +4,7 @@ import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Phone from "@remote/value/Phone";
 import BaseInfo from "@remote/value/BaseInfo";
 import Spacer from "@designsystem/component/spacer";
@@ -68,8 +68,8 @@ function ContactingCongratulationDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text text={'축하 연락하기'} type={TextType.h6}/>
-                    <Text text={'축하의 마음을 전하세요'} type={TextType.caption1} color={colors.g400}/>
+                    <Text text={'축하 연락하기'} type={'h6'}/>
+                    <Text text={'축하의 마음을 전하세요'} type={'caption1'} color={colors.g400}/>
                 </Column>
                 <Row $alignItems={'stretch'}>
                     <S.selector selected={selectedIndex === 0} onClick={() => setSelectedIndex(0)}>신랑측</S.selector>
@@ -79,8 +79,8 @@ function ContactingCongratulationDialog(
                     {tels.map(tel => (
                         <S.tel>
                             <Row gap={12} $alignItems={'center'}>
-                                <Text text={tel.name} type={TextType.p5}/>
-                                <Text text={tel.familyName} type={TextType.caption1} color={colors.g300}/>
+                                <Text text={tel.name} type={'p5'}/>
+                                <Text text={tel.familyName} type={'caption1'} color={colors.g300}/>
                             </Row>
                             <Spacer/>
                             <Row gap={12} $alignItems={'center'}>
@@ -123,7 +123,7 @@ const S = {
         flex: 1;
         align-items: center;
         justify-content: center;
-        ${makeText(TextType.caption1)};
+        ${makeText('caption1')};
         border-bottom: 1px solid ${({selected}) => selected ? colors.p800 : colors.g100};
         cursor: pointer;
     `,

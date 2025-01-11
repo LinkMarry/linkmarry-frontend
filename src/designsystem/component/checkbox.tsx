@@ -9,7 +9,7 @@ import React, {
 import styled from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 
 interface CheckboxProps {
     checked?: boolean;
@@ -106,7 +106,7 @@ const S = {
     title: styled.span`
         display: inline-flex;
 
-        ${makeText(TextType.p4)};
+        ${makeText('p4')};
         color: ${colors.black};
     `
 }

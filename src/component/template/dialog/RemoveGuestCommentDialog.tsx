@@ -4,7 +4,6 @@ import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import TextField from "@designsystem/component/textField";
 import Button from "@designsystem/component/button";
 import weddingApi from "@remote/api/WeddingApi";
@@ -56,8 +55,8 @@ function RemoveGuestCommentDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text text={'글 삭제하기'} type={TextType.h6}/>
-                    <Text text={'관리자와 글 작성자만 글을 삭제할 수 있습니다'} type={TextType.caption1} color={colors.g400}/>
+                    <Text text={'글 삭제하기'} type={'h6'}/>
+                    <Text text={'관리자와 글 작성자만 글을 삭제할 수 있습니다'} type={'caption1'} color={colors.g400}/>
                 </Column>
                 <TextField ref={passwordRef} placeholder={'비밀번호 입력'}/>
                 <Button text={'삭제'} role={'assistive'} onClick={onClickRemove}/>

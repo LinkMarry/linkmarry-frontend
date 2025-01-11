@@ -6,7 +6,6 @@ import Spacer from "@designsystem/component/spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 
 interface MoneyInfoInTemplateProps {
     moneyInfo: MoneyInfo;
@@ -24,7 +23,7 @@ function MoneyInfoInTemplate(
         <S.container>
             <div>
                 <div onClick={() => setClickedGroom(i => !i)}>
-                    <Text text={'신랑측'} type={TextType.p4} color={colors.g600} weight={'bold'}/>
+                    <Text text={'신랑측'} type={'p4'} color={colors.g600} weight={'bold'}/>
                     <Spacer/>
                     <Icon type={IconType.ExpandArrow} tint={colors.g600}
                           style={{rotate: clickedGroom ? '90deg' : '-90deg'}}/>
@@ -42,7 +41,7 @@ function MoneyInfoInTemplate(
             </div>
             <div>
                 <div onClick={() => setClickedBride(i => !i)}>
-                    <Text text={'신부측'} type={TextType.p4} color={colors.p800} weight={'bold'}/>
+                    <Text text={'신부측'} type={'p4'} color={colors.p800} weight={'bold'}/>
                     <Spacer/>
                     <Icon type={IconType.ExpandArrow} tint={colors.p800}
                           style={{rotate: clickedBride ? '90deg' : '-90deg'}}/>
@@ -115,13 +114,13 @@ function MoneyCell(props: {
                 borderTop: `1px solid ${props.isGroom ? colors.g200 : colors.p400}`,
             }}
         >
-            <Text text={props.name} type={TextType.p5}/>
+            <Text text={props.name} type={'p5'}/>
             <Row $alignItems={'center'} style={{
                 padding: '8px 16px',
                 background: colors.white,
                 borderRadius: 4
             }}>
-                <Text text={fullBankNumber} type={TextType.btn1}/>
+                <Text text={fullBankNumber} type={'btn1'}/>
                 <Spacer/>
                 <Icon type={IconType.Copy} tint={colors.g400} size={20} onClick={async () => {
                     try {

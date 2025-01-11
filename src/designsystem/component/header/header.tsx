@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {Row} from "@designsystem/component/flexLayout";
 import Spacer from "@designsystem/component/spacer";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import useAuth from "@hook/useAuth";
 import Button from "@designsystem/component/button";
@@ -60,7 +60,7 @@ const S = {
     `,
     navItem: styled.li`
         display: flex;
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         color: ${colors.black};
         white-space: nowrap;
         cursor: pointer;

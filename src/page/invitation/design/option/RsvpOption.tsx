@@ -5,7 +5,6 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
-import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import Textarea from "@designsystem/component/textarea";
 import Text from "@designsystem/component/text";
@@ -74,7 +73,7 @@ function RsvpOption(
                                     checked={rsvp.startPopupStatus}
                                     onChange={checked => onChange({...rsvp, startPopupStatus: checked})}
                                 />
-                                <Text text={'청첩장 열 때 팝업 안내'} type={TextType.caption1} color={colors.g300}/>
+                                <Text text={'청첩장 열 때 팝업 안내'} type={'caption1'} color={colors.g300}/>
                             </Row>
                             <Textarea
                                 value={rsvp.startPopupMessage}

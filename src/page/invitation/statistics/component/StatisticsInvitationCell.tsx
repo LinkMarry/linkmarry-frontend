@@ -2,7 +2,7 @@ import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Spacer from "@designsystem/component/spacer";
 import Text from "@designsystem/component/text";
@@ -37,7 +37,7 @@ function StatisticsInvitationCell(
                         }}
                     />
                 </Row>
-                <Text text={weddingInfo.createdDate} type={TextType.caption1} color={colors.g500}/>
+                <Text text={weddingInfo.createdDate} type={'caption1'} color={colors.g500}/>
             </Column>
         </S.container>
     );
@@ -61,7 +61,7 @@ const S = {
         object-fit: cover;
     `,
     urlLabel: styled.span`
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         color: ${colors.black};
         overflow-x: hidden;
         white-space: nowrap;

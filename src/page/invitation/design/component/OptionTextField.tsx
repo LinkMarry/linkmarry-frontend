@@ -1,7 +1,7 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, InputHTMLAttributes, ReactNode} from 'react';
 import styled, {css} from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 
 interface OptionTextFieldProps extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
@@ -49,7 +49,7 @@ const S = {
         min-width: 0;
         border: none;
         outline: none;
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         align-self: stretch;
     `
 }

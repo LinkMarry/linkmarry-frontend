@@ -17,7 +17,6 @@ import PhoneOption from "@page/invitation/design/option/PhoneOption";
 import RsvpOption from "@page/invitation/design/option/RsvpOption";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import Spacer from "@designsystem/component/spacer";
 import Button from "@designsystem/component/button";
@@ -350,8 +349,8 @@ function InvitationDesign() {
             <S.optionContainer>
                 <Row $alignItems={'flex-end'}>
                     <Column gap={8}>
-                        <Text text={'청첩장 제작'} type={TextType.h5}/>
-                        <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
+                        <Text text={'청첩장 제작'} type={'h5'}/>
+                        <Text text={'원하는 청첩장을 만들어보세요!'} type={'p3'} color={colors.g500}/>
                     </Column>
                     <Spacer/>
                     <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>

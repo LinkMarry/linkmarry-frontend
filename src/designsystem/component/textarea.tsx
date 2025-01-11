@@ -1,7 +1,7 @@
 import React, {ForwardedRef, forwardRef, TextareaHTMLAttributes} from 'react';
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
@@ -24,7 +24,7 @@ const S = {
         background: ${colors.white};
         border-radius: 8px;
         outline: none;
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         resize: vertical;
         padding: 12px 16px;
     `

@@ -1,6 +1,6 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, useState} from 'react';
 import styled from "styled-components";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Spacer from "@designsystem/component/spacer";
@@ -82,7 +82,7 @@ const S = {
         padding-right: 32px;
     `,
     title: styled.span`
-        ${makeText(TextType.p2)};
+        ${makeText('p2')};
         color: ${colors.black};
     `
 }

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import Button from "@designsystem/component/button";
 import memberApi from "@remote/api/MemberApi";
 import Cookies from "js-cookie";
@@ -36,7 +35,7 @@ function RemoveMemberDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={46} $alignItems={'center'}>
-                    <Text text={'정말 탈퇴하시겠습니까?'} type={TextType.p1}/>
+                    <Text text={'정말 탈퇴하시겠습니까?'} type={'p1'}/>
                     <Row gap={16}>
                         <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
                         <Button text={'확인'} role={'assistive'} onClick={onClickConfirm}/>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Button from "@designsystem/component/button";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Spacer from "@designsystem/component/spacer";
 import Text from "@designsystem/component/text";
@@ -90,7 +90,7 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                                 }}
                             />
                         </Row>
-                        <Text text={weddingInfo.createdDate} type={TextType.caption1} color={colors.g500}/>
+                        <Text text={weddingInfo.createdDate} type={'caption1'} color={colors.g500}/>
                     </Column>
                     <Row gap={10}>
                         <Button text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}/>
@@ -131,7 +131,7 @@ const S = {
         object-fit: cover;
     `,
     urlLabel: styled.span`
-        ${makeText(TextType.p5)};
+        ${makeText('p5')};
         color: ${colors.black};
         overflow-x: hidden;
         white-space: nowrap;

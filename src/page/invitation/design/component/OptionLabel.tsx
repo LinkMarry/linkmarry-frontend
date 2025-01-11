@@ -1,6 +1,5 @@
 import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
-import {TextType} from "@designsystem/foundation/text/textType";
 import Text from "@designsystem/component/text";
 
 interface OptionLabelProps extends HTMLAttributes<HTMLDivElement> {
@@ -15,7 +14,7 @@ function OptionLabel(
 ) {
     return (
         <S.wrapper {...props}>
-            <Text text={label} type={TextType.p4}/>
+            <Text text={label} type={'p4'}/>
         </S.wrapper>
     );
 }

@@ -8,7 +8,6 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 import CreateDesignDialog from "@page/invitation/dashboard/dialog/CreateDesignDialog";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import RemoveDesignDialog from "@page/invitation/dashboard/dialog/RemoveDesignDialog";
 import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
 import WeddingDashboard from "@remote/value/WeddingDashboard";
@@ -62,13 +61,14 @@ function InvitationDashboard() {
             <Column gap={44} style={{marginLeft: 64}} flex={1} $alignItems={'stretch'}>
                 <Row style={{marginTop: 64}}>
                     <Column gap={8}>
-                        <Text text={'내 디자인'} type={TextType.h5} color={colors.black}/>
-                        <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
+                        <Text text={'내 디자인'} type={'h5'} color={colors.black}/>
+                        <Text text={'원하는 청첩장을 만들어보세요!'} type={'p3'} color={colors.g500}/>
                     </Column>
                     <Spacer/>
                     {weddingDashboard && (
                         <Text
-                            text={`워터마크 제거 가능 횟수 ${weddingDashboard?.invitation}`} type={TextType.p3}
+                            text={`워터마크 제거 가능 횟수 ${weddingDashboard?.invitation}`}
+                            type={'p3'}
                             color={colors.g500}
                             style={{alignSelf: 'flex-end'}}
                         />
@@ -80,7 +80,7 @@ function InvitationDashboard() {
                     }}>
                         <Column gap={8} $alignItems={'center'}>
                             <Icon type={IconType.AddLine} tint={colors.g600} size={28}/>
-                            <Text text={'새 디자인 만들기'} type={TextType.p4} color={colors.g500}/>
+                            <Text text={'새 디자인 만들기'} type={'p4'} color={colors.g500}/>
                         </Column>
                     </S.createDesignButton>
                     {weddingDashboard ? (

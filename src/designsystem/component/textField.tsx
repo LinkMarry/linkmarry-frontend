@@ -8,7 +8,7 @@ import React, {
     useState
 } from 'react';
 import styled, {css} from "styled-components";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/textType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 
@@ -117,7 +117,7 @@ const S = {
     `,
     label: styled.span`
         font-feature-settings: 'ss10' on;
-        ${makeText(TextType.btn1)};
+        ${makeText('btn1')};
     `,
     supportingText: styled.span`
         position: absolute;
@@ -125,7 +125,7 @@ const S = {
         white-space: nowrap;
 
         font-feature-settings: 'ss10' on;
-        ${makeText(TextType.btn1)};
+        ${makeText('btn1')};
     `,
     inputContainer: styled.div`
         display: flex;
@@ -140,7 +140,7 @@ const S = {
         border-radius: 12px;
 
         input {
-            ${makeText(TextType.p2)};
+            ${makeText('p2')};
             background: transparent;
             width: 90%;
             height: 100%;

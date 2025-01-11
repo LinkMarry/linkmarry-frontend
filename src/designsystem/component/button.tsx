@@ -56,7 +56,7 @@ export default function Button(
             contentPadding = '10px 20px';
             iconSize = 20;
             height = 46;
-            textType = TextType.p4;
+            textType = 'p4';
             gap = 6;
             break;
         case 'medium':
@@ -64,7 +64,7 @@ export default function Button(
             contentPadding = '8px 16px';
             iconSize = 18;
             height = 37;
-            textType = TextType.btn1;
+            textType = 'btn1';
             gap = 5;
             break;
         case 'small':
@@ -72,7 +72,7 @@ export default function Button(
             contentPadding = '6px 12px';
             iconSize = 16;
             height = 29;
-            textType = TextType.caption2;
+            textType = 'caption2';
             gap = 4;
             break;
     }

@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import S from '@page/notification/detail/NotificationDetailPage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
 import {Column} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import {useNavigate, useParams} from "react-router-dom";
 import notificationApi from "@remote/api/NotificationApi";
 import Notification from "@remote/value/Notification";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import Button from "@designsystem/component/button";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
 
 function NotificationDetailPage() {
     const {id} = useParams();
@@ -34,12 +33,12 @@ function NotificationDetailPage() {
                     <Column gap={44} flex={1} $alignItems={'stretch'}>
                         <Column gap={16}>
                             <Column gap={8}>
-                                <Text text={notification.title} type={TextType.h4}/>
-                                <Text text={notification.date} type={TextType.caption1}/>
+                                <Text text={notification.title} type={'h4'}/>
+                                <Text text={notification.date} type={'caption1'}/>
                             </Column>
                             <HorizontalDivider/>
                         </Column>
-                        <Text text={notification.content} type={TextType.p3}/>
+                        <Text text={notification.content} type={'p3'}/>
                         <Button text={'목록으로'} onClick={() => navigate('/notification')} role={'assistive'}
                                 style={{alignSelf: 'center'}}/>
                     </Column>

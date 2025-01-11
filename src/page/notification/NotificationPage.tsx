@@ -3,7 +3,6 @@ import S from './NotificationPage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import Notification from "@remote/value/Notification";
 import {tagToKoreanRecord} from "@remote/enumeration/Tag";
 import notificationApi from "@remote/api/NotificationApi";
@@ -31,7 +30,7 @@ function NotificationPage() {
         <HasHeader>
             <S.container>
                 <Column gap={44} flex={1} $alignItems={'stretch'}>
-                    <Text text={'공지사항'} type={TextType.h5}/>
+                    <Text text={'공지사항'} type={'h5'}/>
                     <Column $alignItems={'stretch'}>
                         <S.header.row>
                             <S.header.cell>태그</S.header.cell>
@@ -50,7 +49,7 @@ function NotificationPage() {
                             </S.body.row>
                         ))}
                         {notifications?.length === 0 && (
-                            <Text text={'공지사항이 없어요'} type={TextType.p3} style={{
+                            <Text text={'공지사항이 없어요'} type={'p3'} style={{
                                 display: 'flex',
                                 height: 200,
                                 width: '100%',

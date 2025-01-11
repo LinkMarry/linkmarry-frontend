@@ -13,103 +13,105 @@ export const linkMarryFonts: LinkMarryFont[] = [
     'LINESeedKR', 'Aleo', 'GangwonEduAll', 'SCoreDream', 'Rufina', 'Pretendard'
 ];
 
-export enum TextType {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p1,
-    p2,
-    p3,
-    p4,
-    p5,
-    btn1,
-    caption1,
-    caption2,
-}
+export type TextType =
+    'h1' |
+    'h2' |
+    'h3' |
+    'h4' |
+    'h5' |
+    'h6' |
+    'p1' |
+    'p2' |
+    'p3' |
+    'p4' |
+    'p5' |
+    'btn1' |
+    'caption1' |
+    'caption2';
+export const textTypes: TextType[] = [
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p1', 'p2', 'p3', 'p4', 'p5', 'btn1', 'caption1', 'caption2'
+]
 
-export const textTypeMap: Readonly<{ [key in TextType]: TextProperties }> = Object.freeze({
-    [TextType.h1]: {
+export const textTypeMap: Record<TextType, TextProperties> = Object.freeze({
+    h1: {
         fontFamily: 'Pretendard',
         fontWeight: 700,
         fontSize: 40,
         lineHeight: '130%'
     },
-    [TextType.h2]: {
+    h2: {
         fontFamily: 'Pretendard',
         fontWeight: 700,
         fontSize: 32,
         lineHeight: '130%'
     },
-    [TextType.h3]: {
+    h3: {
         fontFamily: 'Pretendard',
         fontWeight: 600,
         fontSize: 28,
         lineHeight: '130%'
     },
-    [TextType.h4]: {
+    h4: {
         fontFamily: 'Pretendard',
         fontWeight: 600,
         fontSize: 24,
         lineHeight: '140%'
     },
-    [TextType.h5]: {
+    h5: {
         fontFamily: 'Pretendard',
         fontWeight: 500,
         fontSize: 24,
         lineHeight: '140%'
     },
-    [TextType.h6]: {
+    h6: {
         fontFamily: 'Pretendard',
         fontWeight: 600,
         fontSize: 20,
         lineHeight: '150%'
     },
-    [TextType.p1]: {
+    p1: {
         fontFamily: 'Pretendard',
         fontWeight: 400,
         fontSize: 20,
         lineHeight: '150%'
     },
-    [TextType.p2]: {
+    p2: {
         fontFamily: 'Pretendard',
         fontWeight: 500,
         fontSize: 18,
         lineHeight: '150%'
     },
-    [TextType.p3]: {
+    p3: {
         fontFamily: 'Pretendard',
         fontWeight: 400,
         fontSize: 18,
         lineHeight: '150%'
     },
-    [TextType.p4]: {
+    p4: {
         fontFamily: 'Pretendard',
         fontWeight: 500,
         fontSize: 16,
         lineHeight: '160%'
     },
-    [TextType.p5]: {
+    p5: {
         fontFamily: 'Pretendard',
         fontWeight: 400,
         fontSize: 16,
         lineHeight: '160%'
     },
-    [TextType.btn1]: {
+    btn1: {
         fontFamily: 'Pretendard',
         fontWeight: 500,
         fontSize: 14,
         lineHeight: '150%'
     },
-    [TextType.caption1]: {
+    caption1: {
         fontFamily: 'Pretendard',
         fontWeight: 400,
         fontSize: 14,
         lineHeight: '150%'
     },
-    [TextType.caption2]: {
+    caption2: {
         fontFamily: 'Pretendard',
         fontWeight: 400,
         fontSize: 12,

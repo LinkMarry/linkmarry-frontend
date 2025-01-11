@@ -4,7 +4,6 @@ import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import Checkbox from "@designsystem/component/checkbox";
-import {TextType} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
@@ -50,8 +49,8 @@ function BaseMusicOption(
                 return <S.addAudioFileContainer $alignSelf={'stretch'} gap={20} $alignItems={'center'}>
                     <Icon type={IconType.AddLine} size={24} tint={colors.g600}/>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text text={'음원 파일 추가'} type={TextType.caption1} color={colors.g400}/>
-                        <Text text={'최대 4.5MB MP3 파일만 가능'} type={TextType.caption1} color={colors.g400}/>
+                        <Text text={'음원 파일 추가'} type={'caption1'} color={colors.g400}/>
+                        <Text text={'최대 4.5MB MP3 파일만 가능'} type={'caption1'} color={colors.g400}/>
                     </Column>
                 </S.addAudioFileContainer>;
         }
@@ -80,7 +79,7 @@ function BaseMusicOption(
                             onChange={checked => onChange({...baseMusic, effect: checked})}
                             label={'자동 재생'}
                         />
-                        <Text text={'브라우저'} type={TextType.caption1} color={colors.g300}/> {/* TODO: Fix dummy text */}
+                        <Text text={'브라우저'} type={'caption1'} color={colors.g300}/> {/* TODO: Fix dummy text */}
                     </Row>
                 </Row>
             </Column>

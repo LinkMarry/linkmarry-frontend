@@ -6,7 +6,6 @@ import Button from "@designsystem/component/button";
 import colors from "@designsystem/foundation/colors";
 import TextField from "@designsystem/component/textField";
 import Text from "@designsystem/component/text";
-import {TextType} from "@designsystem/foundation/text/textType";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
 
@@ -51,8 +50,8 @@ function CreateDesignDialog(
             <S.container>
                 <Column gap={45} $alignItems={'center'}>
                     <Column gap={2}>
-                        <Text text={'새로운 디자인을 생성해주세요.'} type={TextType.p1}/>
-                        <Text text={'청첩장에 사용할 도메인을 입력해주세요.'} type={TextType.p5} color={colors.g400}/>
+                        <Text text={'새로운 디자인을 생성해주세요.'} type={'p1'}/>
+                        <Text text={'청첩장에 사용할 도메인을 입력해주세요.'} type={'p5'} color={colors.g400}/>
                     </Column>
                     <TextField ref={domainFieldRef} isError={isError} supportingText={isError ? '이미 사용 중인 URL 입니다.' : undefined}/>
                     <Button text={'생성하기'} role={'assistive'} onClick={createDesign} enabled={!isFetching}/>
