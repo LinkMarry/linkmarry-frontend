@@ -38,7 +38,7 @@ function OptionField(
                 type={type}
             />
             <Icon tint={colors.g600} size={20} type={leadingIcon}/>
-            <Text text={fieldProps?.value?.toString() ?? ''} type={'p5'}/>
+            <Text type={'p5'}>{fieldProps?.value?.toString() ?? ''}</Text>
         </S.field>
     );
 }

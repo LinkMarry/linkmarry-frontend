@@ -117,22 +117,22 @@ function InvitationStatisticsDetail() {
                 {weddingStatistics && (
                     <>
                         <Column gap={8}>
-                            <Text text={`https://linkmarry-web/${url}`} type={'h5'}/>
-                            <Text text={'2024.02.01 작성'} type={'p3'} color={colors.g500}/>{/*TODO: DUMMY*/}
+                            <Text type={'h5'}>https://linkmarry-web/{url}</Text>
+                            <Text type={'p3'} color={colors.g500}>2024.02.01 작성</Text>{/*TODO: DUMMY*/}
                         </Column>
                         <Column gap={60} $alignItems={'stretch'}>
                             <Column gap={32} $alignItems={'stretch'}>
                                 <Column gap={8} $alignItems={'stretch'}>
-                                    <Text text={'방문자 통계'} type={'p2'}/>
+                                    <Text type={'p2'}>방문자 통계</Text>
                                     <Column gap={8}
                                             style={{padding: 20, borderRadius: 12, border: `1px solid ${colors.g200}`}}>
                                         <Row gap={20}>
                                             <Column gap={4}>
-                                                <Text text={`방문자 수 ${1}`} type={'p4'} color={colors.g600}/>
+                                                <Text type={'p4'} color={colors.g600}>방문자 수 {1}</Text>
                                                 <HorizontalDivider color={colors.g400}/>
                                             </Column>
                                             <Column gap={4}>
-                                                <Text text={`링크 공유 수 ${1}`} type={'p4'} color={colors.g600}/>
+                                                <Text type={'p4'} color={colors.g600}>링크 공유 수 {1}</Text>
                                                 <HorizontalDivider color={colors.p800}/>
                                             </Column>
                                         </Row>
@@ -141,19 +141,21 @@ function InvitationStatisticsDetail() {
                                 </Column>
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Row gap={12} $alignItems={'center'}>
-                                        <Text text={'하객 통계'} type={'p2'}/>
-                                        <Text text={'동행 인원을 포함한 수치입니다.'} type={'btn1'} color={colors.g300}/>
+                                        <Text type={'p2'}>하객 통계</Text>
+                                        <Text type={'btn1'} color={colors.g300}>동행 인원을 포함한 수치입니다.</Text>
                                     </Row>
                                     <Row gap={12}>
-                                        <StatisticsValueCell label={'총 참석 가능 인원'} value={weddingStatistics.totalVisitorCnt} filtered={false}/>
+                                        <StatisticsValueCell label={'총 참석 가능 인원'}
+                                                             value={weddingStatistics.totalVisitorCnt}
+                                                             filtered={false}/>
                                         <StatisticsValueCell label={'신랑측'} value={8} filtered={false}/>
                                         <StatisticsValueCell label={'신부측'} value={8} filtered={true}/>
                                     </Row>
                                 </Column>
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Row gap={12} $alignItems={'center'}>
-                                        <Text text={'식사 여부'} type={'p2'}/>
-                                        <Text text={'동행 인원을 포함한 수치입니다.'} type={'btn1'} color={colors.g300}/>
+                                        <Text type={'p2'}>식사 여부</Text>
+                                        <Text type={'btn1'} color={colors.g300}>동행 인원을 포함한 수치입니다.</Text>
                                     </Row>
                                     <Row gap={12}>
                                         <StatisticsValueCell label={'식사함'} value={8} filtered={false}/>
@@ -161,10 +163,12 @@ function InvitationStatisticsDetail() {
                                     </Row>
                                 </Column>
                                 <Column gap={8} $alignItems={'stretch'}>
-                                    <Text text={'디바이스 접속'} type={'p2'}/>
+                                    <Text type={'p2'}>디바이스 접속</Text>
                                     <Row gap={12}>
-                                        <StatisticsValueCell label={'모바일 접속'} value={weddingStatistics.mobileCnt} filtered={false}/>
-                                        <StatisticsValueCell label={'데스크탑 접속'} value={weddingStatistics.desktopCnt} filtered={false}/>
+                                        <StatisticsValueCell label={'모바일 접속'} value={weddingStatistics.mobileCnt}
+                                                             filtered={false}/>
+                                        <StatisticsValueCell label={'데스크탑 접속'} value={weddingStatistics.desktopCnt}
+                                                             filtered={false}/>
                                     </Row>
                                 </Column>
                             </Column>

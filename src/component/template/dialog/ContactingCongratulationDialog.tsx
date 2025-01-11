@@ -68,8 +68,8 @@ function ContactingCongratulationDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text text={'축하 연락하기'} type={'h6'}/>
-                    <Text text={'축하의 마음을 전하세요'} type={'caption1'} color={colors.g400}/>
+                    <Text type={'h6'}>축하 연락하기</Text>
+                    <Text type={'caption1'} color={colors.g400}>축하의 마음을 전하세요</Text>
                 </Column>
                 <Row $alignItems={'stretch'}>
                     <S.selector selected={selectedIndex === 0} onClick={() => setSelectedIndex(0)}>신랑측</S.selector>
@@ -79,8 +79,8 @@ function ContactingCongratulationDialog(
                     {tels.map(tel => (
                         <S.tel>
                             <Row gap={12} $alignItems={'center'}>
-                                <Text text={tel.name} type={'p5'}/>
-                                <Text text={tel.familyName} type={'caption1'} color={colors.g300}/>
+                                <Text type={'p5'}>{tel.name}</Text>
+                                <Text type={'caption1'} color={colors.g300}>{tel.familyName}</Text>
                             </Row>
                             <Spacer/>
                             <Row gap={12} $alignItems={'center'}>

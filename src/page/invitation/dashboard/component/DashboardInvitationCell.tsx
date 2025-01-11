@@ -90,7 +90,7 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                                 }}
                             />
                         </Row>
-                        <Text text={weddingInfo.createdDate} type={'caption1'} color={colors.g500}/>
+                        <Text type={'caption1'} color={colors.g500}>{weddingInfo.createdDate}</Text>
                     </Column>
                     <Row gap={10}>
                         <Button text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}/>

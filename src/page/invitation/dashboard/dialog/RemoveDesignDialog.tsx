@@ -21,7 +21,7 @@ function RemoveDesignDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={46} $alignItems={'center'}>
-                    <Text text={'정말 삭제하시겠습니까?'} type={'p1'} color={colors.black}/>
+                    <Text type={'p1'} color={colors.black}>정말 삭제하시겠습니까?</Text>
                     <Row gap={16}>
                         <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
                         <Button text={'삭제'} role={'assistive'} onClick={confirm}/>

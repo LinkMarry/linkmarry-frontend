@@ -37,7 +37,7 @@ function StatisticsInvitationCell(
                         }}
                     />
                 </Row>
-                <Text text={weddingInfo.createdDate} type={'caption1'} color={colors.g500}/>
+                <Text type={'caption1'} color={colors.g500}>{weddingInfo.createdDate}</Text>
             </Column>
         </S.container>
     );

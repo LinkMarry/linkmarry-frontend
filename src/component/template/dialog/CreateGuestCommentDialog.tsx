@@ -62,8 +62,8 @@ function CreateGuestCommentDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text text={'방명록 작성하기'} type={'h6'}/>
-                    <Text text={'저희에게 따뜻한 말을 남겨주세요'} type={'caption1'} color={colors.g400}/>
+                    <Text type={'h6'}>방명록 작성하기</Text>
+                    <Text type={'caption1'} color={colors.g400}>저희에게 따뜻한 말을 남겨주세요</Text>
                 </Column>
                 <Column gap={12} $alignItems={'stretch'}>
                     <TextField ref={nameRef} placeholder={'성함'}/>

@@ -18,8 +18,8 @@ function StatisticsValueCell(
 ) {
     return (
         <S.container style={{background: filtered ? colors.g100 : colors.white}}>
-            <Text text={label} type={'p5'}/>
-            <Text text={`${value}`} type={'h2'}/>
+            <Text type={'p5'}>{label}</Text>
+            <Text type={'h2'}>{value}</Text>
         </S.container>
     );
 }

@@ -5,24 +5,24 @@ import colors from "@designsystem/foundation/colors";
 import TextProperties, {implementText} from "@designsystem/foundation/text/textProperties";
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
-    text: string;
     type?: TextType;
     font?: LinkMarryFont;
     weight?: CSSProperties['fontWeight'];
     size?: CSSProperties['fontSize'];
     color?: CSSProperties['color'];
     lineHeight?: CSSProperties['lineHeight'];
+    children?: React.ReactNode;
 }
 
 function Text(
     {
-        text,
         type,
         font,
         weight,
         size,
         color = colors.black,
         lineHeight,
+        children,
         ...props
     }: TextProps
 ) {
@@ -37,7 +37,7 @@ function Text(
             }}
             color={color}
             {...props}
-        >{text}</TextStyle>
+        >{children}</TextStyle>
     );
 }
 

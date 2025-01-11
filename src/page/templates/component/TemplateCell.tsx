@@ -19,7 +19,7 @@ function TemplateCell(
                 alt=""
             />
             <Column gap={4} style={{padding: 20}}>
-                <Text text={title} type={'p2'}/>
+                <Text type={'p2'}>{title}</Text>
                 {/*<Text text={'title'} type={'p5}/>*/}
             </Column>
         </S.container>

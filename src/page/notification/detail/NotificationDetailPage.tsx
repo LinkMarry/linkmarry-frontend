@@ -33,14 +33,16 @@ function NotificationDetailPage() {
                     <Column gap={44} flex={1} $alignItems={'stretch'}>
                         <Column gap={16}>
                             <Column gap={8}>
-                                <Text text={notification.title} type={'h4'}/>
-                                <Text text={notification.date} type={'caption1'}/>
+                                <Text type={'h4'}>{notification.title}</Text>
+                                <Text type={'caption1'}>{notification.date}</Text>
                             </Column>
                             <HorizontalDivider/>
                         </Column>
-                        <Text text={notification.content} type={'p3'}/>
-                        <Button text={'목록으로'} onClick={() => navigate('/notification')} role={'assistive'}
-                                style={{alignSelf: 'center'}}/>
+                        <Text type={'p3'}>{notification.content}</Text>
+                        <Button
+                            text={'목록으로'} onClick={() => navigate('/notification')} role={'assistive'}
+                            style={{alignSelf: 'center'}}
+                        />
                     </Column>
                 )}
             </S.container>

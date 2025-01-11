@@ -73,7 +73,7 @@ function RsvpOption(
                                     checked={rsvp.startPopupStatus}
                                     onChange={checked => onChange({...rsvp, startPopupStatus: checked})}
                                 />
-                                <Text text={'청첩장 열 때 팝업 안내'} type={'caption1'} color={colors.g300}/>
+                                <Text type={'caption1'} color={colors.g300}>청첩장 열 때 팝업 안내</Text>
                             </Row>
                             <Textarea
                                 value={rsvp.startPopupMessage}

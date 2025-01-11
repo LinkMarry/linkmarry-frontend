@@ -25,20 +25,11 @@ function FooterTemplate(
             >
                 <Row gap={8} $alignItems={'center'}>
                     <img src={'/kakao.svg'} alt={'kakao'} width={20} height={20}/>
-                    <Text
-                        text={'카카오톡으로 청첩장 보내기'} size={14 + addFontSize} weight={300}
-                        color={colors.g600}
-                    />
+                    <Text size={14 + addFontSize} weight={300} color={colors.g600}>카카오톡으로 청첩장 보내기</Text>
                 </Row>
                 <Row gap={4} $alignItems={'center'}>
-                    <Text
-                        text={'Copyrightⓒ2025.'} size={14 + addFontSize} weight={300}
-                        color={colors.g300}
-                    />
-                    <Text
-                        text={'All rights reserved.'} size={14 + addFontSize} weight={300}
-                        color={colors.g300}
-                    />
+                    <Text size={14 + addFontSize} weight={300} color={colors.g300}>Copyrightⓒ2025.</Text>
+                    <Text size={14 + addFontSize} weight={300} color={colors.g300}>All rights reserved.</Text>
                 </Row>
             </Column>
         </Column>

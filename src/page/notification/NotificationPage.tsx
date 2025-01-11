@@ -30,7 +30,7 @@ function NotificationPage() {
         <HasHeader>
             <S.container>
                 <Column gap={44} flex={1} $alignItems={'stretch'}>
-                    <Text text={'공지사항'} type={'h5'}/>
+                    <Text type={'h5'}>공지사항</Text>
                     <Column $alignItems={'stretch'}>
                         <S.header.row>
                             <S.header.cell>태그</S.header.cell>
@@ -49,13 +49,13 @@ function NotificationPage() {
                             </S.body.row>
                         ))}
                         {notifications?.length === 0 && (
-                            <Text text={'공지사항이 없어요'} type={'p3'} style={{
+                            <Text type={'p3'} style={{
                                 display: 'flex',
                                 height: 200,
                                 width: '100%',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                            }}/>
+                            }}>공지사항이 없어요</Text>
                         )}
                     </Column>
                     <Spacer h={32}/>

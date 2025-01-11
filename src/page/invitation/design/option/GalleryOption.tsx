@@ -61,8 +61,7 @@ function GalleryOption(
                             multiple={true}
                         />
                     </Row>
-                    <Text text={'사진은 최대 30장까지 업로드 가능합니다.'} style={{marginLeft: 84}} type={'caption1'}
-                          color={colors.g300}/>
+                    <Text style={{marginLeft: 84}} type={'caption1'} color={colors.g300}>사진은 최대 30장까지 업로드 가능합니다.</Text>
                 </Column>
                 <Row gap={12}>
                     <OptionLabel label={'제목'}/>

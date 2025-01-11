@@ -8,7 +8,7 @@ function TemplatesPage() {
     return (
         <HasHeader>
             <S.container>
-                <Text text={'모바일 청첩장 템플릿'} type={'h5'}/>
+                <Text type={'h5'}>모바일 청첩장 템플릿</Text>
                 <S.templates>
                     {['Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test'].map(template => (
                         <TemplateCell title={template}/>

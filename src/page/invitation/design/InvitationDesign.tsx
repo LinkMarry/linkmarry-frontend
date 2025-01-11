@@ -349,8 +349,8 @@ function InvitationDesign() {
             <S.optionContainer>
                 <Row $alignItems={'flex-end'}>
                     <Column gap={8}>
-                        <Text text={'청첩장 제작'} type={'h5'}/>
-                        <Text text={'원하는 청첩장을 만들어보세요!'} type={'p3'} color={colors.g500}/>
+                        <Text type={'h5'}>청첩장 제작</Text>
+                        <Text type={'p3'} color={colors.g500}>원하는 청첩장을 만들어보세요!</Text>
                     </Column>
                     <Spacer/>
                     <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>

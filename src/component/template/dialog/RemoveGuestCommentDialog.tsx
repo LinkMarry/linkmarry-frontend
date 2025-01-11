@@ -55,8 +55,8 @@ function RemoveGuestCommentDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text text={'글 삭제하기'} type={'h6'}/>
-                    <Text text={'관리자와 글 작성자만 글을 삭제할 수 있습니다'} type={'caption1'} color={colors.g400}/>
+                    <Text type={'h6'}>글 삭제하기</Text>
+                    <Text type={'caption1'} color={colors.g400}>관리자와 글 작성자만 글을 삭제할 수 있습니다</Text>
                 </Column>
                 <TextField ref={passwordRef} placeholder={'비밀번호 입력'}/>
                 <Button text={'삭제'} role={'assistive'} onClick={onClickRemove}/>

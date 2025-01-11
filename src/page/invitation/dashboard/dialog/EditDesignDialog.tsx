@@ -66,8 +66,8 @@ function EditDesignDialog(
             <S.container>
                 <Column gap={45} $alignItems={'center'}>
                     <Column gap={2}>
-                        <Text text={'청첩장 주소를 변경해주세요.'} type={'p1'}/>
-                        <Text text={'청첩장에 사용할 도메인을 입력해주세요.'} type={'p5'} color={colors.g400}/>
+                        <Text type={'p1'}>청첩장 주소를 변경해주세요.</Text>
+                        <Text type={'p5'} color={colors.g400}>청첩장에 사용할 도메인을 입력해주세요.</Text>
                     </Column>
                     <TextField ref={domainFieldRef} isError={isError} supportingText={isError ? '이미 사용 중인 URL 입니다.' : undefined}/>
                     <Button text={'저장하기'} role={'assistive'} onClick={onClickSave} enabled={!isFetching}/>

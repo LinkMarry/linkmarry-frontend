@@ -49,8 +49,8 @@ function BaseMusicOption(
                 return <S.addAudioFileContainer $alignSelf={'stretch'} gap={20} $alignItems={'center'}>
                     <Icon type={IconType.AddLine} size={24} tint={colors.g600}/>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text text={'음원 파일 추가'} type={'caption1'} color={colors.g400}/>
-                        <Text text={'최대 4.5MB MP3 파일만 가능'} type={'caption1'} color={colors.g400}/>
+                        <Text type={'caption1'} color={colors.g400}>음원 파일 추가</Text>
+                        <Text type={'caption1'} color={colors.g400}>최대 4.5MB MP3 파일만 가능</Text>
                     </Column>
                 </S.addAudioFileContainer>;
         }
@@ -79,7 +79,7 @@ function BaseMusicOption(
                             onChange={checked => onChange({...baseMusic, effect: checked})}
                             label={'자동 재생'}
                         />
-                        <Text text={'브라우저'} type={'caption1'} color={colors.g300}/> {/* TODO: Fix dummy text */}
+                        <Text type={'caption1'} color={colors.g300}>브라우저</Text> {/* TODO: Fix dummy text */}
                     </Row>
                 </Row>
             </Column>

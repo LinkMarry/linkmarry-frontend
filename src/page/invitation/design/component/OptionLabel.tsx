@@ -14,7 +14,7 @@ function OptionLabel(
 ) {
     return (
         <S.wrapper {...props}>
-            <Text text={label} type={'p4'}/>
+            <Text type={'p4'}>{label}</Text>
         </S.wrapper>
     );
 }

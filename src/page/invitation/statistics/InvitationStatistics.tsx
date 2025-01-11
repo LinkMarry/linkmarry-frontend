@@ -23,8 +23,8 @@ function InvitationStatistics() {
         <S.container>
             <Column gap={44} style={{marginLeft: 64}} flex={1}>
                 <Column gap={8} style={{marginTop: 64}}>
-                    <Text text={'통계 확인'} type={'h5'} color={colors.black}/>
-                    <Text text={'통계를 통해 더 완벽한 결혼식을 준비하세요!'} type={'p3'} color={colors.g500}/>
+                    <Text type={'h5'} color={colors.black}>통계 확인</Text>
+                    <Text type={'p3'} color={colors.g500}>통계를 통해 더 완벽한 결혼식을 준비하세요!</Text>
                 </Column>
                 <S.items>
                     {weddings && (

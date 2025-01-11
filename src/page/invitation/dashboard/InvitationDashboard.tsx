@@ -61,17 +61,16 @@ function InvitationDashboard() {
             <Column gap={44} style={{marginLeft: 64}} flex={1} $alignItems={'stretch'}>
                 <Row style={{marginTop: 64}}>
                     <Column gap={8}>
-                        <Text text={'내 디자인'} type={'h5'} color={colors.black}/>
-                        <Text text={'원하는 청첩장을 만들어보세요!'} type={'p3'} color={colors.g500}/>
+                        <Text type={'h5'} color={colors.black}>내 디자인</Text>
+                        <Text type={'p3'} color={colors.g500}>원하는 청첩장을 만들어보세요!</Text>
                     </Column>
                     <Spacer/>
                     {weddingDashboard && (
                         <Text
-                            text={`워터마크 제거 가능 횟수 ${weddingDashboard?.invitation}`}
                             type={'p3'}
                             color={colors.g500}
                             style={{alignSelf: 'flex-end'}}
-                        />
+                        >워터마크 제거 가능 횟수 {weddingDashboard?.invitation}</Text>
                     )}
                 </Row>
                 <S.items>
@@ -80,7 +79,7 @@ function InvitationDashboard() {
                     }}>
                         <Column gap={8} $alignItems={'center'}>
                             <Icon type={IconType.AddLine} tint={colors.g600} size={28}/>
-                            <Text text={'새 디자인 만들기'} type={'p4'} color={colors.g500}/>
+                            <Text type={'p4'} color={colors.g500}>새 디자인 만들기</Text>
                         </Column>
                     </S.createDesignButton>
                     {weddingDashboard ? (

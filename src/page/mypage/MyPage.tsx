@@ -57,28 +57,28 @@ function MyPage() {
             <S.container>
                 <S.sideBar.container>
                     <S.sideBar.profileWrapper>
-                        <Text text={'프로필'} type={'p2'} onClick={() => {
+                        <Text type={'p2'} onClick={() => {
 
-                        }}/>
+                        }}>프로필</Text>
                     </S.sideBar.profileWrapper>
                     <HorizontalDivider color={colors.g200}/>
                     <Text
-                        text={'로그아웃'} type={'p2'} color={colors.g400} style={{cursor: 'pointer'}}
+                        type={'p2'} color={colors.g400} style={{cursor: 'pointer'}}
                         onClick={() => {
                             Cookies.remove('accessToken');
                             Cookies.remove('refreshToken');
                             navigate('/');
                         }}
-                    />
+                    >로그아웃</Text>
                     <Text
-                        text={'회원탈퇴'} type={'p2'} color={'#D65745'} style={{cursor: 'pointer'}}
+                        type={'p2'} color={'#D65745'} style={{cursor: 'pointer'}}
                         onClick={() => {
                             setShowRemoveMemberDialog(true);
                         }}
-                    />
+                    >회원탈퇴</Text>
                 </S.sideBar.container>
                 <S.baseInfo.container>
-                    <Text text={'기본 정보'} type={'p2'} style={{fontWeight: '700'}}/>
+                    <Text type={'p2'} style={{fontWeight: '700'}}>기본 정보</Text>
                     {member && (
                         <Column gap={32} $alignItems={'stretch'}>
                             <Row gap={38}>
@@ -89,14 +89,14 @@ function MyPage() {
                                 }} alt={'member picture'}/>
                                 {/* TODO: DUMMY */}
                                 <Column gap={12}>
-                                    <Text text={'나의 프로필'} type={'p5'}/>
+                                    <Text type={'p5'}>나의 프로필</Text>
                                     <Button text={'사진 업로드'} role={'assistive'} style={{width: 264}}/>
                                 </Column>
                             </Row>
                             <Column $alignItems={'stretch'}>
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Row style={{height: 52}} $alignItems={'center'}>
-                                        <Text text={'이름'} type={'p5'} style={{width: 122}}/>
+                                        <Text type={'p5'} style={{width: 122}}>이름</Text>
                                         {isSettingMode ? (
                                             <S.baseInfo.editNameField
                                                 value={editMemberName}
@@ -105,16 +105,15 @@ function MyPage() {
                                         ) : (
                                             <>
                                                 <Text
-                                                    text={member.name}
                                                     type={'p5'}
                                                     color={colors.g500}
                                                     style={{width: 122}}
-                                                />
+                                                >{member.name}</Text>
                                                 <Spacer/>
                                                 <S.baseInfo.nameSettingButton
                                                     onClick={onClickSettingName}
                                                 >
-                                                    <Text text={'설정'} type={'btn1'} color={colors.g600}/>
+                                                    <Text type={'btn1'} color={colors.g600}>설정</Text>
                                                 </S.baseInfo.nameSettingButton>
                                             </>
                                         )}
@@ -130,9 +129,11 @@ function MyPage() {
                                     )}
                                 </Column>
                                 <Row style={{height: 52}}>
-                                    <Text text={'이메일'} type={'p5'} style={{width: 122}}/>
-                                    <Text text={member.email} type={'p5'} color={colors.g500}
-                                          style={{width: 122}}/>
+                                    <Text type={'p5'} style={{width: 122}}>이메일</Text>
+                                    <Text
+                                        type={'p5'} color={colors.g500}
+                                        style={{width: 122}}
+                                    >member.email</Text>
                                 </Row>
                             </Column>
                         </Column>

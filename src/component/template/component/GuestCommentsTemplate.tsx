@@ -35,16 +35,12 @@ function GuestCommentsTemplate(
                     {trimArray(comments, 3).map((comment, index) => (
                         <S.basicContainer key={index} background={background}>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text
-                                    text={`From. ${comment.name}`} size={18 + addFontSize}
-                                    color={colors.g600}
-                                    weight={300}
-                                />
-                                <Text
-                                    text={comment.createdDate} size={12 + addFontSize}
-                                    color={colors.g300}
-                                    weight={300}
-                                />
+                                <Text size={18 + addFontSize} color={colors.g600} weight={300}>
+                                    From. ${comment.name}
+                                </Text>
+                                <Text size={12 + addFontSize} color={colors.g300} weight={300}>
+                                    {comment.createdDate}
+                                </Text>
                                 <Spacer/>
                                 <Icon
                                     type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
@@ -53,10 +49,9 @@ function GuestCommentsTemplate(
                                     }}
                                 />
                             </Row>
-                            <Text
-                                text={comment.content} size={16 + addFontSize} color={colors.g600}
-                                weight={300}
-                            />
+                            <Text size={16 + addFontSize} color={colors.g600} weight={300}>
+                                {comment.content}
+                            </Text>
                         </S.basicContainer>
                     ))}
                 </Column>
@@ -74,23 +69,19 @@ function GuestCommentsTemplate(
                                 }}
                             />
                             <Column flex={1}>
-                                <Text
-                                    text={comment.content} size={16 + addFontSize} weight={300}
-                                    color={colors.g600}
-                                />
+                                <Text size={16 + addFontSize} weight={300} color={colors.g600}>
+                                    {comment.content}
+                                </Text>
                                 <Spacer/>
                                 <Column gap={4}>
+                                    <Text size={16 + addFontSize} weight={300} color={colors.g600}>
+                                        from. ${comment.name}
+                                    </Text>
                                     <Text
-                                        text={`from. ${comment.name}`} size={16 + addFontSize}
-                                        weight={300}
-                                        color={colors.g600}
-                                    />
-                                    <Text
-                                        text={trimString(comment.createdDate, 10)}
                                         size={12 + addFontSize}
                                         weight={300}
                                         color={colors.g300}
-                                    />
+                                    >{trimString(comment.createdDate, 10)}</Text>
                                 </Column>
                             </Column>
                         </S.stickerContainer>

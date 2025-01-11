@@ -35,7 +35,7 @@ function RemoveMemberDialog(
         <BaseDialog dismiss={dismiss}>
             <S.container>
                 <Column gap={46} $alignItems={'center'}>
-                    <Text text={'정말 탈퇴하시겠습니까?'} type={'p1'}/>
+                    <Text type={'p1'}>정말 탈퇴하시겠습니까?</Text>
                     <Row gap={16}>
                         <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
                         <Button text={'확인'} role={'assistive'} onClick={onClickConfirm}/>
