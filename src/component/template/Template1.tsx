@@ -13,7 +13,8 @@ import Comment from "@remote/value/Comment";
 import CreateGuestCommentDialog from "@src/component/template/dialog/CreateGuestCommentDialog";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/RemoveGuestCommentDialog";
 import Text from "@designsystem/component/text";
-import {templateFontSizeRecord} from "@remote/value/Template";
+import {templateFontSizeRecord, templateFontSizes} from "@remote/value/Template";
+import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 
 const {kakao: {maps}} = window as any;
 
@@ -155,18 +156,28 @@ function Template1(
                     {/*<Text text={'MIN라인LINE Seed*@ HYOLYN & TAFYANG'} font={'LINESeedKR'} weight={400}/>*/}
                     {/*<HorizontalDivider color={colors.black}/>*/}
                     <S.container1.descriptionWrapper>
-                        <Text text={wedding?.weddingSchedule.weddingDate} font={templateFont} size={18 + addFontSize}
-                              weight={300}/>
-                        <Text text={wedding?.weddingPlace.placeName} font={templateFont} size={18 + addFontSize}
-                              weight={300}/>
+                        <Text
+                            text={wedding.weddingSchedule.weddingDate} font={templateFont} size={18 + addFontSize}
+                            weight={300}
+                        />
+                        <Text
+                            text={wedding.weddingPlace.placeName} font={templateFont} size={18 + addFontSize}
+                            weight={300}
+                        />
                     </S.container1.descriptionWrapper>
                 </S.container1.titleWrapper>
                 <Column gap={44} $alignItems={'center'}>
-                    <S.container1.img src={wedding?.imgList[0]}/>
+                    <S.container1.img src={wedding.imgList[0]}/>
                     <Row gap={8} $alignItems={'center'}>
-                        <Text text={`신랑 ${wedding?.baseInfo.groomName}`} font={templateFont} weight={300}/>
-                        <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
-                        <Text text={`신부 ${wedding?.baseInfo.brideName}`} font={templateFont} weight={300}/>
+                        <Text
+                            text={`신랑 ${wedding.baseInfo.groomName}`} size={16 + addFontSize} font={templateFont}
+                            weight={300}
+                        />
+                        <Icon type={IconType.HeartFill} size={16 + addFontSize} color={colors.white}/>
+                        <Text
+                            text={`신부 ${wedding.baseInfo.brideName}`} size={16 + addFontSize} font={templateFont}
+                            weight={300}
+                        />
                     </Row>
                 </Column>
             </S.container1.root>
@@ -195,7 +206,12 @@ function Template1(
                                             borderRadius: 100
                                         }}
                                     >
-                                        <Text text={`${day.day ?? ''}`} font={'Pretendard'} size={16 + addFontSize} weight={300}/>
+                                        <Text
+                                            text={`${day.day ?? ''}`}
+                                            font={'Pretendard'}
+                                            size={16 + addFontSize}
+                                            weight={300}
+                                        />
                                     </td>
                                 ))}
                             </tr>
@@ -207,31 +223,43 @@ function Template1(
                 <Column gap={24} $alignItems={'center'}>
                     <Row gap={12} $alignItems={'center'} style={{paddingLeft: 50, paddingRight: 50}}>
                         <S.container2.dateCell>
-                            <Text text={'DAYS'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
-                            <Text text={`${remainingTime.days}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
+                            <Text text={'DAYS'} font={templateFont} size={12 + addFontSize} weight={400}
+                                  color={colors.g300}/>
+                            <Text text={`${remainingTime.days}`} font={templateFont} size={24 + addFontSize}
+                                  weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                         <S.container2.dateCell>
-                            <Text text={'HOUR'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
-                            <Text text={`${remainingTime.hours}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
+                            <Text text={'HOUR'} font={templateFont} size={12 + addFontSize} weight={400}
+                                  color={colors.g300}/>
+                            <Text text={`${remainingTime.hours}`} font={templateFont} size={24 + addFontSize}
+                                  weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                         <S.container2.dateCell>
-                            <Text text={'MIN'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
-                            <Text text={`${remainingTime.minutes}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
+                            <Text text={'MIN'} font={templateFont} size={12 + addFontSize} weight={400}
+                                  color={colors.g300}/>
+                            <Text text={`${remainingTime.minutes}`} font={templateFont} size={24 + addFontSize}
+                                  weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                         <S.container2.dateCell>
-                            <Text text={'SEC'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
-                            <Text text={`${remainingTime.seconds}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
+                            <Text text={'SEC'} font={templateFont} size={12 + addFontSize} weight={400}
+                                  color={colors.g300}/>
+                            <Text text={`${remainingTime.seconds}`} font={templateFont} size={24 + addFontSize}
+                                  weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                     </Row>
                     <Row gap={4}>
-                        {wedding?.baseInfo.groomName}
+                        <Text text={wedding.baseInfo.groomName} font={templateFont} size={14 + addFontSize}
+                              weight={300}/>
                         <Icon
                             type={IconType.HeartFill}
-                            size={16}
+                            size={16 + addFontSize}
                             color={colors.black}
                         />
-                        {wedding?.baseInfo.brideName}의 결혼식이
-                        <span style={{color: colors.p800}}>{remainingTime.days}</span>일 남았습니다.
+                        <Text text={`${wedding.baseInfo.brideName}의 결혼식이`} font={templateFont} size={14 + addFontSize}
+                              weight={300}/>
+                        <Text text={`${remainingTime.days}`} font={templateFont} size={14 + addFontSize} weight={300}
+                              color={colors.p800}/>
+                        <Text text={'일 남았습니다.'} font={templateFont} size={14 + addFontSize} weight={300}/>
                     </Row>
                 </Column>
             </S.container2.root>
@@ -239,20 +267,45 @@ function Template1(
                 <Column gap={96} $alignItems={'stretch'}>
                     <Column gap={40} $alignItems={'center'}>
                         <Column gap={8} $alignItems={'center'}>
-                            <span>{wedding?.baseInfo.groomFatherName}·{wedding?.baseInfo.groomMotherName}의 {wedding?.baseInfo.groomFamilyName}</span>
-                            <span>신랑 {wedding?.baseInfo.groomName}</span>
+                            <Text
+                                text={`${wedding.baseInfo.groomFatherName}·${wedding.baseInfo.groomMotherName}의 ${wedding.baseInfo.groomFamilyName}`}
+                                font={'GangwonEduAll'} weight={100} size={24 + addFontSize} color={colors.g600}
+                            />
+                            <Row gap={8} $alignItems={'center'}>
+                                <Text
+                                    text={`신랑 `} font={'GangwonEduAll'} weight={100} size={24 + addFontSize}
+                                    color={colors.g600}
+                                />
+                                <Text
+                                    text={`${wedding.baseInfo.groomName}`} font={'GangwonEduAll'} weight={100}
+                                    size={24 + addFontSize}
+                                />
+                            </Row>
                         </Column>
                         <HorizontalDivider color={colors.g200}/>
                         <Column gap={8} $alignItems={'center'}>
-                            <span>{wedding?.baseInfo.brideFatherName}·{wedding?.baseInfo.brideMotherName}의 {wedding?.baseInfo.brideFamilyName}</span>
-                            <span>신부 {wedding?.baseInfo.brideName}</span>
+                            <Text
+                                text={`${wedding.baseInfo.brideFatherName}·${wedding.baseInfo.brideMotherName}의 ${wedding.baseInfo.brideFamilyName}`}
+                                font={'GangwonEduAll'} weight={100} size={24 + addFontSize} color={colors.g600}
+                            />
+                            <Row gap={8} $alignItems={'center'}>
+                                <Text
+                                    text={`신부 `} font={'GangwonEduAll'} weight={100}
+                                    size={24 + addFontSize} color={colors.g600}
+                                />
+                                <Text
+                                    text={`${wedding.baseInfo.brideName}`} font={'GangwonEduAll'} weight={100}
+                                    size={24 + addFontSize}
+                                />
+                            </Row>
                         </Column>
                     </Column>
                     <Button text={'축하 연락하기'}/>
                 </Column>
             </S.container3.root>
             <S.container4.root>
-                <Text text={'GALLERY'} font={wedding.template.templateFont}/>
+                <Text text={'GALLERY'} font={wedding.template.templateFont} color={colors.g600} size={20 + addFontSize}
+                      weight={300}/>
                 <S.container4.wrapper>
                     <S.container4.scroll ref={scrollContainerRef}>
                         {wedding.imgList.map((img, index) => (
@@ -270,42 +323,64 @@ function Template1(
             <S.container5.root background={templateColor}>
                 <Spacer h={92}/>
                 <Column gap={40} $alignItems={'center'}>
-                    <span>LOCATION</span>
+                    <Text text={'LOCATION'} font={wedding.template.templateFont} color={colors.g600}
+                          size={20 + addFontSize}
+                          weight={300}/>
                     <Column $alignItems={'center'}>
-                        <span>{wedding?.weddingPlace.placeName}</span>
-                        <span>{wedding?.weddingPlace.addressName} {wedding?.weddingPlace.floorHall}</span>
+                        <Text text={wedding.weddingPlace.placeName} font={templateFont} size={16 + addFontSize}
+                              weight={300}/>
+                        <Text text={`${wedding.weddingPlace.addressName} ${wedding.weddingPlace.floorHall}`}
+                              font={templateFont} size={16 + addFontSize} weight={300}/>
                     </Column>
-                    <S.container5.kakaoMap ref={kakaoMapRef}></S.container5.kakaoMap>
-                    <span style={{
-                        marginLeft: 24,
-                        alignSelf: 'stretch',
-                        textAlign: 'start'
-                    }}>{wedding?.weddingPlace.placeTransportation}</span>
+                    <S.container5.kakaoMap ref={kakaoMapRef} style={{
+                        display: wedding.weddingPlace.placeStatus ? 'flex' : 'none'
+                    }}></S.container5.kakaoMap>
+                    <Text
+                        text={wedding.weddingPlace.placeTransportation} font={templateFont} size={16 + addFontSize}
+                        weight={300}
+                        style={{
+                            marginLeft: 24,
+                            alignSelf: 'stretch',
+                            textAlign: 'start'
+                        }}
+                    />
                 </Column>
                 <Spacer h={65}/>
             </S.container5.root>
             <S.container6.root>
                 <Column gap={40} $alignItems={'center'}>
-                    <span>마음 전하실 곳</span>
+                    <Text text={'마음 전하실 곳'} font={templateFont} size={20 + addFontSize} weight={300}
+                          color={colors.g600}/>
                     <MoneyInfoInTemplate moneyInfo={wedding.moneyInfo}/>
                 </Column>
             </S.container6.root>
             <S.container7.root background={templateColor}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={12} $alignItems={'center'}>
-                        <span>방명록</span>
-                        <span>{wedding?.baseInfo.groomName}, {wedding?.baseInfo.brideName}에게 하고 싶은 말을 남겨주세요</span>
+                        <Text text={'방명록'} font={templateFont} size={20 + addFontSize} weight={300}
+                              color={colors.g600}/>
+                        <Text text={`${wedding.baseInfo.groomName}, ${wedding.baseInfo.brideName}에게 하고 싶은 말을 남겨주세요`}
+                              font={templateFont} size={16 + addFontSize} weight={300} color={colors.g600}/>
                     </Column>
                     <Column gap={12} $alignItems={'stretch'}>
                         <Column gap={12} $alignItems={'stretch'}>
                             {wedding.guestComments.map((comment, index) => (
-                                <GuestComment key={index} comment={comment} onRemove={() => {
-                                    setSelectedRemoveGuestComment(comment);
-                                    setShowRemoveGuestCommentDialog(true);
-                                }}/>
+                                <GuestComment
+                                    key={index}
+                                    comment={comment}
+                                    templateFont={templateFont}
+                                    addFontSize={addFontSize}
+                                    onRemove={() => {
+                                        setSelectedRemoveGuestComment(comment);
+                                        setShowRemoveGuestCommentDialog(true);
+                                    }}
+                                />
                             ))}
                         </Column>
-                        <span style={{alignSelf: 'flex-end'}}>전체보기</span>
+                        <Text
+                            text={'전체보기'} style={{alignSelf: 'flex-end', paddingRight: 4}} font={templateFont}
+                            size={14 + addFontSize} weight={300} color={colors.g600}
+                        />
                     </Column>
                 </Column>
                 <Button
@@ -318,9 +393,13 @@ function Template1(
                     }
                     }/>
             </S.container7.root>
-            <FooterTemplate style={{
-                background: '#F7F7F2'
-            }}/>
+            <FooterTemplate
+                templateFont={templateFont}
+                addFontSize={addFontSize}
+                style={{
+                    background: '#F7F7F2'
+                }}
+            />
             {showCreateGuestCommentDialog && (
                 <CreateGuestCommentDialog url={wedding.url} dismiss={() => setShowCreateGuestCommentDialog(false)}/>
             )}
@@ -337,25 +416,37 @@ function Template1(
 
 interface GuestCommentProps {
     comment: Comment;
+    templateFont: LinkMarryFont;
+    addFontSize: number;
     onRemove: () => void;
 }
 
 function GuestComment(
     {
         comment,
+        templateFont,
+        addFontSize,
         onRemove,
     }: GuestCommentProps
 ) {
     return (
         <S.container7.comment>
             <Row gap={8} $alignItems={'center'}>
-                <span>From. {comment.name}</span>
-                <span>2025.1.1</span>{/* TODO: DUMMY */}
+                <Text
+                    text={`From. ${comment.name}`} font={templateFont} size={18 + addFontSize} color={colors.g600}
+                    weight={300}
+                />
+                <Text
+                    text={comment.createdDate} font={templateFont} size={12 + addFontSize} color={colors.g300}
+                    weight={300}
+                />
                 <Spacer/>
-                <Icon type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
-                      onClick={onRemove}/>
+                <Icon
+                    type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
+                    onClick={onRemove}
+                />
             </Row>
-            <span>{comment.content}</span>
+            <Text text={comment.content} font={templateFont} size={16 + addFontSize} color={colors.g600} weight={300}/>
         </S.container7.comment>
     );
 }

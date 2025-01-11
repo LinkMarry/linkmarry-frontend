@@ -36,7 +36,7 @@ export const defaultWeddingPlace: WeddingPlace = {
     floorHall: "",
     placeTel: "",
     placeTransportation: "",
-    placeStatus: false,
+    placeStatus: true,
 }
 
 export const dummyWeddingPlace: WeddingPlace = {
