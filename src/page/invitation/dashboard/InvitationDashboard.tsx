@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import S from '@page/invitation/dashboard/InvitationDashboard.style';
-import {Column} from "@designsystem/component/flexLayout";
+import {Column, Row} from "@designsystem/component/flexLayout";
 import DashboardInvitationCell, {
     DashboardInvitationCellClickType
 } from "@page/invitation/dashboard/component/DashboardInvitationCell";
@@ -15,6 +15,7 @@ import WeddingDashboard from "@remote/value/WeddingDashboard";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingInfo from "@remote/value/WeddingInfo";
 import {useNavigate} from "react-router-dom";
+import Spacer from "@designsystem/component/spacer";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -23,7 +24,7 @@ function InvitationDashboard() {
 
     const [weddingDashboard, setWeddingDashboard] = useState<WeddingDashboard>();
     const [selectedWeddingInfo, setSelectedWeddingInfo] = useState<WeddingInfo>();
-    
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -58,11 +59,21 @@ function InvitationDashboard() {
 
     return (
         <S.container>
-            <Column gap={44} style={{marginLeft: 64}} flex={1}>
-                <Column gap={8} style={{marginTop: 64}}>
-                    <Text text={'내 디자인'} type={TextType.h5} color={colors.black}/>
-                    <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
-                </Column>
+            <Column gap={44} style={{marginLeft: 64}} flex={1} $alignItems={'stretch'}>
+                <Row style={{marginTop: 64}}>
+                    <Column gap={8}>
+                        <Text text={'내 디자인'} type={TextType.h5} color={colors.black}/>
+                        <Text text={'원하는 청첩장을 만들어보세요!'} type={TextType.p3} color={colors.g500}/>
+                    </Column>
+                    <Spacer/>
+                    {weddingDashboard && (
+                        <Text
+                            text={`워터마크 제거 가능 횟수 ${weddingDashboard?.invitation}`} type={TextType.p3}
+                            color={colors.g500}
+                            style={{alignSelf: 'flex-end'}}
+                        />
+                    )}
+                </Row>
                 <S.items>
                     <S.createDesignButton onClick={() => {
                         setShowCreateDesignDialog(true);

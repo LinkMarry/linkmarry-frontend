@@ -28,6 +28,13 @@ function GalleryOption(
     const uploadFiles = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (!files) return;
+        if (files.length > 30) {
+            alert('사진은 최대 30장까지 업로드 가능합니다.');
+            if (imageFieldRef.current) {
+                imageFieldRef.current.value = '';
+            }
+            return;
+        }
 
         try {
             const {data} = await fileApi.upload(files[0]);
@@ -47,13 +54,12 @@ function GalleryOption(
                             <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
                         </S.addImageContainer>
                         <S.voidInput
-                            id={'choose-image'} 
+                            id={'choose-image'}
                             ref={imageFieldRef}
-                            onChange={uploadFiles} 
-                            type={'file'} 
+                            onChange={uploadFiles}
+                            type={'file'}
                             accept={'image/*'}
-                            multiple={true} 
-                            max={30}
+                            multiple={true}
                         />
                     </Row>
                     <Text text={'사진은 최대 30장까지 업로드 가능합니다.'} style={{marginLeft: 84}} type={TextType.caption1}
