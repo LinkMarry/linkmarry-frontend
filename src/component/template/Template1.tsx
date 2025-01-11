@@ -15,6 +15,7 @@ import RemoveGuestCommentDialog from "@src/component/template/dialog/RemoveGuest
 import Text from "@designsystem/component/text";
 import {templateFontSizeRecord, templateFontSizes} from "@remote/value/Template";
 import {LinkMarryFont} from "@designsystem/foundation/text/textType";
+import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 
 const {kakao: {maps}} = window as any;
 
@@ -363,20 +364,17 @@ function Template1(
                               font={templateFont} size={16 + addFontSize} weight={300} color={colors.g600}/>
                     </Column>
                     <Column gap={12} $alignItems={'stretch'}>
-                        <Column gap={12} $alignItems={'stretch'}>
-                            {wedding.guestComments.map((comment, index) => (
-                                <GuestComment
-                                    key={index}
-                                    comment={comment}
-                                    templateFont={templateFont}
-                                    addFontSize={addFontSize}
-                                    onRemove={() => {
-                                        setSelectedRemoveGuestComment(comment);
-                                        setShowRemoveGuestCommentDialog(true);
-                                    }}
-                                />
-                            ))}
-                        </Column>
+                        <GuestCommentsTemplate
+                            comments={wedding.guestComments}
+                            design={wedding.guestComment.design}
+                            templateFont={templateFont}
+                            background={colors.white}
+                            addFontSize={addFontSize}
+                            onRemove={comment => {
+                                setSelectedRemoveGuestComment(comment);
+                                setShowRemoveGuestCommentDialog(true);
+                            }}
+                        />
                         <Text
                             text={'전체보기'} style={{alignSelf: 'flex-end', paddingRight: 4}} font={templateFont}
                             size={14 + addFontSize} weight={300} color={colors.g600}
@@ -414,41 +412,5 @@ function Template1(
     );
 }
 
-interface GuestCommentProps {
-    comment: Comment;
-    templateFont: LinkMarryFont;
-    addFontSize: number;
-    onRemove: () => void;
-}
-
-function GuestComment(
-    {
-        comment,
-        templateFont,
-        addFontSize,
-        onRemove,
-    }: GuestCommentProps
-) {
-    return (
-        <S.container7.comment>
-            <Row gap={8} $alignItems={'center'}>
-                <Text
-                    text={`From. ${comment.name}`} font={templateFont} size={18 + addFontSize} color={colors.g600}
-                    weight={300}
-                />
-                <Text
-                    text={comment.createdDate} font={templateFont} size={12 + addFontSize} color={colors.g300}
-                    weight={300}
-                />
-                <Spacer/>
-                <Icon
-                    type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
-                    onClick={onRemove}
-                />
-            </Row>
-            <Text text={comment.content} font={templateFont} size={16 + addFontSize} color={colors.g600} weight={300}/>
-        </S.container7.comment>
-    );
-}
 
 export default Template1;
