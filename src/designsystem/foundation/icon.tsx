@@ -55,6 +55,7 @@ import Hamburger from "@designsystem/foundation/icon/Hamburger";
 import Clock from "@designsystem/foundation/icon/Clock";
 import styled, {css} from "styled-components";
 import Share from "@designsystem/foundation/icon/Share";
+import Call from "@designsystem/foundation/icon/Call";
 
 export enum IconType {
     AddEmoji,
@@ -68,6 +69,7 @@ export enum IconType {
     BookmarkFill,
     BookmarkLine,
     Calendar,
+    Call,
     Camera,
     Chat,
     CheckFill,
@@ -152,6 +154,8 @@ export default function Icon(
                 return <BookmarkLine {...svgProps}/>;
             case IconType.Calendar:
                 return <Calendar {...svgProps}/>;
+            case IconType.Call:
+                return <Call {...svgProps}/>;
             case IconType.Camera:
                 return <Camera {...svgProps}/>;
             case IconType.Chat:

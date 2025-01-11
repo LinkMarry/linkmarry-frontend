@@ -16,6 +16,7 @@ import Text from "@designsystem/component/text";
 import {templateFontSizeRecord, templateFontSizes} from "@remote/value/Template";
 import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
+import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 
 const {kakao: {maps}} = window as any;
 
@@ -90,6 +91,7 @@ function Template1(
     });
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
+    const [showContactingCongratulationDialog, setShowContactingCongratulationDialog] = useState(false);
     const [selectedRemoveGuestComment, setSelectedRemoveGuestComment] = useState<Comment>();
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -301,7 +303,9 @@ function Template1(
                             </Row>
                         </Column>
                     </Column>
-                    <Button text={'축하 연락하기'}/>
+                    <Button text={'축하 연락하기'} onClick={() => {
+                        setShowContactingCongratulationDialog(true);
+                    }}/>
                 </Column>
             </S.container3.root>
             <S.container4.root>
@@ -406,6 +410,13 @@ function Template1(
                     selectedGuestComment={selectedRemoveGuestComment}
                     url={wedding.url}
                     dismiss={() => setShowRemoveGuestCommentDialog(false)}
+                />
+            )}
+            {showContactingCongratulationDialog && (
+                <ContactingCongratulationDialog
+                    baseInfo={wedding.baseInfo}
+                    phone={wedding.phone}
+                    dismiss={() => setShowContactingCongratulationDialog(false)}
                 />
             )}
         </S.container>
