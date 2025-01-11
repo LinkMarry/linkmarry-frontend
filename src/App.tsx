@@ -17,6 +17,8 @@ import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestCom
 import Template1 from "@src/component/template/Template1";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
+import GlobalStyle from "@src/GlobalStyle";
+import Text from "@designsystem/component/text";
 
 const {Kakao} = window as any;
 
@@ -30,6 +32,7 @@ function App() {
 
     return (
         <Router>
+            <GlobalStyle/>
             <Routes>
                 {/*service*/}
                 <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
@@ -58,7 +61,11 @@ function App() {
                 <Route path={'*'} element={<Navigate to={'/'}/>}/>
 
                 {/*temp*/}
-                <Route path={'template1'} element={<Template1 wedding={dummyWedding}/>}/>
+                <Route path={'template1'} element={(
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <Template1 wedding={dummyWedding}/>
+                    </div>
+                )}/>
             </Routes>
         </Router>
     );

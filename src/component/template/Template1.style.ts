@@ -26,6 +26,8 @@ export const container1 = {
     `,
     title: styled.span`
         color: ${colors.black};
+        font-family: LINESeedKR-Bd, serif !important;
+        font-size: 20px;
     `,
     descriptionWrapper: styled.span`
         display: flex;
@@ -141,17 +143,17 @@ export const container4 = {
         gap: 8px;
         ${hideScrollBar};
     `,
-    img: styled.img<{ rootWidth: number }>`
+    img: styled.img<{ $rootWidth: number }>`
         display: flex;
-        ${({rootWidth}) => css`
-            width: ${rootWidth - 34 * 2}px;
+        ${({$rootWidth}) => css`
+            width: ${$rootWidth - 34 * 2}px;
 
             &:first-child {
-                margin-left: ${rootWidth - 34}px;
+                margin-left: ${$rootWidth - 34}px;
             }
 
             &:last-child {
-                margin-right: ${rootWidth - 34}px;
+                margin-right: ${$rootWidth - 34}px;
             }
         `};
         height: 517px;

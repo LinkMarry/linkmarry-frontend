@@ -24,6 +24,9 @@
       "@src/*": [
         "src/*"
       ],
+      "@fonts/*": [
+        "src/fonts/*"
+      ],
       "@config/*": [
         "src/config/*"
       ],

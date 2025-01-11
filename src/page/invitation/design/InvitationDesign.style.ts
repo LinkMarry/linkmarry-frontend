@@ -44,7 +44,7 @@ const S = {
     `,
     previewContent: styled.div`
         display: flex;
-        margin: 52px 84px 0 84px;
+        margin: 52px 84px;
         border-radius: 12px;
         overflow-y: hidden;
     `

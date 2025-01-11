@@ -5,13 +5,18 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import colors from "@designsystem/foundation/colors";
 import OptionSelect from "@page/invitation/design/component/OptionSelect";
-import Template, {templateColors, templateFonts} from "@remote/value/Template";
+import Template, {
+    templateColors,
+    TemplateFontSize,
+    templateFontSizeRecord,
+    templateFontSizes
+} from "@remote/value/Template";
+import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/textType";
 
 interface TemplateOptionProps {
     template: Template;
     onChange: (template: Template) => void;
 }
-
 
 function TemplateOption(
     {
@@ -43,8 +48,27 @@ function TemplateOption(
                 <Row gap={12}>
                     <OptionLabel label={'폰트'} style={{alignSelf: 'flex-start'}}/>
                     <Row gap={12}>
-                        <OptionSelect items={templateFonts} width={154}/>
-                        <OptionSelect items={['보통']}/>
+                        <OptionSelect
+                            items={linkMarryFonts}
+                            width={154}
+                            value={template.templateFont}
+                            onChange={event => {
+                                const changedFont = event.target.value as LinkMarryFont;
+                                if (changedFont) {
+                                    onChange({...template, templateFont: changedFont})
+                                }
+                            }}
+                        />
+                        <OptionSelect
+                            items={templateFontSizes.map(fontSize => templateFontSizeRecord[fontSize].korean)}
+                            value={template.templateFontSize}
+                            onChange={event => {
+                                const changedFontSize = event.target.value as TemplateFontSize;
+                                if (changedFontSize) {
+                                    onChange({...template, templateFontSize: changedFontSize});
+                                }
+                            }}
+                        />
                     </Row>
                 </Row>
             </Column>

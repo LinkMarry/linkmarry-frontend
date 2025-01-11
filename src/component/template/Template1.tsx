@@ -12,6 +12,8 @@ import FooterTemplate from "@src/component/template/component/FooterTemplate";
 import Comment from "@remote/value/Comment";
 import CreateGuestCommentDialog from "@src/component/template/dialog/CreateGuestCommentDialog";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/RemoveGuestCommentDialog";
+import Text from "@designsystem/component/text";
+import {templateFontSizeRecord} from "@remote/value/Template";
 
 const {kakao: {maps}} = window as any;
 
@@ -91,10 +93,8 @@ function Template1(
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const kakaoMapRef = useRef<HTMLDivElement>(null);
 
-    const containerWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
     const date = parseDate(wedding.weddingSchedule.weddingDate);  // 입력 날짜 파싱
     const calendar = getCalendar(date);
-
 
     const calculateRemainingTime = () => {
         const now = new Date();
@@ -116,11 +116,13 @@ function Template1(
 
     const handleScroll = () => {
         if (scrollContainerRef.current) {
-            const imgWidth = containerWidth - 34 * 2;
+            const containerWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
+
             const scrollContainer = scrollContainerRef.current;
             const scrollPosition = scrollContainer.scrollLeft - 34;
-            const imageWidth = imgWidth + 8; // 이미지 너비 + 간격
+            const imageWidth = containerWidth - 34 * 2 + 8; // 이미지 너비 + 간격
             const index = Math.floor(scrollPosition / imageWidth);
+            console.log(`${scrollPosition}, ${imageWidth}`);
             console.log(index)
             setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
         }
@@ -143,42 +145,43 @@ function Template1(
         };
     }, []);
 
-    const background = wedding.template.templateColor;
+    const {templateColor, templateFont, templateFontSize} = wedding.template;
+    const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
 
     return (
         <S.container ref={containerRef}>
-            <S.container1.root background={background}>
+            <S.container1.root background={templateColor}>
                 <S.container1.titleWrapper>
-                    <S.container1.title>MIN HYOLYN & TAFYANG</S.container1.title>
-                    <HorizontalDivider color={colors.black}/>
+                    {/*<Text text={'MIN라인LINE Seed*@ HYOLYN & TAFYANG'} font={'LINESeedKR'} weight={400}/>*/}
+                    {/*<HorizontalDivider color={colors.black}/>*/}
                     <S.container1.descriptionWrapper>
-                        <span>{wedding?.weddingSchedule.weddingDate}</span>
-                        <span>{wedding?.weddingPlace.placeName}</span>
+                        <Text text={wedding?.weddingSchedule.weddingDate} font={templateFont} size={18 + addFontSize}
+                              weight={300}/>
+                        <Text text={wedding?.weddingPlace.placeName} font={templateFont} size={18 + addFontSize}
+                              weight={300}/>
                     </S.container1.descriptionWrapper>
                 </S.container1.titleWrapper>
                 <Column gap={44} $alignItems={'center'}>
                     <S.container1.img src={wedding?.imgList[0]}/>
-                    <Row gap={8}>
-                        <span>신랑 {wedding?.baseInfo.groomName}</span>
+                    <Row gap={8} $alignItems={'center'}>
+                        <Text text={`신랑 ${wedding?.baseInfo.groomName}`} font={templateFont} weight={300}/>
                         <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
-                        <span>신부 {wedding?.baseInfo.brideName}</span>
+                        <Text text={`신부 ${wedding?.baseInfo.brideName}`} font={templateFont} weight={300}/>
                     </Row>
                 </Column>
             </S.container1.root>
             <S.container2.root>
-                <span>WEDDING DAY</span>
+                <Text text={'WEDDING DAY'} font={templateFont} color={colors.g600} size={20 + addFontSize}
+                      weight={300}/>
                 <Column gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
                     <HorizontalDivider/>
                     <S.container2.table>
                         <thead>
                         <tr>
-                            <th>일</th>
-                            <th>월</th>
-                            <th>화</th>
-                            <th>수</th>
-                            <th>목</th>
-                            <th>금</th>
-                            <th>토</th>
+                            {['일', '월', '화', '수', '목', '금', '토'].map(i => (
+                                <Text text={i} font={'Pretendard'} color={colors.g500} size={16 + addFontSize}
+                                      weight={300}/>
+                            ))}
                         </tr>
                         </thead>
                         <tbody>
@@ -191,7 +194,9 @@ function Template1(
                                             background: day.isWeddingDay ? colors.p300 : undefined,
                                             borderRadius: 100
                                         }}
-                                    >{day.day || ''}</td>
+                                    >
+                                        <Text text={`${day.day ?? ''}`} font={'Pretendard'} size={16 + addFontSize} weight={300}/>
+                                    </td>
                                 ))}
                             </tr>
                         ))}
@@ -202,20 +207,20 @@ function Template1(
                 <Column gap={24} $alignItems={'center'}>
                     <Row gap={12} $alignItems={'center'} style={{paddingLeft: 50, paddingRight: 50}}>
                         <S.container2.dateCell>
-                            <span>DAYS</span>
-                            <span>{remainingTime.days}</span>
+                            <Text text={'DAYS'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
+                            <Text text={`${remainingTime.days}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                         <S.container2.dateCell>
-                            <span>HOUR</span>
-                            <span>{remainingTime.hours}</span>
+                            <Text text={'HOUR'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
+                            <Text text={`${remainingTime.hours}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                         <S.container2.dateCell>
-                            <span>MIN</span>
-                            <span>{remainingTime.minutes}</span>
+                            <Text text={'MIN'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
+                            <Text text={`${remainingTime.minutes}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                         <S.container2.dateCell>
-                            <span>SEC</span>
-                            <span>{remainingTime.seconds}</span>
+                            <Text text={'SEC'} font={templateFont} size={12 + addFontSize} weight={400} color={colors.g300}/>
+                            <Text text={`${remainingTime.seconds}`} font={templateFont} size={24 + addFontSize} weight={300} color={colors.g600}/>
                         </S.container2.dateCell>
                     </Row>
                     <Row gap={4}>
@@ -247,21 +252,22 @@ function Template1(
                 </Column>
             </S.container3.root>
             <S.container4.root>
-                <span>GALLERY</span>
+                <Text text={'GALLERY'} font={wedding.template.templateFont}/>
                 <S.container4.wrapper>
                     <S.container4.scroll ref={scrollContainerRef}>
-                        {wedding.imgList.map(img => (
-                            <S.container4.img src={img} rootWidth={containerWidth}/>
+                        {wedding.imgList.map((img, index) => (
+                            <S.container4.img key={index} src={img}
+                                              $rootWidth={containerRef.current?.getBoundingClientRect().width ?? 0}/>
                         ))}
                     </S.container4.scroll>
                     <S.container4.indicatorWrapper>
-                        {Array.from({length: wedding.imgList.length}, (_, index) => index).map(i => (
-                            <S.container4.indicator selected={i === currentImageIndex}/>
+                        {Array.from({length: wedding.imgList.length}, (_, index) => index).map((i, index) => (
+                            <S.container4.indicator key={index} selected={i === currentImageIndex}/>
                         ))}
                     </S.container4.indicatorWrapper>
                 </S.container4.wrapper>
             </S.container4.root>
-            <S.container5.root background={background}>
+            <S.container5.root background={templateColor}>
                 <Spacer h={92}/>
                 <Column gap={40} $alignItems={'center'}>
                     <span>LOCATION</span>
@@ -284,7 +290,7 @@ function Template1(
                     <MoneyInfoInTemplate moneyInfo={wedding.moneyInfo}/>
                 </Column>
             </S.container6.root>
-            <S.container7.root background={background}>
+            <S.container7.root background={templateColor}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={12} $alignItems={'center'}>
                         <span>방명록</span>
@@ -292,8 +298,8 @@ function Template1(
                     </Column>
                     <Column gap={12} $alignItems={'stretch'}>
                         <Column gap={12} $alignItems={'stretch'}>
-                            {wedding.guestComments.map(comment => (
-                                <GuestComment comment={comment} onRemove={() => {
+                            {wedding.guestComments.map((comment, index) => (
+                                <GuestComment key={index} comment={comment} onRemove={() => {
                                     setSelectedRemoveGuestComment(comment);
                                     setShowRemoveGuestCommentDialog(true);
                                 }}/>
@@ -320,7 +326,7 @@ function Template1(
             )}
             {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
                 <RemoveGuestCommentDialog
-                    selectedGuestComment={selectedRemoveGuestComment} 
+                    selectedGuestComment={selectedRemoveGuestComment}
                     url={wedding.url}
                     dismiss={() => setShowRemoveGuestCommentDialog(false)}
                 />

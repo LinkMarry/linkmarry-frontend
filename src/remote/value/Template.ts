@@ -1,3 +1,5 @@
+import {LinkMarryFont} from "@designsystem/foundation/text/textType";
+
 export type TemplateColor =
     '#F7F7F2'
     | '#FBF2F2'
@@ -7,22 +9,30 @@ export type TemplateColor =
     | '#FFFEF5'
     | '#EDF8F8'
     | '#FFF4EB';
-
 export const templateColors: TemplateColor[] = [
     '#F7F7F2', '#FBF2F2', '#ECECEC', '#F6F2F2', '#F7F4FE', '#FFFEF5', '#EDF8F8', '#FFF4EB'
-]
-
-export type TemplateFont =
-    'LINE Seed Sans KR'
-    | 'Aleo'
-    | 'GangwonEduAll'
-    | 'S-Core dream'
-    | 'Rufina'
-    | 'Pretendard';
-
-export const templateFonts: TemplateFont[] = [
-    'LINE Seed Sans KR', 'Aleo', 'GangwonEduAll', 'S-Core dream', 'Rufina', 'Pretendard'
 ];
+
+export type TemplateFontSize = 'large' | 'medium' | 'small'
+export const templateFontSizes: TemplateFontSize[] = ['large', 'medium', 'small'];
+
+export const templateFontSizeRecord: Record<TemplateFontSize, {
+    korean: string,
+    addFontSize: number
+}> = {
+    large: {
+        korean: '크게',
+        addFontSize: 2
+    },
+    medium: {
+        korean: '보통',
+        addFontSize: 0
+    },
+    small: {
+        korean: '작게',
+        addFontSize: -2
+    }
+};
 
 export default interface Template {
     // 선택한 템플릿 이름
@@ -32,22 +42,22 @@ export default interface Template {
     templateColor: TemplateColor;
 
     // 선택한 템플릿 폰트
-    templateFont: TemplateFont;
+    templateFont: LinkMarryFont;
 
     // 선택한 템플릿 폰트 사이즈
-    templateFontSize: string;
+    templateFontSize: TemplateFontSize;
 }
 
 export const defaultTemplate: Template = {
     templateName: '템플릿1',
     templateColor: '#F7F7F2',
-    templateFont: 'LINE Seed Sans KR',
-    templateFontSize: '14px',
+    templateFont: 'LINESeedKR',
+    templateFontSize: 'medium',
 }
 
 export const dummyTemplate: Template = {
     templateName: '템플릿1',
     templateColor: '#F7F7F2',
-    templateFont: 'LINE Seed Sans KR',
-    templateFontSize: '14px',
+    templateFont: 'LINESeedKR',
+    templateFontSize: 'medium',
 };

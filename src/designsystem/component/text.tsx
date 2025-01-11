@@ -1,38 +1,53 @@
 import React, {CSSProperties, HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
+import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
+import TextProperties, {implementText} from "@designsystem/foundation/text/textProperties";
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
     text: string;
-    type: TextType;
-    color?: CSSProperties['color'];
+    type?: TextType;
+    font?: LinkMarryFont;
     weight?: CSSProperties['fontWeight'];
+    size?: CSSProperties['fontSize'];
+    color?: CSSProperties['color'];
+    lineHeight?: CSSProperties['lineHeight'];
 }
 
 function Text(
     {
         text,
         type,
-        color = colors.black,
+        font,
         weight,
+        size,
+        color = colors.black,
+        lineHeight,
         ...props
     }: TextProps
 ) {
+    const properties = type ? textTypeMap[type] : undefined;
     return (
-        <TextStyle type={type} color={color} weight={weight} {...props}>{text}</TextStyle>
+        <TextStyle
+            properties={{
+                fontFamily: font ?? properties?.fontFamily,
+                fontWeight: weight ?? properties?.fontWeight,
+                fontSize: size ?? properties?.fontSize,
+                lineHeight: lineHeight ?? properties?.lineHeight,
+            }}
+            color={color}
+            {...props}
+        >{text}</TextStyle>
     );
 }
 
 const TextStyle = styled.span<{
-    type: TextType,
-    color: CSSProperties['color'],
-    weight?: CSSProperties['fontWeight'],
+    properties: TextProperties,
+    color: CSSProperties['color'];
 }>`
-    ${({type, color, weight}) => css`
-        ${makeText(type)};
+    ${({properties, color}) => css`
+        ${implementText(properties)};
         color: ${color};
-        font-weight: ${weight};
     `}
 `
 
