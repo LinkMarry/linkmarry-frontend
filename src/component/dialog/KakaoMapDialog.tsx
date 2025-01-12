@@ -4,10 +4,7 @@ import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 
-const {kakao: {maps}} = window as any;
-
-const geocoder = new maps.services.Geocoder();
-const infoWindow = new maps.InfoWindow({zIndex: 1});
+const {kakao} = window as any;
 
 interface KakaoMapDialogProps {
     dismiss: () => void;
@@ -18,6 +15,7 @@ function KakaoMapDialog(
         dismiss
     }: KakaoMapDialogProps
 ) {
+    const geocoder = new kakao.maps.services.Geocoder();
     const kakaoMap = useRef<HTMLDivElement>(null);
     const [map, setMap] = useState<any>();
     const searchFieldRef = useRef<HTMLInputElement>(null);
@@ -27,21 +25,21 @@ function KakaoMapDialog(
         const searchField = searchFieldRef.current;
         if (!searchField) return;
 
-        const ps = new maps.services.Places();
+        const ps = new kakao.maps.services.Places();
         ps.keywordSearch(searchField.value, (data: any, status: any, pagination: any) => {
             console.log(data);
             console.log(status);
             console.log(pagination);
 
-            if (status === maps.services.Status.OK) {
+            if (status === kakao.maps.services.Status.OK) {
 
                 // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
                 // LatLngBounds 객체에 좌표를 추가합니다
-                const bounds = new maps.LatLngBounds();
+                const bounds = new kakao.maps.LatLngBounds();
 
                 for (const e of data) {
                     displayMarker(e);
-                    bounds.extend(new maps.LatLng(e.y, e.x));
+                    bounds.extend(new kakao.maps.LatLng(e.y, e.x));
                 }
 
                 // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
@@ -50,22 +48,25 @@ function KakaoMapDialog(
         });
     }
     const displayMarker = (place: any) => {
-        new maps.Marker({
+        new kakao.maps.Marker({
             map,
-            position: new maps.LatLng(place.y, place.x)
+            position: new kakao.maps.LatLng(place.y, place.x)
         });
     };
 
     useEffect(() => {
-        if (!maps) return;
+        if (!kakao || !kakao.maps) {
+            alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+            return;
+        }
 
-        const createdMap = new maps.Map(kakaoMap.current, {
-            center: new maps.LatLng(35.6632, 128.4141),
+        const createdMap = new kakao.maps.Map(kakaoMap.current, {
+            center: new kakao.maps.LatLng(35.6632, 128.4141),
             level: 5, // 확대 레벨
         });
         setMap(createdMap);
 
-        maps.event.addListener(createdMap, 'click', mapClickEventListener);
+        kakao.maps.event.addListener(createdMap, 'click', mapClickEventListener);
     }, []);
 
     const mapClickEventListener = useCallback((mouseEvent: any) => {
@@ -75,7 +76,7 @@ function KakaoMapDialog(
         const lng = latLng.getLng();
 
         geocoder.coord2Address(lng, lat, (result: any, status: any) => {
-            if (status !== maps.services.Status.OK) return;
+            if (status !== kakao.maps.services.Status.OK) return;
             const place = result[0];
 
             const address = place.address?.address_name;
@@ -92,7 +93,7 @@ function KakaoMapDialog(
                 selectedPlaceOverlay.setContent(content);
                 selectedPlaceOverlay.setPosition(latLng);
             } else {
-                const overlay = new maps.CustomOverlay({
+                const overlay = new kakao.maps.CustomOverlay({
                     position: latLng,
                     content,
                     xAnchor: 0,

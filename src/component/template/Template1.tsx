@@ -20,7 +20,7 @@ import {increaseFontSize} from "@util/html.util";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import GuestCommentsDetailDialog from "@src/component/template/dialog/GuestCommentsDetailDialog";
 
-const {kakao: {maps}} = window as any;
+const {kakao} = window as any;
 
 interface Template1Props {
     wedding: Wedding;
@@ -148,11 +148,16 @@ function Template1(
     }, [weddingDate]);
 
     useEffect(() => {
+        if (!kakao || !kakao.maps) {
+            alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+            return;
+        }
+        
         const container = scrollContainerRef.current;
         container?.addEventListener('scroll', handleScroll);
 
-        new maps.Map(kakaoMapRef.current, {
-            center: new maps.LatLng(35.6632, 128.4141),
+        new kakao.maps.Map(kakaoMapRef.current, {
+            center: new kakao.maps.LatLng(35.6632, 128.4141),
             level: 5, // 확대 레벨
         });
 
