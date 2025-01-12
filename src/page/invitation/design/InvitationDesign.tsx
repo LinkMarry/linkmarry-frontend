@@ -38,6 +38,7 @@ import BaseMusic, {defaultBaseMusic} from "@remote/value/BaseMusic";
 import Video, {defaultVideo} from "@remote/value/Video";
 import GalleryOption from "@page/invitation/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
+import {dummyComments} from "@remote/value/Comment";
 
 function InvitationDesign() {
     const [searchParams] = useSearchParams();
@@ -69,7 +70,7 @@ function InvitationDesign() {
         weddingPlace,
         greeting,
         guestComment,
-        guestComments: [],
+        guestComments: dummyComments,
         baseMusic,
         linkShare,
         moneyInfo,

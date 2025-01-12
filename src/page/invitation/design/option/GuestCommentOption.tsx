@@ -8,6 +8,8 @@ import Checkbox from "@designsystem/component/checkbox";
 import makeText from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
 import GuestComment from "@remote/value/GuestComment";
+import {designs, designRecord} from "@remote/enumeration/Design";
+import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
 
 interface GuestCommentOptionProps {
     guestComment: GuestComment;
@@ -40,10 +42,14 @@ function GuestCommentOption(
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'디자인'}/>
-                        {/*<OptionTextField fieldProps={{*/}
-                        {/*    value: guestComment.design,*/}
-                        {/*}} width={264}/>*/}
-                        <span>TODO: Change selector</span>
+                        <OptionSegmentedButton
+                            selectedIndex={designRecord[guestComment.design].index}
+                            items={designs.map(design => designRecord[design].korean)}
+                            onClickItem={index => {
+                                onChange({...guestComment, design: designs[index]})
+                            }}
+                            style={{width: 264}}
+                        />
                     </Row>
                 </Column>
                 <HorizontalDivider/>

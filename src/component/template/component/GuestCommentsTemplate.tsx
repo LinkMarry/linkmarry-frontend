@@ -36,7 +36,7 @@ function GuestCommentsTemplate(
                         <S.basicContainer key={index} background={background}>
                             <Row gap={8} $alignItems={'center'}>
                                 <Text size={18 + addFontSize} color={colors.g600} weight={300}>
-                                    From. ${comment.name}
+                                    From. {comment.name}
                                 </Text>
                                 <Text size={12 + addFontSize} color={colors.g300} weight={300}>
                                     {comment.createdDate}
@@ -75,7 +75,7 @@ function GuestCommentsTemplate(
                                 <Spacer/>
                                 <Column gap={4}>
                                     <Text size={16 + addFontSize} weight={300} color={colors.g600}>
-                                        from. ${comment.name}
+                                        from. {comment.name}
                                     </Text>
                                     <Text
                                         size={12 + addFontSize}
