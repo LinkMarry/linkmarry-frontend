@@ -15,7 +15,6 @@ interface GuestCommentsTemplateProps {
     comments: Comment[];
     design: Design;
     background: CSSProperties['background'];
-    addFontSize: number;
     onRemove: (comment: Comment) => void;
 }
 
@@ -24,7 +23,6 @@ function GuestCommentsTemplate(
         comments,
         design,
         background,
-        addFontSize,
         onRemove,
     }: GuestCommentsTemplateProps
 ) {
@@ -33,26 +31,12 @@ function GuestCommentsTemplate(
             return (
                 <Column gap={12} $alignItems={'stretch'}>
                     {trimArray(comments, 3).map((comment, index) => (
-                        <S.basicContainer key={index} background={background}>
-                            <Row gap={8} $alignItems={'center'}>
-                                <Text size={18 + addFontSize} color={colors.g600} weight={300}>
-                                    From. {comment.name}
-                                </Text>
-                                <Text size={12 + addFontSize} color={colors.g300} weight={300}>
-                                    {comment.createdDate}
-                                </Text>
-                                <Spacer/>
-                                <Icon
-                                    type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
-                                    onClick={() => {
-                                        onRemove(comment);
-                                    }}
-                                />
-                            </Row>
-                            <Text size={16 + addFontSize} color={colors.g600} weight={300}>
-                                {comment.content}
-                            </Text>
-                        </S.basicContainer>
+                        <BasicGuestComment
+                            key={index}
+                            comment={comment}
+                            background={background}
+                            onRemove={() => onRemove(comment)}
+                        />
                     ))}
                 </Column>
             );
@@ -60,31 +44,12 @@ function GuestCommentsTemplate(
             return (
                 <Row gap={20} $alignItems={'stretch'}>
                     {trimArray(comments, 2).map((comment, index) => (
-                        <S.stickerContainer key={index} background={background}>
-                            <Icon
-                                type={IconType.CrossLine} tint={colors.g300} size={20 + addFontSize}
-                                style={{alignSelf: 'flex-end', cursor: 'pointer'}}
-                                onClick={() => {
-                                    onRemove(comment);
-                                }}
-                            />
-                            <Column flex={1}>
-                                <Text size={16 + addFontSize} weight={300} color={colors.g600}>
-                                    {comment.content}
-                                </Text>
-                                <Spacer/>
-                                <Column gap={4}>
-                                    <Text size={16 + addFontSize} weight={300} color={colors.g600}>
-                                        from. {comment.name}
-                                    </Text>
-                                    <Text
-                                        size={12 + addFontSize}
-                                        weight={300}
-                                        color={colors.g300}
-                                    >{trimString(comment.createdDate, 10)}</Text>
-                                </Column>
-                            </Column>
-                        </S.stickerContainer>
+                        <StickerGuestComment
+                            key={index}
+                            comment={comment}
+                            background={background}
+                            onRemove={() => onRemove(comment)}
+                        />
                     ))}
                 </Row>
             );
@@ -110,6 +75,75 @@ const S = {
         padding: 12px;
         background: ${({background}) => background};
     `
+}
+
+interface GuestCommentProps {
+    comment: Comment;
+    background: CSSProperties['background'];
+    onRemove: () => void;
+}
+
+export function BasicGuestComment(
+    {
+        comment,
+        background,
+        onRemove
+    }: GuestCommentProps
+) {
+    return (
+        <S.basicContainer background={background}>
+            <Row gap={8} $alignItems={'center'}>
+                <Text size={18} color={colors.g600} weight={300}>
+                    From. {comment.name}
+                </Text>
+                <Text size={12} color={colors.g300} weight={300}>
+                    {comment.createdDate}
+                </Text>
+                <Spacer/>
+                <Icon
+                    type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
+                    onClick={onRemove}
+                />
+            </Row>
+            <Text size={16} color={colors.g600} weight={300}>
+                {comment.content}
+            </Text>
+        </S.basicContainer>
+    );
+}
+
+export function StickerGuestComment(
+    {
+        comment,
+        background,
+        onRemove
+    }: GuestCommentProps
+) {
+    return (
+        <S.stickerContainer background={background}>
+            <Icon
+                type={IconType.CrossLine} tint={colors.g300} size={20}
+                style={{alignSelf: 'flex-end', cursor: 'pointer'}}
+                onClick={onRemove}
+            />
+            <Column flex={1}>
+                <Text size={16} weight={300} color={colors.g600}>
+                    {comment.content}
+                </Text>
+                <Spacer/>
+                <Column gap={4}>
+                    <Text size={16} weight={300} color={colors.g600}>
+                        from. {comment.name}
+                    </Text>
+                    <Text
+                        size={12}
+                        weight={300}
+                        color={colors.g300}
+                    >{trimString(comment.createdDate, 10)}</Text>
+                </Column>
+            </Column>
+        </S.stickerContainer>
+    );
 }
 
 export default GuestCommentsTemplate;

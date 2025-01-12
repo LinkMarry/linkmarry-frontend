@@ -1,10 +1,8 @@
 import React, {
-    ForwardedRef,
-    forwardRef,
     HTMLAttributes,
     HTMLInputTypeAttribute,
     InputHTMLAttributes,
-    RefObject, useEffect, useRef, useState,
+    useRef,
 } from 'react';
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";

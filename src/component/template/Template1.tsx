@@ -18,6 +18,7 @@ import GuestCommentsTemplate from "@src/component/template/component/GuestCommen
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 import {increaseFontSize} from "@util/html.util";
 import ImgDesign from "@remote/enumeration/ImgDesign";
+import GuestCommentsDetailDialog from "@src/component/template/dialog/GuestCommentsDetailDialog";
 
 const {kakao: {maps}} = window as any;
 
@@ -93,6 +94,7 @@ function Template1(
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
     const [showContactingCongratulationDialog, setShowContactingCongratulationDialog] = useState(false);
+    const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
     const [selectedRemoveGuestComment, setSelectedRemoveGuestComment] = useState<Comment>();
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -161,8 +163,10 @@ function Template1(
 
     const {templateColor, templateFont, templateFontSize} = wedding.template;
 
-    const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
-    increaseFontSize(containerRef, addFontSize);
+    (() => {
+        const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
+        increaseFontSize(containerRef, addFontSize);
+    })();
 
     return (
         <S.container ref={containerRef} $templateFont={templateFont}>
@@ -171,10 +175,10 @@ function Template1(
                     {/*<Text text={'MIN라인LINE Seed*@ HYOLYN & TAFYANG'} font={'LINESeedKR'} weight={400}/>*/}
                     {/*<HorizontalDivider color={colors.black}/>*/}
                     <S.container1.descriptionWrapper>
-                        <Text size={18 + addFontSize} weight={300}>
+                        <Text size={18} weight={300}>
                             {wedding.weddingSchedule.weddingDate}
                         </Text>
-                        <Text size={18 + addFontSize} weight={300}>
+                        <Text size={18} weight={300}>
                             {wedding.weddingPlace.placeName}
                         </Text>
                     </S.container1.descriptionWrapper>
@@ -182,18 +186,18 @@ function Template1(
                 <Column gap={44} $alignItems={'center'}>
                     <S.container1.img src={wedding.imgList[0]}/>
                     <Row gap={8} $alignItems={'center'}>
-                        <Text size={16 + addFontSize} weight={300}>
+                        <Text size={16} weight={300}>
                             신랑 {wedding.baseInfo.groomName}
                         </Text>
-                        <Icon type={IconType.HeartFill} size={16 + addFontSize} color={colors.white}/>
-                        <Text size={16 + addFontSize} weight={300}>
+                        <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
+                        <Text size={16} weight={300}>
                             신부 {wedding.baseInfo.brideName}
                         </Text>
                     </Row>
                 </Column>
             </S.container1.root>
             <S.container2.root>
-                <Text color={colors.g600} size={20 + addFontSize} weight={300}>
+                <Text color={colors.g600} size={20} weight={300}>
                     WEDDING DAY
                 </Text>
                 {wedding.weddingSchedule.calendar && (
@@ -207,7 +211,7 @@ function Template1(
                                         <Text
                                             font={'Pretendard'}
                                             color={colors.g500}
-                                            size={16 + addFontSize}
+                                            size={16}
                                             weight={300}
                                         >{i}</Text>
                                     </th>
@@ -225,7 +229,7 @@ function Template1(
                                                 borderRadius: 100
                                             }}
                                         >
-                                            <Text font={'Pretendard'} size={16 + addFontSize} weight={300}>
+                                            <Text font={'Pretendard'} size={16} weight={300}>
                                                 {day.day ?? ''}
                                             </Text>
                                         </td>
@@ -241,41 +245,41 @@ function Template1(
                     <Column gap={24} $alignItems={'center'}>
                         <Row gap={12} $alignItems={'center'} style={{paddingLeft: 50, paddingRight: 50}}>
                             <S.container2.dateCell>
-                                <Text size={12 + addFontSize} weight={400} color={colors.g300}>DAYS</Text>
-                                <Text size={24 + addFontSize} weight={300} color={colors.g600}>
+                                <Text size={12} weight={400} color={colors.g300}>DAYS</Text>
+                                <Text size={24} weight={300} color={colors.g600}>
                                     {remainingTime.days}
                                 </Text>
                             </S.container2.dateCell>
                             <S.container2.dateCell>
-                                <Text size={12 + addFontSize} weight={400} color={colors.g300}>HOUR</Text>
-                                <Text size={24 + addFontSize} weight={300} color={colors.g600}>
+                                <Text size={12} weight={400} color={colors.g300}>HOUR</Text>
+                                <Text size={24} weight={300} color={colors.g600}>
                                     {remainingTime.hours}
                                 </Text>
                             </S.container2.dateCell>
                             <S.container2.dateCell>
-                                <Text size={12 + addFontSize} weight={400} color={colors.g300}>MIN</Text>
-                                <Text size={24 + addFontSize} weight={300} color={colors.g600}>
+                                <Text size={12} weight={400} color={colors.g300}>MIN</Text>
+                                <Text size={24} weight={300} color={colors.g600}>
                                     {remainingTime.minutes}
                                 </Text>
                             </S.container2.dateCell>
                             <S.container2.dateCell>
-                                <Text size={12 + addFontSize} weight={400} color={colors.g300}>SEC</Text>
-                                <Text size={24 + addFontSize} weight={300} color={colors.g600}>
+                                <Text size={12} weight={400} color={colors.g300}>SEC</Text>
+                                <Text size={24} weight={300} color={colors.g600}>
                                     {remainingTime.seconds}
                                 </Text>
                             </S.container2.dateCell>
                         </Row>
                         <Row gap={4}>
-                            <Text size={14 + addFontSize} weight={300}>{wedding.baseInfo.groomName}</Text>
+                            <Text size={14} weight={300}>{wedding.baseInfo.groomName}</Text>
                             <Icon
                                 type={IconType.HeartFill}
-                                size={16 + addFontSize}
+                                size={16}
                                 color={colors.black}
                             />
-                            <Text size={14 + addFontSize} weight={300}>{wedding.baseInfo.brideName}의 결혼식이</Text>
-                            <Text size={14 + addFontSize} weight={300}
+                            <Text size={14} weight={300}>{wedding.baseInfo.brideName}의 결혼식이</Text>
+                            <Text size={14} weight={300}
                                   color={colors.p800}>{remainingTime.days}</Text>
-                            <Text size={14 + addFontSize} weight={300}>일 남았습니다.</Text>
+                            <Text size={14} weight={300}>일 남았습니다.</Text>
                         </Row>
                     </Column>
                 )}
@@ -284,30 +288,30 @@ function Template1(
                 <Column gap={96} $alignItems={'stretch'}>
                     <Column gap={40} $alignItems={'center'}>
                         <Column gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize} color={colors.g600}>
+                            <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
                                 {wedding.baseInfo.groomFatherName}·{wedding.baseInfo.groomMotherName}의 {wedding.baseInfo.groomFamilyName}
                             </Text>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}
+                                <Text font={'GangwonEduAll'} weight={100} size={24}
                                       color={colors.g600}>
                                     신랑&nbsp;
                                 </Text>
-                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}>
+                                <Text font={'GangwonEduAll'} weight={100} size={24}>
                                     {wedding.baseInfo.groomName}
                                 </Text>
                             </Row>
                         </Column>
                         <HorizontalDivider color={colors.g200}/>
                         <Column gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize} color={colors.g600}>
+                            <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
                                 {wedding.baseInfo.brideFatherName}·{wedding.baseInfo.brideMotherName}의 {wedding.baseInfo.brideFamilyName}
                             </Text>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}
+                                <Text font={'GangwonEduAll'} weight={100} size={24}
                                       color={colors.g600}>
                                     신부&nbsp;
                                 </Text>
-                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}>
+                                <Text font={'GangwonEduAll'} weight={100} size={24}>
                                     {wedding.baseInfo.brideName}
                                 </Text>
                             </Row>
@@ -319,7 +323,7 @@ function Template1(
                 </Column>
             </S.container3.root>
             <S.container4.root>
-                <Text font={wedding.template.templateFont} color={colors.g600} size={20 + addFontSize} weight={300}>
+                <Text font={wedding.template.templateFont} color={colors.g600} size={20} weight={300}>
                     GALLERY
                 </Text>
                 {wedding.imgDesign === ImgDesign.SLIDE ? (
@@ -350,22 +354,22 @@ function Template1(
             <S.container5.root background={templateColor}>
                 <Spacer h={92}/>
                 <Column gap={40} $alignItems={'center'}>
-                    <Text font={wedding.template.templateFont} color={colors.g600} size={20 + addFontSize}
+                    <Text font={wedding.template.templateFont} color={colors.g600} size={20}
                           weight={300}>
                         LOCATION
                     </Text>
                     <Column $alignItems={'center'}>
-                        <Text size={16 + addFontSize} weight={300}>
+                        <Text size={16} weight={300}>
                             {wedding.weddingPlace.placeName}
                         </Text>
-                        <Text size={16 + addFontSize} weight={300}>
+                        <Text size={16} weight={300}>
                             {wedding.weddingPlace.addressName} {wedding.weddingPlace.floorHall}
                         </Text>
                     </Column>
                     <S.container5.kakaoMap ref={kakaoMapRef} style={{
                         display: wedding.weddingPlace.placeStatus ? 'flex' : 'none'
                     }}></S.container5.kakaoMap>
-                    <Text size={16 + addFontSize} weight={300} style={{
+                    <Text size={16} weight={300} style={{
                         marginLeft: 24,
                         alignSelf: 'stretch',
                         textAlign: 'start'
@@ -375,17 +379,15 @@ function Template1(
             </S.container5.root>
             <S.container6.root>
                 <Column gap={40} $alignItems={'center'}>
-                    <Text size={20 + addFontSize} weight={300} color={colors.g600}>마음 전하실 곳</Text>
+                    <Text size={20} weight={300} color={colors.g600}>마음 전하실 곳</Text>
                     <MoneyInfoInTemplate moneyInfo={wedding.moneyInfo}/>
                 </Column>
             </S.container6.root>
             <S.container7.root background={templateColor}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={12} $alignItems={'center'}>
-                        <Text size={20 + addFontSize} weight={300} color={colors.g600}>
-                            방명록
-                        </Text>
-                        <Text size={16 + addFontSize} weight={300} color={colors.g600}>
+                        <Text size={20} weight={300} color={colors.g600}>방명록</Text>
+                        <Text size={16} weight={300} color={colors.g600}>
                             {wedding.baseInfo.groomName}, {wedding.baseInfo.brideName}에게 하고 싶은 말을 남겨주세요
                         </Text>
                     </Column>
@@ -394,7 +396,6 @@ function Template1(
                             comments={wedding.guestComments}
                             design={wedding.guestComment.design}
                             background={colors.white}
-                            addFontSize={addFontSize}
                             onRemove={comment => {
                                 setSelectedRemoveGuestComment(comment);
                                 setShowRemoveGuestCommentDialog(true);
@@ -402,7 +403,10 @@ function Template1(
                         />
                         <Text
                             style={{alignSelf: 'flex-end', paddingRight: 4}}
-                            size={14 + addFontSize} weight={300} color={colors.g600}
+                            size={14} weight={300} color={colors.g600}
+                            onClick={() => {
+                                setShowGuestCommentsDetailDialog(true);
+                            }}
                         >전체보기</Text>
                     </Column>
                 </Column>
@@ -417,7 +421,6 @@ function Template1(
                     }/>
             </S.container7.root>
             <FooterTemplate
-                addFontSize={addFontSize}
                 style={{
                     background: '#F7F7F2'
                 }}
@@ -437,6 +440,12 @@ function Template1(
                     baseInfo={wedding.baseInfo}
                     phone={wedding.phone}
                     dismiss={() => setShowContactingCongratulationDialog(false)}
+                />
+            )}
+            {showGuestCommentsDetailDialog && (
+                <GuestCommentsDetailDialog
+                    comments={wedding.guestComments}
+                    dismiss={() => setShowGuestCommentsDetailDialog(false)}
                 />
             )}
         </S.container>

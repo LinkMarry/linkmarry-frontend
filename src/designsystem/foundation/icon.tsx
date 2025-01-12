@@ -255,6 +255,9 @@ export default function Icon(
 };
 
 const IconWrapper = styled.div<{ width: number, height: number }>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     ${({width, height}) => css`
         width: ${width}px;
         height: ${height}px;
