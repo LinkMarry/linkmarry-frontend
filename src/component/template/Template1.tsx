@@ -280,7 +280,7 @@ function Template1(
                     </Column>
                 )}
             </S.container2.root>
-            <S.container3.root>
+            <S.container3.root background={templateColor}>
                 <Column gap={96} $alignItems={'stretch'}>
                     <Column gap={40} $alignItems={'center'}>
                         <Column gap={8} $alignItems={'center'}>

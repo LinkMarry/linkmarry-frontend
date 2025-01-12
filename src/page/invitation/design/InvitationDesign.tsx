@@ -444,8 +444,8 @@ function InvitationDesign() {
                                                     children = <GalleryOption
                                                         imgList={imgList}
                                                         imgDesign={imgDesign}
-                                                        onChangeImgDesign={imgDesign => setImgDesign(imgDesign)}
-                                                        onChangeImgList={imgList => setImgList(imgList)}
+                                                        onChangeImgDesign={setImgDesign}
+                                                        onChangeImgList={setImgList}
                                                     />
                                                     break;
                                             }

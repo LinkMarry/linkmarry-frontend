@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useRef} from 'react';
+import React, {ChangeEvent, Dispatch, SetStateAction, useRef, useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
@@ -8,21 +8,24 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import ImgDesign, {imgDesignRecord, imgDesigns} from "@remote/enumeration/ImgDesign";
 import fileApi from "@remote/api/FileApi";
 import Text from "@designsystem/component/text";
+import LoadingOverlay from "@src/component/LoadingOverlay";
 
 interface GalleryOptionProps {
     imgList: string[];
     imgDesign: ImgDesign;
-    onChangeImgDesign: (img: ImgDesign) => void;
-    onChangeImgList: (imgList: string[]) => void;
+    onChangeImgDesign: Dispatch<SetStateAction<ImgDesign>>;
+    onChangeImgList: Dispatch<SetStateAction<string[]>>;
 }
 
 function GalleryOption(
     {
         imgList,
         imgDesign,
-        onChangeImgDesign
+        onChangeImgDesign,
+        onChangeImgList
     }: GalleryOptionProps
 ) {
+    const [isFetching, setIsFetching] = useState(false);
     const imageFieldRef = useRef<HTMLInputElement>(null);
     const uploadFiles = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -34,37 +37,72 @@ function GalleryOption(
             }
             return;
         }
-
-        try {
-            const {data} = await fileApi.upload(files[0]);
-            console.log(data);
-        } catch (error) {
-            console.error(error);
-        }
+        setIsFetching(true);
+        const uploadPromises = Array.from(files).map(file => fileApi.upload(file));
+        const results = await Promise.allSettled(uploadPromises);
+        const fulfilledResults: string[] = results
+            .map(result => result.status === 'fulfilled' ? result.value.data.url : null)
+            .filter((result): result is string => result !== null);
+        onChangeImgList(imgList => [...fulfilledResults, ...imgList]);
+        setIsFetching(false);
     };
 
     return (
         <S.container>
-            <Column gap={20}>
-                <Column gap={8}>
-                    <Row gap={12}>
+            <Column gap={20} style={{overflow: 'hidden'}} $alignItems={'stretch'} flex={1}>
+                <Column gap={8} style={{overflow: 'hidden'}} $alignItems={'stretch'}>
+                    <Row gap={12} style={{overflow: 'hidden'}}>
                         <OptionLabel label={'사진'} style={{alignSelf: 'flex-start'}}/>
-                        <S.addImageContainer htmlFor={'choose-image'}>
-                            <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
-                        </S.addImageContainer>
-                        <S.voidInput
-                            id={'choose-image'}
-                            ref={imageFieldRef}
-                            onChange={uploadFiles}
-                            type={'file'}
-                            accept={'image/*'}
-                            multiple={true}
-                        />
+                        <div style={{display: 'flex', position: 'relative', overflowX: 'scroll', flex: 1}}>
+                            <Row gap={4}>
+                                <S.addImageContainer htmlFor={'choose-image'}>
+                                    <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                                </S.addImageContainer>
+                                <S.voidInput
+                                    id={'choose-image'}
+                                    ref={imageFieldRef}
+                                    onChange={uploadFiles}
+                                    type={'file'}
+                                    accept={'image/*'}
+                                    multiple={true}
+                                />
+                                {imgList.map((img, index) => (
+                                    <div key={index} style={{position: 'relative'}}>
+                                        <div style={{
+                                            display: "flex",
+                                            position: 'absolute',
+                                            top: 0,
+                                            right: 0,
+                                            background: colors.g100,
+                                            borderRadius: 20,
+                                            padding: 6,
+                                            cursor: 'pointer',
+                                            opacity: 0.8
+                                        }}>
+                                            <Icon
+                                                type={IconType.CrossLine}
+                                                size={16}
+                                                tint={colors.g600}
+                                                onClick={() => {
+                                                    const copiedImgList = [...imgList];
+                                                    copiedImgList.splice(index, 1);
+                                                    onChangeImgList(copiedImgList);
+                                                }}
+                                            />
+                                        </div>
+                                        <S.image src={img}/>
+                                    </div>
+                                ))}
+                            </Row>
+                            {isFetching && (
+                                <LoadingOverlay/>
+                            )}
+                        </div>
                     </Row>
                     <Text style={{marginLeft: 84}} type={'caption1'} color={colors.g300}>사진은 최대 30장까지 업로드 가능합니다.</Text>
                 </Column>
                 <Row gap={12}>
-                    <OptionLabel label={'제목'}/>
+                    <OptionLabel label={'디자인'}/>
                     <OptionSegmentedButton
                         style={{width: 264}}
                         selectedIndex={imgDesignRecord[imgDesign].index}
@@ -76,7 +114,8 @@ function GalleryOption(
                 </Row>
             </Column>
         </S.container>
-    );
+    )
+        ;
 }
 
 const S = {
@@ -86,7 +125,7 @@ const S = {
     `,
     addImageContainer: styled.label`
         display: flex;
-        width: 128px;
+        min-width: 128px;
         height: 128px;
         border: 1px solid ${colors.g200};
         justify-content: center;
@@ -96,6 +135,11 @@ const S = {
         display: none;
         width: 0;
         height: 0;
+    `,
+    image: styled.img`
+        display: flex;
+        width: 128px;
+        height: 128px;
     `
 }
 

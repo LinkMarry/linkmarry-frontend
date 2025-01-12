@@ -120,10 +120,10 @@ export const container2 = {
 };
 
 export const container3 = {
-    root: styled.div`
+    root: styled.div<{ background: string }>`
         display: flex;
         flex-direction: column;
-        background: #F7F7F2;
+        background: ${({background}) => background};
         padding: 92px 60px;
         align-items: stretch;
     `
