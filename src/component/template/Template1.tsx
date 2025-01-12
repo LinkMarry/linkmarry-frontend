@@ -331,7 +331,7 @@ function Template1(
                         <S.container4.scroll ref={scrollContainerRef}>
                             {wedding.imgList.map((img, index) => (
                                 <S.container4.slideImg
-                                    key={index} 
+                                    key={index}
                                     src={img}
                                     $rootWidth={containerRef.current?.getBoundingClientRect().width ?? 0}
                                 />
@@ -417,14 +417,10 @@ function Template1(
                     }}
                     onClick={() => {
                         setShowCreateGuestCommentDialog(true);
-                    }
-                    }/>
+                    }}
+                />
             </S.container7.root>
-            <FooterTemplate
-                style={{
-                    background: '#F7F7F2'
-                }}
-            />
+            <FooterTemplate background={templateColor}/>
             {showCreateGuestCommentDialog && (
                 <CreateGuestCommentDialog url={wedding.url} dismiss={() => setShowCreateGuestCommentDialog(false)}/>
             )}

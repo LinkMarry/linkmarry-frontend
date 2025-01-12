@@ -2,17 +2,20 @@ import React, {HTMLAttributes} from 'react';
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import colors from "@designsystem/foundation/colors";
+import styled from "styled-components";
 
 interface FooterTemplateProps extends HTMLAttributes<HTMLDivElement> {
+    background: string;
 }
 
 function FooterTemplate(
     {
+        background,
         ...props
     }: FooterTemplateProps
 ) {
     return (
-        <Column {...props}>
+        <Container background={background} {...props}>
             <Column
                 gap={28}
                 style={{
@@ -30,8 +33,14 @@ function FooterTemplate(
                     <Text size={14} weight={300} color={colors.g300}>All rights reserved.</Text>
                 </Row>
             </Column>
-        </Column>
+        </Container>
     );
 }
+
+const Container = styled.div<{background: string}>`
+    display: flex;
+    flex-direction: column;
+    background: ${({background}) => background};
+`
 
 export default FooterTemplate;
