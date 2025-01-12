@@ -138,7 +138,13 @@ export const container4 = {
         padding: 92px 0;
         gap: 40px;
     `,
-    wrapper: styled.div`
+    gridWrapper: styled.div`
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
+        margin: 0 18px;
+        gap: 4px;
+    `,
+    slideWrapper: styled.div`
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -153,7 +159,13 @@ export const container4 = {
         gap: 8px;
         ${hideScrollBar};
     `,
-    img: styled.img<{ $rootWidth: number }>`
+    gridImg: styled.img`
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 4px;
+    `,
+    slideImg: styled.img<{ $rootWidth: number }>`
         display: flex;
         ${({$rootWidth}) => css`
             width: ${$rootWidth - 34 * 2}px;
@@ -169,6 +181,7 @@ export const container4 = {
         height: 517px;
         border-radius: 12px;
         scroll-snap-align: center;
+        object-fit: cover;
     `,
     indicatorWrapper: styled.div`
         display: flex;

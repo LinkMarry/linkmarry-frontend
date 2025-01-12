@@ -16,8 +16,8 @@ import Text from "@designsystem/component/text";
 import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
-import {ThemeProvider} from "styled-components";
 import {increaseFontSize} from "@util/html.util";
+import ImgDesign from "@remote/enumeration/ImgDesign";
 
 const {kakao: {maps}} = window as any;
 
@@ -322,19 +322,30 @@ function Template1(
                 <Text font={wedding.template.templateFont} color={colors.g600} size={20 + addFontSize} weight={300}>
                     GALLERY
                 </Text>
-                <S.container4.wrapper>
-                    <S.container4.scroll ref={scrollContainerRef}>
+                {wedding.imgDesign === ImgDesign.SLIDE ? (
+                    <S.container4.slideWrapper>
+                        <S.container4.scroll ref={scrollContainerRef}>
+                            {wedding.imgList.map((img, index) => (
+                                <S.container4.slideImg
+                                    key={index} 
+                                    src={img}
+                                    $rootWidth={containerRef.current?.getBoundingClientRect().width ?? 0}
+                                />
+                            ))}
+                        </S.container4.scroll>
+                        <S.container4.indicatorWrapper>
+                            {Array.from({length: wedding.imgList.length}, (_, index) => index).map((i, index) => (
+                                <S.container4.indicator key={index} selected={i === currentImageIndex}/>
+                            ))}
+                        </S.container4.indicatorWrapper>
+                    </S.container4.slideWrapper>
+                ) : (
+                    <S.container4.gridWrapper>
                         {wedding.imgList.map((img, index) => (
-                            <S.container4.img key={index} src={img}
-                                              $rootWidth={containerRef.current?.getBoundingClientRect().width ?? 0}/>
+                            <S.container4.gridImg key={index} src={img}/>
                         ))}
-                    </S.container4.scroll>
-                    <S.container4.indicatorWrapper>
-                        {Array.from({length: wedding.imgList.length}, (_, index) => index).map((i, index) => (
-                            <S.container4.indicator key={index} selected={i === currentImageIndex}/>
-                        ))}
-                    </S.container4.indicatorWrapper>
-                </S.container4.wrapper>
+                    </S.container4.gridWrapper>
+                )}
             </S.container4.root>
             <S.container5.root background={templateColor}>
                 <Spacer h={92}/>
