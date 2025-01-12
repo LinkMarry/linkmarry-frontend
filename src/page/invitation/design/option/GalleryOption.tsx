@@ -9,6 +9,7 @@ import ImgDesign, {imgDesignRecord, imgDesigns} from "@remote/enumeration/ImgDes
 import fileApi from "@remote/api/FileApi";
 import Text from "@designsystem/component/text";
 import LoadingOverlay from "@src/component/LoadingOverlay";
+import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 
 interface GalleryOptionProps {
     imgList: string[];
@@ -47,6 +48,16 @@ function GalleryOption(
         setIsFetching(false);
     };
 
+    const onDragEnd = (result: DropResult) => {
+        if (!result.destination) return;
+
+        const reorderedItems = Array.from(imgList);
+        const [removed] = reorderedItems.splice(result.source.index, 1);
+        reorderedItems.splice(result.destination.index, 0, removed);
+
+        onChangeImgList(reorderedItems);
+    };
+
     return (
         <S.container>
             <Column gap={20} style={{overflow: 'hidden'}} $alignItems={'stretch'} flex={1}>
@@ -54,46 +65,63 @@ function GalleryOption(
                     <Row gap={12} style={{overflow: 'hidden'}}>
                         <OptionLabel label={'사진'} style={{alignSelf: 'flex-start'}}/>
                         <div style={{display: 'flex', position: 'relative', overflowX: 'scroll', flex: 1}}>
-                            <Row gap={4}>
-                                <S.addImageContainer htmlFor={'choose-image'}>
-                                    <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
-                                </S.addImageContainer>
-                                <S.voidInput
-                                    id={'choose-image'}
-                                    ref={imageFieldRef}
-                                    onChange={uploadFiles}
-                                    type={'file'}
-                                    accept={'image/*'}
-                                    multiple={true}
-                                />
-                                {imgList.map((img, index) => (
-                                    <div key={index} style={{position: 'relative'}}>
-                                        <div style={{
-                                            display: "flex",
-                                            position: 'absolute',
-                                            top: 0,
-                                            right: 0,
-                                            background: colors.g100,
-                                            borderRadius: 20,
-                                            padding: 6,
-                                            cursor: 'pointer',
-                                            opacity: 0.8
-                                        }}>
-                                            <Icon
-                                                type={IconType.CrossLine}
-                                                size={16}
-                                                tint={colors.g600}
-                                                onClick={() => {
-                                                    const copiedImgList = [...imgList];
-                                                    copiedImgList.splice(index, 1);
-                                                    onChangeImgList(copiedImgList);
-                                                }}
+                            <DragDropContext onDragEnd={onDragEnd}>
+                                <Droppable droppableId={'gallery-droppable'} direction={'horizontal'}>
+                                    {(provided) => (
+                                        <Row gap={4} {...provided.droppableProps} ref={provided.innerRef}>
+                                            <S.addImageContainer htmlFor={'choose-image'}>
+                                                <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                                            </S.addImageContainer>
+                                            <S.voidInput
+                                                id={'choose-image'}
+                                                ref={imageFieldRef}
+                                                onChange={uploadFiles}
+                                                type={'file'}
+                                                accept={'image/*'}
+                                                multiple={true}
                                             />
-                                        </div>
-                                        <S.image src={img}/>
-                                    </div>
-                                ))}
-                            </Row>
+                                            {imgList.map((img, index) => (
+                                                <Draggable
+                                                    key={`${index}`}
+                                                    draggableId={`${index}`}
+                                                    index={index}
+                                                >{provided => (
+                                                    <S.imageWrapper key={index}
+                                                         {...provided.draggableProps}
+                                                         {...provided.dragHandleProps}
+                                                         ref={provided.innerRef}>
+                                                        <div style={{
+                                                            display: "flex",
+                                                            position: 'absolute',
+                                                            top: 0,
+                                                            right: 0,
+                                                            background: colors.g100,
+                                                            borderRadius: 20,
+                                                            padding: 6,
+                                                            cursor: 'pointer',
+                                                            opacity: 0.8
+                                                        }}>
+                                                            <Icon
+                                                                type={IconType.CrossLine}
+                                                                size={16}
+                                                                tint={colors.g600}
+                                                                onClick={() => {
+                                                                    const copiedImgList = [...imgList];
+                                                                    copiedImgList.splice(index, 1);
+                                                                    onChangeImgList(copiedImgList);
+                                                                }}
+                                                            />
+                                                        </div>
+                                                        <S.image src={img}/>
+                                                    </S.imageWrapper>
+                                                )}
+                                                </Draggable>
+                                            ))}
+                                            {provided.placeholder}
+                                        </Row>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
                             {isFetching && (
                                 <LoadingOverlay/>
                             )}
@@ -140,6 +168,9 @@ const S = {
         display: flex;
         width: 128px;
         height: 128px;
+    `,
+    imageWrapper: styled.div`
+        position: relative;
     `
 }
 

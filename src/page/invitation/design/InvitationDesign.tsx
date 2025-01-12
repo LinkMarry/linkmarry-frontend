@@ -356,7 +356,7 @@ function InvitationDesign() {
                     <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>
                 </Row>
                 <DragDropContext onDragEnd={onDragEnd}>
-                    <Droppable droppableId={'droppable'}>
+                    <Droppable droppableId={'option-droppable'}>
                         {(provided) => (
                             <S.options {...provided.droppableProps} ref={provided.innerRef}>
                                 {items.map((option, index) => (
