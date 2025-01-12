@@ -1,4 +1,4 @@
-import React, {ForwardedRef, forwardRef, SelectHTMLAttributes} from 'react';
+import React, {ForwardedRef, forwardRef, ReactElement, SelectHTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import colors from "@designsystem/foundation/colors";
 import makeText from "@designsystem/foundation/text/textType";
@@ -7,12 +7,14 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 interface OptionTextFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
     items: string[],
     width?: number;
+    renderItem(item: string): ReactElement<HTMLElement>;
 }
 
 function OptionSelect(
     {
         items,
         width = 98,
+        renderItem,
         ...props
     }: OptionTextFieldProps,
     ref: ForwardedRef<HTMLSelectElement>
@@ -21,7 +23,7 @@ function OptionSelect(
         <S.wrapper width={width}>
             <S.select ref={ref} {...props}>
                 {items.map((item, index) => (
-                    <S.option key={index} value={item}>{item}</S.option>
+                    <S.option key={index} value={item}>{renderItem(item)}</S.option>
                 ))}
             </S.select>
             <Icon type={IconType.ExpandArrow} size={20} tint={colors.g400} style={{rotate: '-90deg'}}/>

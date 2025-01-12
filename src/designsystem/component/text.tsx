@@ -8,7 +8,7 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
     type?: TextType;
     font?: LinkMarryFont;
     weight?: CSSProperties['fontWeight'];
-    size?: CSSProperties['fontSize'];
+    size?: number;
     color?: CSSProperties['color'];
     lineHeight?: CSSProperties['lineHeight'];
     children?: React.ReactNode;

@@ -5,7 +5,7 @@ import {css, RuleSet} from "styled-components";
 export default interface TextProperties {
     fontFamily?: LinkMarryFont;
     fontWeight?: CSSProperties['fontWeight'];
-    fontSize?: CSSProperties['fontSize'];
+    fontSize?: number;
     lineHeight?: CSSProperties['lineHeight'];
 }
 

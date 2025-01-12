@@ -16,6 +16,8 @@ import Text from "@designsystem/component/text";
 import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
+import {ThemeProvider} from "styled-components";
+import {increaseFontSize} from "@util/html.util";
 
 const {kakao: {maps}} = window as any;
 
@@ -101,17 +103,17 @@ function Template1(
     const calendar = date ? getCalendar(date) : null;
 
     const handleScroll = () => {
-        if (scrollContainerRef.current) {
-            const containerWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
+        if (!scrollContainerRef.current) return;
 
-            const scrollContainer = scrollContainerRef.current;
-            const scrollPosition = scrollContainer.scrollLeft - 34;
-            const imageWidth = containerWidth - 34 * 2 + 8; // 이미지 너비 + 간격
-            const index = Math.floor(scrollPosition / imageWidth);
-            console.log(`${scrollPosition}, ${imageWidth}`);
-            console.log(index)
-            setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
-        }
+        const containerWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
+
+        const scrollContainer = scrollContainerRef.current;
+        const scrollPosition = scrollContainer.scrollLeft - 34;
+        const imageWidth = containerWidth - 34 * 2 + 8; // 이미지 너비 + 간격
+        const index = Math.floor(scrollPosition / imageWidth);
+        console.log(`${scrollPosition}, ${imageWidth}`);
+        console.log(index);
+        setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
     };
 
     useEffect(() => {
@@ -158,7 +160,9 @@ function Template1(
     }, []);
 
     const {templateColor, templateFont, templateFontSize} = wedding.template;
+
     const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
+    increaseFontSize(containerRef, addFontSize);
 
     return (
         <S.container ref={containerRef} $templateFont={templateFont}>
@@ -269,7 +273,8 @@ function Template1(
                                 color={colors.black}
                             />
                             <Text size={14 + addFontSize} weight={300}>{wedding.baseInfo.brideName}의 결혼식이</Text>
-                            <Text size={14 + addFontSize} weight={300} color={colors.p800}>{remainingTime.days}</Text>
+                            <Text size={14 + addFontSize} weight={300}
+                                  color={colors.p800}>{remainingTime.days}</Text>
                             <Text size={14 + addFontSize} weight={300}>일 남았습니다.</Text>
                         </Row>
                     </Column>
@@ -283,7 +288,8 @@ function Template1(
                                 {wedding.baseInfo.groomFatherName}·{wedding.baseInfo.groomMotherName}의 {wedding.baseInfo.groomFamilyName}
                             </Text>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize} color={colors.g600}>
+                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}
+                                      color={colors.g600}>
                                     신랑&nbsp;
                                 </Text>
                                 <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}>
@@ -297,7 +303,8 @@ function Template1(
                                 {wedding.baseInfo.brideFatherName}·{wedding.baseInfo.brideMotherName}의 {wedding.baseInfo.brideFamilyName}
                             </Text>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize} color={colors.g600}>
+                                <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}
+                                      color={colors.g600}>
                                     신부&nbsp;
                                 </Text>
                                 <Text font={'GangwonEduAll'} weight={100} size={24 + addFontSize}>
@@ -332,7 +339,8 @@ function Template1(
             <S.container5.root background={templateColor}>
                 <Spacer h={92}/>
                 <Column gap={40} $alignItems={'center'}>
-                    <Text font={wedding.template.templateFont} color={colors.g600} size={20 + addFontSize} weight={300}>
+                    <Text font={wedding.template.templateFont} color={colors.g600} size={20 + addFontSize}
+                          weight={300}>
                         LOCATION
                     </Text>
                     <Column $alignItems={'center'}>

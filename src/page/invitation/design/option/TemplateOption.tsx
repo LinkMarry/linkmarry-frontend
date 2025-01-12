@@ -58,9 +58,10 @@ function TemplateOption(
                                     onChange({...template, templateFont: changedFont})
                                 }
                             }}
+                            renderItem={item => <>{item}</>}
                         />
                         <OptionSelect
-                            items={templateFontSizes.map(fontSize => templateFontSizeRecord[fontSize].korean)}
+                            items={templateFontSizes}
                             value={template.templateFontSize}
                             onChange={event => {
                                 const changedFontSize = event.target.value as TemplateFontSize;
@@ -68,6 +69,7 @@ function TemplateOption(
                                     onChange({...template, templateFontSize: changedFontSize});
                                 }
                             }}
+                            renderItem={item => <>{templateFontSizeRecord[item as TemplateFontSize].korean}</>}
                         />
                     </Row>
                 </Row>
