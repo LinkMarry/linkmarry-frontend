@@ -38,5 +38,53 @@ export const dummyComments: Comment[] = [
         name: '작성자',
         content: 'ㅊㅊ',
         createdDate: '2025-01-01 10:10:10'
-    }
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },{
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    {
+        id: 3,
+        name: '작성자',
+        content: 'ㅊㅊ',
+        createdDate: '2025-01-01 10:10:10'
+    },
+    
 ]

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {HTMLAttributes} from 'react';
 import styled, {CSSProperties} from "styled-components";
 import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 import Comment from "@remote/value/Comment";
@@ -77,7 +77,7 @@ const S = {
     `
 }
 
-interface GuestCommentProps {
+interface GuestCommentProps extends HTMLAttributes<HTMLDivElement> {
     comment: Comment;
     background: CSSProperties['background'];
     onRemove: () => void;
@@ -87,11 +87,12 @@ export function BasicGuestComment(
     {
         comment,
         background,
-        onRemove
+        onRemove,
+        ...props
     }: GuestCommentProps
 ) {
     return (
-        <S.basicContainer background={background}>
+        <S.basicContainer background={background} {...props}>
             <Row gap={8} $alignItems={'center'}>
                 <Text size={18} color={colors.g600} weight={300}>
                     From. {comment.name}
