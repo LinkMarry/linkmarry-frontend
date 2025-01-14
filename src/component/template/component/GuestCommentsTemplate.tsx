@@ -1,4 +1,4 @@
-import React, {HTMLAttributes} from 'react';
+import React, {HTMLAttributes, useState} from 'react';
 import styled, {CSSProperties} from "styled-components";
 import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 import Comment from "@remote/value/Comment";
@@ -10,21 +10,106 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import Design from "@remote/enumeration/Design";
 import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";
+import Button from "@designsystem/component/button";
+import BaseInfo from "@remote/value/BaseInfo";
+import GuestComment from "@remote/value/GuestComment";
+import RemoveGuestCommentDialog from "@src/component/template/dialog/RemoveGuestCommentDialog";
+import GuestCommentsDetailDialog from "@src/component/template/dialog/GuestCommentsDetailDialog";
+import CreateGuestCommentDialog from "@src/component/template/dialog/CreateGuestCommentDialog";
 
 interface GuestCommentsTemplateProps {
+    templateColor: string;
+    url: string;
+    baseInfo: BaseInfo;
+    guestComments: Comment[];
+    guestComment: GuestComment;
+}
+
+function GuestCommentsTemplate(
+    {
+        templateColor,
+        url,
+        baseInfo,
+        guestComments,
+        guestComment
+    }: GuestCommentsTemplateProps
+) {
+    const [selectedRemoveGuestComment, setSelectedRemoveGuestComment] = useState<Comment>();
+    const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
+    const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
+    const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
+    
+    return (
+        <S.root background={templateColor}>
+            <Column gap={40} $alignItems={'stretch'}>
+                <Column gap={12} $alignItems={'center'}>
+                    <Text size={20} weight={300} color={colors.g600}>방명록</Text>
+                    <Text size={16} weight={300} color={colors.g600}>
+                        {baseInfo.groomName}, {baseInfo.brideName}에게 하고 싶은 말을 남겨주세요
+                    </Text>
+                </Column>
+                <Column gap={12} $alignItems={'stretch'}>
+                    <GuestComments
+                        comments={guestComments}
+                        design={guestComment.design}
+                        background={colors.white}
+                        onRemove={comment => {
+                            setSelectedRemoveGuestComment(comment);
+                            setShowRemoveGuestCommentDialog(true);
+                        }}
+                    />
+                    <Text
+                        style={{alignSelf: 'flex-end', paddingRight: 4}}
+                        size={14} weight={300} color={colors.g600}
+                        onClick={() => {
+                            setShowGuestCommentsDetailDialog(true);
+                        }}
+                    >전체보기</Text>
+                </Column>
+            </Column>
+            <Button
+                text={'방명록 작성하기'}
+                style={{
+                    alignSelf: 'center'
+                }}
+                onClick={() => {
+                    setShowCreateGuestCommentDialog(true);
+                }}
+            />
+            {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
+                <RemoveGuestCommentDialog
+                    selectedGuestComment={selectedRemoveGuestComment}
+                    url={url}
+                    dismiss={() => setShowRemoveGuestCommentDialog(false)}
+                />
+            )}
+            {showGuestCommentsDetailDialog && (
+                <GuestCommentsDetailDialog
+                    comments={guestComments}
+                    dismiss={() => setShowGuestCommentsDetailDialog(false)}
+                />
+            )}
+            {showCreateGuestCommentDialog && (
+                <CreateGuestCommentDialog url={url} dismiss={() => setShowCreateGuestCommentDialog(false)}/>
+            )}
+        </S.root>
+    );
+}
+
+interface GuestCommentsProps {
     comments: Comment[];
     design: Design;
     background: CSSProperties['background'];
     onRemove: (comment: Comment) => void;
 }
 
-function GuestCommentsTemplate(
+function GuestComments(
     {
         comments,
         design,
         background,
         onRemove,
-    }: GuestCommentsTemplateProps
+    }: GuestCommentsProps
 ) {
     switch (design) {
         case Design.BASIC:
@@ -58,6 +143,14 @@ function GuestCommentsTemplate(
 
 
 const S = {
+    root: styled.div<{ background: string }>`
+        display: flex;
+        flex-direction: column;
+        padding: 92px 30px;
+        gap: 40px;
+        background: ${({background}) => background};
+        align-items: stretch;
+    `,
     basicContainer: styled.div<{ background: CSSProperties['background'] }>`
         display: flex;
         flex-direction: column;

@@ -7,14 +7,33 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 
-interface MoneyInfoInTemplateProps {
+interface MoneyInfoTemplateProps {
     moneyInfo: MoneyInfo;
 }
 
-function MoneyInfoInTemplate(
+function MoneyInfoTemplate(
     {
         moneyInfo
-    }: MoneyInfoInTemplateProps
+    }: MoneyInfoTemplateProps
+) {
+    return (
+        <S.root>
+            <Column gap={40} $alignItems={'center'}>
+                <Text size={20} weight={300} color={colors.g600}>마음 전하실 곳</Text>
+                <MoneyInfoComponent moneyInfo={moneyInfo}/>
+            </Column>
+        </S.root>
+    );
+}
+
+interface MoneyInfoProps {
+    moneyInfo: MoneyInfo;
+}
+
+function MoneyInfoComponent(
+    {
+        moneyInfo
+    }: MoneyInfoProps
 ) {
     const [clickedGroom, setClickedGroom] = useState(false);
     const [clickedBride, setClickedBride] = useState(false);
@@ -63,6 +82,13 @@ function MoneyInfoInTemplate(
 }
 
 const S = {
+    root: styled.div`
+        display: flex;
+        flex-direction: column;
+        padding: 92px 60px;
+        background: ${colors.white};
+        align-items: stretch;
+    `,
     container: styled.div`
         display: flex;
         flex-direction: column;
@@ -137,4 +163,4 @@ function MoneyCell(props: {
 
 const MoneyCellStyle = {};
 
-export default MoneyInfoInTemplate;
+export default MoneyInfoTemplate;

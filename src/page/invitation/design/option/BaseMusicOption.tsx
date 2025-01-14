@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
@@ -29,19 +29,30 @@ function BaseMusicOption(
         onChange
     }: BaseMusicOptionProps
 ) {
+    const audioRef = useRef(null);
+    const [selectedAudio, setSelectedAudio] = useState<string>();
     const [selectedSelectMode, setSelectedSelectMode] = useState(0);
 
     const selectModeContent = () => {
         switch (selectModes[selectedSelectMode]) {
             case 'select':
                 return <Column gap={16}>
+                    <audio ref={audioRef} src={''}/>
                     {/* TODO: DUMMY */}
                     {['Wedding opening', 'Wow', 'Hello World'].map((music, index) => (
                         <Row key={index} gap={16} $alignItems={'center'}>
                             <Checkbox rounded={true} label={music}/>
-                            <Icon style={{
-                                cursor: 'pointer',
-                            }} type={IconType.LoudSpeaker} size={20} tint={colors.g400}/>
+                            <Icon
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                                type={IconType.LoudSpeaker}
+                                size={20}
+                                tint={colors.g400}
+                                onClick={() => {
+                                    setSelectedAudio(music)
+                                }}
+                            />
                         </Row>
                     ))}
                 </Column>
