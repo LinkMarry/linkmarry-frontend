@@ -14,6 +14,7 @@ import WeddingDayTemplate from "@src/component/template/component/WeddingDayTemp
 import LocationTemplate from "@src/component/template/component/LocationTemplate";
 import PreviewTemplate from "@src/component/template/component/PreviewTemplate";
 import GalleryTemplate from "@src/component/template/component/GalleryTemplate";
+import VideoTemplate from "@src/component/template/component/VideoTemplate";
 
 interface Template1Props {
     wedding: Wedding;
@@ -59,6 +60,7 @@ function Template1(
                 templateColor={templateColor}
                 weddingPlace={wedding.weddingPlace}
             />
+            <VideoTemplate video={wedding.video}/>
             <MoneyInfoTemplate moneyInfo={wedding.moneyInfo}/>
             <GuestCommentsTemplate
                 templateColor={templateColor}
