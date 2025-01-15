@@ -1,11 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import Wedding from "@remote/value/Wedding";
 import * as S from '@src/component/template/Template1.style';
-import colors from "@designsystem/foundation/colors";
-import {Column,} from "@designsystem/component/flexLayout";
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/template/component/FooterTemplate";
-import Text from "@designsystem/component/text";
 import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
@@ -55,6 +52,7 @@ function Template1(
                 rootRef={rootRef}
                 imgDesign={wedding.imgDesign}
                 imgList={wedding.imgList}
+                slideStyle={'style1'}
             />
             <LocationTemplate
                 templateColor={templateColor}
