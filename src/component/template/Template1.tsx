@@ -10,7 +10,7 @@ import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
 import CongratulationsTemplate from "@src/component/template/component/CongratulationsTemplate";
-import WeddingDayTemplate from "@src/component/template/component/WeddingDayTemplate";
+import WeddingDayTemplate from "@src/component/template/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "@src/component/template/component/LocationTemplate";
 import PreviewTemplate from "@src/component/template/component/PreviewTemplate";
 import GalleryTemplate from "@src/component/template/component/GalleryTemplate";

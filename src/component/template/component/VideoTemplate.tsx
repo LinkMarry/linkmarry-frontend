@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import Video from "@remote/value/Video";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
@@ -20,7 +20,10 @@ function VideoTemplate(
                 <Text size={20} weight={300} color={colors.g600}>VIDEO</Text>
                 <Text size={16} weight={300} color={colors.g600}>{video.videoTitle}</Text>
             </Column>
-            <iframe src={video.videoUrl}></iframe>
+            <S.iframe
+                height={250} title={video.videoTitle}
+                src={'https://www.youtube.com/embed/le4s2kMQWP4'}
+            ></S.iframe>
         </S.container>
     );
 }
@@ -33,6 +36,10 @@ const S = {
         gap: 40px;
         align-items: stretch;
         background: ${colors.white};
+    `,
+    iframe: styled.iframe`
+        display: flex;
+        object-fit: cover;
     `
 }
 
