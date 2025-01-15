@@ -9,9 +9,10 @@ import Template, {
     templateColors,
     TemplateFontSize,
     templateFontSizeRecord,
-    templateFontSizes
+    templateFontSizes, templateNames
 } from "@remote/value/Template";
 import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/textType";
+import SegmentedButton from "@designsystem/component/segmentedButton";
 
 interface TemplateOptionProps {
     template: Template;
@@ -28,7 +29,16 @@ function TemplateOption(
         <S.container>
             <Column gap={32} flex={1}>
                 <Row gap={12}>
-                    <OptionLabel label={'디자인'}/>
+                    <OptionLabel label={'디자인'} style={{alignSelf: 'flex-start'}}/>
+                    <S.designWrapper>
+                        {templateNames.map(templateName => (
+                            <SegmentedButton selected={templateName === template.templateName} style={{width: 126}} onClick={() => {
+                                onChange({...template, templateName});
+                            }}>
+                                {templateName}
+                            </SegmentedButton>
+                        ))}
+                    </S.designWrapper>
                 </Row>
                 <HorizontalDivider/>
                 <Row gap={12}>
@@ -82,6 +92,11 @@ const S = {
     container: styled.div`
         display: flex;
         padding: 36px;
+    `,
+    designWrapper: styled.div`
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 가로로 2개의 열 */
+        gap: 12px;
     `,
     backgroundColor: {
         container: styled.div`

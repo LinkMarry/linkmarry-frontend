@@ -11,7 +11,7 @@ interface InvitationSideBarProps {
     onChange: (item: InvitationSideBarType) => void;
 }
 
-const items: InvitationSideBarType[] = ['dashboard', 'design', 'statistics'];
+const items: InvitationSideBarType[] = ['dashboard', 'statistics'];
 
 function InvitationSideBar(
     {

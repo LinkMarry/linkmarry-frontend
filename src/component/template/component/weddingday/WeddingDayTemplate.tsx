@@ -6,17 +6,19 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import styled from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
-import DDay from "@src/component/template/component/weddingday/DDay";
+import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 
 interface WeddingDayProps {
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
+    dDayStyle: DDayStyle;
 }
 
 function WeddingDayTemplate(
     {
         baseInfo,
         weddingSchedule,
+        dDayStyle
     }: WeddingDayProps
 ) {
     const weddingDate = weddingSchedule.weddingDate;

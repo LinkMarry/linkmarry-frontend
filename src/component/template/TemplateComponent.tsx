@@ -1,23 +1,24 @@
 import React, {useRef} from 'react';
 import Wedding from "@remote/value/Wedding";
-import * as S from '@src/component/template/Template1.style';
+import * as S from '@src/component/template/TemplateComponent.style';
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/template/component/FooterTemplate";
-import {templateFontSizeRecord} from "@remote/value/Template";
+import {templateFontSizeRecord, TemplateName} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
 import CongratulationsTemplate from "@src/component/template/component/CongratulationsTemplate";
 import WeddingDayTemplate from "@src/component/template/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "@src/component/template/component/LocationTemplate";
 import PreviewTemplate from "@src/component/template/component/PreviewTemplate";
-import GalleryTemplate from "@src/component/template/component/GalleryTemplate";
+import GalleryTemplate, {GallerySlideStyle} from "@src/component/template/component/GalleryTemplate";
 import VideoTemplate from "@src/component/template/component/VideoTemplate";
+import {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 
 interface Template1Props {
     wedding: Wedding;
 }
 
-function Template1(
+function TemplateComponent(
     {
         wedding
     }: Template1Props
@@ -29,6 +30,24 @@ function Template1(
         const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
         increaseFontSize(rootRef, addFontSize);
     })();
+
+    const slideStyle: Record<TemplateName, GallerySlideStyle | undefined> = {
+        템플릿1: 'style1',
+        템플릿2: 'style2',
+        템플릿3: 'style1',
+        템플릿4: 'style2',
+        템플릿5: undefined,
+        템플릿6: 'style1',
+    };
+
+    const dDayStyle: Record<TemplateName, DDayStyle> = {
+        템플릿1: 'style1',
+        템플릿2: 'style2',
+        템플릿3: 'style1',
+        템플릿4: 'style2',
+        템플릿5: 'style2',
+        템플릿6: 'style1',
+    }
 
     return (
         <S.container ref={rootRef} $templateFont={templateFont}>
@@ -42,6 +61,7 @@ function Template1(
             <WeddingDayTemplate
                 baseInfo={wedding.baseInfo}
                 weddingSchedule={wedding.weddingSchedule}
+                dDayStyle={dDayStyle[wedding.template.templateName]}
             />
             <CongratulationsTemplate
                 baseInfo={wedding.baseInfo}
@@ -52,7 +72,7 @@ function Template1(
                 rootRef={rootRef}
                 imgDesign={wedding.imgDesign}
                 imgList={wedding.imgList}
-                slideStyle={'style1'}
+                slideStyle={slideStyle[wedding.template.templateName]}
             />
             <LocationTemplate
                 templateColor={templateColor}
@@ -73,4 +93,4 @@ function Template1(
 }
 
 
-export default Template1;
+export default TemplateComponent;

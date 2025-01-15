@@ -14,10 +14,11 @@ import FoundationDemo from "@designsystem/demo/foundation.demo";
 import NotificationPage from "@page/notification/NotificationPage";
 import NotificationDetailPage from "@page/notification/detail/NotificationDetailPage";
 import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestComment/InvitationDashboardGuestComment";
-import Template1 from "@src/component/template/Template1";
+import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
 import GlobalStyle from "@src/GlobalStyle";
+import Cookies from "js-cookie";
 
 const {Kakao} = window as any;
 
@@ -40,8 +41,8 @@ function App() {
                     <Route path={'dashboard'}>
                         <Route index={true} element={<InvitationDashboard/>}/>
                         <Route path={'guest-comment'} element={<InvitationDashboardGuestComment/>}/>
+                        <Route path={'design'} element={<InvitationDesign/>}/>
                     </Route>
-                    <Route path={'design'} element={<InvitationDesign/>}/>
                     <Route path={'statistics'}>
                         <Route index={true} element={<InvitationStatistics/>}/>
                         <Route path={'detail'} element={<InvitationStatisticsDetail/>}/>
@@ -62,7 +63,7 @@ function App() {
                 {/*temp*/}
                 <Route path={'template1'} element={(
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <Template1 wedding={dummyWedding}/>
+                        <TemplateComponent wedding={dummyWedding}/>
                     </div>
                 )}/>
             </Routes>

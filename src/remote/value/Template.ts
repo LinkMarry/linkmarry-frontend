@@ -1,5 +1,14 @@
 import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 
+export type TemplateName =
+    '템플릿1'
+    | '템플릿2'
+    | '템플릿3'
+    | '템플릿4'
+    | '템플릿5'
+    | '템플릿6'
+export const templateNames: TemplateName[] = ['템플릿1', '템플릿2', '템플릿3', '템플릿4', '템플릿5', '템플릿6'];
+
 export type TemplateColor =
     '#F7F7F2'
     | '#FBF2F2'
@@ -36,7 +45,7 @@ export const templateFontSizeRecord: Record<TemplateFontSize, {
 
 export default interface Template {
     // 선택한 템플릿 이름
-    templateName: string;
+    templateName: TemplateName;
 
     // 선택한 템플릿 색
     templateColor: TemplateColor;

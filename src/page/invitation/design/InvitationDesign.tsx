@@ -32,7 +32,7 @@ import MoneyInfo, {defaultMoneyInfo} from "@remote/value/MoneyInfo";
 import Phone, {defaultPhone} from "@remote/value/Phone";
 import Rsvp, {defaultRsvp} from "@remote/value/Rsvp";
 import Wedding from "@remote/value/Wedding";
-import Template1 from "@src/component/template/Template1";
+import TemplateComponent from "@src/component/template/TemplateComponent";
 import LinkShare, {defaultLinkShare} from "@remote/value/LinkShare";
 import BaseMusic, {defaultBaseMusic} from "@remote/value/BaseMusic";
 import Video, {defaultVideo} from "@remote/value/Video";
@@ -471,7 +471,7 @@ function InvitationDesign() {
             <S.preview>
                 <S.previewScrollableContent>
                     <S.previewContent>
-                        <Template1 wedding={wedding}/>
+                        <TemplateComponent wedding={wedding}/>
                     </S.previewContent>
                 </S.previewScrollableContent>
             </S.preview>

@@ -8,8 +8,6 @@ import {InvitationSideBarType} from "@page/invitation/component/InvitationSideBa
 function getSelectedSideBarType(pathname: string): InvitationSideBarType | null {
     if (pathname.startsWith('/invitation/dashboard')) {
         return 'dashboard';
-    } else if (pathname.startsWith('/invitation/design')) {
-        return 'design';
     } else if (pathname.startsWith('/invitation/statistics')) {
         return 'statistics';
     } else {
