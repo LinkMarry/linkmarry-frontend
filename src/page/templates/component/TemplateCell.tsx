@@ -18,7 +18,7 @@ function TemplateCell(
                 src={'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2024/02/26/fbc84c43-1b58-463b-9c8a-9855e3d1bb00.jpg'}
                 alt=""
             />
-            <Column gap={4} style={{padding: 20}}>
+            <Column gap={4} padding={20}>
                 <Text type={'p2'}>{title}</Text>
                 {/*<Text text={'title'} type={'p5}/>*/}
             </Column>

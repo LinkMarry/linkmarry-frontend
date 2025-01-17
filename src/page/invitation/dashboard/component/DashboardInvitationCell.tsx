@@ -73,7 +73,7 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
         <S.container>
             <S.content>
                 <S.image src={weddingInfo.img} alt=""/>
-                <Column gap={12} $alignItems={'stretch'} style={{padding: 20, background: colors.g100}}>
+                <Column gap={12} $alignItems={'stretch'} padding={20} background={colors.g100}>
                     <Column gap={4} $alignItems={'stretch'}>
                         <Row gap={8}>
                             <S.urlLabel>{weddingInfo.url}</S.urlLabel>

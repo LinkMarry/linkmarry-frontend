@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import config from "@config/config";
 import KakaoRedirectPage from "@page/KakaoRedirectPage";
@@ -18,7 +18,6 @@ import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
 import GlobalStyle from "@src/GlobalStyle";
-import Cookies from "js-cookie";
 
 const {Kakao} = window as any;
 

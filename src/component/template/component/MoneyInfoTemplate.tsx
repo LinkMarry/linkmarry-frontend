@@ -161,6 +161,4 @@ function MoneyCell(props: {
     );
 }
 
-const MoneyCellStyle = {};
-
 export default MoneyInfoTemplate;

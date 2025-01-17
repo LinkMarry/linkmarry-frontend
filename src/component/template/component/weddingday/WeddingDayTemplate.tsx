@@ -76,7 +76,7 @@ function WeddingDayTemplate(
                 <DDay
                     baseInfo={baseInfo}
                     weddingSchedule={weddingSchedule}
-                    dDayStyle={'style1'}
+                    dDayStyle={dDayStyle}
                 />
             )}
         </S.root>

@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import Text from "@designsystem/component/text";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
-import styled from "styled-components";
+import styled, {CSSProperties} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import BaseInfo from "@remote/value/BaseInfo";
+import Template from "@remote/value/Template";
+import Spacer from "@designsystem/component/spacer";
 
 interface PreviewTemplateProps {
-    templateColor: string;
+    template: Template;
     baseInfo: BaseInfo;
     weddingPlace: WeddingPlace;
     weddingSchedule: WeddingSchedule;
@@ -18,71 +20,121 @@ interface PreviewTemplateProps {
 
 function PreviewTemplate(
     {
-        templateColor,
+        template,
         baseInfo,
         weddingPlace,
         weddingSchedule,
         imgList
     }: PreviewTemplateProps
 ) {
-    return (
-        <S.root background={templateColor}>
-            <S.titleWrapper>
-                {/*<Text text={'MIN라인LINE Seed*@ HYOLYN & TAFYANG'} font={'LINESeedKR'} weight={400}/>*/}
-                {/*<HorizontalDivider color={colors.black}/>*/}
-                <S.descriptionWrapper>
-                    <Text size={18} weight={300}>
-                        {weddingSchedule.weddingDate}
-                    </Text>
-                    <Text size={18} weight={300}>
-                        {weddingPlace.placeName}
-                    </Text>
-                </S.descriptionWrapper>
-            </S.titleWrapper>
-            <Column gap={44} $alignItems={'center'}>
-                <S.img src={imgList[0]}/>
-                <Row gap={8} $alignItems={'center'}>
-                    <Text size={16} weight={300}>
-                        신랑 {baseInfo.groomName}
-                    </Text>
-                    <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
-                    <Text size={16} weight={300}>
-                        신부 {baseInfo.brideName}
-                    </Text>
-                </Row>
-            </Column>
-        </S.root>
-    );
+    switch (template.templateName) {
+        case '템플릿1':
+            return (
+                <S1.Root background={template.templateColor}>
+                    <Column gap={36} $alignItems={'center'} margin={'0 23px 44px 23px'}>
+                        {/*<Text text={'MIN라인LINE Seed*@ HYOLYN & TAFYANG'} font={'LINESeedKR'} weight={400}/>*/}
+                        {/*<HorizontalDivider color={colors.black}/>*/}
+                        <Column $alignItems={'center'} gap={12}>
+                            <Text size={18} weight={300}>{weddingSchedule.weddingDate}</Text>
+                            <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
+                        </Column>
+                    </Column>
+                    <Column gap={44} $alignItems={'center'}>
+                        <S1.Img src={imgList[0]}/>
+                        <Row gap={8} $alignItems={'center'}>
+                            <Text size={16} weight={300}>신랑 {baseInfo.groomName}</Text>
+                            <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
+                            <Text size={16} weight={300}>신부 {baseInfo.brideName}</Text>
+                        </Row>
+                    </Column>
+                </S1.Root>
+            );
+        case '템플릿2':
+            return (
+                <Column $alignItems={'stretch'} background={colors.white}>
+                    <Column $alignItems={'center'} gap={8} style={{padding: '72px 0'}}>
+                        <Text size={28} weight={300}>{weddingSchedule.weddingDate}</Text>
+                        <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
+                    </Column>
+                    <S2.Img src={imgList[0]}/>
+                    <Row gap={12} $alignItems={'center'} $justifyContent={'center'} padding={'72px 0'}>
+                        <Text size={20} weight={300}>{baseInfo.groomName}</Text>
+                        <Text size={20} weight={300}>&</Text>
+                        <Text size={20} weight={300}>{baseInfo.brideName}</Text>
+                    </Row>
+                </Column>
+            );
+        case '템플릿3':
+            return (
+                <S3.Root>
+                    <Column $alignItems={'stretch'} padding={'32px 28px'}
+                            style={{width: '100%', height: '100%', position: 'absolute'}}>
+                        <Text size={18} weight={100} color={colors.white}
+                              style={{alignSelf: 'center'}}>{weddingSchedule.weddingDate}</Text>
+                        <Spacer/>
+                        <Row>
+                            <Text size={16} weight={100} color={colors.white}>신랑 {baseInfo.groomName}</Text>
+                            <Spacer/>
+                            <Text size={16} weight={100} color={colors.white}>신부 {baseInfo.brideName}</Text>
+                        </Row>
+                    </Column>
+                    <S3.Img src={imgList[0]}/>
+                </S3.Root>
+            );
+        case '템플릿4':
+            return (
+                <Column $alignItems={'stretch'} background={colors.white}>
+                    <Column gap={16} $alignItems={'center'} padding={'52px 0'}>
+                        <Text size={24} weight={100}>{baseInfo.groomName} & {baseInfo.brideName}</Text>
+                        <Column gap={4} $alignItems={'center'}>
+                            <Text size={14}
+                                  weight={300}>{weddingSchedule.weddingDate} {weddingSchedule.weddingTime}</Text>
+                            <Text
+                                size={14}
+                                weight={300}
+                            >{weddingPlace.placeName}</Text>
+                        </Column>
+                    </Column>
+                    <S4.Img src={imgList[0]}/>
+                </Column>
+            );
+        case '템플릿5':
+            return (
+                <Column $alignItems={'stretch'} background={colors.white}>
+                    <S5.Img src={imgList[0]}/>
+                    <Row $alignItems={'center'} gap={20} $justifyContent={'center'} padding={'0 0 48px 0'}>
+                        <Text size={24} weight={300}>{baseInfo.groomName}</Text>
+                        <Text size={16} weight={300} color={colors.g300}>and</Text>
+                        <Text size={24} weight={300}>{baseInfo.brideName}</Text>
+                    </Row>
+                </Column>
+            );
+        case '템플릿6':
+            return (
+                <Column background={template.templateColor} $alignItems={'stretch'}>
+                    <Column gap={12} $alignItems={'center'} margin={'40px 0'}>
+                        <Text size={40} weight={100}>{weddingSchedule.weddingDate}</Text>
+                        <Row gap={24} $alignItems={'center'}>
+                            <Text size={20} weight={300} color={colors.g600}>{baseInfo.groomName}</Text>
+                            <Text size={20} weight={300} color={colors.g600}>그리고</Text>
+                            <Text size={20} weight={300} color={colors.g600}>{baseInfo.brideName}</Text>
+                        </Row>
+                    </Column>
+                    <S6.Img src={imgList[0]}/>
+                </Column>
+            );
+    }
 }
 
-const S = {
-    root: styled.div<{ background: string }>`
+const S1 = {
+    Root: styled.div<{ background: string }>`
         display: flex;
         flex-direction: column;
         padding: 44px 30px;
         background: ${({background}) => background};
         align-items: stretch;
     `,
-    titleWrapper: styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 23px 44px 23px;
-        gap: 36px;
-    `,
-    title: styled.span`
-        color: ${colors.black};
-        font-family: LINESeedKR-Bd, serif !important;
-        font-size: 20px;
-    `,
-    descriptionWrapper: styled.span`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        color: ${colors.black};
-    `,
-    img: styled.img`
+    Img: styled.img`
         display: flex;
         width: 100%;
         height: 512px;
@@ -92,5 +144,48 @@ const S = {
         outline: none;
     `
 };
+const S2 = {
+    Img: styled.img`
+        display: flex;
+        padding: 0 32px;
+        object-fit: cover;
+    `
+};
+const S3 = {
+    Root: styled.div`
+        display: flex;
+        position: relative;
+        align-items: stretch;
+        justify-content: stretch;
+        background: ${colors.white};
+    `,
+    Img: styled.img`
+        display: flex;
+        object-fit: cover;
+        width: 100%;
+    `
+};
+const S4 = {
+    Img: styled.img`
+        display: flex;
+        width: 100%;
+        object-fit: cover;
+    `
+};
+const S5 = {
+    Img: styled.img`
+        display: flex;
+        width: 100%;
+        object-fit: cover;
+        margin: 48px 28px;
+    `
+};
+const S6 = {
+    Img: styled.img`
+        display: flex;
+        width: 100%;
+        object-fit: cover;
+    `
+}
 
 export default PreviewTemplate;

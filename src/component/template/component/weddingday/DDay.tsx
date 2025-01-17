@@ -28,7 +28,6 @@ function DDay(
         dDayStyle
     }: DDayProps
 ) {
-
     const [remainingTime, setRemainingTime] = useState<RemainTime>({
         days: 0,
         hours: 0,

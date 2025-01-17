@@ -26,30 +26,43 @@ function WeddingPlaceOption(
         <S.container>
             <Column flex={1} gap={32}>
                 <Column gap={16}>
-                    <Row gap={12}>
-                        <OptionLabel label={'주소'}/>
-                        <Row gap={12} style={{width: 264, overflow: 'hidden'}}>
-                            <OptionTextField width={184}/>
-                            <Button text={'검색'} role={'assistive'} style={{borderRadius: 8, width: 68}} onClick={() => {
-                                setShowKakaoMapDialog(true);
-                            }}/>
-                        </Row>
-                    </Row>
+                    {/* TODO: Apply Kakao Map */}
+                    {/*<Row gap={12}>*/}
+                    {/*    <OptionLabel label={'주소'}/>*/}
+                    {/*    <Row gap={12} style={{width: 264, overflow: 'hidden'}}>*/}
+                    {/*        <OptionTextField width={184}/>*/}
+                    {/*        <Button text={'검색'} role={'assistive'} style={{borderRadius: 8, width: 68}} onClick={() => {*/}
+                    {/*            setShowKakaoMapDialog(true);*/}
+                    {/*        }}/>*/}
+                    {/*    </Row>*/}
+                    {/*</Row>*/}
                     <Row gap={12}>
                         <OptionLabel label={'예식장명'}/>
-                        <OptionTextField placeholder={'예식장 이름 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: weddingPlace.placeName,
+                            onChange: event => onChange({...weddingPlace, placeName: event.target.value})
+                        }} placeholder={'예식장 이름 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'층/홀'}/>
-                        <OptionTextField placeholder={'층, 웨딩홀 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: weddingPlace.floorHall,
+                            onChange: event => onChange({...weddingPlace, floorHall: event.target.value})
+                        }} placeholder={'층, 웨딩홀 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'연락처'}/>
-                        <OptionTextField placeholder={'- 없이 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: weddingPlace.placeTel,
+                            onChange: event => onChange({...weddingPlace, placeTel: event.target.value})
+                        }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'교통편'}/>
-                        <OptionTextField placeholder={'주변 교통편 입력'} width={264}/>
+                        <OptionTextField fieldProps={{
+                            value: weddingPlace.placeTransportation,
+                            onChange: event => onChange({...weddingPlace, placeTransportation: event.target.value})
+                        }} placeholder={'주변 교통편 입력'} width={264}/>
                     </Row>
                 </Column>
                 <HorizontalDivider/>

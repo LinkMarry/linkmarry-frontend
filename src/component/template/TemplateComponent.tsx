@@ -52,7 +52,7 @@ function TemplateComponent(
     return (
         <S.container ref={rootRef} $templateFont={templateFont}>
             <PreviewTemplate
-                templateColor={templateColor}
+                template={wedding.template}
                 baseInfo={wedding.baseInfo}
                 weddingPlace={wedding.weddingPlace}
                 weddingSchedule={wedding.weddingSchedule}

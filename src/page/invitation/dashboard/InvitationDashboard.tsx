@@ -58,7 +58,7 @@ function InvitationDashboard() {
 
     return (
         <S.container>
-            <Column gap={44} style={{marginLeft: 64}} $alignItems={'stretch'}>
+            <Column gap={44} margin={'0 0 0 64px'} $alignItems={'stretch'}>
                 <Row style={{marginTop: 64}}>
                     <Column gap={8}>
                         <Text type={'h5'} color={colors.black}>내 디자인</Text>

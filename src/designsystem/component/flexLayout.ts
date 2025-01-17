@@ -33,6 +33,7 @@ export interface BaseFlexProps {
     flex?: CSSProperties['flex'];
     fill?: string;
     padding?: CSSProperties["padding"];
+    margin?: CSSProperties["margin"];
     $wrap?: boolean;
     background?: CSSProperties['background'];
     $customStyle?: RuleSet;
@@ -40,7 +41,7 @@ export interface BaseFlexProps {
 
 export const BaseFlex = styled.div<BaseFlexProps>`
     display: flex;
-    ${({gap, rowGap, columnGap, $alignItems, $alignSelf, $justifyContent, flex, fill, padding, $wrap, background, $customStyle}) => css`
+    ${({gap, rowGap, columnGap, $alignItems, $alignSelf, $justifyContent, flex, fill, padding, margin, $wrap, background, $customStyle}) => css`
         ${gap !== undefined ? css`gap: ${gap}px;` : undefined}
         ${rowGap !== undefined ? css`row-gap: ${rowGap}px;` : undefined}
         ${columnGap !== undefined ? css`column-gap: ${columnGap}px;` : undefined}
@@ -52,6 +53,7 @@ export const BaseFlex = styled.div<BaseFlexProps>`
         width: ${fill || 'auto'};
         background: ${background || 'transparent'};
         padding: ${padding};
+        margin: ${margin};
         ${$customStyle};
     `}}
 `;

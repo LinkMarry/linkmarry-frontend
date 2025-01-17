@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import Video from "@remote/value/Video";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
@@ -22,7 +22,7 @@ function VideoTemplate(
             </Column>
             <S.iframe
                 height={250} title={video.videoTitle}
-                src={'https://www.youtube.com/embed/le4s2kMQWP4'}
+                // src={'https://www.youtube.com/embed/le4s2kMQWP4'}
             ></S.iframe>
         </S.container>
     );

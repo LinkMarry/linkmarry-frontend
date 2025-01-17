@@ -1,6 +1,5 @@
 import React, {HTMLAttributes, useState} from 'react';
 import styled, {CSSProperties} from "styled-components";
-import {LinkMarryFont} from "@designsystem/foundation/text/textType";
 import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";

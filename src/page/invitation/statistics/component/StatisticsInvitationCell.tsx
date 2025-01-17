@@ -21,7 +21,7 @@ function StatisticsInvitationCell(
     return (
         <S.container {...props}>
             <S.image src={weddingInfo.img} alt=""/>
-            <Column gap={4} $alignItems={'stretch'} style={{padding: '20px 20px 32px 20px', background: colors.g100}}>
+            <Column gap={4} $alignItems={'stretch'} padding={'20px 20px 32px 20px'} background={colors.g100}>
                 <Row gap={8}>
                     <S.urlLabel>{weddingInfo.url}</S.urlLabel>
                     <Spacer/>
