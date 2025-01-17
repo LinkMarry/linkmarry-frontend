@@ -26,6 +26,23 @@ function WeddingDayTemplate(
 
     const calendar = date ? getCalendar(date) : null;
 
+    if (!weddingSchedule.calendar && !weddingSchedule.dDay) {
+        return (
+            <Column
+                gap={12}
+                $alignItems={'center'}
+                $justifyContent={'center'}
+                background={colors.white}
+                style={{
+                    height: '100vh'
+                }}
+            >
+                <Text size={36} weight={300} color={colors.g500}>{weddingSchedule.weddingDate}</Text>
+                <Text size={36} weight={300} color={colors.g500}>{weddingSchedule.weddingDate}</Text>
+            </Column>
+        )
+    }
+
     return (
         <S.root>
             <Text color={colors.g600} size={20} weight={300}>
@@ -132,7 +149,7 @@ const S = {
                 }
             }
         }
-    `
+    `,
 };
 
 function getCalendar(date: Date) {
