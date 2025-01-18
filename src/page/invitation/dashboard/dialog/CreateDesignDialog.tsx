@@ -36,7 +36,7 @@ function CreateDesignDialog(
         
         try {
             await weddingApi.checkUrlConflict(url);
-            navigate(`/invitation/dashboard/design?url=${url}`);
+            navigate(`/dashboard/design?url=${url}`);
         } catch (error) {
             console.error(error);
             setIsError(true);

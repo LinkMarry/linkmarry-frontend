@@ -37,7 +37,7 @@ function App() {
                 {/*service*/}
                 <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
                 <Route path={''} element={<HomePage/>}/>
-                <Route path={'invitation'} element={<InvitationLayout/>}>
+                <Route element={<InvitationLayout/>}>
                     <Route path={'dashboard'}>
                         <Route index={true} element={<InvitationDashboard/>}/>
                         <Route path={'guest-comment'} element={<InvitationDashboardGuestComment/>}/>
@@ -45,7 +45,7 @@ function App() {
                     </Route>
                     <Route path={'statistics'}>
                         <Route index={true} element={<InvitationStatistics/>}/>
-                        <Route path={'detail'} element={<InvitationStatisticsDetail/>}/>
+                        <Route path={':url'} element={<InvitationStatisticsDetail/>}/>
                     </Route>
                 </Route>
                 <Route path={'my-page'} element={<MyPage/>}/>

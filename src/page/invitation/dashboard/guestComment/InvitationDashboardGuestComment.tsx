@@ -31,7 +31,7 @@ function InvitationDashboardGuestComment() {
         <S.container>
             <Column gap={44} style={{marginLeft: 64, paddingTop: 64, width: 867}} $alignItems={'stretch'}>
                 <Icon type={IconType.ExpandArrow} tint={colors.g400} style={{cursor: 'pointer'}} onClick={() => {
-                    navigate('/invitation/dashboard');
+                    navigate('/dashboard');
                 }}/>
                 <Column>
                     <Text type={'h5'}>방명록</Text>

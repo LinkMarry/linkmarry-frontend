@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import S from '@page/invitation/statistics/detail/InvitationStatisticsDetail.style';
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
@@ -86,8 +86,7 @@ const options = {
 
 function InvitationStatisticsDetail() {
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
-    const url = searchParams.get('url');
+    const {url} = useParams();
     const [weddingStatistics, setWeddingStatistics] = useState<WeddingStatistics>();
 
     useEffect(() => {
@@ -111,7 +110,7 @@ function InvitationStatisticsDetail() {
                     size={24}
                     style={{cursor: 'pointer'}}
                     onClick={() => {
-                        navigate('/invitation/statistics');
+                        navigate('/statistics');
                     }}
                 />
                 {weddingStatistics && (

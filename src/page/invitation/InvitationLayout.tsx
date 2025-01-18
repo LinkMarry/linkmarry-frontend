@@ -6,9 +6,9 @@ import HasHeader from "@designsystem/component/header/hasHeader";
 import {InvitationSideBarType} from "@page/invitation/component/InvitationSideBarType";
 
 function getSelectedSideBarType(pathname: string): InvitationSideBarType | null {
-    if (pathname.startsWith('/invitation/dashboard')) {
+    if (pathname.startsWith('/dashboard')) {
         return 'dashboard';
-    } else if (pathname.startsWith('/invitation/statistics')) {
+    } else if (pathname.startsWith('/statistics')) {
         return 'statistics';
     } else {
         return null;
@@ -19,11 +19,6 @@ function InvitationLayout() {
     const {pathname} = useLocation();
     const navigate = useNavigate();
     const sideBarType = getSelectedSideBarType(pathname);
-
-    if (['/invitation', '/invitation/'].includes(pathname)) {
-        window.location.href = '/invitation/dashboard';
-        return <></>;
-    }
 
     return (
         <HasHeader>

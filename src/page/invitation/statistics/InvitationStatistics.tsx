@@ -33,7 +33,7 @@ function InvitationStatistics() {
                                 key={index}
                                 weddingInfo={weddingInfo}
                                 onClick={() => {
-                                    navigate(`detail?url=${weddingInfo.url}`);
+                                    navigate(`./${weddingInfo.url}`);
                                 }}
                             />
                         )
