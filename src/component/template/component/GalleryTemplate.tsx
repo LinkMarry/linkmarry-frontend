@@ -89,13 +89,13 @@ function GallerySlide(
 
     return (
         <S.slideWrapper>
-            <S.scroll ref={scrollContainerRef} slideStyle={slideStyle}>
+            <S.scroll ref={scrollContainerRef} $slideStyle={slideStyle}>
                 {imgList.map((img, index) => (
                     <S.slideImg
                         key={index}
                         src={img}
                         $rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
-                        slideStyle={slideStyle}
+                        $slideStyle={slideStyle}
                     />
                 ))}
             </S.scroll>
@@ -179,12 +179,12 @@ const S = {
         align-self: stretch;
         overflow-x: hidden;
     `,
-    scroll: styled.div<{ slideStyle: GallerySlideStyle }>`
+    scroll: styled.div<{ $slideStyle: GallerySlideStyle }>`
         scroll-snap-type: x mandatory;
         overflow-x: scroll;
         overflow-y: hidden;
         display: flex;
-        ${({slideStyle}) => slideStyle === 'style1' && css`
+        ${({$slideStyle}) => $slideStyle === 'style1' && css`
             gap: 8px;
         `};
         ${hideScrollBar};
@@ -197,10 +197,10 @@ const S = {
     `,
     slideImg: styled.img<{ 
         $rootWidth: number,
-        slideStyle: GallerySlideStyle
+        $slideStyle: GallerySlideStyle
     }>`
         display: flex;
-        ${({$rootWidth, slideStyle}) => slideStyle === 'style1' ? css`
+        ${({$rootWidth, $slideStyle}) => $slideStyle === 'style1' ? css`
             width: ${$rootWidth - 34 * 2}px;
 
             &:first-child {

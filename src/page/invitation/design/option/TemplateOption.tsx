@@ -31,10 +31,14 @@ function TemplateOption(
                 <Row gap={12}>
                     <OptionLabel label={'디자인'} style={{alignSelf: 'flex-start'}}/>
                     <S.designWrapper>
-                        {templateNames.map(templateName => (
-                            <SegmentedButton selected={templateName === template.templateName} style={{width: 126}} onClick={() => {
-                                onChange({...template, templateName});
-                            }}>
+                        {templateNames.map((templateName, index) => (
+                            <SegmentedButton
+                                key={index}
+                                selected={templateName === template.templateName}
+                                style={{width: 126}}
+                                onClick={() => {
+                                    onChange({...template, templateName});
+                                }}>
                                 {templateName}
                             </SegmentedButton>
                         ))}

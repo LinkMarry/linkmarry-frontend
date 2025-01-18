@@ -1,7 +1,7 @@
 import React, {
     CSSProperties,
     ForwardedRef,
-    forwardRef,
+    forwardRef, useEffect,
     useImperativeHandle,
     useRef,
     useState
@@ -37,6 +37,10 @@ function Checkbox(
 ) {
     const [localChecked, setLocalChecked] = useState(checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        setLocalChecked(checked);
+    }, [checked]);
 
     useImperativeHandle(ref, () => ({
         value: localChecked,
@@ -85,7 +89,7 @@ function Checkbox(
                     }}
                 />}
             </S.checkbox>
-            {label && <S.title>{label}</S.title>}
+            {label && <S.title style={{cursor: 'pointer'}} onClick={() => onChange?.(!checked)}>{label}</S.title>}
         </S.container>
     );
 }

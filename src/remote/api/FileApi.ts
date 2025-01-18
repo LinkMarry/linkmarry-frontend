@@ -1,6 +1,7 @@
 import {ResponseData} from "@remote/value/Response";
 import Upload from "@remote/value/Upload";
 import customApi from "@remote/api/foundation/customApi";
+import Music from "@remote/value/Music";
 
 class FileApi {
     static PATH = 'file';
@@ -12,7 +13,7 @@ class FileApi {
         return data;
     }
     
-    async getMusics(): Promise<ResponseData<string[]>> {
+    async getMusics(): Promise<ResponseData<Music[]>> {
         const {data} = await customApi.get(`${FileApi.PATH}/music`);
         return data;
     }

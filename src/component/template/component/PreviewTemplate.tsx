@@ -30,9 +30,7 @@ function PreviewTemplate(
     }: PreviewTemplateProps
 ) {
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
-    console.log(dateString)
     const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
-    console.log(date)
     const isValidDate = !isNaN(date.getTime());
 
     switch (template.templateName) {
