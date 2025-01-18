@@ -39,6 +39,7 @@ import Video, {defaultVideo} from "@remote/value/Video";
 import GalleryOption from "@page/invitation/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import {dummyComments} from "@remote/value/Comment";
+import weddingApi from "@remote/api/WeddingApi";
 
 function InvitationDesign() {
     const [searchParams] = useSearchParams();
@@ -343,6 +344,24 @@ function InvitationDesign() {
         //     },
         //     imgList: []
         // });
+        await weddingApi.createWedding({
+            url: url ?? '',
+            position: [],
+            template,
+            baseInfo,
+            weddingSchedule,
+            weddingPlace,
+            greeting,
+            guestComment,
+            baseMusic,
+            linkShare,
+            moneyInfo,
+            video,
+            phone,
+            rsvp,
+            imgList,
+            imgDesign,
+        });
     };
 
     return (

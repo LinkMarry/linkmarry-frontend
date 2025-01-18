@@ -129,6 +129,7 @@ const S = {
         display: flex;
         flex: 1;
         object-fit: cover;
+        min-height: 0;
     `,
     urlLabel: styled.span`
         ${makeText('p5')};
