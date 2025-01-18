@@ -18,6 +18,7 @@ import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
 import GlobalStyle from "@src/GlobalStyle";
+import WeddingPage from "@page/wedding/WeddingPage";
 
 const {Kakao} = window as any;
 
@@ -59,8 +60,10 @@ function App() {
                 {/*not found*/}
                 <Route path={'*'} element={<Navigate to={'/'}/>}/>
 
-                {/*temp*/}
-                <Route path={'template1'} element={(
+                {/*wedding*/}
+                {/*<Route path={'wedding'} element={}/>*/}
+                <Route path={'wedding/:url'} element={<WeddingPage/>}/>
+                <Route path={'sample'} element={(
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <TemplateComponent wedding={dummyWedding}/>
                     </div>

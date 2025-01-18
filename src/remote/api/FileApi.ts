@@ -6,14 +6,14 @@ class FileApi {
     static PATH = 'file';
 
     async upload(file: File): Promise<ResponseData<Upload>> {
-        const formData = new FormData();
-        formData.append('file', file);
-
-        const {data} = await customApi.post(`${FileApi.PATH}/upload`, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
+        const {data} = await customApi.postForm(`${FileApi.PATH}/upload`, {
+            file
         });
+        return data;
+    }
+    
+    async getMusics(): Promise<ResponseData<string[]>> {
+        const {data} = await customApi.get(`${FileApi.PATH}/music`);
         return data;
     }
 }

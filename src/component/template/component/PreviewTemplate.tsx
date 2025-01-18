@@ -1,4 +1,4 @@
-import React, {HTMLProps, useRef, useState} from 'react';
+import React from 'react';
 import Text from "@designsystem/component/text";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
