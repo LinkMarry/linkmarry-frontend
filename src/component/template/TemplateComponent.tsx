@@ -13,6 +13,9 @@ import PreviewTemplate from "@src/component/template/component/PreviewTemplate";
 import GalleryTemplate, {GallerySlideStyle} from "@src/component/template/component/GalleryTemplate";
 import VideoTemplate from "@src/component/template/component/VideoTemplate";
 import {DDayStyle} from "@src/component/template/component/weddingday/DDay";
+import InvitationLetterTemplate, {
+    InvitationLetterStyle
+} from "@src/component/template/component/InvitationLetterTemplate";
 
 interface Template1Props {
     wedding: Wedding;
@@ -48,6 +51,15 @@ function TemplateComponent(
         템플릿5: 'style2',
         템플릿6: 'style1',
     }
+    
+    const invitationLetterStyle: Record<TemplateName, InvitationLetterStyle> = {
+        템플릿1: 'style1',
+        템플릿2: 'style1',
+        템플릿3: 'style2',
+        템플릿4: 'style3',
+        템플릿5: 'style3',
+        템플릿6: 'style2',
+    }
 
     return (
         <S.container ref={rootRef} $templateFont={templateFont}>
@@ -57,6 +69,11 @@ function TemplateComponent(
                 weddingPlace={wedding.weddingPlace}
                 weddingSchedule={wedding.weddingSchedule}
                 imgList={wedding.imgList}
+            />
+            <InvitationLetterTemplate
+                baseInfo={wedding.baseInfo}
+                greeting={wedding.greeting}
+                invitationLetterStyle={invitationLetterStyle[wedding.template.templateName]}
             />
             <WeddingDayTemplate
                 baseInfo={wedding.baseInfo}

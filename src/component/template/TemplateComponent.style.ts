@@ -8,7 +8,7 @@ export const container = styled.div<{ $templateFont: LinkMarryFont }>`
     width: 436px;
     align-items: stretch;
 
-    * {
+    *:not(.override-font) {
         ${({$templateFont}) => implementText({
             fontFamily: $templateFont
         })};
