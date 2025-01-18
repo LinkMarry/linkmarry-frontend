@@ -7,6 +7,7 @@ import styled from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
+import {format, parse} from "date-fns";
 
 interface WeddingDayProps {
     baseInfo: BaseInfo;
@@ -22,9 +23,9 @@ function WeddingDayTemplate(
     }: WeddingDayProps
 ) {
     const weddingDate = weddingSchedule.weddingDate;
-    const date = weddingDate ? parseDate(weddingDate) : null;  // 입력 날짜 파싱
-
-    const calendar = date ? getCalendar(date) : null;
+    const date = parse(weddingDate, 'yyyy-MM-dd', new Date());
+    const isValidDate = !isNaN(date.getTime());
+    const calendar = isValidDate ? getCalendar(date) : null;
 
     if (!weddingSchedule.calendar && !weddingSchedule.dDay) {
         return (
@@ -37,8 +38,8 @@ function WeddingDayTemplate(
                     height: '100vh'
                 }}
             >
-                <Text size={36} weight={300} color={colors.g500}>{weddingSchedule.weddingDate}</Text>
-                <Text size={36} weight={300} color={colors.g500}>{weddingSchedule.weddingDate}</Text>
+                <Text size={36} weight={300} color={colors.g500}>{isValidDate && date.getFullYear()}</Text>
+                <Text size={36} weight={300} color={colors.g500}>{isValidDate && format(date,  'MMMM d')}</Text>
             </Column>
         )
     }
@@ -198,11 +199,6 @@ function getCalendar(date: Date) {
                 date.getFullYear() === date.getFullYear()
         }))
     );
-}
-
-function parseDate(dateString: string): Date {
-    const [year, month, day] = dateString.split('-').map(Number);
-    return new Date(year, month - 1, day); // month는 0부터 시작하므로 1을 빼줍니다.
 }
 
 export default WeddingDayTemplate;
