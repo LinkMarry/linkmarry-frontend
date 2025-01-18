@@ -12,6 +12,7 @@ import BaseMusic from "@remote/value/BaseMusic";
 import fileApi from "@remote/api/FileApi";
 import Music, {getMusicName} from "@remote/value/Music";
 import LoadingOverlay from "@src/component/LoadingOverlay";
+import VoidInput from "@src/component/VoidInput";
 
 type SelectMode = 'select' | 'direct';
 const selectModeRecord: Record<SelectMode, string> = {
@@ -82,7 +83,7 @@ function BaseMusicOption(
             await audio.play();
         }
     }
-    
+
     const onClickPlayCustomMusic = async () => {
         const audio = audioRef.current;
         if (!audio) return;
@@ -133,7 +134,7 @@ function BaseMusicOption(
                                     <Text type={'caption1'} color={colors.g400}>음원 파일 추가</Text>
                                     <Text type={'caption1'} color={colors.g400}>최대 20MB MP3 파일만 가능</Text>
                                 </Column>
-                                <S.voidInput
+                                <VoidInput
                                     id={'choose-audio'}
                                     ref={imageFieldRef}
                                     onChange={uploadAudio}
@@ -189,14 +190,11 @@ function BaseMusicOption(
                 <HorizontalDivider/>
                 <Row gap={12} $alignItems={'center'}>
                     <OptionLabel label={'효과'}/>
-                    <Row gap={12} $alignItems={'center'}>
-                        <Checkbox
-                            checked={baseMusic.effect}
-                            onChange={checked => onChange({...baseMusic, effect: checked})}
-                            label={'자동 재생'}
-                        />
-                        <Text type={'caption1'} color={colors.g300}>브라우저</Text> {/* TODO: Fix dummy text */}
-                    </Row>
+                    <Checkbox
+                        checked={baseMusic.effect}
+                        onChange={checked => onChange({...baseMusic, effect: checked})}
+                        label={'자동 재생'}
+                    />
                 </Row>
             </Column>
         </S.container>
@@ -219,12 +217,6 @@ const S = {
         border-radius: 8px;
         padding: 30px 0;
     `,
-    voidInput: styled.input`
-        display: none;
-        width: 0;
-        height: 0;
-    `,
-
 }
 
 export default BaseMusicOption;

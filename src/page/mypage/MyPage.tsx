@@ -133,7 +133,7 @@ function MyPage() {
                                     <Text
                                         type={'p5'} color={colors.g500}
                                         style={{width: 122}}
-                                    >member.email</Text>
+                                    >{member.email}</Text>
                                 </Row>
                             </Column>
                         </Column>

@@ -10,6 +10,7 @@ import fileApi from "@remote/api/FileApi";
 import Text from "@designsystem/component/text";
 import LoadingOverlay from "@src/component/LoadingOverlay";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
+import VoidInput from "@src/component/VoidInput";
 
 interface GalleryOptionProps {
     imgList: string[];
@@ -72,7 +73,7 @@ function GalleryOption(
                                             <S.addImageContainer htmlFor={'choose-image'}>
                                                 <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
                                             </S.addImageContainer>
-                                            <S.voidInput
+                                            <VoidInput
                                                 id={'choose-image'}
                                                 ref={imageFieldRef}
                                                 onChange={uploadFiles}
@@ -158,11 +159,6 @@ const S = {
         border: 1px solid ${colors.g200};
         justify-content: center;
         align-items: center;
-    `,
-    voidInput: styled.input`
-        display: none;
-        width: 0;
-        height: 0;
     `,
     image: styled.img`
         display: flex;

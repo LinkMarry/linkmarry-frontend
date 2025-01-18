@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent, useRef, useState} from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
@@ -6,6 +6,8 @@ import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Button from "@designsystem/component/button";
 import {IconType} from "@designsystem/foundation/icon";
 import Video from "@remote/value/Video";
+import VoidInput from "@src/component/VoidInput";
+import fileApi from "@remote/api/FileApi";
 
 interface VideoOptionProps {
     video: Video;
@@ -18,6 +20,39 @@ function VideoOption(
         onChange
     }: VideoOptionProps
 ) {
+    const [isFetching, setIsFetching] = useState(false);
+    const videoFieldRef = useRef<HTMLInputElement>(null);
+
+    const onChangeVideoUrl = (value: string) => {
+        if (value === '') {
+            onChange({...video, videoUrl: value});
+            return;
+        }
+
+        const urlPattern = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        // const urlPattern = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\\w-]{11})/;
+        const match = value.match(urlPattern);
+
+        if (match && match[1]) {
+            const videoID = match[1];
+            onChange({...video, videoUrl: `https://www.youtube.com/embed/${videoID}`});
+        }
+    };
+
+    const uploadVideo = async (event: ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (!files) return;
+
+        const file = files[0];
+        if (!file) return;
+
+        setIsFetching(true);
+        const {data} = await fileApi.upload(file);
+
+        onChange({...video, videoUrl: data.url});
+        setIsFetching(false);
+    };
+
     return (
         <S.container>
             <Column gap={16}>
@@ -37,13 +72,27 @@ function VideoOption(
                     <OptionLabel label={'URL'}/>
                     <OptionTextField fieldProps={{
                         value: video.videoUrl,
-                        onChange: event => onChange({...video, videoUrl: event.target.value})
+                        onChange: event => onChangeVideoUrl(event.target.value)
                     }} placeholder={'유튜브 링크'} width={264}/>
                 </Row>
                 <Row gap={12}>
                     <OptionLabel label={'파일'}/>
                     {/* TODO */}
-                    <Button text={'파일 업로드'} leadingIcon={IconType.AddLine} role={'assistive'} style={{width: 264}}/>
+                    <label htmlFor={'choose-video'}>
+                        <Button
+                            text={'파일 업로드'}
+                            leadingIcon={IconType.AddLine}
+                            role={'assistive'}
+                            style={{width: 264, pointerEvents: 'none'}}
+                        />
+                    </label>
+                    <VoidInput
+                        id={'choose-video'}
+                        ref={videoFieldRef}
+                        onChange={uploadVideo}
+                        type={'file'}
+                        accept={'video/*'}
+                    />
                 </Row>
             </Column>
         </S.container>
