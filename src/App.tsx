@@ -18,7 +18,7 @@ import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
 import GlobalStyle from "@src/GlobalStyle";
-import WeddingPage from "@page/wedding/WeddingPage";
+import WeddingPage from "@page/WeddingPage";
 
 const {Kakao} = window as any;
 

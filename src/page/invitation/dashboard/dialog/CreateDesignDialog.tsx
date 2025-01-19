@@ -8,6 +8,8 @@ import TextField from "@designsystem/component/textField";
 import Text from "@designsystem/component/text";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
+import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import makeText from "@designsystem/foundation/text/textType";
 
 interface CreateDesignDialogProps {
     dismiss: () => void;
@@ -18,31 +20,33 @@ function CreateDesignDialog(
         dismiss
     }: CreateDesignDialogProps
 ) {
-    const domainFieldRef = useRef<HTMLInputElement>(null);
-    const [isError, setIsError] = useState(false);
+    const [url, setUrl] = useState('');
     const [isFetching, setIsFetching] = useState(false);
     const navigate = useNavigate();
 
     const createDesign = async () => {
-        if (!domainFieldRef.current) return;
-        const url = domainFieldRef.current.value;
-        
         if (url === '') {
             alert('도메인 URL을 입력해 주세요');
             return;
         }
-        
+
         setIsFetching(true);
-        
+
         try {
             await weddingApi.checkUrlConflict(url);
             navigate(`/dashboard/design?url=${url}`);
         } catch (error) {
             console.error(error);
-            setIsError(true);
+            alert('이미 사용 중인 URL 입니다.');
         } finally {
             setIsFetching(false);
         }
+    };
+
+    const onChange = (value: string) => {
+        // 허용할 문자: 영어 대소문자, 숫자, '-', '_', '.' (공백 및 기타 문자는 제거)
+        const sanitizedValue = value.replace(/[^a-zA-Z0-9-_.]/g, '');
+        setUrl(sanitizedValue);
     };
 
     return (
@@ -53,7 +57,17 @@ function CreateDesignDialog(
                         <Text type={'p1'}>새로운 디자인을 생성해주세요.</Text>
                         <Text type={'p5'} color={colors.g400}>청첩장에 사용할 도메인을 입력해주세요.</Text>
                     </Column>
-                    <TextField ref={domainFieldRef} isError={isError} supportingText={isError ? '이미 사용 중인 URL 입니다.' : undefined}/>
+                    <Column gap={4}>
+                        <S.textField>
+                            <Text type={'p5'} color={colors.g400} style={{userSelect: 'none'}}>
+                                linkmarry.com/wedding/
+                            </Text>
+                            <input type="text" value={url} onChange={event => onChange(event.target.value)}/>
+                        </S.textField>
+                        <Text type={'p5'} color={colors.g600} style={{marginLeft: 4}}>
+                            영어 대소문자, 숫자, '-', '_', '.'만 허용합니다
+                        </Text>
+                    </Column>
                     <Button text={'생성하기'} role={'assistive'} onClick={createDesign} enabled={!isFetching}/>
                 </Column>
             </S.container>
@@ -69,6 +83,27 @@ const S = {
         background: ${colors.white};
         border-radius: 12px;
         justify-content: center;
+    `,
+    textField: styled.div`
+        display: flex;
+        min-height: 44px;
+        align-items: center;
+        border: 1px solid ${colors.g200};
+        background: ${colors.white};
+        border-radius: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        flex: 1;
+        align-self: stretch;
+
+        input {
+            align-self: stretch;
+            margin: 4px 0;
+            outline: none;
+            width: 80px;
+            border: none;
+            ${makeText('p5')};
+        }
     `
 }
 

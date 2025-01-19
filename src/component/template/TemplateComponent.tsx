@@ -101,7 +101,7 @@ function TemplateComponent(
                 templateColor={templateColor}
                 url={wedding.url}
                 baseInfo={wedding.baseInfo}
-                guestComments={wedding.guestComments}
+                guestComments={wedding.guestCommentList}
                 guestComment={wedding.guestComment}
             />
             <FooterTemplate background={templateColor}/>

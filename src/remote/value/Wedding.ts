@@ -39,7 +39,7 @@ export default interface Wedding {
     guestComment: GuestComment;
 
     // 방명록 리스트
-    guestComments: Comment[];
+    guestCommentList: Comment[];
 
     // 배경음악
     baseMusic: BaseMusic;
@@ -78,7 +78,7 @@ export const dummyWedding: Wedding = {
     weddingPlace: dummyWeddingPlace,
     greeting: dummyGreeting,
     guestComment: dummyGuestComment,
-    guestComments: dummyComments,
+    guestCommentList: dummyComments,
     baseMusic: dummyBaseMusic,
     linkShare: dummyLinkShare,
     moneyInfo: dummyMoneyInfo,

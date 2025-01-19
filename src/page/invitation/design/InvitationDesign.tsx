@@ -71,7 +71,7 @@ function InvitationDesign() {
         weddingPlace,
         greeting,
         guestComment,
-        guestComments: dummyComments,
+        guestCommentList: dummyComments,
         baseMusic,
         linkShare,
         moneyInfo,
