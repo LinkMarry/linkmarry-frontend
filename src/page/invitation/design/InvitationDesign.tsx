@@ -21,65 +21,70 @@ import colors from "@designsystem/foundation/colors";
 import Spacer from "@designsystem/component/spacer";
 import Button from "@designsystem/component/button";
 import TemplateOption from "@page/invitation/design/option/TemplateOption";
-import {useNavigate, useSearchParams} from "react-router-dom";
-import Template, {defaultTemplate} from "@remote/value/Template";
-import BaseInfo, {defaultBaseInfo} from "@remote/value/BaseInfo";
-import WeddingSchedule, {defaultWeddingSchedule} from "@remote/value/WeddingSchedule";
-import WeddingPlace, {defaultWeddingPlace} from "@remote/value/WeddingPlace";
-import Greeting, {defaultGreeting} from "@remote/value/Greeting";
-import GuestComment, {defaultGuestComment} from "@remote/value/GuestComment";
-import MoneyInfo, {defaultMoneyInfo} from "@remote/value/MoneyInfo";
-import Phone, {defaultPhone} from "@remote/value/Phone";
-import Rsvp, {defaultRsvp} from "@remote/value/Rsvp";
+import {useNavigate, useParams} from "react-router-dom";
+import {defaultTemplate} from "@remote/value/Template";
+import {defaultBaseInfo} from "@remote/value/BaseInfo";
+import {defaultWeddingSchedule} from "@remote/value/WeddingSchedule";
+import {defaultWeddingPlace} from "@remote/value/WeddingPlace";
+import {defaultGreeting} from "@remote/value/Greeting";
+import {defaultGuestComment} from "@remote/value/GuestComment";
+import {defaultMoneyInfo} from "@remote/value/MoneyInfo";
+import {defaultPhone} from "@remote/value/Phone";
+import {defaultRsvp} from "@remote/value/Rsvp";
+import {defaultLinkShare} from "@remote/value/LinkShare";
+import {defaultBaseMusic} from "@remote/value/BaseMusic";
+import {defaultVideo} from "@remote/value/Video";
+import {dummyComments} from "@remote/value/Comment";
 import Wedding from "@remote/value/Wedding";
 import TemplateComponent from "@src/component/template/TemplateComponent";
-import LinkShare, {defaultLinkShare} from "@remote/value/LinkShare";
-import BaseMusic, {defaultBaseMusic} from "@remote/value/BaseMusic";
-import Video, {defaultVideo} from "@remote/value/Video";
 import GalleryOption from "@page/invitation/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
-import {dummyComments} from "@remote/value/Comment";
 import weddingApi from "@remote/api/WeddingApi";
+import WeddingDto from "@remote/value/WeddingDto";
+
+type DesignMode = 'create' | 'edit';
 
 function InvitationDesign() {
-    const [searchParams] = useSearchParams();
-    const url = searchParams.get('url');
-
-    const [template, setTemplate] = useState<Template>(defaultTemplate);
-    const [baseInfo, setBaseInfo] = useState<BaseInfo>(defaultBaseInfo);
-    const [weddingSchedule, setWeddingSchedule] = useState<WeddingSchedule>(defaultWeddingSchedule);
-    const [weddingPlace, setWeddingPlace] = useState<WeddingPlace>(defaultWeddingPlace);
-    const [greeting, setGreeting] = useState<Greeting>(defaultGreeting);
-    const [guestComment, setGuestComment] = useState<GuestComment>(defaultGuestComment);
-    const [baseMusic, setBaseMusic] = useState<BaseMusic>(defaultBaseMusic);
-    const [linkShare, setLinkShare] = useState<LinkShare>(defaultLinkShare);
-    const [moneyInfo, setMoneyInfo] = useState<MoneyInfo>(defaultMoneyInfo);
-    const [video, setVideo] = useState<Video>(defaultVideo);
-    const [phone, setPhone] = useState<Phone>(defaultPhone);
-    const [rsvp, setRsvp] = useState<Rsvp>(defaultRsvp);
-    const [imgList, setImgList] = useState<string[]>([]);
-    const [imgDesign, setImgDesign] = useState<ImgDesign>(ImgDesign.SLIDE);
-
+    const {url} = useParams();
     const navigate = useNavigate();
+    const [mode, setMode] = useState<DesignMode>();
+    const [wedding, setWedding] = useState<WeddingDto>({
+        url: url!!,
+        position: [],
+        template: defaultTemplate,
+        baseInfo: defaultBaseInfo,
+        weddingSchedule: defaultWeddingSchedule,
+        weddingPlace: defaultWeddingPlace,
+        greeting: defaultGreeting,
+        guestComment: defaultGuestComment,
+        baseMusic: defaultBaseMusic,
+        linkShare: defaultLinkShare,
+        moneyInfo: defaultMoneyInfo,
+        video: defaultVideo,
+        phone: defaultPhone,
+        rsvp: defaultRsvp,
+        imgList: [],
+        imgDesign: ImgDesign.SLIDE,
+    });
 
-    const wedding: Wedding = {
+    const weddingForPreview: Wedding = {
         url: url ?? '',
         position: [],
-        template,
-        baseInfo,
-        weddingSchedule,
-        weddingPlace,
-        greeting,
-        guestComment,
+        template: wedding.template,
+        baseInfo: wedding.baseInfo,
+        weddingSchedule: wedding.weddingSchedule,
+        weddingPlace: wedding.weddingPlace,
+        greeting: wedding.greeting,
+        guestComment: wedding.guestComment,
         guestCommentList: dummyComments,
-        baseMusic,
-        linkShare,
-        moneyInfo,
-        video,
-        phone,
-        rsvp,
-        imgList,
-        imgDesign,
+        baseMusic: wedding.baseMusic,
+        linkShare: wedding.linkShare,
+        moneyInfo: wedding.moneyInfo,
+        video: wedding.video,
+        phone: wedding.phone,
+        rsvp: wedding.rsvp,
+        imgList: wedding.imgList,
+        imgDesign: wedding.imgDesign,
         waterMark: false
     }
     // Drag and drop
@@ -95,273 +100,36 @@ function InvitationDesign() {
     };
 
     useEffect(() => {
-        if (url === null) {
+        if (!url) {
             navigate('/');
+            return;
         }
+
+        (async () => {
+            try {
+                const {data} = await weddingApi.getWedding(url);
+                setWedding(data);
+                setMode('edit');
+            } catch (error) {
+                console.error(error);
+                setMode('create');
+            }
+        })();
     }, []);
 
     const saveDesign = async () => {
-        // // validation
-        // if (!url) return;
-        //
-        // const groomName = groomNameRef.current!!.value;
-        // const groomFatherName = groomFatherNameRef.current!!.value;
-        // const groomFatherStatus = groomFatherStatusRef.current!!.value;
-        // const groomMotherName = groomMotherNameRef.current!!.value;
-        // const groomMotherStatus = groomMotherStatusRef.current!!.value;
-        // const groomFamilyName = groomFamilyNameRef.current!!.value;
-        // const brideName = brideNameRef.current!!.value;
-        // const brideFatherName = brideFatherNameRef.current!!.value;
-        // const brideFatherStatus = brideFatherStatusRef.current!!.value;
-        // const brideMotherName = brideMotherNameRef.current!!.value;
-        // const brideMotherStatus = brideMotherStatusRef.current!!.value;
-        // const brideFamilyName = brideFamilyNameRef.current!!.value;
-        // const statusFlower = statusFlowerRef.current!!.value;
-        // const brideMarkFirst = brideMarkFirstRef.current!!.value;
-        // if (isAnyEmpty(groomName, groomFatherName, groomMotherName, groomFamilyName, brideName, brideFatherName, brideMotherName, brideFamilyName)) {
-        //     alert('기본 정보를 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const weddingDate = weddingDateRef.current!!.value;
-        // const weddingTime = weddingTimeRef.current!!.value;
-        // const calendar = calendarRef.current!!.value;
-        // const dDay = dDayRef.current!!.value;
-        // if (isAnyEmpty(weddingDate, weddingTime)) {
-        //     alert('예식 일시를 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const greetingTitle = greetingTitleRef.current!!.value;
-        // const greetingContent = greetingContentRef.current!!.value;
-        // if (isAnyEmpty(greetingTitle, greetingContent)) {
-        //     alert('인사말을 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const guestCommentTitle = guestCommentTitleRef.current!!.value;
-        // const guestCommentContent = guestCommentContentRef.current!!.value;
-        // const guestCommentDesign = guestCommentDesignRef.current!!.value;
-        // const guestCommentPrivateContent = guestCommentPrivateContentRef.current!!.value!!;
-        // const guestCommentPrivateDate = guestCommentPrivateDateRef.current!!.value!!;
-        // if (isAnyEmpty(guestCommentTitle, guestCommentContent, guestCommentDesign)) {
-        //     alert('방명록을 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const effect = effectRef.current!!.value!!;
-        //
-        // const infoTitle = infoTitleRef.current!!.value;
-        // const infoContent = infoContentRef.current!!.value;
-        // const kakaoStatus = kakaoStatusRef.current!!.value;
-        // const groomNameMoneyInfo = groomNameMoneyInfoRef.current!!.value;
-        // const groomBankName = groomBankNameRef.current!!.value;
-        // const groomBankNumber = groomBankNumberRef.current!!.value;
-        // const groomKakaoUrl = groomKakaoUrlRef.current!!.value;
-        // const groomFatherNameMoneyInfo = groomFatherNameMoneyInfoRef.current!!.value;
-        // const groomFatherBankName = groomFatherBankNameRef.current!!.value;
-        // const groomFatherBankNumber = groomFatherBankNumberRef.current!!.value;
-        // const groomFatherKakaoUrl = groomFatherKakaoUrlRef.current!!.value;
-        // const groomMotherNameMoneyInfo = groomMotherNameMoneyInfoRef.current!!.value;
-        // const groomMotherBankName = groomMotherBankNameRef.current!!.value;
-        // const groomMotherBankNumber = groomMotherBankNumberRef.current!!.value;
-        // const groomMotherKakaoUrl = groomMotherKakaoUrlRef.current!!.value;
-        // const brideNameMoneyInfo = brideNameMoneyInfoRef.current!!.value;
-        // const brideBankName = brideBankNameRef.current!!.value;
-        // const brideBankNumber = brideBankNumberRef.current!!.value;
-        // const brideKakaoUrl = brideKakaoUrlRef.current!!.value;
-        // const brideFatherNameMoneyInfo = brideFatherNameMoneyInfoRef.current!!.value;
-        // const brideFatherBankName = brideFatherBankNameRef.current!!.value;
-        // const brideFatherBankNumber = brideFatherBankNumberRef.current!!.value;
-        // const brideFatherKakaoUrl = brideFatherKakaoUrlRef.current!!.value;
-        // const brideMotherNameMoneyInfo = brideMotherNameMoneyInfoRef.current!!.value;
-        // const brideMotherBankName = brideMotherBankNameRef.current!!.value;
-        // const brideMotherBankNumber = brideMotherBankNumberRef.current!!.value;
-        // const brideMotherKakaoUrl = brideMotherKakaoUrlRef.current!!.value;
-        //
-        // if (isAnyEmpty(
-        //     infoTitle, infoContent,
-        //     groomNameMoneyInfo, groomBankName, groomBankNumber, groomFatherNameMoneyInfo, groomFatherBankName, groomFatherBankNumber, groomMotherNameMoneyInfo, groomMotherBankName, groomMotherBankNumber,
-        //     brideNameMoneyInfo, brideBankName, brideBankNumber, brideFatherNameMoneyInfo, brideFatherBankName, brideFatherBankNumber, brideMotherNameMoneyInfo, brideMotherBankName, brideMotherBankNumber
-        // )) {
-        //     alert('축의금을 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const videoTitle = videoTitleRef.current!!.value;
-        // const videoUrl = videoUrlRef.current!!.value;
-        // if (isAnyEmpty(videoTitle, videoUrl)) {
-        //     alert('동영상을 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const groomTel = groomTelRef.current!!.value;
-        // const groomFatherTel = groomFatherTelRef.current!!.value;
-        // const groomMotherTel = groomMotherTelRef.current!!.value;
-        // const brideTel = brideTelRef.current!!.value;
-        // const brideFatherTel = brideFatherTelRef.current!!.value;
-        // const brideMotherTel = brideMotherTelRef.current!!.value;
-        // if (isAnyEmpty(
-        //     groomTel, groomFatherTel, groomMotherTel,
-        //     brideTel, brideFatherTel, brideMotherTel
-        // )) {
-        //     alert('연락처를 입력해 주세요');
-        //     return;
-        // }
-        //
-        // const rsvpTitle = rsvpTitleRef.current!!.value;
-        // const rsvpContent = rsvpContentRef.current!!.value;
-        // // const attendStatus = attendStatusRef.current!!.value;
-        // const attendMealStatus = attendMealStatusRef.current!!.value;
-        // const attendGuestCntStatus = attendGuestCntStatusRef.current!!.value;
-        // const attendPhoneStatus = attendPhoneStatusRef.current!!.value;
-        // const attendEtcStatus = attendEtcStatusRef.current!!.value;
-        // const startPopupStatus = startPopupStatusRef.current!!.value;
-        // const startPopupMessage = startPopupMessageRef.current!!.value;
-        //
-        // if (isAnyEmpty(rsvpTitle, rsvpContent, startPopupMessage)) {
-        //     alert('참석의사를 입력해 주세요');
-        //     return;
-        // }
-        //
-        // // Request
-        // await weddingApi.createWedding({
-        //     url,
-        //     position: [],
-        //     template: {
-        //         templateName: '',
-        //         templateColor: '#ECECEC',
-        //         templateFont: '',
-        //         templateFontSize: '',
-        //     },
-        //     baseInfo: {
-        //         groomName,
-        //         groomFatherName,
-        //         groomFatherStatus,
-        //         groomMotherName,
-        //         groomMotherStatus,
-        //         groomFamilyName,
-        //         brideName,
-        //         brideFatherName,
-        //         brideFatherStatus,
-        //         brideMotherName,
-        //         brideMotherStatus,
-        //         brideFamilyName,
-        //         statusFlower,
-        //         brideMarkFirst,
-        //     },
-        //     weddingSchedule: {
-        //         weddingDate,
-        //         weddingTime,
-        //         calendar,
-        //         dDay
-        //     },
-        //     weddingPlace: {
-        //         x: 0,
-        //         y: 0,
-        //         placeUrl: '',
-        //         placeName: '',
-        //         addressName: '',
-        //         floorHall: '',
-        //         placeTel: '',
-        //         placeTransportation: '',
-        //         placeStatus: false,
-        //     },
-        //     greeting: {
-        //         greetingTitle,
-        //         greetingContent
-        //     },
-        //     guestComment: {
-        //         title: guestCommentTitle,
-        //         content: guestCommentContent,
-        //         design: Design.STICKER,
-        //         privateContent: guestCommentPrivateContent,
-        //         privateDate: guestCommentPrivateDate
-        //     },
-        //     baseMusic: {
-        //         musicUrl: '',
-        //         effect
-        //     },
-        //     linkShare: {
-        //         kakaoImgUrl: '',
-        //         kakaoTitle: '',
-        //         kakaoContent: '',
-        //         urlImg: '',
-        //         urlTitle: '',
-        //         urlContent: ''
-        //     },
-        //     moneyInfo: {
-        //         infoTitle,
-        //         infoContent,
-        //         kakaoStatus,
-        //         groomNameMoneyInfo,
-        //         groomBankName,
-        //         groomBankNumber,
-        //         groomKakaoUrl,
-        //         groomFatherNameMoneyInfo,
-        //         groomFatherBankName,
-        //         groomFatherBankNumber,
-        //         groomFatherKakaoUrl,
-        //         groomMotherNameMoneyInfo,
-        //         groomMotherBankName,
-        //         groomMotherBankNumber,
-        //         groomMotherKakaoUrl,
-        //         brideNameMoneyInfo,
-        //         brideBankName,
-        //         brideBankNumber,
-        //         brideKakaoUrl,
-        //         brideFatherNameMoneyInfo,
-        //         brideFatherBankName,
-        //         brideFatherBankNumber,
-        //         brideFatherKakaoUrl,
-        //         brideMotherNameMoneyInfo,
-        //         brideMotherBankName,
-        //         brideMotherBankNumber,
-        //         brideMotherKakaoUrl,
-        //     },
-        //     video: {
-        //         videoTitle,
-        //         videoUrl
-        //     },
-        //     phone: {
-        //         groomTel,
-        //         groomFatherTel,
-        //         groomMotherTel,
-        //         brideTel,
-        //         brideFatherTel,
-        //         brideMotherTel
-        //     },
-        //     rsvp: {
-        //         rsvpTitle,
-        //         rsvpContent,
-        //         attendStatus: true,
-        //         attendMealStatus,
-        //         attendGuestCntStatus,
-        //         attendPhoneStatus,
-        //         attendEtcStatus,
-        //         startPopupStatus,
-        //         startPopupMessage,
-        //     },
-        //     imgList: []
-        // });
-        await weddingApi.createWedding({
-            url: url ?? '',
-            position: [],
-            template,
-            baseInfo,
-            weddingSchedule,
-            weddingPlace,
-            greeting,
-            guestComment,
-            baseMusic,
-            linkShare,
-            moneyInfo,
-            video,
-            phone,
-            rsvp,
-            imgList,
-            imgDesign,
-        });
+        // TODO: Validation
+        switch (mode) {
+            case 'create':
+                await weddingApi.createWedding(wedding);
+                setMode('edit');
+                alert('청첩장 생성되었습니다');
+                break;
+            case 'edit':
+                await weddingApi.editWedding(wedding);
+                alert('청첩장이 수정되었습니다');
+                break;
+        }
     };
 
     return (
@@ -390,82 +158,94 @@ function InvitationDesign() {
                                             switch (option) {
                                                 case OptionType.Template:
                                                     children = <TemplateOption
-                                                        template={template}
-                                                        onChange={template => setTemplate(template)}
+                                                        template={wedding.template}
+                                                        onChange={template => setWedding({...wedding, template})}
                                                     />;
                                                     break;
                                                 case OptionType.BaseInfo:
                                                     children = <BaseInfoOption
-                                                        baseInfo={baseInfo}
-                                                        onChange={baseInfo => setBaseInfo(baseInfo)}
+                                                        baseInfo={wedding.baseInfo}
+                                                        onChange={baseInfo => setWedding({...wedding, baseInfo})}
                                                     />;
                                                     break;
                                                 case OptionType.WeddingSchedule:
                                                     children = <WeddingScheduleOption
-                                                        weddingSchedule={weddingSchedule}
-                                                        onChange={weddingSchedule => setWeddingSchedule(weddingSchedule)}
+                                                        weddingSchedule={wedding.weddingSchedule}
+                                                        onChange={weddingSchedule => setWedding({
+                                                            ...wedding,
+                                                            weddingSchedule
+                                                        })}
                                                     />;
                                                     break;
                                                 case OptionType.WeddingLocation:
                                                     children = <WeddingPlaceOption
-                                                        weddingPlace={weddingPlace}
-                                                        onChange={weddingPlace => setWeddingPlace(weddingPlace)}
+                                                        weddingPlace={wedding.weddingPlace}
+                                                        onChange={weddingPlace => setWedding({
+                                                            ...wedding,
+                                                            weddingPlace
+                                                        })}
                                                     />;
                                                     break;
                                                 case OptionType.Greeting:
                                                     children = <GreetingOption
-                                                        greeting={greeting}
-                                                        onChange={greeting => setGreeting(greeting)}
+                                                        greeting={wedding.greeting}
+                                                        onChange={greeting => setWedding({...wedding, greeting})}
                                                     />;
                                                     break;
                                                 case OptionType.GuestComment:
                                                     children = <GuestCommentOption
-                                                        guestComment={guestComment}
-                                                        onChange={guestComment => setGuestComment(guestComment)}
+                                                        guestComment={wedding.guestComment}
+                                                        onChange={guestComment => setWedding({
+                                                            ...wedding,
+                                                            guestComment
+                                                        })}
                                                     />;
                                                     break;
                                                 case OptionType.BaseMusic:
                                                     children = <BaseMusicOption
-                                                        baseMusic={baseMusic}
-                                                        onChange={baseMusic => setBaseMusic(baseMusic)}
+                                                        baseMusic={wedding.baseMusic}
+                                                        onChange={baseMusic => setWedding({...wedding, baseMusic})}
                                                     />;
                                                     break;
                                                 case OptionType.LinkShare:
                                                     children = <LinkShareOption
-                                                        linkShare={linkShare}
-                                                        onChange={linkShare => setLinkShare(linkShare)}
+                                                        linkShare={wedding.linkShare}
+                                                        onChange={linkShare => setWedding({...wedding, linkShare})}
                                                     />;
                                                     break;
                                                 case OptionType.MoneyInfo:
                                                     children = <MoneyInfoOption
-                                                        moneyInfo={moneyInfo}
-                                                        onChange={moneyInfo => setMoneyInfo(moneyInfo)}
+                                                        moneyInfo={wedding.moneyInfo}
+                                                        onChange={moneyInfo => setWedding({...wedding, moneyInfo})}
                                                     />;
                                                     break;
                                                 case OptionType.Video:
                                                     children = <VideoOption
-                                                        video={video}
-                                                        onChange={video => setVideo(video)}
+                                                        video={wedding.video}
+                                                        onChange={video => setWedding({...wedding, video})}
                                                     />;
                                                     break;
                                                 case OptionType.Phone:
                                                     children = <PhoneOption
-                                                        phone={phone}
-                                                        onChange={phone => setPhone(phone)}
+                                                        phone={wedding.phone}
+                                                        onChange={phone => setWedding({...wedding, phone})}
                                                     />;
                                                     break;
                                                 case OptionType.Rsvp:
                                                     children = <RsvpOption
-                                                        rsvp={rsvp}
-                                                        onChange={rsvp => setRsvp(rsvp)}
+                                                        rsvp={wedding.rsvp}
+                                                        onChange={rsvp => setWedding({...wedding, rsvp})}
                                                     />;
                                                     break;
                                                 case OptionType.Gallery:
                                                     children = <GalleryOption
-                                                        imgList={imgList}
-                                                        imgDesign={imgDesign}
-                                                        onChangeImgDesign={setImgDesign}
-                                                        onChangeImgList={setImgList}
+                                                        imgList={wedding.imgList}
+                                                        imgDesign={wedding.imgDesign}
+                                                        onChangeImgDesign={imgDesign => setWedding({
+                                                            ...wedding,
+                                                            imgDesign
+                                                        })}
+                                                        onChangeImgList={imgList => setWedding({...wedding, imgList})}
                                                     />
                                                     break;
                                             }
@@ -490,7 +270,7 @@ function InvitationDesign() {
             <S.preview>
                 <S.previewScrollableContent>
                     <S.previewContent>
-                        <TemplateComponent wedding={wedding} isPreview={true}/>
+                        <TemplateComponent wedding={weddingForPreview} isPreview={true}/>
                     </S.previewContent>
                 </S.previewScrollableContent>
             </S.preview>

@@ -15,8 +15,8 @@ import VoidInput from "@src/component/VoidInput";
 interface GalleryOptionProps {
     imgList: string[];
     imgDesign: ImgDesign;
-    onChangeImgDesign: Dispatch<SetStateAction<ImgDesign>>;
-    onChangeImgList: Dispatch<SetStateAction<string[]>>;
+    onChangeImgDesign: (imgDesign: ImgDesign) => void;
+    onChangeImgList: (imgList: string[]) => void;
 }
 
 function GalleryOption(
@@ -45,7 +45,7 @@ function GalleryOption(
         const fulfilledResults: string[] = results
             .map(result => result.status === 'fulfilled' ? result.value.data.url : null)
             .filter((result): result is string => result !== null);
-        onChangeImgList(imgList => [...fulfilledResults, ...imgList]);
+        onChangeImgList([...fulfilledResults, ...imgList]);
         setIsFetching(false);
     };
 

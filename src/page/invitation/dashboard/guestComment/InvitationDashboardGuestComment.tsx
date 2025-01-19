@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
 import colors from "@designsystem/foundation/colors";
@@ -10,8 +10,7 @@ import Comment from "@remote/value/Comment";
 import weddingApi from "@remote/api/WeddingApi";
 
 function InvitationDashboardGuestComment() {
-    const [searchParams] = useSearchParams();
-    const url = searchParams.get('url');
+    const {url} = useParams();
     const navigate = useNavigate();
     const [comments, setComments] = useState<Comment[]>();
 

@@ -40,8 +40,8 @@ function App() {
                 <Route element={<InvitationLayout/>}>
                     <Route path={'dashboard'}>
                         <Route index={true} element={<InvitationDashboard/>}/>
-                        <Route path={'guest-comment'} element={<InvitationDashboardGuestComment/>}/>
-                        <Route path={'design'} element={<InvitationDesign/>}/>
+                        <Route path={'guest-comment/:url'} element={<InvitationDashboardGuestComment/>}/>
+                        <Route path={'design/:url'} element={<InvitationDesign/>}/>
                     </Route>
                     <Route path={'statistics'}>
                         <Route index={true} element={<InvitationStatistics/>}/>

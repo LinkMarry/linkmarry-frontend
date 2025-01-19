@@ -50,7 +50,7 @@ class WeddingApi {
      * 청첩장 수정
      */
     async editWedding(req: WeddingDto): Promise<ResponseVoid> {
-        const {data} = await customApi.put(WeddingApi.PATH, req);
+        const {data} = await customApi.patch(WeddingApi.PATH, req);
         return data;
     }
 

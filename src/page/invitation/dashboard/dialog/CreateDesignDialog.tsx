@@ -34,7 +34,7 @@ function CreateDesignDialog(
 
         try {
             await weddingApi.checkUrlConflict(url);
-            navigate(`/dashboard/design?url=${url}`);
+            navigate(`/dashboard/design/${url}`);
         } catch (error) {
             console.error(error);
             alert('이미 사용 중인 URL 입니다.');
