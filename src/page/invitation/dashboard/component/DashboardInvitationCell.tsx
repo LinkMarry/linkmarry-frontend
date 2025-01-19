@@ -28,6 +28,7 @@ function DashboardInvitationCell(
 ) {
     const [showPopover, setShowPopover] = useState(false);
     const navigate = useNavigate();
+    const fullUrl = `${window.location.origin}/wedding/${weddingInfo.url}`
 
     const onClickPopover = async (type: DashboardPopoverClickType) => {
         switch (type) {
@@ -41,7 +42,7 @@ function DashboardInvitationCell(
 ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩장이 도착하였습니다.
 청첩장을 확인하시려면 아래 링크를 클릭해 주세요.
 따뜻한 축하와 함께 자리를 빛내 주시면 감사하겠습니다. 😊`,
-                        url: `${window.location.origin}/wedding/${weddingInfo.url}`,
+                        url: fullUrl,
                     });
                 } catch (error) {
                     console.error(error);
@@ -50,11 +51,11 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                 break;
             case 'copyLink':
                 try {
-                    await navigator.clipboard.writeText(weddingInfo.url);
+                    await navigator.clipboard.writeText(fullUrl);
                     alert("복사되었습니다. 원하는 곳에 붙여넣기하여 주세요.");
                 } catch (error) {
                     console.error(error);
-                    prompt("키보드의 ctrl+C 또는 마우스 오른쪽의 복사하기를 이용해주세요.", weddingInfo.url);
+                    prompt("키보드의 ctrl+C 또는 마우스 오른쪽의 복사하기를 이용해주세요.", fullUrl);
                 }
                 break;
             case 'editLink':

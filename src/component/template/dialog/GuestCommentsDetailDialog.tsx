@@ -12,12 +12,14 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 
 interface GuestCommentsDetailDialogProps {
     comments: Comment[];
+    onRemove: (comment: Comment) => void;
     dismiss: () => void;
 }
 
 function GuestCommentsDetailDialog(
     {
         comments,
+        onRemove,
         dismiss
     }: GuestCommentsDetailDialogProps
 ) {
@@ -61,7 +63,7 @@ function GuestCommentsDetailDialog(
                             comment={comment}
                             background={colors.white}
                             onRemove={() => {
-
+                                onRemove(comment);
                             }}
                             style={{
                                 boxShadow: '0px 2px 8px 0px rgba(0, 0, 0, 0.12)'

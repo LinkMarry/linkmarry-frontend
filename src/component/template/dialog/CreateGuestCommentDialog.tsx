@@ -9,17 +9,18 @@ import Textarea from "@designsystem/component/textarea";
 import Button from "@designsystem/component/button";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
-import {AxiosError, isAxiosError} from "axios";
 
 interface CreateGuestCommentDialogProps {
     url: string;
     dismiss: () => void;
+    onRefresh: () => void;
 }
 
 function CreateGuestCommentDialog(
     {
         url,
-        dismiss
+        dismiss,
+        onRefresh
     }: CreateGuestCommentDialogProps
 ) {
     const nameRef = useRef<HTMLInputElement>(null);
@@ -52,7 +53,8 @@ function CreateGuestCommentDialog(
                 url
             });
             alert('방명록 작성 완료');
-            navigate(0);
+            onRefresh();
+            dismiss();
         } catch (error) {
             alert('방명록 작성 실패');
         }

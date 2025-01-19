@@ -22,6 +22,7 @@ interface GuestCommentsTemplateProps {
     baseInfo: BaseInfo;
     guestComments: Comment[];
     guestComment: GuestComment;
+    onRefresh: () => void;
 }
 
 function GuestCommentsTemplate(
@@ -30,14 +31,15 @@ function GuestCommentsTemplate(
         url,
         baseInfo,
         guestComments,
-        guestComment
+        guestComment,
+        onRefresh
     }: GuestCommentsTemplateProps
 ) {
     const [selectedRemoveGuestComment, setSelectedRemoveGuestComment] = useState<Comment>();
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
     const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
-    
+
     return (
         <S.root background={templateColor}>
             <Column gap={40} $alignItems={'stretch'}>
@@ -58,7 +60,7 @@ function GuestCommentsTemplate(
                         }}
                     />
                     <Text
-                        style={{alignSelf: 'flex-end', paddingRight: 4}}
+                        style={{alignSelf: 'flex-end', paddingRight: 4, cursor: 'pointer'}}
                         size={14} weight={300} color={colors.g600}
                         onClick={() => {
                             setShowGuestCommentsDetailDialog(true);
@@ -85,11 +87,19 @@ function GuestCommentsTemplate(
             {showGuestCommentsDetailDialog && (
                 <GuestCommentsDetailDialog
                     comments={guestComments}
+                    onRemove={comment => {
+                        setSelectedRemoveGuestComment(comment);
+                        setShowRemoveGuestCommentDialog(true);
+                    }}
                     dismiss={() => setShowGuestCommentsDetailDialog(false)}
                 />
             )}
             {showCreateGuestCommentDialog && (
-                <CreateGuestCommentDialog url={url} dismiss={() => setShowCreateGuestCommentDialog(false)}/>
+                <CreateGuestCommentDialog
+                    url={url}
+                    dismiss={() => setShowCreateGuestCommentDialog(false)}
+                    onRefresh={onRefresh}
+                />
             )}
         </S.root>
     );
@@ -199,7 +209,7 @@ export function BasicGuestComment(
                 />
             </Row>
             <Text size={16} color={colors.g600} weight={300}>
-                {comment.content}
+                {comment.comment}
             </Text>
         </S.basicContainer>
     );
@@ -221,7 +231,7 @@ export function StickerGuestComment(
             />
             <Column flex={1}>
                 <Text size={16} weight={300} color={colors.g600}>
-                    {comment.content}
+                    {comment.comment}
                 </Text>
                 <Spacer/>
                 <Column gap={4}>

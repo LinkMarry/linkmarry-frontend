@@ -19,11 +19,13 @@ import InvitationLetterTemplate, {
 
 interface Template1Props {
     wedding: Wedding;
+    onRefresh?: () => void;
 }
 
 function TemplateComponent(
     {
-        wedding
+        wedding,
+        onRefresh
     }: Template1Props
 ) {
     const {templateColor, templateFont, templateFontSize} = wedding.template;
@@ -103,6 +105,7 @@ function TemplateComponent(
                 baseInfo={wedding.baseInfo}
                 guestComments={wedding.guestCommentList}
                 guestComment={wedding.guestComment}
+                onRefresh={onRefresh ?? (() => {})}
             />
             <FooterTemplate background={templateColor}/>
         </S.container>

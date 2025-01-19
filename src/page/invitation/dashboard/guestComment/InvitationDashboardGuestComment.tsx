@@ -47,7 +47,7 @@ function InvitationDashboardGuestComment() {
                         <S.body.row>
                             <S.body.dateCell>2024.dummy..</S.body.dateCell>
                             <S.body.nameCell>{comment.name}</S.body.nameCell>
-                            <S.body.messageCell>{comment.content}</S.body.messageCell>
+                            <S.body.messageCell>{comment.comment}</S.body.messageCell>
                         </S.body.row>
                     )) : <div>...</div>}{/* TODO: Shimmer */}
                 </Column>
