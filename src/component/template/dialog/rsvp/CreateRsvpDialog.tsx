@@ -48,16 +48,16 @@ function CreateRsvpDialog(
             return;
         }
 
-        if (guestPhone.value === '' && rsvp.attendPhoneStatus) {
+        if (rsvp.attendPhoneStatus && guestPhone.value === '') {
             alert('연락처를 입력해 주세요');
             return;
         }
 
-        if (guestCnt.value === '' && rsvp.attendGuestCntStatus) {
+        if (rsvp.attendGuestCntStatus && guestCnt.value === '') {
             alert('동행 인원을 입력해 주세요');
             return;
         }
-
+        
         await weddingApi.createRsvp({
             url,
             guestType: guestType === 0 ? GuestType.GROOM : GuestType.BRIDE,
