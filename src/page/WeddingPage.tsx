@@ -44,7 +44,7 @@ function WeddingPage() {
     return (
         <Row $justifyContent={'center'}>
             {wedding && (
-                <TemplateComponent 
+                <TemplateComponent
                     wedding={wedding}
                     onRefresh={getWedding}
                 />

@@ -14,7 +14,7 @@ function OptionLabel(
 ) {
     return (
         <S.wrapper {...props}>
-            <Text type={'p4'}>{label}</Text>
+            <Text type={'p4'} style={{whiteSpace: 'nowrap'}}>{label}</Text>
         </S.wrapper>
     );
 }

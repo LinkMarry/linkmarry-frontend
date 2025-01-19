@@ -7,6 +7,7 @@ interface OptionTextFieldProps extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
     placeholder?: string;
     width?: number;
+    autoWidth?: boolean;
     leadingContent?: ReactNode;
 }
 
@@ -14,14 +15,16 @@ function OptionTextField(
     {
         fieldProps,
         placeholder,
-        width = 98,
+        width,
+        autoWidth = true,
         leadingContent,
         ...props
     }: OptionTextFieldProps,
     ref: ForwardedRef<HTMLInputElement>
 ) {
+    const adjustedWidth = autoWidth ? (width ?? 98) : width;
     return (
-        <S.container width={width} {...props}>
+        <S.container width={adjustedWidth} {...props}>
             {leadingContent}
             <S.textField ref={ref} {...fieldProps} placeholder={placeholder}/>
         </S.container>
@@ -29,9 +32,9 @@ function OptionTextField(
 }
 
 const S = {
-    container: styled.div<{ width: number }>`
+    container: styled.div<{ width?: number }>`
         display: flex;
-        ${({width}) => css`
+        ${({width}) => width && css`
             width: ${width}px;
         `};
         height: 44px;

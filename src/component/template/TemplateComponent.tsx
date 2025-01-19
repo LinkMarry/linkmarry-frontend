@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import * as S from '@src/component/template/TemplateComponent.style';
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
@@ -16,24 +16,34 @@ import {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 import InvitationLetterTemplate, {
     InvitationLetterStyle
 } from "@src/component/template/component/InvitationLetterTemplate";
+import RsvpDialog from "@src/component/template/dialog/rsvp/RsvpDialog";
+import Cookies from "js-cookie";
+import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
 
 interface Template1Props {
     wedding: Wedding;
+    isPreview?: boolean;
     onRefresh?: () => void;
 }
 
 function TemplateComponent(
     {
         wedding,
+        isPreview = false,
         onRefresh
     }: Template1Props
 ) {
+    const [showRsvpDialog, setShowRsvpDialog] = useState(
+        isPreview ? false : Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
+    );
+    const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
     const {templateColor, templateFont, templateFontSize} = wedding.template;
     const rootRef = useRef<HTMLDivElement>(null);
 
     (() => {
         const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
         increaseFontSize(rootRef, addFontSize);
+        Cookies.remove('hide_RsvpDialog')
     })();
 
     const slideStyle: Record<TemplateName, GallerySlideStyle | undefined> = {
@@ -53,7 +63,7 @@ function TemplateComponent(
         템플릿5: 'style2',
         템플릿6: 'style1',
     }
-    
+
     const invitationLetterStyle: Record<TemplateName, InvitationLetterStyle> = {
         템플릿1: 'style1',
         템플릿2: 'style1',
@@ -105,9 +115,31 @@ function TemplateComponent(
                 baseInfo={wedding.baseInfo}
                 guestComments={wedding.guestCommentList}
                 guestComment={wedding.guestComment}
-                onRefresh={onRefresh ?? (() => {})}
+                onRefresh={onRefresh ?? (() => {
+                })}
             />
             <FooterTemplate background={templateColor}/>
+            {showRsvpDialog && (
+                <RsvpDialog
+                    url={wedding.url}
+                    baseInfo={wedding.baseInfo}
+                    weddingSchedule={wedding.weddingSchedule}
+                    weddingPlace={wedding.weddingPlace}
+                    rsvp={wedding.rsvp}
+                    onConfirm={() => {
+                        setShowRsvpDialog(false);
+                        setShowCreateRsvpDialog(true);
+                    }}
+                    dismiss={() => setShowRsvpDialog(false)}
+                />
+            )}
+            {showCreateRsvpDialog && (
+                <CreateRsvpDialog
+                    url={wedding.url}
+                    rsvp={wedding.rsvp}
+                    dismiss={() => setShowCreateRsvpDialog(false)}
+                />
+            )}
         </S.container>
     );
 }

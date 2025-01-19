@@ -65,7 +65,7 @@ function App() {
                 <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                 <Route path={'sample'} element={(
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <TemplateComponent wedding={dummyWedding}/>
+                        <TemplateComponent wedding={dummyWedding} isPreview={true}/>
                     </div>
                 )}/>
             </Routes>

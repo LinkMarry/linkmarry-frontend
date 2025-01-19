@@ -490,7 +490,7 @@ function InvitationDesign() {
             <S.preview>
                 <S.previewScrollableContent>
                     <S.previewContent>
-                        <TemplateComponent wedding={wedding}/>
+                        <TemplateComponent wedding={wedding} isPreview={true}/>
                     </S.previewContent>
                 </S.previewScrollableContent>
             </S.preview>

@@ -12,9 +12,9 @@ import {trimString} from "@util/string.util";
 import Button from "@designsystem/component/button";
 import BaseInfo from "@remote/value/BaseInfo";
 import GuestComment from "@remote/value/GuestComment";
-import RemoveGuestCommentDialog from "@src/component/template/dialog/RemoveGuestCommentDialog";
-import GuestCommentsDetailDialog from "@src/component/template/dialog/GuestCommentsDetailDialog";
-import CreateGuestCommentDialog from "@src/component/template/dialog/CreateGuestCommentDialog";
+import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcomment/RemoveGuestCommentDialog";
+import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
+import CreateGuestCommentDialog from "@src/component/template/dialog/guestcomment/CreateGuestCommentDialog";
 
 interface GuestCommentsTemplateProps {
     templateColor: string;
