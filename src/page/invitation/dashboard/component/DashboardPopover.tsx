@@ -50,7 +50,7 @@ function DashboardPopover(
                     <Icon type={IconType.Book} size={16}/>
                     <Text type={'caption1'}>방명록 확인</Text>
                 </S.item>
-                <S.item onClick={() => onClick('remove')} style={{background: colors.g100}}>
+                <S.item onClick={() => onClick('remove')}>
                     <Icon type={IconType.Trash} size={16}/>
                     <Text type={'caption1'}>삭제</Text>
                 </S.item>
@@ -87,6 +87,10 @@ const S = {
         padding: 6px 16px;
         gap: 8px;
         cursor: pointer;
+        &:hover {
+            background: ${colors.g100};
+        }
+        transition: 0.1s background ease-out;
     `
 }
 

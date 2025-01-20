@@ -272,7 +272,8 @@ function InvitationStatisticsDetail() {
                                                 <S.rsvp.cell
                                                     width={200}>{wedding.rsvp.attendPhoneStatus ? (rsvp.guestPhone ?? '-') : '-'}</S.rsvp.cell>
                                             </S.rsvp.bodyRow>
-                                        ))}
+                                        ))
+                                    }
                                 </Column>
                             </Column>
                         </Column>
