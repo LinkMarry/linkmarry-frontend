@@ -27,9 +27,6 @@ function KakaoMapDialog(
 
         const ps = new kakao.maps.services.Places();
         ps.keywordSearch(searchField.value, (data: any, status: any, pagination: any) => {
-            console.log(data);
-            console.log(status);
-            console.log(pagination);
 
             if (status === kakao.maps.services.Status.OK) {
 
@@ -88,7 +85,6 @@ function KakaoMapDialog(
     <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>경도:</strong> ${latLng.getLng().toFixed(6)}</p>
     <a href="https://map.kakao.com/link/to/${address},${latLng.getLat()},${latLng.getLng()}" target="_blank" style="display: inline-block; margin-top: 10px; padding: 5px 10px; background: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">길찾기</a>
 </div>`;
-            console.log(selectedPlaceOverlay)
             if (selectedPlaceOverlay) {
                 selectedPlaceOverlay.setContent(content);
                 selectedPlaceOverlay.setPosition(latLng);

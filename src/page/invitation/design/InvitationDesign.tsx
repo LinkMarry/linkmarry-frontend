@@ -108,14 +108,39 @@ function InvitationDesign() {
         (async () => {
             try {
                 const {data} = await weddingApi.getWedding(url);
-                setWedding(data);
                 setMode('edit');
+                loadTemp(data);
             } catch (error) {
                 console.error(error);
                 setMode('create');
             }
         })();
     }, []);
+
+    const loadTemp = (alt: WeddingDto) => {
+        const temp = localStorage.getItem(`temp_Design_${url}`);
+        localStorage.removeItem(`temp_Design_${url}`);
+        if (temp === null) {
+            setWedding(alt);
+            return;
+        }
+
+        const isLoad = window.confirm('임시 저장된 디자인이 있습니다. 불러오시겠습니까?');
+        if (!isLoad) {
+            setWedding(alt);
+            return;
+        }
+
+        const wedding: WeddingDto = JSON.parse(temp);
+        console.log(wedding);
+        setWedding(wedding);
+    }
+
+    const onChangeWedding = (wedding: WeddingDto) => {
+        console.log(`야호 ${JSON.stringify(wedding, undefined, 2)}`)
+        localStorage.setItem(`temp_Design_${url}`, JSON.stringify(wedding));
+        setWedding(wedding);
+    }
 
     const saveDesign = async () => {
         // TODO: Validation
@@ -159,19 +184,19 @@ function InvitationDesign() {
                                                 case OptionType.Template:
                                                     children = <TemplateOption
                                                         template={wedding.template}
-                                                        onChange={template => setWedding({...wedding, template})}
+                                                        onChange={template => onChangeWedding({...wedding, template})}
                                                     />;
                                                     break;
                                                 case OptionType.BaseInfo:
                                                     children = <BaseInfoOption
                                                         baseInfo={wedding.baseInfo}
-                                                        onChange={baseInfo => setWedding({...wedding, baseInfo})}
+                                                        onChange={baseInfo => onChangeWedding({...wedding, baseInfo})}
                                                     />;
                                                     break;
                                                 case OptionType.WeddingSchedule:
                                                     children = <WeddingScheduleOption
                                                         weddingSchedule={wedding.weddingSchedule}
-                                                        onChange={weddingSchedule => setWedding({
+                                                        onChange={weddingSchedule => onChangeWedding({
                                                             ...wedding,
                                                             weddingSchedule
                                                         })}
@@ -180,7 +205,7 @@ function InvitationDesign() {
                                                 case OptionType.WeddingLocation:
                                                     children = <WeddingPlaceOption
                                                         weddingPlace={wedding.weddingPlace}
-                                                        onChange={weddingPlace => setWedding({
+                                                        onChange={weddingPlace => onChangeWedding({
                                                             ...wedding,
                                                             weddingPlace
                                                         })}
@@ -189,13 +214,13 @@ function InvitationDesign() {
                                                 case OptionType.Greeting:
                                                     children = <GreetingOption
                                                         greeting={wedding.greeting}
-                                                        onChange={greeting => setWedding({...wedding, greeting})}
+                                                        onChange={greeting => onChangeWedding({...wedding, greeting})}
                                                     />;
                                                     break;
                                                 case OptionType.GuestComment:
                                                     children = <GuestCommentOption
                                                         guestComment={wedding.guestComment}
-                                                        onChange={guestComment => setWedding({
+                                                        onChange={guestComment => onChangeWedding({
                                                             ...wedding,
                                                             guestComment
                                                         })}
@@ -204,48 +229,51 @@ function InvitationDesign() {
                                                 case OptionType.BaseMusic:
                                                     children = <BaseMusicOption
                                                         baseMusic={wedding.baseMusic}
-                                                        onChange={baseMusic => setWedding({...wedding, baseMusic})}
+                                                        onChange={baseMusic => onChangeWedding({...wedding, baseMusic})}
                                                     />;
                                                     break;
                                                 case OptionType.LinkShare:
                                                     children = <LinkShareOption
                                                         linkShare={wedding.linkShare}
-                                                        onChange={linkShare => setWedding({...wedding, linkShare})}
+                                                        onChange={linkShare => onChangeWedding({...wedding, linkShare})}
                                                     />;
                                                     break;
                                                 case OptionType.MoneyInfo:
                                                     children = <MoneyInfoOption
                                                         moneyInfo={wedding.moneyInfo}
-                                                        onChange={moneyInfo => setWedding({...wedding, moneyInfo})}
+                                                        onChange={moneyInfo => onChangeWedding({...wedding, moneyInfo})}
                                                     />;
                                                     break;
                                                 case OptionType.Video:
                                                     children = <VideoOption
                                                         video={wedding.video}
-                                                        onChange={video => setWedding({...wedding, video})}
+                                                        onChange={video => onChangeWedding({...wedding, video})}
                                                     />;
                                                     break;
                                                 case OptionType.Phone:
                                                     children = <PhoneOption
                                                         phone={wedding.phone}
-                                                        onChange={phone => setWedding({...wedding, phone})}
+                                                        onChange={phone => onChangeWedding({...wedding, phone})}
                                                     />;
                                                     break;
                                                 case OptionType.Rsvp:
                                                     children = <RsvpOption
                                                         rsvp={wedding.rsvp}
-                                                        onChange={rsvp => setWedding({...wedding, rsvp})}
+                                                        onChange={rsvp => onChangeWedding({...wedding, rsvp})}
                                                     />;
                                                     break;
                                                 case OptionType.Gallery:
                                                     children = <GalleryOption
                                                         imgList={wedding.imgList}
                                                         imgDesign={wedding.imgDesign}
-                                                        onChangeImgDesign={imgDesign => setWedding({
+                                                        onChangeImgDesign={imgDesign => onChangeWedding({
                                                             ...wedding,
                                                             imgDesign
                                                         })}
-                                                        onChangeImgList={imgList => setWedding({...wedding, imgList})}
+                                                        onChangeImgList={imgList => onChangeWedding({
+                                                            ...wedding,
+                                                            imgList
+                                                        })}
                                                     />
                                                     break;
                                             }

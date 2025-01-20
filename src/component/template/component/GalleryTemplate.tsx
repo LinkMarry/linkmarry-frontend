@@ -72,8 +72,8 @@ function GallerySlide(
             - (slideStyle === 'style1' ? (34 * 2) : 0) 
             + (slideStyle === 'style1' ? 8 : 0); // 이미지 너비 - 간격
         const index = Math.floor(scrollPosition / imageWidth);
-        console.log(`${scrollPosition}, ${imageWidth}`);
-        console.log(index);
+        // console.log(`${scrollPosition}, ${imageWidth}`);
+        // console.log(index);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
     };
 

@@ -22,8 +22,6 @@ function NotificationPage() {
             } catch (error) {
             }
         })();
-        console.log(Cookies.get('accessToken'))
-        console.log(Cookies.get('refreshToken'))
     }, []);
 
     return (
