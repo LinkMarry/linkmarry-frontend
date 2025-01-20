@@ -57,16 +57,21 @@ function CreateRsvpDialog(
             alert('동행 인원을 입력해 주세요');
             return;
         }
-        
+
+        if (rsvp.attendEtcStatus && guestComment.value === '') {
+            alert('추가로 전달할 내용을 입력해 주세요');
+            return;
+        }
+
         await weddingApi.createRsvp({
             url,
             guestType: guestType === 0 ? GuestType.GROOM : GuestType.BRIDE,
             isAttend: isAttend === 0,
             isMeal: isMeal === 0,
-            guestName: guestName.value,
-            guestPhone: guestPhone.value,
-            guestCnt: Number(guestCnt.value),
-            guestComment: guestComment.value,
+            guestName: guestName?.value ?? '',
+            guestPhone: guestPhone?.value ?? '',
+            guestCnt: Number(guestCnt?.value) ?? '',
+            guestComment: guestComment?.value ?? '',
         });
         dismiss();
     };
@@ -94,17 +99,23 @@ function CreateRsvpDialog(
                     <Column gap={28} $alignItems={'stretch'}>
                         <Column gap={4} $alignItems={'stretch'}>
                             <Text type={'p5'}>어느 분의 하객인가요?</Text>
-                            <OptionSegmentedButton selectedIndex={guestType} items={['신랑', '신부']}
-                                                   onClickItem={index => {
-                                                       setGuestType(index);
-                                                   }}/>
+                            <OptionSegmentedButton
+                                selectedIndex={guestType}
+                                items={['신랑', '신부']}
+                                onClickItem={index => {
+                                    setGuestType(index);
+                                }}
+                            />
                         </Column>
                         <Column gap={4} $alignItems={'stretch'}>
                             <Text type={'p5'}>참석 여부를 선택해 주세요.</Text>
-                            <OptionSegmentedButton selectedIndex={isAttend} items={['참석할게요', '참석이 어려워요']}
-                                                   onClickItem={index => {
-                                                       setIsAttend(index);
-                                                   }}/>
+                            <OptionSegmentedButton
+                                selectedIndex={isAttend}
+                                items={['참석할게요', '참석이 어려워요']}
+                                onClickItem={index => {
+                                    setIsAttend(index);
+                                }}
+                            />
                         </Column>
                         {rsvp.attendMealStatus && (
                             <Column gap={4} $alignItems={'stretch'}>
