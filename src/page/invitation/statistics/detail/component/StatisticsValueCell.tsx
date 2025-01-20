@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
 import Text from "@designsystem/component/text";
 import colors from "@designsystem/foundation/colors";
 
-interface StatisticsValueCellProps {
+interface StatisticsValueCellProps extends HTMLAttributes<HTMLDivElement> {
     label: string;
     value: number;
     filtered: boolean;
@@ -13,11 +13,12 @@ function StatisticsValueCell(
     {
         label,
         value,
-        filtered
+        filtered,
+        ...props
     }: StatisticsValueCellProps
 ) {
     return (
-        <S.container style={{background: filtered ? colors.g100 : colors.white}}>
+        <S.container filtered={filtered} {...props}>
             <Text type={'p5'}>{label}</Text>
             <Text type={'h2'}>{value}</Text>
         </S.container>
@@ -25,7 +26,8 @@ function StatisticsValueCell(
 }
 
 const S = {
-    container: styled.div`
+    container: styled.div<{ filtered: boolean; }>`
+        background: ${({filtered}) => filtered ? colors.g100 : colors.white};
         display: flex;
         width: 281px;
         flex-direction: column;
