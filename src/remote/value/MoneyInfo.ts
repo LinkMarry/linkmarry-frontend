@@ -140,3 +140,65 @@ export const dummyMoneyInfo: MoneyInfo = {
     infoTitle: "돈주세영",
     kakaoStatus: true
 }
+
+type MoneyInfoByBrideMarkFirst = {
+    bankName: string;
+    bankNumber: string;
+    fatherBankName: string;
+    fatherBankNumber: string;
+    fatherKakaoUrl?: string;
+    fatherNameMoneyInfo: string;
+    kakaoUrl?: string;
+    motherBankName: string;
+    motherBankNumber: string;
+    motherKakaoUrl?: string;
+    motherNameMoneyInfo: string;
+    nameMoneyInfo: string;
+}
+
+export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirst: boolean): {
+    first: MoneyInfoByBrideMarkFirst;
+    second: MoneyInfoByBrideMarkFirst;
+} {
+    const groomMoneyInfo: MoneyInfoByBrideMarkFirst = {
+        bankName: moneyInfo.groomBankName,
+        bankNumber: moneyInfo.groomBankNumber,
+        fatherBankName: moneyInfo.groomFatherBankName,
+        fatherBankNumber: moneyInfo.groomFatherBankNumber,
+        fatherKakaoUrl: moneyInfo.groomFatherKakaoUrl,
+        fatherNameMoneyInfo: moneyInfo.groomFatherNameMoneyInfo,
+        kakaoUrl: moneyInfo.groomKakaoUrl,
+        motherBankName: moneyInfo.groomMotherBankName,
+        motherBankNumber: moneyInfo.groomMotherBankNumber,
+        motherKakaoUrl: moneyInfo.groomMotherKakaoUrl,
+        motherNameMoneyInfo: moneyInfo.groomMotherNameMoneyInfo,
+        nameMoneyInfo: moneyInfo.groomNameMoneyInfo,
+    }
+    
+    const brideMoneyInfo: MoneyInfoByBrideMarkFirst = {
+        bankName: moneyInfo.brideBankName,
+        bankNumber: moneyInfo.brideBankNumber,
+        fatherBankName: moneyInfo.brideFatherBankName,
+        fatherBankNumber: moneyInfo.brideFatherBankNumber,
+        fatherKakaoUrl: moneyInfo.brideFatherKakaoUrl,
+        fatherNameMoneyInfo: moneyInfo.brideFatherNameMoneyInfo,
+        kakaoUrl: moneyInfo.brideKakaoUrl,
+        motherBankName: moneyInfo.brideMotherBankName,
+        motherBankNumber: moneyInfo.brideMotherBankNumber,
+        motherKakaoUrl: moneyInfo.brideMotherKakaoUrl,
+        motherNameMoneyInfo: moneyInfo.brideMotherNameMoneyInfo,
+        nameMoneyInfo: moneyInfo.brideNameMoneyInfo,
+    }
+    
+    if (brideMarkFirst) {
+        return {
+            first: brideMoneyInfo,
+            second: groomMoneyInfo
+        }
+    } else {
+        return {
+            first: groomMoneyInfo,
+            second: brideMoneyInfo
+        }
+    }
+}

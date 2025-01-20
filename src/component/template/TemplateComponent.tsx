@@ -108,7 +108,7 @@ function TemplateComponent(
                 weddingPlace={wedding.weddingPlace}
             />
             <VideoTemplate video={wedding.video}/>
-            <MoneyInfoTemplate moneyInfo={wedding.moneyInfo}/>
+            <MoneyInfoTemplate baseInfo={wedding.baseInfo} moneyInfo={wedding.moneyInfo}/>
             <GuestCommentsTemplate
                 templateColor={templateColor}
                 url={wedding.url}

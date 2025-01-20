@@ -6,7 +6,7 @@ import colors from "@designsystem/foundation/colors";
 import styled from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import Template from "@remote/value/Template";
 import Spacer from "@designsystem/component/spacer";
 import {format, parse} from "date-fns";
@@ -32,6 +32,7 @@ function PreviewTemplate(
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
     const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
     const isValidDate = !isNaN(date.getTime());
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     switch (template.templateName) {
         case '템플릿1':
@@ -47,9 +48,9 @@ function PreviewTemplate(
                     <Column gap={44} $alignItems={'center'}>
                         <S1.Img src={imgList[0] ?? '/EmptyImage.png'}/>
                         <Row gap={8} $alignItems={'center'}>
-                            <Text size={16} weight={300}>신랑 {baseInfo.groomName}</Text>
+                            <Text size={16} weight={300}>{first.korean} {first.name}</Text>
                             <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
-                            <Text size={16} weight={300}>신부 {baseInfo.brideName}</Text>
+                            <Text size={16} weight={300}>{second.korean} {second.name}</Text>
                         </Row>
                     </Column>
                 </S1.Root>
@@ -63,9 +64,9 @@ function PreviewTemplate(
                     </Column>
                     <S2.Img src={imgList[0] ?? '/EmptyImage.png'}/>
                     <Row gap={12} $alignItems={'center'} $justifyContent={'center'} padding={'72px 0'}>
-                        <Text size={20} weight={300}>{baseInfo.groomName}</Text>
+                        <Text size={20} weight={300}>{first.name}</Text>
                         <Text size={20} weight={300}>&</Text>
-                        <Text size={20} weight={300}>{baseInfo.brideName}</Text>
+                        <Text size={20} weight={300}>{second.name}</Text>
                     </Row>
                 </Column>
             );
@@ -79,9 +80,9 @@ function PreviewTemplate(
                         </Text>
                         <Spacer/>
                         <Row>
-                            <Text size={16} weight={100} color={colors.white}>신랑 {baseInfo.groomName}</Text>
+                            <Text size={16} weight={100} color={colors.white}>{first.korean} {first.name}</Text>
                             <Spacer/>
-                            <Text size={16} weight={100} color={colors.white}>신부 {baseInfo.brideName}</Text>
+                            <Text size={16} weight={100} color={colors.white}>{second.korean} {second.name}</Text>
                         </Row>
                     </Column>
                     <S3.Img src={imgList[0] ?? '/EmptyImage.png'}/>
@@ -91,7 +92,7 @@ function PreviewTemplate(
             return (
                 <Column $alignItems={'stretch'} background={colors.white}>
                     <Column gap={16} $alignItems={'center'} padding={'52px 0'}>
-                        <Text size={24} weight={100}>{baseInfo.groomName} & {baseInfo.brideName}</Text>
+                        <Text size={24} weight={100}>{first.name} & {second.name}</Text>
                         <Column gap={4} $alignItems={'center'}>
                             <Text size={14}
                                   weight={300}>{isValidDate && format(date, 'yyyy.MM.dd a h시', {locale: ko})}</Text>
@@ -109,9 +110,9 @@ function PreviewTemplate(
                 <Column $alignItems={'stretch'} background={colors.white}>
                     <S5.Img src={imgList[0] ?? '/EmptyImage.png'}/>
                     <Row $alignItems={'center'} gap={20} $justifyContent={'center'} padding={'0 0 48px 0'}>
-                        <Text size={24} weight={300}>{baseInfo.groomName}</Text>
+                        <Text size={24} weight={300}>{first.name}</Text>
                         <Text size={16} weight={300} color={colors.g300}>and</Text>
-                        <Text size={24} weight={300}>{baseInfo.brideName}</Text>
+                        <Text size={24} weight={300}>{second.name}</Text>
                     </Row>
                 </Column>
             );
@@ -121,9 +122,9 @@ function PreviewTemplate(
                     <Column gap={12} $alignItems={'center'} margin={'40px 0'}>
                         <Text size={40} weight={100}>{isValidDate && format(date, 'MM / dd')}</Text>
                         <Row gap={24} $alignItems={'center'}>
-                            <Text size={20} weight={300} color={colors.g600}>{baseInfo.groomName}</Text>
+                            <Text size={20} weight={300} color={colors.g600}>{first.name}</Text>
                             <Text size={20} weight={300} color={colors.g600}>그리고</Text>
-                            <Text size={20} weight={300} color={colors.g600}>{baseInfo.brideName}</Text>
+                            <Text size={20} weight={300} color={colors.g600}>{second.name}</Text>
                         </Row>
                     </Column>
                     <S6.Img src={imgList[0] ?? '/EmptyImage.png'}/>

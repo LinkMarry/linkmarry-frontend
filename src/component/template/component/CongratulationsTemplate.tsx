@@ -5,7 +5,7 @@ import colors from "@designsystem/foundation/colors";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import Button from "@designsystem/component/button";
 import styled from "styled-components";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 import Phone from "@remote/value/Phone";
 
@@ -23,37 +23,56 @@ function CongratulationsTemplate(
     }: CongratulationsProps
 ) {
     const [showContactingCongratulationDialog, setShowContactingCongratulationDialog] = useState(false);
-    
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+
     return (
         <S.root background={templateColor}>
             <Column gap={96} $alignItems={'stretch'}>
                 <Column gap={40} $alignItems={'center'}>
                     <Column gap={8} $alignItems={'center'}>
                         <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
-                            {baseInfo.groomFatherName}·{baseInfo.groomMotherName}의 {baseInfo.groomFamilyName}
+                            <Row $alignItems={'center'} gap={4}>
+                                {first.fatherStatus && (
+                                    <img src={'/Flower.svg'} alt=""/>
+                                )}
+                                {first.fatherName}·
+                                {first.motherStatus && (
+                                    <img src={'/Flower.svg'} alt=""/>
+                                )}
+                                {first.motherName}의 {first.familyName}
+                            </Row>
                         </Text>
                         <Row gap={8} $alignItems={'center'}>
                             <Text font={'GangwonEduAll'} weight={100} size={24}
                                   color={colors.g600}>
-                                신랑&nbsp;
+                                {first.korean}&nbsp;
                             </Text>
                             <Text font={'GangwonEduAll'} weight={100} size={24}>
-                                {baseInfo.groomName}
+                                {first.name}
                             </Text>
                         </Row>
                     </Column>
                     <HorizontalDivider color={colors.g200}/>
                     <Column gap={8} $alignItems={'center'}>
                         <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
-                            {baseInfo.brideFatherName}·{baseInfo.brideMotherName}의 {baseInfo.brideFamilyName}
+                            <Row $alignItems={'center'} gap={4}>
+                                {second.fatherStatus && (
+                                    <img src={'/Flower.svg'} alt=""/>
+                                )}
+                                {second.fatherName}·
+                                {second.motherStatus && (
+                                    <img src={'/Flower.svg'} alt=""/>
+                                )}
+                                {second.motherName}의 {second.familyName}
+                            </Row>
                         </Text>
                         <Row gap={8} $alignItems={'center'}>
                             <Text font={'GangwonEduAll'} weight={100} size={24}
                                   color={colors.g600}>
-                                신부&nbsp;
+                                {second.korean}&nbsp;
                             </Text>
                             <Text font={'GangwonEduAll'} weight={100} size={24}>
-                                {baseInfo.brideName}
+                                {second.name}
                             </Text>
                         </Row>
                     </Column>

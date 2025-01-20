@@ -75,3 +75,50 @@ export const dummyBaseInfo: BaseInfo = {
     statusFlower: true,
     brideMarkFirst: false,
 }
+
+type InfoByBrideMarkFirst = {
+    name: string;
+    fatherName: string;
+    fatherStatus: boolean;
+    motherName: string;
+    motherStatus: boolean;
+    familyName: string;
+    korean: string;
+}
+
+export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
+    first: InfoByBrideMarkFirst;
+    second: InfoByBrideMarkFirst;
+} {
+    const groomInfo: InfoByBrideMarkFirst = {
+        name: baseInfo.groomName,
+        fatherName: baseInfo.groomFatherName,
+        fatherStatus: baseInfo.groomFatherStatus,
+        motherName: baseInfo.groomMotherName,
+        motherStatus: baseInfo.groomMotherStatus,
+        familyName: baseInfo.groomFamilyName,
+        korean: '신랑'
+    };
+
+    const brideInfo: InfoByBrideMarkFirst = {
+        name: baseInfo.brideName,
+        fatherName: baseInfo.brideFatherName,
+        fatherStatus: baseInfo.brideFatherStatus,
+        motherName: baseInfo.brideMotherName,
+        motherStatus: baseInfo.brideMotherStatus,
+        familyName: baseInfo.brideFamilyName,
+        korean: '신부'
+    };
+    
+    if (baseInfo.brideMarkFirst) {
+        return {
+            first: brideInfo,
+            second: groomInfo,
+        }
+    } else {
+        return {
+            first: groomInfo,
+            second: brideInfo
+        }
+    }
+}

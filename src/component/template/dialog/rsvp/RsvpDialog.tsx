@@ -5,7 +5,7 @@ import colors from "@designsystem/foundation/colors";
 import {Column} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import Text from "@designsystem/component/text";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import {format, parse} from "date-fns";
@@ -38,6 +38,7 @@ function RsvpDialog(
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
     const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
     const isValidDate = !isNaN(date.getTime());
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
         <BaseDialog dismiss={dismiss}>
@@ -50,7 +51,7 @@ function RsvpDialog(
                     <HorizontalDivider/>
                     <Text type={'caption1'}>
                         <Column $alignItems={'center'}>
-                            <span>신랑 {baseInfo.groomName} & 신부 {baseInfo.brideName}</span>
+                            <span>{first.korean} {first.name} & {second.korean} {second.name}</span>
                             {isValidDate && (
                                 <span>{format(date, 'yyyy년 M월 d일 EEEE a h시', {locale: ko})}</span>
                             )}

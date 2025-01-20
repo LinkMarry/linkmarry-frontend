@@ -10,7 +10,7 @@ import Design from "@remote/enumeration/Design";
 import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";
 import Button from "@designsystem/component/button";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import GuestComment from "@remote/value/GuestComment";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcomment/RemoveGuestCommentDialog";
 import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
@@ -39,6 +39,8 @@ function GuestCommentsTemplate(
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
     const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
+    
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
         <S.root background={templateColor}>
@@ -46,7 +48,7 @@ function GuestCommentsTemplate(
                 <Column gap={12} $alignItems={'center'}>
                     <Text size={20} weight={300} color={colors.g600}>방명록</Text>
                     <Text size={16} weight={300} color={colors.g600}>
-                        {baseInfo.groomName}, {baseInfo.brideName}에게 하고 싶은 말을 남겨주세요
+                        {first.name}, {second.name}에게 하고 싶은 말을 남겨주세요
                     </Text>
                 </Column>
                 <Column gap={12} $alignItems={'stretch'}>

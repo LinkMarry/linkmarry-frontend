@@ -4,7 +4,7 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import colors from "@designsystem/foundation/colors";
 import Text from "@designsystem/component/text";
 import Greeting from "@remote/value/Greeting";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 export type InvitationLetterStyle = 'style1' | 'style2' | 'style3';
 
@@ -21,6 +21,8 @@ function InvitationLetterTemplate(
         invitationLetterStyle
     }: InvitationLetterTemplateProps
 ) {
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+    
     return (
         <Column gap={40} padding={'72px 60px'} background={colors.white} $alignItems={'center'}>
             {invitationLetterStyle === 'style1' ? (
@@ -36,7 +38,7 @@ function InvitationLetterTemplate(
             <HorizontalDivider style={{width: 140}}/>
             <Text weight={300} size={14} color={colors.g600}>
                 <Row $alignItems={'center'} gap={8}>
-                    <span>신랑 {baseInfo.groomName}</span><span>•</span><span>신부 {baseInfo.brideName}</span>
+                    <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
                 </Row>
             </Text>
         </Column>

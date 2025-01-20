@@ -5,7 +5,7 @@ import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import styled from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 export type DDayStyle = 'style1' | 'style2';
 type RemainTime = {
@@ -67,6 +67,8 @@ function DDay(
         };
     }, [weddingDate]);
 
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+
     return (
         <Column gap={24} $alignItems={'center'}>
             <RemainTimeComponent
@@ -74,13 +76,13 @@ function DDay(
                 remainingTime={remainingTime}
             />
             <Row gap={4}>
-                <Text size={14} weight={300}>{baseInfo.groomName}</Text>
+                <Text size={14} weight={300}>{first.name}</Text>
                 <Icon
                     type={IconType.HeartFill}
                     size={16}
                     color={colors.black}
                 />
-                <Text size={14} weight={300}>{baseInfo.brideName}의 결혼식이</Text>
+                <Text size={14} weight={300}>{second.name}의 결혼식이</Text>
                 <Text size={14} weight={300}
                       color={colors.p800}>{remainingTime.days}</Text>
                 <Text size={14} weight={300}>일 남았습니다.</Text>

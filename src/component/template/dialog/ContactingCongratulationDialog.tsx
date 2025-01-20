@@ -6,7 +6,7 @@ import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import makeText from "@designsystem/foundation/text/textType";
 import Phone from "@remote/value/Phone";
-import BaseInfo from "@remote/value/BaseInfo";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import Spacer from "@designsystem/component/spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 
@@ -14,6 +14,12 @@ interface ContactTemplateDialogProps {
     baseInfo: BaseInfo;
     phone: Phone;
     dismiss: () => void;
+}
+
+interface Tel {
+    name: string;
+    familyName: string;
+    tel: string;
 }
 
 function ContactingCongratulationDialog(
@@ -24,12 +30,10 @@ function ContactingCongratulationDialog(
     }: ContactTemplateDialogProps
 ) {
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const tels: {
-        name: string,
-        familyName: string,
-        tel: string;
-    }[] = selectedIndex === 0
-        ? [
+    
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+    const tels = ((): Tel[] => {
+        const groomTels: Tel[] = [
             {
                 name: baseInfo.groomName,
                 familyName: '신랑',
@@ -45,8 +49,9 @@ function ContactingCongratulationDialog(
                 familyName: '어머니',
                 tel: phone.groomMotherTel
             }
-        ]
-        : [
+        ];
+
+        const brideTels: Tel[] = [
             {
                 name: baseInfo.brideName,
                 familyName: '신부',
@@ -64,6 +69,11 @@ function ContactingCongratulationDialog(
             }
         ];
 
+        const firstTels = baseInfo.brideMarkFirst ? brideTels : groomTels;
+        const secondTels = baseInfo.brideMarkFirst ? groomTels : brideTels
+        return selectedIndex === 0 ? firstTels : secondTels;
+    })();
+
     return (
         <BaseDialog dismiss={dismiss}>
             <S.container>
@@ -72,8 +82,8 @@ function ContactingCongratulationDialog(
                     <Text type={'caption1'} color={colors.g400}>축하의 마음을 전하세요</Text>
                 </Column>
                 <Row $alignItems={'stretch'}>
-                    <S.selector selected={selectedIndex === 0} onClick={() => setSelectedIndex(0)}>신랑측</S.selector>
-                    <S.selector selected={selectedIndex === 1} onClick={() => setSelectedIndex(1)}>신부측</S.selector>
+                    <S.selector selected={selectedIndex === 0} onClick={() => setSelectedIndex(0)}>{first.korean}측</S.selector>
+                    <S.selector selected={selectedIndex === 1} onClick={() => setSelectedIndex(1)}>{second.korean}측</S.selector>
                 </Row>
                 <Column gap={16} $alignItems={'stretch'}>
                     {tels.map(tel => (

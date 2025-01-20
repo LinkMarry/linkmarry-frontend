@@ -1,18 +1,21 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import MoneyInfo from "@remote/value/MoneyInfo";
+import MoneyInfo, {getMoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
 import colors from "@designsystem/foundation/colors";
 import Spacer from "@designsystem/component/spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
+import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 interface MoneyInfoTemplateProps {
+    baseInfo: BaseInfo;
     moneyInfo: MoneyInfo;
 }
 
 function MoneyInfoTemplate(
     {
+        baseInfo,
         moneyInfo
     }: MoneyInfoTemplateProps
 ) {
@@ -20,47 +23,55 @@ function MoneyInfoTemplate(
         <S.root>
             <Column gap={40} $alignItems={'center'}>
                 <Text size={20} weight={300} color={colors.g600}>마음 전하실 곳</Text>
-                <MoneyInfoComponent moneyInfo={moneyInfo}/>
+                <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
             </Column>
         </S.root>
     );
 }
 
 interface MoneyInfoProps {
+    baseInfo: BaseInfo;
     moneyInfo: MoneyInfo;
 }
 
 function MoneyInfoComponent(
     {
+        baseInfo,
         moneyInfo
     }: MoneyInfoProps
 ) {
     const [clickedGroom, setClickedGroom] = useState(false);
     const [clickedBride, setClickedBride] = useState(false);
 
+    const {first: firstBaseInfo, second: secondBaseInfo} = getBaseInfoByBrideMarkFirst(baseInfo);
+    const {
+        first: firstMoneyInfo,
+        second: secondMoneyInfo
+    } = getMoneyInfoByBrideMarkFirst(moneyInfo, baseInfo.brideMarkFirst);
+
     return (
         <S.container>
             <div>
                 <div onClick={() => setClickedGroom(i => !i)}>
-                    <Text type={'p4'} color={colors.g600} weight={'bold'}>신랑측</Text>
+                    <Text type={'p4'} color={colors.g600} weight={'bold'}>{firstBaseInfo.korean}측</Text>
                     <Spacer/>
                     <Icon type={IconType.ExpandArrow} tint={colors.g600}
                           style={{rotate: clickedGroom ? '90deg' : '-90deg'}}/>
                 </div>
                 {clickedGroom && (
                     <>
-                        <MoneyCell name={moneyInfo.groomNameMoneyInfo} bankName={moneyInfo.groomBankName}
-                                   bankNumber={moneyInfo.groomBankNumber} isGroom={true}/>
-                        <MoneyCell name={moneyInfo.groomFatherNameMoneyInfo} bankName={moneyInfo.groomFatherBankName}
-                                   bankNumber={moneyInfo.groomFatherBankNumber} isGroom={true}/>
-                        <MoneyCell name={moneyInfo.groomMotherNameMoneyInfo} bankName={moneyInfo.groomMotherBankName}
-                                   bankNumber={moneyInfo.groomMotherBankNumber} isGroom={true}/>
+                        <MoneyCell name={firstMoneyInfo.nameMoneyInfo} bankName={firstMoneyInfo.bankName}
+                                   bankNumber={firstMoneyInfo.bankNumber} isGroom={true}/>
+                        <MoneyCell name={firstMoneyInfo.fatherNameMoneyInfo} bankName={firstMoneyInfo.fatherBankName}
+                                   bankNumber={firstMoneyInfo.fatherBankNumber} isGroom={true}/>
+                        <MoneyCell name={firstMoneyInfo.motherNameMoneyInfo} bankName={firstMoneyInfo.motherBankName}
+                                   bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
                     </>
                 )}
             </div>
             <div>
                 <div onClick={() => setClickedBride(i => !i)}>
-                    <Text type={'p4'} color={colors.p800} weight={'bold'}>신부측</Text>
+                    <Text type={'p4'} color={colors.p800} weight={'bold'}>{secondBaseInfo.korean}측</Text>
                     <Spacer/>
                     <Icon type={IconType.ExpandArrow} tint={colors.p800}
                           style={{rotate: clickedBride ? '90deg' : '-90deg'}}/>
@@ -68,12 +79,12 @@ function MoneyInfoComponent(
                 {clickedBride && (
                     <>
 
-                        <MoneyCell name={moneyInfo.brideNameMoneyInfo} bankName={moneyInfo.brideBankName}
-                                   bankNumber={moneyInfo.brideBankNumber} isGroom={false}/>
-                        <MoneyCell name={moneyInfo.brideFatherNameMoneyInfo} bankName={moneyInfo.brideFatherBankName}
-                                   bankNumber={moneyInfo.brideFatherBankNumber} isGroom={false}/>
-                        <MoneyCell name={moneyInfo.brideMotherNameMoneyInfo} bankName={moneyInfo.brideMotherBankName}
-                                   bankNumber={moneyInfo.brideMotherBankNumber} isGroom={false}/>
+                        <MoneyCell name={secondMoneyInfo.nameMoneyInfo} bankName={secondMoneyInfo.bankName}
+                                   bankNumber={secondMoneyInfo.bankNumber} isGroom={false}/>
+                        <MoneyCell name={secondMoneyInfo.fatherNameMoneyInfo} bankName={secondMoneyInfo.fatherBankName}
+                                   bankNumber={secondMoneyInfo.fatherBankNumber} isGroom={false}/>
+                        <MoneyCell name={secondMoneyInfo.motherNameMoneyInfo} bankName={secondMoneyInfo.motherBankName}
+                                   bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
                     </>
                 )}
             </div>
