@@ -19,6 +19,7 @@ import InvitationLetterTemplate, {
 import RsvpDialog from "@src/component/template/dialog/rsvp/RsvpDialog";
 import Cookies from "js-cookie";
 import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
+import {Helmet} from "react-helmet";
 
 interface Template1Props {
     wedding: Wedding;
@@ -75,6 +76,12 @@ function TemplateComponent(
 
     return (
         <S.container ref={rootRef} $templateFont={templateFont}>
+            <Helmet>
+                <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
+                <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
+                <meta property={'og:image'} content={wedding.linkShare.urlImg}/>
+                <title>{wedding.linkShare.urlTitle}</title>
+            </Helmet>
             <PreviewTemplate
                 template={wedding.template}
                 baseInfo={wedding.baseInfo}
