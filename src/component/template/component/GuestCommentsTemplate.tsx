@@ -84,6 +84,7 @@ function GuestCommentsTemplate(
                     selectedGuestComment={selectedRemoveGuestComment}
                     url={url}
                     dismiss={() => setShowRemoveGuestCommentDialog(false)}
+                    onRefresh={onRefresh}
                 />
             )}
             {showGuestCommentsDetailDialog && (

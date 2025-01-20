@@ -15,17 +15,18 @@ interface RemoveGuestCommentDialogProps {
     url: string;
     selectedGuestComment: Comment;
     dismiss: () => void;
+    onRefresh: () => void;
 }
 
 function RemoveGuestCommentDialog(
     {
         url,
         selectedGuestComment,
-        dismiss
+        dismiss,
+        onRefresh
     }: RemoveGuestCommentDialogProps
 ) {
     const passwordRef = useRef<HTMLInputElement>(null);
-    const navigate = useNavigate();
 
     const onClickRemove = async () => {
         if (!selectedGuestComment) return;
@@ -41,7 +42,8 @@ function RemoveGuestCommentDialog(
                 id: selectedGuestComment.id,
                 password: passwordRef.current.value,
             });
-            navigate(0);
+            onRefresh();
+            dismiss();
         } catch (error) {
             if (isAxiosError(error) && error.response && error.response.status === 400) {
                 alert('비밀번호를 다시 확인 해주세요');
