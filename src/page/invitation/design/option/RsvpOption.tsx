@@ -65,22 +65,15 @@ function RsvpOption(
                             />
                         </Column>
                     </Row>
-                    <Row gap={12}>
+                    <Row gap={12} $alignItems={'center'}>
                         <OptionLabel label={'팝업 안내'} style={{alignSelf: 'flex-start'}}/>
-                        <Column gap={15}>
-                            <Row gap={16}>
-                                <Checkbox
-                                    checked={rsvp.startPopupStatus}
-                                    onChange={checked => onChange({...rsvp, startPopupStatus: checked})}
-                                />
-                                <Text type={'caption1'} color={colors.g300}>청첩장 열 때 팝업 안내</Text>
-                            </Row>
-                            <Textarea
-                                value={rsvp.startPopupMessage}
-                                onChange={event => onChange({...rsvp, startPopupMessage: event.target.value})}
-                                style={{width: 264}}
+                        <Row gap={16}>
+                            <Checkbox
+                                checked={rsvp.startPopupStatus}
+                                onChange={checked => onChange({...rsvp, startPopupStatus: checked})}
                             />
-                        </Column>
+                            <Text type={'caption1'} color={colors.g300}>청첩장 열 때 팝업 안내</Text>
+                        </Row>
                     </Row>
                 </Column>
             </Column>

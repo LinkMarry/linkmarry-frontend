@@ -21,6 +21,7 @@ import Cookies from "js-cookie";
 import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
 import {Helmet} from "react-helmet";
 import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
+import RsvpTemplate from "@src/component/template/component/RsvpTemplate";
 
 interface Template1Props {
     wedding: Wedding;
@@ -35,9 +36,11 @@ function TemplateComponent(
         onRefresh
     }: Template1Props
 ) {
-    const [showRsvpDialog, setShowRsvpDialog] = useState(
-        isPreview ? false : Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
-    );
+    const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
+        if (isPreview) return false;
+        if (!wedding.rsvp.startPopupStatus) return false;
+        return Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
+    })());
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
     const {templateColor, templateFont, templateFontSize} = wedding.template;
     const rootRef = useRef<HTMLDivElement>(null);
@@ -74,7 +77,7 @@ function TemplateComponent(
         템플릿5: 'style3',
         템플릿6: 'style2',
     }
-    
+
     console.log(`pos - ${wedding.position}`)
 
     return (
@@ -136,7 +139,15 @@ function TemplateComponent(
                             guestComment={wedding.guestComment}
                             onRefresh={onRefresh ?? (() => {
                             })}
-                        /> 
+                        />
+                    case optionRecord[OptionType.Rsvp].index:
+                        return <RsvpTemplate
+                            templateColor={templateColor}
+                            rsvp={wedding.rsvp}
+                            baseInfo={wedding.baseInfo}
+                            weddingSchedule={wedding.weddingSchedule}
+                            onClickCreateRsvp={() => setShowRsvpDialog(true)}
+                        />
                     default:
                         return <></>;
                 }
