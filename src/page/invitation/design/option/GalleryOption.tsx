@@ -163,6 +163,7 @@ const S = {
     image: styled.img`
         display: flex;
         width: 128px;
+        object-fit: cover;
         height: 128px;
     `,
     imageWrapper: styled.div`

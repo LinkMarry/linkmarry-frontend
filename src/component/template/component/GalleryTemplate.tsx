@@ -201,7 +201,8 @@ const S = {
     }>`
         display: flex;
         ${({$rootWidth, $slideStyle}) => $slideStyle === 'style1' ? css`
-            width: ${$rootWidth - 34 * 2}px;
+            max-width: ${$rootWidth - 34 * 2}px;
+            min-width: ${$rootWidth - 34 * 2}px;
 
             &:first-child {
                 margin-left: ${$rootWidth - 34}px;
@@ -212,15 +213,8 @@ const S = {
             }
             border-radius: 12px;
         ` : css`
-            width: ${$rootWidth}px;
-            
-            // &:first-child {
-            //     margin-left: ${$rootWidth}px;
-            // }
-            //
-            // &:last-child {
-            //     margin-right: ${$rootWidth}px;
-            // }
+            max-width: ${$rootWidth}px;
+            min-width: ${$rootWidth}px;
         `};
         height: 517px;
         scroll-snap-align: center;
