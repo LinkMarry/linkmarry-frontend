@@ -19,7 +19,6 @@ import CreateGuestCommentDialog from "@src/component/template/dialog/guestcommen
 interface GuestCommentsTemplateProps {
     templateColor: string;
     url: string;
-    baseInfo: BaseInfo;
     guestComments: Comment[];
     guestComment: GuestComment;
     onRefresh: () => void;
@@ -29,7 +28,6 @@ function GuestCommentsTemplate(
     {
         templateColor,
         url,
-        baseInfo,
         guestComments,
         guestComment,
         onRefresh
@@ -39,16 +37,22 @@ function GuestCommentsTemplate(
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
     const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
-    
-    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
         <S.root background={templateColor}>
             <Column gap={40} $alignItems={'stretch'}>
                 <Column gap={12} $alignItems={'center'}>
-                    <Text size={20} weight={300} color={colors.g600}>방명록</Text>
-                    <Text size={16} weight={300} color={colors.g600}>
-                        {first.name}, {second.name}에게 하고 싶은 말을 남겨주세요
+                    <Text
+                        size={20} weight={300} color={colors.g600}
+                        style={{wordBreak: 'break-all', textAlign: 'center'}}
+                    >
+                        {guestComment.title}
+                    </Text>
+                    <Text
+                        size={16} weight={300} color={colors.g600}
+                        style={{wordBreak: 'break-all', textAlign: 'center'}}
+                    >
+                        {guestComment.content}
                     </Text>
                 </Column>
                 <Column gap={12} $alignItems={'stretch'}>

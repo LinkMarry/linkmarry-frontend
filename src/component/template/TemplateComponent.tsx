@@ -132,7 +132,6 @@ function TemplateComponent(
                         return <GuestCommentsTemplate
                             templateColor={templateColor}
                             url={wedding.url}
-                            baseInfo={wedding.baseInfo}
                             guestComments={wedding.guestCommentList}
                             guestComment={wedding.guestComment}
                             onRefresh={onRefresh ?? (() => {
