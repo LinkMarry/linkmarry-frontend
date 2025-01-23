@@ -24,4 +24,7 @@ export default interface RsvpInfo {
     
     // 남기고 싶은 말
     guestComment: string;
+    
+    // 작성일
+    createdDate: string;
 }

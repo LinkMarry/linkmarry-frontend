@@ -148,6 +148,14 @@ class WeddingApi {
         });
         return data;
     }
+
+    /**
+     * 워터마크 제거
+     */
+    async removeWatermark(url: string): Promise<ResponseVoid> {
+        const {data} = await customApi.post(`${WeddingApi.PATH}/watermark/${url}`);
+        return data;
+    }
 }
 
 const weddingApi = new WeddingApi();

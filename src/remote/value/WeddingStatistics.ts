@@ -19,4 +19,7 @@ export default interface WeddingStatistics {
 
     // 데스크탑 방문자 수
     desktopCnt: number;
+
+    // 모청 생성일
+    createdDate: string;
 }

@@ -126,7 +126,7 @@ function InvitationStatisticsDetail() {
                                     navigate(`/dashboard/guest-comment/${wedding.url}`);
                                 }}/>
                             </Row>
-                            <Text type={'p3'} color={colors.g500}>2024.02.01 작성</Text>{/*TODO: DUMMY*/}
+                            <Text type={'p3'} color={colors.g500}>{weddingStatistics.createdDate} 작성</Text>
                         </Column>
                         <Column gap={60} $alignItems={'stretch'}>
                             <Column gap={32} $alignItems={'stretch'}>
@@ -272,7 +272,7 @@ function InvitationStatisticsDetail() {
                                             })
                                             .map(rsvp => (
                                                 <S.rsvp.bodyRow>
-                                                    <S.rsvp.cell width={146}>TODO</S.rsvp.cell>
+                                                    <S.rsvp.cell width={146}>{rsvp.createdDate}</S.rsvp.cell>
                                                     <S.rsvp.cell width={106}>{rsvp.guestName}</S.rsvp.cell>
                                                     <S.rsvp.cell
                                                         width={106}>{rsvp.isAttend ? (`${guestTypeRecord[rsvp.guestType].korean}측`) : '미참석'}</S.rsvp.cell>
