@@ -14,7 +14,7 @@ import WeddingStatistics from "@remote/value/WeddingStatistics";
 import Wedding from "@remote/value/Wedding";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import GuestType, {guestTypeRecord} from "@remote/enumeration/GuestType";
-import WeddingStatisticsInfo from "@remote/value/WeddingStatisticsInfo";
+import WeddingStatisticsInfo, {fillMissingDates} from "@remote/value/WeddingStatisticsInfo";
 import Button from "@designsystem/component/button";
 import Spacer from "@designsystem/component/spacer";
 
@@ -146,8 +146,10 @@ function InvitationStatisticsDetail() {
                                                 <HorizontalDivider color={colors.p800}/>
                                             </Column>
                                         </Row>
-                                        <Line data={makeData(weddingStatistics.weddingStatisticsInfos)}
-                                              options={options}/>
+                                        <Line
+                                            data={makeData(fillMissingDates(weddingStatistics.weddingStatisticsInfos))}
+                                            options={options}
+                                        />
                                     </Column>
                                 </Column>
                                 <Column gap={8} $alignItems={'stretch'}>
