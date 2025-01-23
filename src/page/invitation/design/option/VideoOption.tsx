@@ -30,7 +30,6 @@ function VideoOption(
         }
 
         const urlPattern = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-        // const urlPattern = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\\w-]{11})/;
         const match = value.match(urlPattern);
 
         if (match && match[1]) {
@@ -51,6 +50,9 @@ function VideoOption(
 
         onChange({...video, videoUrl: data.url});
         setIsFetching(false);
+        if (videoFieldRef.current) {
+            videoFieldRef.current.value = '';
+        }
     };
 
     return (
@@ -77,7 +79,6 @@ function VideoOption(
                 </Row>
                 <Row gap={12}>
                     <OptionLabel label={'파일'}/>
-                    {/* TODO */}
                     <label htmlFor={'choose-video'}>
                         <Button
                             text={'파일 업로드'}

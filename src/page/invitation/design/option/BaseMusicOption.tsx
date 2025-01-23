@@ -122,7 +122,7 @@ function BaseMusicOption(
             case 'direct':
                 return (
                     <S.addAudioFileContainer
-                        htmlFor={'choose-audio'}
+                        htmlFor={'choose-base-music-audio'}
                         style={{
                             cursor: currentSelectMode === 0 ? 'pointer' : undefined
                         }}
@@ -135,7 +135,7 @@ function BaseMusicOption(
                                     <Text type={'caption1'} color={colors.g400}>최대 20MB MP3 파일만 가능</Text>
                                 </Column>
                                 <VoidInput
-                                    id={'choose-audio'}
+                                    id={'choose-base-music-audio'}
                                     ref={imageFieldRef}
                                     onChange={uploadAudio}
                                     type={'file'}

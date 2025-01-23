@@ -132,12 +132,10 @@ function InvitationDesign() {
         }
 
         const wedding: WeddingDto = JSON.parse(temp);
-        console.log(wedding);
         setWedding(wedding);
     }
 
     const onChangeWedding = (wedding: WeddingDto) => {
-        console.log(`야호 ${JSON.stringify(wedding, undefined, 2)}`)
         localStorage.setItem(`temp_Design_${url}`, JSON.stringify(wedding));
         setWedding(wedding);
     }

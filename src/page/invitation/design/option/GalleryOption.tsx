@@ -11,6 +11,7 @@ import Text from "@designsystem/component/text";
 import LoadingOverlay from "@src/component/LoadingOverlay";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import VoidInput from "@src/component/VoidInput";
+import AddDismissButton from "@src/component/AddDismissButton";
 
 interface GalleryOptionProps {
     imgList: string[];
@@ -29,9 +30,12 @@ function GalleryOption(
 ) {
     const [isFetching, setIsFetching] = useState(false);
     const imageFieldRef = useRef<HTMLInputElement>(null);
-    const uploadFiles = async (event: ChangeEvent<HTMLInputElement>) => {
+    const uploadImages = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
-        if (!files) return;
+        if (!files) {
+            console.log('files is null');
+            return;
+        }
         if (files.length > 30) {
             alert('사진은 최대 30장까지 업로드 가능합니다.');
             if (imageFieldRef.current) {
@@ -39,6 +43,7 @@ function GalleryOption(
             }
             return;
         }
+        console.log('uploadImages');
         setIsFetching(true);
         const uploadPromises = Array.from(files).map(file => fileApi.upload(file));
         const results = await Promise.allSettled(uploadPromises);
@@ -47,6 +52,9 @@ function GalleryOption(
             .filter((result): result is string => result !== null);
         onChangeImgList([...fulfilledResults, ...imgList]);
         setIsFetching(false);
+        if (imageFieldRef.current) {
+            imageFieldRef.current.value = '';
+        }
     };
 
     const onDragEnd = (result: DropResult) => {
@@ -70,13 +78,13 @@ function GalleryOption(
                                 <Droppable droppableId={'gallery-droppable'} direction={'horizontal'}>
                                     {(provided) => (
                                         <Row gap={4} {...provided.droppableProps} ref={provided.innerRef}>
-                                            <S.addImageContainer htmlFor={'choose-image'}>
+                                            <S.addImageContainer htmlFor={'choose-gallery-image'}>
                                                 <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
                                             </S.addImageContainer>
                                             <VoidInput
-                                                id={'choose-image'}
+                                                id={'choose-gallery-image'}
                                                 ref={imageFieldRef}
-                                                onChange={uploadFiles}
+                                                onChange={uploadImages}
                                                 type={'file'}
                                                 accept={'image/*'}
                                                 multiple={true}
@@ -87,34 +95,18 @@ function GalleryOption(
                                                     draggableId={`${index}`}
                                                     index={index}
                                                 >{provided => (
-                                                    <S.imageWrapper key={index}
-                                                         {...provided.draggableProps}
-                                                         {...provided.dragHandleProps}
-                                                         ref={provided.innerRef}>
-                                                        <div style={{
-                                                            display: "flex",
-                                                            position: 'absolute',
-                                                            top: 0,
-                                                            right: 0,
-                                                            background: colors.g100,
-                                                            borderRadius: 20,
-                                                            padding: 6,
-                                                            cursor: 'pointer',
-                                                            opacity: 0.8
+                                                    <AddDismissButton
+                                                        key={index}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        ref={provided.innerRef}
+                                                        dismiss={() => {
+                                                            const copiedImgList = [...imgList];
+                                                            copiedImgList.splice(index, 1);
+                                                            onChangeImgList(copiedImgList);
                                                         }}>
-                                                            <Icon
-                                                                type={IconType.CrossLine}
-                                                                size={16}
-                                                                tint={colors.g600}
-                                                                onClick={() => {
-                                                                    const copiedImgList = [...imgList];
-                                                                    copiedImgList.splice(index, 1);
-                                                                    onChangeImgList(copiedImgList);
-                                                                }}
-                                                            />
-                                                        </div>
                                                         <S.image src={img}/>
-                                                    </S.imageWrapper>
+                                                    </AddDismissButton>
                                                 )}
                                                 </Draggable>
                                             ))}
@@ -123,9 +115,7 @@ function GalleryOption(
                                     )}
                                 </Droppable>
                             </DragDropContext>
-                            {isFetching && (
-                                <LoadingOverlay/>
-                            )}
+                            {isFetching && <LoadingOverlay/>}
                         </div>
                     </Row>
                     <Text style={{marginLeft: 84}} type={'caption1'} color={colors.g300}>사진은 최대 30장까지 업로드 가능합니다.</Text>
@@ -143,8 +133,7 @@ function GalleryOption(
                 </Row>
             </Column>
         </S.container>
-    )
-        ;
+    );
 }
 
 const S = {
@@ -159,6 +148,7 @@ const S = {
         border: 1px solid ${colors.g200};
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     `,
     image: styled.img`
         display: flex;
@@ -166,9 +156,6 @@ const S = {
         object-fit: cover;
         height: 128px;
     `,
-    imageWrapper: styled.div`
-        position: relative;
-    `
 }
 
 export default GalleryOption;
