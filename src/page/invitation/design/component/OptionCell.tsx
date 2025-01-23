@@ -9,13 +9,15 @@ import {DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 
 interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {
     title: string;
-    dragHandleProps: DraggableProvidedDragHandleProps | null | undefined;
+    draggable: boolean;
+    dragHandleProps?: DraggableProvidedDragHandleProps | null | undefined;
     children?: React.ReactNode;
 }
 
 function OptionCell(
     {
         title,
+        draggable,
         dragHandleProps,
         children,
         ...props
@@ -50,9 +52,11 @@ function OptionCell(
                     <S.title>{title}</S.title>
                     <Spacer/>
                 </Row>
-                <div style={{display: 'flex'}} {...dragHandleProps}>
-                    <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
-                </div>
+                {draggable && (
+                    <div style={{display: 'flex'}} {...dragHandleProps}>
+                        <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
+                    </div>
+                )}
             </S.titleWrapper>
             <div style={{
                 display: opened ? undefined : 'none'

@@ -3,7 +3,7 @@ import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful
 import S from '@page/invitation/design/InvitationDesign.style';
 import OptionCell from "@page/invitation/design/component/OptionCell";
 import {allCasesOfEnum} from "@util/enum.util";
-import {options, OptionType} from "@page/invitation/design/OptionType";
+import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
 import BaseInfoOption from "@page/invitation/design/option/BaseInfoOption";
 import WeddingScheduleOption from "@page/invitation/design/option/WeddingScheduleOption";
 import WeddingPlaceOption from "@page/invitation/design/option/WeddingPlaceOption";
@@ -69,7 +69,7 @@ function InvitationDesign() {
 
     const weddingForPreview: Wedding = {
         url: url ?? '',
-        position: [],
+        position: wedding.position,
         template: wedding.template,
         baseInfo: wedding.baseInfo,
         weddingSchedule: wedding.weddingSchedule,
@@ -88,15 +88,17 @@ function InvitationDesign() {
         waterMark: false
     }
     // Drag and drop
-    const [items, setItems] = useState(allCasesOfEnum(OptionType));
+    const staticOptions = allCasesOfEnum(OptionType).filter(option => !optionRecord[option].draggable);
+    const [draggableOptions, setDraggableOptions] = useState(allCasesOfEnum(OptionType).filter(option => optionRecord[option].draggable));
+    const position = draggableOptions.map(option => optionRecord[option].index);
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return;
 
-        const reorderedItems = Array.from(items);
+        const reorderedItems = Array.from(draggableOptions);
         const [removed] = reorderedItems.splice(result.source.index, 1);
         reorderedItems.splice(result.destination.index, 0, removed);
 
-        setItems(reorderedItems);
+        setDraggableOptions(reorderedItems);
     };
 
     useEffect(() => {
@@ -116,6 +118,11 @@ function InvitationDesign() {
             }
         })();
     }, []);
+
+    useEffect(() => {
+        console.log(position)
+        setWedding({...wedding, position});
+    }, [JSON.stringify(position)]);
 
     const loadTemp = (alt: WeddingDto) => {
         const temp = localStorage.getItem(`temp_Design_${url}`);
@@ -155,6 +162,93 @@ function InvitationDesign() {
         }
     };
 
+    const makeOption = (option: OptionType) => {
+        switch (option) {
+            case OptionType.Template:
+                return <TemplateOption
+                    template={wedding.template}
+                    onChange={template => onChangeWedding({...wedding, template})}
+                />;
+            case OptionType.BaseInfo:
+                return <BaseInfoOption
+                    baseInfo={wedding.baseInfo}
+                    onChange={baseInfo => onChangeWedding({...wedding, baseInfo})}
+                />;
+            case OptionType.WeddingSchedule:
+                return <WeddingScheduleOption
+                    weddingSchedule={wedding.weddingSchedule}
+                    onChange={weddingSchedule => onChangeWedding({
+                        ...wedding,
+                        weddingSchedule
+                    })}
+                />;
+            case OptionType.WeddingPlace:
+                return <WeddingPlaceOption
+                    weddingPlace={wedding.weddingPlace}
+                    onChange={weddingPlace => onChangeWedding({
+                        ...wedding,
+                        weddingPlace
+                    })}
+                />;
+            case OptionType.Greeting:
+                return <GreetingOption
+                    greeting={wedding.greeting}
+                    onChange={greeting => onChangeWedding({...wedding, greeting})}
+                />;
+            case OptionType.GuestComment:
+                return <GuestCommentOption
+                    guestComment={wedding.guestComment}
+                    onChange={guestComment => onChangeWedding({
+                        ...wedding,
+                        guestComment
+                    })}
+                />;
+            case OptionType.BaseMusic:
+                return <BaseMusicOption
+                    baseMusic={wedding.baseMusic}
+                    onChange={baseMusic => onChangeWedding({...wedding, baseMusic})}
+                />;
+            case OptionType.LinkShare:
+                return <LinkShareOption
+                    linkShare={wedding.linkShare}
+                    onChange={linkShare => onChangeWedding({...wedding, linkShare})}
+                />;
+            case OptionType.MoneyInfo:
+                return <MoneyInfoOption
+                    moneyInfo={wedding.moneyInfo}
+                    onChange={moneyInfo => onChangeWedding({...wedding, moneyInfo})}
+                />;
+            case OptionType.Video:
+                return <VideoOption
+                    video={wedding.video}
+                    onChange={video => onChangeWedding({...wedding, video})}
+                />;
+            case OptionType.Phone:
+                return <PhoneOption
+                    phone={wedding.phone}
+                    onChange={phone => onChangeWedding({...wedding, phone})}
+                />;
+            case OptionType.Rsvp:
+                return <RsvpOption
+                    rsvp={wedding.rsvp}
+                    onChange={rsvp => onChangeWedding({...wedding, rsvp})}
+                />;
+            case OptionType.Gallery:
+                return <GalleryOption
+                    imgList={wedding.imgList}
+                    imgDesign={wedding.imgDesign}
+                    onChangeImgDesign={imgDesign => onChangeWedding({
+                        ...wedding,
+                        imgDesign
+                    })}
+                    onChangeImgList={imgList => onChangeWedding({
+                        ...wedding,
+                        imgList
+                    })}
+                />
+        }
+    }
+
     return (
         <S.container>
             <S.optionContainer>
@@ -170,119 +264,27 @@ function InvitationDesign() {
                     <Droppable droppableId={'option-droppable'}>
                         {(provided) => (
                             <S.options {...provided.droppableProps} ref={provided.innerRef}>
-                                {items.map((option, index) => (
+                                {staticOptions.map((option, index) => (
+                                    <OptionCell
+                                        draggable={optionRecord[option].draggable}
+                                        title={optionRecord[option].title}
+                                    >{makeOption(option)}</OptionCell>
+                                ))}
+                                {draggableOptions.map((option, index) => (
                                     <Draggable
                                         key={`${option}`}
                                         draggableId={`${option}`}
                                         index={index}
                                     >
                                         {provided => {
-                                            let children: React.ReactNode;
-                                            switch (option) {
-                                                case OptionType.Template:
-                                                    children = <TemplateOption
-                                                        template={wedding.template}
-                                                        onChange={template => onChangeWedding({...wedding, template})}
-                                                    />;
-                                                    break;
-                                                case OptionType.BaseInfo:
-                                                    children = <BaseInfoOption
-                                                        baseInfo={wedding.baseInfo}
-                                                        onChange={baseInfo => onChangeWedding({...wedding, baseInfo})}
-                                                    />;
-                                                    break;
-                                                case OptionType.WeddingSchedule:
-                                                    children = <WeddingScheduleOption
-                                                        weddingSchedule={wedding.weddingSchedule}
-                                                        onChange={weddingSchedule => onChangeWedding({
-                                                            ...wedding,
-                                                            weddingSchedule
-                                                        })}
-                                                    />;
-                                                    break;
-                                                case OptionType.WeddingLocation:
-                                                    children = <WeddingPlaceOption
-                                                        weddingPlace={wedding.weddingPlace}
-                                                        onChange={weddingPlace => onChangeWedding({
-                                                            ...wedding,
-                                                            weddingPlace
-                                                        })}
-                                                    />;
-                                                    break;
-                                                case OptionType.Greeting:
-                                                    children = <GreetingOption
-                                                        greeting={wedding.greeting}
-                                                        onChange={greeting => onChangeWedding({...wedding, greeting})}
-                                                    />;
-                                                    break;
-                                                case OptionType.GuestComment:
-                                                    children = <GuestCommentOption
-                                                        guestComment={wedding.guestComment}
-                                                        onChange={guestComment => onChangeWedding({
-                                                            ...wedding,
-                                                            guestComment
-                                                        })}
-                                                    />;
-                                                    break;
-                                                case OptionType.BaseMusic:
-                                                    children = <BaseMusicOption
-                                                        baseMusic={wedding.baseMusic}
-                                                        onChange={baseMusic => onChangeWedding({...wedding, baseMusic})}
-                                                    />;
-                                                    break;
-                                                case OptionType.LinkShare:
-                                                    children = <LinkShareOption
-                                                        linkShare={wedding.linkShare}
-                                                        onChange={linkShare => onChangeWedding({...wedding, linkShare})}
-                                                    />;
-                                                    break;
-                                                case OptionType.MoneyInfo:
-                                                    children = <MoneyInfoOption
-                                                        moneyInfo={wedding.moneyInfo}
-                                                        onChange={moneyInfo => onChangeWedding({...wedding, moneyInfo})}
-                                                    />;
-                                                    break;
-                                                case OptionType.Video:
-                                                    children = <VideoOption
-                                                        video={wedding.video}
-                                                        onChange={video => onChangeWedding({...wedding, video})}
-                                                    />;
-                                                    break;
-                                                case OptionType.Phone:
-                                                    children = <PhoneOption
-                                                        phone={wedding.phone}
-                                                        onChange={phone => onChangeWedding({...wedding, phone})}
-                                                    />;
-                                                    break;
-                                                case OptionType.Rsvp:
-                                                    children = <RsvpOption
-                                                        rsvp={wedding.rsvp}
-                                                        onChange={rsvp => onChangeWedding({...wedding, rsvp})}
-                                                    />;
-                                                    break;
-                                                case OptionType.Gallery:
-                                                    children = <GalleryOption
-                                                        imgList={wedding.imgList}
-                                                        imgDesign={wedding.imgDesign}
-                                                        onChangeImgDesign={imgDesign => onChangeWedding({
-                                                            ...wedding,
-                                                            imgDesign
-                                                        })}
-                                                        onChangeImgList={imgList => onChangeWedding({
-                                                            ...wedding,
-                                                            imgList
-                                                        })}
-                                                    />
-                                                    break;
-                                            }
                                             return (
                                                 <OptionCell
                                                     {...provided.draggableProps}
+                                                    draggable={optionRecord[option].draggable}
                                                     dragHandleProps={provided.dragHandleProps}
                                                     ref={provided.innerRef}
-                                                    title={options[option].title}
-                                                    children={children}
-                                                />
+                                                    title={optionRecord[option].title}
+                                                >{makeOption(option)}</OptionCell>
                                             );
                                         }}
                                     </Draggable>

@@ -20,6 +20,7 @@ import RsvpDialog from "@src/component/template/dialog/rsvp/RsvpDialog";
 import Cookies from "js-cookie";
 import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
 import {Helmet} from "react-helmet";
+import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
 
 interface Template1Props {
     wedding: Wedding;
@@ -73,6 +74,8 @@ function TemplateComponent(
         템플릿5: 'style3',
         템플릿6: 'style2',
     }
+    
+    console.log(`pos - ${wedding.position}`)
 
     return (
         <S.container ref={rootRef} $templateFont={templateFont}>
@@ -89,42 +92,56 @@ function TemplateComponent(
                 weddingSchedule={wedding.weddingSchedule}
                 imgList={wedding.imgList}
             />
-            <InvitationLetterTemplate
-                baseInfo={wedding.baseInfo}
-                greeting={wedding.greeting}
-                invitationLetterStyle={invitationLetterStyle[wedding.template.templateName]}
-            />
-            <WeddingDayTemplate
-                baseInfo={wedding.baseInfo}
-                weddingSchedule={wedding.weddingSchedule}
-                dDayStyle={dDayStyle[wedding.template.templateName]}
-            />
-            <CongratulationsTemplate
-                baseInfo={wedding.baseInfo}
-                phone={wedding.phone}
-                templateColor={templateColor}
-            />
-            <GalleryTemplate
-                rootRef={rootRef}
-                imgDesign={wedding.imgDesign}
-                imgList={wedding.imgList}
-                slideStyle={slideStyle[wedding.template.templateName]}
-            />
-            <LocationTemplate
-                templateColor={templateColor}
-                weddingPlace={wedding.weddingPlace}
-            />
-            <VideoTemplate video={wedding.video}/>
-            <MoneyInfoTemplate baseInfo={wedding.baseInfo} moneyInfo={wedding.moneyInfo}/>
-            <GuestCommentsTemplate
-                templateColor={templateColor}
-                url={wedding.url}
-                baseInfo={wedding.baseInfo}
-                guestComments={wedding.guestCommentList}
-                guestComment={wedding.guestComment}
-                onRefresh={onRefresh ?? (() => {
-                })}
-            />
+            {wedding.position.map(index => {
+                switch (index) {
+                    case optionRecord[OptionType.Greeting].index:
+                        return <InvitationLetterTemplate
+                            baseInfo={wedding.baseInfo}
+                            greeting={wedding.greeting}
+                            invitationLetterStyle={invitationLetterStyle[wedding.template.templateName]}
+                        />;
+                    case optionRecord[OptionType.WeddingSchedule].index:
+                        return <WeddingDayTemplate
+                            baseInfo={wedding.baseInfo}
+                            weddingSchedule={wedding.weddingSchedule}
+                            dDayStyle={dDayStyle[wedding.template.templateName]}
+                        />
+                    case optionRecord[OptionType.Phone].index:
+                        return <CongratulationsTemplate
+                            baseInfo={wedding.baseInfo}
+                            phone={wedding.phone}
+                            templateColor={templateColor}
+                        />
+                    case optionRecord[OptionType.Gallery].index:
+                        return <GalleryTemplate
+                            rootRef={rootRef}
+                            imgDesign={wedding.imgDesign}
+                            imgList={wedding.imgList}
+                            slideStyle={slideStyle[wedding.template.templateName]}
+                        />
+                    case optionRecord[OptionType.WeddingPlace].index:
+                        return <LocationTemplate
+                            templateColor={templateColor}
+                            weddingPlace={wedding.weddingPlace}
+                        />
+                    case optionRecord[OptionType.Video].index:
+                        return <VideoTemplate video={wedding.video}/>
+                    case optionRecord[OptionType.MoneyInfo].index:
+                        return <MoneyInfoTemplate baseInfo={wedding.baseInfo} moneyInfo={wedding.moneyInfo}/>
+                    case optionRecord[OptionType.GuestComment].index:
+                        return <GuestCommentsTemplate
+                            templateColor={templateColor}
+                            url={wedding.url}
+                            baseInfo={wedding.baseInfo}
+                            guestComments={wedding.guestCommentList}
+                            guestComment={wedding.guestComment}
+                            onRefresh={onRefresh ?? (() => {
+                            })}
+                        /> 
+                    default:
+                        return <></>;
+                }
+            })}
             <FooterTemplate background={templateColor}/>
             {showRsvpDialog && (
                 <RsvpDialog

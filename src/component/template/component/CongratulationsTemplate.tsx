@@ -33,8 +33,10 @@ function CongratulationsTemplate(
                         <Text
                             font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}
                             style={{
+                                display: 'flex',
+                                justifyContent: 'center',
                                 alignSelf: 'stretch',
-                                wordBreak: 'break-all'
+                                wordBreak: 'break-all',
                             }}
                         >
                             <Row $alignItems={'center'} gap={4}>
@@ -62,6 +64,8 @@ function CongratulationsTemplate(
                         <Text
                             font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}
                             style={{
+                                display: 'flex',
+                                justifyContent: 'center',
                                 alignSelf: 'stretch',
                                 wordBreak: 'break-all'
                             }}
