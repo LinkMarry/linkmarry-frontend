@@ -15,6 +15,7 @@ import weddingApi from "@remote/api/WeddingApi";
 import WeddingInfo from "@remote/value/WeddingInfo";
 import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/spacer";
+import {isAxiosError} from "axios";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -52,6 +53,19 @@ function InvitationDashboard() {
                 break;
             case 'edit':
                 setShowEditDesignDialog(true);
+                break;
+            case 'removeWaterMark':
+                try {
+                    await weddingApi.removeWatermark(cell.url);
+                    alert('워터마크 제거 성공');
+                } catch (error) {
+                    if (isAxiosError(error) && error.response) {
+                        if (error.status === 401 || error.status === 400) {
+                            alert(error.response.data.message);
+                        }
+                    }
+                }
+                    
                 break;
         }
     };

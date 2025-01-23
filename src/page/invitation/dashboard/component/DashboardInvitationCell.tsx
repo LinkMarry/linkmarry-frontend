@@ -11,13 +11,13 @@ import WeddingInfo from "@remote/value/WeddingInfo";
 import DashboardPopover, {DashboardPopoverClickType} from "@page/invitation/dashboard/component/DashboardPopover";
 import {useNavigate} from "react-router-dom";
 import weddingApi from "@remote/api/WeddingApi";
+import BaseDialog from "@designsystem/component/dialog/baseDialog";
 
-export type DashboardInvitationCellClickType = 'remove' | 'edit';
+export type DashboardInvitationCellClickType = 'remove' | 'edit' | 'removeWaterMark';
 
 interface DashboardInvitationCellProps {
     weddingInfo: WeddingInfo;
     onClick: (type: DashboardInvitationCellClickType) => void;
-
 }
 
 function DashboardInvitationCell(
@@ -27,6 +27,8 @@ function DashboardInvitationCell(
     }: DashboardInvitationCellProps
 ) {
     const [showPopover, setShowPopover] = useState(false);
+    const [showConfirmRemoveWaterMarkDialog, setShowConfirmRemoveWaterMarkDialog] = useState(false);
+
     const navigate = useNavigate();
     const fullUrl = `${window.location.origin}/wedding/${weddingInfo.url}`
 
@@ -94,10 +96,18 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                         <Text type={'caption1'} color={colors.g500}>{weddingInfo.createdDate}</Text>
                     </Column>
                     <Row gap={10}>
-                        <Button text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}/>
-                        <Button text={'수정하기'} role={'assistive'} style={{background: colors.white, flex: 1}} onClick={() => {
-                            navigate(`/dashboard/design/${weddingInfo.url}`);
-                        }}/>
+                        <Button
+                            text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}
+                            onClick={() => {
+                                setShowConfirmRemoveWaterMarkDialog(true);
+                            }}
+                        />
+                        <Button
+                            text={'수정하기'} role={'assistive'} style={{background: colors.white, flex: 1}}
+                            onClick={() => {
+                                navigate(`/dashboard/design/${weddingInfo.url}`);
+                            }}
+                        />
                     </Row>
                 </Column>
             </S.content>
@@ -108,6 +118,11 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                         setShowPopover(false);
                     }}
                 />
+            )}
+            {showConfirmRemoveWaterMarkDialog && (
+                <BaseDialog dismiss={() => setShowConfirmRemoveWaterMarkDialog(false)}>
+                    <button style={{ zIndex: 10 }} onClick={() => onClick('removeWaterMark')}>ㅇㅋ</button>
+                </BaseDialog>
             )}
         </S.container>
     );
