@@ -5,7 +5,8 @@ import {implementText} from "@designsystem/foundation/text/textProperties";
 export const container = styled.div<{ $templateFont: LinkMarryFont }>`
     display: flex;
     flex-direction: column;
-    width: 436px;
+    max-width: 436px;
+    width: 100vw;
     align-items: stretch;
 
     *:not(.override-font) {

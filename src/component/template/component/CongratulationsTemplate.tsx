@@ -28,9 +28,15 @@ function CongratulationsTemplate(
     return (
         <S.root background={templateColor}>
             <Column gap={96} $alignItems={'stretch'}>
-                <Column gap={40} $alignItems={'center'}>
+                <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={8} $alignItems={'center'}>
-                        <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
+                        <Text
+                            font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}
+                            style={{
+                                alignSelf: 'stretch',
+                                wordBreak: 'break-all'
+                            }}
+                        >
                             <Row $alignItems={'center'} gap={4}>
                                 {first.fatherStatus && (
                                     <img src={'/Flower.svg'} alt=""/>
@@ -43,8 +49,7 @@ function CongratulationsTemplate(
                             </Row>
                         </Text>
                         <Row gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24}
-                                  color={colors.g600}>
+                            <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
                                 {first.korean}&nbsp;
                             </Text>
                             <Text font={'GangwonEduAll'} weight={100} size={24}>
@@ -54,7 +59,13 @@ function CongratulationsTemplate(
                     </Column>
                     <HorizontalDivider color={colors.g200}/>
                     <Column gap={8} $alignItems={'center'}>
-                        <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
+                        <Text
+                            font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}
+                            style={{
+                                alignSelf: 'stretch',
+                                wordBreak: 'break-all'
+                            }}
+                        >
                             <Row $alignItems={'center'} gap={4}>
                                 {second.fatherStatus && (
                                     <img src={'/Flower.svg'} alt=""/>
