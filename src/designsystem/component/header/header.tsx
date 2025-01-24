@@ -9,7 +9,7 @@ import Button from "@designsystem/component/button";
 import {useNavigate} from "react-router-dom";
 
 function Header() {
-    const {authorized, signInWithKakao} = useAuth();
+    const {authorized} = useAuth();
     const navigate = useNavigate();
 
     return (
@@ -36,7 +36,7 @@ function Header() {
                             navigate('/my-page');
                         }}>마이페이지</S.navItem>
                     ) : (
-                        <Button text={'로그인'} onClick={signInWithKakao} role={'assistive'}/>
+                        <Button text={'로그인'} onClick={() => navigate('/login')} role={'assistive'}/>
                     )}
                 </S.navItems>
             </Row>

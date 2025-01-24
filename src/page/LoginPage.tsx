@@ -1,0 +1,51 @@
+import React from 'react';
+import styled from "styled-components";
+import HasHeader from "@designsystem/component/header/hasHeader";
+import makeText from "@designsystem/foundation/text/textType";
+import {Column, Row} from "@designsystem/component/flexLayout";
+import Text from "@designsystem/component/text";
+import useAuth from "@hook/useAuth";
+import colors from "@designsystem/foundation/colors";
+import Spacer from "@designsystem/component/spacer";
+
+function LoginPage() {
+    const {signInWithKakao} = useAuth();
+
+    return (
+        <HasHeader>
+            <Column gap={32} flex={1} $alignItems={'center'} $justifyContent={'center'}>
+                <Column gap={0} $alignItems={'center'}>
+                    <img src="/linkmarry.png" alt="" width={72} height={72} style={{borderRadius: 12}}/>
+                    <Spacer h={8}/>
+                    <Text type={'h3'}>링크메리 로그인</Text>
+                    <Text type={'p4'} color={colors.g500}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
+                </Column>
+                <S.kakaoButton onClick={signInWithKakao}>
+                    <Row gap={6} $alignItems={'center'}>
+                        <img src={'/kakao.svg'} alt="" width={24} height={24}/>
+                        카카오 로그인
+                    </Row>
+                </S.kakaoButton>
+            </Column>
+        </HasHeader>
+    );
+}
+
+const S = {
+    kakaoButton: styled.button`
+        display: flex;
+        cursor: pointer;
+        width: 300px;
+        height: 45px;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        border: none;
+        background-color: #FEE500;
+        border-radius: 6px;
+        ${makeText('p4')};
+        color: black;
+    `
+}
+
+export default LoginPage;

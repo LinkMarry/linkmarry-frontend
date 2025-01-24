@@ -20,6 +20,7 @@ import TemplatesPage from "@page/templates/TemplatesPage";
 import GlobalStyle from "@src/GlobalStyle";
 import WeddingPage from "@page/WeddingPage";
 import {Helmet} from "react-helmet";
+import LoginPage from "@page/LoginPage";
 
 const {Kakao} = window as any;
 
@@ -45,6 +46,7 @@ function App() {
             </Helmet>
             <Routes>
                 {/*service*/}
+                <Route path={'login'} element={<LoginPage/>}/>
                 <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
                 <Route path={''} element={<HomePage/>}/>
                 <Route element={<InvitationLayout/>}>
