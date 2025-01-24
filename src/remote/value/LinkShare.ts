@@ -9,7 +9,7 @@ export default interface LinkShare {
     kakaoContent: string;
 
     // 링크 공유 이미지 url
-    urlImg: string;
+    urlImgUrl: string;
 
     // 링크 공유 제목
     urlTitle: string;
@@ -22,7 +22,7 @@ export const defaultLinkShare: LinkShare = {
     kakaoImgUrl: "",
     kakaoTitle: "",
     kakaoContent: "",
-    urlImg: "",
+    urlImgUrl: "",
     urlTitle: "",
     urlContent: "",
 }
@@ -31,7 +31,7 @@ export const dummyLinkShare: LinkShare = {
     kakaoImgUrl: "google.com",
     kakaoTitle: "청첩장~~",
     kakaoContent: "초대합니당 우와",
-    urlImg: "google.com",
+    urlImgUrl: "google.com",
     urlTitle: "url title",
     urlContent: "url content",
 }

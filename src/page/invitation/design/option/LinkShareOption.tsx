@@ -37,7 +37,7 @@ function LinkShareOption(
     const imageFieldRef = useRef<HTMLInputElement>(null);
 
     const selectedShareMode = linkShareModes[selectedShareModeIndex];
-    const imgUrl = selectedShareMode === 'url' ? linkShare.urlImg : linkShare.kakaoImgUrl;
+    const imgUrl = selectedShareMode === 'url' ? linkShare.urlImgUrl : linkShare.kakaoImgUrl;
 
     const uploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -51,7 +51,7 @@ function LinkShareOption(
         const {data} = await fileApi.upload(file);
         switch (selectedShareMode) {
             case 'url':
-                onChange({...linkShare, urlImg: data.url});
+                onChange({...linkShare, urlImgUrl: data.url});
                 break;
             case 'kakaotalk':
                 onChange({...linkShare, kakaoImgUrl: data.url});
@@ -82,7 +82,7 @@ function LinkShareOption(
                                         onChange({...linkShare, kakaoImgUrl: ''});
                                         break;
                                     case 'url':
-                                        onChange({...linkShare, urlImg: ''});
+                                        onChange({...linkShare, urlImgUrl: ''});
                                         break;
                                 }
                                 if (imageFieldRef.current) {

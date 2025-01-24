@@ -59,9 +59,11 @@ function TextField(
 
     return (
         <S.textField $enabled={enabled} {...props}>
-            <S.label style={{
-                color: labelColor
-            }}>{label}</S.label>
+            {label && (
+                <S.label style={{
+                    color: labelColor
+                }}>{label}</S.label>
+            )}
             <S.inputContainer style={{
                 background: inputBackground,
                 border: `1px solid ${borderColor}`

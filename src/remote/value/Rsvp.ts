@@ -22,9 +22,6 @@ export default interface Rsvp {
     
     // 청첩장 열 때 팝업 여부
     startPopupStatus: boolean;
-    
-    // 청첩장 열 때 팝업에 메시지
-    startPopupMessage: string;
 }
 
 export const defaultRsvp: Rsvp = {
@@ -36,7 +33,6 @@ export const defaultRsvp: Rsvp = {
     attendPhoneStatus: false,
     attendEtcStatus: false,
     startPopupStatus: false,
-    startPopupMessage: "",
 }
 
 export const dummyRsvp: Rsvp = {
@@ -48,5 +44,4 @@ export const dummyRsvp: Rsvp = {
     attendPhoneStatus: true,
     attendEtcStatus: true,
     startPopupStatus: true,
-    startPopupMessage: "ㅎㅇ",
 };

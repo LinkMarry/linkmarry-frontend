@@ -16,11 +16,13 @@ import WeddingInfo from "@remote/value/WeddingInfo";
 import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/spacer";
 import {isAxiosError} from "axios";
+import PayWaterMarkDialog from "@page/invitation/dashboard/dialog/PayWaterMarkDialog";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
     const [showRemoveDesignDialog, setShowRemoveDesignDialog] = useState(false);
     const [showEditDesignDialog, setShowEditDesignDialog] = useState(false);
+    const [showPayWaterMarkDialog, setShowPayWaterMarkDialog] = useState(false);
 
     const [weddingDashboard, setWeddingDashboard] = useState<WeddingDashboard>();
     const [selectedWeddingInfo, setSelectedWeddingInfo] = useState<WeddingInfo>();
@@ -55,6 +57,12 @@ function InvitationDashboard() {
                 setShowEditDesignDialog(true);
                 break;
             case 'removeWaterMark':
+                if (!weddingDashboard) break;
+                if (weddingDashboard.invitation === 0) {
+                    setShowPayWaterMarkDialog(true);
+                    break;
+                }
+
                 try {
                     await weddingApi.removeWatermark(cell.url);
                     alert('워터마크 제거 성공');
@@ -65,7 +73,7 @@ function InvitationDashboard() {
                         }
                     }
                 }
-                    
+
                 break;
         }
     };
@@ -83,7 +91,10 @@ function InvitationDashboard() {
                         <Text
                             type={'p3'}
                             color={colors.g500}
-                            style={{alignSelf: 'flex-end'}}
+                            style={{alignSelf: 'flex-end', cursor: 'pointer'}}
+                            onClick={() => {
+                                setShowPayWaterMarkDialog(true);
+                            }}
                         >워터마크 제거 가능 횟수 {weddingDashboard?.invitation}</Text>
                     )}
                 </Row>
@@ -106,12 +117,16 @@ function InvitationDashboard() {
                         <div>...</div>
                     )}{/* TODO: Shimmer */}
                 </S.items>
+                <Spacer h={32}/>
             </Column>
             {showCreateDesignDialog && <CreateDesignDialog dismiss={() => setShowCreateDesignDialog(false)}/>}
             {showRemoveDesignDialog &&
                 <RemoveDesignDialog dismiss={() => setShowRemoveDesignDialog(false)} confirm={onClickRemoveDashboard}/>}
             {showEditDesignDialog && selectedWeddingInfo &&
                 <EditDesignDialog originUrl={selectedWeddingInfo.url} dismiss={() => setShowEditDesignDialog(false)}/>}
+            {showPayWaterMarkDialog && (
+                <PayWaterMarkDialog dismiss={() => setShowPayWaterMarkDialog(false)}/>
+            )}
         </S.container>
     );
 }

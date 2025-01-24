@@ -85,7 +85,7 @@ function TemplateComponent(
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
-                <meta property={'og:image'} content={wedding.linkShare.urlImg}/>
+                <meta property={'og:image'} content={wedding.linkShare.urlImgUrl}/>
                 <title>{wedding.linkShare.urlTitle}</title>
             </Helmet>
             <PreviewTemplate
