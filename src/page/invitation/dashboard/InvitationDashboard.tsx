@@ -125,7 +125,10 @@ function InvitationDashboard() {
             {showEditDesignDialog && selectedWeddingInfo &&
                 <EditDesignDialog originUrl={selectedWeddingInfo.url} dismiss={() => setShowEditDesignDialog(false)}/>}
             {showPayWaterMarkDialog && (
-                <PayWaterMarkDialog dismiss={() => setShowPayWaterMarkDialog(false)}/>
+                <PayWaterMarkDialog
+                    url={selectedWeddingInfo.url}
+                    dismiss={() => setShowPayWaterMarkDialog(false)}
+                />
             )}
         </S.container>
     );
