@@ -56,6 +56,7 @@ import Clock from "@designsystem/foundation/icon/Clock";
 import styled, {css} from "styled-components";
 import Share from "@designsystem/foundation/icon/Share";
 import Call from "@designsystem/foundation/icon/Call";
+import Statistics from "@designsystem/foundation/icon/Statistics";
 
 export enum IconType {
     AddEmoji,
@@ -109,6 +110,7 @@ export enum IconType {
     Share,
     Show,
     Star,
+    Statistics,
     StopArrow,
     Substack,
     Trash,
@@ -234,6 +236,8 @@ export default function Icon(
                 return <Show {...svgProps}/>;
             case IconType.Star:
                 return <Star {...svgProps}/>;
+            case IconType.Statistics:
+                return <Statistics {...svgProps}/>;
             case IconType.StopArrow:
                 return <StopArrow {...svgProps}/>;
             case IconType.Substack:

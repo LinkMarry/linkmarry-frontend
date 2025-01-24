@@ -6,6 +6,7 @@ import HomeSlide1 from "@page/home/component/HomeSlide1";
 import HomeSlide2 from "@page/home/component/HomeSlide2";
 import HomeSlide3 from "@page/home/component/HomeSlide3";
 import HomeSlide4 from "@page/home/component/HomeSlide4";
+import HomeSlide5 from "@page/home/component/HomeSlide5";
 
 function HomePage() {
     return (
@@ -15,6 +16,7 @@ function HomePage() {
                 <HomeSlide2/>
                 <HomeSlide3/>
                 <HomeSlide4/>
+                <HomeSlide5/>
                 <Footer/>
             </S.container>
         </HasHeader>
