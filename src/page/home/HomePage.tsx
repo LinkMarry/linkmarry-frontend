@@ -2,12 +2,19 @@ import React from 'react';
 import S from '@page/home/HomePage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
 import Footer from "@src/component/Footer";
+import HomeSlide1 from "@page/home/component/HomeSlide1";
+import HomeSlide2 from "@page/home/component/HomeSlide2";
+import HomeSlide3 from "@page/home/component/HomeSlide3";
+import HomeSlide4 from "@page/home/component/HomeSlide4";
 
 function HomePage() {
     return (
         <HasHeader>
             <S.container>
-                HomePage
+                <HomeSlide1/>
+                <HomeSlide2/>
+                <HomeSlide3/>
+                <HomeSlide4/>
                 <Footer/>
             </S.container>
         </HasHeader>

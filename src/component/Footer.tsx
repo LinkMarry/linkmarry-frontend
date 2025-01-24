@@ -27,11 +27,16 @@ function Footer() {
             <Column $alignSelf={'flex-end'}>
                 <Text type={'p3'} color={colors.g300}>
                     <Row $alignItems={'center'} gap={16}>
-                        <span onClick={() => window.open('https://0start.notion.site/18598205e3a3809e9543f6d52b4fc91b?pvs=4')}>이용약관</span>
+                        <span
+                            style={{cursor: 'pointer'}}
+                            onClick={() => window.open('https://0start.notion.site/18598205e3a3809e9543f6d52b4fc91b?pvs=4')}>이용약관</span>
                         <span>|</span>
-                        <span onClick={() => window.open('https://0start.notion.site/212c52cf731445bb803be1e62c694ea5?pvs=4')}>개인정보처리방침</span>
+                        <span
+                            style={{cursor: 'pointer'}}
+                            onClick={() => window.open('https://0start.notion.site/212c52cf731445bb803be1e62c694ea5?pvs=4')}>개인정보처리방침</span>
                         <span>|</span>
-                        <span>고객센터</span>
+                        <span style={{cursor: 'pointer'}}
+                              onClick={() => window.open('https://pf.kakao.com/_BzqCn')}>고객센터</span>
                     </Row>
                     고객센터 운영시간 연중무휴 24시간 운영
                 </Text>
