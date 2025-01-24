@@ -48,7 +48,7 @@ const S = {
     container: styled.div`
         display: flex;
         width: 100vw;
-        height: 76px;
+        min-height: 76px;
         align-items: center;
         border: 1px solid ${colors.g200};
     `,
