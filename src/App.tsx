@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import config from "@config/config";
 import KakaoRedirectPage from "@page/KakaoRedirectPage";
 import InvitationLayout from "@page/invitation/InvitationLayout";
