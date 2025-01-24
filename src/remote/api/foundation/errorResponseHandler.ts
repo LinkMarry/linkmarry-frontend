@@ -46,7 +46,7 @@ const errorResponseHandler = async (error: AxiosError) => {
         console.error(error);
         Cookies.remove('accessToken');
         Cookies.remove('refreshToken');
-        window.location.href = '/';
+        window.location.href = '/login';
         alert('로그인해 주세요');
         return Promise.reject(error);
     }

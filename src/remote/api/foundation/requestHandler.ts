@@ -7,7 +7,7 @@ const requestHandler = (config: InternalAxiosRequestConfig) => {
     
     if (Cookies.get('accessToken') === undefined || Cookies.get('refreshToken') === undefined) {
         console.error('token is undefined');
-        window.location.href = '/';
+        window.location.href = '/login';
         alert('로그인해 주세요');
         return config;
     }

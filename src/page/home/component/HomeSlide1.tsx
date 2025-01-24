@@ -13,8 +13,10 @@ function HomeSlide1() {
         <Row padding={'48px 169px'} $alignItems={'center'}>
             <Column gap={32}>
                 <Column gap={8}>
-                    <Text type={'h1'}>특별한 결혼을 위해</Text>
-                    <Text type={'p5'} color={colors.g500}>특별한 결혼을 위해</Text>
+                    <Text type={'h1'}>우리의 소중한 날을 빛낼
+                        <br/>
+                        완벽한 청첩장</Text>
+                    <Text type={'p5'} color={colors.g500}>빠르고 간편하게 완성되는 특별한 초대장</Text>
                 </Column>
                 <Row gap={8}>
                     <Button onClick={() => navigate('/dashboard')} text={'청첩장 제작'}/>
