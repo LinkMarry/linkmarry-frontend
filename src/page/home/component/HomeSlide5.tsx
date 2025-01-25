@@ -15,8 +15,8 @@ function HomeSlide5() {
                 {[
                     '예식 일시', '예식 장소', '인사말', '배경음악', '링크 공유',
                     '동영상', '연락처', '참석 의사', '방명록', '갤러리'
-                ].map(title => (
-                    <Cell title={title}/>
+                ].map((title, index) => (
+                    <Cell key={index} title={title}/>
                 ))}
             </S.cells>
         </Column>

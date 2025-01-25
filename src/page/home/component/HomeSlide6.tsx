@@ -13,8 +13,8 @@ function HomeSlide6() {
         <Column gap={72} $alignItems={'center'} padding={'140px 0'} background={colors.g100}>
             <Text type={'h2'}>링크메리와 함께 해주신 분들의 리뷰</Text>
             <S.cells gap={40} $alignSelf={'stretch'}>
-                {Array.from({length: 10}).map(() => (
-                    <Cell author={'hellop***'} star={4} content={dummyContent}/>
+                {Array.from({length: 10}).map((_, index) => (
+                    <Cell key={index} author={'hellop***'} star={4} content={dummyContent}/>
                 ))}
             </S.cells>
         </Column>
@@ -45,11 +45,11 @@ function Cell(props: {
                 <Row $alignItems={'center'}>
                     <Text type={'p2'}>{props.author}</Text>
                     <Spacer/>
-                    {Array.from({length: props.star}).map(() => (
-                        <img src="/StarFill.svg" alt=""/>
+                    {Array.from({length: props.star}).map((_, index) => (
+                        <img key={index} src="/StarFill.svg" alt=""/>
                     ))}
-                    {Array.from({length: 5 - props.star}).map(() => (
-                        <img src="/StarLine.svg" alt=""/>
+                    {Array.from({length: 5 - props.star}).map((_, index) => (
+                        <img key={index} src="/StarLine.svg" alt=""/>
                     ))}
                 </Row>
                 <Text type={'caption1'} color={colors.g600}>{props.content}</Text>
