@@ -20,7 +20,7 @@ function HomeSlide1() {
                 </Column>
                 <Row gap={8}>
                     <Button onClick={() => navigate('/dashboard')} text={'청첩장 제작'}/>
-                    <Button text={'샘플 보기'} role={'secondary'}/>
+                    <Button onClick={() => navigate('/sample')} text={'샘플 보기'} role={'secondary'}/>
                 </Row>
             </Column>
             <Spacer/>

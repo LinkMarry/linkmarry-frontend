@@ -17,12 +17,14 @@ import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/spacer";
 import {isAxiosError} from "axios";
 import PayWaterMarkDialog from "@page/invitation/dashboard/dialog/PayWaterMarkDialog";
+import RemoveWaterMarkDialog from "@page/invitation/dashboard/dialog/RemoveWaterMarkDialog";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
     const [showRemoveDesignDialog, setShowRemoveDesignDialog] = useState(false);
     const [showEditDesignDialog, setShowEditDesignDialog] = useState(false);
     const [showPayWaterMarkDialog, setShowPayWaterMarkDialog] = useState(false);
+    const [showRemoveWaterMarkDialog, setShowRemoveWaterMarkDialog] = useState(false);
 
     const [weddingDashboard, setWeddingDashboard] = useState<WeddingDashboard>();
     const [selectedWeddingInfo, setSelectedWeddingInfo] = useState<WeddingInfo>();
@@ -62,21 +64,32 @@ function InvitationDashboard() {
                     setShowPayWaterMarkDialog(true);
                     break;
                 }
-
-                try {
-                    await weddingApi.removeWatermark(cell.url);
-                    alert('워터마크 제거 성공');
-                } catch (error) {
-                    if (isAxiosError(error) && error.response) {
-                        if (error.status === 401 || error.status === 400) {
-                            alert(error.response.data.message);
-                        }
-                    }
-                }
-
+                
+                setShowRemoveWaterMarkDialog(true);
                 break;
         }
     };
+    
+    const removeWaterWater = async () => {
+        const url = selectedWeddingInfo?.url;
+        if (!url) return;
+        
+        try {
+            await weddingApi.removeWatermark(url);
+            alert('워터마크 제거 성공');
+        } catch (error) {
+            console.error(error);
+            alert('워터마크 제거 실패 - 고객센터에 문의해 주세요');
+            if (isAxiosError(error) && error.response) {
+                if (error.status === 401 || error.status === 400) {
+                    alert(error.response.data.message);
+                }
+            }
+        } finally {
+            setShowRemoveWaterMarkDialog(false);
+            setSelectedWeddingInfo(undefined);
+        }
+    }
 
     return (
         <S.container>
@@ -126,8 +139,14 @@ function InvitationDashboard() {
                 <EditDesignDialog originUrl={selectedWeddingInfo.url} dismiss={() => setShowEditDesignDialog(false)}/>}
             {showPayWaterMarkDialog && (
                 <PayWaterMarkDialog
-                    url={selectedWeddingInfo.url}
                     dismiss={() => setShowPayWaterMarkDialog(false)}
+                />
+            )}
+            {showRemoveWaterMarkDialog && weddingDashboard && (
+                <RemoveWaterMarkDialog
+                    invitation={weddingDashboard.invitation}
+                    dismiss={() => setShowRemoveWaterMarkDialog(false)}
+                    onConfirm={removeWaterWater}
                 />
             )}
         </S.container>

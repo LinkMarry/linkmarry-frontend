@@ -78,7 +78,7 @@ function TemplateComponent(
         템플릿6: 'style2',
     }
 
-    console.log(`pos - ${wedding.position}`)
+    // console.log(`pos - ${wedding.position}`)
 
     return (
         <S.container ref={rootRef} $templateFont={templateFont}>

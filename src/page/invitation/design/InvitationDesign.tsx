@@ -129,6 +129,7 @@ function InvitationDesign() {
         localStorage.removeItem(`temp_Design_${url}`);
         if (temp === null) {
             setWedding(alt);
+            console.log('temp is null');
             return;
         }
 

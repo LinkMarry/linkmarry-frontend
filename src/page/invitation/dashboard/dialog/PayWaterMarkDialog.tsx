@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import {Column} from "@designsystem/component/flexLayout";
@@ -9,20 +9,38 @@ import colors from "@designsystem/foundation/colors";
 import makeText from "@designsystem/foundation/text/textType";
 import Spacer from "@designsystem/component/spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
+import naverApi from "@remote/api/NaverApi";
+import {useNavigate} from "react-router-dom";
+import {isAxiosError} from "axios";
 
 interface PayWaterMarkDialogProps {
-    url: string;
     dismiss: () => void;
 }
 
 function PayWaterMarkDialog(
     {
-        url,
         dismiss
     }: PayWaterMarkDialogProps
 ) {
+    const telRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
+
     const removeWaterMark = async () => {
-        // await weddingApi.removeWatermark()
+        const tel = telRef.current;
+        if (!tel || !tel.value) return;
+
+        try {
+            await naverApi.order(tel.value);
+            alert('충전 완료');
+            navigate(0);
+        } catch (error) {
+            console.error(error);
+            if (isAxiosError(error) && error.response && error.status === 404) {
+                alert(`충전 실패 - ${error.response.data.message}`);
+            } else {
+                alert('충전 실패 - 고객센터에 문의하세요');
+            }
+        }
     };
 
     return (
@@ -47,7 +65,7 @@ function PayWaterMarkDialog(
                         </Column>
                         <Column gap={8} $alignItems={'stretch'}>
                             <Text type={'caption1'}>구매한 네이버 계정의 휴대전화 번호를 입력해주세요.</Text>
-                            <TextField placeholder={'- 없이 입력'}/>
+                            <TextField ref={telRef} placeholder={'- 없이 입력'}/>
                         </Column>
                     </Column>
                     <Spacer h={113}/>
