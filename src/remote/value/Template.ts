@@ -8,6 +8,28 @@ export type TemplateName =
     | '템플릿5'
     | '템플릿6'
 export const templateNames: TemplateName[] = ['템플릿1', '템플릿2', '템플릿3', '템플릿4', '템플릿5', '템플릿6'];
+export const templateNameRecord: Record<TemplateName, {
+    imgSrc: string;
+}> = {
+    템플릿1: {
+        imgSrc: '/template-sample/template1.png'
+    },
+    템플릿2: {
+        imgSrc: '/template-sample/template2.png'
+    },
+    템플릿3: {
+        imgSrc: '/template-sample/template3.png'
+    },
+    템플릿4: {
+        imgSrc: '/template-sample/template4.png'
+    },
+    템플릿5: {
+        imgSrc: '/template-sample/template5.png'
+    },
+    템플릿6: {
+        imgSrc: '/template-sample/template6.png'
+    },
+}
 
 export type TemplateColor =
     '#F7F7F2'

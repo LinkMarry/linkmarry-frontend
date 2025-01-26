@@ -2,25 +2,25 @@ import React from 'react';
 import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
+import {TemplateName, templateNameRecord} from "@remote/value/Template";
 
 interface TemplateCellProps {
-    title: string;
+    templateName: TemplateName;
 }
 
 function TemplateCell(
     {
-        title
+        templateName
     }: TemplateCellProps
 ) {
     return (
         <S.container>
             <S.img
-                src={'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2024/02/26/fbc84c43-1b58-463b-9c8a-9855e3d1bb00.jpg'}
+                src={templateNameRecord[templateName].imgSrc}
                 alt=""
             />
             <Column gap={4} padding={'20px'}>
-                <Text type={'p2'}>{title}</Text>
-                {/*<Text text={'title'} type={'p5}/>*/}
+                <Text type={'p2'}>{templateName}</Text>
             </Column>
         </S.container>
     );
@@ -39,6 +39,7 @@ const S = {
         width: 100%;
         height: 680px;
         object-fit: cover;
+        object-position: top;
     `
 }
 

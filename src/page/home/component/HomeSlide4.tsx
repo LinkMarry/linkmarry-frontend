@@ -21,7 +21,7 @@ function HomeSlide4() {
                     <Cell iconType={IconType.Book} title={'방명록 확인'}/>
                     <Cell iconType={IconType.Crown} title={'축의금 확인'}/>
                     <Cell iconType={IconType.Utensils} title={'식사 인원 확인'}/>
-                    <Cell iconType={IconType.Statistics} title={'방문자 트래킹'}/>
+                    <Cell iconType={IconType.CheckFill} title={'플랫폼 여부'}/>
                 </S.cells>
             </Column>
         </Row>

@@ -18,6 +18,7 @@ import WeddingStatisticsInfo, {fillMissingDates} from "@remote/value/WeddingStat
 import Button from "@designsystem/component/button";
 import Spacer from "@designsystem/component/spacer";
 import ToolTip from "@designsystem/component/toolTip";
+import {getWeddingUrl} from "@util/string.util";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
@@ -121,7 +122,16 @@ function InvitationStatisticsDetail() {
                     <>
                         <Column gap={8} $alignSelf={'stretch'}>
                             <Row $alignSelf={'stretch'}>
-                                <Text type={'h5'}>{window.location.origin}/wedding/{wedding.url}</Text>
+                                <Text
+                                    type={'h5'}
+                                    onClick={() => window.open(getWeddingUrl(wedding.url))}
+                                    style={{
+                                        cursor: 'pointer',
+                                        textDecoration: 'underline'
+                                    }}
+                                >
+                                    {getWeddingUrl(wedding.url)}
+                                </Text>
                                 <Spacer/>
                                 <Button text={'방명록 보기'} role={'assistive'} size={'medium'} onClick={() => {
                                     navigate(`/dashboard/guest-comment/${wedding.url}`);

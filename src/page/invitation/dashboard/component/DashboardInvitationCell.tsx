@@ -11,6 +11,7 @@ import WeddingInfo from "@remote/value/WeddingInfo";
 import DashboardPopover, {DashboardPopoverClickType} from "@page/invitation/dashboard/component/DashboardPopover";
 import {useNavigate} from "react-router-dom";
 import weddingApi from "@remote/api/WeddingApi";
+import {getWeddingUrl} from "@util/string.util";
 
 export type DashboardInvitationCellClickType = 'remove' | 'edit' | 'removeWaterMark';
 
@@ -28,7 +29,7 @@ function DashboardInvitationCell(
     const [showPopover, setShowPopover] = useState(false);
 
     const navigate = useNavigate();
-    const fullUrl = `${window.location.origin}/wedding/${weddingInfo.url}`
+    const weddingUrl = getWeddingUrl(weddingInfo.url);
 
     const onClickPopover = async (type: DashboardPopoverClickType) => {
         switch (type) {
@@ -42,7 +43,7 @@ function DashboardInvitationCell(
 ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩장이 도착하였습니다.
 청첩장을 확인하시려면 아래 링크를 클릭해 주세요.
 따뜻한 축하와 함께 자리를 빛내 주시면 감사하겠습니다. 😊`,
-                        url: fullUrl,
+                        url: weddingUrl,
                     });
                 } catch (error) {
                     console.error(error);
@@ -51,11 +52,11 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                 break;
             case 'copyLink':
                 try {
-                    await navigator.clipboard.writeText(fullUrl);
+                    await navigator.clipboard.writeText(weddingUrl);
                     alert("복사되었습니다. 원하는 곳에 붙여넣기하여 주세요.");
                 } catch (error) {
                     console.error(error);
-                    prompt("키보드의 ctrl+C 또는 마우스 오른쪽의 복사하기를 이용해주세요.", fullUrl);
+                    prompt("키보드의 ctrl+C 또는 마우스 오른쪽의 복사하기를 이용해주세요.", weddingUrl);
                 }
                 break;
             case 'editLink':
@@ -69,7 +70,7 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                 break;
         }
     }
-
+    
     return (
         <S.container>
             <S.content>
@@ -77,7 +78,7 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                 <Column gap={12} $alignItems={'stretch'} padding={'20px'} background={colors.g100}>
                     <Column gap={4} $alignItems={'stretch'}>
                         <Row gap={8}>
-                            <S.urlLabel>{window.location.origin}/wedding/{weddingInfo.url}</S.urlLabel>
+                            <S.urlLabel onClick={() => window.open(weddingUrl)}>{weddingUrl}</S.urlLabel>
                             <Spacer/>
                             <Icon
                                 type={IconType.Detail}
@@ -95,9 +96,13 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                     </Column>
                     <Row gap={10}>
                         <Button
-                            text={'워터마크 제거'} role={'assistive'} style={{background: colors.white, flex: 1}}
+                            text={weddingInfo.waterMark ? '워터마크 제거' : '링크 가기'} role={'assistive'} style={{background: colors.white, flex: 1}}
                             onClick={() => {
-                                onClick('removeWaterMark');
+                                if (weddingInfo.waterMark) {
+                                    onClick('removeWaterMark');
+                                } else {
+                                    window.open(weddingUrl);
+                                }
                             }}
                         />
                         <Button
@@ -148,6 +153,8 @@ const S = {
         overflow-x: hidden;
         word-break: break-word;
         text-overflow: ellipsis;
+        text-decoration: underline;
+        cursor: pointer;
     `,
 };
 

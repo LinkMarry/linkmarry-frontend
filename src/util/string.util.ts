@@ -7,3 +7,7 @@ export function trimString(str: string, maxLength: number) {
     }
     return str;
 }
+
+export function getWeddingUrl(url: string): string {
+    return `${window.location.origin}/wedding/${url}`;
+}
