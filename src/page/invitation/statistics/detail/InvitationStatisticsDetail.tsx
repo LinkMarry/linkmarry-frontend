@@ -17,6 +17,7 @@ import GuestType, {guestTypeRecord} from "@remote/enumeration/GuestType";
 import WeddingStatisticsInfo, {fillMissingDates} from "@remote/value/WeddingStatisticsInfo";
 import Button from "@designsystem/component/button";
 import Spacer from "@designsystem/component/spacer";
+import ToolTip from "@designsystem/component/toolTip";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
@@ -219,16 +220,24 @@ function InvitationStatisticsDetail() {
                                              }}
                                         >
                                             <Text type={'p1'} color={colors.g600}>식사 정보가 집계되지 않았습니다</Text>
-                                            <Text
-                                                style={{
-                                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                    width: 20, height: 20,
-                                                    border: `1.5px solid ${colors.g400}`, borderRadius: 10,
-                                                    cursor: 'pointer'
-                                                }}
-                                                type={'p4'}
-                                                color={colors.g400}
-                                            >?</Text>
+                                            <ToolTip content={
+                                                <span style={{textAlign: 'center'}}>
+                                                    청첩장을 생성할 때 참석의사 섹션에서 <b>식사 여부 항목을 활성화하지 않은 경우</b>,
+                                                    <br/>
+                                                    하객들의 식사 여부 통계가 수집되지 않습니다.
+                                                </span>
+                                            }>
+                                                <Text
+                                                    style={{
+                                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                        width: 20, height: 20,
+                                                        border: `1.5px solid ${colors.g400}`, borderRadius: 10,
+                                                        cursor: 'pointer'
+                                                    }}
+                                                    type={'p4'}
+                                                    color={colors.g400}
+                                                >?</Text>
+                                            </ToolTip>
                                         </Row>
                                     )}
                                 </Column>
