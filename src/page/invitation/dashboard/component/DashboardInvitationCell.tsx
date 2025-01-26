@@ -77,7 +77,7 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                 <Column gap={12} $alignItems={'stretch'} padding={'20px'} background={colors.g100}>
                     <Column gap={4} $alignItems={'stretch'}>
                         <Row gap={8}>
-                            <S.urlLabel>{weddingInfo.url}</S.urlLabel>
+                            <S.urlLabel>{window.location.origin}/wedding/{weddingInfo.url}</S.urlLabel>
                             <Spacer/>
                             <Icon
                                 type={IconType.Detail}
@@ -146,7 +146,7 @@ const S = {
         ${makeText('p5')};
         color: ${colors.black};
         overflow-x: hidden;
-        white-space: nowrap;
+        word-break: break-word;
         text-overflow: ellipsis;
     `,
 };

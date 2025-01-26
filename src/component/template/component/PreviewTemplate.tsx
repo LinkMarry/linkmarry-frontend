@@ -11,6 +11,7 @@ import Template from "@remote/value/Template";
 import Spacer from "@designsystem/component/spacer";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
+import HorizontalDivider from "@designsystem/component/horizontalDivider";
 
 interface PreviewTemplateProps {
     template: Template;
@@ -39,6 +40,8 @@ function PreviewTemplate(
             return (
                 <S1.Root background={template.templateColor}>
                     <Column gap={36} $alignItems={'center'} margin={'0 23px 44px 23px'}>
+                        <Text size={24} weight={100}>{first.name} & {second.name}</Text>
+                        <HorizontalDivider color={colors.black}/>
                         <Column $alignItems={'center'} gap={12}>
                             <Text size={18}
                                   weight={300}>{isValidDate && format(date, 'yyyy년 M월 d일 EEEE a h시', {locale: ko})}</Text>

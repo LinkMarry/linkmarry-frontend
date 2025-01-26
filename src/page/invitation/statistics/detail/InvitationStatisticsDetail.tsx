@@ -121,7 +121,7 @@ function InvitationStatisticsDetail() {
                     <>
                         <Column gap={8} $alignSelf={'stretch'}>
                             <Row $alignSelf={'stretch'}>
-                                <Text type={'h5'}>https://linkmarry-web/{wedding.url}</Text>
+                                <Text type={'h5'}>{window.location.origin}/wedding/{wedding.url}</Text>
                                 <Spacer/>
                                 <Button text={'방명록 보기'} role={'assistive'} size={'medium'} onClick={() => {
                                     navigate(`/dashboard/guest-comment/${wedding.url}`);
