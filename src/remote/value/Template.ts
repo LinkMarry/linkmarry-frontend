@@ -12,22 +12,22 @@ export const templateNameRecord: Record<TemplateName, {
     imgSrc: string;
 }> = {
     템플릿1: {
-        imgSrc: '/template-sample/template1.png'
+        imgSrc: '/template-sample/template1.webp'
     },
     템플릿2: {
-        imgSrc: '/template-sample/template2.png'
+        imgSrc: '/template-sample/template2.webp'
     },
     템플릿3: {
-        imgSrc: '/template-sample/template3.png'
+        imgSrc: '/template-sample/template3.webp'
     },
     템플릿4: {
-        imgSrc: '/template-sample/template4.png'
+        imgSrc: '/template-sample/template4.webp'
     },
     템플릿5: {
-        imgSrc: '/template-sample/template5.png'
+        imgSrc: '/template-sample/template5.webp'
     },
     템플릿6: {
-        imgSrc: '/template-sample/template6.png'
+        imgSrc: '/template-sample/template6.webp'
     },
 }
 
