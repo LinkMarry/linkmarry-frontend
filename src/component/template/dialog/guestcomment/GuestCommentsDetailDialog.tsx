@@ -9,9 +9,11 @@ import Text from "@designsystem/component/text";
 import Spacer from "@designsystem/component/spacer";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import Icon, {IconType} from "@designsystem/foundation/icon";
+import GuestComment from "@remote/value/GuestComment";
 
 interface GuestCommentsDetailDialogProps {
     comments: Comment[];
+    guestComment: GuestComment;
     onRemove: (comment: Comment) => void;
     dismiss: () => void;
 }
@@ -19,6 +21,7 @@ interface GuestCommentsDetailDialogProps {
 function GuestCommentsDetailDialog(
     {
         comments,
+        guestComment,
         onRemove,
         dismiss
     }: GuestCommentsDetailDialogProps
@@ -61,6 +64,7 @@ function GuestCommentsDetailDialog(
                         <BasicGuestComment
                             key={index}
                             comment={comment}
+                            privateContent={guestComment.privateContent}
                             background={colors.white}
                             onRemove={() => {
                                 onRemove(comment);

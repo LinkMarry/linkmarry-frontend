@@ -21,7 +21,7 @@ export const defaultGuestComment: GuestComment = {
     title: "",
     content: "",
     design: Design.BASIC,
-    privateContent: false,
+    privateContent: true,
     privateDate: false,
 }
 

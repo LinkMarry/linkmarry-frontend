@@ -10,7 +10,6 @@ import Design from "@remote/enumeration/Design";
 import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";
 import Button from "@designsystem/component/button";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import GuestComment from "@remote/value/GuestComment";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcomment/RemoveGuestCommentDialog";
 import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
@@ -55,24 +54,27 @@ function GuestCommentsTemplate(
                         {guestComment.content}
                     </Text>
                 </Column>
-                <Column gap={12} $alignItems={'stretch'}>
-                    <GuestComments
-                        comments={guestComments}
-                        design={guestComment.design}
-                        background={colors.white}
-                        onRemove={comment => {
-                            setSelectedRemoveGuestComment(comment);
-                            setShowRemoveGuestCommentDialog(true);
-                        }}
-                    />
-                    <Text
-                        style={{alignSelf: 'flex-end', paddingRight: 4, cursor: 'pointer'}}
-                        size={14} weight={300} color={colors.g600}
-                        onClick={() => {
-                            setShowGuestCommentsDetailDialog(true);
-                        }}
-                    >전체보기</Text>
-                </Column>
+                {guestComment.privateContent && (
+                    <Column gap={12} $alignItems={'stretch'}>
+                        <GuestComments
+                            comments={guestComments}
+                            design={guestComment.design}
+                            privateDate={guestComment.privateDate}
+                            background={colors.white}
+                            onRemove={comment => {
+                                setSelectedRemoveGuestComment(comment);
+                                setShowRemoveGuestCommentDialog(true);
+                            }}
+                        />
+                        <Text
+                            style={{alignSelf: 'flex-end', paddingRight: 4, cursor: 'pointer'}}
+                            size={14} weight={300} color={colors.g600}
+                            onClick={() => {
+                                setShowGuestCommentsDetailDialog(true);
+                            }}
+                        >전체보기</Text>
+                    </Column>
+                )}
             </Column>
             <Button
                 text={'방명록 작성하기'}
@@ -94,6 +96,7 @@ function GuestCommentsTemplate(
             {showGuestCommentsDetailDialog && (
                 <GuestCommentsDetailDialog
                     comments={guestComments}
+                    guestComment={guestComment}
                     onRemove={comment => {
                         setSelectedRemoveGuestComment(comment);
                         setShowRemoveGuestCommentDialog(true);
@@ -115,6 +118,7 @@ function GuestCommentsTemplate(
 interface GuestCommentsProps {
     comments: Comment[];
     design: Design;
+    privateDate: boolean;
     background: CSSProperties['background'];
     onRemove: (comment: Comment) => void;
 }
@@ -123,6 +127,7 @@ function GuestComments(
     {
         comments,
         design,
+        privateDate,
         background,
         onRemove,
     }: GuestCommentsProps
@@ -136,6 +141,7 @@ function GuestComments(
                             key={index}
                             comment={comment}
                             background={background}
+                            privateContent={privateDate}
                             onRemove={() => onRemove(comment)}
                         />
                     ))}
@@ -149,6 +155,7 @@ function GuestComments(
                             key={index}
                             comment={comment}
                             background={background}
+                            privateContent={privateDate}
                             onRemove={() => onRemove(comment)}
                         />
                     ))}
@@ -188,6 +195,7 @@ const S = {
 
 interface GuestCommentProps extends HTMLAttributes<HTMLDivElement> {
     comment: Comment;
+    privateContent: boolean;
     background: CSSProperties['background'];
     onRemove: () => void;
 }
@@ -195,6 +203,7 @@ interface GuestCommentProps extends HTMLAttributes<HTMLDivElement> {
 export function BasicGuestComment(
     {
         comment,
+        privateContent,
         background,
         onRemove,
         ...props
@@ -206,9 +215,11 @@ export function BasicGuestComment(
                 <Text size={18} color={colors.g600} weight={300}>
                     From. {comment.name}
                 </Text>
-                <Text size={12} color={colors.g300} weight={300}>
-                    {trimString(comment.createdDate, 10)}
-                </Text>
+                {!privateContent && (
+                    <Text size={12} color={colors.g300} weight={300}>
+                        {trimString(comment.createdDate, 10)}
+                    </Text>
+                )}
                 <Spacer/>
                 <Icon
                     type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
@@ -225,6 +236,7 @@ export function BasicGuestComment(
 export function StickerGuestComment(
     {
         comment,
+        privateContent,
         background,
         onRemove
     }: GuestCommentProps
@@ -245,11 +257,13 @@ export function StickerGuestComment(
                     <Text size={16} weight={300} color={colors.g600}>
                         from. {comment.name}
                     </Text>
-                    <Text
-                        size={12}
-                        weight={300}
-                        color={colors.g300}
-                    >{trimString(comment.createdDate, 10)}</Text>
+                    {!privateContent && (
+                        <Text
+                            size={12}
+                            weight={300}
+                            color={colors.g300}
+                        >{trimString(comment.createdDate, 10)}</Text>
+                    )}
                 </Column>
             </Column>
         </S.stickerContainer>

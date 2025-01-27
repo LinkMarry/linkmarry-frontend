@@ -28,7 +28,7 @@ const colors = {
      */
     positive: '#54E827',
     error: '#F33C2F',
-    cautionary: '#F6D21E',
+    cautionary: '#FFD918',
     info: '#3095F1',
     
     /*
