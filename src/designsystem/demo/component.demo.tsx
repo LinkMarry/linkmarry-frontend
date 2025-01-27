@@ -3,6 +3,7 @@ import Button, {ButtonRole, ButtonSize} from "@designsystem/component/button";
 import HorizontalDivider, {HorizontalDividerSize} from "@designsystem/component/horizontalDivider";
 import TextField from "@designsystem/component/textField";
 import Checkbox from "@designsystem/component/checkbox";
+import Radio from "@designsystem/component/radio";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -13,6 +14,7 @@ function ComponentDemo() {
     const [input, setInput] = useState('');
 
     const [checked, setChecked] = useState(false);
+    const [selected, setSelected] = useState(false);
 
     return (
         <div style={{
@@ -40,7 +42,7 @@ function ComponentDemo() {
             {dividerSizes.map(size => (
                 <HorizontalDivider size={size}/>
             ))}
-            
+
             <TextField
                 placeholder={'placeholder'}
                 label={'label'}
@@ -79,11 +81,10 @@ function ComponentDemo() {
                 checked={checked}
                 onChange={setChecked}
             />
-            <Checkbox
+            <Radio
                 label={'title'}
-                checked={checked}
-                rounded={true}
-                onChange={setChecked}
+                selected={selected}
+                onChange={setSelected}
             />
         </div>
     );

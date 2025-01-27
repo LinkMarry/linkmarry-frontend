@@ -11,9 +11,9 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 import makeText from "@designsystem/foundation/text/textType";
 
-interface CheckboxProps {
-    checked?: boolean;
-    onChange?: (checked: boolean) => void;
+interface RadioProps {
+    selected?: boolean;
+    onChange?: (selected: boolean) => void;
     label?: string;
     style?: CSSProperties;
 }
@@ -24,31 +24,31 @@ export interface CheckboxRef {
     toggle: () => void;
 }
 
-function Checkbox(
+function Radio(
     {
-        checked = false,
+        selected = false,
         onChange,
         label,
         style
-    }: CheckboxProps,
+    }: RadioProps,
     ref: ForwardedRef<CheckboxRef>
 ) {
-    const [localChecked, setLocalChecked] = useState(checked);
-    const checkboxRef = useRef<HTMLInputElement>(null);
+    const [localSelected, setLocalSelected] = useState(selected);
+    const radioRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setLocalChecked(checked);
-    }, [checked]);
+        setLocalSelected(selected);
+    }, [selected]);
 
     useImperativeHandle(ref, () => ({
-        value: localChecked,
+        value: localSelected,
         focus: () => {
-            checkboxRef.current?.focus();
+            radioRef.current?.focus();
         },
         toggle: () => {
-            if (checkboxRef.current) {
-                checkboxRef.current.checked = !checkboxRef.current.checked;
-                onChange?.(checkboxRef.current.checked);
+            if (radioRef.current) {
+                radioRef.current.checked = !radioRef.current.checked;
+                onChange?.(radioRef.current.checked);
             }
         }
     }));
@@ -57,37 +57,35 @@ function Checkbox(
         <S.container style={style}>
             <S.checkbox>
                 <input
-                    ref={checkboxRef}
+                    ref={radioRef}
                     type={'checkbox'}
-                    checked={localChecked}
+                    checked={localSelected}
                     onChange={(e) => {
                         onChange?.(e.target.checked);
-                        setLocalChecked(e.target.checked);
+                        setLocalSelected(e.target.checked);
                     }}
                     style={{
-                        borderRadius: 4,
-                        width: 20,
-                        height: 20,
+                        borderRadius: 10,
+                        width: 24,
+                        height: 24,
                         appearance: 'none',
                         cursor: 'pointer',
-                        background: localChecked ? colors.g600 : colors.transparent,
-                        border: localChecked ? 'none' : `1px solid ${colors.g300}`,
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}
                 />
-                {localChecked && <Icon
-                    type={IconType.CheckLine}
-                    tint={colors.white}
-                    size={18}
+                <Icon
+                    type={localSelected ? IconType.RadioFill : IconType.RadioLine}
+                    tint={localSelected ? colors.g600 : colors.g300}
+                    size={24}
                     style={{
                         position: 'absolute',
                         pointerEvents: 'none',
                     }}
-                />}
+                />
             </S.checkbox>
-            {label && <S.title style={{cursor: 'pointer'}} onClick={() => onChange?.(!checked)}>{label}</S.title>}
+            {label && <S.title style={{cursor: 'pointer'}} onClick={() => onChange?.(!selected)}>{label}</S.title>}
         </S.container>
     );
 }
@@ -97,7 +95,7 @@ const S = {
         display: inline-flex;
         align-items: center;
         width: fit-content;
-        gap: 8px;
+        gap: 6px;
     `,
     checkbox: styled.div`
         display: flex;
@@ -113,4 +111,4 @@ const S = {
     `
 }
 
-export default forwardRef(Checkbox);
+export default forwardRef(Radio);

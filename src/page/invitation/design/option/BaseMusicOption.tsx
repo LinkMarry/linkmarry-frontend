@@ -13,6 +13,7 @@ import fileApi from "@remote/api/FileApi";
 import Music, {getMusicName} from "@remote/value/Music";
 import LoadingOverlay from "@src/component/LoadingOverlay";
 import VoidInput from "@src/component/VoidInput";
+import Radio from "@designsystem/component/radio";
 
 type SelectMode = 'select' | 'direct';
 const selectModeRecord: Record<SelectMode, string> = {
@@ -101,9 +102,9 @@ function BaseMusicOption(
                         {musics && (
                             musics.map((music, index) => (
                                 <Row key={index} gap={12} $alignItems={'center'}>
-                                    <Checkbox
-                                        checked={music.url === baseMusic.musicUrl}
-                                        label={getMusicName(music)} rounded={true}
+                                    <Radio
+                                        selected={music.url === baseMusic.musicUrl}
+                                        label={getMusicName(music)}
                                         onChange={() => onChange({...baseMusic, musicUrl: music.url})}
                                     />
                                     <Row $alignItems={'center'} $justifyContent={'center'} padding={'4px'}>

@@ -30,7 +30,7 @@ export default function Button(
     let background: string, foreground: string;
     switch (role) {
         case 'primary':
-            background = colors.p700;
+            background = colors.p800;
             foreground = colors.p100;
             break;
         case 'secondary':

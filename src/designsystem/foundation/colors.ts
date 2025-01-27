@@ -24,6 +24,14 @@ const colors = {
     white: '#FFFFFF',
     
     /*
+    Status
+     */
+    positive: '#54E827',
+    error: '#F33C2F',
+    cautionary: '#F6D21E',
+    info: '#3095F1',
+    
+    /*
     ETC
      */
     transparent: 'transparent',
