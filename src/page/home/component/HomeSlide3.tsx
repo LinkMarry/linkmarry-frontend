@@ -16,8 +16,8 @@ function HomeSlide3() {
                 boxShadow: '2px 0px 4px 0px rgba(0, 0, 0, 0.12)',
                 overflow: 'hidden'
             }}>
-                {templateNames.map(name => (
-                    <img src={templateNameRecord[name].imgSrc} alt="" style={{
+                {templateNames.map((name, index) => (
+                    <img key={index} src={templateNameRecord[name].imgSrc} alt="" style={{
                         width: 194,
                         height: 285,
                         objectFit: 'cover',

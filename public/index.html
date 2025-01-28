@@ -30,6 +30,25 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_KAKAO_JAVASCRIPT_KEY%&libraries=services,clusterer,drawing"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-16841271697');
+    </script>
+
+    <!-- Event snippet for 페이지 조회 conversion page -->
+    <script>
+        gtag('event', 'conversion', {
+            'send_to': 'AW-16841271697/ZVdECJWy7pUaEJHTxd4-',
+            'value': 1.0,
+            'currency': 'KRW'
+        });
+    </script>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
