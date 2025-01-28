@@ -77,6 +77,9 @@ export default interface Template {
 
     // 선택한 템플릿 폰트 사이즈
     templateFontSize: TemplateFontSize;
+    
+    // 대표 사진 URL
+    titleImgUrl: string;
 }
 
 export const defaultTemplate: Template = {
@@ -84,6 +87,7 @@ export const defaultTemplate: Template = {
     templateColor: '#F7F7F2',
     templateFont: 'LINESeedKR',
     templateFontSize: 'medium',
+    titleImgUrl: ''
 }
 
 export const dummyTemplate: Template = {
@@ -91,4 +95,5 @@ export const dummyTemplate: Template = {
     templateColor: '#F7F7F2',
     templateFont: 'LINESeedKR',
     templateFontSize: 'medium',
+    titleImgUrl: ''
 };

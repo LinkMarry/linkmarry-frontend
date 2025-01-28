@@ -18,7 +18,6 @@ interface PreviewTemplateProps {
     baseInfo: BaseInfo;
     weddingPlace: WeddingPlace;
     weddingSchedule: WeddingSchedule;
-    imgList: string[];
 }
 
 function PreviewTemplate(
@@ -27,7 +26,6 @@ function PreviewTemplate(
         baseInfo,
         weddingPlace,
         weddingSchedule,
-        imgList
     }: PreviewTemplateProps
 ) {
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
@@ -49,7 +47,7 @@ function PreviewTemplate(
                         </Column>
                     </Column>
                     <Column gap={44} $alignItems={'center'}>
-                        <S1.Img src={imgList[0] ?? '/EmptyImage.png'}/>
+                        <S1.Img src={template.titleImgUrl ?? '/EmptyImage.png'}/>
                         <Row gap={8} $alignItems={'center'}>
                             <Text size={16} weight={300}>{first.korean} {first.name}</Text>
                             <Icon type={IconType.HeartFill} size={16} color={colors.white}/>
@@ -65,7 +63,7 @@ function PreviewTemplate(
                         <Text size={28} weight={300}>{isValidDate && format(date, 'yyyy/MM/dd', {locale: ko})}</Text>
                         <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
                     </Column>
-                    <S2.Img src={imgList[0] ?? '/EmptyImage.png'}/>
+                    <S2.Img src={template.titleImgUrl ?? '/EmptyImage.png'}/>
                     <Row gap={12} $alignItems={'center'} $justifyContent={'center'} padding={'72px 0'}>
                         <Text size={20} weight={300}>{first.name}</Text>
                         <Text size={20} weight={300}>&</Text>
@@ -88,7 +86,7 @@ function PreviewTemplate(
                             <Text size={16} weight={100} color={colors.white}>{second.korean} {second.name}</Text>
                         </Row>
                     </Column>
-                    <S3.Img src={imgList[0] ?? '/EmptyImage.png'}/>
+                    <S3.Img src={template.titleImgUrl ?? '/EmptyImage.png'}/>
                 </S3.Root>
             );
         case '템플릿4':
@@ -105,13 +103,13 @@ function PreviewTemplate(
                             >{weddingPlace.placeName}</Text>
                         </Column>
                     </Column>
-                    <S4.Img src={imgList[0] ?? '/EmptyImage.png'}/>
+                    <S4.Img src={template.titleImgUrl ?? '/EmptyImage.png'}/>
                 </Column>
             );
         case '템플릿5':
             return (
                 <Column $alignItems={'stretch'} background={colors.white}>
-                    <S5.Img src={imgList[0] ?? '/EmptyImage.png'}/>
+                    <S5.Img src={template.titleImgUrl ?? '/EmptyImage.png'}/>
                     <Row $alignItems={'center'} gap={20} $justifyContent={'center'} padding={'0 0 48px 0'}>
                         <Text size={24} weight={300}>{first.name}</Text>
                         <Text size={16} weight={300} color={colors.g300}>and</Text>
@@ -130,7 +128,7 @@ function PreviewTemplate(
                             <Text size={20} weight={300} color={colors.g600}>{second.name}</Text>
                         </Row>
                     </Column>
-                    <S6.Img src={imgList[0] ?? '/EmptyImage.png'}/>
+                    <S6.Img src={template.titleImgUrl ?? '/EmptyImage.png'}/>
                 </Column>
             );
     }

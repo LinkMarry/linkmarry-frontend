@@ -16,6 +16,8 @@ import SegmentedButton from "@designsystem/component/segmentedButton";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
+import LoadingOverlay from "@src/component/LoadingOverlay";
+import AddDismissButton from "@src/component/AddDismissButton";
 
 interface TemplateOptionProps {
     template: Template;
@@ -30,20 +32,20 @@ function TemplateOption(
 ) {
     const [isFetching, setIsFetching] = useState(false);
     const imageFieldRef = useRef<HTMLInputElement>(null);
-    const uploadImages = async (event: ChangeEvent<HTMLInputElement>) => {
+    const uploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (!files) return;
-        
+
         const file = files[0];
         if (!file) return;
-        
+
         setIsFetching(true);
-        
+
         try {
             const {data} = await fileApi.upload(file);
-            
+            onChange({...template, titleImgUrl: data.url});
         } catch (error) {
-            
+            console.error(error);
         } finally {
             setIsFetching(false);
             if (imageFieldRef.current) {
@@ -51,7 +53,7 @@ function TemplateOption(
             }
         }
     };
-    
+
     return (
         <S.container>
             <Column gap={32} flex={1}>
@@ -115,13 +117,26 @@ function TemplateOption(
                 </Row>
                 <Row gap={12}>
                     <OptionLabel label={'대표사진'} style={{alignSelf: 'flex-start'}}/>
-                    <S.addImageContainer htmlFor={'choose-template-image'}>
-                        <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
-                    </S.addImageContainer>
+                    {template.titleImgUrl ? (
+                            <AddDismissButton dismiss={() => {
+                                onChange({...template, titleImgUrl: ''});
+                                if (imageFieldRef.current) {
+                                    imageFieldRef.current.value = '';
+                                }
+                            }}>
+                                <S.image src={template.titleImgUrl}/>
+                            </AddDismissButton>
+                        ) : (
+                        <S.addImageContainer htmlFor={'choose-template-image'}>
+                            <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                            {isFetching && <LoadingOverlay/>}
+                        </S.addImageContainer>
+                        )
+                    }
                     <VoidInput
                         id={'choose-template-image'}
                         ref={imageFieldRef}
-                        onChange={uploadImages}
+                        onChange={uploadImage}
                         type={'file'}
                         accept={'image/*'}
                     />
@@ -173,6 +188,12 @@ const S = {
         align-items: center;
         cursor: pointer;
     `,
+    image: styled.img`
+        display: flex;
+        width: 128px;
+        object-fit: cover;
+        height: 128px;
+    `
 }
 
 export default TemplateOption;

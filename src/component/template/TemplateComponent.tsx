@@ -93,7 +93,6 @@ function TemplateComponent(
                 baseInfo={wedding.baseInfo}
                 weddingPlace={wedding.weddingPlace}
                 weddingSchedule={wedding.weddingSchedule}
-                imgList={wedding.imgList}
             />
             {wedding.position.map(index => {
                 switch (index) {
