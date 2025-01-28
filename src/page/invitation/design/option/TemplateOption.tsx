@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent, useRef, useState} from 'react';
 import styled, {css, CSSProperties} from "styled-components";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
@@ -13,6 +13,9 @@ import Template, {
 } from "@remote/value/Template";
 import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/textType";
 import SegmentedButton from "@designsystem/component/segmentedButton";
+import Icon, {IconType} from "@designsystem/foundation/icon";
+import VoidInput from "@src/component/VoidInput";
+import fileApi from "@remote/api/FileApi";
 
 interface TemplateOptionProps {
     template: Template;
@@ -25,6 +28,30 @@ function TemplateOption(
         onChange
     }: TemplateOptionProps
 ) {
+    const [isFetching, setIsFetching] = useState(false);
+    const imageFieldRef = useRef<HTMLInputElement>(null);
+    const uploadImages = async (event: ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (!files) return;
+        
+        const file = files[0];
+        if (!file) return;
+        
+        setIsFetching(true);
+        
+        try {
+            const {data} = await fileApi.upload(file);
+            
+        } catch (error) {
+            
+        } finally {
+            setIsFetching(false);
+            if (imageFieldRef.current) {
+                imageFieldRef.current.value = '';
+            }
+        }
+    };
+    
     return (
         <S.container>
             <Column gap={32} flex={1}>
@@ -58,7 +85,6 @@ function TemplateOption(
                         ))}
                     </S.backgroundColor.container>
                 </Row>
-                <HorizontalDivider/>
                 <Row gap={12}>
                     <OptionLabel label={'폰트'} style={{alignSelf: 'flex-start'}}/>
                     <Row gap={12}>
@@ -86,6 +112,19 @@ function TemplateOption(
                             renderItem={item => <>{templateFontSizeRecord[item as TemplateFontSize].korean}</>}
                         />
                     </Row>
+                </Row>
+                <Row gap={12}>
+                    <OptionLabel label={'대표사진'} style={{alignSelf: 'flex-start'}}/>
+                    <S.addImageContainer htmlFor={'choose-template-image'}>
+                        <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                    </S.addImageContainer>
+                    <VoidInput
+                        id={'choose-template-image'}
+                        ref={imageFieldRef}
+                        onChange={uploadImages}
+                        type={'file'}
+                        accept={'image/*'}
+                    />
                 </Row>
             </Column>
         </S.container>
@@ -125,6 +164,15 @@ const S = {
             cursor: pointer;
         `
     },
+    addImageContainer: styled.label`
+        display: flex;
+        min-width: 128px;
+        height: 128px;
+        border: 1px solid ${colors.g200};
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    `,
 }
 
 export default TemplateOption;

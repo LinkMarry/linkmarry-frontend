@@ -267,6 +267,7 @@ function InvitationDesign() {
                             <S.options {...provided.droppableProps} ref={provided.innerRef}>
                                 {staticOptions.map((option, index) => (
                                     <OptionCell
+                                        key={index}
                                         draggable={optionRecord[option].draggable}
                                         title={optionRecord[option].title}
                                     >{makeOption(option)}</OptionCell>

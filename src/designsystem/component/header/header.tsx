@@ -23,7 +23,7 @@ function Header() {
                 }}
                 gap={66}
             >
-                <img src={'/logo.svg'} width={134} alt={'logo'} style={{cursor: 'pointer'}} onClick={() => {
+                <img src={'/logo.svg'} width={103} alt={'logo'} style={{cursor: 'pointer'}} onClick={() => {
                     navigate('/');
                 }}/>
                 <S.navItems>

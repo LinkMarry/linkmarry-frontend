@@ -99,24 +99,28 @@ function TemplateComponent(
                 switch (index) {
                     case optionRecord[OptionType.Greeting].index:
                         return <InvitationLetterTemplate
+                            key={index}
                             baseInfo={wedding.baseInfo}
                             greeting={wedding.greeting}
                             invitationLetterStyle={invitationLetterStyle[wedding.template.templateName]}
                         />;
                     case optionRecord[OptionType.WeddingSchedule].index:
                         return <WeddingDayTemplate
+                            key={index}
                             baseInfo={wedding.baseInfo}
                             weddingSchedule={wedding.weddingSchedule}
                             dDayStyle={dDayStyle[wedding.template.templateName]}
                         />
                     case optionRecord[OptionType.Phone].index:
                         return <CongratulationsTemplate
+                            key={index}
                             baseInfo={wedding.baseInfo}
                             phone={wedding.phone}
                             templateColor={templateColor}
                         />
                     case optionRecord[OptionType.Gallery].index:
                         return <GalleryTemplate
+                            key={index}
                             rootRef={rootRef}
                             imgDesign={wedding.imgDesign}
                             imgList={wedding.imgList}
@@ -124,15 +128,24 @@ function TemplateComponent(
                         />
                     case optionRecord[OptionType.WeddingPlace].index:
                         return <LocationTemplate
+                            key={index}
                             templateColor={templateColor}
                             weddingPlace={wedding.weddingPlace}
                         />
                     case optionRecord[OptionType.Video].index:
-                        return <VideoTemplate video={wedding.video}/>
+                        return <VideoTemplate
+                            key={index}
+                            video={wedding.video}
+                        />
                     case optionRecord[OptionType.MoneyInfo].index:
-                        return <MoneyInfoTemplate baseInfo={wedding.baseInfo} moneyInfo={wedding.moneyInfo}/>
+                        return <MoneyInfoTemplate
+                            key={index}
+                            baseInfo={wedding.baseInfo}
+                            moneyInfo={wedding.moneyInfo}
+                        />
                     case optionRecord[OptionType.GuestComment].index:
                         return <GuestCommentsTemplate
+                            key={index}
                             templateColor={templateColor}
                             url={wedding.url}
                             guestComments={wedding.guestCommentList}
@@ -142,6 +155,7 @@ function TemplateComponent(
                         />
                     case optionRecord[OptionType.Rsvp].index:
                         return <RsvpTemplate
+                            key={index}
                             templateColor={templateColor}
                             rsvp={wedding.rsvp}
                             baseInfo={wedding.baseInfo}
