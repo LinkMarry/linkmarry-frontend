@@ -8,7 +8,6 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 import CreateDesignDialog from "@page/invitation/dashboard/dialog/CreateDesignDialog";
 import Text from "@designsystem/component/text";
-import RemoveDesignDialog from "@page/invitation/dashboard/dialog/RemoveDesignDialog";
 import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
 import WeddingDashboard from "@remote/value/WeddingDashboard";
 import weddingApi from "@remote/api/WeddingApi";
@@ -17,7 +16,9 @@ import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/spacer";
 import {isAxiosError} from "axios";
 import PayWaterMarkDialog from "@page/invitation/dashboard/dialog/PayWaterMarkDialog";
-import RemoveWaterMarkDialog from "@page/invitation/dashboard/dialog/RemoveWaterMarkDialog";
+import Dialog from "@designsystem/component/dialog/dialog";
+import {color} from "chart.js/helpers";
+import {hexToRgba} from "@util/color.util";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -64,16 +65,16 @@ function InvitationDashboard() {
                     setShowPayWaterMarkDialog(true);
                     break;
                 }
-                
+
                 setShowRemoveWaterMarkDialog(true);
                 break;
         }
     };
-    
+
     const removeWaterWater = async () => {
         const url = selectedWeddingInfo?.url;
         if (!url) return;
-        
+
         try {
             await weddingApi.removeWatermark(url);
             alert('워터마크 제거 성공');
@@ -134,7 +135,25 @@ function InvitationDashboard() {
             </Column>
             {showCreateDesignDialog && <CreateDesignDialog dismiss={() => setShowCreateDesignDialog(false)}/>}
             {showRemoveDesignDialog &&
-                <RemoveDesignDialog dismiss={() => setShowRemoveDesignDialog(false)} confirm={onClickRemoveDashboard}/>}
+                <Dialog
+                    title={'정말 청첩장을\n삭제하시겠습니까?'}
+                    dismiss={() => setShowRemoveDesignDialog(false)}
+                    dismissButtonProps={{
+                        text: '취소',
+                        style: {
+                            color: colors.error,
+                            background: hexToRgba(colors.error, 0.1)
+                        }
+                    }}
+                    confirmButtonProps={{
+                        text: '삭제',
+                        onClick: onClickRemoveDashboard,
+                        style: {
+                            background: colors.error
+                        }
+                    }}
+                />
+            }
             {showEditDesignDialog && selectedWeddingInfo &&
                 <EditDesignDialog originUrl={selectedWeddingInfo.url} dismiss={() => setShowEditDesignDialog(false)}/>}
             {showPayWaterMarkDialog && (
@@ -143,10 +162,24 @@ function InvitationDashboard() {
                 />
             )}
             {showRemoveWaterMarkDialog && weddingDashboard && (
-                <RemoveWaterMarkDialog
-                    invitation={weddingDashboard.invitation}
+                <Dialog
+                    title={'워터마크를\n제거하시겠습니까?'}
+                    description={`남은 제거 가능 횟수: ${weddingDashboard.invitation}`}
                     dismiss={() => setShowRemoveWaterMarkDialog(false)}
-                    onConfirm={removeWaterWater}
+                    dismissButtonProps={{
+                        text: '취소',
+                        style: {
+                            color: colors.error,
+                            background: hexToRgba(colors.error, 0.1)
+                        }
+                    }}
+                    confirmButtonProps={{
+                        text: '제거',
+                        onClick: removeWaterWater,
+                        style: {
+                            background: colors.error
+                        }
+                    }}
                 />
             )}
         </S.container>

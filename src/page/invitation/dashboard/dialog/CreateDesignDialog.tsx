@@ -10,6 +10,7 @@ import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import makeText from "@designsystem/foundation/text/textType";
+import Dialog from "@designsystem/component/dialog/dialog";
 
 interface CreateDesignDialogProps {
     dismiss: () => void;
@@ -50,28 +51,31 @@ function CreateDesignDialog(
     };
 
     return (
-        <BaseDialog dismiss={dismiss}>
-            <S.container>
-                <Column gap={45} $alignItems={'center'}>
-                    <Column gap={2}>
-                        <Text type={'p1'}>새로운 디자인을 생성해주세요.</Text>
-                        <Text type={'p5'} color={colors.g400}>청첩장에 사용할 도메인을 입력해주세요.</Text>
-                    </Column>
-                    <Column gap={4}>
-                        <S.textField>
-                            <Text type={'p5'} color={colors.g400} style={{userSelect: 'none'}}>
-                                linkmarry.com/wedding/
-                            </Text>
-                            <input type="text" value={url} onChange={event => onChange(event.target.value)}/>
-                        </S.textField>
-                        <Text type={'p5'} color={colors.g600} style={{marginLeft: 4}}>
-                            영어 대소문자, 숫자, '-', '_', '.'만 허용합니다
-                        </Text>
-                    </Column>
-                    <Button text={'생성하기'} role={'assistive'} onClick={createDesign} enabled={!isFetching}/>
-                </Column>
-            </S.container>
-        </BaseDialog>
+        <Dialog 
+            title={'새 디자인 만들기'}
+            description={'청첩장에 사용할 링크를 입력해 주세요'}
+            dismiss={dismiss} 
+            dismissButtonProps={{
+                text: '닫기'
+            }} 
+            confirmButtonProps={{
+                text: '만들기',
+                onClick: createDesign,
+                enabled: !isFetching,
+            }}
+        >
+            <Column gap={4}>
+                <S.textField>
+                    <Text type={'p5'} color={colors.g400} style={{userSelect: 'none'}}>
+                        linkmarry.com/wedding/
+                    </Text>
+                    <input type="text" value={url} onChange={event => onChange(event.target.value)}/>
+                </S.textField>
+                <Text type={'p5'} color={colors.g600} style={{marginLeft: 4}}>
+                    영어 대소문자, 숫자, '-', '_', '.'만 허용합니다
+                </Text>
+            </Column>
+        </Dialog>
     );
 }
 

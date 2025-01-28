@@ -7,7 +7,7 @@ import {ButtonHTMLAttributes, CSSProperties} from "react";
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonRole = 'primary' | 'secondary' | 'assistive';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
     size?: ButtonSize;
     role?: ButtonRole;

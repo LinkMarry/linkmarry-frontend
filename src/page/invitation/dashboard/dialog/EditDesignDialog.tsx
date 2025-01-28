@@ -1,13 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import styled from "styled-components";
-import {Column} from "@designsystem/component/flexLayout";
-import Button from "@designsystem/component/button";
 import colors from "@designsystem/foundation/colors";
 import TextField from "@designsystem/component/textField";
-import Text from "@designsystem/component/text";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
+import Dialog from "@designsystem/component/dialog/dialog";
+import makeText from "@designsystem/foundation/text/textType";
+import {Column} from "@designsystem/component/flexLayout";
+import Text from "@designsystem/component/text";
 
 interface EditDesignDialogProps {
     originUrl: string;
@@ -21,25 +22,21 @@ function EditDesignDialog(
     }: EditDesignDialogProps
 ) {
     const navigate = useNavigate();
-    const domainFieldRef = useRef<HTMLInputElement>(null);
-    const [isError, setIsError] = useState(false);
+    const [url, setUrl] = useState(originUrl);
     const [isFetching, setIsFetching] = useState(false);
 
     const onClickSave = async () => {
-        if (!domainFieldRef.current) return;
-        const url = domainFieldRef.current.value;
-
         if (url === '') {
             alert('도메인 URL을 입력해 주세요');
             return;
         }
-        
+
         setIsFetching(true);
         try {
             await weddingApi.checkUrlConflict(url);
         } catch (error) {
+            alert('이미 사용 중인 URL 입니다.');
             console.error(error);
-            setIsError(true);
             setIsFetching(false);
             return;
         }
@@ -55,36 +52,61 @@ function EditDesignDialog(
         }
     };
 
-    useEffect(() => {
-        if (domainFieldRef.current) {
-            domainFieldRef.current.value = originUrl;
-        }
-    }, []);
-
+    const onChange = (value: string) => {
+        // 허용할 문자: 영어 대소문자, 숫자, '-', '_', '.' (공백 및 기타 문자는 제거)
+        const sanitizedValue = value.replace(/[^a-zA-Z0-9-_.]/g, '');
+        setUrl(sanitizedValue);
+    };
+    
     return (
-        <BaseDialog dismiss={dismiss}>
-            <S.container>
-                <Column gap={45} $alignItems={'center'}>
-                    <Column gap={2}>
-                        <Text type={'p1'}>청첩장 주소를 변경해주세요.</Text>
-                        <Text type={'p5'} color={colors.g400}>청첩장에 사용할 도메인을 입력해주세요.</Text>
-                    </Column>
-                    <TextField ref={domainFieldRef} isError={isError} supportingText={isError ? '이미 사용 중인 URL 입니다.' : undefined}/>
-                    <Button text={'저장하기'} role={'assistive'} onClick={onClickSave} enabled={!isFetching}/>
-                </Column>
-            </S.container>
-        </BaseDialog>
+        <Dialog
+            title={'청첩장 링크 수정'}
+            dismiss={dismiss}
+            dismissButtonProps={{
+                text: '취소'
+            }}
+            confirmButtonProps={{
+                text: '수정',
+                onClick: onClickSave,
+                enabled: !isFetching,
+            }}
+        >
+            <Column gap={4}>
+                <S.textField>
+                    <Text type={'p5'} color={colors.g400} style={{userSelect: 'none'}}>
+                        linkmarry.com/wedding/
+                    </Text>
+                    <input type="text" value={url} onChange={event => onChange(event.target.value)}/>
+                </S.textField>
+                <Text type={'p5'} color={colors.g600} style={{marginLeft: 4}}>
+                    영어 대소문자, 숫자, '-', '_', '.'만 허용합니다
+                </Text>
+            </Column>
+        </Dialog>
     );
 }
 
 const S = {
-    container: styled.div`
-        ${applyBaseDialogContent()};
-        justify-content: center;
-        width: 520px;
-        padding: 88px 116px;
+    textField: styled.div`
+        display: flex;
+        min-height: 44px;
+        align-items: center;
+        border: 1px solid ${colors.g200};
         background: ${colors.white};
-        border-radius: 12px;
+        border-radius: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        flex: 1;
+        align-self: stretch;
+
+        input {
+            align-self: stretch;
+            margin: 4px 0;
+            outline: none;
+            width: 80px;
+            border: none;
+            ${makeText('p5')};
+        }
     `
 }
 

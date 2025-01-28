@@ -8,6 +8,8 @@ import Button from "@designsystem/component/button";
 import memberApi from "@remote/api/MemberApi";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
+import Dialog from "@designsystem/component/dialog/dialog";
+import {hexToRgba} from "@util/color.util";
 
 interface RemoveMemberDialogProps {
     dismiss: () => void;
@@ -32,29 +34,26 @@ function RemoveMemberDialog(
     }
     
     return (
-        <BaseDialog dismiss={dismiss}>
-            <S.container>
-                <Column gap={46} $alignItems={'center'}>
-                    <Text type={'p1'}>정말 탈퇴하시겠습니까?</Text>
-                    <Row gap={16}>
-                        <Button text={'취소'} role={'assistive'} onClick={dismiss}/>
-                        <Button text={'확인'} role={'assistive'} onClick={onClickConfirm}/>
-                    </Row>
-                </Column>
-            </S.container>
-        </BaseDialog>
+        <Dialog
+            title={'정말 회원 탈퇴하시겠습니까?'}
+            description={'회원을 탈퇴하면 모든 정보가 삭제됩니다.'}
+            dismiss={dismiss} 
+            dismissButtonProps={{
+                text: '취소',
+                style: {
+                    color: colors.error,
+                    background: hexToRgba(colors.error, 0.1)
+                }
+            }} 
+            confirmButtonProps={{
+                text: '탈퇴',
+                onClick: onClickConfirm,
+                style: {
+                    background: colors.error,
+                }
+            }}
+        />
     );
-}
-
-const S = {
-    container: styled.div`
-        ${applyBaseDialogContent()};
-        width: 520px;
-        padding: 88px 116px;
-        justify-content: center;
-        background: ${colors.white};
-        border-radius: 12px;
-    `
 }
 
 export default RemoveMemberDialog;
