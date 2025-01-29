@@ -17,7 +17,6 @@ import Spacer from "@designsystem/component/spacer";
 import {isAxiosError} from "axios";
 import PayWaterMarkDialog from "@page/invitation/dashboard/dialog/PayWaterMarkDialog";
 import Dialog from "@designsystem/component/dialog/dialog";
-import {color} from "chart.js/helpers";
 import {hexToRgba} from "@util/color.util";
 
 function InvitationDashboard() {

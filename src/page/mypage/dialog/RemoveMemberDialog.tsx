@@ -1,10 +1,5 @@
 import React from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import Button from "@designsystem/component/button";
 import memberApi from "@remote/api/MemberApi";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";

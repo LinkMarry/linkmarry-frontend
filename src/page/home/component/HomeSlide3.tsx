@@ -30,6 +30,4 @@ function HomeSlide3() {
     );
 }
 
-const S = {}
-
 export default HomeSlide3;

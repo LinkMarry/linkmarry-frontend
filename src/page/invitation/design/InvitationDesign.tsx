@@ -117,11 +117,13 @@ function InvitationDesign() {
                 setMode('create');
             }
         })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         console.log(position)
         setWedding({...wedding, position});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [JSON.stringify(position)]);
 
     const loadTemp = (alt: WeddingDto) => {

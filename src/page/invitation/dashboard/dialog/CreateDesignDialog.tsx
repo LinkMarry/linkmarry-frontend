@@ -1,14 +1,11 @@
-import React, {useRef, useState} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import React, {useState} from 'react';
+import {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
-import Button from "@designsystem/component/button";
 import colors from "@designsystem/foundation/colors";
-import TextField from "@designsystem/component/textField";
 import Text from "@designsystem/component/text";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
-import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import makeText from "@designsystem/foundation/text/textType";
 import Dialog from "@designsystem/component/dialog/dialog";
 

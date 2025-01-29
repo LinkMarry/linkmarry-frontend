@@ -1,8 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import React, {useState} from 'react';
 import styled from "styled-components";
 import colors from "@designsystem/foundation/colors";
-import TextField from "@designsystem/component/textField";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@designsystem/component/dialog/dialog";
