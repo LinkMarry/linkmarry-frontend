@@ -22,7 +22,7 @@ function InvitationLetterTemplate(
     }: InvitationLetterTemplateProps
 ) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
-    
+
     return (
         <Column gap={40} padding={'72px 60px'} background={colors.white} $alignItems={'center'}>
             {invitationLetterStyle === 'style1' ? (
@@ -54,6 +54,7 @@ function GreetingContent(props: { text: string }) {
             style={{
                 overflow: 'hidden',
                 wordBreak: 'break-all',
+                whiteSpace: 'pre-wrap',
                 textAlign: 'center'
             }}
         >{props.text}</Text>

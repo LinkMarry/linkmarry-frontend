@@ -8,6 +8,7 @@ import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Button from "@designsystem/component/button";
 import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 import WeddingPlace from "@remote/value/WeddingPlace";
+import Textarea from "@designsystem/component/textarea";
 
 interface WeddingPlaceOptionProps {
     weddingPlace: WeddingPlace;
@@ -58,11 +59,16 @@ function WeddingPlaceOption(
                         }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                     <Row gap={12}>
-                        <OptionLabel label={'교통편'}/>
-                        <OptionTextField fieldProps={{
-                            value: weddingPlace.placeTransportation,
-                            onChange: event => onChange({...weddingPlace, placeTransportation: event.target.value})
-                        }} placeholder={'주변 교통편 입력'} width={264}/>
+                        <OptionLabel label={'교통편'} style={{alignSelf: 'flex-start'}}/>
+                        <Textarea
+                            value={weddingPlace.placeTransportation}
+                            onChange={event => onChange({
+                                ...weddingPlace,
+                                placeTransportation: event.target.value
+                            })}
+                            placeholder={'주변 교통편 입력'}
+                            style={{width: 264}}
+                        />
                     </Row>
                 </Column>
                 <HorizontalDivider/>

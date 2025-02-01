@@ -103,7 +103,17 @@ function MoneyInfoOption(
                                             groomFatherNameMoneyInfo: event.target.value
                                         })
                                     }} width={128} placeholder={'예금주'}/>
-                                    <OptionTextField width={128} placeholder={'은행'}/>
+                                    <OptionTextField
+                                        fieldProps={{
+                                            value: moneyInfo.groomFatherBankName,
+                                            onChange: event => onChange({
+                                                ...moneyInfo,
+                                                groomFatherBankName: event.target.value
+                                            })
+                                        }}
+                                        width={128}
+                                        placeholder={'은행'}
+                                    />
                                 </Row>
                                 <OptionTextField fieldProps={{
                                     value: moneyInfo.groomFatherBankNumber,
@@ -307,7 +317,10 @@ function MoneyInfoOption(
                                 <OptionTextField
                                     fieldProps={{
                                         value: moneyInfo.brideMotherKakaoUrl,
-                                        onChange: event => onChange({...moneyInfo, brideMotherKakaoUrl: event.target.value})
+                                        onChange: event => onChange({
+                                            ...moneyInfo,
+                                            brideMotherKakaoUrl: event.target.value
+                                        })
                                     }}
                                     placeholder={'카카오페이 송금 링크'}
                                     width={264}
