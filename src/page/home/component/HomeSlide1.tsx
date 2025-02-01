@@ -24,7 +24,10 @@ function HomeSlide1() {
                 </Row>
             </Column>
             <Spacer/>
-            <div style={{width: 567, height: 567, background: '#D9D9D9'}}></div>
+            <Row gap={20}>
+                <img src="/home/home-phone-1.webp" width={273} alt=""/>
+                <img src="/home/home-phone-2.webp" width={273} alt=""/>
+            </Row>
         </Row>
     );
 }
