@@ -61,19 +61,30 @@ function GallerySlide(
 
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
 
-    const handleScroll = () => {
-        if (!scrollContainerRef.current) return;
+    const getGridImgWidth = (): number => {
+        let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
+        if (slideStyle === 'style1') {
+            imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
+        }
 
-        const containerWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
+        return imageWidth;
+    };
 
+    const getScrollPosition = (): number => {
+        if (!scrollContainerRef.current) return 0;
         const scrollContainer = scrollContainerRef.current;
-        const scrollPosition = scrollContainer.scrollLeft - (slideStyle === 'style1' ? 34 : 0);
-        const imageWidth = containerWidth 
-            - (slideStyle === 'style1' ? (34 * 2) : 0) 
-            + (slideStyle === 'style1' ? 8 : 0); // 이미지 너비 - 간격
+
+        let scrollPosition = scrollContainer.scrollLeft
+        if (slideStyle) {
+            scrollPosition -= 34;
+        }
+        return scrollPosition;
+    };
+
+    const handleScroll = () => {
+        const imageWidth = getGridImgWidth();
+        const scrollPosition = getScrollPosition();
         const index = Math.floor(scrollPosition / imageWidth);
-        // console.log(`${scrollPosition}, ${imageWidth}`);
-        // console.log(index);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
     };
 
@@ -103,7 +114,32 @@ function GallerySlide(
                 imgListLength={imgList.length}
                 currentImageIndex={currentImageIndex}
                 slideStyle={slideStyle}
-                onClick={type => {}}
+                onClick={type => {
+                    switch (type) {
+                        case 'moveLeft':
+                            if (currentImageIndex > 0) {
+                                const imgWidth = getGridImgWidth();
+                                const left = imgWidth * (currentImageIndex - 1); 
+                                console.log(left)
+                                scrollContainerRef.current?.scrollTo({
+                                    left
+                                });
+                                setCurrentImageIndex(currentImageIndex - 1);
+                            }
+                            break;
+                        case 'moveRight':
+                            if (currentImageIndex < imgList.length - 1) {
+                                const imgWidth = getGridImgWidth();
+                                const left = imgWidth * (currentImageIndex + 1);
+                                console.log(left)
+                                scrollContainerRef.current?.scrollTo({
+                                    left
+                                });
+                                setCurrentImageIndex(currentImageIndex + 1);
+                            }
+                            break;
+                    }
+                }}
             />
         </S.slideWrapper>
     );
@@ -195,7 +231,7 @@ const S = {
         object-fit: cover;
         border-radius: 4px;
     `,
-    slideImg: styled.img<{ 
+    slideImg: styled.img<{
         $rootWidth: number,
         $slideStyle: GallerySlideStyle
     }>`
@@ -211,6 +247,7 @@ const S = {
             &:last-child {
                 margin-right: ${$rootWidth - 34}px;
             }
+
             border-radius: 12px;
         ` : css`
             max-width: ${$rootWidth}px;
