@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import colors from "@designsystem/foundation/colors";
@@ -8,6 +8,7 @@ import styled from "styled-components";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 import Phone from "@remote/value/Phone";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 interface CongratulationsProps {
     baseInfo: BaseInfo;
@@ -23,10 +24,14 @@ function CongratulationsTemplate(
     }: CongratulationsProps
 ) {
     const [showContactingCongratulationDialog, setShowContactingCongratulationDialog] = useState(false);
+
+    const congratulationsRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(congratulationsRef, [phone]);
+    
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
-        <S.root background={templateColor}>
+        <S.root background={templateColor} ref={congratulationsRef}>
             <Column gap={96} $alignItems={'stretch'}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={8} $alignItems={'center'}>

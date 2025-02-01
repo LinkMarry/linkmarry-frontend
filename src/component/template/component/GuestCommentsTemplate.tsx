@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, useState} from 'react';
+import React, {HTMLAttributes, useRef, useState} from 'react';
 import styled, {CSSProperties} from "styled-components";
 import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/component/flexLayout";
@@ -14,6 +14,7 @@ import GuestComment from "@remote/value/GuestComment";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcomment/RemoveGuestCommentDialog";
 import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
 import CreateGuestCommentDialog from "@src/component/template/dialog/guestcomment/CreateGuestCommentDialog";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 interface GuestCommentsTemplateProps {
     templateColor: string;
@@ -37,8 +38,11 @@ function GuestCommentsTemplate(
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
     const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
 
+    const guestCommentRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(guestCommentRef, [guestComment])
+    
     return (
-        <S.root background={templateColor}>
+        <S.root background={templateColor} ref={guestCommentRef}>
             <Column gap={40} $alignItems={'stretch'}>
                 <Column gap={12} $alignItems={'center'}>
                     <Text

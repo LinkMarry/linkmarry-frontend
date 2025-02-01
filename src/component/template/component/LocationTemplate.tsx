@@ -5,6 +5,7 @@ import Text from "@designsystem/component/text";
 import colors from "@designsystem/foundation/colors";
 import styled from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 const {kakao} = window as any;
 
@@ -20,6 +21,8 @@ function LocationTemplate(
     }: LocationProps
 ) {
     const kakaoMapRef = useRef<HTMLDivElement>(null);
+    const weddingPlaceRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(weddingPlaceRef, [weddingPlace]);
 
     useEffect(() => {
         if (!kakao || !kakao.maps) {
@@ -36,7 +39,7 @@ function LocationTemplate(
     }, []);
     
     return (
-        <S.root background={templateColor}>
+        <S.root background={templateColor} ref={weddingPlaceRef}>
             <Spacer h={92}/>
             <Column gap={40} $alignItems={'center'}>
                 <Text color={colors.g600} size={20} weight={300}>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styled from "styled-components";
 import MoneyInfo, {getMoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
 import colors from "@designsystem/foundation/colors";
@@ -7,6 +7,7 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import {Column, Row} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 interface MoneyInfoTemplateProps {
     baseInfo: BaseInfo;
@@ -19,8 +20,11 @@ function MoneyInfoTemplate(
         moneyInfo
     }: MoneyInfoTemplateProps
 ) {
+    const moneyInfoRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(moneyInfoRef, [moneyInfo]);
+    
     return (
-        <S.root>
+        <S.root ref={moneyInfoRef}>
             <Column gap={40} $alignItems={'center'}>
                 <Text size={20} weight={300} color={colors.g600}>마음 전하실 곳</Text>
                 <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>

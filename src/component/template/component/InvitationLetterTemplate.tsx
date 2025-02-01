@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {Column, Row} from "@designsystem/component/flexLayout";
 import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import colors from "@designsystem/foundation/colors";
 import Text from "@designsystem/component/text";
 import Greeting from "@remote/value/Greeting";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 export type InvitationLetterStyle = 'style1' | 'style2' | 'style3';
 
@@ -22,9 +23,11 @@ function InvitationLetterTemplate(
     }: InvitationLetterTemplateProps
 ) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+    const invitationLetterRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(invitationLetterRef, [greeting]);
 
     return (
-        <Column gap={40} padding={'72px 60px'} background={colors.white} $alignItems={'center'}>
+        <Column gap={40} padding={'72px 60px'} background={colors.white} $alignItems={'center'} ref={invitationLetterRef}>
             {invitationLetterStyle === 'style1' ? (
                 <Text className={'override-font'} weight={300} size={12} font={'Aleo'} color={colors.g300}>
                     Wedding Invitation

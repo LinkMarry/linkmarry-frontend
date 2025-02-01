@@ -1,4 +1,4 @@
-import React, {CSSProperties, HTMLAttributes} from 'react';
+import React, {CSSProperties, ForwardedRef, forwardRef, HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/textType";
 import colors from "@designsystem/foundation/colors";
@@ -24,11 +24,13 @@ function Text(
         lineHeight,
         children,
         ...props
-    }: TextProps
+    }: TextProps,
+    ref: ForwardedRef<HTMLSpanElement>
 ) {
     const properties = type ? textTypeMap[type] : undefined;
     return (
         <TextStyle
+            ref={ref}
             properties={{
                 fontFamily: font ?? properties?.fontFamily,
                 fontWeight: weight ?? properties?.fontWeight,
@@ -51,4 +53,4 @@ const TextStyle = styled.span<{
     `}
 `
 
-export default Text;
+export default forwardRef(Text);

@@ -16,7 +16,6 @@ interface RsvpTemplateProps {
     templateColor: TemplateColor;
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
-    rsvp: Rsvp;
     onClickCreateRsvp: () => void;
 }
 
@@ -25,7 +24,6 @@ function RsvpTemplate(
         templateColor,
         baseInfo,
         weddingSchedule,
-        rsvp,
         onClickCreateRsvp
     }: RsvpTemplateProps
 ) {

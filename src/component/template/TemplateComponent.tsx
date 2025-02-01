@@ -156,7 +156,6 @@ function TemplateComponent(
                         return <RsvpTemplate
                             key={index}
                             templateColor={templateColor}
-                            rsvp={wedding.rsvp}
                             baseInfo={wedding.baseInfo}
                             weddingSchedule={wedding.weddingSchedule}
                             onClickCreateRsvp={() => setShowRsvpDialog(true)}

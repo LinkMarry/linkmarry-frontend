@@ -6,6 +6,7 @@ import styled, {css} from "styled-components";
 import {hideScrollBar} from "@util/css.util";
 import {Row} from "@designsystem/component/flexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 export type GallerySlideStyle = 'style1' | 'style2';
 
@@ -57,10 +58,13 @@ function GallerySlide(
         slideStyle: GallerySlideStyle;
     }
 ) {
-    const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
+    
+    const galleryRef = useRef<HTMLDivElement>(null);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+    useScrollOnUpdate(galleryRef, [imgList]);
+    
     const getGridImgWidth = (): number => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
         if (slideStyle === 'style1') {
@@ -99,7 +103,7 @@ function GallerySlide(
     }, []);
 
     return (
-        <S.slideWrapper>
+        <S.slideWrapper ref={galleryRef}>
             <S.scroll ref={scrollContainerRef} $slideStyle={slideStyle}>
                 {imgList.map((img, index) => (
                     <S.slideImg

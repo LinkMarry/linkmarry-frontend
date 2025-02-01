@@ -5,7 +5,6 @@ import HorizontalDivider from "@designsystem/component/horizontalDivider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import Checkbox from "@designsystem/component/checkbox";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import Button from "@designsystem/component/button";
 import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import Textarea from "@designsystem/component/textarea";

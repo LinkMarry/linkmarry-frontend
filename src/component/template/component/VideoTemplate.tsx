@@ -1,9 +1,10 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Video from "@remote/value/Video";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import colors from "@designsystem/foundation/colors";
 import styled from "styled-components";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 interface VideoTemplateProps {
     video: Video;
@@ -15,8 +16,12 @@ function VideoTemplate(
     }: VideoTemplateProps
 ) {
     const isYoutubeUrl = video.videoUrl.startsWith('https://www.youtube.com');
+    const videoRef = useRef<HTMLDivElement>(null);
+
+    useScrollOnUpdate(videoRef, [video]);
+
     return (
-        <S.container>
+        <S.container ref={videoRef}>
             <Column gap={12} $alignItems="center">
                 <Text size={20} weight={300} color={colors.g600}>VIDEO</Text>
                 <Text size={16} weight={300} color={colors.g600}>{video.videoTitle}</Text>
