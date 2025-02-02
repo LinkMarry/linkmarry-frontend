@@ -18,7 +18,7 @@ function HomePage() {
                 <HomeSlide3/>
                 <HomeSlide4/>
                 <HomeSlide5/>
-                <HomeSlide6/>
+                {/*<HomeSlide6/>*/}
                 <Footer/>
             </S.container>
         </HasHeader>

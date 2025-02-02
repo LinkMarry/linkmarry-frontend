@@ -7,7 +7,6 @@ import React, {
     useState
 } from 'react';
 import styled, {css} from "styled-components";
-import Icon, {IconType} from "@designsystem/foundation/icon";
 import colors from "@designsystem/foundation/colors";
 
 interface ToggleProps {
