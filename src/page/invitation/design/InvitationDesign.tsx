@@ -255,9 +255,7 @@ function InvitationDesign() {
                     })}
                 />
             case OptionType.AutoFocus:
-                return <AutoFocusOption
-
-                />
+                return <AutoFocusOption/>
         }
     }
 
