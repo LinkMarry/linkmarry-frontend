@@ -6,10 +6,16 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 import Spacer from "@designsystem/component/spacer";
 import {Row} from "@designsystem/component/flexLayout";
 import {DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
+import {OptionTypeMode} from "@page/invitation/design/OptionType";
+import Toggle from "@designsystem/component/toggle";
 
 interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {
     title: string;
-    draggable: boolean;
+    mode: OptionTypeMode;
+    toggleModeProps?: {
+        checked: boolean;
+        onChange: (checked: boolean) => void;
+    };
     dragHandleProps?: DraggableProvidedDragHandleProps | null | undefined;
     children?: React.ReactNode;
 }
@@ -17,7 +23,8 @@ interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {
 function OptionCell(
     {
         title,
-        draggable,
+        mode,
+        toggleModeProps,
         dragHandleProps,
         children,
         ...props
@@ -52,10 +59,19 @@ function OptionCell(
                     <S.title>{title}</S.title>
                     <Spacer/>
                 </Row>
-                {draggable && (
+                {mode === 'draggable' && (
                     <div style={{display: 'flex'}} {...dragHandleProps}>
                         <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
                     </div>
+                )}
+                {mode === 'toggle' && toggleModeProps && (
+                    <Toggle
+                        checked={toggleModeProps.checked}
+                        onChange={toggleModeProps.onChange}
+                        style={{
+                            marginRight: -16
+                        }}
+                    />
                 )}
             </S.titleWrapper>
             <div style={{

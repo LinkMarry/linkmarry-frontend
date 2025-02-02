@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful-dnd';
 import S from '@page/invitation/design/InvitationDesign.style';
 import OptionCell from "@page/invitation/design/component/OptionCell";
@@ -41,6 +41,8 @@ import GalleryOption from "@page/invitation/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingDto from "@remote/value/WeddingDto";
+import AutoFocusOption from "@page/invitation/design/option/AutoFocusOption";
+import AutoFocusContext from "@src/context/AutoFocusContext";
 
 type DesignMode = 'create' | 'edit';
 
@@ -88,9 +90,12 @@ function InvitationDesign() {
         waterMark: false
     }
     // Drag and drop
-    const staticOptions = allCasesOfEnum(OptionType).filter(option => !optionRecord[option].draggable);
-    const [draggableOptions, setDraggableOptions] = useState(allCasesOfEnum(OptionType).filter(option => optionRecord[option].draggable));
+    const staticOptions = allCasesOfEnum(OptionType).filter(option => optionRecord[option].mode === 'static');
+    const [draggableOptions, setDraggableOptions] = useState(allCasesOfEnum(OptionType).filter(option => optionRecord[option].mode === 'draggable'));
     const position = draggableOptions.map(option => optionRecord[option].index);
+
+    const {autoFocus, setAutoFocus} = useContext(AutoFocusContext);
+    
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return;
 
@@ -121,7 +126,7 @@ function InvitationDesign() {
     }, []);
 
     useEffect(() => {
-        console.log(position)
+        console.log(position);
         setWedding({...wedding, position});
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [JSON.stringify(position)]);
@@ -249,6 +254,10 @@ function InvitationDesign() {
                         imgList
                     })}
                 />
+            case OptionType.AutoFocus:
+                return <AutoFocusOption
+
+                />
         }
     }
 
@@ -270,7 +279,7 @@ function InvitationDesign() {
                                 {staticOptions.map((option, index) => (
                                     <OptionCell
                                         key={index}
-                                        draggable={optionRecord[option].draggable}
+                                        mode={optionRecord[option].mode}
                                         title={optionRecord[option].title}
                                     >{makeOption(option)}</OptionCell>
                                 ))}
@@ -284,7 +293,7 @@ function InvitationDesign() {
                                             return (
                                                 <OptionCell
                                                     {...provided.draggableProps}
-                                                    draggable={optionRecord[option].draggable}
+                                                    mode={optionRecord[option].mode}
                                                     dragHandleProps={provided.dragHandleProps}
                                                     ref={provided.innerRef}
                                                     title={optionRecord[option].title}
@@ -293,6 +302,15 @@ function InvitationDesign() {
                                         }}
                                     </Draggable>
                                 ))}
+                                <OptionCell
+                                    key={allCasesOfEnum(OptionType).length}
+                                    mode={'toggle'}
+                                    title={optionRecord[OptionType.AutoFocus].title}
+                                    toggleModeProps={{
+                                        checked: autoFocus,
+                                        onChange: checked => setAutoFocus(checked),
+                                    }}
+                                >{makeOption(OptionType.AutoFocus)}</OptionCell>
                                 {provided.placeholder}
                             </S.options>
                         )}

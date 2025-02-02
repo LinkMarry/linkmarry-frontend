@@ -4,6 +4,7 @@ import HorizontalDivider, {HorizontalDividerSize} from "@designsystem/component/
 import TextField from "@designsystem/component/textField";
 import Checkbox from "@designsystem/component/checkbox";
 import Radio from "@designsystem/component/radio";
+import Toggle from "@designsystem/component/toggle";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -15,6 +16,7 @@ function ComponentDemo() {
 
     const [checked, setChecked] = useState(false);
     const [selected, setSelected] = useState(false);
+    const [toggleChecked, setToggleChecked] = useState(false);
 
     return (
         <div style={{
@@ -85,6 +87,10 @@ function ComponentDemo() {
                 label={'title'}
                 selected={selected}
                 onChange={setSelected}
+            />
+            <Toggle
+                checked={toggleChecked}
+                onChange={setToggleChecked}
             />
         </div>
     );

@@ -8,7 +8,9 @@ import Icon, {IconType} from "@designsystem/foundation/icon";
 function HomeSlide4() {
     return (
         <Row gap={98} $alignItems={'center'} padding={'200px 154px 0 154px'}>
-            {/*<div style={{width: 273, height: 558, background: colors.g100}}></div>*/}
+            <img src={'/home/home-phone-3.webp'} alt={''} style={{
+                width: 273
+            }}/>
             <Column gap={52} flex={1} $alignItems={'stretch'}>
                 <Column gap={20}>
                     <Text type={'h2'}>통계 확인</Text>

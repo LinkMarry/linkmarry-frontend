@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import config from "@config/config";
 import KakaoRedirectPage from "@page/KakaoRedirectPage";
@@ -21,6 +21,7 @@ import GlobalStyle from "@src/GlobalStyle";
 import WeddingPage from "@page/WeddingPage";
 import {Helmet} from "react-helmet";
 import LoginPage from "@page/LoginPage";
+import AutoFocusContext from "@src/context/AutoFocusContext";
 
 const {Kakao} = window as any;
 
@@ -32,8 +33,13 @@ function App() {
         }
     }, []);
 
+    const [autoFocus, setAutoFocus] = useState(false);
+
     return (
-        <>
+        <AutoFocusContext.Provider value={{
+            autoFocus,
+            setAutoFocus: value => setAutoFocus(value),
+        }}>
             <GlobalStyle/>
             <Helmet>
                 <meta property="og:title" content="링크메리"/>
@@ -66,8 +72,12 @@ function App() {
                 <Route path={'templates'} element={<TemplatesPage/>}/>
 
                 {/*design-system*/}
-                <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
-                <Route path={'design-system/component'} element={<ComponentDemo/>}/>
+                {config.env === 'development' && (
+                    <>
+                        <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
+                        <Route path={'design-system/component'} element={<ComponentDemo/>}/>
+                    </>
+                )}
 
                 {/*not found*/}
                 <Route path={'*'} element={<Navigate to={'/'}/>}/>
@@ -81,7 +91,7 @@ function App() {
                     </div>
                 )}/>
             </Routes>
-        </>
+        </AutoFocusContext.Provider>
     );
 }
 
