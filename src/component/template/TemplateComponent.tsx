@@ -22,6 +22,7 @@ import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDial
 import {Helmet} from "react-helmet";
 import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
 import RsvpTemplate from "@src/component/template/component/RsvpTemplate";
+import WaterMarkSheet from "@src/component/template/component/WaterMarkSheet";
 
 interface Template1Props {
     wedding: Wedding;
@@ -185,6 +186,9 @@ function TemplateComponent(
                     rsvp={wedding.rsvp}
                     dismiss={() => setShowCreateRsvpDialog(false)}
                 />
+            )}
+            {wedding.waterMark && (
+                <WaterMarkSheet url={wedding.url}/>
             )}
         </S.container>
     );
