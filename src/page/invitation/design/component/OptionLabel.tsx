@@ -1,6 +1,6 @@
 import React, {HTMLAttributes} from 'react';
 import styled from "styled-components";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
 
 interface OptionLabelProps extends HTMLAttributes<HTMLDivElement> {
     label: string;

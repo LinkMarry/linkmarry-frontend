@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import HasHeader from "@designsystem/component/header/hasHeader";
-import makeText from "@designsystem/foundation/text/textType";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
+import makeText from "@designsystem/foundation/text/TextType";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
 import useAuth from "@hook/useAuth";
-import colors from "@designsystem/foundation/colors";
-import Spacer from "@designsystem/component/spacer";
+import Spacer from "@designsystem/component/Spacer";
 
 function LoginPage() {
     const {signInWithKakao} = useAuth();
@@ -18,7 +17,9 @@ function LoginPage() {
                     <img src="/linkmarry.png" alt="" width={72} height={72} style={{borderRadius: 12}}/>
                     <Spacer h={8}/>
                     <Text type={'h3'}>링크메리 로그인</Text>
-                    <Text type={'p4'} color={colors.g500}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
+                    <Text type={'p4'} customStyle={css`
+                        color: var(--g-500);
+                    `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                 </Column>
                 <S.kakaoButton onClick={signInWithKakao}>
                     <Row gap={6} $alignItems={'center'}>

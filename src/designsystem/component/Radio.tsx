@@ -6,12 +6,13 @@ import React, {
     useRef,
     useState
 } from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
+import CustomStyle from "@designsystem/component/CustomStyle";
+import Text from "@designsystem/component/Text";
 
-interface RadioProps {
+interface Props {
     selected?: boolean;
     onChange?: (selected: boolean) => void;
     label?: string;
@@ -30,7 +31,7 @@ function Radio(
         onChange,
         label,
         style
-    }: RadioProps,
+    }: Props,
     ref: ForwardedRef<CheckboxRef>
 ) {
     const [localSelected, setLocalSelected] = useState(selected);
@@ -55,7 +56,12 @@ function Radio(
 
     return (
         <S.container style={style}>
-            <S.checkbox>
+            <CustomStyle $customStyle={css`
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+            `}>
                 <input
                     ref={radioRef}
                     type={'checkbox'}
@@ -76,16 +82,28 @@ function Radio(
                     }}
                 />
                 <Icon
-                    type={localSelected ? IconType.RadioFill : IconType.RadioLine}
-                    tint={localSelected ? colors.g600 : colors.g300}
+                    iconType={localSelected ? IconType.RadioFill : IconType.RadioLine}
                     size={24}
-                    style={{
-                        position: 'absolute',
-                        pointerEvents: 'none',
-                    }}
+                    customStyle={css`
+                        position: absolute;
+                        pointer-events: none;
+                        ${localSelected ? css`
+                            fill: var(--g-600);
+                        ` : css`
+                            fill: var(--g-300);
+                        `}
+                    `}
                 />
-            </S.checkbox>
-            {label && <S.title style={{cursor: 'pointer'}} onClick={() => onChange?.(!selected)}>{label}</S.title>}
+            </CustomStyle>
+            {label && (
+                <Text
+                    type={'p4'}
+                    customStyle={css`
+                        cursor: pointer;
+                    `}
+                    onClick={() => onChange?.(!selected)}
+                >{label}</Text>
+            )}
         </S.container>
     );
 }
@@ -97,17 +115,10 @@ const S = {
         width: fit-content;
         gap: 6px;
     `,
-    checkbox: styled.div`
-        display: flex;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-    `,
     title: styled.span`
         display: inline-flex;
 
         ${makeText('p4')};
-        color: ${colors.black};
     `
 }
 

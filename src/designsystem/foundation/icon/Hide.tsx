@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Hide(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M9.88328 14.1177C10.3239 14.5905 10.9433 14.7148 11.55 14.7148C11.759 14.7148 11.9695 14.7001 12.1736 14.6614L9.35113 12.4648C9.35588 13.0608 9.46497 13.6688 9.88328 14.1177Z"
                 fill="current"/>

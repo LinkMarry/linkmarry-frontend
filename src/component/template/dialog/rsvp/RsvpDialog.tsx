@@ -1,16 +1,15 @@
 import React from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import {Column} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
-import Text from "@designsystem/component/text";
+import styled, {css} from "styled-components";
+import {Column} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
+import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
-import Button from "@designsystem/component/button";
+import Button from "@designsystem/component/Button";
 import Cookies from "js-cookie";
 import Rsvp from "@remote/value/Rsvp";
 
@@ -45,10 +44,17 @@ function RsvpDialog(
             <S.container>
                 <Column gap={24} $alignItems={'stretch'}>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text type={'h6'} style={{wordBreak: 'break-all', textAlign: 'center'}}>{rsvp.rsvpTitle}</Text>
-                        <Text type={'caption1'} style={{wordBreak: 'break-all', textAlign: 'center'}} color={colors.g400}>{rsvp.rsvpContent}</Text>
+                        <Text type={'h6'} customStyle={css`
+                            word-break: break-all;
+                            text-align: center;
+                        `}>{rsvp.rsvpTitle}</Text>
+                        <Text type={'caption1'} customStyle={css`
+                            word-break: break-all;
+                            text-align: center;
+                            color: var(--g-400);
+                        `}>{rsvp.rsvpContent}</Text>
                     </Column>
-                    <HorizontalDivider/>
+                    <Divider/>
                     <Text type={'caption1'}>
                         <Column $alignItems={'center'}>
                             <span>{first.korean} {first.name} & {second.korean} {second.name}</span>
@@ -61,10 +67,17 @@ function RsvpDialog(
                 </Column>
                 <Column gap={12} $alignItems={'center'} $alignSelf={'stretch'}>
                     <Button text={'참석의사 전달하기'} onClick={onConfirm} style={{alignSelf: 'stretch'}}/>
-                    <Text type={'caption1'} color={colors.g400} style={{cursor: 'pointer'}} onClick={() => {
-                        Cookies.set(`hide_RsvpDialog_${url}`, 'true', {expires: 1});
-                        dismiss();
-                    }}>오늘 하루 보지 않기</Text>
+                    <Text
+                        type={'caption1'}
+                        customStyle={css`
+                            color: var(--g-400);
+                            cursor: pointer;
+                        `}
+                        onClick={() => {
+                            Cookies.set(`hide_RsvpDialog_${url}`, 'true', {expires: 1});
+                            dismiss();
+                        }}
+                    >오늘 하루 보지 않기</Text>
                 </Column>
             </S.container>
         </BaseDialog>
@@ -79,7 +92,7 @@ const S = {
         max-width: 436px;
         width: 100vw;
         border-radius: 12px;
-        background: ${colors.white};
+        background: white;
         padding: 44px 24px;
         align-items: stretch;
         gap: 48px;

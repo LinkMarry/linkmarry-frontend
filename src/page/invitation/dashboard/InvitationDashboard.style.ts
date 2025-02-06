@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
 
 const S = {
     container: styled.div`
         display: flex;
         flex: 1;
-        background: ${colors.white};
+        background: white;
         overflow-y: scroll;
     `,
     items: styled.ul`
@@ -20,10 +19,10 @@ const S = {
         height: 420px;
         justify-content: center;
         align-items: center;
-        border: 1px solid ${colors.p800};
+        border: 1px solid var(--p-800);
         outline: none;
         border-radius: 12px;
-        background: ${colors.white};
+        background: white;
         cursor: pointer;
     `
 };

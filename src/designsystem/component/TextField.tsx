@@ -8,11 +8,11 @@ import React, {
     useState
 } from 'react';
 import styled, {css} from "styled-components";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import colors from "@designsystem/foundation/colors";
+import Text from "@designsystem/component/Text";
 
-interface TextFieldProps extends HTMLAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
     label?: string;
     supportingText?: string;
@@ -34,7 +34,7 @@ function TextField(
         value,
         onChange,
         ...props
-    }: TextFieldProps,
+    }: Props,
     ref: ForwardedRef<HTMLInputElement>
 ) {
     const localRef = useRef<HTMLInputElement>(null);
@@ -52,17 +52,19 @@ function TextField(
         borderColor = '#0083F0'
         inputBackground = 'rgba(0, 139, 255, 0.03)';
     } else {
-        labelColor = colors.g500;
-        borderColor = colors.g200;
-        inputBackground = colors.white;
+        labelColor = 'var(--g-500)';
+        borderColor = 'var(--g-200)';
+        inputBackground = 'white';
     }
 
     return (
-        <S.textField $enabled={enabled} {...props}>
+        <TextFieldStyle $enabled={enabled} {...props}>
             {label && (
-                <S.label style={{
+                <Text type={'btn1'} style={{
                     color: labelColor
-                }}>{label}</S.label>
+                }}>
+                    {label}
+                </Text>
             )}
             <S.inputContainer style={{
                 background: inputBackground,
@@ -79,56 +81,55 @@ function TextField(
                     {...fieldProps}
                 />
                 {isError ? (
-                    <Icon type={IconType.ExclamationFill} tint={'#FF4242'}/>
+                    <Icon iconType={IconType.ExclamationFill} customStyle={css`
+                        fill: #FF4242;
+                    `}/>
                 ) : enabled ? (
-                    <Icon type={IconType.CrossFill} tint={'rgba(0,0,0,0.5)'} style={{cursor: 'pointer'}}
-                          onClick={() => {
-                              const event = {
-                                  target: {value: ''}, // 빈 문자열로 설정
-                              } as ChangeEvent<HTMLInputElement>;
-                              onChange?.(event);
-                              if (localRef && localRef.current) {
-                                  localRef.current.value = '';
-                              }
-                          }}
-                    />
+                    <Icon iconType={IconType.CrossFill} customStyle={css`
+                        fill: rgba(0, 0, 0, 0.5);
+                        cursor: pointer;
+                    `} onClick={() => {
+                        const event = {
+                            target: {value: ''}, // 빈 문자열로 설정
+                        } as ChangeEvent<HTMLInputElement>;
+                        onChange?.(event);
+                        if (localRef && localRef.current) {
+                            localRef.current.value = '';
+                        }
+                    }}/>
                 ) : (
                     <></>
                 )}
             </S.inputContainer>
-            <S.supportingText style={{
-                color: isError ? '#FF4242' : colors.g500
-            }}>{supportingText}</S.supportingText>
-        </S.textField>
+            <Text type={'btn1'} customStyle={css`
+                position: absolute;
+                bottom: -20px;
+                white-space: nowrap;
+                ${isError ? css`
+                    color: #FF4242;
+                ` : css`
+                    color: var(--g-500);
+                `}
+            `}>{supportingText}</Text>
+        </TextFieldStyle>
     );
-};
+}
+
+const TextFieldStyle = styled.div<{
+    $enabled: boolean,
+}>`
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    ${({$enabled}) => !$enabled && css`
+        opacity: 0.65;
+    `}
+`;
 
 const S = {
-    textField: styled.div<{
-        $enabled: boolean,
-    }>`
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-
-        ${({$enabled}) => !$enabled && css`
-            opacity: 0.65;
-        `}
-    `,
-    label: styled.span`
-        font-feature-settings: 'ss10' on;
-        ${makeText('btn1')};
-    `,
-    supportingText: styled.span`
-        position: absolute;
-        bottom: -20px;
-        white-space: nowrap;
-
-        font-feature-settings: 'ss10' on;
-        ${makeText('btn1')};
-    `,
     inputContainer: styled.div`
         display: flex;
         justify-content: space-between;

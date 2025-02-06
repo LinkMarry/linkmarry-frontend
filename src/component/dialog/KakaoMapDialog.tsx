@@ -1,8 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import colors from "@designsystem/foundation/colors";
 
 const {kakao} = window as any;
 
@@ -108,7 +107,9 @@ function KakaoMapDialog(
                     <S.searchInput ref={searchFieldRef} placeholder="장소를 검색하세요" onKeyDown={event => {
                         if (event.key === 'Enter') search();
                     }}/>
-                    <Icon type={IconType.Search} size={28} tint={colors.g600} onClick={search}/>
+                    <Icon iconType={IconType.Search} size={28} customStyle={css`
+                        fill: var(--g-600);
+                    `} onClick={search}/>
                 </S.search>
                 <S.kakaoMap ref={kakaoMap}></S.kakaoMap>
             </S.container>
@@ -128,7 +129,7 @@ const S = {
     `,
     search: styled.div`
         display: flex;
-        background: ${colors.white};
+        background: white;
         align-items: center;
         padding-right: 18px;
     `,

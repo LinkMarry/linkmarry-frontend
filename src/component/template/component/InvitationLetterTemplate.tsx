@@ -1,11 +1,11 @@
 import React, {useRef} from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
-import colors from "@designsystem/foundation/colors";
-import Text from "@designsystem/component/text";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
+import Text from "@designsystem/component/Text";
 import Greeting from "@remote/value/Greeting";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import {css} from "styled-components";
 
 export type InvitationLetterStyle = 'style1' | 'style2' | 'style3';
 
@@ -27,19 +27,26 @@ function InvitationLetterTemplate(
     useScrollOnUpdate(invitationLetterRef, [greeting]);
 
     return (
-        <Column gap={40} padding={'72px 60px'} background={colors.white} $alignItems={'center'} ref={invitationLetterRef}>
+        <Column gap={40} $alignItems={'center'} ref={invitationLetterRef} $customStyle={css`
+            padding: 72px 60px;
+            background: white;
+        `}>
             {invitationLetterStyle === 'style1' ? (
-                <Text className={'override-font'} weight={300} size={12} font={'Aleo'} color={colors.g300}>
-                    Wedding Invitation
-                </Text>
+                <Text className={'override-font'} weight={300} size={12} font={'Aleo'} customStyle={css`
+                    color: var(--g-300);
+                `}>Wedding Invitation</Text>
             ) : invitationLetterStyle === 'style3' ? (
-                <img src={'/invitationLetterIcon.svg'} width={20} height={20} alt="" color={colors.white}/>
+                <img src={'/invitationLetterIcon.svg'} width={20} height={20} alt="" style={{
+                    color: 'white'
+                }}/>
             ) : (
                 <></>
             )}
             <GreetingContent text={greeting.greetingContent}/>
-            <HorizontalDivider style={{width: 140}}/>
-            <Text weight={300} size={14} color={colors.g600}>
+            <Divider style={{width: 140}}/>
+            <Text weight={300} size={14} customStyle={css`
+                color: var(--g-600);
+            `}>
                 <Row $alignItems={'center'} gap={8}>
                     <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
                 </Row>
@@ -50,17 +57,13 @@ function InvitationLetterTemplate(
 
 function GreetingContent(props: { text: string }) {
     return (
-        <Text
-            size={14}
-            color={colors.g600}
-            weight={300}
-            style={{
-                overflow: 'hidden',
-                wordBreak: 'break-all',
-                whiteSpace: 'pre-wrap',
-                textAlign: 'center'
-            }}
-        >{props.text}</Text>
+        <Text size={14} weight={300} customStyle={css`
+            color: var(--g-600);
+            overflow: hidden;
+            word-break: break-all;
+            white-space: pre-wrap;
+            text-align: center;
+        `}>{props.text}</Text>
     );
 }
 

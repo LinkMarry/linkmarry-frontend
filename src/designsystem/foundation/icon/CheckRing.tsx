@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function CheckRing(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M11.9271 21.9938C17.3657 21.9938 21.8558 17.4659 21.8558 11.9969C21.8558 6.51995 17.3578 2 11.9192 2C6.49014 2 2 6.51995 2 11.9969C2 17.4659 6.49801 21.9938 11.9271 21.9938ZM11.9271 20.0245C7.50343 20.0245 3.96337 16.4517 3.96337 11.9969C3.96337 7.54215 7.49555 3.96925 11.9192 3.96925C16.3428 3.96925 19.9004 7.54215 19.9004 11.9969C19.9004 16.4517 16.3507 20.0245 11.9271 20.0245Z"
                 fill="current"/>

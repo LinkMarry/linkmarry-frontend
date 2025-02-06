@@ -1,23 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import S from '@page/invitation/dashboard/InvitationDashboard.style';
-import {Column, Row} from "@designsystem/component/flexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import DashboardInvitationCell, {
     DashboardInvitationCellClickType
 } from "@page/invitation/dashboard/component/DashboardInvitationCell";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import colors from "@designsystem/foundation/colors";
 import CreateDesignDialog from "@page/invitation/dashboard/dialog/CreateDesignDialog";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
 import EditDesignDialog from "@page/invitation/dashboard/dialog/EditDesignDialog";
 import WeddingDashboard from "@remote/value/WeddingDashboard";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingInfo from "@remote/value/WeddingInfo";
 import {useNavigate} from "react-router-dom";
-import Spacer from "@designsystem/component/spacer";
+import Spacer from "@designsystem/component/Spacer";
 import {isAxiosError} from "axios";
 import PayWaterMarkDialog from "@page/invitation/dashboard/dialog/PayWaterMarkDialog";
 import Dialog from "@designsystem/component/dialog/dialog";
-import {hexToRgba} from "@util/color.util";
+import {css} from "styled-components";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -93,22 +92,27 @@ function InvitationDashboard() {
 
     return (
         <S.container>
-            <Column gap={44} margin={'0 0 0 64px'} $alignItems={'stretch'}>
+            <Column gap={44} $alignItems={'stretch'} $customStyle={css`
+                margin-left: 64px;
+            `}>
                 <Row style={{marginTop: 64}}>
                     <Column gap={8}>
-                        <Text type={'h5'} color={colors.black}>내 디자인</Text>
-                        <Text type={'p3'} color={colors.g500}>원하는 청첩장을 만들어보세요!</Text>
+                        <Text type={'h5'} customStyle={css`
+                            color: black;
+                        `}>내 디자인</Text>
+                        <Text type={'p3'} customStyle={css`
+                            color: var(--g-500);
+                        `}>원하는 청첩장을 만들어보세요!</Text>
                     </Column>
                     <Spacer/>
                     {weddingDashboard && (
-                        <Text
-                            type={'p3'}
-                            color={colors.g500}
-                            style={{alignSelf: 'flex-end', cursor: 'pointer'}}
-                            onClick={() => {
-                                setShowPayWaterMarkDialog(true);
-                            }}
-                        >워터마크 제거 가능 횟수 {weddingDashboard?.invitation}</Text>
+                        <Text type={'p3'} customStyle={css`
+                            align-self: flex-end;
+                            cursor: pointer;
+                            color: var(--g-500);
+                        `} onClick={() => {
+                            setShowPayWaterMarkDialog(true);
+                        }}>워터마크 제거 가능 횟수 {weddingDashboard?.invitation}</Text>
                     )}
                 </Row>
                 <S.items>
@@ -116,8 +120,12 @@ function InvitationDashboard() {
                         setShowCreateDesignDialog(true);
                     }}>
                         <Column gap={8} $alignItems={'center'}>
-                            <Icon type={IconType.AddLine} tint={colors.g600} size={28}/>
-                            <Text type={'p4'} color={colors.g500}>새 디자인 만들기</Text>
+                            <Icon iconType={IconType.AddLine} size={28} customStyle={css`
+                                fill: var(--g-600);
+                            `}/>
+                            <Text type={'p4'} customStyle={css`
+                                color: var(--g-500);
+                            `}>새 디자인 만들기</Text>
                         </Column>
                     </S.createDesignButton>
                     {weddingDashboard ? (
@@ -139,17 +147,17 @@ function InvitationDashboard() {
                     dismiss={() => setShowRemoveDesignDialog(false)}
                     dismissButtonProps={{
                         text: '취소',
-                        style: {
-                            color: colors.error,
-                            background: hexToRgba(colors.error, 0.1)
-                        }
+                        customStyle: css`
+                            color: var(--status-error);
+                            background: rgba(var(--status-error), 0.1);
+                        `
                     }}
                     confirmButtonProps={{
                         text: '삭제',
                         onClick: onClickRemoveDashboard,
-                        style: {
-                            background: colors.error
-                        }
+                        customStyle: css`
+                            background: var(--status-error);
+                        `
                     }}
                 />
             }
@@ -167,17 +175,17 @@ function InvitationDashboard() {
                     dismiss={() => setShowRemoveWaterMarkDialog(false)}
                     dismissButtonProps={{
                         text: '취소',
-                        style: {
-                            color: colors.error,
-                            background: hexToRgba(colors.error, 0.1)
-                        }
+                        customStyle: css`
+                            color: var(--status-error);
+                            background: rgba(var(--status-error), 0.1);
+                        `
                     }}
                     confirmButtonProps={{
                         text: '제거',
                         onClick: removeWaterWater,
-                        style: {
-                            background: colors.error
-                        }
+                        customStyle: css`
+                            background: var(--status-error);
+                        `
                     }}
                 />
             )}

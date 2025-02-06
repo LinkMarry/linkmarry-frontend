@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import styled from "styled-components";
-import {Column} from "@designsystem/component/flexLayout";
-import colors from "@designsystem/foundation/colors";
+import styled, {css} from "styled-components";
+import {Column} from "@designsystem/component/FlexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import Text from "@designsystem/component/text";
-import makeText from "@designsystem/foundation/text/textType";
+import Text from "@designsystem/component/Text";
+import makeText from "@designsystem/foundation/text/TextType";
 import Comment from "@remote/value/Comment";
 import weddingApi from "@remote/api/WeddingApi";
 
@@ -29,12 +28,17 @@ function InvitationDashboardGuestComment() {
     return (
         <S.container>
             <Column gap={44} style={{marginLeft: 64, paddingTop: 64, width: 867}} $alignItems={'stretch'}>
-                <Icon type={IconType.ExpandArrow} tint={colors.g400} style={{cursor: 'pointer'}} onClick={() => {
+                <Icon iconType={IconType.ExpandArrow} customStyle={css`
+                    fill: var(--g-400);
+                    cursor: pointer;
+                `} onClick={() => {
                     navigate('/dashboard');
                 }}/>
                 <Column>
                     <Text type={'h5'}>방명록</Text>
-                    <Text type={'p3'} color={colors.g500}>방명록 {comments?.length ?? 0}건</Text>
+                    <Text type={'p3'} customStyle={css`
+                        color: var(--g-500);
+                    `}>방명록 {comments?.length ?? 0}건</Text>
                 </Column>
                 <Column $alignItems={'stretch'}>
                     <S.header.row>
@@ -73,13 +77,13 @@ const BaseCell = styled.div`
 const S = {
     container: styled.div`
         display: flex;
-        background: ${colors.white};
+        background: white;
         overflow-y: scroll;
         flex: 1;
     `,
     header: {
         row: styled(BaseRow)`
-            border-bottom: 1px solid ${colors.black};
+            border-bottom: 1px solid black;
         `,
         dateCell: BaseCell,
         nameCell: styled(BaseCell)`

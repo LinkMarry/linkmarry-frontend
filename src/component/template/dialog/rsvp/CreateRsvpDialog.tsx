@@ -1,12 +1,11 @@
 import React, {useRef, useState} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Spacer from "@designsystem/component/spacer";
-import Text from "@designsystem/component/text";
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Spacer from "@designsystem/component/Spacer";
+import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import Button from "@designsystem/component/button";
+import Button from "@designsystem/component/Button";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import weddingApi from "@remote/api/WeddingApi";
@@ -79,23 +78,28 @@ function CreateRsvpDialog(
     return (
         <BaseDialog dismiss={dismiss}>
             <S.container>
-                <Row $alignItems={'center'} padding={'24px 0'} style={{position: 'relative'}}>
+                <Row $alignItems={'center'} $customStyle={css`
+                    position: relative;
+                    padding: 24px 0;
+                `}>
                     <Spacer/>
                     <Text type={'p2'}>참석 의사 전달</Text>
                     <Spacer/>
                     <Icon
-                        type={IconType.CrossLine}
-                        tint={colors.g600}
+                        iconType={IconType.CrossLine}
                         size={20}
-                        style={{
-                            cursor: 'pointer',
-                            right: 32,
-                            position: 'absolute'
-                        }}
+                        customStyle={css`
+                            fill: var(--g-600);
+                            cursor: pointer;
+                            right: 32px;
+                            position: absolute;
+                        `}
                         onClick={dismiss}
                     />
                 </Row>
-                <Column gap={36} padding={'36px 40px 0 40px'} $alignItems={'stretch'}>
+                <Column gap={36} $alignItems={'stretch'} $customStyle={css`
+                    padding: 36px 40px 0 40px;
+                `}>
                     <Column gap={28} $alignItems={'stretch'}>
                         <Column gap={4} $alignItems={'stretch'}>
                             <Text type={'p5'}>어느 분의 하객인가요?</Text>
@@ -176,7 +180,7 @@ const S = {
         max-height: 100vh;
         overflow-y: hidden;
         align-items: stretch;
-        background: ${colors.white};
+        background: white;
         padding-bottom: 36px;
         border-radius: 4px;
         ${applyBaseDialogContent()};

@@ -1,7 +1,7 @@
 import React from 'react';
-import makeText, {TextType, textTypes} from "@designsystem/foundation/text/textType";
+import makeText, {TextType, textTypes} from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {allCasesOfEnum} from "@util/enum.util";
 
 function FoundationDemo() {
@@ -16,7 +16,9 @@ function FoundationDemo() {
             }}>
                 {allCasesOfEnum(IconType)
                     .map((icon) => (
-                        <Icon type={icon} size={48} tint={'gray'}/>
+                        <Icon iconType={icon} size={48} customStyle={css`
+                            fill: gray;
+                        `}/>
                     ))}
             </div>
         </div>

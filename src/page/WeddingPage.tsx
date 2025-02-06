@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
 import {useParams} from "react-router-dom";
-import {Row} from "@designsystem/component/flexLayout";
+import {Row} from "@designsystem/component/FlexLayout";
 import TemplateComponent from "@src/component/template/TemplateComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
 import Cookies from "js-cookie";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
+import {css} from "styled-components";
 
 function WeddingPage() {
     const {url} = useParams();
@@ -50,7 +51,9 @@ function WeddingPage() {
                 />
             )}
             {isError && (
-                <Text type={'h5'} style={{marginTop: 20}}>청첩장을 찾을 수 없습니다</Text>
+                <Text type={'h5'} customStyle={css`
+                    margin-top: 20px;
+                `}>청첩장을 찾을 수 없습니다</Text>
             )}
         </Row>
     );

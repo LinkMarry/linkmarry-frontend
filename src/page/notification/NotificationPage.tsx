@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import S from './NotificationPage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
 import Notification from "@remote/value/Notification";
 import {tagToKoreanRecord} from "@remote/enumeration/Tag";
 import notificationApi from "@remote/api/NotificationApi";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
-import Spacer from "@designsystem/component/spacer";
+import Spacer from "@designsystem/component/Spacer";
 
 function NotificationPage() {
     const [notifications, setNotifications] = useState<Notification[]>();

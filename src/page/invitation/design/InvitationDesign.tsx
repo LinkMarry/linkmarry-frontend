@@ -15,11 +15,10 @@ import MoneyInfoOption from "@page/invitation/design/option/MoneyInfoOption";
 import VideoOption from "@page/invitation/design/option/VideoOption";
 import PhoneOption from "@page/invitation/design/option/PhoneOption";
 import RsvpOption from "@page/invitation/design/option/RsvpOption";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import Spacer from "@designsystem/component/spacer";
-import Button from "@designsystem/component/button";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import Spacer from "@designsystem/component/Spacer";
+import Button from "@designsystem/component/Button";
 import TemplateOption from "@page/invitation/design/option/TemplateOption";
 import {useNavigate, useParams} from "react-router-dom";
 import {defaultTemplate} from "@remote/value/Template";
@@ -43,6 +42,7 @@ import weddingApi from "@remote/api/WeddingApi";
 import WeddingDto from "@remote/value/WeddingDto";
 import AutoFocusOption from "@page/invitation/design/option/AutoFocusOption";
 import AutoFocusContext from "@src/context/AutoFocusContext";
+import {css} from "styled-components";
 
 type DesignMode = 'create' | 'edit';
 
@@ -95,7 +95,7 @@ function InvitationDesign() {
     const position = draggableOptions.map(option => optionRecord[option].index);
 
     const {autoFocus, setAutoFocus} = useContext(AutoFocusContext);
-    
+
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return;
 
@@ -265,7 +265,9 @@ function InvitationDesign() {
                 <Row $alignItems={'flex-end'}>
                     <Column gap={8}>
                         <Text type={'h5'}>청첩장 제작</Text>
-                        <Text type={'p3'} color={colors.g500}>원하는 청첩장을 만들어보세요!</Text>
+                        <Text type={'p3'} customStyle={css`
+                            color: var(--g-500);
+                        `}>원하는 청첩장을 만들어보세요!</Text>
                     </Column>
                     <Spacer/>
                     <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>

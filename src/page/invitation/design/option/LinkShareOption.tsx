@@ -1,10 +1,9 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
-import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import LinkShare from "@remote/value/LinkShare";
 import VoidInput from "@src/component/VoidInput";
@@ -93,7 +92,13 @@ function LinkShareOption(
                             </AddDismissButton>
                         ) : (
                             <S.addImageContainer htmlFor={'choose-link-share-image'}>
-                                <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                                <Icon
+                                    iconType={IconType.AddLine}
+                                    size={24}
+                                    customStyle={css`
+                                        fill: var(--g-600);
+                                    `}
+                                />
                                 {isFetching && <LoadingOverlay/>}
                             </S.addImageContainer>
                         )}
@@ -147,7 +152,7 @@ const S = {
         position: relative;
         width: 128px;
         height: 128px;
-        border: 1px solid ${colors.g200};
+        border: 1px solid var(--g-200);
         justify-content: center;
         align-items: center;
         cursor: pointer;

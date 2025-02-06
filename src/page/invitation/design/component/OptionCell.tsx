@@ -1,13 +1,14 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, useState} from 'react';
-import styled from "styled-components";
-import makeText from "@designsystem/foundation/text/textType";
-import colors from "@designsystem/foundation/colors";
+import styled, {css} from "styled-components";
+import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import Spacer from "@designsystem/component/spacer";
-import {Row} from "@designsystem/component/flexLayout";
+import Spacer from "@designsystem/component/Spacer";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import {DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 import {OptionTypeMode} from "@page/invitation/design/OptionType";
-import Toggle from "@designsystem/component/toggle";
+import Toggle from "@designsystem/component/Toggle";
+import Text from "@designsystem/component/Text";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {
     title: string;
@@ -34,77 +35,81 @@ function OptionCell(
     const [opened, setOpened] = useState(false);
 
     return (
-        <S.container ref={ref} {...props}>
-            <S.titleWrapper style={{
-                outline: opened ? `1px solid ${colors.g100}` : undefined
-            }}>
+        <Column ref={ref} $customStyle={css`
+            background: white;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        `} {...props}>
+            <Row $customStyle={css`
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 62px;
+                gap: 12px;
+                padding-left: 36px;
+                padding-right: 32px;
+                ${opened && css`
+                    outline: 1px solid var(--g-100);
+                `};
+            `}>
                 <Row
                     $alignItems={'center'}
                     $alignSelf={'stretch'}
                     gap={12}
                     flex={1}
-                    style={{
-                        cursor: 'pointer',
-                    }}
+                    $customStyle={css`
+                        cursor: pointer;
+                    `}
                     onClick={() => setOpened(opened => !opened)}
                 >
                     <Icon
-                        style={{
-                            rotate: opened ? '90deg' : '-90deg'
-                        }}
-                        type={IconType.ExpandArrow}
+                        iconType={IconType.ExpandArrow}
                         size={24}
-                        tint={colors.g600}
+                        customStyle={css`
+                            fill: var(--g-600);
+                            ${opened ? css`
+                                rotate: 90deg;
+                            ` : css`
+                                rotate: -90deg;
+                            `}
+                        `}
                     />
-                    <S.title>{title}</S.title>
+                    <Text type={'p2'}>{title}</Text>
                     <Spacer/>
                 </Row>
                 {mode === 'draggable' && (
-                    <div style={{display: 'flex'}} {...dragHandleProps}>
-                        <Icon type={IconType.Hamburger} size={14} tint={colors.g600}/>
-                    </div>
+                    <CustomStyle $customStyle={css`
+                        display: flex;
+                    `} {...dragHandleProps}>
+                        <Icon iconType={IconType.Hamburger} size={14} customStyle={css`
+                            fill: var(--g-600);
+                        `}/>
+                    </CustomStyle>
                 )}
                 {mode === 'toggle' && toggleModeProps && (
                     <Toggle
                         checked={toggleModeProps.checked}
                         onChange={toggleModeProps.onChange}
-                        style={{
-                            marginRight: -16
-                        }}
+                        customStyle={css`
+                            margin-right: -16px;
+                        `}
                     />
                 )}
-            </S.titleWrapper>
+            </Row>
             <div style={{
                 display: opened ? undefined : 'none'
             }}>
                 {children}
             </div>
-        </S.container>
+        </Column>
     );
 }
 
 const S = {
-    container: styled.div`
-        display: flex;
-        flex-direction: column;
-        background: ${colors.white};
-        border-radius: 4px;
-        margin-bottom: 20px;
-    `,
     titleWrapper: styled.div`
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        height: 62px;
-        gap: 12px;
-        padding-left: 36px;
-        padding-right: 32px;
+
     `,
-    title: styled.span`
-        ${makeText('p2')};
-        color: ${colors.black};
-    `
 }
 
 export default forwardRef(OptionCell);

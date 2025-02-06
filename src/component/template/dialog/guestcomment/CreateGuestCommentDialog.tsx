@@ -1,12 +1,11 @@
 import React, {useRef} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import styled from "styled-components";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import TextField from "@designsystem/component/textField";
-import Textarea from "@designsystem/component/textarea";
-import Button from "@designsystem/component/button";
+import styled, {css} from "styled-components";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import TextField from "@designsystem/component/TextField";
+import Textarea from "@designsystem/component/Textarea";
+import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
 
@@ -65,7 +64,9 @@ function CreateGuestCommentDialog(
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
                     <Text type={'h6'}>방명록 작성하기</Text>
-                    <Text type={'caption1'} color={colors.g400}>저희에게 따뜻한 말을 남겨주세요</Text>
+                    <Text type={'caption1'} customStyle={css`
+                        color: var(--g-400);
+                    `}>저희에게 따뜻한 말을 남겨주세요</Text>
                 </Column>
                 <Column gap={12} $alignItems={'stretch'}>
                     <TextField ref={nameRef} placeholder={'성함'}/>
@@ -86,7 +87,7 @@ const S = {
         flex-direction: column;
         padding: 44px 36px;
         gap: 48px;
-        background: ${colors.white};
+        background: white;
         border-radius: 12px;
         ${applyBaseDialogContent()};
     `

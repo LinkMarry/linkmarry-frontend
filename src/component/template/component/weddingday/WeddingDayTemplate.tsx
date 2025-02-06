@@ -1,15 +1,14 @@
 import React from 'react';
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import {Column} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
-import styled from "styled-components";
+import Text from "@designsystem/component/Text";
+import {Column} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
+import styled, {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 import {format, parse} from "date-fns";
 
-interface WeddingDayProps {
+interface Props {
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
     dDayStyle: DDayStyle;
@@ -20,7 +19,7 @@ function WeddingDayTemplate(
         baseInfo,
         weddingSchedule,
         dDayStyle
-    }: WeddingDayProps
+    }: Props
 ) {
     const weddingDate = weddingSchedule.weddingDate;
     const date = parse(weddingDate, 'yyyy-MM-dd', new Date());
@@ -33,25 +32,29 @@ function WeddingDayTemplate(
                 gap={12}
                 $alignItems={'center'}
                 $justifyContent={'center'}
-                background={colors.white}
-                style={{
-                    height: '100vh'
-                }}
+                $customStyle={css`
+                    background: white;
+                    height: 100vh;
+                `}
             >
-                <Text size={36} weight={300} color={colors.g500}>{isValidDate && date.getFullYear()}</Text>
-                <Text size={36} weight={300} color={colors.g500}>{isValidDate && format(date,  'MMMM d')}</Text>
+                <Text size={36} weight={300} customStyle={css`
+                    color: var(--g-500);
+                `}>{isValidDate && date.getFullYear()}</Text>
+                <Text size={36} weight={300} customStyle={css`
+                    color: var(--g-500);
+                `}>{isValidDate && format(date, 'MMMM d')}</Text>
             </Column>
         )
     }
 
     return (
         <S.root>
-            <Text color={colors.g600} size={20} weight={300}>
-                WEDDING DAY
-            </Text>
+            <Text size={20} weight={300} customStyle={css`
+                color: var(--g-600);
+            `}>WEDDING DAY</Text>
             {weddingSchedule.calendar && (
                 <Column gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
-                    <HorizontalDivider/>
+                    <Divider/>
                     <S.table>
                         <thead>
                         <tr>
@@ -59,9 +62,11 @@ function WeddingDayTemplate(
                                 <th key={index}>
                                     <Text
                                         font={'Pretendard'}
-                                        color={colors.g500}
                                         size={16}
                                         weight={300}
+                                        customStyle={css`
+                                            color: var(--g-500);
+                                        `}
                                     >{i}</Text>
                                 </th>
                             ))}
@@ -74,7 +79,7 @@ function WeddingDayTemplate(
                                     <td
                                         key={dayIndex}
                                         style={{
-                                            background: day.isWeddingDay ? colors.p300 : undefined,
+                                            background: day.isWeddingDay ? 'var(--p-300)' : undefined,
                                             borderRadius: 100
                                         }}
                                     >
@@ -87,7 +92,7 @@ function WeddingDayTemplate(
                         ))}
                         </tbody>
                     </S.table>
-                    <HorizontalDivider/>
+                    <Divider/>
                 </Column>
             )}
             {weddingSchedule.dday && (
@@ -107,7 +112,7 @@ const S = {
         flex-direction: column;
         align-items: center;
         padding: 92px 22px;
-        background: ${colors.white};
+        background: white;
         gap: 40px;
     `,
     table: styled.table`
@@ -124,7 +129,7 @@ const S = {
             tr {
                 display: flex;
                 justify-content: space-between;
-                color: ${colors.g500};
+                color: var(--g-500);
                 flex: 1;
             }
         }

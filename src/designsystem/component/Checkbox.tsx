@@ -6,12 +6,13 @@ import React, {
     useRef,
     useState
 } from 'react';
-import styled from "styled-components";
+import styled, {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
+import Text from "@designsystem/component/Text";
+import {Row} from "@designsystem/component/FlexLayout";
 
-interface CheckboxProps {
+interface Props {
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     label?: string;
@@ -30,7 +31,7 @@ function Checkbox(
         onChange,
         label,
         style
-    }: CheckboxProps,
+    }: Props,
     ref: ForwardedRef<CheckboxRef>
 ) {
     const [localChecked, setLocalChecked] = useState(checked);
@@ -55,8 +56,10 @@ function Checkbox(
 
     return (
         <S.container style={style}>
-            <S.checkbox>
-                <input
+            <Row $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
+                position: relative;
+            `}>
+                <S.Input
                     ref={checkboxRef}
                     type={'checkbox'}
                     checked={localChecked}
@@ -64,30 +67,33 @@ function Checkbox(
                         onChange?.(e.target.checked);
                         setLocalChecked(e.target.checked);
                     }}
-                    style={{
-                        borderRadius: 4,
-                        width: 20,
-                        height: 20,
-                        appearance: 'none',
-                        cursor: 'pointer',
-                        background: localChecked ? colors.g600 : colors.transparent,
-                        border: localChecked ? 'none' : `1px solid ${colors.g300}`,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
+                    $customStyle={localChecked ? css`
+                        background: var(--g-600);
+                        border: none;
+                    ` : css`
+                        background: transparent;
+                        border: 1px solid var(--g-300);
+                    `}
                 />
                 {localChecked && <Icon
-                    type={IconType.CheckLine}
-                    tint={colors.white}
+                    iconType={IconType.CheckLine}
                     size={18}
-                    style={{
-                        position: 'absolute',
-                        pointerEvents: 'none',
-                    }}
+                    customStyle={css`
+                        fill: white;
+                        position: absolute;
+                        pointer-events: none;
+                    `}
                 />}
-            </S.checkbox>
-            {label && <S.title style={{cursor: 'pointer'}} onClick={() => onChange?.(!checked)}>{label}</S.title>}
+            </Row>
+            {label && (
+                <Text
+                    type={'p4'}
+                    customStyle={css`
+                        cursor: pointer;
+                    `}
+                    onClick={() => onChange?.(!checked)}
+                >{label}</Text>
+            )}
         </S.container>
     );
 }
@@ -99,17 +105,18 @@ const S = {
         width: fit-content;
         gap: 8px;
     `,
-    checkbox: styled.div`
+    Input: styled.input<{
+        $customStyle?: RuleSet;
+    }>`
+        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+        appearance: none;
+        cursor: pointer;
         display: flex;
-        position: relative;
         justify-content: center;
         align-items: center;
-    `,
-    title: styled.span`
-        display: inline-flex;
-
-        ${makeText('p4')};
-        color: ${colors.black};
+        ${({$customStyle}) => $customStyle};
     `
 }
 

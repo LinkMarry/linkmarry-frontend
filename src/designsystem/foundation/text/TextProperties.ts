@@ -1,5 +1,5 @@
 import {CSSProperties} from "react";
-import {LinkMarryFont} from "@designsystem/foundation/text/textType";
+import {LinkMarryFont} from "@designsystem/foundation/text/TextType";
 import {css, RuleSet} from "styled-components";
 
 export default interface TextProperties {

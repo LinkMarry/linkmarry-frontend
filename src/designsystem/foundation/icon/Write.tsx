@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Write(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path fillRule="evenodd" clipRule="evenodd"
                   d="M18.3562 2.4376C18.8879 2.1741 19.5121 2.17412 20.0438 2.43765C20.3294 2.57922 20.57 2.82139 20.7781 3.03086L20.895 3.14777C21.1044 3.35586 21.3465 3.59645 21.488 3.88204C21.7515 4.41366 21.7515 5.03783 21.488 5.56944C21.3464 5.85503 21.1043 6.09561 20.8949 6.30369L11.0728 16.1257H7.8V12.8529L17.6219 3.03077C17.83 2.82131 18.0706 2.57915 18.3562 2.4376ZM19.2707 4.06909C19.2317 4.03003 19.1684 4.03003 19.1293 4.06908L9.60005 13.5983V14.3255H10.3273L19.8564 4.79621C19.8954 4.75716 19.8954 4.69385 19.8564 4.6548L19.2707 4.06909Z"
                   fill="current"/>

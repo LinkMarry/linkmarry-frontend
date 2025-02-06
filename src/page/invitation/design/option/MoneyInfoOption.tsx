@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import Checkbox from "@designsystem/component/checkbox";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import Checkbox from "@designsystem/component/Checkbox";
+import makeText from "@designsystem/foundation/text/TextType";
 import MoneyInfo from "@remote/value/MoneyInfo";
 
 interface MoneyInfoOptionProps {
@@ -50,7 +49,7 @@ function MoneyInfoOption(
                         </Column>
                     </Row>
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Column gap={32}>
                     <Column gap={40}>
                         <Row gap={12}>
@@ -193,7 +192,7 @@ function MoneyInfoOption(
                             </Column>
                         </Row>
                     </Column>
-                    <HorizontalDivider/>
+                    <Divider/>
                     <Column gap={40}>
                         <Row gap={12}>
                             <OptionLabel label={'신부'} style={{alignSelf: 'flex-start'}}/>
@@ -350,7 +349,7 @@ const S = {
     `,
     kakaoPayHelper: styled.span`
         ${makeText('btn1')};
-        color: ${colors.g300};
+        color: var(--g-300);
         text-decoration: underline;
         cursor: pointer;
     `

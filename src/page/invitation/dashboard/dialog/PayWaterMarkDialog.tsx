@@ -1,13 +1,12 @@
 import React, {useRef} from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import TextField from "@designsystem/component/textField";
-import Button from "@designsystem/component/button";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
-import Spacer from "@designsystem/component/spacer";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import TextField from "@designsystem/component/TextField";
+import Button from "@designsystem/component/Button";
+import makeText from "@designsystem/foundation/text/TextType";
+import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import naverApi from "@remote/api/NaverApi";
 import {useNavigate} from "react-router-dom";
@@ -46,10 +45,15 @@ function PayWaterMarkDialog(
     return (
         <BaseDialog dismiss={dismiss}>
             <S.container>
-                <Column padding={'88px 116px'} $alignItems={'stretch'}>
+                <Column $alignItems={'stretch'} $customStyle={css`
+                    padding: 88px 116px;
+                `}>
                     <Column $alignItems={'center'}>
                         <Text type={'h6'}>워터마크 제거 횟수 충전하기</Text>
-                        <Text type={'p5'} color={colors.g400} style={{textAlign: 'center'}}>
+                        <Text type={'p5'} customStyle={css`
+                            color: var(--g-400);
+                            text-align: center;
+                        `}>
                             구매한 횟수만큼 청첩장 워터마크 제거 횟수가 충전됩니다.
                         </Text>
                     </Column>
@@ -70,18 +74,28 @@ function PayWaterMarkDialog(
                     </Column>
                     <Spacer h={113}/>
                     <Column gap={20} $alignItems={'stretch'}>
-                        <Text type={'p5'} color={colors.g300} style={{wordBreak: 'break-all', textAlign: 'center'}}>워터마크
+                        <Text type={'p5'} customStyle={css`
+                            color: var(--g-300);
+                            word-break: break-all;
+                            text-align: center;
+                        `}>워터마크
                             제거시
                             링크메리 이용약관에<br/>
                             동의하신걸로 처리됩니다.</Text>
-                        <Button text={'워터마크 제거'} style={{alignSelf: 'stretch'}} onClick={removeWaterMark}/>
+                        <Button text={'워터마크 제거'} customStyle={css`
+                            align-self: stretch;
+                        `} onClick={removeWaterMark}/>
                     </Column>
                 </Column>
                 <Icon
-                    tint={colors.g300} size={20} type={IconType.CrossLine}
-                    style={{
-                        position: 'absolute', right: 24, top: 24, cursor: 'pointer'
-                    }}
+                    iconType={IconType.CrossLine} size={20}
+                    customStyle={css`
+                        position: absolute;
+                        right: 24px;
+                        top: 24px;
+                        cursor: pointer;
+                        fill: var(--g-300);
+                    `}
                     onClick={dismiss}
                 />
             </S.container>
@@ -92,7 +106,7 @@ function PayWaterMarkDialog(
 const S = {
     container: styled(Column)`
         ${applyBaseDialogContent()};
-        background-color: ${colors.white};
+        background: white;
         border-radius: 12px;
         max-width: 520px;
         width: 80vw;
@@ -104,7 +118,7 @@ const S = {
         height: 44px;
         gap: 15px;
         border-radius: 8px;
-        color: ${colors.white};
+        color: white;
         justify-content: center;
         align-items: center;
         cursor: pointer;

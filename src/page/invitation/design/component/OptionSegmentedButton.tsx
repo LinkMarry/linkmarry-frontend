@@ -1,6 +1,6 @@
 import React, {HTMLAttributes} from 'react';
-import {Row} from "@designsystem/component/flexLayout";
-import SegmentedButton from "@designsystem/component/segmentedButton";
+import {Row} from "@designsystem/component/FlexLayout";
+import SegmentedButton from "@designsystem/component/SegmentedButton";
 
 interface OptionSegmentedButtonProps extends HTMLAttributes<HTMLDivElement> {
     selectedIndex?: number;

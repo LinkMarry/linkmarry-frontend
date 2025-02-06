@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
+import styled, {css} from "styled-components";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@designsystem/component/dialog/dialog";
-import makeText from "@designsystem/foundation/text/textType";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
+import makeText from "@designsystem/foundation/text/TextType";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
 
 interface EditDesignDialogProps {
     originUrl: string;
@@ -55,7 +54,7 @@ function EditDesignDialog(
         const sanitizedValue = value.replace(/[^a-zA-Z0-9-_.]/g, '');
         setUrl(sanitizedValue);
     };
-    
+
     return (
         <Dialog
             title={'청첩장 링크 수정'}
@@ -71,12 +70,16 @@ function EditDesignDialog(
         >
             <Column gap={4}>
                 <S.textField>
-                    <Text type={'p5'} color={colors.g400} style={{userSelect: 'none'}}>
-                        linkmarry.com/wedding/
-                    </Text>
+                    <Text type={'p5'} customStyle={css`
+                        color: var(--g-400);
+                        user-select: none;
+                    `}>linkmarry.com/wedding/</Text>
                     <input type="text" value={url} onChange={event => onChange(event.target.value)}/>
                 </S.textField>
-                <Text type={'p5'} color={colors.g600} style={{marginLeft: 4}}>
+                <Text type={'p5'} customStyle={css`
+                    color: var(--g-600);
+                    margin-left: 4px;
+                `}>
                     영어 대소문자, 숫자, '-', '_', '.'만 허용합니다
                 </Text>
             </Column>
@@ -89,8 +92,8 @@ const S = {
         display: flex;
         min-height: 44px;
         align-items: center;
-        border: 1px solid ${colors.g200};
-        background: ${colors.white};
+        border: 1px solid var(--g-200);
+        background: white;
         border-radius: 8px;
         padding-left: 16px;
         padding-right: 16px;

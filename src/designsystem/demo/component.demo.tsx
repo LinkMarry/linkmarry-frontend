@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import Button, {ButtonRole, ButtonSize} from "@designsystem/component/button";
-import HorizontalDivider, {HorizontalDividerSize} from "@designsystem/component/horizontalDivider";
-import TextField from "@designsystem/component/textField";
-import Checkbox from "@designsystem/component/checkbox";
-import Radio from "@designsystem/component/radio";
-import Toggle from "@designsystem/component/toggle";
+import Button, {ButtonRole, ButtonSize} from "@designsystem/component/Button";
+import Divider, {DividerSize} from "@designsystem/component/Divider";
+import TextField from "@designsystem/component/TextField";
+import Checkbox from "@designsystem/component/Checkbox";
+import Radio from "@designsystem/component/Radio";
+import Toggle from "@designsystem/component/Toggle";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
     const buttonRoles: ButtonRole[] = ['primary', 'secondary', 'assistive'];
 
-    const dividerSizes: HorizontalDividerSize[] = ['large', 'medium', 'small'];
+    const dividerSizes: DividerSize[] = ['large', 'medium', 'small'];
 
     const [input, setInput] = useState('');
 
@@ -42,7 +42,7 @@ function ComponentDemo() {
             ))}
 
             {dividerSizes.map(size => (
-                <HorizontalDivider size={size}/>
+                <Divider size={size}/>
             ))}
 
             <TextField

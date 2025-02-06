@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import colors from "@designsystem/foundation/colors";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import Button from "@designsystem/component/button";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import Button from "@designsystem/component/Button";
 
 interface ConfirmRsvpDialogProps {
     dismiss: () => void;
@@ -42,7 +41,7 @@ const S = {
         border-radius: 12px;
         padding: 44px 36px;
         align-items: center;
-        background: ${colors.white};
+        background: white;
         max-width: 388px;
         width: 90vw;
     `

@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function AlarmDisabled(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M18.9341 15.4429L18.4563 14.9495C18.4202 14.9122 18.4 14.8623 18.4 14.8103V9.34264L8.72091 19.0217H9.56245C9.58319 19.0217 9.6 19.0386 9.6 19.0593V19.1C9.6 20.4255 10.6745 21.5 12 21.5C13.3255 21.5 14.4 20.4255 14.4 19.1V19.0593C14.4 19.0386 14.4168 19.0217 14.4376 19.0217H19.0539C19.5764 19.0217 20 18.5981 20 18.0756C20 17.0929 19.6178 16.1488 18.9341 15.4429Z"
                 fill="current"/>

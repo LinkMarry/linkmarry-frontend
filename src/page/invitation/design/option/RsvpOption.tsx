@@ -1,13 +1,11 @@
-import React, {RefObject} from 'react';
-import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import React from 'react';
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import Checkbox, {CheckboxRef} from "@designsystem/component/checkbox";
-import colors from "@designsystem/foundation/colors";
-import Textarea from "@designsystem/component/textarea";
-import Text from "@designsystem/component/text";
+import Checkbox from "@designsystem/component/Checkbox";
+import Text from "@designsystem/component/Text";
 import Rsvp from "@remote/value/Rsvp";
 
 interface RsvpOptionProps {
@@ -40,7 +38,7 @@ function RsvpOption(
                         }} width={264}/>
                     </Row>
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Column gap={32}>
                     <Row gap={12}>
                         <OptionLabel label={'항목'} style={{alignSelf: 'flex-start'}}/>
@@ -72,7 +70,9 @@ function RsvpOption(
                                 checked={rsvp.startPopupStatus}
                                 onChange={checked => onChange({...rsvp, startPopupStatus: checked})}
                             />
-                            <Text type={'caption1'} color={colors.g300}>청첩장 열 때 팝업 안내</Text>
+                            <Text type={'caption1'} customStyle={css`
+                                color: var(--g-300);
+                            `}>청첩장 열 때 팝업 안내</Text>
                         </Row>
                     </Row>
                 </Column>

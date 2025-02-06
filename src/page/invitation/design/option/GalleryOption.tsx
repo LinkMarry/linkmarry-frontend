@@ -1,13 +1,12 @@
-import React, {ChangeEvent, Dispatch, SetStateAction, useRef, useState} from 'react';
-import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
+import React, {ChangeEvent, useRef, useState} from 'react';
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import ImgDesign, {imgDesignRecord, imgDesigns} from "@remote/enumeration/ImgDesign";
 import fileApi from "@remote/api/FileApi";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
 import LoadingOverlay from "@src/component/LoadingOverlay";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import VoidInput from "@src/component/VoidInput";
@@ -79,7 +78,9 @@ function GalleryOption(
                                     {(provided) => (
                                         <Row gap={4} {...provided.droppableProps} ref={provided.innerRef}>
                                             <S.addImageContainer htmlFor={'choose-gallery-image'}>
-                                                <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                                                <Icon iconType={IconType.AddLine} size={24} customStyle={css`
+                                                    fill: var(--g-600);
+                                                `}/>
                                             </S.addImageContainer>
                                             <VoidInput
                                                 id={'choose-gallery-image'}
@@ -118,7 +119,10 @@ function GalleryOption(
                             {isFetching && <LoadingOverlay/>}
                         </div>
                     </Row>
-                    <Text style={{marginLeft: 84}} type={'caption1'} color={colors.g300}>사진은 최대 30장까지 업로드 가능합니다.</Text>
+                    <Text type={'caption1'} customStyle={css`
+                        margin-left: 84px;
+                        color: var(--g-300);
+                    `}>사진은 최대 30장까지 업로드 가능합니다.</Text>
                 </Column>
                 <Row gap={12}>
                     <OptionLabel label={'디자인'}/>
@@ -145,7 +149,7 @@ const S = {
         display: flex;
         min-width: 128px;
         height: 128px;
-        border: 1px solid ${colors.g200};
+        border: 1px solid var(--g-200);
         justify-content: center;
         align-items: center;
         cursor: pointer;

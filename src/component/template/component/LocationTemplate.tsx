@@ -1,9 +1,8 @@
 import React, {useEffect, useRef} from 'react';
-import Spacer from "@designsystem/component/spacer";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import styled from "styled-components";
+import Spacer from "@designsystem/component/Spacer";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import styled, {css} from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
@@ -34,14 +33,16 @@ function LocationTemplate(
             center: new kakao.maps.LatLng(35.6632, 128.4141),
             level: 5, // 확대 레벨
         });
-        
+
     }, []);
-    
+
     return (
         <S.root background={templateColor} ref={weddingPlaceRef}>
             <Spacer h={92}/>
             <Column gap={40} $alignItems={'center'}>
-                <Text color={colors.g600} size={20} weight={300}>
+                <Text size={20} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>
                     LOCATION
                 </Text>
                 <Column $alignItems={'center'}>

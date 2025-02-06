@@ -1,14 +1,17 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import colors from "@designsystem/foundation/colors";
-import Spacer from "@designsystem/component/spacer";
-import Text from "@designsystem/component/text";
-import styled from "styled-components";
-import makeText from "@designsystem/foundation/text/textType";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Spacer from "@designsystem/component/Spacer";
+import {css} from "styled-components";
+import makeText from "@designsystem/foundation/text/TextType";
 
 function Footer() {
     return (
-        <S.container padding={'60px 108px'} background={colors.g600}>
+        <Row $customStyle={css`
+            padding: 60px 108px;
+            background: var(--g-600);
+            ${makeText('p5')};
+            color: var(--g-300);
+        `}>
             <Column gap={16}>
                 <img src="/Linkmarry.svg" alt=""/>
                 <Column>
@@ -39,15 +42,8 @@ function Footer() {
                 </Row>
                 고객센터 운영시간 연중무휴 24시간 운영
             </Column>
-        </S.container>
+        </Row>
     );
-}
-
-const S = {
-    container: styled(Row)`
-        ${makeText('p5')};
-        color: ${colors.g300};
-    `,
 }
 
 export default Footer;

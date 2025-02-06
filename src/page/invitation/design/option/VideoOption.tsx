@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
-import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import Button from "@designsystem/component/button";
+import Button from "@designsystem/component/Button";
 import {IconType} from "@designsystem/foundation/icon";
 import Video from "@remote/value/Video";
 import VoidInput from "@src/component/VoidInput";
@@ -84,7 +84,10 @@ function VideoOption(
                             text={'파일 업로드'}
                             leadingIcon={IconType.AddLine}
                             role={'assistive'}
-                            style={{width: 264, pointerEvents: 'none'}}
+                            customStyle={css`
+                                width: 264px;
+                                pointer-events: none;
+                            `}
                         />
                     </label>
                     <VoidInput

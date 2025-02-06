@@ -6,13 +6,13 @@ import React, {
     useRef,
     useState
 } from 'react';
-import styled, {css} from "styled-components";
-import colors from "@designsystem/foundation/colors";
+import styled, {css, RuleSet} from "styled-components";
+import {Row} from "@designsystem/component/FlexLayout";
 
-interface ToggleProps {
+interface Props {
     checked?: boolean;
     onChange?: (checked: boolean) => void;
-    style?: CSSProperties;
+    customStyle?: RuleSet;
 }
 
 export interface ToggleRef {
@@ -25,8 +25,8 @@ function Toggle(
     {
         checked = false,
         onChange,
-        style
-    }: ToggleProps,
+        customStyle
+    }: Props,
     ref: ForwardedRef<ToggleRef>
 ) {
     const [localChecked, setLocalChecked] = useState(checked);
@@ -50,7 +50,11 @@ function Toggle(
     }));
 
     return (
-        <S.container style={style}>
+        <Row $customStyle={css`
+            position: relative;
+            width: fit-content;
+            ${customStyle};
+        `}>
             <S.input
                 ref={checkboxRef}
                 type={'checkbox'}
@@ -61,16 +65,11 @@ function Toggle(
                 }}
             />
             <S.indicator checked={localChecked}></S.indicator>
-        </S.container>
+        </Row>
     );
 }
 
 const S = {
-    container: styled.div`
-        display: flex;
-        position: relative;
-        width: fit-content;
-    `,
     input: styled.input<{
         checked: boolean;
     }>`
@@ -79,7 +78,11 @@ const S = {
         height: 40px;
         appearance: none;
         cursor: pointer;
-        background: ${({checked}) => checked ? colors.p300 : colors.g200};
+        ${({checked}) => checked ? css`
+            background: var(--p-300);
+        ` : css`
+            background: var(--g-200);
+        `};
         border-radius: 100px;
     `,
     indicator: styled.span<{

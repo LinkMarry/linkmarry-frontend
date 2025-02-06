@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import S from '@page/invitation/statistics/detail/InvitationStatisticsDetail.style';
 import {useNavigate, useParams} from "react-router-dom";
-import {Column, Row} from "@designsystem/component/flexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import colors from "@designsystem/foundation/colors";
-import Text from "@designsystem/component/text";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import Text from "@designsystem/component/Text";
+import Divider from "@designsystem/component/Divider";
 import StatisticsValueCell from "@page/invitation/statistics/detail/component/StatisticsValueCell";
 import {CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Tooltip} from 'chart.js';
 import {Line} from "react-chartjs-2";
@@ -15,10 +14,11 @@ import Wedding from "@remote/value/Wedding";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import GuestType, {guestTypeRecord} from "@remote/enumeration/GuestType";
 import WeddingStatisticsInfo, {fillMissingDates} from "@remote/value/WeddingStatisticsInfo";
-import Button from "@designsystem/component/button";
-import Spacer from "@designsystem/component/spacer";
-import ToolTip from "@designsystem/component/toolTip";
+import Button from "@designsystem/component/Button";
+import Spacer from "@designsystem/component/Spacer";
+import ToolTip from "@designsystem/component/ToolTip";
 import {getWeddingUrl} from "@util/string.util";
+import {css} from "styled-components";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
@@ -29,14 +29,14 @@ const makeData = (infos: WeddingStatisticsInfo[]) => {
             {
                 label: "방문자 수",
                 data: infos.map(i => i.visitorCnt),
-                borderColor: colors.g400,
+                borderColor: '#9E9E9E',
                 fill: true,
                 tension: 0,
             },
             {
                 label: "링크 공유 수",
                 data: infos.map(i => i.linkShareCnt),
-                borderColor: colors.p800,
+                borderColor: '#FFA3B0',
                 fill: true,
                 tension: 0,
             },
@@ -105,18 +105,25 @@ function InvitationStatisticsDetail() {
     return (
         <Column
             flex={1}
-            background={colors.white}
-            style={{paddingTop: 64, paddingBottom: 120, paddingLeft: 64, overflowY: 'scroll'}}
+            $customStyle={css`
+                background: white;
+                padding-top: 64px;
+                padding-bottom: 120px;
+                padding-left: 64px;
+                overflow-y: scroll;
+            `}
         >
             <Column gap={44} style={{width: 867}}>
                 <Icon
-                    type={IconType.NormalArrow}
-                    tint={colors.g400}
+                    iconType={IconType.NormalArrow}
                     size={24}
                     style={{cursor: 'pointer'}}
                     onClick={() => {
                         navigate('/statistics');
                     }}
+                    customStyle={css`
+                        fill: var(--g-400);
+                    `}
                 />
                 {weddingStatistics && wedding && (
                     <>
@@ -137,24 +144,38 @@ function InvitationStatisticsDetail() {
                                     navigate(`/dashboard/guest-comment/${wedding.url}`);
                                 }}/>
                             </Row>
-                            <Text type={'p3'} color={colors.g500}>{weddingStatistics.createdDate} 작성</Text>
+                            <Text type={'p3'} customStyle={css`
+                                color: var(--g-500);
+                            `}>{weddingStatistics.createdDate} 작성</Text>
                         </Column>
                         <Column gap={60} $alignItems={'stretch'}>
                             <Column gap={32} $alignItems={'stretch'}>
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Text type={'p2'}>방문자 통계</Text>
-                                    <Column gap={8}
-                                            style={{padding: 20, borderRadius: 12, border: `1px solid ${colors.g200}`}}>
+                                    <Column
+                                        gap={8}
+                                        $customStyle={css`
+                                            padding: 20px;
+                                            border-radius: 12px;
+                                            border: 1px solid var(--g-200);
+                                        `}
+                                    >
                                         <Row gap={20}>
                                             <Column gap={4}>
-                                                <Text type={'p4'} color={colors.g600}>방문자
-                                                    수 {weddingStatistics.totalVisitorCnt}</Text>
-                                                <HorizontalDivider color={colors.g400}/>
+                                                <Text type={'p4'} customStyle={css`
+                                                    color: var(--g-600);
+                                                `}>방문자 수 {weddingStatistics.totalVisitorCnt}</Text>
+                                                <Divider customStyle={css`
+                                                    background: var(--g-400);
+                                                `}/>
                                             </Column>
                                             <Column gap={4}>
-                                                <Text type={'p4'} color={colors.g600}>링크 공유
-                                                    수 {weddingStatistics.totalLinkShareCnt}</Text>
-                                                <HorizontalDivider color={colors.p800}/>
+                                                <Text type={'p4'} customStyle={css`
+                                                    color: var(--g-600);
+                                                `}>링크 공유 수 {weddingStatistics.totalLinkShareCnt}</Text>
+                                                <Divider customStyle={css`
+                                                    background: var(--p-800);
+                                                `}/>
                                             </Column>
                                         </Row>
                                         <Line
@@ -166,7 +187,9 @@ function InvitationStatisticsDetail() {
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Row gap={12} $alignItems={'center'}>
                                         <Text type={'p2'}>하객 통계</Text>
-                                        <Text type={'btn1'} color={colors.g300}>동행 인원을 포함한 수치입니다.</Text>
+                                        <Text type={'btn1'} customStyle={css`
+                                            color: var(--g-300);
+                                        `}>동행 인원을 포함한 수치입니다.</Text>
                                     </Row>
                                     <Row gap={12}>
                                         <StatisticsValueCell
@@ -206,7 +229,9 @@ function InvitationStatisticsDetail() {
                                 <Column gap={8} $alignItems={'stretch'}>
                                     <Row gap={12} $alignItems={'center'}>
                                         <Text type={'p2'}>식사 여부</Text>
-                                        <Text type={'btn1'} color={colors.g300}>동행 인원을 포함한 수치입니다.</Text>
+                                        <Text type={'btn1'} customStyle={css`
+                                            color: var(--g-300);
+                                        `}>동행 인원을 포함한 수치입니다.</Text>
                                     </Row>
                                     {wedding.rsvp.attendMealStatus ? (
                                         <Row gap={12}>
@@ -222,14 +247,17 @@ function InvitationStatisticsDetail() {
                                             />
                                         </Row>
                                     ) : (
-                                        <Row $alignItems={'center'} $justifyContent={'center'} gap={8}
-                                             padding={'48px 0'}
-                                             style={{
-                                                 border: `1px solid ${colors.g200}`,
-                                                 borderRadius: 12
-                                             }}
+                                        <Row
+                                            $alignItems={'center'} $justifyContent={'center'} gap={8}
+                                            $customStyle={css`
+                                                padding: 48px 0;
+                                                border: 1px solid var(--g-200);
+                                                border-radius: 12px
+                                            `}
                                         >
-                                            <Text type={'p1'} color={colors.g600}>식사 정보가 집계되지 않았습니다</Text>
+                                            <Text type={'p1'} customStyle={css`
+                                                color: var(--g-600);
+                                            `}>식사 정보가 집계되지 않았습니다</Text>
                                             <ToolTip content={
                                                 <span style={{textAlign: 'center'}}>
                                                     청첩장을 생성할 때 참석의사 섹션에서 <b>식사 여부 항목을 활성화하지 않은 경우</b>,
@@ -238,14 +266,18 @@ function InvitationStatisticsDetail() {
                                                 </span>
                                             }>
                                                 <Text
-                                                    style={{
-                                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                        width: 20, height: 20,
-                                                        border: `1.5px solid ${colors.g400}`, borderRadius: 10,
-                                                        cursor: 'pointer'
-                                                    }}
                                                     type={'p4'}
-                                                    color={colors.g400}
+                                                    customStyle={css`
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        width: 20px;
+                                                        height: 20px;
+                                                        border: 1.5px solid var(--g-400);
+                                                        border-radius: 10px;
+                                                        cursor: pointer;
+                                                        color: var(--g-400);
+                                                    `}
                                                 >?</Text>
                                             </ToolTip>
                                         </Row>
@@ -267,11 +299,11 @@ function InvitationStatisticsDetail() {
                                     </Row>
                                 </Column>
                             </Column>
-                            <HorizontalDivider/>
+                            <Divider/>
                             <Column gap={20} $alignItems={'stretch'}>
                                 <OptionTextField
                                     leadingContent={
-                                        <Icon type={IconType.Search} size={24}/>
+                                        <Icon iconType={IconType.Search} size={24}/>
                                     }
                                     width={264}
                                     style={{alignSelf: 'flex-end'}}

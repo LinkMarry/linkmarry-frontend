@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 
 const S = {
     container: styled.div`
@@ -13,19 +12,19 @@ const S = {
         flex: 1;
         min-width: 618px;
         flex-direction: column;
-        background: ${colors.g100};
+        background: var(--g-100);
         padding: 48px 44px 109px 44px;
         overflow-y: scroll;
     `,
     title: styled.span`
         display: flex;
         ${makeText('h5')};
-        color: ${colors.black};
+        color: black;
     `,
     titleDescription: styled.span`
         display: flex;
         ${makeText('p3')};
-        color: ${colors.g500};
+        color: var(--g-500);
     `,
     options: styled.ul`
         display: flex;
@@ -37,7 +36,7 @@ const S = {
         display: flex;
         width: 604px;
         justify-content: center;
-        background: ${colors.g200};
+        background: var(--g-200);
     `,
     previewScrollableContent: styled.div`
         overflow-y: scroll;

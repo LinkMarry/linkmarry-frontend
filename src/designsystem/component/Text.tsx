@@ -1,16 +1,15 @@
 import React, {CSSProperties, ForwardedRef, forwardRef, HTMLAttributes} from 'react';
-import styled, {css} from "styled-components";
-import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/textType";
-import colors from "@designsystem/foundation/colors";
-import TextProperties, {implementText} from "@designsystem/foundation/text/textProperties";
+import styled, {css, RuleSet} from "styled-components";
+import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
+import TextProperties, {implementText} from "@designsystem/foundation/text/TextProperties";
 
-interface TextProps extends HTMLAttributes<HTMLSpanElement> {
+interface Props extends HTMLAttributes<HTMLSpanElement> {
     type?: TextType;
     font?: LinkMarryFont;
     weight?: CSSProperties['fontWeight'];
     size?: number;
-    color?: CSSProperties['color'];
     lineHeight?: CSSProperties['lineHeight'];
+    customStyle?: RuleSet;
     children?: React.ReactNode;
 }
 
@@ -20,11 +19,11 @@ function Text(
         font,
         weight,
         size,
-        color = colors.black,
+        customStyle,
         lineHeight,
         children,
         ...props
-    }: TextProps,
+    }: Props,
     ref: ForwardedRef<HTMLSpanElement>
 ) {
     const properties = type ? textTypeMap[type] : undefined;
@@ -37,19 +36,19 @@ function Text(
                 fontSize: size ?? properties?.fontSize,
                 lineHeight: lineHeight ?? properties?.lineHeight,
             }}
-            color={color}
+            $customStyle={customStyle}
             {...props}
         >{children}</TextStyle>
     );
 }
 
 const TextStyle = styled.span<{
-    properties: TextProperties,
-    color: CSSProperties['color'];
+    properties: TextProperties;
+    $customStyle?: RuleSet;
 }>`
-    ${({properties, color}) => css`
+    ${({properties, $customStyle}) => css`
         ${implementText(properties)};
-        color: ${color};
+        ${$customStyle};
     `}
 `
 

@@ -1,10 +1,9 @@
 import React, {RefObject, useEffect, useRef, useState} from 'react';
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
+import Text from "@designsystem/component/Text";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@util/css.util";
-import {Row} from "@designsystem/component/flexLayout";
+import {Row} from "@designsystem/component/FlexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
@@ -27,9 +26,9 @@ function GalleryTemplate(
 ) {
     return (
         <S.root>
-            <Text color={colors.g600} size={20} weight={300}>
-                GALLERY
-            </Text>
+            <Text size={20} weight={300} customStyle={css`
+                color: var(--g-600);
+            `}>GALLERY</Text>
             {imgDesign === ImgDesign.SLIDE ? (
                 <GallerySlide
                     rootRef={rootRef}
@@ -59,12 +58,12 @@ function GallerySlide(
     }
 ) {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
-    
+
     const galleryRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useScrollOnUpdate(galleryRef, [imgList]);
-    
+
     const getGridImgWidth = (): number => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
         if (slideStyle === 'style1') {
@@ -123,7 +122,7 @@ function GallerySlide(
                         case 'moveLeft':
                             if (currentImageIndex > 0) {
                                 const imgWidth = getGridImgWidth();
-                                const left = imgWidth * (currentImageIndex - 1); 
+                                const left = imgWidth * (currentImageIndex - 1);
                                 console.log(left)
                                 scrollContainerRef.current?.scrollTo({
                                     left
@@ -176,20 +175,22 @@ function GalleryStyleIndicator(
                 <Row
                     $alignItems={'center'}
                     $justifyContent={'space-between'}
-                    style={{
-                        padding: '0 45px'
-                    }}
+                    $customStyle={css`
+                        padding: 0 45px;
+                    `}
                 >
-                    <Icon type={IconType.ExpandArrow} size={24} tint={colors.g500} style={{
-                        cursor: 'pointer'
-                    }} onClick={() => {
+                    <Icon iconType={IconType.ExpandArrow} size={24} customStyle={css`
+                        fill: var(--g-500);
+                        cursor: pointer;
+                    `} onClick={() => {
                         onClick('moveLeft');
                     }}/>
                     <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-                    <Icon type={IconType.ExpandArrow} size={24} tint={colors.g500} style={{
-                        rotate: '180deg',
-                        cursor: 'pointer'
-                    }} onClick={() => {
+                    <Icon iconType={IconType.ExpandArrow} size={24} customStyle={css`
+                        rotate: 180deg;
+                        fill: var(--g-500);
+                        cursor: pointer;
+                    `} onClick={() => {
                         onClick('moveRight');
                     }}/>
                 </Row>
@@ -202,7 +203,7 @@ const S = {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background: ${colors.white};
+        background: white;
         padding: 92px 0;
         gap: 40px;
     `,
@@ -266,8 +267,10 @@ const S = {
         width: 8px;
         height: 8px;
         border-radius: 4px;
-        ${({selected}) => css`
-            background: ${selected ? colors.black : colors.g200};
+        ${({selected}) => selected ? css`
+            background: black;
+        ` : css`
+            background: var(--g-200);
         `};
     `
 };

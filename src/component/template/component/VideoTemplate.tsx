@@ -1,9 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import Video from "@remote/value/Video";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import styled from "styled-components";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import styled, {css} from "styled-components";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
 interface VideoTemplateProps {
@@ -23,8 +22,12 @@ function VideoTemplate(
     return (
         <S.container ref={videoRef}>
             <Column gap={12} $alignItems="center">
-                <Text size={20} weight={300} color={colors.g600}>VIDEO</Text>
-                <Text size={16} weight={300} color={colors.g600}>{video.videoTitle}</Text>
+                <Text size={20} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>VIDEO</Text>
+                <Text size={16} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>{video.videoTitle}</Text>
             </Column>
             {isYoutubeUrl ? (
                 <S.iframe
@@ -45,7 +48,7 @@ const S = {
         padding: 92px 0;
         gap: 40px;
         align-items: stretch;
-        background: ${colors.white};
+        background: white;
     `,
     iframe: styled.iframe`
         display: flex;

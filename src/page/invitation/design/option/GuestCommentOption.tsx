@@ -1,15 +1,14 @@
 import React from 'react';
-import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
-import Checkbox from "@designsystem/component/checkbox";
-import makeText from "@designsystem/foundation/text/textType";
-import colors from "@designsystem/foundation/colors";
+import Checkbox from "@designsystem/component/Checkbox";
 import GuestComment from "@remote/value/GuestComment";
 import {designs, designRecord} from "@remote/enumeration/Design";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
+import Text from "@designsystem/component/Text";
 
 interface GuestCommentOptionProps {
     guestComment: GuestComment;
@@ -23,7 +22,9 @@ function GuestCommentOption(
     }: GuestCommentOptionProps
 ) {
     return (
-        <S.container>
+        <Row $customStyle={css`
+            padding: 36px;
+        `}>
             <Column gap={32} flex={1}>
                 <Column gap={16}>
                     <Row gap={12}>
@@ -52,7 +53,7 @@ function GuestCommentOption(
                         />
                     </Row>
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Row gap={12}>
                     <OptionLabel label={'표시'} style={{alignSelf: 'flex-start'}}/>
                     <Column gap={12}>
@@ -67,24 +68,17 @@ function GuestCommentOption(
                                 checked={guestComment.privateDate}
                                 onChange={checked => onChange({...guestComment, privateDate: checked})}
                             />
-                            <S.hideDateLabel>방명록 작성 날짜를 숨김</S.hideDateLabel>
+                            <Text type={'caption1'} customStyle={css`
+                                color: var(--g-300);
+                            `}>
+                                방명록 작성 날짜를 숨김
+                            </Text>
                         </Row>
                     </Column>
                 </Row>
             </Column>
-        </S.container>
+        </Row>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        padding: 36px;
-    `,
-    hideDateLabel: styled.span`
-        ${makeText('caption1')};
-        color: ${colors.g300};
-    `
 }
 
 export default GuestCommentOption;

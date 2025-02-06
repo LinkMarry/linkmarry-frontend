@@ -1,7 +1,6 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes, InputHTMLAttributes, ReactNode} from 'react';
 import styled, {css} from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 
 interface OptionTextFieldProps extends HTMLAttributes<HTMLDivElement> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
@@ -39,8 +38,8 @@ const S = {
         `};
         height: 44px;
         align-items: center;
-        border: 1px solid ${colors.g200};
-        background: ${colors.white};
+        border: 1px solid var(--g-200);
+        background: white;
         border-radius: 8px;
         padding-left: 16px;
         padding-right: 16px;

@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Star(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M11.5 4L12.6965 7.96235C13.1805 9.56525 14.4347 10.8195 16.0377 11.3035L20 12.5L16.0377 13.6965C14.4347 14.1805 13.1805 15.4347 12.6965 17.0377L11.5 21L10.3035 17.0377C9.81948 15.4347 8.56525 14.1805 6.96234 13.6965L3 12.5L6.96235 11.3035C8.56525 10.8195 9.81948 9.56525 10.3035 7.96234L11.5 4Z"
                 fill="current"/>

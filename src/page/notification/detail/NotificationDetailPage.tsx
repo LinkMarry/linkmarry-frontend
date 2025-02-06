@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import S from '@page/notification/detail/NotificationDetailPage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
-import {Column} from "@designsystem/component/flexLayout";
+import {Column} from "@designsystem/component/FlexLayout";
 import {useNavigate, useParams} from "react-router-dom";
 import notificationApi from "@remote/api/NotificationApi";
 import Notification from "@remote/value/Notification";
-import Text from "@designsystem/component/text";
-import Button from "@designsystem/component/button";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import Text from "@designsystem/component/Text";
+import Button from "@designsystem/component/Button";
+import Divider from "@designsystem/component/Divider";
 
 function NotificationDetailPage() {
     const {id} = useParams();
@@ -36,7 +36,7 @@ function NotificationDetailPage() {
                                 <Text type={'h4'}>{notification.title}</Text>
                                 <Text type={'caption1'}>{notification.date}</Text>
                             </Column>
-                            <HorizontalDivider/>
+                            <Divider/>
                         </Column>
                         <Text type={'p3'}>{notification.content}</Text>
                         <Button

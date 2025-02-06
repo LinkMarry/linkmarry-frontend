@@ -1,4 +1,4 @@
-import {LinkMarryFont} from "@designsystem/foundation/text/textType";
+import {LinkMarryFont} from "@designsystem/foundation/text/TextType";
 
 export type TemplateName =
     '템플릿1'

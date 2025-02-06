@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
@@ -78,13 +77,16 @@ function DDay(
             <Row gap={4}>
                 <Text size={14} weight={300}>{first.name}</Text>
                 <Icon
-                    type={IconType.HeartFill}
+                    iconType={IconType.HeartFill}
                     size={16}
-                    color={colors.black}
+                    customStyle={css`
+                        fill: black;
+                    `}
                 />
                 <Text size={14} weight={300}>{second.name}의 결혼식이</Text>
-                <Text size={14} weight={300}
-                      color={colors.p800}>{remainingTime.days}</Text>
+                <Text size={14} weight={300} customStyle={css`
+                    color: var(--p-800);
+                `}>{remainingTime.days}</Text>
                 <Text size={14} weight={300}>일 남았습니다.</Text>
             </Row>
         </Column>
@@ -103,22 +105,40 @@ function RemainTimeComponent(
     switch (dDayStyle) {
         case 'style1':
             return (
-                <Row gap={12} $alignItems={'center'} style={{paddingLeft: 50, paddingRight: 50}}>
+                <Row gap={12} $alignItems={'center'} $customStyle={css`
+                    padding: 0 50px;
+                `}>
                     <S.dateCell>
-                        <Text size={12} weight={400} color={colors.g300}>DAYS</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.days}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>DAYS</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.days}</Text>
                     </S.dateCell>
                     <S.dateCell>
-                        <Text size={12} weight={400} color={colors.g300}>HOUR</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.hours}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>HOUR</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.hours}</Text>
                     </S.dateCell>
                     <S.dateCell>
-                        <Text size={12} weight={400} color={colors.g300}>MIN</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.minutes}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>MIN</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.minutes}</Text>
                     </S.dateCell>
                     <S.dateCell>
-                        <Text size={12} weight={400} color={colors.g300}>SEC</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.seconds}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>SEC</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.seconds}</Text>
                     </S.dateCell>
                 </Row>
             )
@@ -126,23 +146,45 @@ function RemainTimeComponent(
             return (
                 <Row $alignItems={'flex-end'}>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} color={colors.g300}>SEC</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.days}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>SEC</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.days}</Text>
                     </Column>
-                    <Text size={24} weight={300} color={colors.g600} style={{width: 28, textAlign: 'center'}}>:</Text>
+                    <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `} style={{width: 28, textAlign: 'center'}}>:</Text>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} color={colors.g300}>HOUR</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.hours}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>HOUR</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.hours}</Text>
                     </Column>
-                    <Text size={24} weight={300} color={colors.g600} style={{width: 28, textAlign: 'center'}}>:</Text>
+                    <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `} style={{width: 28, textAlign: 'center'}}>:</Text>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} color={colors.g300}>MIN</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.minutes}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>MIN</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.minutes}</Text>
                     </Column>
-                    <Text size={24} weight={300} color={colors.g600} style={{width: 28, textAlign: 'center'}}>:</Text>
+                    <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `} style={{width: 28, textAlign: 'center'}}>:</Text>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} color={colors.g300}>SEC</Text>
-                        <Text size={24} weight={300} color={colors.g600}>{remainingTime.seconds}</Text>
+                        <Text size={12} weight={400} customStyle={css`
+                            color: var(--g-300);
+                        `}>SEC</Text>
+                        <Text size={24} weight={300} customStyle={css`
+                            color: var(--g-600);
+                        `}>{remainingTime.seconds}</Text>
                     </Column>
                 </Row>
             )
@@ -152,14 +194,14 @@ function RemainTimeComponent(
 const S = {
     dateCell: styled.div`
         display: flex;
+        flex-direction: column;
         width: 64px;
         padding: 17px 16px 16px 16px;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         border-radius: 8px;
         gap: 4px;
-        background: ${colors.white};
+        background: white;
         box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.16);
     `
 }

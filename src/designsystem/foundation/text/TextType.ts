@@ -1,5 +1,5 @@
 import {RuleSet} from "styled-components";
-import TextProperties, {implementText} from "@designsystem/foundation/text/textProperties";
+import TextProperties, {implementText} from "@designsystem/foundation/text/TextProperties";
 
 export type LinkMarryFont =
     'LINESeedKR'

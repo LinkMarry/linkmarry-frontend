@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
 
 const S = {
     container: styled.div`
         display: flex;
         flex: 1;
-        background: ${colors.white};
+        background: white;
         overflow-y: scroll;
     `,
     items: styled.ul`

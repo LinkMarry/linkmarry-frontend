@@ -1,13 +1,12 @@
 import React from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import Comment from "@remote/value/Comment";
-import {Column, Row} from "@designsystem/component/flexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import {BasicGuestComment} from "@src/component/template/component/GuestCommentsTemplate";
-import colors from "@designsystem/foundation/colors";
-import Text from "@designsystem/component/text";
-import Spacer from "@designsystem/component/spacer";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import Text from "@designsystem/component/Text";
+import Spacer from "@designsystem/component/Spacer";
+import Divider from "@designsystem/component/Divider";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import GuestComment from "@remote/value/GuestComment";
 
@@ -40,18 +39,18 @@ function GuestCommentsDetailDialog(
                     <Text type={'p2'}>글 전체 보기</Text>
                     <Spacer/>
                     <Icon
-                        type={IconType.CrossLine}
-                        tint={colors.g600}
+                        iconType={IconType.CrossLine}
                         size={20}
-                        style={{
-                            cursor: 'pointer',
-                            right: 32,
-                            position: 'absolute'
-                        }}
+                        customStyle={css`
+                            cursor: pointer;
+                            right: 32px;
+                            position: absolute;
+                            fill: var(--g-600);
+                        `}
                         onClick={dismiss}
                     />
                 </Row>
-                <HorizontalDivider/>
+                <Divider/>
                 <Column
                     gap={12}
                     style={{
@@ -65,7 +64,7 @@ function GuestCommentsDetailDialog(
                             key={index}
                             comment={comment}
                             privateContent={guestComment.privateContent}
-                            background={colors.white}
+                            background={'white'}
                             onRemove={() => {
                                 onRemove(comment);
                             }}
@@ -89,7 +88,7 @@ const S = {
         max-height: 100vh;
         overflow-y: hidden;
         align-items: stretch;
-        background: ${colors.white};
+        background: white;
         ${applyBaseDialogContent()};
     `
 }

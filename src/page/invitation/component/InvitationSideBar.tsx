@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
-import Spacer from "@designsystem/component/spacer";
-import colors from "@designsystem/foundation/colors";
+import styled, {css} from "styled-components";
+import Spacer from "@designsystem/component/Spacer";
 import {invitationSideBarRecords, InvitationSideBarType} from "@page/invitation/component/InvitationSideBarType";
 import Icon from "@designsystem/foundation/icon";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
+import Text from "@designsystem/component/Text";
 
 interface InvitationSideBarProps {
     selected: InvitationSideBarType;
@@ -28,13 +28,20 @@ function InvitationSideBar(
             <S.items>
                 {items.map((item) => {
                     const record = invitationSideBarRecords[item];
-                    const foreground = selected === item ? colors.g600 : colors.g300;
                     return (
                         <S.item key={`${item}`} onClick={() => {
                             onChange(item);
                         }}>
-                            <Icon tint={foreground} size={20} type={record.icon}/>
-                            <S.itemTitle style={{color: foreground}}>{record.title}</S.itemTitle>
+                            <Icon size={20} iconType={record.icon} customStyle={selected === item ? css`
+                                fill: var(--g-600);
+                            ` : css`
+                                fill: var(--g-300);
+                            `}/>
+                            <Text type={'p1'} customStyle={selected === item ? css`
+                                color: var(--g-600);
+                            ` : css`
+                                color: var(--g-300);
+                            `}>{record.title}</Text>
                         </S.item>
                     );
                 })}
@@ -49,8 +56,8 @@ const S = {
         height: 100%;
         min-width: 284px;
         width: 284px;
-        background: ${colors.white};
-        border-right: 1px solid ${colors.g200};
+        background: white;
+        border-right: 1px solid var(--g-200);
     `,
     items: styled.ul`
         width: 98px;
@@ -64,9 +71,6 @@ const S = {
         margin-bottom: 36px;
         cursor: pointer;
     `,
-    itemTitle: styled.span`
-        ${makeText('p1')};
-    `
 }
 
 export default InvitationSideBar;

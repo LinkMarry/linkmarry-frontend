@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 
 const BaseRow = styled.div`
     display: flex;
@@ -28,7 +27,7 @@ const S = {
     `,
     header: {
         row: styled(BaseRow)`
-            border-bottom: 1px solid ${colors.black};
+            border-bottom: 1px solid black;
         `,
         titleCell: styled(BaseCell)`
             flex: 1;
@@ -49,7 +48,7 @@ const S = {
         `,
         nameCell: BaseCell,
         dateCell: styled(BaseCell)`
-            color: ${colors.g400};
+            color: var(--g-400);
         `
     },
 }

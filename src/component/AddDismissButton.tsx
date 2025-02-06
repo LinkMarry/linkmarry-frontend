@@ -1,7 +1,7 @@
 import React, {ForwardedRef, forwardRef, HTMLAttributes} from 'react';
-import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 interface AddDismissButtonProps extends HTMLAttributes<HTMLDivElement> {
     dismiss: () => void;
@@ -18,24 +18,26 @@ function AddDismissButton(
 ) {
     return (
         <S.wrapper ref={ref} {...props}>
-            <div style={{
-                display: "flex",
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                background: colors.g100,
-                borderRadius: 20,
-                padding: 6,
-                cursor: 'pointer',
-                opacity: 0.8
-            }}>
+            <CustomStyle $customStyle={css`
+                display: flex;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: var(--g-100);
+                border-radius: 20px;
+                padding: 6px;
+                cursor: pointer;
+                opacity: 0.8;
+            `}>
                 <Icon
-                    type={IconType.CrossLine}
+                    iconType={IconType.CrossLine}
                     size={16}
-                    tint={colors.g600}
+                    customStyle={css`
+                        fill: var(--g-600);
+                    `}
                     onClick={dismiss}
                 />
-            </div>
+            </CustomStyle>
             {children}
         </S.wrapper>
     );

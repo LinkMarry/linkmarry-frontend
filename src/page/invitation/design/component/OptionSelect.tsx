@@ -1,12 +1,12 @@
 import React, {ForwardedRef, forwardRef, ReactElement, SelectHTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 
 interface OptionTextFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
     items: string[],
     width?: number;
+
     renderItem(item: string): ReactElement<HTMLElement>;
 }
 
@@ -26,7 +26,10 @@ function OptionSelect(
                     <S.option key={index} value={item}>{renderItem(item)}</S.option>
                 ))}
             </S.select>
-            <Icon type={IconType.ExpandArrow} size={20} tint={colors.g400} style={{rotate: '-90deg'}}/>
+            <Icon iconType={IconType.ExpandArrow} size={20} customStyle={css`
+                fill: var(--g-400);
+                rotate: -90deg;
+            `}/>
         </S.wrapper>
     );
 }
@@ -35,15 +38,13 @@ const S = {
     wrapper: styled.div<{ width: number }>`
         display: flex;
         position: relative;
-        ${({width}) => css`
-            width: ${width}px;
-        `}
+        width: ${({width}) => width}px;
         align-items: center;
         padding-right: 16px;
         gap: 4px;
-        border: 1px solid ${colors.g200};
+        border: 1px solid var(--g-200);
         border-radius: 8px;
-        background: ${colors.white};
+        background: white;
         overflow: hidden;
     `,
     select: styled.select`

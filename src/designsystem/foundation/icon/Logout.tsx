@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Logout(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path fillRule="evenodd" clipRule="evenodd"
                   d="M4 3.75C4 3.33579 4.33579 3 4.75 3H14.25C14.6642 3 15 3.33579 15 3.75V3.88636C15 4.30058 14.6642 4.63636 14.25 4.63636H6.28488C5.87067 4.63636 5.53488 4.97215 5.53488 5.38636V18.6136C5.53488 19.0278 5.87067 19.3636 6.28488 19.3636H14.25C14.6642 19.3636 15 19.6994 15 20.1136V20.25C15 20.6642 14.6642 21 14.25 21H4.75C4.33579 21 4 20.6642 4 20.25V3.75Z"
                   fill="current"/>

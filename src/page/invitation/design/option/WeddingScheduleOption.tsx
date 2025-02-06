@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import Checkbox from "@designsystem/component/checkbox";
+import Checkbox from "@designsystem/component/Checkbox";
 import OptionField from "@page/invitation/design/component/OptionField";
 import {IconType} from "@designsystem/foundation/icon";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
@@ -40,7 +40,7 @@ function WeddingScheduleOption(
                         }} leadingIcon={IconType.Clock} type={'time'}/>
                     </Row>
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Row gap={12}>
                     <OptionLabel style={{alignSelf: 'flex-start'}} label={'표시'}/>
                     <Column gap={12}>

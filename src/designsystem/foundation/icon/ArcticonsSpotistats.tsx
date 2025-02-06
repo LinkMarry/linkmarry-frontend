@@ -2,7 +2,7 @@ import {SVGProps} from 'react';
 
 function ArcticonsSpotistats(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M10.6304 2.79468H9.36958C8.83409 2.79468 8.39999 3.22878 8.39999 3.76426V16.2359C8.39999 16.7714 8.83409 17.2055 9.36958 17.2055H10.6304C11.1659 17.2055 11.6 16.7714 11.6 16.2359V3.76426C11.6 3.22878 11.1659 2.79468 10.6304 2.79468Z"
                 fill="current" stroke="current" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"/>

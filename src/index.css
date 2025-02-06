@@ -1,0 +1,33 @@
+:root {
+    /*
+    Primary colors
+     */
+    --p-800: #FFA3B0;
+    --p-700: #FFC7CF;
+    --p-600: #FFD1D7;
+    --p-500: #FFDBE0;
+    --p-400: #FFE2E6;
+    --p-300: #FFE9EC;
+    --p-200: #FFF1F3;
+    --p-100: #FFF8F9;
+
+    /*
+    Grayscale colors
+     */
+    --g-black: #121212;
+    --g-600: #5A5A5A;
+    --g-500: #787878;
+    --g-400: #9E9E9E;
+    --g-300: #BFBFBF;
+    --g-200: #E3E3E3;
+    --g-100: #F2F4F6;
+    --g-white: #FFFFFF;
+
+    /*
+    Status
+     */
+    --status-positive: #54E827;
+    --status-error: #F33C2F;
+    --status-cautionary: #FFD918;
+    --status-info: #3095F1;
+}

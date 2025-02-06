@@ -1,11 +1,13 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import {css} from "styled-components";
 
 function HomeSlide2() {
     return (
-        <Column gap={32} $alignItems={'center'} padding={'124px 200px'}>
+        <Column gap={32} $alignItems={'center'} $customStyle={css`
+            padding: 124px 200px;
+        `}>
             <Text type={'h2'}>청첩장 제작</Text>
             <Row gap={8} $alignSelf={'stretch'}>
                 <Cell title={'완성까지'} subtitle={'15분'} description={'빠르고 쉽게, 템플릿으로\n15분 안에 완성되는 웨딩 초대'}/>
@@ -22,15 +24,20 @@ function Cell(props: {
     description: string;
 }) {
     return (
-        <Column padding={'32px 0'} flex={1} gap={16} $alignItems={'center'} style={{
-            border: `1px solid ${colors.g100}`,
-            boxShadow: '0px 3px 6px 0px rgba(0, 0, 0, 0.03)'
-        }}>
+        <Column flex={1} gap={16} $alignItems={'center'} $customStyle={css`
+            padding: 32px 0;
+            border: 1px solid var(--g-100);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.03);
+        `}>
             <Column $alignItems={'center'}>
                 <Text type={'p3'}>{props.title}</Text>
                 <Text type={'h3'}>{props.subtitle}</Text>
             </Column>
-            <Text style={{whiteSpace: 'pre-wrap', textAlign: 'center'}} type={'p5'} color={colors.g500}>{props.description}</Text>
+            <Text type={'p5'} customStyle={css`
+                white-space: pre-wrap;
+                text-align: center;
+                color: var(--g-500);
+            `}>{props.description}</Text>
         </Column>
     );
 }

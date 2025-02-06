@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Detail(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M13.5 6.45001C13.5 7.27844 12.8284 7.95001 12 7.95001C11.1716 7.95001 10.5 7.27844 10.5 6.45001C10.5 5.62159 11.1716 4.95001 12 4.95001C12.8284 4.95001 13.5 5.62159 13.5 6.45001Z"
                 fill="current"/>

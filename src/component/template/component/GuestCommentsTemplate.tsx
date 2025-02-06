@@ -1,15 +1,14 @@
 import React, {HTMLAttributes, useRef, useState} from 'react';
-import styled, {CSSProperties} from "styled-components";
+import styled, {css, CSSProperties} from "styled-components";
 import Comment from "@remote/value/Comment";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import Spacer from "@designsystem/component/spacer";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Design from "@remote/enumeration/Design";
 import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";
-import Button from "@designsystem/component/button";
+import Button from "@designsystem/component/Button";
 import GuestComment from "@remote/value/GuestComment";
 import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcomment/RemoveGuestCommentDialog";
 import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
@@ -40,23 +39,21 @@ function GuestCommentsTemplate(
 
     const guestCommentRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(guestCommentRef, [guestComment])
-    
+
     return (
         <S.root background={templateColor} ref={guestCommentRef}>
             <Column gap={40} $alignItems={'stretch'}>
                 <Column gap={12} $alignItems={'center'}>
-                    <Text
-                        size={20} weight={300} color={colors.g600}
-                        style={{wordBreak: 'break-all', textAlign: 'center'}}
-                    >
-                        {guestComment.title}
-                    </Text>
-                    <Text
-                        size={16} weight={300} color={colors.g600}
-                        style={{wordBreak: 'break-all', textAlign: 'center'}}
-                    >
-                        {guestComment.content}
-                    </Text>
+                    <Text size={20} weight={300} customStyle={css`
+                        color: var(--g-600);
+                        word-break: break-all;
+                        text-align: center;
+                    `}>{guestComment.title}</Text>
+                    <Text size={16} weight={300} customStyle={css`
+                        color: var(--g-600);
+                        word-break: break-all;
+                        text-align: center;
+                    `}>{guestComment.content}</Text>
                 </Column>
                 {guestComment.privateContent && (
                     <Column gap={12} $alignItems={'stretch'}>
@@ -64,15 +61,20 @@ function GuestCommentsTemplate(
                             comments={guestComments}
                             design={guestComment.design}
                             privateDate={guestComment.privateDate}
-                            background={colors.white}
+                            background={'white'}
                             onRemove={comment => {
                                 setSelectedRemoveGuestComment(comment);
                                 setShowRemoveGuestCommentDialog(true);
                             }}
                         />
                         <Text
-                            style={{alignSelf: 'flex-end', paddingRight: 4, cursor: 'pointer'}}
-                            size={14} weight={300} color={colors.g600}
+                            size={14} weight={300}
+                            customStyle={css`
+                                color: var(--g-600);
+                                align-self: flex-end;
+                                padding-right: 4px;
+                                cursor: pointer;
+                            `}
                             onClick={() => {
                                 setShowGuestCommentsDetailDialog(true);
                             }}
@@ -216,21 +218,27 @@ export function BasicGuestComment(
     return (
         <S.basicContainer background={background} {...props}>
             <Row gap={8} $alignItems={'center'}>
-                <Text size={18} color={colors.g600} weight={300}>
+                <Text size={18} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>
                     From. {comment.name}
                 </Text>
                 {!privateContent && (
-                    <Text size={12} color={colors.g300} weight={300}>
+                    <Text size={12} weight={300} customStyle={css`
+                        color: var(--g-300);
+                    `}>
                         {trimString(comment.createdDate, 10)}
                     </Text>
                 )}
                 <Spacer/>
-                <Icon
-                    type={IconType.CrossLine} size={20} tint={colors.g300} style={{cursor: 'pointer'}}
-                    onClick={onRemove}
-                />
+                <Icon iconType={IconType.CrossLine} size={20} customStyle={css`
+                    cursor: pointer;
+                    fill: var(--g-300);
+                `} onClick={onRemove}/>
             </Row>
-            <Text size={16} color={colors.g600} weight={300}>
+            <Text size={16} weight={300} customStyle={css`
+                color: var(--g-600);
+            `}>
                 {comment.comment}
             </Text>
         </S.basicContainer>
@@ -248,25 +256,27 @@ export function StickerGuestComment(
     return (
         <S.stickerContainer background={background}>
             <Icon
-                type={IconType.CrossLine} tint={colors.g300} size={20}
-                style={{alignSelf: 'flex-end', cursor: 'pointer'}}
+                iconType={IconType.CrossLine} size={20}
+                customStyle={css`
+                    align-self: flex-end;
+                    cursor: pointer;
+                    fill: var(--g-300);
+                `}
                 onClick={onRemove}
             />
             <Column flex={1}>
-                <Text size={16} weight={300} color={colors.g600}>
-                    {comment.comment}
-                </Text>
+                <Text size={16} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>{comment.comment}</Text>
                 <Spacer/>
                 <Column gap={4}>
-                    <Text size={16} weight={300} color={colors.g600}>
-                        from. {comment.name}
-                    </Text>
+                    <Text size={16} weight={300} customStyle={css`
+                        color: var(--g-600);
+                    `}>from. {comment.name}</Text>
                     {!privateContent && (
-                        <Text
-                            size={12}
-                            weight={300}
-                            color={colors.g300}
-                        >{trimString(comment.createdDate, 10)}</Text>
+                        <Text size={12} weight={300} customStyle={css`
+                            color: var(--g-300);
+                        `}>{trimString(comment.createdDate, 10)}</Text>
                     )}
                 </Column>
             </Column>

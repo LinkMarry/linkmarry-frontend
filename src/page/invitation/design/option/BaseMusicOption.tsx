@@ -1,19 +1,18 @@
 import React, {ChangeEvent, useEffect, useRef, useState} from 'react';
-import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import Checkbox from "@designsystem/component/checkbox";
-import colors from "@designsystem/foundation/colors";
+import Checkbox from "@designsystem/component/Checkbox";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
 import BaseMusic from "@remote/value/BaseMusic";
 import fileApi from "@remote/api/FileApi";
 import Music, {getMusicName} from "@remote/value/Music";
 import LoadingOverlay from "@src/component/LoadingOverlay";
 import VoidInput from "@src/component/VoidInput";
-import Radio from "@designsystem/component/radio";
+import Radio from "@designsystem/component/Radio";
 
 type SelectMode = 'select' | 'direct';
 const selectModeRecord: Record<SelectMode, string> = {
@@ -107,11 +106,19 @@ function BaseMusicOption(
                                         label={getMusicName(music)}
                                         onChange={() => onChange({...baseMusic, musicUrl: music.url})}
                                     />
-                                    <Row $alignItems={'center'} $justifyContent={'center'} padding={'4px'}>
+                                    <Row $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
+                                        padding: 4px;
+                                    `}>
                                         <Icon
-                                            type={IconType.LoudSpeaker} size={20}
-                                            tint={(music.url === selectedPlayingMusicUrl) ? colors.p800 : colors.g400}
-                                            style={{cursor: 'pointer'}}
+                                            iconType={IconType.LoudSpeaker} size={20}
+                                            customStyle={css`
+                                                ${music.url === selectedPlayingMusicUrl ? css`
+                                                    fill: var(--p-800);
+                                                ` : css`
+                                                    fill: var(--g-400);
+                                                `}
+                                                cursor: pointer;
+                                            `}
                                             onClick={async () => await onClickPlayMusic(music)}
                                         />
                                     </Row>
@@ -130,10 +137,16 @@ function BaseMusicOption(
                     >
                         {currentSelectMode === 0 ? (
                             <>
-                                <Icon type={IconType.AddLine} size={24} tint={colors.g600}/>
+                                <Icon iconType={IconType.AddLine} size={24} customStyle={css`
+                                    fill: var(--g-600);
+                                `}/>
                                 <Column gap={4} $alignItems={'center'}>
-                                    <Text type={'caption1'} color={colors.g400}>음원 파일 추가</Text>
-                                    <Text type={'caption1'} color={colors.g400}>최대 20MB MP3 파일만 가능</Text>
+                                    <Text type={'caption1'} customStyle={css`
+                                        color: var(--g-400);
+                                    `}>음원 파일 추가</Text>
+                                    <Text type={'caption1'} customStyle={css`
+                                        color: var(--g-400);
+                                    `}>최대 20MB MP3 파일만 가능</Text>
                                 </Column>
                                 <VoidInput
                                     id={'choose-base-music-audio'}
@@ -144,20 +157,33 @@ function BaseMusicOption(
                                 />
                             </>
                         ) : (
-                            <Row gap={12} $alignItems={'center'} padding={'8px 16px'} background={colors.white} style={{
-                                borderRadius: 8
-                            }}>
-                                <Text type={'p5'} color={colors.g500}>배경음악 선택됨</Text>
+                            <Row gap={12} $alignItems={'center'} $customStyle={css`
+                                padding: 8px 16px;
+                                background: white;
+                                border-radius: 8px;
+                            `}>
+                                <Text type={'p5'} customStyle={css`
+                                    color: var(--g-500);
+                                `}>배경음악 선택됨</Text>
                                 <Icon
-                                    type={IconType.LoudSpeaker} size={20}
-                                    tint={(baseMusic.musicUrl === selectedPlayingMusicUrl) ? colors.p800 : colors.g400}
+                                    iconType={IconType.LoudSpeaker} size={20}
                                     style={{cursor: 'pointer'}}
+                                    customStyle={css`
+                                        ${baseMusic.musicUrl === selectedPlayingMusicUrl ? css`
+                                            fill: var(--p-800);
+                                        ` : css`
+                                            fill: var(--g-400);
+                                        `}
+                                        cursor: pointer;
+                                    `}
                                     onClick={onClickPlayCustomMusic}
                                 />
                                 <Icon
-                                    type={IconType.CrossLine} size={20}
-                                    tint={colors.g600}
-                                    style={{cursor: 'pointer'}}
+                                    iconType={IconType.CrossLine} size={20}
+                                    customStyle={css`
+                                        fill: var(--g-600);
+                                        cursor: pointer;
+                                    `}
                                     onClick={event => {
                                         event.preventDefault();
                                         onChange({...baseMusic, musicUrl: ''});
@@ -188,7 +214,7 @@ function BaseMusicOption(
                     />
                     {selectModeContent()}
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Row gap={12} $alignItems={'center'}>
                     <OptionLabel label={'효과'}/>
                     <Checkbox
@@ -214,7 +240,7 @@ const S = {
         gap: 20px;
         align-items: center;
         position: relative;
-        background: ${colors.g100};
+        background: var(--g-100);
         border-radius: 8px;
         padding: 30px 0;
     `,

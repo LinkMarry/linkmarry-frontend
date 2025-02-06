@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
-import {Row} from "@designsystem/component/flexLayout";
-import Spacer from "@designsystem/component/spacer";
-import makeText from "@designsystem/foundation/text/textType";
-import colors from "@designsystem/foundation/colors";
+import styled, {css} from "styled-components";
+import {Row} from "@designsystem/component/FlexLayout";
+import Spacer from "@designsystem/component/Spacer";
+import makeText from "@designsystem/foundation/text/TextType";
 import useAuth from "@hook/useAuth";
-import Button from "@designsystem/component/button";
+import Button from "@designsystem/component/Button";
 import {useNavigate} from "react-router-dom";
 
 function Header() {
@@ -13,7 +12,11 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <S.container>
+        <Row $alignItems={'center'} $customStyle={css`
+            width: 100vw;
+            min-height: 76px;
+            border: 1px solid var(--g-200);
+        `}>
             <Row
                 flex={1}
                 $alignItems={'center'}
@@ -26,7 +29,11 @@ function Header() {
                 <img src={'/logo.svg'} width={103} alt={'logo'} style={{cursor: 'pointer'}} onClick={() => {
                     navigate('/');
                 }}/>
-                <S.navItems>
+                <Row $customStyle={css`
+                    gap: 44px;
+                    align-items: center;
+                    flex: 1;
+                `}>
                     <S.navItem onClick={() => navigate('/templates')}>모바일 청첩장</S.navItem>
                     <S.navItem onClick={() => window.open('https://smartstore.naver.com/linkmarry')}>스토어 이동</S.navItem>
                     <S.navItem onClick={() => navigate('/notification')}>공지사항</S.navItem>
@@ -38,30 +45,16 @@ function Header() {
                     ) : (
                         <Button text={'로그인'} onClick={() => navigate('/login')} role={'assistive'}/>
                     )}
-                </S.navItems>
+                </Row>
             </Row>
-        </S.container>
+        </Row>
     );
 }
 
 const S = {
-    container: styled.div`
-        display: flex;
-        width: 100vw;
-        min-height: 76px;
-        align-items: center;
-        border: 1px solid ${colors.g200};
-    `,
-    navItems: styled.ul`
-        display: flex;
-        gap: 44px;
-        align-items: center;
-        flex: 1;
-    `,
     navItem: styled.li`
         display: flex;
         ${makeText('p5')};
-        color: ${colors.black};
         white-space: nowrap;
         cursor: pointer;
     `,

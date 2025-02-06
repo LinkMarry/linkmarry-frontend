@@ -1,6 +1,6 @@
 import {CSSProperties, HTMLAttributes} from "react";
 
-interface SpacerProps extends HTMLAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLDivElement> {
     w?: number;
     h?: number;
     style?: CSSProperties;
@@ -12,7 +12,7 @@ function Spacer(
         h,
         style,
         ...props
-    }: SpacerProps
+    }: Props
 ) {
     return (
         <div style={{

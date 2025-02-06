@@ -1,11 +1,10 @@
 import React, {useRef} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import {Column} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import TextField from "@designsystem/component/textField";
-import Button from "@designsystem/component/button";
+import styled, {css} from "styled-components";
+import {Column} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import TextField from "@designsystem/component/TextField";
+import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import Comment from "@remote/value/Comment";
 import {isAxiosError} from "axios";
@@ -58,7 +57,9 @@ function RemoveGuestCommentDialog(
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
                     <Text type={'h6'}>글 삭제하기</Text>
-                    <Text type={'caption1'} color={colors.g400}>관리자와 글 작성자만 글을 삭제할 수 있습니다</Text>
+                    <Text type={'caption1'} customStyle={css`
+                        color: var(--g-400);
+                    `}>관리자와 글 작성자만 글을 삭제할 수 있습니다</Text>
                 </Column>
                 <TextField ref={passwordRef} placeholder={'비밀번호 입력'}/>
                 <Button text={'삭제'} role={'assistive'} onClick={onClickRemove}/>
@@ -75,7 +76,7 @@ const S = {
         flex-direction: column;
         padding: 44px 36px;
         gap: 48px;
-        background: ${colors.white};
+        background: white;
         border-radius: 12px;
         ${applyBaseDialogContent()};
     `

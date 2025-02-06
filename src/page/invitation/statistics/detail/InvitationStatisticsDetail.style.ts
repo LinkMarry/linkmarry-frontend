@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 
 const BaseRow = styled.div`
     display: flex;
@@ -22,14 +21,14 @@ const S = {
         display: flex;
         flex: 1;
         overflow-y: scroll;
-        background: ${colors.white};
+        background: white;
     `,
     rsvp: {
         headerRow: styled(BaseRow)`
-            border-bottom: 1px solid ${colors.black};
+            border-bottom: 1px solid black;
         `,
         bodyRow: styled(BaseRow)`
-            border-bottom: 1px solid ${colors.g100};
+            border-bottom: 1px solid var(--g-100);
         `,
         contentCell: styled(BaseCell)`
             flex: 1;

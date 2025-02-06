@@ -1,10 +1,9 @@
 import React, {useRef, useState} from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
-import Button from "@designsystem/component/button";
-import styled from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import Divider from "@designsystem/component/Divider";
+import Button from "@designsystem/component/Button";
+import styled, {css} from "styled-components";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 import Phone from "@remote/value/Phone";
@@ -27,7 +26,7 @@ function CongratulationsTemplate(
 
     const congratulationsRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(congratulationsRef, [phone]);
-    
+
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
@@ -35,15 +34,13 @@ function CongratulationsTemplate(
             <Column gap={96} $alignItems={'stretch'}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={8} $alignItems={'center'}>
-                        <Text
-                            font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignSelf: 'stretch',
-                                wordBreak: 'break-all',
-                            }}
-                        >
+                        <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                            color: var(--g-600);
+                            display: flex;
+                            justify-content: center;
+                            align-self: stretch;
+                            word-break: break-all;
+                        `}>
                             <Row $alignItems={'center'} gap={4}>
                                 {first.fatherStatus && (
                                     <img src={'/Flower.svg'} alt=""/>
@@ -56,25 +53,25 @@ function CongratulationsTemplate(
                             </Row>
                         </Text>
                         <Row gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}>
-                                {first.korean}&nbsp;
-                            </Text>
+                            <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                                color: var(--g-600);
+                            `}>{first.korean}&nbsp;</Text>
                             <Text font={'GangwonEduAll'} weight={100} size={24}>
                                 {first.name}
                             </Text>
                         </Row>
                     </Column>
-                    <HorizontalDivider color={colors.g200}/>
+                    <Divider customStyle={css`
+                        color: var(--g-200);
+                    `}/>
                     <Column gap={8} $alignItems={'center'}>
-                        <Text
-                            font={'GangwonEduAll'} weight={100} size={24} color={colors.g600}
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignSelf: 'stretch',
-                                wordBreak: 'break-all'
-                            }}
-                        >
+                        <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                            color: var(--g-600);
+                            display: flex;
+                            justify-content: center;
+                            align-self: stretch;
+                            word-break: break-all;
+                        `}>
                             <Row $alignItems={'center'} gap={4}>
                                 {second.fatherStatus && (
                                     <img src={'/Flower.svg'} alt=""/>
@@ -87,10 +84,9 @@ function CongratulationsTemplate(
                             </Row>
                         </Text>
                         <Row gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24}
-                                  color={colors.g600}>
-                                {second.korean}&nbsp;
-                            </Text>
+                            <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                                color: var(--g-600);
+                            `}>{second.korean}&nbsp;</Text>
                             <Text font={'GangwonEduAll'} weight={100} size={24}>
                                 {second.name}
                             </Text>

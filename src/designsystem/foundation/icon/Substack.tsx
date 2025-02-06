@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Substack(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path fillRule="evenodd" clipRule="evenodd"
                   d="M13.6168 6.91737C15.3133 6.91737 16.6886 8.27556 16.6886 9.95098C16.6886 11.6264 15.3133 12.9846 13.6168 12.9846C11.9202 12.9846 10.5449 11.6264 10.5449 9.95098C10.5449 8.27556 11.9202 6.91737 13.6168 6.91737ZM14.8563 9.95098C14.8563 9.27493 14.3013 8.72689 13.6168 8.72689C12.9322 8.72689 12.3772 9.27493 12.3772 9.95098C12.3772 10.627 12.9322 11.1751 13.6168 11.1751C14.3013 11.1751 14.8563 10.627 14.8563 9.95098Z"
                   fill="current"/>

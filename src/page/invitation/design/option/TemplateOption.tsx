@@ -1,9 +1,8 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
 import styled, {css, CSSProperties} from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import colors from "@designsystem/foundation/colors";
 import OptionSelect from "@page/invitation/design/component/OptionSelect";
 import Template, {
     templateColors,
@@ -11,8 +10,8 @@ import Template, {
     templateFontSizeRecord,
     templateFontSizes, templateNames
 } from "@remote/value/Template";
-import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/textType";
-import SegmentedButton from "@designsystem/component/segmentedButton";
+import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/TextType";
+import SegmentedButton from "@designsystem/component/SegmentedButton";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
@@ -73,7 +72,7 @@ function TemplateOption(
                         ))}
                     </S.designWrapper>
                 </Row>
-                <HorizontalDivider/>
+                <Divider/>
                 <Row gap={12}>
                     <OptionLabel label={'배경색상'} style={{alignSelf: 'flex-start'}}/>
                     <S.backgroundColor.container>
@@ -118,20 +117,26 @@ function TemplateOption(
                 <Row gap={12}>
                     <OptionLabel label={'대표사진'} style={{alignSelf: 'flex-start'}}/>
                     {template.titleImgUrl ? (
-                            <AddDismissButton dismiss={() => {
-                                onChange({...template, titleImgUrl: ''});
-                                if (imageFieldRef.current) {
-                                    imageFieldRef.current.value = '';
-                                }
-                            }}>
-                                <S.image src={template.titleImgUrl}/>
-                            </AddDismissButton>
-                        ) : (
+                        <AddDismissButton dismiss={() => {
+                            onChange({...template, titleImgUrl: ''});
+                            if (imageFieldRef.current) {
+                                imageFieldRef.current.value = '';
+                            }
+                        }}>
+                            <S.image src={template.titleImgUrl}/>
+                        </AddDismissButton>
+                    ) : (
                         <S.addImageContainer htmlFor={'choose-template-image'}>
-                            <Icon type={IconType.AddLine} tint={colors.g600} size={24}/>
+                            <Icon
+                                iconType={IconType.AddLine}
+                                customStyle={css`
+                                    color: var(--g-600);
+                                `}
+                                size={24}
+                            />
                             {isFetching && <LoadingOverlay/>}
                         </S.addImageContainer>
-                        )
+                    )
                     }
                     <VoidInput
                         id={'choose-template-image'}
@@ -167,14 +172,11 @@ const S = {
             width: 44px;
             height: 44px;
             background: ${({color}) => color};
-            ${({selected}) => selected
-                    ? css`
-                        border: 2px solid ${colors.g500};
-                    `
-                    : css`
-                        border: 1px solid ${colors.g200};
-                    `
-            }
+            ${({selected}) => selected ? css`
+                border: 2px solid var(--g-500);
+            ` : css`
+                border: 1px solid var(--g-200);
+            `};
             border-radius: 8px;
             cursor: pointer;
         `
@@ -183,7 +185,7 @@ const S = {
         display: flex;
         min-width: 128px;
         height: 128px;
-        border: 1px solid ${colors.g200};
+        border: 1px solid var(--g-200);
         justify-content: center;
         align-items: center;
         cursor: pointer;

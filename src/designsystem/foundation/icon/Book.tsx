@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Book(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path fillRule="evenodd" clipRule="evenodd"
                   d="M6.5 16H16C17.8856 16 18.8284 16 19.4142 15.4142C20 14.8284 20 13.8856 20 12V7C20 5.11439 20 4.17158 19.4142 3.58579C18.8284 3 17.8856 3 16 3H8C6.11439 3 5.17158 3 4.58579 3.58579C4 4.17158 4 5.11439 4 7V18.5C4 17.1193 5.11929 16 6.5 16ZM9 6C7.89544 6 7 6.89544 7 8C7 9.10457 7.89544 10 9 10H15C16.1046 10 17 9.10458 17 8.00001C17 6.89544 16.1046 6.00001 15 6.00001L9 6Z"
                   fill="current"/>

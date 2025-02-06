@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function Show(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M11.55 13.9648C12.5994 13.9648 12.999 13.5228 12.999 12.4231C12.999 11.3235 12.5994 10.8782 11.55 10.8782C10.5006 10.8782 10.101 11.3235 10.101 12.4231C10.101 13.5228 10.5006 13.9648 11.55 13.9648Z"
                 fill="current"/>

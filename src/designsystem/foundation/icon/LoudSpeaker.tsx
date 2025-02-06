@@ -2,7 +2,7 @@ import {SVGProps} from "react";
 
 export default function LoudSpeaker(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M3 9.5909C3 9.31476 3.22386 9.0909 3.5 9.0909H6.5C6.77614 9.0909 7 9.31476 7 9.5909V15.1364C7 15.4125 6.77614 15.6364 6.5 15.6364H3.5C3.22386 15.6364 3 15.4125 3 15.1364V9.5909Z"
                 fill="current"/>

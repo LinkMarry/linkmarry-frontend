@@ -1,8 +1,7 @@
 import React, {HTMLAttributes} from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import styled from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import styled, {css} from "styled-components";
 
 interface FooterTemplateProps extends HTMLAttributes<HTMLDivElement> {
     background: string;
@@ -26,18 +25,24 @@ function FooterTemplate(
             >
                 <Row gap={8} $alignItems={'center'}>
                     <img src={'/kakao.svg'} alt={'kakao'} width={20} height={20}/>
-                    <Text size={14} weight={300} color={colors.g600}>카카오톡으로 청첩장 보내기</Text>
+                    <Text size={14} weight={300} customStyle={css`
+                        color: var(--g-600);
+                    `}>카카오톡으로 청첩장 보내기</Text>
                 </Row>
                 <Row gap={4} $alignItems={'center'}>
-                    <Text size={14} weight={300} color={colors.g300}>Copyrightⓒ2025.</Text>
-                    <Text size={14} weight={300} color={colors.g300}>All rights reserved.</Text>
+                    <Text size={14} weight={300} customStyle={css`
+                        color: var(--g-300);
+                    `}>Copyrightⓒ2025.</Text>
+                    <Text size={14} weight={300} customStyle={css`
+                        color: var(--g-300);
+                    `}>All rights reserved.</Text>
                 </Row>
             </Column>
         </Container>
     );
 }
 
-const Container = styled.div<{background: string}>`
+const Container = styled.div<{ background: string }>`
     display: flex;
     flex-direction: column;
     background: ${({background}) => background};

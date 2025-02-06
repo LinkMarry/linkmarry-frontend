@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
+import makeText from "@designsystem/foundation/text/TextType";
 
-interface ToolTipProps {
+interface Props {
     content: React.ReactNode;
     children?: React.ReactNode;
 }
@@ -12,7 +11,7 @@ function ToolTip(
     {
         content,
         children
-    }: ToolTipProps
+    }: Props
 ) {
     return (
         <ToolTipStyle>
@@ -31,8 +30,8 @@ const ContentStyle = styled.span`
     bottom: 125%;
     padding: 8px 12px;
     visibility: hidden;
-    background: ${colors.white};
-    color: ${colors.g600};
+    background: white;
+    color: var(--g-600);
     border-radius: 6px;
     opacity: 0;
     transition: opacity 0.3s;

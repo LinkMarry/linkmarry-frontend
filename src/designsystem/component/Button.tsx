@@ -1,22 +1,22 @@
-import styled, {css} from "styled-components";
+import styled, {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import makeText, {TextType} from "@designsystem/foundation/text/textType";
-import colors from "@designsystem/foundation/colors";
+import makeText, {TextType} from "@designsystem/foundation/text/TextType";
 import {ButtonHTMLAttributes, CSSProperties} from "react";
 
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonRole = 'primary' | 'secondary' | 'assistive';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
     size?: ButtonSize;
     role?: ButtonRole;
     leadingIcon?: IconType;
     trailingIcon?: IconType;
     enabled?: boolean;
+    customStyle?: RuleSet;
 }
 
-export default function Button(
+function Button(
     {
         text,
         size = 'large',
@@ -24,22 +24,23 @@ export default function Button(
         leadingIcon,
         trailingIcon,
         enabled = true,
+        customStyle,
         ...props
-    }: ButtonProps
+    }: Props
 ) {
     let background: string, foreground: string;
     switch (role) {
         case 'primary':
-            background = colors.p800;
-            foreground = colors.p100;
+            background = 'var(--p-800)';
+            foreground = 'var(--p-100)';
             break;
         case 'secondary':
-            background = colors.p100;
-            foreground = colors.p800;
+            background = 'var(--p-100)';
+            foreground = 'var(--p-800)';
             break;
         case 'assistive':
-            background = colors.g100;
-            foreground = colors.g600;
+            background = 'var(--g-100)';
+            foreground = 'var(--g-600)';
             break;
     }
 
@@ -88,14 +89,19 @@ export default function Button(
             gap={gap}
             disabled={!enabled}
             $textType={textType}
+            $customStyle={customStyle}
             {...props}
         >
             {leadingIcon ? (
-                <Icon type={leadingIcon} tint={foreground} size={iconSize}/>
+                <Icon iconType={leadingIcon} size={iconSize} customStyle={css`
+                    fill: ${foreground};
+                `}/>
             ) : trailingIcon ? <div style={{width: iconSize}}></div> : <></>}
             {text}
             {trailingIcon ? (
-                <Icon type={trailingIcon} tint={foreground} size={iconSize}/>
+                <Icon iconType={trailingIcon} size={iconSize} customStyle={css`
+                    fill: ${foreground};
+                `}/>
             ) : leadingIcon ? <div style={{width: iconSize}}></div> : <></>}
         </S.container>
     )
@@ -103,14 +109,15 @@ export default function Button(
 
 const S = {
     container: styled.button<{
-        $textType: TextType,
-        opacity: CSSProperties['opacity'],
-        background: CSSProperties['background'],
-        color: CSSProperties['color'],
-        $borderRadius: number,
-        padding: CSSProperties['padding'],
-        height: number,
-        gap: number,
+        $textType: TextType;
+        opacity: CSSProperties['opacity'];
+        background: CSSProperties['background'];
+        color: CSSProperties['color'];
+        $borderRadius: number;
+        padding: CSSProperties['padding'];
+        height: number;
+        gap: number;
+        $customStyle?: RuleSet;
     }>`
         display: inline-flex;
         align-items: center;
@@ -119,7 +126,7 @@ const S = {
         border: none;
         word-break: keep-all;
         white-space: nowrap;
-        ${({$textType, opacity, background, color, $borderRadius, padding, height, gap}) => css`
+        ${({$textType, opacity, background, color, $borderRadius, padding, height, gap, $customStyle}) => css`
             ${makeText($textType)};
             opacity: ${opacity};
             background: ${background};
@@ -128,6 +135,7 @@ const S = {
             padding: ${padding};
             height: ${height}px;
             gap: ${gap}px;
+        ${$customStyle};
         `};
 
         &:disabled {
@@ -137,7 +145,7 @@ const S = {
 
         &:enabled {
             cursor: pointer;
-            
+
             &:active {
                 scale: 0.96;
             }
@@ -147,7 +155,8 @@ const S = {
             }
         }
 
-
         transition: 0.1s scale ease-in-out;
     `
 }
+
+export default Button;

@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Button from "@designsystem/component/button";
-import makeText from "@designsystem/foundation/text/textType";
+import styled, {css} from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Button from "@designsystem/component/Button";
+import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import Spacer from "@designsystem/component/spacer";
-import Text from "@designsystem/component/text";
+import Spacer from "@designsystem/component/Spacer";
+import Text from "@designsystem/component/Text";
 import WeddingInfo from "@remote/value/WeddingInfo";
 import DashboardPopover, {DashboardPopoverClickType} from "@page/invitation/dashboard/component/DashboardPopover";
 import {useNavigate} from "react-router-dom";
@@ -70,33 +69,42 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                 break;
         }
     }
-    
+
     return (
         <S.container>
             <S.content>
                 <S.image src={weddingInfo.img} alt=""/>
-                <Column gap={12} $alignItems={'stretch'} padding={'20px'} background={colors.g100}>
+                <Column gap={12} $alignItems={'stretch'} $customStyle={css`
+                    padding: 20px;
+                    background: var(--g-100);
+                `}>
                     <Column gap={4} $alignItems={'stretch'}>
                         <Row gap={8}>
                             <S.urlLabel onClick={() => window.open(weddingUrl)}>{weddingUrl}</S.urlLabel>
                             <Spacer/>
                             <Icon
-                                type={IconType.Detail}
-                                tint={colors.black}
+                                iconType={IconType.Detail}
                                 size={20}
                                 onClick={() => {
                                     setShowPopover(true);
                                 }}
-                                style={{
-                                    cursor: "pointer",
-                                }}
+                                customStyle={css`
+                                    cursor: pointer;
+                                    fill: black;
+                                `}
                             />
                         </Row>
-                        <Text type={'caption1'} color={colors.g500}>{weddingInfo.createdDate}</Text>
+                        <Text type={'caption1'} customStyle={css`
+                            color: var(--g-500);
+                        `}>{weddingInfo.createdDate}</Text>
                     </Column>
                     <Row gap={10}>
                         <Button
-                            text={weddingInfo.waterMark ? '워터마크 제거' : '링크 가기'} role={'assistive'} style={{background: colors.white, flex: 1}}
+                            text={weddingInfo.waterMark ? '워터마크 제거' : '링크 가기'} role={'assistive'}
+                            customStyle={css`
+                                background: white;
+                                flex: 1;
+                            `}
                             onClick={() => {
                                 if (weddingInfo.waterMark) {
                                     onClick('removeWaterMark');
@@ -106,7 +114,12 @@ ${baseInfo.groomName}, ${baseInfo.brideName}님의 링크메리 모바일 청첩
                             }}
                         />
                         <Button
-                            text={'수정하기'} role={'assistive'} style={{background: colors.white, flex: 1}}
+                            text={'수정하기'}
+                            role={'assistive'}
+                            customStyle={css`
+                                background: white;
+                                flex: 1;
+                            `}
                             onClick={() => {
                                 navigate(`/dashboard/design/${weddingInfo.url}`);
                             }}
@@ -136,7 +149,7 @@ const S = {
         width: 300px;
         height: 420px;
         flex-direction: column;
-        border: 1px solid ${colors.g200};
+        border: 1px solid var(--g-200);
         border-radius: 12px;
         overflow: hidden;
         break-inside: avoid-column; // column 잘림 방지
@@ -149,7 +162,7 @@ const S = {
     `,
     urlLabel: styled.span`
         ${makeText('p5')};
-        color: ${colors.black};
+        color: black;
         overflow-x: hidden;
         word-break: break-word;
         text-overflow: ellipsis;

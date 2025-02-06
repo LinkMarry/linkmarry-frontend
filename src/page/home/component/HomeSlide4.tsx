@@ -1,20 +1,23 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import colors from "@designsystem/foundation/colors";
-import Text from "@designsystem/component/text";
-import styled from "styled-components";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
+import styled, {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 
 function HomeSlide4() {
     return (
-        <Row gap={98} $alignItems={'center'} padding={'200px 154px 0 154px'}>
+        <Row gap={98} $alignItems={'center'} $customStyle={css`
+            padding: 200px 154px 0 154px;
+        `}>
             <img src={'/home/home-phone-3.webp'} alt={''} style={{
                 width: 273
             }}/>
             <Column gap={52} flex={1} $alignItems={'stretch'}>
                 <Column gap={20}>
                     <Text type={'h2'}>통계 확인</Text>
-                    <Text type={'p5'} color={colors.g500}>청첩장의 통계 확인을 통해
+                    <Text type={'p5'} customStyle={css`
+                        color: var(--g-500);
+                    `}>청첩장의 통계 확인을 통해
                         <br/>더 완벽한 결혼식을 준비할 수 있습니다.</Text>
                 </Column>
                 <S.cells>
@@ -35,12 +38,15 @@ function Cell(props: {
     title: string;
 }) {
     return (
-        <Column gap={12} $alignItems={'center'} padding={'32px 0'} style={{
-            border: `1px solid ${colors.g100}`,
-            borderRadius: 8,
-            boxShadow: '0px 3px 6px 0px rgba(0, 0, 0, 0.03)'
-        }}>
-            <Icon type={props.iconType} tint={colors.g500} size={52}/>
+        <Column gap={12} $alignItems={'center'} $customStyle={css`
+            padding: 32px 0;
+            border: 1px solid var(--g-100);
+            border-radius: 8px;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.03);
+        `}>
+            <Icon iconType={props.iconType} size={52} customStyle={css`
+                fill: var(--g-500);
+            `}/>
             <Text type={'h6'}>{props.title}</Text>
         </Column>
     );

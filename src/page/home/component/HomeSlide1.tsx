@@ -1,22 +1,26 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Button from "@designsystem/component/button";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
-import Spacer from "@designsystem/component/spacer";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Button from "@designsystem/component/Button";
+import Text from "@designsystem/component/Text";
+import Spacer from "@designsystem/component/Spacer";
 import {useNavigate} from "react-router-dom";
+import {css} from "styled-components";
 
 function HomeSlide1() {
     const navigate = useNavigate();
     
     return (
-        <Row padding={'48px 169px'} $alignItems={'center'}>
+        <Row $alignItems={'center'} $customStyle={css`
+            padding: 48px 169px;
+        `}>
             <Column gap={32}>
                 <Column gap={8}>
                     <Text type={'h1'}>우리의 소중한 날을 빛낼
                         <br/>
                         완벽한 청첩장</Text>
-                    <Text type={'p5'} color={colors.g500}>빠르고 간편하게 완성되는 특별한 초대장</Text>
+                    <Text type={'p5'} customStyle={css`
+                        color: var(--g-500);
+                    `}>빠르고 간편하게 완성되는 특별한 초대장</Text>
                 </Column>
                 <Row gap={8}>
                     <Button onClick={() => navigate('/dashboard')} text={'청첩장 제작'}/>

@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
-import Checkbox from "@designsystem/component/checkbox";
+import Checkbox from "@designsystem/component/Checkbox";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 import WeddingPlace from "@remote/value/WeddingPlace";
-import Textarea from "@designsystem/component/textarea";
+import Textarea from "@designsystem/component/Textarea";
 
 interface WeddingPlaceOptionProps {
     weddingPlace: WeddingPlace;
@@ -70,7 +70,7 @@ function WeddingPlaceOption(
                         />
                     </Row>
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Row gap={12}>
                     <OptionLabel label={'표시'}/>
                     <Checkbox

@@ -1,21 +1,19 @@
 import styled, {css} from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import makeText from "@designsystem/foundation/text/textType";
-
+import makeText from "@designsystem/foundation/text/TextType";
 
 const SegmentedButton = styled.button<{ selected: boolean; }>`
     height: 44px;
     border-radius: 8px;
-    background: ${colors.white};
+    background: white;
     cursor: pointer;
     flex: 1;
     ${({selected}) => selected ? css`
-        border: 2px solid ${colors.p800};
-        color: ${colors.p800};
+        border: 2px solid var(--p-800);
+        color: var(--p-800);
         ${makeText('p4')};
     ` : css`
-        border: 2px solid ${colors.g200};
-        color: ${colors.g400};
+        border: 2px solid var(--g-200);
+        color: var(--g-400);
         ${makeText('p5')};
     `}
 `;

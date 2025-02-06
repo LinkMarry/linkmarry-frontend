@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import HorizontalDivider from "@designsystem/component/horizontalDivider";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
 import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import Phone from "@remote/value/Phone";
@@ -43,7 +43,7 @@ function PhoneOption(
                         }} placeholder={'- 없이 입력'} width={264}/>
                     </Row>
                 </Column>
-                <HorizontalDivider/>
+                <Divider/>
                 <Column gap={16}>
                     <Row gap={12}>
                         <OptionLabel label={'신부'}/>

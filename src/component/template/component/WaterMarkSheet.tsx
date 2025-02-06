@@ -1,10 +1,9 @@
 import React, {useEffect, useRef} from 'react';
-import {Column, Row} from "@designsystem/component/flexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import styled, {css} from "styled-components";
-import colors from "@designsystem/foundation/colors";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
 import {fadeInAnimationStyle} from "@designsystem/animation/fade.animation";
-import Button from "@designsystem/component/button";
+import Button from "@designsystem/component/Button";
 import {useNavigate} from "react-router-dom";
 
 interface Props {
@@ -28,7 +27,7 @@ function WaterMarkSheet(
         <SheetStyle>
             <Column gap={28} $alignItems={'center'} $customStyle={css`
                 padding: 32px 24px;
-                background: ${colors.p100};
+                background: var(--p-100);
                 border-radius: 16px;
                 box-shadow: 0 2px 36px 0 rgba(0, 0, 0, 0.36);
                 max-width: 424px;
@@ -42,18 +41,19 @@ function WaterMarkSheet(
                         <span>구매 후 워터마크를 제거해 주세요.</span>
                     </Column>
                 </Text>
-                <Text type={'btn1'} color={colors.g600} style={{
-                    textAlign: 'center'
-                }}>결제 후 대시보드 &gt; 워터마크 제거
+                <Text type={'btn1'} customStyle={css`
+                    color: var(--g-600);
+                    text-align: center;
+                `}>결제 후 대시보드 &gt; 워터마크 제거
                     <br/>
                     버튼을 통해 제거할 수 있습니다.</Text>
                 <Row gap={12} $alignSelf={'stretch'}>
-                    <Button text={'구매하기'} style={{
-                        flex: 1,
-                        background: colors.p100,
-                        color: colors.p800,
-                        border: `1px solid ${colors.p700}`
-                    }} onClick={() => {
+                    <Button text={'구매하기'} customStyle={css`
+                        flex: 1;
+                        background: var(--p-100);
+                        color: var(--p-800);
+                        border: 1px solid var(--p-700);
+                    `} onClick={() => {
                         window.open('https://smartstore.naver.com/linkmarry');
                     }}/>
                     <Button text={'워터마크 제거하기'} style={{

@@ -1,4 +1,4 @@
-import React, {CSSProperties, ReactElement, SVGProps} from "react";
+import React, {HTMLAttributes, ReactElement, SVGProps} from "react";
 import AddEmoji from "@designsystem/foundation/icon/AddEmoji";
 import AddFill from "@designsystem/foundation/icon/AddFill";
 import AddLine from "@designsystem/foundation/icon/AddLine";
@@ -53,7 +53,7 @@ import AddRing from "@designsystem/foundation/icon/AddRing";
 import ArcticonsSpotistats from "@designsystem/foundation/icon/ArcticonsSpotistats";
 import Hamburger from "@designsystem/foundation/icon/Hamburger";
 import Clock from "@designsystem/foundation/icon/Clock";
-import styled, {css} from "styled-components";
+import styled, {RuleSet} from "styled-components";
 import Share from "@designsystem/foundation/icon/Share";
 import Call from "@designsystem/foundation/icon/Call";
 import Statistics from "@designsystem/foundation/icon/Statistics";
@@ -118,22 +118,22 @@ export enum IconType {
     Write,
 }
 
-interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
-    type: IconType;
-    tint?: CSSProperties['color'];
+interface Props extends SVGProps<SVGSVGElement> {
+    iconType: IconType;
     size?: number;
+    customStyle?: RuleSet;
 }
 
-export default function Icon(
+function Icon(
     {
-        type,
-        tint = 'black',
+        iconType,
         size = 24,
+        customStyle,
         ...props
-    }: IconProps
+    }: Props
 ): ReactElement {
     const IconContent = (svgProps: SVGProps<SVGSVGElement>) => {
-        switch (type) {
+        switch (iconType) {
             case IconType.AddEmoji:
                 return <AddEmoji {...svgProps}/>;
             case IconType.AddFill:
@@ -252,18 +252,19 @@ export default function Icon(
     }
 
     return (
-        <IconWrapper width={size} height={size} {...props}>
-            <IconContent fill={tint} width={size} height={size}/>
+        <IconWrapper $customStyle={customStyle}>
+            <IconContent width={size} height={size} {...props}/>
         </IconWrapper>
     );
-};
+}
 
-const IconWrapper = styled.div<{ width: number, height: number }>`
+const IconWrapper = styled.div<{
+    $customStyle?: RuleSet;
+}>`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${({width, height}) => css`
-        width: ${width}px;
-        height: ${height}px;
-    `}
-`
+    ${({$customStyle}) => $customStyle};
+`;
+
+export default Icon;

@@ -1,7 +1,6 @@
 import React, {HTMLAttributes} from 'react';
-import styled from "styled-components";
-import Text from "@designsystem/component/text";
-import colors from "@designsystem/foundation/colors";
+import styled, {css} from "styled-components";
+import Text from "@designsystem/component/Text";
 
 interface StatisticsValueCellProps extends HTMLAttributes<HTMLDivElement> {
     label: string;
@@ -27,13 +26,17 @@ function StatisticsValueCell(
 
 const S = {
     container: styled.div<{ filtered: boolean; }>`
-        background: ${({filtered}) => filtered ? colors.g100 : colors.white};
+        ${({filtered}) => filtered ? css`
+            background: var(--g-100);
+        ` : css`
+            background: white;
+        `};
         display: flex;
         width: 281px;
         flex-direction: column;
         padding: 24px 20px;
         gap: 8px;
-        border: 1px solid ${colors.g200};
+        border: 1px solid var(--g-200);
         border-radius: 12px;
     `
 }

@@ -1,15 +1,14 @@
 import React, {useRef, useState} from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import MoneyInfo, {getMoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
-import colors from "@designsystem/foundation/colors";
-import Spacer from "@designsystem/component/spacer";
+import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import {Column, Row} from "@designsystem/component/flexLayout";
-import Text from "@designsystem/component/text";
+import {Column, Row} from "@designsystem/component/FlexLayout";
+import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 
-interface MoneyInfoTemplateProps {
+interface Props {
     baseInfo: BaseInfo;
     moneyInfo: MoneyInfo;
 }
@@ -18,15 +17,17 @@ function MoneyInfoTemplate(
     {
         baseInfo,
         moneyInfo
-    }: MoneyInfoTemplateProps
+    }: Props
 ) {
     const moneyInfoRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(moneyInfoRef, [moneyInfo]);
-    
+
     return (
         <S.root ref={moneyInfoRef}>
             <Column gap={40} $alignItems={'center'}>
-                <Text size={20} weight={300} color={colors.g600}>마음 전하실 곳</Text>
+                <Text size={20} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>마음 전하실 곳</Text>
                 <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
             </Column>
         </S.root>
@@ -57,10 +58,18 @@ function MoneyInfoComponent(
         <S.container>
             <div>
                 <div onClick={() => setClickedGroom(i => !i)}>
-                    <Text type={'p4'} color={colors.g600} weight={'bold'}>{firstBaseInfo.korean}측</Text>
+                    <Text type={'p4'} weight={'bold'} customStyle={css`
+                        color: var(--g-600);
+                    `}>{firstBaseInfo.korean}측</Text>
                     <Spacer/>
-                    <Icon type={IconType.ExpandArrow} tint={colors.g600}
-                          style={{rotate: clickedGroom ? '90deg' : '-90deg'}}/>
+                    <Icon iconType={IconType.ExpandArrow} customStyle={css`
+                        fill: var(--g-600);
+                        ${clickedGroom ? css`
+                            rotate: 90deg;
+                        ` : css`
+                            rotate: -90deg;
+                        `}
+                    `}/>
                 </div>
                 {clickedGroom && (
                     <>
@@ -75,10 +84,18 @@ function MoneyInfoComponent(
             </div>
             <div>
                 <div onClick={() => setClickedBride(i => !i)}>
-                    <Text type={'p4'} color={colors.p800} weight={'bold'}>{secondBaseInfo.korean}측</Text>
+                    <Text type={'p4'} weight={'bold'} customStyle={css`
+                        color: var(--p-800);
+                    `}>{secondBaseInfo.korean}측</Text>
                     <Spacer/>
-                    <Icon type={IconType.ExpandArrow} tint={colors.p800}
-                          style={{rotate: clickedBride ? '90deg' : '-90deg'}}/>
+                    <Icon iconType={IconType.ExpandArrow} customStyle={css`
+                        color: var(--p-800);
+                        ${clickedBride ? css`
+                            rotate: 90deg;
+                        ` : css`
+                            rotate: -90deg;
+                        `}
+                    `}/>
                 </div>
                 {clickedBride && (
                     <>
@@ -101,7 +118,7 @@ const S = {
         display: flex;
         flex-direction: column;
         padding: 92px 60px;
-        background: ${colors.white};
+        background: white;
         align-items: stretch;
     `,
     container: styled.div`
@@ -122,18 +139,18 @@ const S = {
         }
 
         > div:first-child {
-            background: ${colors.g100};
+            background: var(--g-100);
 
             > span {
-                color: ${colors.g600};
+                color: var(--g-600);
             }
         }
 
         > div:nth-child(2) {
-            background: ${colors.p100};
+            background: var(--p-100);
 
             > span {
-                color: ${colors.p800};
+                color: var(--p-800);
             }
         }
     `
@@ -150,20 +167,27 @@ function MoneyCell(props: {
         <Column
             gap={8}
             $alignItems={'stretch'}
-            style={{
-                padding: '12px 20px',
-                borderTop: `1px solid ${props.isGroom ? colors.g200 : colors.p400}`,
-            }}
+            $customStyle={css`
+                padding: 12px 20px;
+                ${props.isGroom ? css`
+                    border-top: 1px solid var(--g-200);
+                ` : css`
+                    border-top: 1px solid var(--p-400);
+                `}
+                border-top: 1px solid;
+            `}
         >
             <Text type={'p5'}>{props.name}</Text>
-            <Row $alignItems={'center'} style={{
-                padding: '8px 16px',
-                background: colors.white,
-                borderRadius: 4
-            }}>
+            <Row $alignItems={'center'} $customStyle={css`
+                padding: 8px 16px;
+                background: white;
+                border-radius: 4px;
+            `}>
                 <Text type={'btn1'}>{fullBankNumber}</Text>
                 <Spacer/>
-                <Icon type={IconType.Copy} tint={colors.g400} size={20} onClick={async () => {
+                <Icon iconType={IconType.Copy} size={20} customStyle={css`
+                    color: var(--g-400);
+                `} onClick={async () => {
                     try {
                         await navigator.clipboard.writeText(fullBankNumber);
                         alert("복사되었습니다. 원하는 곳에 붙여넣기하여 주세요.");

@@ -1,8 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import styled from "styled-components";
-import colors from "@designsystem/foundation/colors";
 import Icon, {IconType} from "@designsystem/foundation/icon";
-import Text from "@designsystem/component/text";
+import Text from "@designsystem/component/Text";
 
 export type DashboardPopoverClickType = 'share' | 'copyLink' | 'editLink' | 'guestComment' | 'remove'
 
@@ -35,23 +34,23 @@ function DashboardPopover(
         <S.relativeWrapper>
             <S.container ref={popoverRef}>
                 <S.item onClick={() => onClick('share')}>
-                    <Icon type={IconType.Share} size={16}/>
+                    <Icon iconType={IconType.Share} size={16}/>
                     <Text type={'caption1'}>공유</Text>
                 </S.item>
                 <S.item onClick={() => onClick('copyLink')}>
-                    <Icon type={IconType.Copy} size={16}/>
+                    <Icon iconType={IconType.Copy} size={16}/>
                     <Text type={'caption1'}>링크 복사</Text>
                 </S.item>
                 <S.item onClick={() => onClick('editLink')}>
-                    <Icon type={IconType.Write} size={16}/>
+                    <Icon iconType={IconType.Write} size={16}/>
                     <Text type={'caption1'}>링크 수정</Text>
                 </S.item>
                 <S.item onClick={() => onClick('guestComment')}>
-                    <Icon type={IconType.Book} size={16}/>
+                    <Icon iconType={IconType.Book} size={16}/>
                     <Text type={'caption1'}>방명록 확인</Text>
                 </S.item>
                 <S.item onClick={() => onClick('remove')}>
-                    <Icon type={IconType.Trash} size={16}/>
+                    <Icon iconType={IconType.Trash} size={16}/>
                     <Text type={'caption1'}>삭제</Text>
                 </S.item>
             </S.container>
@@ -75,7 +74,7 @@ const S = {
         bottom: 120px;
         right: -72px;
         border-radius: 8px;
-        background: ${colors.white};
+        background: white;
         outline: none;
         border: none;
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
@@ -88,7 +87,7 @@ const S = {
         gap: 8px;
         cursor: pointer;
         &:hover {
-            background: ${colors.g100};
+            background: var(--g-100);
         }
         transition: 0.1s background ease-out;
     `
