@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Column} from "@designsystem/component/flexLayout";
 import Text from "@designsystem/component/text";
 import {TemplateName, templateNameRecord} from "@remote/value/Template";
+import Spacer from "@designsystem/component/spacer";
 
 interface TemplateCellProps {
     templateName: TemplateName;
@@ -15,10 +16,12 @@ function TemplateCell(
 ) {
     return (
         <S.container>
+            <Spacer/>
             <S.img
                 src={templateNameRecord[templateName].imgSrc}
                 alt=""
             />
+            <Spacer/>
             <Column gap={4} padding={'20px'}>
                 <Text type={'p2'}>{templateName}</Text>
             </Column>
@@ -37,9 +40,7 @@ const S = {
     img: styled.img`
         display: flex;
         width: 100%;
-        height: 680px;
         object-fit: cover;
-        object-position: top;
     `
 }
 
