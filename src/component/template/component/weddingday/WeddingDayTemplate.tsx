@@ -27,7 +27,7 @@ function WeddingDayTemplate(
     const isValidDate = !isNaN(date.getTime());
     const calendar = isValidDate ? getCalendar(date) : null;
 
-    if (!weddingSchedule.calendar && !weddingSchedule.dDay) {
+    if (!weddingSchedule.calendar && !weddingSchedule.dday) {
         return (
             <Column
                 gap={12}
@@ -90,7 +90,7 @@ function WeddingDayTemplate(
                     <HorizontalDivider/>
                 </Column>
             )}
-            {weddingSchedule.dDay && (
+            {weddingSchedule.dday && (
                 <DDay
                     baseInfo={baseInfo}
                     weddingSchedule={weddingSchedule}

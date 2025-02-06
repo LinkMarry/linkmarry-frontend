@@ -50,8 +50,8 @@ function WeddingScheduleOption(
                             label={'캘린더'}
                         />
                         <Checkbox
-                            checked={weddingSchedule.dDay}
-                            onChange={checked => onChange({...weddingSchedule, dDay: checked})}
+                            checked={weddingSchedule.dday}
+                            onChange={checked => onChange({...weddingSchedule, dday: checked})}
                             label={'디데이'}
                         />
                     </Column>

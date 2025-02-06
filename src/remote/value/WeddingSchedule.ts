@@ -9,19 +9,19 @@ export default interface WeddingSchedule {
     calendar: boolean;
     
     // 디데이 표시 상태
-    dDay: boolean;
+    dday: boolean;
 }
 
 export const defaultWeddingSchedule: WeddingSchedule = {
     weddingDate: '',
     weddingTime: '',
     calendar: true,
-    dDay: true
+    dday: true
 }
 
 export const dummyWeddingSchedule: WeddingSchedule = {
     weddingDate: "2025-07-01",
     weddingTime: "16:30",
     calendar: true,
-    dDay: true
+    dday: true
 }

@@ -53,9 +53,9 @@ function LocationTemplate(
                         {weddingPlace.addressName} {weddingPlace.floorHall}
                     </Text>
                 </Column>
-                <S.kakaoMap ref={kakaoMapRef} style={{
-                    display: weddingPlace.placeStatus ? 'flex' : 'none'
-                }}></S.kakaoMap>
+                {/*<S.kakaoMap ref={kakaoMapRef} style={{*/}
+                {/*    display: weddingPlace.placeStatus ? 'flex' : 'none'*/}
+                {/*}}></S.kakaoMap>*/}
                 <Text size={16} weight={300} style={{
                     marginLeft: 24,
                     alignSelf: 'stretch',
