@@ -25,11 +25,10 @@ function LocationTemplate(
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace]);
 
     useEffect(() => {
-        if (!kakao || !kakao.maps) {
+        if (!kakao || !kakao.maps || !kakaoMapRef.current) {
             alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
             return;
         }
-
 
         new kakao.maps.Map(kakaoMapRef.current, {
             center: new kakao.maps.LatLng(35.6632, 128.4141),

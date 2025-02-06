@@ -44,7 +44,7 @@ function InvitationDashboardGuestComment() {
                     </S.header.row>
                     {comments ? comments.map(comment => (
                         <S.body.row>
-                            <S.body.dateCell>2024.dummy..</S.body.dateCell>
+                            <S.body.dateCell>{comment.createdDate}</S.body.dateCell>
                             <S.body.nameCell>{comment.name}</S.body.nameCell>
                             <S.body.messageCell>{comment.comment}</S.body.messageCell>
                         </S.body.row>
