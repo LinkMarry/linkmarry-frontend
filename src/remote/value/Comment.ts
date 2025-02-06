@@ -14,77 +14,9 @@ export default interface Comment {
 
 export const dummyComments: Comment[] = [
     {
-        id: 0,
-        name: '작성자',
-        comment: '결혼 축하한다~~\n' +
-            '행복하게 잘 살아라!!',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 1,
-        name: '작성자',
-        comment: '싸우지 말고 잘 살아라~\n' +
-            '결혼식장 기대된다!!! ☺️',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 2,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
         id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },{
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    {
-        id: 3,
-        name: '작성자',
-        comment: 'ㅊㅊ',
-        createdDate: '2025-01-01 10:10:10'
-    },
-    
+        name: "김지민",
+        comment: "진짜 행복하게 잘 살아야해!!!!",
+        createdDate: "2025-02-06T08:45:38.339792"
+    }
 ]

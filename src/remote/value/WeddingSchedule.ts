@@ -20,8 +20,8 @@ export const defaultWeddingSchedule: WeddingSchedule = {
 }
 
 export const dummyWeddingSchedule: WeddingSchedule = {
-    weddingDate: '2025-02-01',
-    weddingTime: '21:30',
+    weddingDate: "2025-07-01",
+    weddingTime: "16:30",
     calendar: true,
     dDay: true
 }

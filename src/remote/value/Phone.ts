@@ -28,10 +28,10 @@ export const defaultPhone: Phone = {
 };
 
 export const dummyPhone: Phone = {
-    groomTel: "01012345678",
-    groomFatherTel: "01012345678",
-    groomMotherTel: "01012345678",
-    brideTel: "01012345678",
-    brideFatherTel: "01012345678",
-    brideMotherTel: "01012345678",
+    groomTel: "010-1234-5678",
+    groomFatherTel: "010-1234-5678",
+    groomMotherTel: "010-1234-5678",
+    brideTel: "010-1234-5678",
+    brideFatherTel: "010-1234-5678",
+    brideMotherTel: "010-1234-5678"
 };

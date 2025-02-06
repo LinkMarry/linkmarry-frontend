@@ -40,13 +40,13 @@ export const defaultWeddingPlace: WeddingPlace = {
 }
 
 export const dummyWeddingPlace: WeddingPlace = {
-    x: 126.972317,
-    y: 37.555946,
-    placeUrl: "https://kko.kakao.com/zLDNmwVavR",
-    placeName: "서울역",
-    addressName: "서울 용산구 한강대로 405",
-    floorHall: "1번 출구",
-    placeTel: "1544-7788",
-    placeTransportation: "그냥 기차타고 오시면 됩니다",
-    placeStatus: true,
+    x: -1.0,
+    y: -1.0,
+    placeUrl: "",
+    placeName: "서울가든",
+    addressName: "",
+    placeTel: "010-0000-0000",
+    floorHall: "레드홀 4층",
+    placeTransportation: "3호선 신림역 3번출구 도보 200m\n290번 버스 신림정류장 도보 200m",
+    placeStatus: true
 }

@@ -28,10 +28,10 @@ export const defaultLinkShare: LinkShare = {
 }
 
 export const dummyLinkShare: LinkShare = {
-    kakaoImgUrl: "google.com",
-    kakaoTitle: "청첩장~~",
-    kakaoContent: "초대합니당 우와",
-    urlImgUrl: "google.com",
-    urlTitle: "url title",
-    urlContent: "url content",
+    kakaoImgUrl: "",
+    kakaoTitle: "",
+    kakaoContent: "",
+    urlImgUrl: "",
+    urlTitle: "",
+    urlContent: ""
 }

@@ -60,20 +60,20 @@ export const defaultBaseInfo: BaseInfo = {
 }
 
 export const dummyBaseInfo: BaseInfo = {
-    groomName: "이삼삼",
-    groomFatherName: "이삼사",
+    groomName: "김민수",
+    groomFatherName: "김수민",
     groomFatherStatus: false,
-    groomMotherName: "오육칠",
+    groomMotherName: "이수진",
     groomMotherStatus: false,
     groomFamilyName: "아들",
-    brideName: "와우",
-    brideFatherName: "팔구십",
+    brideName: "김민지",
+    brideFatherName: "김강민",
     brideFatherStatus: false,
-    brideMotherName: "십일십",
+    brideMotherName: "이지안",
     brideMotherStatus: false,
     brideFamilyName: "딸",
-    statusFlower: true,
-    brideMarkFirst: false,
+    statusFlower: false,
+    brideMarkFirst: false
 }
 
 type InfoByBrideMarkFirst = {

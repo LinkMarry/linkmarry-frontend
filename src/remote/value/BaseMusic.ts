@@ -12,6 +12,6 @@ export const defaultBaseMusic: BaseMusic = {
 }
 
 export const dummyBaseMusic: BaseMusic = {
-    musicUrl: "https://www.youtube.com/watch?v=yBYZkJGKFyA&ab_channel=%EC%98%A4%EB%9E%98%EB%90%9C%ED%95%80",
-    effect: true,
+    musicUrl: "https://linkmarry.s3.ap-northeast-2.amazonaws.com/music/As_Time_Goes_By.mp3",
+    effect: true
 }

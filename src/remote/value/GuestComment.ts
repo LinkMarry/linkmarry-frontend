@@ -26,9 +26,9 @@ export const defaultGuestComment: GuestComment = {
 }
 
 export const dummyGuestComment: GuestComment = {
-    title: "환영 ~",
-    content: "넹",
-    design: Design.STICKER,
+    title: "방명록",
+    content: "신랑 신부에게 글을 남겨주세요!",
+    design: Design.BASIC,
     privateContent: true,
-    privateDate: true,
+    privateDate: true
 };

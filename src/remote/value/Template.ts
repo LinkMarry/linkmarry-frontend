@@ -92,8 +92,8 @@ export const defaultTemplate: Template = {
 
 export const dummyTemplate: Template = {
     templateName: '템플릿1',
-    templateColor: '#F7F7F2',
+    templateColor: '#FFFEF5',
     templateFont: 'LINESeedKR',
-    templateFontSize: 'medium',
-    titleImgUrl: ''
+    templateFontSize: 'large',
+    titleImgUrl: 'https://linkmarry.s3.ap-northeast-2.amazonaws.com/27942cb0-58c9-4d44-95a7-c6134547377d-GettyImages-jv12578254.jpg.jpg'
 };
