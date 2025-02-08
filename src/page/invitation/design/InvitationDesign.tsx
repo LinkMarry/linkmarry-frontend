@@ -261,7 +261,9 @@ function InvitationDesign() {
     }
 
     return (
-        <Row flex={1} $alignItems={'stretch'}>
+        <Row flex={1} $alignItems={'stretch'} $customStyle={css`
+            overflow: scroll;
+        `}>
             <Column flex={1} $alignItems={'stretch'} $customStyle={css`
                 min-width: 618px;
                 background: var(--g-100);
