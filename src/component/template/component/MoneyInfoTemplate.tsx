@@ -89,7 +89,7 @@ function MoneyInfoComponent(
                     `}>{secondBaseInfo.korean}측</Text>
                     <Spacer/>
                     <Icon iconType={IconType.ExpandArrow} customStyle={css`
-                        color: var(--p-800);
+                        fill: var(--p-800);
                         ${clickedBride ? css`
                             rotate: 90deg;
                         ` : css`
@@ -186,7 +186,7 @@ function MoneyCell(props: {
                 <Text type={'btn1'}>{fullBankNumber}</Text>
                 <Spacer/>
                 <Icon iconType={IconType.Copy} size={20} customStyle={css`
-                    color: var(--g-400);
+                    fill: var(--g-400);
                 `} onClick={async () => {
                     try {
                         await navigator.clipboard.writeText(fullBankNumber);

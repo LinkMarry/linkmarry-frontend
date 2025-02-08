@@ -53,7 +53,7 @@ function Preview1Template(
                 <Row gap={8} $alignItems={'center'}>
                     <Text size={16} weight={300}>{first.korean} {first.name}</Text>
                     <Icon iconType={IconType.HeartFill} size={16} customStyle={css`
-                        fill: white;
+                        fill: black;
                     `}/>
                     <Text size={16} weight={300}>{second.korean} {second.name}</Text>
                 </Row>

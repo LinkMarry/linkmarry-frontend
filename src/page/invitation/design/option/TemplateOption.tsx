@@ -130,7 +130,7 @@ function TemplateOption(
                             <Icon
                                 iconType={IconType.AddLine}
                                 customStyle={css`
-                                    color: var(--g-600);
+                                    fill: var(--g-600);
                                 `}
                                 size={24}
                             />
