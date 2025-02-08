@@ -7,7 +7,30 @@ export type TemplateName =
     | '템플릿4'
     | '템플릿5'
     | '템플릿6'
-export const templateNames: TemplateName[] = ['템플릿1', '템플릿2', '템플릿3', '템플릿4', '템플릿5', '템플릿6'];
+    | '클래식 엘레강스'
+    | '내추럴 가든'
+    | '모던 심플'
+    | '로맨틱 포레스트'
+    | '드림 웨딩'
+    | '퓨어 러브'
+    | '모던 러브'
+    | '클래식 로맨스';
+export const templateNames: TemplateName[] = [
+    '템플릿1',
+    '템플릿2',
+    '템플릿3',
+    '템플릿4',
+    '템플릿5',
+    '템플릿6',
+    '클래식 엘레강스',
+    '내추럴 가든',
+    '모던 심플',
+    '로맨틱 포레스트',
+    '드림 웨딩',
+    '퓨어 러브',
+    '모던 러브',
+    '클래식 로맨스'
+];
 export const templateNameRecord: Record<TemplateName, {
     imgSrc: string;
 }> = {
@@ -28,6 +51,30 @@ export const templateNameRecord: Record<TemplateName, {
     },
     템플릿6: {
         imgSrc: '/template-sample/template6.webp'
+    },
+    '클래식 엘레강스': {
+        imgSrc: ''
+    },
+    '내추럴 가든': {
+        imgSrc: ''
+    },
+    '모던 심플': {
+        imgSrc: ''
+    },
+    '로맨틱 포레스트': {
+        imgSrc: ''
+    },
+    '드림 웨딩': {
+        imgSrc: ''
+    },
+    '퓨어 러브': {
+        imgSrc: ''
+    },
+    '모던 러브': {
+        imgSrc: ''
+    },
+    '클래식 로맨스': {
+        imgSrc: ''
     },
 }
 
@@ -77,7 +124,7 @@ export default interface Template {
 
     // 선택한 템플릿 폰트 사이즈
     templateFontSize: TemplateFontSize;
-    
+
     // 대표 사진 URL
     titleImgUrl: string;
 }
