@@ -41,7 +41,14 @@ function RsvpDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
+            <Column gap={48} $alignItems={'stretch'} $customStyle={css`
+                ${applyBaseDialogContent()};
+                max-width: 436px;
+                width: 90vw;
+                border-radius: 12px;
+                background: white;
+                padding: 44px 24px;
+            `}>
                 <Column gap={24} $alignItems={'stretch'}>
                     <Column gap={4} $alignItems={'center'}>
                         <Text type={'h6'} customStyle={css`
@@ -79,24 +86,9 @@ function RsvpDialog(
                         }}
                     >오늘 하루 보지 않기</Text>
                 </Column>
-            </S.container>
+            </Column>
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        ${applyBaseDialogContent()};
-        flex-direction: column;
-        max-width: 436px;
-        width: 100vw;
-        border-radius: 12px;
-        background: white;
-        padding: 44px 24px;
-        align-items: stretch;
-        gap: 48px;
-    `
 }
 
 export default RsvpDialog;

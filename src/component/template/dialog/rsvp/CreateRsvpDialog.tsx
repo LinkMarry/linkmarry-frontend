@@ -77,7 +77,16 @@ function CreateRsvpDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
+            <Column $alignItems={'stretch'} $customStyle={css`
+                max-width: 436px;
+                width: 100vw;
+                max-height: 100vh;
+                overflow-y: hidden;
+                background: white;
+                padding-bottom: 36px;
+                border-radius: 4px;
+                ${applyBaseDialogContent()};
+            `}>
                 <Row $alignItems={'center'} $customStyle={css`
                     position: relative;
                     padding: 24px 0;
@@ -160,7 +169,7 @@ function CreateRsvpDialog(
                     </Column>
                     <Button text={'참석의사 전달하기'} onClick={() => setShowConfirmCreateRsvpDialog(true)}/>
                 </Column>
-            </S.container>
+            </Column>
             {showConfirmCreateRsvpDialog && (
                 <ConfirmCreateRsvpDialog
                     dismiss={() => setShowConfirmCreateRsvpDialog(false)}
@@ -169,22 +178,6 @@ function CreateRsvpDialog(
             )}
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        flex-direction: column;
-        max-width: 436px;
-        width: 100vw;
-        max-height: 100vh;
-        overflow-y: hidden;
-        align-items: stretch;
-        background: white;
-        padding-bottom: 36px;
-        border-radius: 4px;
-        ${applyBaseDialogContent()};
-    `
 }
 
 export default CreateRsvpDialog;

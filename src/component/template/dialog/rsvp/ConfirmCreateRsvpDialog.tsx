@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
@@ -18,7 +18,14 @@ function ConfirmCreateRsvpDialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
+            <Column gap={48} $alignItems={'center'} $customStyle={css`
+                ${applyBaseDialogContent()};
+                border-radius: 12px;
+                padding: 44px 36px;
+                background: white;
+                max-width: 388px;
+                width: 90vw;
+            `}>
                 <Column gap={4} $alignItems={'center'}>
                     <Text type={'h6'}>참석의사 전달</Text>
                     <Text type={'caption1'}>참석의사 전달시 수정이 불가능합니다</Text>
@@ -27,24 +34,9 @@ function ConfirmCreateRsvpDialog(
                     <Button text={'취소'} role={'assistive'} onClick={dismiss} style={{flex: 1}}/>
                     <Button text={'확인'} onClick={onConfirm} style={{flex: 1}}/>
                 </Row>
-            </S.container>
+            </Column>
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        flex-direction: column;
-        gap: 48px;
-        ${applyBaseDialogContent()};
-        border-radius: 12px;
-        padding: 44px 36px;
-        align-items: center;
-        background: white;
-        max-width: 388px;
-        width: 90vw;
-    `
 }
 
 export default ConfirmCreateRsvpDialog;
