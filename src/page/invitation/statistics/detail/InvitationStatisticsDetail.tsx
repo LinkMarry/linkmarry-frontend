@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import S from '@page/invitation/statistics/detail/InvitationStatisticsDetail.style';
 import {useNavigate, useParams} from "react-router-dom";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
@@ -18,7 +17,9 @@ import Button from "@designsystem/component/Button";
 import Spacer from "@designsystem/component/Spacer";
 import ToolTip from "@designsystem/component/ToolTip";
 import {getWeddingUrl} from "@util/string.util";
-import {css} from "styled-components";
+import styled, {css, RuleSet} from "styled-components";
+import makeText from "@designsystem/foundation/text/TextType";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
@@ -310,31 +311,44 @@ function InvitationStatisticsDetail() {
                                 />
                                 <Column gap={28} $alignItems={'center'}>
                                     <Column>
-                                        <S.rsvp.headerRow>
-                                            <S.rsvp.cell width={146}>작성일</S.rsvp.cell>
-                                            <S.rsvp.cell width={106}>참석인</S.rsvp.cell>
-                                            <S.rsvp.cell width={106}>참석여부</S.rsvp.cell>
-                                            <S.rsvp.cell width={106}>식사여부</S.rsvp.cell>
-                                            <S.rsvp.contentCell>전달사항</S.rsvp.contentCell>
-                                            <S.rsvp.cell width={200}>전화번호</S.rsvp.cell>
-                                        </S.rsvp.headerRow>
+                                        <CustomStyle $customStyle={css`
+                                            ${BaseRow};
+                                            border-bottom: 1px solid black;
+                                        `}>
+                                            <Cell width={146}>작성일</Cell>
+                                            <Cell width={106}>참석인</Cell>
+                                            <Cell width={106}>참석여부</Cell>
+                                            <Cell width={106}>식사여부</Cell>
+                                            <Cell $customStyle={css`
+                                                flex: 1;
+                                            `}>전달사항</Cell>
+                                            <Cell width={200}>전화번호</Cell>
+                                        </CustomStyle>
                                         {weddingStatistics.rsvpInfos
                                             .filter(w => {
                                                 if (selectedGuestType === undefined) return true;
                                                 return w.guestType === selectedGuestType;
                                             })
                                             .map(rsvp => (
-                                                <S.rsvp.bodyRow>
-                                                    <S.rsvp.cell width={146}>{rsvp.createdDate}</S.rsvp.cell>
-                                                    <S.rsvp.cell width={106}>{rsvp.guestName}</S.rsvp.cell>
-                                                    <S.rsvp.cell
-                                                        width={106}>{rsvp.isAttend ? (`${guestTypeRecord[rsvp.guestType].korean}측`) : '미참석'}</S.rsvp.cell>
-                                                    <S.rsvp.cell
-                                                        width={106}>{wedding.rsvp.attendMealStatus ? (rsvp.isMeal ? '식사함' : '식사안함') : '-'}</S.rsvp.cell>
-                                                    <S.rsvp.contentCell>{wedding.rsvp.attendEtcStatus ? (rsvp.guestComment ?? '-') : '-'}</S.rsvp.contentCell>
-                                                    <S.rsvp.cell
-                                                        width={200}>{wedding.rsvp.attendPhoneStatus ? (rsvp.guestPhone ?? '-') : '-'}</S.rsvp.cell>
-                                                </S.rsvp.bodyRow>
+                                                <CustomStyle $customStyle={css`
+                                                    ${BaseRow};
+                                                    border-bottom: 1px solid var(--g-100);
+                                                `}>
+                                                    <Cell width={146}>{rsvp.createdDate}</Cell>
+                                                    <Cell width={106}>{rsvp.guestName}</Cell>
+                                                    <Cell width={106}>
+                                                        {rsvp.isAttend ? (`${guestTypeRecord[rsvp.guestType].korean}측`) : '미참석'}
+                                                    </Cell>
+                                                    <Cell width={106}>
+                                                        {wedding.rsvp.attendMealStatus ? (rsvp.isMeal ? '식사함' : '식사안함') : '-'}
+                                                    </Cell>
+                                                    <Cell $customStyle={css`
+                                                        flex: 1;
+                                                    `}>{wedding.rsvp.attendEtcStatus ? (rsvp.guestComment ?? '-') : '-'}</Cell>
+                                                    <Cell width={200}>
+                                                        {wedding.rsvp.attendPhoneStatus ? (rsvp.guestPhone ?? '-') : '-'}
+                                                    </Cell>
+                                                </CustomStyle>
                                             ))
                                         }
                                     </Column>
@@ -347,5 +361,34 @@ function InvitationStatisticsDetail() {
         </Column>
     );
 }
+
+
+const BaseRow = css`
+    display: flex;
+    padding: 0 8px;
+    height: 60px;
+    align-items: stretch;
+`;
+
+const BaseCell = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 146px;
+    ${makeText('p4')};
+`;
+
+const Cell = styled(BaseCell)<{
+    width?: number;
+    $customStyle?: RuleSet;
+}>`
+    ${({width, $customStyle}) => css`
+        ${width && css`
+            width: ${width}px;
+        `}
+        ${$customStyle};
+    `};
+`
+
 
 export default InvitationStatisticsDetail;

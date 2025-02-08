@@ -76,7 +76,7 @@ function RsvpTemplate(
                                 `}
                             >{first.korean} {first.name}</Text>
                             <Icon iconType={IconType.HeartFill} size={16} customStyle={css`
-                                color: var(--g-600);
+                                fill: var(--g-600);
                             `}/>
                             <Text size={16} weight={300} customStyle={css`
                                 flex: 1;

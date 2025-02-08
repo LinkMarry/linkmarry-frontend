@@ -1,9 +1,10 @@
 import React from 'react';
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import S from '@page/invitation/InvitationLayout.style';
 import InvitationSideBar from "@page/invitation/component/InvitationSideBar";
 import HasHeader from "@designsystem/component/header/hasHeader";
 import {InvitationSideBarType} from "@page/invitation/component/InvitationSideBarType";
+import {Row} from "@designsystem/component/FlexLayout";
+import {css} from "styled-components";
 
 function getSelectedSideBarType(pathname: string): InvitationSideBarType | null {
     if (pathname.startsWith('/dashboard')) {
@@ -22,12 +23,16 @@ function InvitationLayout() {
 
     return (
         <HasHeader>
-            <S.container>
+            <Row flex={1} $alignItems={'stretch'} $customStyle={css`
+                width: 100vw;
+                background: var(--g-200);
+                overflow: hidden;
+            `}>
                 <InvitationSideBar selected={sideBarType!!} onChange={item => {
                     navigate(item);
                 }}/>
                 <Outlet/>
-            </S.container>
+            </Row>
         </HasHeader>
     );
 }

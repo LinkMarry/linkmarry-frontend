@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import S from '@page/invitation/dashboard/InvitationDashboard.style';
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import DashboardInvitationCell, {
     DashboardInvitationCellClickType
@@ -17,6 +16,7 @@ import {isAxiosError} from "axios";
 import PayWaterMarkDialog from "@page/invitation/dashboard/dialog/PayWaterMarkDialog";
 import Dialog from "@designsystem/component/dialog/dialog";
 import {css} from "styled-components";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 function InvitationDashboard() {
     const [showCreateDesignDialog, setShowCreateDesignDialog] = useState(false);
@@ -91,7 +91,10 @@ function InvitationDashboard() {
     }
 
     return (
-        <S.container>
+        <Row flex={1} $customStyle={css`
+            background: white;
+            overflow-y: scroll;
+        `}>
             <Column gap={44} $alignItems={'stretch'} $customStyle={css`
                 margin-left: 64px;
             `}>
@@ -115,8 +118,24 @@ function InvitationDashboard() {
                         }}>워터마크 제거 가능 횟수 {weddingDashboard?.invitation}</Text>
                     )}
                 </Row>
-                <S.items>
-                    <S.createDesignButton onClick={() => {
+                <CustomStyle $customStyle={css`
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
+                    gap: 28px;
+                    justify-items: start;
+                `}>
+                    <CustomStyle as={'button'} $customStyle={css`
+                        display: flex;
+                        width: 300px;
+                        height: 420px;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1px solid var(--p-800);
+                        outline: none;
+                        border-radius: 12px;
+                        background: white;
+                        cursor: pointer;
+                    `} onClick={() => {
                         setShowCreateDesignDialog(true);
                     }}>
                         <Column gap={8} $alignItems={'center'}>
@@ -127,7 +146,7 @@ function InvitationDashboard() {
                                 color: var(--g-500);
                             `}>새 디자인 만들기</Text>
                         </Column>
-                    </S.createDesignButton>
+                    </CustomStyle>
                     {weddingDashboard ? (
                         weddingDashboard.weddingInfo.map((weddingInfo, index) =>
                             <DashboardInvitationCell key={index} weddingInfo={weddingInfo} onClick={async type => {
@@ -137,7 +156,7 @@ function InvitationDashboard() {
                     ) : (
                         <div>...</div>
                     )}{/* TODO: Shimmer */}
-                </S.items>
+                </CustomStyle>
                 <Spacer h={32}/>
             </Column>
             {showCreateDesignDialog && <CreateDesignDialog dismiss={() => setShowCreateDesignDialog(false)}/>}
@@ -189,7 +208,7 @@ function InvitationDashboard() {
                     }}
                 />
             )}
-        </S.container>
+        </Row>
     );
 }
 

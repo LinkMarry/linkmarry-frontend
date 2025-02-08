@@ -1,15 +1,14 @@
 import React, {useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
-import * as S from '@src/component/template/TemplateComponent.style';
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/template/component/FooterTemplate";
-import {templateFontSizeRecord, TemplateName} from "@remote/value/Template";
+import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
 import CongratulationsTemplate from "@src/component/template/component/CongratulationsTemplate";
 import WeddingDayTemplate from "@src/component/template/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "@src/component/template/component/LocationTemplate";
-import PreviewTemplate from "@src/component/template/component/PreviewTemplate";
+import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import GalleryTemplate, {GallerySlideStyle} from "@src/component/template/component/GalleryTemplate";
 import VideoTemplate from "@src/component/template/component/VideoTemplate";
 import {DDayStyle} from "@src/component/template/component/weddingday/DDay";
@@ -55,32 +54,36 @@ function TemplateComponent(
         Cookies.remove('hide_RsvpDialog')
     })();
 
-    const slideStyle: Record<TemplateName, GallerySlideStyle | undefined> = {
-        템플릿1: 'style1',
-        템플릿2: 'style2',
-        템플릿3: 'style1',
-        템플릿4: 'style2',
-        템플릿5: undefined,
-        템플릿6: 'style1',
-    };
-
-    const dDayStyle: Record<TemplateName, DDayStyle> = {
-        템플릿1: 'style1',
-        템플릿2: 'style2',
-        템플릿3: 'style1',
-        템플릿4: 'style2',
-        템플릿5: 'style2',
-        템플릿6: 'style1',
-    }
-
-    const invitationLetterStyle: Record<TemplateName, InvitationLetterStyle> = {
-        템플릿1: 'style1',
-        템플릿2: 'style1',
-        템플릿3: 'style2',
-        템플릿4: 'style3',
-        템플릿5: 'style3',
-        템플릿6: 'style2',
-    }
+    // TODO: Temp
+    const slideStyle: GallerySlideStyle = 'style1';
+    const dDayStyle: DDayStyle = 'style1';
+    const invitationLetterStyle: InvitationLetterStyle = 'style1';
+    // const slideStyle: Record<TemplateName, GallerySlideStyle | undefined> = {
+    //     템플릿1: 'style1',
+    //     템플릿2: 'style2',
+    //     템플릿3: 'style1',
+    //     템플릿4: 'style2',
+    //     템플릿5: undefined,
+    //     템플릿6: 'style1',
+    // };
+    //
+    // const dDayStyle: Record<TemplateName, DDayStyle> = {
+    //     템플릿1: 'style1',
+    //     템플릿2: 'style2',
+    //     템플릿3: 'style1',
+    //     템플릿4: 'style2',
+    //     템플릿5: 'style2',
+    //     템플릿6: 'style1',
+    // }
+    //
+    // const invitationLetterStyle: Record<TemplateName, InvitationLetterStyle> = {
+    //     템플릿1: 'style1',
+    //     템플릿2: 'style1',
+    //     템플릿3: 'style2',
+    //     템플릿4: 'style3',
+    //     템플릿5: 'style3',
+    //     템플릿6: 'style2',
+    // }
 
     // console.log(`pos - ${wedding.position}`)
 
@@ -90,11 +93,12 @@ function TemplateComponent(
             width: 100vw;
             align-items: stretch;
 
-            *:not(.override-font) {
+            *:not(.override-font):not(.override-font *) {
                 ${templateFont && implementText({
                     fontFamily: templateFont
                 })};
             }
+
             border-radius: 12px;
             box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.16);
             overflow: hidden;
@@ -118,14 +122,14 @@ function TemplateComponent(
                             key={index}
                             baseInfo={wedding.baseInfo}
                             greeting={wedding.greeting}
-                            invitationLetterStyle={invitationLetterStyle[wedding.template.templateName]}
+                            invitationLetterStyle={invitationLetterStyle}
                         />;
                     case optionRecord[OptionType.WeddingSchedule].index:
                         return <WeddingDayTemplate
                             key={index}
                             baseInfo={wedding.baseInfo}
                             weddingSchedule={wedding.weddingSchedule}
-                            dDayStyle={dDayStyle[wedding.template.templateName]}
+                            dDayStyle={dDayStyle}
                         />
                     case optionRecord[OptionType.Phone].index:
                         return <CongratulationsTemplate
@@ -140,7 +144,7 @@ function TemplateComponent(
                             rootRef={rootRef}
                             imgDesign={wedding.imgDesign}
                             imgList={wedding.imgList}
-                            slideStyle={slideStyle[wedding.template.templateName]}
+                            slideStyle={slideStyle}
                         />
                     case optionRecord[OptionType.WeddingPlace].index:
                         return <LocationTemplate
