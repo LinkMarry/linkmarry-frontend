@@ -1,10 +1,18 @@
 import React from 'react';
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
-import {templateNameRecord, templateNames} from "@remote/value/Template";
 import {css} from "styled-components";
 
 function HomeSlide3() {
+    const imgList = [
+        'template-sample/template1.webp',
+        'template-sample/template2.webp',
+        'template-sample/template3.webp',
+        'template-sample/template4.webp',
+        'template-sample/template5.webp',
+        'template-sample/template6.webp',
+    ];
+    
     return (
         <Column gap={52} $alignItems={'center'} $customStyle={css`
             padding: 140px 217px;
@@ -21,8 +29,8 @@ function HomeSlide3() {
                 box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.12);
                 overflow: hidden;
             `}>
-                {templateNames.map((name, index) => (
-                    <img key={index} src={templateNameRecord[name].imgSrc} alt="" style={{
+                {imgList.map((src, index) => (
+                    <img key={index} src={src} alt="" style={{
                         width: 194,
                         height: 285,
                         objectFit: 'cover',
