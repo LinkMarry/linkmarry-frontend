@@ -11,7 +11,7 @@ import PreviewTemplate from "@src/component/template/component/preview/PreviewTe
 import CustomStyle from "@designsystem/component/CustomStyle";
 import {getDetails} from "@remote/value/WeddingSchedule";
 
-function Preview1Template(
+function WhiteMomentPreviewTemplate(
     {
         baseInfo,
         template,
@@ -62,4 +62,4 @@ function Preview1Template(
     );
 }
 
-export default Preview1Template;
+export default WhiteMomentPreviewTemplate;

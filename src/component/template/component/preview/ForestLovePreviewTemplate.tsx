@@ -9,7 +9,7 @@ import {getDetails} from "@remote/value/WeddingSchedule";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
-function Preview2Template(
+function ForestLovePreviewTemplate(
     {
         template,
         baseInfo,
@@ -43,4 +43,4 @@ function Preview2Template(
     );
 }
 
-export default Preview2Template;
+export default ForestLovePreviewTemplate;

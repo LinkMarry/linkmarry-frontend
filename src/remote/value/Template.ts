@@ -1,12 +1,10 @@
 import {LinkMarryFont} from "@designsystem/foundation/text/TextType";
 
 export type TemplateName =
-    '템플릿1'
-    | '템플릿2'
-    | '템플릿3'
-    | '템플릿4'
-    | '템플릿5'
-    | '템플릿6'
+    '화이트 모먼트'
+    | '포레스트 러브'
+    | '네이처 블리스'
+    | '소울메이트'
     | '클래식 엘레강스'
     | '내추럴 가든'
     | '모던 심플'
@@ -16,12 +14,10 @@ export type TemplateName =
     | '모던 러브'
     | '클래식 로맨스';
 export const templateNames: TemplateName[] = [
-    '템플릿1',
-    '템플릿2',
-    '템플릿3',
-    '템플릿4',
-    '템플릿5',
-    '템플릿6',
+    '화이트 모먼트',
+    '포레스트 러브',
+    '네이처 블리스',
+    '소울메이트',
     '클래식 엘레강스',
     '내추럴 가든',
     '모던 심플',
@@ -34,22 +30,16 @@ export const templateNames: TemplateName[] = [
 export const templateNameRecord: Record<TemplateName, {
     imgSrc: string;
 }> = {
-    템플릿1: {
+    '화이트 모먼트': {
         imgSrc: '/template-sample/template1.webp'
     },
-    템플릿2: {
+    '포레스트 러브': {
         imgSrc: '/template-sample/template2.webp'
     },
-    템플릿3: {
-        imgSrc: '/template-sample/template3.webp'
-    },
-    템플릿4: {
+    '네이처 블리스': {
         imgSrc: '/template-sample/template4.webp'
     },
-    템플릿5: {
-        imgSrc: '/template-sample/template5.webp'
-    },
-    템플릿6: {
+    소울메이트: {
         imgSrc: '/template-sample/template6.webp'
     },
     '클래식 엘레강스': {
@@ -130,7 +120,7 @@ export default interface Template {
 }
 
 export const defaultTemplate: Template = {
-    templateName: '템플릿1',
+    templateName: '화이트 모먼트',
     templateColor: '#F7F7F2',
     templateFont: 'LINESeedKR',
     templateFontSize: 'medium',
@@ -138,7 +128,7 @@ export const defaultTemplate: Template = {
 }
 
 export const dummyTemplate: Template = {
-    templateName: '템플릿1',
+    templateName: '화이트 모먼트',
     templateColor: '#FFFEF5',
     templateFont: 'LINESeedKR',
     templateFontSize: 'large',

@@ -3,12 +3,18 @@ import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import BaseInfo from "@remote/value/BaseInfo";
 import Template from "@remote/value/Template";
-import Preview1Template from "@src/component/template/component/preview/Preview1Template";
-import Preview2Template from "@src/component/template/component/preview/Preview2Template";
-import Preview3Template from "@src/component/template/component/preview/Preview3Template";
-import Preview4Template from "@src/component/template/component/preview/Preview4Template";
-import Preview5Template from "@src/component/template/component/preview/Preview5Template";
-import Preview6Template from "@src/component/template/component/preview/Preview6Template";
+import WhiteMomentPreviewTemplate from "@src/component/template/component/preview/WhiteMomentPreviewTemplate";
+import ForestLovePreviewTemplate from "@src/component/template/component/preview/ForestLovePreviewTemplate";
+import NatureBlissPreviewTemplate from "@src/component/template/component/preview/NatureBlissPreviewTemplate";
+import SoulmatePreviewTemplate from "@src/component/template/component/preview/SoulmatePreviewTemplate";
+import ClassicElegancePreviewTemplate from "@src/component/template/component/preview/ClassicElegancePreviewTemplate";
+import NaturalGardenPreviewTemplate from "@src/component/template/component/preview/NaturalGardenPreviewTemplate";
+import ModernSimplePreviewTemplate from "@src/component/template/component/preview/ModernSimplePreviewTemplate";
+import RomanticForestPreviewTemplate from "@src/component/template/component/preview/RomanticForestPreviewTemplate";
+import DreamWeddingPreviewTemplate from "@src/component/template/component/preview/DreamWeddingPreviewTemplate";
+import PureLovePreviewTemplate from "@src/component/template/component/preview/PureLovePreviewTemplate";
+import ModernLovePreviewTemplate from "@src/component/template/component/preview/ModernLovePreviewTemplate";
+import ClassicRomancePreviewTemplate from "@src/component/template/component/preview/ClassicRomancePreviewTemplate";
 
 export interface PreviewTemplateProps {
     template: Template;
@@ -21,50 +27,30 @@ function PreviewTemplate(
     props: PreviewTemplateProps
 ) {
     switch (props.template.templateName) {
-        case '템플릿1':
-            return <Preview1Template {...props}/>;
-        case '템플릿2':
-            return <Preview2Template {...props}/>;
-        case '템플릿3':
-            return <Preview3Template {...props}/>;
-        case '템플릿4':
-            return <Preview4Template {...props}/>;
-        case '템플릿5':
-            return <Preview5Template {...props}/>;
-        case '템플릿6':
-            return <Preview6Template {...props}/>;
+        case '화이트 모먼트':
+            return <WhiteMomentPreviewTemplate {...props}/>;
+        case '포레스트 러브':
+            return <ForestLovePreviewTemplate {...props}/>;
+        case '네이처 블리스':
+            return <NatureBlissPreviewTemplate {...props}/>;
+        case '소울메이트':
+            return <SoulmatePreviewTemplate {...props}/>;
         case '클래식 엘레강스':
-            return (
-                <></>
-            );
+            return <ClassicElegancePreviewTemplate {...props}/>;
         case '내추럴 가든':
-            return (
-                <></>
-            );
+            return <NaturalGardenPreviewTemplate {...props}/>;
         case '모던 심플':
-            return (
-                <></>
-            );
+            return <ModernSimplePreviewTemplate {...props}/>;
         case '로맨틱 포레스트':
-            return (
-                <></>
-            );
+            return <RomanticForestPreviewTemplate {...props}/>;
         case '드림 웨딩':
-            return (
-                <></>
-            );
+            return <DreamWeddingPreviewTemplate {...props}/>;
         case '퓨어 러브':
-            return (
-                <></>
-            );
+            return <PureLovePreviewTemplate {...props}/>;
         case '모던 러브':
-            return (
-                <></>
-            );
+            return <ModernLovePreviewTemplate {...props}/>;
         case '클래식 로맨스':
-            return (
-                <></>
-            );
+            return <ClassicRomancePreviewTemplate {...props}/>;
     }
 }
 

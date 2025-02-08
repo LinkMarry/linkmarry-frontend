@@ -1,7 +1,7 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 
-function PreviewDreamWeddingTemplate(
+function ClassicRomancePreviewTemplate(
     {
         
     }: ComponentProps<typeof PreviewTemplate>
@@ -11,4 +11,4 @@ function PreviewDreamWeddingTemplate(
     );
 }
 
-export default PreviewDreamWeddingTemplate;
+export default ClassicRomancePreviewTemplate;

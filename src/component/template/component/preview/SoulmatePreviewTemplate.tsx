@@ -8,7 +8,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
-function Preview6Template(
+function SoulmatePreviewTemplate(
     {
         baseInfo,
         template,
@@ -45,4 +45,4 @@ function Preview6Template(
     );
 }
 
-export default Preview6Template;
+export default SoulmatePreviewTemplate;

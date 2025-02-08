@@ -9,7 +9,7 @@ import {getDetails} from "@remote/value/WeddingSchedule";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
-function Preview4Template(
+function NatureBlissPreviewTemplate(
     {
         baseInfo,
         template,
@@ -45,4 +45,4 @@ function Preview4Template(
     );
 }
 
-export default Preview4Template;
+export default NatureBlissPreviewTemplate;
