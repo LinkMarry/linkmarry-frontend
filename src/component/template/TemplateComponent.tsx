@@ -93,7 +93,7 @@ function TemplateComponent(
             width: 100vw;
             align-items: stretch;
 
-            *:not(.override-font) {
+            *:not(.override-font):not(.override-font *) {
                 ${templateFont && implementText({
                     fontFamily: templateFont
                 })};
