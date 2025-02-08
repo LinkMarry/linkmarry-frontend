@@ -2,15 +2,34 @@ import {RuleSet} from "styled-components";
 import TextProperties, {implementText} from "@designsystem/foundation/text/TextProperties";
 
 export type LinkMarryFont =
-    'LINESeedKR'
+    'Pretendard'
     | 'Aleo'
-    | 'GangwonEduAll'
-    | 'SCoreDream'
     | 'Rufina'
-    | 'Pretendard';
+    | 'SCoreDream'
+    | 'LINESeedKR'
+    | 'GangwonEduAll'
+    | 'iceJaram'
+    | 'GyeonggiBatang'
+    | 'UnrealScienceOrbit'
+    | 'UnrealScienceMedicine'
+    | 'KoPubWorldBatang'
+    | 'TheFaceShopInklipquid'
+    | 'KyoboHandwriting2020';
 
 export const linkMarryFonts: LinkMarryFont[] = [
-    'LINESeedKR', 'Aleo', 'GangwonEduAll', 'SCoreDream', 'Rufina', 'Pretendard'
+    'Pretendard',
+    'Aleo',
+    'Rufina',
+    'SCoreDream',
+    'LINESeedKR',
+    'GangwonEduAll',
+    'iceJaram',
+    'GyeonggiBatang',
+    'UnrealScienceOrbit',
+    'UnrealScienceMedicine',
+    'KoPubWorldBatang',
+    'TheFaceShopInklipquid',
+    'KyoboHandwriting2020'
 ];
 
 export type TextType =

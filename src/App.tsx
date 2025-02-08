@@ -17,7 +17,6 @@ import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestCom
 import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
-import GlobalStyle from "@src/GlobalStyle";
 import WeddingPage from "@page/WeddingPage";
 import {Helmet} from "react-helmet";
 import LoginPage from "@page/LoginPage";
@@ -40,7 +39,6 @@ function App() {
             autoFocus,
             setAutoFocus: value => setAutoFocus(value),
         }}>
-            <GlobalStyle/>
             <Helmet>
                 <meta property="og:title" content="링크메리"/>
                 <meta property="og:description"

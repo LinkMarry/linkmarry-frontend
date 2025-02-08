@@ -33,7 +33,8 @@ const DividerStyle = styled.div<{
     width: 100%;
     ${({size, $customStyle}) => css`
         height: ${dividerSizeToNumber[size]}px;
-        ${customStyle};
+        background: var(--g-100);
+        ${$customStyle};
     `};
 `;
 

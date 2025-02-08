@@ -1,3 +1,107 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css');
+
+@font-face {
+    font-family: LINESeedKR;
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: LINESeedKR;
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: LINESeedKR;
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Th.woff2') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GangwonEduAll;
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GangwonEduAll;
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: iceJaram;
+    src: url('/src/designsystem/foundation/text/fonts/iceJaram.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: GyeonggiBatang;
+    src: url('/src/designsystem/foundation/text/fonts/GyeonggiBatang_Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: GyeonggiBatang;
+    src: url('/src/designsystem/foundation/text/fonts/GyeonggiBatang_Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: UnrealScienceOrbit;
+    src: url('/src/designsystem/foundation/text/fonts/UnrealScienceOrbit.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: UnrealScienceMedicine;
+    src: url('/src/designsystem/foundation/text/fonts/UnrealScienceMedicine.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: KoPubWorldBatang;
+    src: url('/src/designsystem/foundation/text/fonts/KoPubWorld Batang_Pro Bold.otf') format('opentype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: KoPubWorldBatang;
+    src: url('/src/designsystem/foundation/text/fonts/KoPubWorld Batang_Pro Medium.otf') format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: KoPubWorldBatang;
+    src: url('/src/designsystem/foundation/text/fonts/KoPubWorld Batang_Pro Light.otf') format('opentype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: TheFaceShopInklipquid;
+    src: url('/src/designsystem/foundation/text/fonts/THEFACESHOP INKLIPQUID.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: KyoboHandwriting2020;
+    src: url('/src/designsystem/foundation/text/fonts/KyoboHandwriting2020.otf') format('opentype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
 :root {
     /*
     Primary colors
