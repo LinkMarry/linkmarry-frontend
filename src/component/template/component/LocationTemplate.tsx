@@ -59,7 +59,8 @@ function LocationTemplate(
                 <Text size={16} weight={300} style={{
                     marginLeft: 24,
                     alignSelf: 'stretch',
-                    textAlign: 'start'
+                    textAlign: 'start',
+                    whiteSpace: 'pre-line'
                 }}>{weddingPlace.placeTransportation}</Text>
             </Column>
             <Spacer h={65}/>

@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithRef, ForwardedRef, forwardRef, TextareaHTMLAttributes} from 'react';
+import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
 import {css, RuleSet} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 import CustomStyle from "@designsystem/component/CustomStyle";
@@ -25,6 +25,7 @@ function Textarea(
             ${makeText('p5')};
             resize: vertical;
             padding: 12px 16px;
+            ${customStyle};
         `} {...props}/>
     );
 }
