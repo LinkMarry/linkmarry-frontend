@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful-dnd';
-import S from '@page/invitation/design/InvitationDesign.style';
 import OptionCell from "@page/invitation/design/component/OptionCell";
 import {allCasesOfEnum} from "@util/enum.util";
 import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
@@ -43,6 +42,8 @@ import WeddingDto from "@remote/value/WeddingDto";
 import AutoFocusOption from "@page/invitation/design/option/AutoFocusOption";
 import AutoFocusContext from "@src/context/AutoFocusContext";
 import {css} from "styled-components";
+import CustomStyle from "@designsystem/component/CustomStyle";
+import Divider from "@designsystem/component/Divider";
 
 type DesignMode = 'create' | 'edit';
 
@@ -260,8 +261,13 @@ function InvitationDesign() {
     }
 
     return (
-        <S.container>
-            <S.optionContainer>
+        <Row flex={1} $alignItems={'stretch'}>
+            <Column flex={1} $alignItems={'stretch'} $customStyle={css`
+                min-width: 618px;
+                background: var(--g-100);
+                padding: 48px 44px 109px 44px;
+                overflow-y: scroll;
+            `}>
                 <Row $alignItems={'flex-end'}>
                     <Column gap={8}>
                         <Text type={'h5'}>청첩장 제작</Text>
@@ -275,7 +281,9 @@ function InvitationDesign() {
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId={'option-droppable'}>
                         {(provided) => (
-                            <S.options {...provided.droppableProps} ref={provided.innerRef}>
+                            <Column $alignItems={'stretch'} $customStyle={css`
+                                margin-top: 20px;
+                            `} {...provided.droppableProps} ref={provided.innerRef}>
                                 {staticOptions.map((option, index) => (
                                     <OptionCell
                                         key={index}
@@ -312,19 +320,35 @@ function InvitationDesign() {
                                     }}
                                 >{makeOption(OptionType.AutoFocus)}</OptionCell>
                                 {provided.placeholder}
-                            </S.options>
+                            </Column>
                         )}
                     </Droppable>
                 </DragDropContext>
-            </S.optionContainer>
-            <S.preview>
-                <S.previewScrollableContent>
-                    <S.previewContent>
+            </Column>
+            <Divider direction={'vertical'} customStyle={css`
+                background: var(--g-200);
+            `}/>
+            <CustomStyle $customStyle={css`
+                display: flex;
+                width: 604px;
+                justify-content: center;
+                background: ${wedding.template.templateColor};
+            `}>
+                <CustomStyle $customStyle={css`
+                    overflow-y: scroll;
+                `}>
+                    <CustomStyle $customStyle={css`
+                        display: flex;
+                        margin: 52px 84px;
+                        border-radius: 12px;
+                        overflow-y: hidden;
+                        box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.16);
+                    `}>
                         <TemplateComponent wedding={weddingForPreview} isPreview={true}/>
-                    </S.previewContent>
-                </S.previewScrollableContent>
-            </S.preview>
-        </S.container>
+                    </CustomStyle>
+                </CustomStyle>
+            </CustomStyle>
+        </Row>
     );
 }
 

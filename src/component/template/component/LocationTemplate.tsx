@@ -25,7 +25,7 @@ function LocationTemplate(
 
     useEffect(() => {
         if (!kakao || !kakao.maps || !kakaoMapRef.current) {
-            alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+            // alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
             return;
         }
 

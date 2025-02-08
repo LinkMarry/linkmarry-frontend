@@ -1,8 +1,10 @@
-import React, {ComponentPropsWithoutRef, CSSProperties, HTMLAttributes} from 'react';
-import styled, {css, RuleSet} from "styled-components";
-import customStyle from "@designsystem/component/CustomStyle";
+import React, {ComponentPropsWithoutRef} from 'react';
+import {css, RuleSet} from "styled-components";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 export type DividerSize = 'large' | 'medium' | 'small';
+export type DividerDirection = 'horizontal' | 'vertical';
+
 const dividerSizeToNumber: Record<DividerSize, number> = {
     large: 12,
     medium: 8,
@@ -11,31 +13,31 @@ const dividerSizeToNumber: Record<DividerSize, number> = {
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     size?: DividerSize;
+    direction?: DividerDirection;
     customStyle?: RuleSet;
 }
 
 function Divider(
     {
         size = 'small',
+        direction = 'horizontal',
         customStyle,
         ...props
     }: Props
 ) {
     return (
-        <DividerStyle size={size} $customStyle={customStyle} {...props}/>
+        <CustomStyle $customStyle={css`
+            ${direction === 'horizontal' ? css`
+                width: 100%;
+                height: ${dividerSizeToNumber[size]}px;
+            `: css`
+                width: ${dividerSizeToNumber[size]}px;
+                height: 100%;
+            `}
+            background: var(--g-100);
+            ${customStyle};
+        `} {...props}/>
     );
 }
-
-const DividerStyle = styled.div<{
-    size: DividerSize;
-    $customStyle?: RuleSet;
-}>`
-    width: 100%;
-    ${({size, $customStyle}) => css`
-        height: ${dividerSizeToNumber[size]}px;
-        background: var(--g-100);
-        ${$customStyle};
-    `};
-`;
 
 export default Divider;
