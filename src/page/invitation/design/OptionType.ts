@@ -11,8 +11,7 @@ export enum OptionType {
     Video,
     Phone,
     Rsvp,
-    Gallery,
-    AutoFocus
+    Gallery
 }
 
 export type OptionTypeMode = 'static' | 'draggable' | 'toggle';
@@ -86,10 +85,5 @@ export const optionRecord: Record<OptionType, {
         index: 12,
         title: '갤러리',
         mode: 'draggable'
-    },
-    [OptionType.AutoFocus]: {
-        index: 13,
-        title: '자동 포커스',
-        mode: 'toggle'
     }
 }

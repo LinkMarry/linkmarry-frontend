@@ -34,7 +34,7 @@ function App() {
         }
     }, []);
 
-    const [autoFocus, setAutoFocus] = useState(false);
+    const [autoFocus, setAutoFocus] = useState(true);
 
     return (
         <AutoFocusContext.Provider value={{

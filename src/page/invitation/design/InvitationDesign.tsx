@@ -39,11 +39,11 @@ import GalleryOption from "@page/invitation/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingDto from "@remote/value/WeddingDto";
-import AutoFocusOption from "@page/invitation/design/option/AutoFocusOption";
 import AutoFocusContext from "@src/context/AutoFocusContext";
 import {css} from "styled-components";
 import CustomStyle from "@designsystem/component/CustomStyle";
 import Divider from "@designsystem/component/Divider";
+import Checkbox from "@designsystem/component/Checkbox";
 
 type DesignMode = 'create' | 'edit';
 
@@ -255,8 +255,6 @@ function InvitationDesign() {
                         imgList
                     })}
                 />
-            case OptionType.AutoFocus:
-                return <AutoFocusOption/>
         }
     }
 
@@ -270,16 +268,31 @@ function InvitationDesign() {
                 padding: 48px 44px 109px 44px;
                 overflow-y: scroll;
             `}>
-                <Row $alignItems={'flex-end'}>
-                    <Column gap={8}>
-                        <Text type={'h5'}>청첩장 제작</Text>
-                        <Text type={'p3'} customStyle={css`
-                            color: var(--g-500);
-                        `}>원하는 청첩장을 만들어보세요!</Text>
-                    </Column>
-                    <Spacer/>
-                    <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>
-                </Row>
+                <Column gap={20} $alignItems={'stretch'}>
+                    <Row $alignItems={'flex-end'}>
+                        <Column gap={8}>
+                            <Text type={'h5'}>청첩장 제작</Text>
+                            <Text type={'p3'} customStyle={css`
+                                color: var(--g-500);
+                            `}>원하는 청첩장을 만들어보세요!</Text>
+                        </Column>
+                        <Spacer/>
+                        <Button text={'저장하기'} size={'medium'} onClick={saveDesign}/>
+                    </Row>
+                    <Row gap={12} $alignItems={'center'}>
+                        <Checkbox
+                            label={'자동 포커스'}
+                            checked={autoFocus} 
+                            onChange={checked => setAutoFocus(checked)}
+                        />
+                        <Text
+                            type={'caption1'}
+                            customStyle={css`
+                                color: var(--g-500);
+                            `}
+                        >청첩장 수정 시, 변경된 화면으로 자동으로 포커스가 이동합니다.</Text>
+                    </Row>
+                </Column>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId={'option-droppable'}>
                         {(provided) => (
@@ -312,15 +325,6 @@ function InvitationDesign() {
                                         }}
                                     </Draggable>
                                 ))}
-                                <OptionCell
-                                    key={allCasesOfEnum(OptionType).length}
-                                    mode={'toggle'}
-                                    title={optionRecord[OptionType.AutoFocus].title}
-                                    toggleModeProps={{
-                                        checked: autoFocus,
-                                        onChange: checked => setAutoFocus(checked),
-                                    }}
-                                >{makeOption(OptionType.AutoFocus)}</OptionCell>
                                 {provided.placeholder}
                             </Column>
                         )}
