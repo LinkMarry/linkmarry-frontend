@@ -1,9 +1,8 @@
 import React, {useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
-import * as S from '@src/component/template/TemplateComponent.style';
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/template/component/FooterTemplate";
-import {templateFontSizeRecord, TemplateName} from "@remote/value/Template";
+import {templateFontSizeRecord} from "@remote/value/Template";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
 import CongratulationsTemplate from "@src/component/template/component/CongratulationsTemplate";

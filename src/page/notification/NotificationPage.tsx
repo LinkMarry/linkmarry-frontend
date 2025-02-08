@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import S from './NotificationPage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Notification from "@remote/value/Notification";
 import {tagToKoreanRecord} from "@remote/enumeration/Tag";
 import notificationApi from "@remote/api/NotificationApi";
 import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/Spacer";
+import styled, {css} from "styled-components";
+import makeText from "@designsystem/foundation/text/TextType";
 
 function NotificationPage() {
     const [notifications, setNotifications] = useState<Notification[]>();
@@ -25,7 +26,10 @@ function NotificationPage() {
 
     return (
         <HasHeader>
-            <S.container>
+            <Row $alignItems={'stretch'} $alignSelf={'stretch'} $customStyle={css`
+                padding: 64px 124px;
+                overflow-y: scroll;
+            `}>
                 <Column gap={44} flex={1} $alignItems={'stretch'}>
                     <Text type={'h5'}>공지사항</Text>
                     <Column $alignItems={'stretch'}>
@@ -57,9 +61,52 @@ function NotificationPage() {
                     </Column>
                     <Spacer h={32}/>
                 </Column>
-            </S.container>
+            </Row>
         </HasHeader>
     );
+}
+const BaseRow = styled.div`
+    display: flex;
+    padding: 0 8px;
+    height: 64px;
+    align-items: stretch;
+`;
+
+const BaseCell = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 146px;
+    ${makeText('p4')};
+`
+
+const S = {
+    header: {
+        row: styled(BaseRow)`
+            border-bottom: 1px solid black;
+        `,
+        titleCell: styled(BaseCell)`
+            flex: 1;
+        `,
+        cell: BaseCell
+    },
+    body: {
+        row: styled(BaseRow)`
+            cursor: pointer;
+        `,
+        titleCell: styled(BaseCell)`
+            flex: 1;
+            justify-content: flex-start;
+        `,
+        tagCell: styled(BaseCell)`
+            justify-content: flex-start;
+            padding-left: 30px;
+        `,
+        nameCell: BaseCell,
+        dateCell: styled(BaseCell)`
+            color: var(--g-400);
+        `
+    },
 }
 
 export default NotificationPage;
