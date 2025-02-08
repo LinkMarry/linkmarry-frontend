@@ -21,32 +21,25 @@ function LoginPage() {
                         color: var(--g-500);
                     `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                 </Column>
-                <S.kakaoButton onClick={signInWithKakao}>
+                <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
+                    cursor: pointer;
+                    width: 300px;
+                    height: 45px;
+                    outline: none;
+                    border: none;
+                    background-color: #FEE500;
+                    border-radius: 6px;
+                    ${makeText('p4')};
+                    color: black;
+                `} onClick={signInWithKakao}>
                     <Row gap={6} $alignItems={'center'}>
                         <img src={'/kakao.svg'} alt="" width={24} height={24}/>
                         카카오 로그인
                     </Row>
-                </S.kakaoButton>
+                </Row>
             </Column>
         </HasHeader>
     );
-}
-
-const S = {
-    kakaoButton: styled.button`
-        display: flex;
-        cursor: pointer;
-        width: 300px;
-        height: 45px;
-        justify-content: center;
-        align-items: center;
-        outline: none;
-        border: none;
-        background-color: #FEE500;
-        border-radius: 6px;
-        ${makeText('p4')};
-        color: black;
-    `
 }
 
 export default LoginPage;

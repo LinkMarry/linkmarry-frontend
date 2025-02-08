@@ -6,7 +6,6 @@ import Text from "@designsystem/component/Text";
 import Notification from "@remote/value/Notification";
 import {tagToKoreanRecord} from "@remote/enumeration/Tag";
 import notificationApi from "@remote/api/NotificationApi";
-import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/Spacer";
 

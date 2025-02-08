@@ -1,6 +1,6 @@
-import {CSSProperties, HTMLAttributes} from "react";
+import {ComponentPropsWithoutRef, CSSProperties, HTMLAttributes} from "react";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props extends ComponentPropsWithoutRef<'div'> {
     w?: number;
     h?: number;
     style?: CSSProperties;

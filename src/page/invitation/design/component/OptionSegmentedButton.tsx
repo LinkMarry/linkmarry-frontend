@@ -1,8 +1,8 @@
-import React, {HTMLAttributes} from 'react';
+import React, {ComponentPropsWithoutRef, HTMLAttributes} from 'react';
 import {Row} from "@designsystem/component/FlexLayout";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 
-interface OptionSegmentedButtonProps extends HTMLAttributes<HTMLDivElement> {
+interface OptionSegmentedButtonProps extends ComponentPropsWithoutRef<'div'> {
     selectedIndex?: number;
     items: string[];
     onClickItem: (index: number) => void;

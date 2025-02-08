@@ -1,5 +1,4 @@
 import React from 'react';
-import S from '@page/home/HomePage.style';
 import HasHeader from "@designsystem/component/header/hasHeader";
 import Footer from "@src/component/Footer";
 import HomeSlide1 from "@page/home/component/HomeSlide1";
@@ -7,12 +6,16 @@ import HomeSlide2 from "@page/home/component/HomeSlide2";
 import HomeSlide3 from "@page/home/component/HomeSlide3";
 import HomeSlide4 from "@page/home/component/HomeSlide4";
 import HomeSlide5 from "@page/home/component/HomeSlide5";
-import HomeSlide6 from "@page/home/component/HomeSlide6";
+import {Column} from "@designsystem/component/FlexLayout";
+import {css} from "styled-components";
 
 function HomePage() {
     return (
         <HasHeader>
-            <S.container>
+            <Column $customStyle={css`
+                overflow-y: scroll;
+                align-items: stretch;
+            `}>
                 <HomeSlide1/>
                 <HomeSlide2/>
                 <HomeSlide3/>
@@ -20,7 +23,7 @@ function HomePage() {
                 <HomeSlide5/>
                 {/*<HomeSlide6/>*/}
                 <Footer/>
-            </S.container>
+            </Column>
         </HasHeader>
     );
 }

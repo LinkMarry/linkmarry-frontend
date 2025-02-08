@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, useRef, useState} from 'react';
+import React, {ComponentPropsWithoutRef, HTMLAttributes, useRef, useState} from 'react';
 import styled, {css, CSSProperties} from "styled-components";
 import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/component/FlexLayout";
@@ -199,7 +199,7 @@ const S = {
     `
 }
 
-interface GuestCommentProps extends HTMLAttributes<HTMLDivElement> {
+interface GuestCommentProps extends ComponentPropsWithoutRef<'div'> {
     comment: Comment;
     privateContent: boolean;
     background: CSSProperties['background'];

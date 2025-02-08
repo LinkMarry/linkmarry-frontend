@@ -1,8 +1,8 @@
-import React, {HTMLAttributes} from 'react';
+import React, {ComponentPropsWithoutRef, HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 
-interface StatisticsValueCellProps extends HTMLAttributes<HTMLDivElement> {
+interface StatisticsValueCellProps extends ComponentPropsWithoutRef<'div'> {
     label: string;
     value: number;
     filtered: boolean;

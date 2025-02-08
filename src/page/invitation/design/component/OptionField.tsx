@@ -1,4 +1,5 @@
 import React, {
+    ComponentPropsWithRef,
     HTMLAttributes,
     HTMLInputTypeAttribute,
     InputHTMLAttributes,
@@ -9,7 +10,7 @@ import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Text from "@designsystem/component/Text";
 
-interface OptionFieldProps extends HTMLAttributes<HTMLDivElement> {
+interface OptionFieldProps extends ComponentPropsWithRef<'div'> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
     leadingIcon: IconType;
     type?: HTMLInputTypeAttribute | undefined;

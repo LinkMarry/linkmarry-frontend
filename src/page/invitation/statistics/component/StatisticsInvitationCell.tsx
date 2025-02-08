@@ -1,4 +1,4 @@
-import React, {HTMLAttributes} from 'react';
+import React, {ComponentPropsWithoutRef, HTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import makeText from "@designsystem/foundation/text/TextType";
@@ -7,7 +7,7 @@ import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
 import WeddingInfo from "@remote/value/WeddingInfo";
 
-interface InvitationCellProps extends HTMLAttributes<HTMLDivElement> {
+interface InvitationCellProps extends ComponentPropsWithoutRef<'div'> {
     weddingInfo: WeddingInfo;
 }
 

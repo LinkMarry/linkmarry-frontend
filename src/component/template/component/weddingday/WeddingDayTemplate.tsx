@@ -1,12 +1,13 @@
 import React from 'react';
 import Text from "@designsystem/component/Text";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import styled, {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 import {format, parse} from "date-fns";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -28,15 +29,10 @@ function WeddingDayTemplate(
 
     if (!weddingSchedule.calendar && !weddingSchedule.dday) {
         return (
-            <Column
-                gap={12}
-                $alignItems={'center'}
-                $justifyContent={'center'}
-                $customStyle={css`
-                    background: white;
-                    height: 100vh;
-                `}
-            >
+            <Column gap={12} $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
+                background: white;
+                height: 100vh;
+            `}>
                 <Text size={36} weight={300} customStyle={css`
                     color: var(--g-500);
                 `}>{isValidDate && date.getFullYear()}</Text>
@@ -48,50 +44,71 @@ function WeddingDayTemplate(
     }
 
     return (
-        <S.root>
+        <Column $alignItems={'center'} gap={40} $customStyle={css`
+            padding: 92px 22px;
+            background: white;
+        `}>
             <Text size={20} weight={300} customStyle={css`
                 color: var(--g-600);
             `}>WEDDING DAY</Text>
             {weddingSchedule.calendar && (
                 <Column gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
                     <Divider/>
-                    <S.table>
-                        <thead>
-                        <tr>
-                            {['일', '월', '화', '수', '목', '금', '토'].map((i, index) => (
-                                <th key={index}>
-                                    <Text
-                                        font={'Pretendard'}
-                                        size={16}
-                                        weight={300}
-                                        customStyle={css`
-                                            color: var(--g-500);
-                                        `}
-                                    >{i}</Text>
-                                </th>
-                            ))}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {calendar && calendar.map((week, index) => (
-                            <tr key={index}>
-                                {week.map((day, dayIndex) => (
-                                    <td
-                                        key={dayIndex}
-                                        style={{
-                                            background: day.isWeddingDay ? 'var(--p-300)' : undefined,
-                                            borderRadius: 100
-                                        }}
-                                    >
-                                        <Text font={'Pretendard'} size={16} weight={300}>
-                                            {day.day ?? ''}
-                                        </Text>
-                                    </td>
+                    <Column as={'table'} gap={8} $alignItems={'stretch'} $customStyle={css`
+                        margin: 24px 19px;
+                    `}>
+                        <CustomStyle as={'thead'} $customStyle={css`
+                            display: flex;
+                            padding: 12px 20px;
+                        `}>
+                            <CustomStyle as={'tr'} $customStyle={css`
+                                display: flex;
+                                justify-content: space-between;
+                                color: var(--g-500);
+                                flex: 1;
+                            `}>
+                                {['일', '월', '화', '수', '목', '금', '토'].map((i, index) => (
+                                    <th key={index}>
+                                        <Text
+                                            font={'Pretendard'}
+                                            size={16}
+                                            weight={300}
+                                            customStyle={css`
+                                                color: var(--g-500);
+                                            `}
+                                        >{i}</Text>
+                                    </th>
                                 ))}
-                            </tr>
-                        ))}
-                        </tbody>
-                    </S.table>
+                            </CustomStyle>
+                        </CustomStyle>
+                        <Column as={'tbody'} $alignItems={'stretch'} gap={4}>
+                            {calendar && calendar.map((week, index) => (
+                                <Row as={'tr'} key={index}>
+                                    {week.map((day, dayIndex) => (
+                                        <Row
+                                            key={dayIndex} as={'td'}
+                                            flex={1} $alignItems={'center'} $justifyContent={'center'}
+                                            $customStyle={css`
+                                                &:first-child, &:last-child {
+                                                    opacity: 0.4;
+                                                }
+
+                                                height: 48px;
+                                                border-radius: 100px;
+                                                ${day.isWeddingDay && css`
+                                                    background: var(--p-300);
+                                                `};
+                                            `}
+                                        >
+                                            <Text font={'Pretendard'} size={16} weight={300}>
+                                                {day.day ?? ''}
+                                            </Text>
+                                        </Row>
+                                    ))}
+                                </Row>
+                            ))}
+                        </Column>
+                    </Column>
                     <Divider/>
                 </Column>
             )}
@@ -102,61 +119,9 @@ function WeddingDayTemplate(
                     dDayStyle={dDayStyle}
                 />
             )}
-        </S.root>
+        </Column>
     );
 }
-
-const S = {
-    root: styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 92px 22px;
-        background: white;
-        gap: 40px;
-    `,
-    table: styled.table`
-        display: flex;
-        flex-direction: column;
-        margin: 24px 19px;
-        gap: 8px;
-        align-items: stretch;
-
-        thead {
-            display: flex;
-            padding: 12px 20px;
-
-            tr {
-                display: flex;
-                justify-content: space-between;
-                color: var(--g-500);
-                flex: 1;
-            }
-        }
-
-        tbody {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-
-            tr {
-                display: flex;
-
-                td {
-                    &:first-child, &:last-child {
-                        opacity: 0.4;
-                    }
-
-                    display: flex;
-                    flex: 1;
-                    align-items: center;
-                    justify-content: center;
-                    height: 48px;
-                }
-            }
-        }
-    `,
-};
 
 function getCalendar(date: Date) {
     const year = date.getFullYear();

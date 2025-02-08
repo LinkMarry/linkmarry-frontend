@@ -1,8 +1,15 @@
-import React, {ForwardedRef, forwardRef, HTMLAttributes, InputHTMLAttributes, ReactNode} from 'react';
+import React, {
+    ComponentPropsWithRef,
+    ForwardedRef,
+    forwardRef,
+    HTMLAttributes,
+    InputHTMLAttributes,
+    ReactNode
+} from 'react';
 import styled, {css} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 
-interface OptionTextFieldProps extends HTMLAttributes<HTMLDivElement> {
+interface OptionTextFieldProps extends ComponentPropsWithRef<'div'> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;
     placeholder?: string;
     width?: number;

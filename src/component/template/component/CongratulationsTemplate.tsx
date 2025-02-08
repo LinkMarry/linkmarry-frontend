@@ -3,7 +3,7 @@ import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import Button from "@designsystem/component/Button";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 import Phone from "@remote/value/Phone";
@@ -30,7 +30,11 @@ function CongratulationsTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
-        <S.root background={templateColor} ref={congratulationsRef}>
+        <Column $alignItems={'stretch'} $customStyle={css`
+            background: ${templateColor};
+            padding: 92px 60px;
+            align-items: stretch;
+        `} ref={congratulationsRef}>
             <Column gap={96} $alignItems={'stretch'}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={8} $alignItems={'center'}>
@@ -105,19 +109,8 @@ function CongratulationsTemplate(
                     dismiss={() => setShowContactingCongratulationDialog(false)}
                 />
             )}
-        </S.root>
+        </Column>
     );
 }
-
-
-const S = {
-    root: styled.div<{ background: string }>`
-        display: flex;
-        flex-direction: column;
-        background: ${({background}) => background};
-        padding: 92px 60px;
-        align-items: stretch;
-    `
-};
 
 export default CongratulationsTemplate;

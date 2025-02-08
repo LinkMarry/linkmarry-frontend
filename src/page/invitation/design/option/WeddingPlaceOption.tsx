@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/invitation/design/component/OptionLabel";
@@ -23,7 +23,9 @@ function WeddingPlaceOption(
     const [showKakaoMapDialog, setShowKakaoMapDialog] = useState(false);
 
     return (
-        <S.container>
+        <Row $customStyle={css`
+            padding: 32px;
+        `}>
             <Column flex={1} gap={32}>
                 <Column gap={16}>
                     {/* TODO: Apply Kakao Map */}
@@ -66,7 +68,9 @@ function WeddingPlaceOption(
                                 placeTransportation: event.target.value
                             })}
                             placeholder={'주변 교통편 입력'}
-                            style={{width: 264}}
+                            customStyle={css`
+                                width: 264px;
+                            `}
                         />
                     </Row>
                 </Column>
@@ -83,15 +87,8 @@ function WeddingPlaceOption(
             {showKakaoMapDialog && (
                 <KakaoMapDialog dismiss={() => setShowKakaoMapDialog(false)}/>
             )}
-        </S.container>
+        </Row>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        padding: 32px;
-    `
 }
 
 export default WeddingPlaceOption;

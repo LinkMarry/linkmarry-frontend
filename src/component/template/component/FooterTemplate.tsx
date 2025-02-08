@@ -1,9 +1,9 @@
-import React, {HTMLAttributes} from 'react';
+import React, {ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
 
-interface FooterTemplateProps extends HTMLAttributes<HTMLDivElement> {
+interface FooterTemplateProps extends ComponentPropsWithoutRef<'div'> {
     background: string;
 }
 

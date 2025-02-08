@@ -1,4 +1,4 @@
-import React, {CSSProperties, HTMLAttributes} from 'react';
+import React, {ComponentPropsWithoutRef, CSSProperties, HTMLAttributes} from 'react';
 import styled, {css, RuleSet} from "styled-components";
 import customStyle from "@designsystem/component/CustomStyle";
 
@@ -9,7 +9,7 @@ const dividerSizeToNumber: Record<DividerSize, number> = {
     small: 1
 }
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props extends ComponentPropsWithoutRef<'div'> {
     size?: DividerSize;
     customStyle?: RuleSet;
 }

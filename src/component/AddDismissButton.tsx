@@ -1,9 +1,9 @@
-import React, {ForwardedRef, forwardRef, HTMLAttributes} from 'react';
+import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import styled, {css} from "styled-components";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
-interface AddDismissButtonProps extends HTMLAttributes<HTMLDivElement> {
+interface AddDismissButtonProps extends ComponentProps<'div'> {
     dismiss: () => void;
     children?: React.ReactNode;
 }

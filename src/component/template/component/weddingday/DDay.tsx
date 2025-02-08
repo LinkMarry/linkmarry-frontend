@@ -14,7 +14,7 @@ type RemainTime = {
     seconds: number;
 }
 
-interface DDayProps {
+interface Props {
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
     dDayStyle: DDayStyle;
@@ -25,7 +25,7 @@ function DDay(
         baseInfo,
         weddingSchedule,
         dDayStyle
-    }: DDayProps
+    }: Props
 ) {
     const [remainingTime, setRemainingTime] = useState<RemainTime>({
         days: 0,

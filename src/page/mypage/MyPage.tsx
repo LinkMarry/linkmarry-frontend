@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import HasHeader from "@designsystem/component/header/hasHeader";
-import S from '@page/mypage/MyPage.style';
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import {Column, Row} from "@designsystem/component/FlexLayout";
@@ -12,6 +11,8 @@ import RemoveMemberDialog from "@page/mypage/dialog/RemoveMemberDialog";
 import InfoMember from "@remote/value/InfoMember";
 import memberApi from "@remote/api/MemberApi";
 import {css} from "styled-components";
+import CustomStyle from "@designsystem/component/CustomStyle";
+import makeText from "@designsystem/foundation/text/TextType";
 
 function MyPage() {
     const [member, setMember] = useState<InfoMember>();
@@ -54,37 +55,45 @@ function MyPage() {
 
     return (
         <HasHeader>
-            <S.container>
-                <S.sideBar.container>
-                    <S.sideBar.profileWrapper>
-                        <Text type={'p2'} onClick={() => {
-
-                        }}>프로필</Text>
-                    </S.sideBar.profileWrapper>
+            <Row gap={28} flex={1} $customStyle={css`
+                margin: 0 200px;
+            `}>
+                <Column $alignItems={'stretch'} gap={20} $customStyle={css`
+                    width: 216px;
+                    height: 100%;
+                    padding: 110px 24px 0 24px;
+                `}>
+                    <Row $alignItems={'center'} $customStyle={css`
+                        height: 67px;
+                    `}>
+                        <Text type={'p2'}>프로필</Text>
+                    </Row>
                     <Divider customStyle={css`
                         color: var(--g-200);
                     `}/>
-                    <Text
-                        type={'p2'}
-                        customStyle={css`
-                            color: var(--g-400);
-                            cursor: pointer;
-                        `}
-                        onClick={() => {
-                            Cookies.remove('accessToken');
-                            Cookies.remove('refreshToken');
-                            navigate('/');
-                        }}
-                    >로그아웃</Text>
+                    <Text type={'p2'} customStyle={css`
+                        color: var(--g-400);
+                        cursor: pointer;
+                    `} onClick={() => {
+                        Cookies.remove('accessToken');
+                        Cookies.remove('refreshToken');
+                        navigate('/');
+                    }}>로그아웃</Text>
                     <Text type={'p2'} customStyle={css`
                         color: #D65745;
                         cursor: pointer;
                     `} onClick={() => {
                         setShowRemoveMemberDialog(true);
                     }}>회원탈퇴</Text>
-                </S.sideBar.container>
-                <S.baseInfo.container>
-                    <Text type={'p2'} style={{fontWeight: '700'}}>기본 정보</Text>
+                </Column>
+                <Column flex={1} gap={38} $alignItems={'stretch'} $customStyle={css`
+                    margin-left: 28px;
+                    margin-top: 80px;
+                    padding: 28px 36px;
+                    border: 1px solid var(--g-200);
+                    border-radius: 12px;
+                `}>
+                    <Text type={'p2'} weight={700}>기본 정보</Text>
                     {member && (
                         <Column gap={32} $alignItems={'stretch'}>
                             <Row gap={38}>
@@ -98,44 +107,68 @@ function MyPage() {
                                 {/* TODO: DUMMY */}
                                 <Column gap={12}>
                                     <Text type={'p5'}>나의 프로필</Text>
-                                    <Button text={'사진 업로드'} role={'assistive'} style={{width: 264}}/>
+                                    <Button text={'사진 업로드'} role={'assistive'} customStyle={css`
+                                        width: 264px;
+                                    `}/>
                                 </Column>
                             </Row>
                             <Column $alignItems={'stretch'}>
                                 <Column gap={8} $alignItems={'stretch'}>
-                                    <Row style={{height: 52}} $alignItems={'center'}>
-                                        <Text type={'p5'} style={{width: 122}}>이름</Text>
+                                    <Row $alignItems={'center'} $customStyle={css`
+                                        height: 52px;
+                                    `}>
+                                        <Text type={'p5'} customStyle={css`
+                                            width: 122px;
+                                        `}>이름</Text>
                                         {isSettingMode ? (
-                                            <S.baseInfo.editNameField
+                                            <CustomStyle
+                                                as={'input'}
                                                 value={editMemberName}
                                                 onChange={event => setEditMemberName(event.target.value)}
+                                                $customStyle={css`
+                                                    display: flex;
+                                                    flex: 1;
+                                                    height: 44px;
+                                                    border: 1px solid black;
+                                                    padding: 0 24px;
+                                                    border-radius: 8px;
+                                                    ${makeText('p4')};
+                                                    align-items: center;
+                                                    outline: none;
+                                                `}
                                             />
                                         ) : (
                                             <>
-                                                <Text
-                                                    type={'p5'}
-                                                    style={{width: 122}}
-                                                    customStyle={css`
-                                                        color: var(--g-500);
-                                                    `}
-                                                >{member.name}</Text>
+                                                <Text type={'p5'} customStyle={css`
+                                                    color: var(--g-500);
+                                                    width: 122px;
+                                                `}>{member.name}</Text>
                                                 <Spacer/>
-                                                <S.baseInfo.nameSettingButton
+                                                <CustomStyle
+                                                    as={'button'}
+                                                    $customStyle={css`
+                                                        display: flex;
+                                                        outline: none;
+                                                        border: 1px solid var(--g-300);
+                                                        padding: 8px 24px;
+                                                        border-radius: 8px;
+                                                        background: transparent;
+                                                        cursor: pointer;
+                                                    `}
                                                     onClick={onClickSettingName}
                                                 >
                                                     <Text type={'btn1'} customStyle={css`
                                                         color: var(--g-600);
                                                     `}>설정</Text>
-                                                </S.baseInfo.nameSettingButton>
+                                                </CustomStyle>
                                             </>
                                         )}
                                     </Row>
                                     {isSettingMode && (
                                         <Row gap={8} $alignSelf={'flex-end'}>
-                                            <Button
-                                                text={'취소'} role={'assistive'}
-                                                onClick={() => setIsSettingMode(false)}
-                                            />
+                                            <Button text={'취소'} role={'assistive'} onClick={() => {
+                                                setIsSettingMode(false)
+                                            }}/>
                                             <Button text={'저장'} role={'assistive'} onClick={onClickSaveName}/>
                                         </Row>
                                     )}
@@ -144,19 +177,16 @@ function MyPage() {
                                     <Text type={'p5'} customStyle={css`
                                         width: 122px;
                                     `}>이메일</Text>
-                                    <Text
-                                        type={'p5'}
-                                        customStyle={css`
-                                            width: 122px;
-                                            color: var(--g-500);
-                                        `}
-                                    >{member.email}</Text>
+                                    <Text type={'p5'} customStyle={css`
+                                        width: 122px;
+                                        color: var(--g-500);
+                                    `}>{member.email}</Text>
                                 </Row>
                             </Column>
                         </Column>
                     )}
-                </S.baseInfo.container>
-            </S.container>
+                </Column>
+            </Row>
             {showRemoveMemberDialog && (
                 <RemoveMemberDialog dismiss={() => setShowRemoveMemberDialog(false)}/>
             )}

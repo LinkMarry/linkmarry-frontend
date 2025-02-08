@@ -1,4 +1,4 @@
-import React, {ForwardedRef, forwardRef, HTMLAttributes, useState} from 'react';
+import React, {ComponentPropsWithRef, ForwardedRef, forwardRef, HTMLAttributes, useState} from 'react';
 import styled, {css} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/icon";
@@ -10,7 +10,7 @@ import Toggle from "@designsystem/component/Toggle";
 import Text from "@designsystem/component/Text";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
-interface OptionCellProps extends HTMLAttributes<HTMLDivElement> {
+interface OptionCellProps extends ComponentPropsWithRef<'div'> {
     title: string;
     mode: OptionTypeMode;
     toggleModeProps?: {
