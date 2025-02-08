@@ -23,6 +23,9 @@ import {Helmet} from "react-helmet";
 import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
 import RsvpTemplate from "@src/component/template/component/RsvpTemplate";
 import WaterMarkSheet from "@src/component/template/component/WaterMarkSheet";
+import {Column} from "@designsystem/component/FlexLayout";
+import {css} from "styled-components";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 interface Template1Props {
     wedding: Wedding;
@@ -82,7 +85,20 @@ function TemplateComponent(
     // console.log(`pos - ${wedding.position}`)
 
     return (
-        <S.container ref={rootRef} $templateFont={templateFont}>
+        <Column ref={rootRef} $customStyle={css`
+            max-width: 436px;
+            width: 100vw;
+            align-items: stretch;
+
+            *:not(.override-font) {
+                ${templateFont && implementText({
+                    fontFamily: templateFont
+                })};
+            }
+            border-radius: 12px;
+            box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.16);
+            overflow: hidden;
+        `}>
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
@@ -190,7 +206,7 @@ function TemplateComponent(
             {wedding.waterMark && (
                 <WaterMarkSheet url={wedding.url}/>
             )}
-        </S.container>
+        </Column>
     );
 }
 

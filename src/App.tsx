@@ -21,6 +21,8 @@ import WeddingPage from "@page/WeddingPage";
 import {Helmet} from "react-helmet";
 import LoginPage from "@page/LoginPage";
 import AutoFocusContext from "@src/context/AutoFocusContext";
+import {css} from "styled-components";
+import {Row} from "@designsystem/component/FlexLayout";
 
 const {Kakao} = window as any;
 
@@ -84,9 +86,12 @@ function App() {
                 {/*<Route path={'wedding'} element={}/>*/}
                 <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                 <Route path={'sample'} element={(
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <Row $justifyContent={'center'} $customStyle={css`
+                        background: ${dummyWedding.template.templateColor};
+                        padding: 64px 0;
+                    `}>
                         <TemplateComponent wedding={dummyWedding} isPreview={true}/>
-                    </div>
+                    </Row>
                 )}/>
             </Routes>
         </AutoFocusContext.Provider>

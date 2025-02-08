@@ -29,7 +29,7 @@ function WaterMarkSheet(
                 padding: 32px 24px;
                 background: var(--p-100);
                 border-radius: 16px;
-                box-shadow: 0 2px 36px 0 rgba(0, 0, 0, 0.36);
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
                 max-width: 424px;
                 width: 100vw;
                 margin: 0 6px 20px 6px;
