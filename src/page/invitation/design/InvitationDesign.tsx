@@ -127,7 +127,6 @@ function InvitationDesign() {
     }, []);
 
     useEffect(() => {
-        console.log(position);
         setWedding({...wedding, position});
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [JSON.stringify(position)]);

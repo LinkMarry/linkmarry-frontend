@@ -39,7 +39,7 @@ function ClassicRomancePreviewTemplate(
                     </Row>
                 </Text>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2" viewBox="0 0 364 2" fill="none">
-                    <path d="M0 1H364" stroke="#C8C6C5" stroke-opacity="0.4"/>
+                    <path d="M0 1H364" stroke="#C8C6C5" strokeOpacity="0.4"/>
                 </svg>
                 {isValidDate && (
                     <Text size={20} weight={400}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>

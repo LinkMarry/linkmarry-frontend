@@ -123,7 +123,7 @@ function GallerySlide(
                             if (currentImageIndex > 0) {
                                 const imgWidth = getGridImgWidth();
                                 const left = imgWidth * (currentImageIndex - 1);
-                                console.log(left)
+                                // console.log(left)
                                 scrollContainerRef.current?.scrollTo({
                                     left
                                 });
@@ -134,7 +134,7 @@ function GallerySlide(
                             if (currentImageIndex < imgList.length - 1) {
                                 const imgWidth = getGridImgWidth();
                                 const left = imgWidth * (currentImageIndex + 1);
-                                console.log(left)
+                                // console.log(left)
                                 scrollContainerRef.current?.scrollTo({
                                     left
                                 });

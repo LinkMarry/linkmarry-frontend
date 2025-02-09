@@ -39,8 +39,7 @@ export const fillMissingDates = (infos: WeddingStatisticsInfo[]): WeddingStatist
             });
         }
     }
-    
-    console.log(filledInfos);
+    // console.log(filledInfos);
 
     return filledInfos;
 };
