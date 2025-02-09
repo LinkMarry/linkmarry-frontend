@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/template/component/FooterTemplate";
@@ -39,6 +39,7 @@ function TemplateComponent(
         onRefresh
     }: Template1Props
 ) {
+    const audioRef = useRef<HTMLAudioElement>(null);
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
         if (isPreview) return false;
         if (!wedding.rsvp.startPopupStatus) return false;
@@ -53,6 +54,17 @@ function TemplateComponent(
         increaseFontSize(rootRef, addFontSize);
         Cookies.remove('hide_RsvpDialog')
     })();
+
+    useEffect(() => {
+        (async () => {
+            const audio = audioRef.current;
+            if (wedding.baseMusic.effect && !isPreview && audio) {
+                await navigator.mediaDevices.getUserMedia({audio: true});
+                await audio.play();
+                audio.volume = 0.15;
+            }
+        })()
+    }, []);
 
     // TODO: Temp
     const slideStyle: GallerySlideStyle = 'style1';
@@ -103,6 +115,7 @@ function TemplateComponent(
             box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.16);
             overflow: hidden;
         `}>
+            <audio src={wedding.baseMusic.musicUrl} ref={audioRef}/>
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
