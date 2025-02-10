@@ -66,6 +66,8 @@ function BaseMusicOption(
         const audio = audioRef.current;
         if (!audio) return;
 
+        audio.volume = 0.15;
+
         if (!selectedPlayingMusicUrl) {
             setSelectedPlayingMusicUrl(music.url);
             audio.src = music.url;

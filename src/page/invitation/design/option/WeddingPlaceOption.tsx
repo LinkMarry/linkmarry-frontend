@@ -8,6 +8,7 @@ import OptionTextField from "@page/invitation/design/component/OptionTextField";
 import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import Textarea from "@designsystem/component/Textarea";
+import Button from "@designsystem/component/Button";
 
 interface WeddingPlaceOptionProps {
     weddingPlace: WeddingPlace;
@@ -28,16 +29,24 @@ function WeddingPlaceOption(
         `}>
             <Column flex={1} gap={32}>
                 <Column gap={16}>
-                    {/* TODO: Apply Kakao Map */}
-                    {/*<Row gap={12}>*/}
-                    {/*    <OptionLabel label={'주소'}/>*/}
-                    {/*    <Row gap={12} style={{width: 264, overflow: 'hidden'}}>*/}
-                    {/*        <OptionTextField width={184}/>*/}
-                    {/*        <Button text={'검색'} role={'assistive'} style={{borderRadius: 8, width: 68}} onClick={() => {*/}
-                    {/*            setShowKakaoMapDialog(true);*/}
-                    {/*        }}/>*/}
-                    {/*    </Row>*/}
-                    {/*</Row>*/}
+                    <Row gap={12}>
+                        <OptionLabel label={'주소'}/>
+                        <Row gap={12} $customStyle={css`
+                            width: 264px;
+                            overflow: hidden;
+                        `}>
+                            <OptionTextField fieldProps={{
+                                value: weddingPlace.addressName,
+                                disabled: true
+                            }} width={184}/>
+                            <Button text={'검색'} role={'assistive'} customStyle={css`
+                                border-radius: 8px;
+                                width: 68px;
+                            `} onClick={() => {
+                                setShowKakaoMapDialog(true);
+                            }}/>
+                        </Row>
+                    </Row>
                     <Row gap={12}>
                         <OptionLabel label={'예식장명'}/>
                         <OptionTextField fieldProps={{
@@ -85,7 +94,11 @@ function WeddingPlaceOption(
                 </Row>
             </Column>
             {showKakaoMapDialog && (
-                <KakaoMapDialog dismiss={() => setShowKakaoMapDialog(false)}/>
+                <KakaoMapDialog
+                    weddingPlace={weddingPlace}
+                    onChange={weddingPlace => onChange(weddingPlace)}
+                    dismiss={() => setShowKakaoMapDialog(false)}
+                />
             )}
         </Row>
     );

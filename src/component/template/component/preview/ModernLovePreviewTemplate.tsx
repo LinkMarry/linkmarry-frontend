@@ -24,7 +24,7 @@ function ModernLovePreviewTemplate(
                 border-radius: 500px;
                 object-fit: cover;
             `}/>
-            <Text size={60} weight={400} customStyle={css`
+            <Text className={'override-font'} font={'UnrealScienceMedicine'} size={60} weight={400} customStyle={css`
                 position: absolute;
                 white-space: nowrap;
                 color: #556B2F;

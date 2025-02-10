@@ -1,54 +1,32 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import styled, {css} from "styled-components";
+import React, {useEffect, useRef, useState} from 'react';
+import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import {Column} from "@designsystem/component/FlexLayout";
+import CustomStyle from "@designsystem/component/CustomStyle";
+import Button from "@designsystem/component/Button";
+import Text from "@designsystem/component/Text";
+import WeddingPlace from "@remote/value/WeddingPlace";
 
 const {kakao} = window as any;
 
 interface KakaoMapDialogProps {
+    weddingPlace: WeddingPlace;
+    onChange: (weddingPlace: WeddingPlace) => void;
     dismiss: () => void;
 }
 
 function KakaoMapDialog(
     {
+        weddingPlace,
+        onChange,
         dismiss
     }: KakaoMapDialogProps
 ) {
     const geocoder = new kakao.maps.services.Geocoder();
     const kakaoMap = useRef<HTMLDivElement>(null);
     const [map, setMap] = useState<any>();
-    const searchFieldRef = useRef<HTMLInputElement>(null);
-    const [selectedPlaceOverlay, setSelectedPlaceOverlay] = useState<any | null>(null);
-
-    const search = () => {
-        const searchField = searchFieldRef.current;
-        if (!searchField) return;
-
-        const ps = new kakao.maps.services.Places();
-        ps.keywordSearch(searchField.value, (data: any, status: any, pagination: any) => {
-
-            if (status === kakao.maps.services.Status.OK) {
-
-                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-                // LatLngBounds 객체에 좌표를 추가합니다
-                const bounds = new kakao.maps.LatLngBounds();
-
-                for (const e of data) {
-                    displayMarker(e);
-                    bounds.extend(new kakao.maps.LatLng(e.y, e.x));
-                }
-
-                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-                map.setBounds(bounds);
-            }
-        });
-    }
-    const displayMarker = (place: any) => {
-        new kakao.maps.Marker({
-            map,
-            position: new kakao.maps.LatLng(place.y, place.x)
-        });
-    };
+    const [places, setPlaces] = useState<any[]>([]);
+    const [selectedPlace, setSelectedPlace] = useState<any>();
 
     useEffect(() => {
         if (!kakao || !kakao.maps) {
@@ -62,90 +40,126 @@ function KakaoMapDialog(
         });
         setMap(createdMap);
 
-        kakao.maps.event.addListener(createdMap, 'click', mapClickEventListener);
+        // Marker 설정
+        const marker = new kakao.maps.Marker({
+            position: createdMap.getCenter(), // 초기 마커 위치 (지도의 중앙)
+            map: createdMap, // 지도 객체와 연결
+        });
+
+        // 지도가 움직일 때 마커의 위치를 중앙으로 유지
+        kakao.maps.event.addListener(createdMap, 'center_changed', () => {
+            const center = createdMap.getCenter(); // 지도 중심 좌표 가져오기
+            marker.setPosition(center); // 마커 위치를 지도 중심으로 업데이트
+        });
+
+        // 움직임 멈췄을 때 중심 좌표로 주소 및 장소 검색
+        kakao.maps.event.addListener(createdMap, 'dragend', () => {
+            const center = createdMap.getCenter();
+            searchAddress(center); // 주소 검색
+        });
     }, []);
 
-    const mapClickEventListener = useCallback((mouseEvent: any) => {
-        const latLng = mouseEvent.latLng;
-
-        const lat = latLng.getLat();
-        const lng = latLng.getLng();
-
-        geocoder.coord2Address(lng, lat, (result: any, status: any) => {
+    // 주소 검색 함수
+    const searchAddress = (coords: any) => {
+        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
             if (status !== kakao.maps.services.Status.OK) return;
-            const place = result[0];
 
-            const address = place.address?.address_name;
-            const content = `
-<div style="border: 1px solid #ccc; background: #fff; padding: 10px; border-radius: 10px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-    <h3 style="margin: 0 0 10px; font-size: 16px; font-weight: bold; color: #333;">클릭한 위치</h3>
-    <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>주소:</strong> ${address}</p>
-    <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>위도:</strong> ${latLng.getLat().toFixed(6)}</p>
-    <p style="margin: 5px 0; font-size: 14px; color: #555;"><strong>경도:</strong> ${latLng.getLng().toFixed(6)}</p>
-    <a href="https://map.kakao.com/link/to/${address},${latLng.getLat()},${latLng.getLng()}" target="_blank" style="display: inline-block; margin-top: 10px; padding: 5px 10px; background: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">길찾기</a>
-</div>`;
-            if (selectedPlaceOverlay) {
-                selectedPlaceOverlay.setContent(content);
-                selectedPlaceOverlay.setPosition(latLng);
-            } else {
-                const overlay = new kakao.maps.CustomOverlay({
-                    position: latLng,
-                    content,
-                    xAnchor: 0,
-                    yAnchor: 0,
-                    map
-                });
-                setSelectedPlaceOverlay(overlay);
-            }
+            const ps = new kakao.maps.services.Places();
+
+            ps.keywordSearch(result[0].address.address_name, (result: any, status: any) => {
+                if (status !== kakao.maps.services.Status.OK) return;
+
+                console.log(result);
+                setPlaces(result);
+            }, {
+                location: coords,
+                radius: 50
+            });
         });
-    }, [map, selectedPlaceOverlay]);
+    };
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
-                <S.search>
-                    <S.searchInput ref={searchFieldRef} placeholder="장소를 검색하세요" onKeyDown={event => {
-                        if (event.key === 'Enter') search();
+            <Column $alignItems={'stretch'} $customStyle={css`
+                width: 90vw;
+                max-width: 412px;
+                height: 75vh;
+                ${applyBaseDialogContent()};
+                border-radius: 12px;
+                background: white;
+            `}>
+                <CustomStyle ref={kakaoMap} $customStyle={css`
+                    display: flex;
+                    flex: 1;
+                    position: relative;
+                `}>
+                </CustomStyle>
+                {/* 결과 출력 */}
+                <Column gap={10} $alignItems={'stretch'} $customStyle={css`
+                    padding: 16px;
+                `}>
+                    <Column as={'ul'} gap={4} $alignItems={'stretch'} $customStyle={css`
+                        height: 128px;
+                        overflow-y: scroll;
+                        padding: 4px;
+                    `}>
+                        {places?.map((place, index) => {
+                            const selected = place.id === selectedPlace?.id;
+                            return (
+                                <Column
+                                    key={index} as={'li'}
+                                    $customStyle={css`
+                                        &:hover {
+                                            background: var(--g-100);
+                                        }
+
+                                        border-radius: 8px;
+                                        padding: 12px;
+                                        transition: 0.1s background;
+
+                                        ${selected && css`
+                                            border: 1px solid var(--p-800);
+                                        `};
+                                    `}
+                                    onClick={() => {
+                                        if (selected) {
+                                            setSelectedPlace(undefined);
+                                        } else {
+                                            setSelectedPlace(place);
+                                        }
+                                    }}
+                                >
+                                    <Text type={'p2'}>{place.address_name}</Text>
+                                    <Text
+                                        type={'p5'}
+                                        customStyle={css`
+                                            text-decoration: underline;
+                                            color: var(--g-500);
+                                            cursor: pointer;
+                                        `}
+                                        onClick={() => {
+                                            window.open(place.place_url, '_blank');
+                                        }}
+                                    >{place.place_name}</Text>
+                                </Column>
+                            );
+                        })}
+                    </Column>
+                    <Button text={'선택'} enabled={selectedPlace !== undefined} onClick={() => {
+                        onChange({
+                            ...weddingPlace,
+                            x: selectedPlace.x,
+                            y: selectedPlace.y,
+                            placeUrl: selectedPlace.place_url,
+                            placeName: selectedPlace.place_name,
+                            addressName: selectedPlace.address_name,
+                        })
+                        dismiss();
                     }}/>
-                    <Icon iconType={IconType.Search} size={28} customStyle={css`
-                        fill: var(--g-600);
-                    `} onClick={search}/>
-                </S.search>
-                <S.kakaoMap ref={kakaoMap}></S.kakaoMap>
-            </S.container>
+                </Column>
+            </Column>
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        width: 80vw;
-        max-width: 1100px;
-        ${applyBaseDialogContent()};
-        border-radius: 12px;
-    `,
-    search: styled.div`
-        display: flex;
-        background: white;
-        align-items: center;
-        padding-right: 18px;
-    `,
-    searchInput: styled.input`
-        display: flex;
-        padding: 20px;
-        flex: 1;
-        font-size: 18px;
-        outline: none;
-        border: none;
-        background: transparent;
-    `,
-    kakaoMap: styled.div`
-        display: flex;
-        height: 600px;
-    `
 }
 
 export default KakaoMapDialog;

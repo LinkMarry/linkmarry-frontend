@@ -5,6 +5,7 @@ import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 const {kakao} = window as any;
 
@@ -28,16 +29,28 @@ function LocationTemplate(
             // alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
             return;
         }
+        
+        if (!weddingPlace.x || !weddingPlace.y) {
+            return;
+        }
 
-        new kakao.maps.Map(kakaoMapRef.current, {
-            center: new kakao.maps.LatLng(35.6632, 128.4141),
+        const createdMap = new kakao.maps.Map(kakaoMapRef.current, {
+            center: new kakao.maps.LatLng(weddingPlace.y, weddingPlace.x),
             level: 5, // 확대 레벨
+        });
+
+        new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(weddingPlace.y, weddingPlace.x), // 초기 마커 위치 (지도의 중앙)
+            map: createdMap, // 지도 객체와 연결
         });
 
     }, []);
 
     return (
-        <S.root background={templateColor} ref={weddingPlaceRef}>
+        <Column $alignItems={'stretch'} ref={weddingPlaceRef} $customStyle={css`
+            background: ${templateColor};
+            align-items: stretch;
+        `}>
             <Spacer h={92}/>
             <Column gap={40} $alignItems={'center'}>
                 <Text size={20} weight={300} customStyle={css`
@@ -53,9 +66,14 @@ function LocationTemplate(
                         {weddingPlace.addressName} {weddingPlace.floorHall}
                     </Text>
                 </Column>
-                {/*<S.kakaoMap ref={kakaoMapRef} style={{*/}
-                {/*    display: weddingPlace.placeStatus ? 'flex' : 'none'*/}
-                {/*}}></S.kakaoMap>*/}
+                <CustomStyle ref={kakaoMapRef} $customStyle={css`
+                    display: flex;
+                    align-self: stretch;
+                    height: 307px;
+                    ${!weddingPlace.placeStatus && css`
+                        display: none;
+                    `}
+                `}></CustomStyle>
                 <Text size={16} weight={300} style={{
                     marginLeft: 24,
                     alignSelf: 'stretch',
@@ -64,21 +82,8 @@ function LocationTemplate(
                 }}>{weddingPlace.placeTransportation}</Text>
             </Column>
             <Spacer h={65}/>
-        </S.root>
+        </Column>
     );
 }
-
-const S = {
-    root: styled.div<{ background: string }>`
-        display: flex;
-        flex-direction: column;
-        background: ${({background}) => background};
-        align-items: stretch;
-    `,
-    kakaoMap: styled.div`
-        align-self: stretch;
-        height: 307px;
-    `
-};
 
 export default LocationTemplate;

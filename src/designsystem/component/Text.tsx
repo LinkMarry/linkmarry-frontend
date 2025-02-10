@@ -1,7 +1,7 @@
 import React, {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from 'react';
-import styled, {css, RuleSet} from "styled-components";
+import {css, RuleSet} from "styled-components";
 import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
-import TextProperties, {implementText} from "@designsystem/foundation/text/TextProperties";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
 interface Props extends ComponentPropsWithRef<'span'> {
