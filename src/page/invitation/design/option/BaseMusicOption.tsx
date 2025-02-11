@@ -203,7 +203,7 @@ function BaseMusicOption(
 
     return (
         <S.container>
-            <audio ref={audioRef}/>
+            <audio ref={audioRef} loop={true}/>
             <Column gap={32} flex={1} $alignItems={'stretch'}>
                 <Column gap={20}>
                     <OptionSegmentedButton

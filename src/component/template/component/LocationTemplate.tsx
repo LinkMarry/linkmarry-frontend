@@ -6,6 +6,7 @@ import styled, {css} from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import CustomStyle from "@designsystem/component/CustomStyle";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 const {kakao} = window as any;
 
@@ -29,7 +30,7 @@ function LocationTemplate(
             // alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
             return;
         }
-        
+
         if (!weddingPlace.x || !weddingPlace.y) {
             return;
         }
@@ -53,19 +54,21 @@ function LocationTemplate(
         `}>
             <Spacer h={92}/>
             <Column gap={40} $alignItems={'center'}>
-                <Text size={20} weight={300} customStyle={css`
-                    color: var(--g-600);
-                `}>
-                    LOCATION
-                </Text>
-                <Column $alignItems={'center'}>
-                    <Text size={16} weight={300}>
-                        {weddingPlace.placeName}
-                    </Text>
-                    <Text size={16} weight={300}>
-                        {weddingPlace.addressName} {weddingPlace.floorHall}
-                    </Text>
-                </Column>
+                <FadeIn>
+                    <Text size={20} weight={300} customStyle={css`
+                        color: var(--g-600);
+                    `}>LOCATION</Text>
+                </FadeIn>
+                <FadeIn>
+                    <Column $alignItems={'center'}>
+                        <Text size={16} weight={300}>
+                            {weddingPlace.placeName}
+                        </Text>
+                        <Text size={16} weight={300}>
+                            {weddingPlace.addressName} {weddingPlace.floorHall}
+                        </Text>
+                    </Column>
+                </FadeIn>
                 <CustomStyle ref={kakaoMapRef} $customStyle={css`
                     display: flex;
                     align-self: stretch;
@@ -74,12 +77,14 @@ function LocationTemplate(
                         display: none;
                     `}
                 `}></CustomStyle>
-                <Text size={16} weight={300} style={{
-                    marginLeft: 24,
-                    alignSelf: 'stretch',
-                    textAlign: 'start',
-                    whiteSpace: 'pre-line'
-                }}>{weddingPlace.placeTransportation}</Text>
+                <FadeIn>
+                    <Text size={16} weight={300} style={{
+                        marginLeft: 24,
+                        alignSelf: 'stretch',
+                        textAlign: 'start',
+                        whiteSpace: 'pre-line'
+                    }}>{weddingPlace.placeTransportation}</Text>
+                </FadeIn>
             </Column>
             <Spacer h={65}/>
         </Column>

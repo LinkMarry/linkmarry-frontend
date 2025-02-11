@@ -3,9 +3,10 @@ import Text from "@designsystem/component/Text";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@util/css.util";
-import {Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/FlexLayout";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 export type GallerySlideStyle = 'style1' | 'style2';
 
@@ -25,24 +26,29 @@ function GalleryTemplate(
     }: GalleryTemplateProps
 ) {
     return (
-        <S.root>
-            <Text size={20} weight={300} customStyle={css`
-                color: var(--g-600);
-            `}>GALLERY</Text>
-            {imgDesign === ImgDesign.SLIDE ? (
-                <GallerySlide
-                    rootRef={rootRef}
-                    imgList={imgList}
-                    slideStyle={slideStyle}
-                />
-            ) : (
-                <S.gridWrapper>
-                    {imgList.map((img, index) => (
-                        <S.gridImg key={index} src={img}/>
-                    ))}
-                </S.gridWrapper>
-            )}
-        </S.root>
+        <Column $alignItems={'center'} gap={40} $customStyle={css`
+            background: white;
+            padding: 92px 0;
+        `}>
+            <FadeIn>
+                <Text size={20} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>GALLERY</Text>
+            </FadeIn>
+                {imgDesign === ImgDesign.SLIDE ? (
+                    <GallerySlide
+                        rootRef={rootRef}
+                        imgList={imgList}
+                        slideStyle={slideStyle}
+                    />
+                ) : (
+                    <S.gridWrapper>
+                        {imgList.map((img, index) => (
+                            <S.gridImg key={index} src={img}/>
+                        ))}
+                    </S.gridWrapper>
+                )}
+        </Column>
     );
 }
 
@@ -199,14 +205,6 @@ function GalleryStyleIndicator(
 }
 
 const S = {
-    root: styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: white;
-        padding: 92px 0;
-        gap: 40px;
-    `,
     gridWrapper: styled.div`
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* 3열 구성 */

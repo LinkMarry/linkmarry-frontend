@@ -1,12 +1,12 @@
 import styled, {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import makeText, {TextType} from "@designsystem/foundation/text/TextType";
-import {ButtonHTMLAttributes, CSSProperties} from "react";
+import {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from "react";
 
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonRole = 'primary' | 'secondary' | 'assistive';
 
-export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface Props extends ComponentPropsWithRef<'button'> {
     text: string;
     size?: ButtonSize;
     role?: ButtonRole;
@@ -26,7 +26,8 @@ function Button(
         enabled = true,
         customStyle,
         ...props
-    }: Props
+    }: Props,
+    ref: ForwardedRef<HTMLButtonElement>
 ) {
     let background: string, foreground: string;
     switch (role) {
@@ -79,7 +80,8 @@ function Button(
     }
 
     return (
-        <S.container
+        <ButtonStyle
+            ref={ref}
             opacity={enabled ? 1 : 0.5}
             background={background}
             color={foreground}
@@ -103,60 +105,58 @@ function Button(
                     fill: ${foreground};
                 `}/>
             ) : leadingIcon ? <div style={{width: iconSize}}></div> : <></>}
-        </S.container>
+        </ButtonStyle>
     )
 }
 
-const S = {
-    container: styled.button<{
-        $textType: TextType;
-        opacity: CSSProperties['opacity'];
-        background: CSSProperties['background'];
-        color: CSSProperties['color'];
-        $borderRadius: number;
-        padding: CSSProperties['padding'];
-        height: number;
-        gap: number;
-        $customStyle?: RuleSet;
-    }>`
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        outline: none;
-        border: none;
-        word-break: keep-all;
-        white-space: nowrap;
-        ${({$textType, opacity, background, color, $borderRadius, padding, height, gap, $customStyle}) => css`
-            ${makeText($textType)};
-            opacity: ${opacity};
-            background: ${background};
-            color: ${color};
-            border-radius: ${$borderRadius}px;
-            padding: ${padding};
-            height: ${height}px;
-            gap: ${gap}px;
-        ${$customStyle};
-        `};
+const ButtonStyle = styled.button<{
+    $textType: TextType;
+    opacity: CSSProperties['opacity'];
+    background: CSSProperties['background'];
+    color: CSSProperties['color'];
+    $borderRadius: number;
+    padding: CSSProperties['padding'];
+    height: number;
+    gap: number;
+    $customStyle?: RuleSet;
+}>`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    word-break: keep-all;
+    white-space: nowrap;
+    ${({$textType, opacity, background, color, $borderRadius, padding, height, gap, $customStyle}) => css`
+        ${makeText($textType)};
+        opacity: ${opacity};
+        background: ${background};
+        color: ${color};
+        border-radius: ${$borderRadius}px;
+        padding: ${padding};
+        height: ${height}px;
+        gap: ${gap}px;
+    ${$customStyle};
+    `};
 
-        &:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    &:enabled {
+        cursor: pointer;
+
+        &:active {
+            scale: 0.96;
         }
 
-        &:enabled {
-            cursor: pointer;
-
-            &:active {
-                scale: 0.96;
-            }
-
-            &:hover {
-                opacity: 0.5;
-            }
+        &:hover {
+            opacity: 0.5;
         }
+    }
 
-        transition: 0.1s scale ease-in-out;
-    `
-}
+    transition: 0.1s scale ease-in-out;
+`;
 
-export default Button;
+export default forwardRef(Button);

@@ -8,6 +8,7 @@ import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 import {format, parse} from "date-fns";
 import CustomStyle from "@designsystem/component/CustomStyle";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -48,68 +49,89 @@ function WeddingDayTemplate(
             padding: 92px 22px;
             background: white;
         `}>
-            <Text size={20} weight={300} customStyle={css`
-                color: var(--g-600);
-            `}>WEDDING DAY</Text>
+            <FadeIn>
+                <Text size={20} weight={300} customStyle={css`
+                    color: var(--g-600);
+                `}>WEDDING DAY</Text>
+            </FadeIn>
             {weddingSchedule.calendar && (
                 <Column gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
-                    <Divider/>
-                    <Column as={'table'} gap={8} $alignItems={'stretch'} $customStyle={css`
-                        margin: 24px 19px;
-                    `}>
-                        <CustomStyle as={'thead'} $customStyle={css`
-                            display: flex;
-                            padding: 12px 20px;
+                    <FadeIn>
+                        <Divider/>
+                    </FadeIn>
+                    <FadeIn>
+                        <Column as={'table'} gap={8} $alignItems={'stretch'} $customStyle={css`
+                            margin: 24px 19px;
                         `}>
-                            <CustomStyle as={'tr'} $customStyle={css`
+                            <CustomStyle as={'thead'} $customStyle={css`
                                 display: flex;
-                                justify-content: space-between;
-                                color: var(--g-500);
-                                flex: 1;
+                                padding: 12px 20px;
                             `}>
-                                {['일', '월', '화', '수', '목', '금', '토'].map((i, index) => (
-                                    <th key={index}>
-                                        <Text
-                                            font={'Pretendard'}
-                                            size={16}
-                                            weight={300}
-                                            customStyle={css`
-                                                color: var(--g-500);
-                                            `}
-                                        >{i}</Text>
-                                    </th>
-                                ))}
-                            </CustomStyle>
-                        </CustomStyle>
-                        <Column as={'tbody'} $alignItems={'stretch'} gap={4}>
-                            {calendar && calendar.map((week, index) => (
-                                <Row as={'tr'} key={index}>
-                                    {week.map((day, dayIndex) => (
-                                        <Row
-                                            key={dayIndex} as={'td'}
-                                            flex={1} $alignItems={'center'} $justifyContent={'center'}
-                                            $customStyle={css`
-                                                &:first-child, &:last-child {
-                                                    opacity: 0.4;
-                                                }
-
-                                                height: 48px;
-                                                border-radius: 100px;
-                                                ${day.isWeddingDay && css`
-                                                    background: var(--p-300);
-                                                `};
-                                            `}
-                                        >
-                                            <Text font={'Pretendard'} size={16} weight={300}>
-                                                {day.day ?? ''}
-                                            </Text>
-                                        </Row>
+                                <CustomStyle as={'tr'} $customStyle={css`
+                                    display: flex;
+                                    justify-content: space-between;
+                                    color: var(--g-500);
+                                    flex: 1;
+                                `}>
+                                    {['일', '월', '화', '수', '목', '금', '토'].map((i, index) => (
+                                        <FadeIn delay={index * 10}>
+                                            <th key={index}>
+                                                <Text
+                                                    font={'Pretendard'}
+                                                    size={16}
+                                                    weight={300}
+                                                    customStyle={css`
+                                                        color: var(--g-500);
+                                                    `}
+                                                >{i}</Text>
+                                            </th>
+                                        </FadeIn>
                                     ))}
-                                </Row>
-                            ))}
+                                </CustomStyle>
+                            </CustomStyle>
+                            <Column as={'tbody'} $alignItems={'stretch'} gap={4}>
+                                {calendar && calendar.map((week, weekIndex) => (
+                                    <Row as={'tr'} key={weekIndex}>
+                                        {week.map((day, dayIndex) => (
+                                            <FadeIn delay={weekIndex * 160 + dayIndex * 160}>
+                                                {provided => (
+                                                    <Row
+                                                        key={dayIndex} as={'td'}
+                                                        ref={provided.ref}
+                                                        flex={1} $alignItems={'center'} $justifyContent={'center'}
+                                                        $customStyle={css`
+                                                            height: 48px;
+                                                            border-radius: 100px;
+                                                            ${day.isWeddingDay && css`
+                                                                background: var(--p-300);
+                                                            `};
+                                                            ${provided.style};
+                                                        `}
+                                                    >
+                                                        <Text
+                                                            font={'Pretendard'} size={16} weight={300}
+                                                            customStyle={css`
+                                                                ${(dayIndex === 0 || dayIndex === 6) && (
+                                                                    css`
+                                                                        opacity: 0.4;
+                                                                    `
+                                                                )}
+                                                            `}
+                                                        >
+                                                            {day.day ?? ''}
+                                                        </Text>
+                                                    </Row>
+                                                )}
+                                            </FadeIn>
+                                        ))}
+                                    </Row>
+                                ))}
+                            </Column>
                         </Column>
-                    </Column>
-                    <Divider/>
+                    </FadeIn>
+                    <FadeIn>
+                        <Divider/>
+                    </FadeIn>
                 </Column>
             )}
             {weddingSchedule.dday && (

@@ -6,6 +6,7 @@ import Greeting from "@remote/value/Greeting";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import {css} from "styled-components";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 export type InvitationLetterStyle = 'style1' | 'style2' | 'style3';
 
@@ -27,31 +28,43 @@ function InvitationLetterTemplate(
     useScrollOnUpdate(invitationLetterRef, [greeting]);
 
     return (
-        <Column gap={40} $alignItems={'center'} ref={invitationLetterRef} $customStyle={css`
-            padding: 72px 60px;
-            background: white;
-        `}>
-            {invitationLetterStyle === 'style1' ? (
-                <Text className={'override-font'} weight={300} size={12} font={'Aleo'} customStyle={css`
-                    color: var(--g-300);
-                `}>Wedding Invitation</Text>
-            ) : invitationLetterStyle === 'style3' ? (
-                <img src={'/invitationLetterIcon.svg'} width={20} height={20} alt="" style={{
-                    color: 'white'
-                }}/>
-            ) : (
-                <></>
-            )}
-            <GreetingContent text={greeting.greetingContent}/>
-            <Divider style={{width: 140}}/>
-            <Text weight={300} size={14} customStyle={css`
-                color: var(--g-600);
+        <FadeIn>
+            <Column gap={40} $alignItems={'center'} ref={invitationLetterRef} $customStyle={css`
+                padding: 72px 60px;
+                background: white;
             `}>
-                <Row $alignItems={'center'} gap={8}>
-                    <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
-                </Row>
-            </Text>
-        </Column>
+                {invitationLetterStyle === 'style1' ? (
+                    <FadeIn>
+                        <Text className={'override-font'} weight={300} size={12} font={'Aleo'} customStyle={css`
+                            color: var(--g-300);
+                        `}>Wedding Invitation</Text>
+                    </FadeIn>
+                ) : invitationLetterStyle === 'style3' ? (
+                    <FadeIn>
+                        <img src={'/invitationLetterIcon.svg'} width={20} height={20} alt="" style={{
+                            color: 'white'
+                        }}/>
+                    </FadeIn>
+                ) : (
+                    <></>
+                )}
+                <FadeIn delay={200}>
+                    <GreetingContent text={greeting.greetingContent}/>
+                </FadeIn>
+                <FadeIn delay={400}>
+                    <Divider style={{width: 140}}/>
+                </FadeIn>
+                <FadeIn delay={600}>
+                    <Text weight={300} size={14} customStyle={css`
+                        color: var(--g-600);
+                    `}>
+                        <Row $alignItems={'center'} gap={8}>
+                            <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
+                        </Row>
+                    </Text>
+                </FadeIn>
+            </Column>
+        </FadeIn>
     );
 }
 

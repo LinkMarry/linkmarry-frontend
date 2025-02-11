@@ -105,11 +105,4 @@ function OptionCell(
     );
 }
 
-const S = {
-    titleWrapper: styled.div`
-        display: flex;
-
-    `,
-}
-
 export default forwardRef(OptionCell);

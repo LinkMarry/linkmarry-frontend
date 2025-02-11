@@ -5,6 +5,7 @@ import Text from "@designsystem/component/Text";
 import {fadeInAnimationStyle} from "@designsystem/animation/fade.animation";
 import Button from "@designsystem/component/Button";
 import {useNavigate} from "react-router-dom";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 interface Props {
     url: string;

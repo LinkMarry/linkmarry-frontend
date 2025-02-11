@@ -115,7 +115,11 @@ function TemplateComponent(
             box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.16);
             overflow: hidden;
         `}>
-            <audio src={wedding.baseMusic.musicUrl} ref={audioRef}/>
+            <audio
+                src={wedding.baseMusic.musicUrl}
+                ref={audioRef}
+                loop={true}
+            />
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>

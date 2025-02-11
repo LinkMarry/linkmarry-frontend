@@ -14,6 +14,8 @@ import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcommen
 import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
 import CreateGuestCommentDialog from "@src/component/template/dialog/guestcomment/CreateGuestCommentDialog";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
+import CustomStyle from "@designsystem/component/CustomStyle";
 
 interface GuestCommentsTemplateProps {
     templateColor: string;
@@ -41,83 +43,94 @@ function GuestCommentsTemplate(
     useScrollOnUpdate(guestCommentRef, [guestComment])
 
     return (
-        <S.root background={templateColor} ref={guestCommentRef}>
-            <Column gap={40} $alignItems={'stretch'}>
-                <Column gap={12} $alignItems={'center'}>
-                    <Text size={20} weight={300} customStyle={css`
-                        color: var(--g-600);
-                        word-break: break-all;
-                        text-align: center;
-                    `}>{guestComment.title}</Text>
-                    <Text size={16} weight={300} customStyle={css`
-                        color: var(--g-600);
-                        word-break: break-all;
-                        text-align: center;
-                    `}>{guestComment.content}</Text>
+        <FadeIn>
+            <S.root background={templateColor} ref={guestCommentRef}>
+                <Column gap={40} $alignItems={'stretch'}>
+                    <Column gap={12} $alignItems={'center'}>
+                        <FadeIn>
+                            <Text size={20} weight={300} customStyle={css`
+                                color: var(--g-600);
+                                word-break: break-all;
+                                text-align: center;
+                            `}>{guestComment.title}</Text>
+                        </FadeIn>
+                        <FadeIn delay={160}>
+                            <Text size={16} weight={300} customStyle={css`
+                                color: var(--g-600);
+                                word-break: break-all;
+                                text-align: center;
+                            `}>{guestComment.content}</Text>
+                        </FadeIn>
+                    </Column>
+                    {guestComment.privateContent && (
+                        <FadeIn delay={320}>
+                            <Column gap={12} $alignItems={'stretch'}>
+                                <GuestComments
+                                    comments={guestComments}
+                                    design={guestComment.design}
+                                    privateDate={guestComment.privateDate}
+                                    background={'white'}
+                                    onRemove={comment => {
+                                        setSelectedRemoveGuestComment(comment);
+                                        setShowRemoveGuestCommentDialog(true);
+                                    }}
+                                />
+                                <Text
+                                    size={14} weight={300}
+                                    customStyle={css`
+                                        color: var(--g-600);
+                                        align-self: flex-end;
+                                        padding-right: 4px;
+                                        cursor: pointer;
+                                    `}
+                                    onClick={() => {
+                                        setShowGuestCommentsDetailDialog(true);
+                                    }}
+                                >전체보기</Text>
+                            </Column>
+                        </FadeIn>
+                    )}
                 </Column>
-                {guestComment.privateContent && (
-                    <Column gap={12} $alignItems={'stretch'}>
-                        <GuestComments
-                            comments={guestComments}
-                            design={guestComment.design}
-                            privateDate={guestComment.privateDate}
-                            background={'white'}
-                            onRemove={comment => {
-                                setSelectedRemoveGuestComment(comment);
-                                setShowRemoveGuestCommentDialog(true);
+                <CustomStyle $customStyle={css`
+                    align-self: center;
+                `}>
+                    <FadeIn delay={480}>
+                        <Button
+                            text={'방명록 작성하기'}
+                            onClick={() => {
+                                setShowCreateGuestCommentDialog(true);
                             }}
                         />
-                        <Text
-                            size={14} weight={300}
-                            customStyle={css`
-                                color: var(--g-600);
-                                align-self: flex-end;
-                                padding-right: 4px;
-                                cursor: pointer;
-                            `}
-                            onClick={() => {
-                                setShowGuestCommentsDetailDialog(true);
-                            }}
-                        >전체보기</Text>
-                    </Column>
+                    </FadeIn>
+                </CustomStyle>
+                {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
+                    <RemoveGuestCommentDialog
+                        selectedGuestComment={selectedRemoveGuestComment}
+                        url={url}
+                        dismiss={() => setShowRemoveGuestCommentDialog(false)}
+                        onRefresh={onRefresh}
+                    />
                 )}
-            </Column>
-            <Button
-                text={'방명록 작성하기'}
-                style={{
-                    alignSelf: 'center'
-                }}
-                onClick={() => {
-                    setShowCreateGuestCommentDialog(true);
-                }}
-            />
-            {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
-                <RemoveGuestCommentDialog
-                    selectedGuestComment={selectedRemoveGuestComment}
-                    url={url}
-                    dismiss={() => setShowRemoveGuestCommentDialog(false)}
-                    onRefresh={onRefresh}
-                />
-            )}
-            {showGuestCommentsDetailDialog && (
-                <GuestCommentsDetailDialog
-                    comments={guestComments}
-                    guestComment={guestComment}
-                    onRemove={comment => {
-                        setSelectedRemoveGuestComment(comment);
-                        setShowRemoveGuestCommentDialog(true);
-                    }}
-                    dismiss={() => setShowGuestCommentsDetailDialog(false)}
-                />
-            )}
-            {showCreateGuestCommentDialog && (
-                <CreateGuestCommentDialog
-                    url={url}
-                    dismiss={() => setShowCreateGuestCommentDialog(false)}
-                    onRefresh={onRefresh}
-                />
-            )}
-        </S.root>
+                {showGuestCommentsDetailDialog && (
+                    <GuestCommentsDetailDialog
+                        comments={guestComments}
+                        guestComment={guestComment}
+                        onRemove={comment => {
+                            setSelectedRemoveGuestComment(comment);
+                            setShowRemoveGuestCommentDialog(true);
+                        }}
+                        dismiss={() => setShowGuestCommentsDetailDialog(false)}
+                    />
+                )}
+                {showCreateGuestCommentDialog && (
+                    <CreateGuestCommentDialog
+                        url={url}
+                        dismiss={() => setShowCreateGuestCommentDialog(false)}
+                        onRefresh={onRefresh}
+                    />
+                )}
+            </S.root>
+        </FadeIn>
     );
 }
 

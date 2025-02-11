@@ -15,6 +15,7 @@ import DreamWeddingPreviewTemplate from "@src/component/template/component/previ
 import PureLovePreviewTemplate from "@src/component/template/component/preview/PureLovePreviewTemplate";
 import ModernLovePreviewTemplate from "@src/component/template/component/preview/ModernLovePreviewTemplate";
 import ClassicRomancePreviewTemplate from "@src/component/template/component/preview/ClassicRomancePreviewTemplate";
+import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 export interface PreviewTemplateProps {
     template: Template;
@@ -26,32 +27,39 @@ export interface PreviewTemplateProps {
 function PreviewTemplate(
     props: PreviewTemplateProps
 ) {
-    switch (props.template.templateName) {
-        case '화이트 모먼트':
-            return <WhiteMomentPreviewTemplate {...props}/>;
-        case '포레스트 러브':
-            return <ForestLovePreviewTemplate {...props}/>;
-        case '네이처 블리스':
-            return <NatureBlissPreviewTemplate {...props}/>;
-        case '소울메이트':
-            return <SoulmatePreviewTemplate {...props}/>;
-        case '클래식 엘레강스':
-            return <ClassicElegancePreviewTemplate {...props}/>;
-        case '내추럴 가든':
-            return <NaturalGardenPreviewTemplate {...props}/>;
-        case '모던 심플':
-            return <ModernSimplePreviewTemplate {...props}/>;
-        case '로맨틱 포레스트':
-            return <RomanticForestPreviewTemplate {...props}/>;
-        case '드림 웨딩':
-            return <DreamWeddingPreviewTemplate {...props}/>;
-        case '퓨어 러브':
-            return <PureLovePreviewTemplate {...props}/>;
-        case '모던 러브':
-            return <ModernLovePreviewTemplate {...props}/>;
-        case '클래식 로맨스':
-            return <ClassicRomancePreviewTemplate {...props}/>;
-    }
+    const content = () => {
+        switch (props.template.templateName) {
+            case '화이트 모먼트':
+                return <WhiteMomentPreviewTemplate {...props}/>;
+            case '포레스트 러브':
+                return <ForestLovePreviewTemplate {...props}/>;
+            case '네이처 블리스':
+                return <NatureBlissPreviewTemplate {...props}/>;
+            case '소울메이트':
+                return <SoulmatePreviewTemplate {...props}/>;
+            case '클래식 엘레강스':
+                return <ClassicElegancePreviewTemplate {...props}/>;
+            case '내추럴 가든':
+                return <NaturalGardenPreviewTemplate {...props}/>;
+            case '모던 심플':
+                return <ModernSimplePreviewTemplate {...props}/>;
+            case '로맨틱 포레스트':
+                return <RomanticForestPreviewTemplate {...props}/>;
+            case '드림 웨딩':
+                return <DreamWeddingPreviewTemplate {...props}/>;
+            case '퓨어 러브':
+                return <PureLovePreviewTemplate {...props}/>;
+            case '모던 러브':
+                return <ModernLovePreviewTemplate {...props}/>;
+            case '클래식 로맨스':
+                return <ClassicRomancePreviewTemplate {...props}/>;
+        }
+    };
+    return (
+        <FadeIn>
+            {content()}
+        </FadeIn>
+    )
 }
 
 export default PreviewTemplate;
