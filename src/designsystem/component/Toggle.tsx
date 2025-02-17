@@ -1,4 +1,5 @@
 import React, {
+    ComponentPropsWithoutRef, ComponentPropsWithRef,
     ForwardedRef,
     forwardRef, useEffect,
     useImperativeHandle,
@@ -9,9 +10,9 @@ import {css, RuleSet} from "styled-components";
 import {Row} from "@designsystem/component/FlexLayout";
 import CustomStyle from "@designsystem/component/CustomStyle";
 
-interface Props {
-    checked?: boolean;
-    onChange?: (checked: boolean) => void;
+interface Props extends ComponentPropsWithRef<'div'> {
+    Checked?: boolean;
+    OnChange?: (checked: boolean) => void;
     customStyle?: RuleSet;
 }
 
@@ -23,18 +24,19 @@ export interface ToggleRef {
 
 function Toggle(
     {
-        checked = false,
-        onChange,
-        customStyle
+        Checked = false,
+        OnChange,
+        customStyle,
+        ...props
     }: Props,
     ref: ForwardedRef<ToggleRef>
 ) {
-    const [localChecked, setLocalChecked] = useState(checked);
+    const [localChecked, setLocalChecked] = useState(Checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setLocalChecked(checked);
-    }, [checked]);
+        setLocalChecked(Checked);
+    }, [Checked]);
 
     useImperativeHandle(ref, () => ({
         value: localChecked,
@@ -44,7 +46,7 @@ function Toggle(
         toggle: () => {
             if (checkboxRef.current) {
                 checkboxRef.current.checked = !checkboxRef.current.checked;
-                onChange?.(checkboxRef.current.checked);
+                OnChange?.(checkboxRef.current.checked);
             }
         }
     }));
@@ -54,42 +56,43 @@ function Toggle(
             position: relative;
             width: fit-content;
             ${customStyle};
-        `}>
+        `} {...props}>
             <Row
                 as={'input'}
                 ref={checkboxRef}
                 type={'checkbox'}
                 checked={localChecked}
                 onChange={(e) => {
-                    onChange?.(e.target.checked);
+                    OnChange?.(e.target.checked);
                     setLocalChecked(e.target.checked);
                 }}
                 $customStyle={css`
                     display: flex;
-                    width: 80px;
-                    height: 40px;
+                    width: 60px;
+                    height: 32px;
                     appearance: none;
                     cursor: pointer;
                     ${localChecked ? css`
-                        background: var(--p-300);
+                        background: var(--g-900);
                     ` : css`
                         background: var(--g-200);
                     `};
                     border-radius: 100px;
+                    outline: none;
                 `}
             />
             <CustomStyle as={'span'} $customStyle={css`
                 position: absolute;
-                width: 32px;
-                height: 32px;
+                width: 26px;
+                height: 26px;
                 background-color: white;
                 border-radius: 100px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-                top: 4px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+                top: 3px;
                 ${localChecked ? css`
-                    right: 6px;
+                    right: 3px;
                 ` : css`
-                    left: 6px;
+                    left: 3px;
                 `};
                 pointer-events: none;
             `}></CustomStyle>

@@ -95,8 +95,8 @@ function ComponentDemo() {
                 onChange={setSelected}
             />
             <Toggle
-                checked={toggleChecked}
-                onChange={setToggleChecked}
+                Checked={toggleChecked}
+                OnChange={setToggleChecked}
             />
             <Button text={'show dialog'} onClick={() => setShowDialog(true)}/>
             {showDialog && (

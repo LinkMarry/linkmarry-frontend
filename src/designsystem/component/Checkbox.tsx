@@ -73,7 +73,7 @@ function Checkbox(
                     height: 20px;
                     border-radius: 4px;
                     ${localChecked ? css`
-                        background: var(--g-800);
+                        background: var(--g-900);
                         border: none;
                     ` : css`
                         background: transparent;
