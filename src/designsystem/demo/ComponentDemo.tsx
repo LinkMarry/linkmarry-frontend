@@ -8,6 +8,7 @@ import Toggle from "@designsystem/component/Toggle";
 import {Column} from "@designsystem/component/FlexLayout";
 import {css} from "styled-components";
 import {IconType} from "@designsystem/foundation/icon";
+import Dialog from "@designsystem/component/dialog/dialog";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -20,6 +21,8 @@ function ComponentDemo() {
     const [checked, setChecked] = useState(false);
     const [selected, setSelected] = useState(false);
     const [toggleChecked, setToggleChecked] = useState(false);
+
+    const [showDialog, setShowDialog] = useState(false);
 
     return (
         <Column gap={8} $customStyle={css`
@@ -35,8 +38,10 @@ function ComponentDemo() {
                             display: 'flex',
                             gap: 8
                         }}>
-                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine} buttonType={role} size={size}/>
-                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine} buttonType={role} size={size} enabled={false}/>
+                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine}
+                                    buttonType={role} size={size}/>
+                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine}
+                                    buttonType={role} size={size} enabled={false}/>
                         </div>
                     )}
                 </div>
@@ -93,6 +98,20 @@ function ComponentDemo() {
                 checked={toggleChecked}
                 onChange={setToggleChecked}
             />
+            <Button text={'show dialog'} onClick={() => setShowDialog(true)}/>
+            {showDialog && (
+                <Dialog
+                    title={'Title'}
+                    description={'Description'}
+                    dismiss={() => setShowDialog(false)}
+                    dismissButtonProps={{
+                        text: 'Cancel'
+                    }}
+                    confirmButtonProps={{
+                        text: 'Confirm'
+                    }}
+                />
+            )}
         </Column>
     );
 }

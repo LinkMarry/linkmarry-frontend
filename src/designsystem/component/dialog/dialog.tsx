@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Button, {Props} from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
@@ -26,50 +26,41 @@ function Dialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
+            <Column gap={32} $alignItems={'stretch'} $customStyle={css`
+                width: 90vw;
+                max-width: 380px;
+                padding: 48px 36px 36px 36px;
+                border-radius: 28px;
+                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.03);
+                background: white;
+                ${applyBaseDialogContent()};
+            `}>
                 <Column gap={4} $alignItems={'stretch'}>
-                    <Text type={'h4'} customStyle={css`
+                    <Text type={'h5'} bold={true} customStyle={css`
                         text-align: center;
                         white-space: pre-wrap;
                     `}>{title}</Text>
-                    <Text type={'p3'} customStyle={css`
+                    <Text type={'p2'} customStyle={css`
                         color: var(--g-500);
                         text-align: center;
                     `}>{description}</Text>
                 </Column>
                 {children}
-                <S.buttonWrapper gap={12}>
+                <Row gap={12} $customStyle={css`
+                    & > * {
+                        flex: 1;
+                    }
+                `}>
                     <Button {...{
-                        role: 'secondary',
+                        buttonType: 'tonal',
                         onClick: dismiss,
                         ...dismissButtonProps
                     }}/>
                     <Button {...confirmButtonProps}/>
-                </S.buttonWrapper>
-            </S.container>
+                </Row>
+            </Column>
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        flex-direction: column;
-        width: 90vw;
-        max-width: 380px;
-        gap: 32px;
-        align-items: stretch;
-        padding: 48px 36px 36px 36px;
-        border-radius: 28px;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.03);
-        background: white;
-        ${applyBaseDialogContent()};
-    `,
-    buttonWrapper: styled(Row)`
-        & > * {
-            flex: 1;
-        }
-    `
 }
 
 export default Dialog;
