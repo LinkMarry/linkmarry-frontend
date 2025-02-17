@@ -36,18 +36,20 @@ function WaterMarkSheet(
                 margin: 0 6px 20px 6px;
                 position: absolute;
             `}>
-                <Text type={'p4'}>
-                    <Column $alignItems={'center'} gap={4}>
-                        <span>시안 확인용입니다.</span>
-                        <span>구매 후 워터마크를 제거해 주세요.</span>
-                    </Column>
-                </Text>
-                <Text type={'btn1'} customStyle={css`
-                    color: var(--g-600);
-                    text-align: center;
-                `}>결제 후 대시보드 &gt; 워터마크 제거
-                    <br/>
-                    버튼을 통해 제거할 수 있습니다.</Text>
+                {/*todo*/}
+                {/*<Text type={'p4'}>*/}
+                {/*    <Column $alignItems={'center'} gap={4}>*/}
+                {/*        <span>시안 확인용입니다.</span>*/}
+                {/*        <span>구매 후 워터마크를 제거해 주세요.</span>*/}
+                {/*    </Column>*/}
+                {/*</Text>*/}
+                {/*todo*/}
+                {/*<Text type={'btn1'} customStyle={css`*/}
+                {/*    color: var(--g-600);*/}
+                {/*    text-align: center;*/}
+                {/*`}>결제 후 대시보드 &gt; 워터마크 제거*/}
+                {/*    <br/>*/}
+                {/*    버튼을 통해 제거할 수 있습니다.</Text>*/}
                 <Row gap={12} $alignSelf={'stretch'}>
                     <Button text={'구매하기'} customStyle={css`
                         flex: 1;

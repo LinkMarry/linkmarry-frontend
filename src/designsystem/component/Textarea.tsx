@@ -22,7 +22,6 @@ function Textarea(
             background: white;
             border-radius: 8px;
             outline: none;
-            ${makeText('p5')};
             resize: vertical;
             padding: 12px 16px;
             ${customStyle};

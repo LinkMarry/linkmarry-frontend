@@ -10,11 +10,9 @@ const SegmentedButton = styled.button<{ selected: boolean; }>`
     ${({selected}) => selected ? css`
         border: 2px solid var(--p-800);
         color: var(--p-800);
-        ${makeText('p4')};
     ` : css`
         border: 2px solid var(--g-200);
         color: var(--g-400);
-        ${makeText('p5')};
     `}
 `;
 

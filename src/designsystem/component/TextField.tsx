@@ -59,13 +59,13 @@ function TextField(
 
     return (
         <TextFieldStyle $enabled={enabled} {...props}>
-            {label && (
-                <Text type={'btn1'} style={{
-                    color: labelColor
-                }}>
-                    {label}
-                </Text>
-            )}
+            {/*{label && (*/}
+            {/*    <Text type={'btn1'} style={{*/}
+            {/*        color: labelColor*/}
+            {/*    }}>*/}
+            {/*        {label}*/}
+            {/*    </Text>*/}
+            {/*)}*/}
             <S.inputContainer style={{
                 background: inputBackground,
                 border: `1px solid ${borderColor}`
@@ -101,16 +101,17 @@ function TextField(
                     <></>
                 )}
             </S.inputContainer>
-            <Text type={'btn1'} customStyle={css`
-                position: absolute;
-                bottom: -20px;
-                white-space: nowrap;
-                ${isError ? css`
-                    color: #FF4242;
-                ` : css`
-                    color: var(--g-500);
-                `}
-            `}>{supportingText}</Text>
+            {/*todo*/}
+            {/*<Text type={'btn1'} customStyle={css`*/}
+            {/*    position: absolute;*/}
+            {/*    bottom: -20px;*/}
+            {/*    white-space: nowrap;*/}
+            {/*    ${isError ? css`*/}
+            {/*        color: #FF4242;*/}
+            {/*    ` : css`*/}
+            {/*        color: var(--g-500);*/}
+            {/*    `}*/}
+            {/*`}>{supportingText}</Text>*/}
         </TextFieldStyle>
     );
 }

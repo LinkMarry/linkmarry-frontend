@@ -15,14 +15,17 @@ function FoundationDemo() {
         `}>
             <Column>
                 {textTypes.map((type) => (
-                    <Text type={type}>가나다라마바사ABCDEFG</Text>
+                    <>
+                        <Text type={type}>가나다라마바사ABCDEFG</Text>
+                        <Text type={type} bold={true}>가나다라마바사ABCDEFG</Text>
+                    </>
                 ))}
             </Column>
             <Divider/>
             <Column gap={20}>
                 {linkMarryFonts.map(font => (
                     <Row>
-                        <Text type={'p5'} customStyle={css`
+                        <Text type={'p3'} customStyle={css`
                             width: 256px;
                         `}>{font}</Text>
                         <Column>

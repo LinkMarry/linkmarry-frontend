@@ -87,7 +87,7 @@ function ContactingCongratulationDialog(
                 ${applyBaseDialogContent()};
             `}>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text type={'h6'}>축하 연락하기</Text>
+                    {/*<Text type={'h6'}>축하 연락하기</Text>*/}
                     <Text type={'caption1'} customStyle={css`
                         color: var(--g-400);
                     `}>축하의 마음을 전하세요</Text>
@@ -107,7 +107,7 @@ function ContactingCongratulationDialog(
                             border-radius: 8px;
                         `}>
                             <Row gap={12} $alignItems={'center'}>
-                                <Text type={'p5'}>{tel.name}</Text>
+                                {/*<Text type={'p5'}>{tel.name}</Text>*/}
                                 <Text type={'caption1'} customStyle={css`
                                     color: var(--g-300);
                                 `}>{tel.familyName}</Text>

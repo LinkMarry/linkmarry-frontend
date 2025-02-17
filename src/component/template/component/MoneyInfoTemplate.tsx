@@ -72,9 +72,9 @@ function MoneyInfoComponent(
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedGroom(i => !i)}>
-                        <Text type={'p4'} weight={'bold'} customStyle={css`
-                            color: var(--g-600);
-                        `}>{firstBaseInfo.korean}측</Text>
+                        {/*<Text type={'p4'} weight={'bold'} customStyle={css`*/}
+                        {/*    color: var(--g-600);*/}
+                        {/*`}>{firstBaseInfo.korean}측</Text>*/}
                         <Spacer/>
                         <Icon iconType={IconType.ExpandArrow} customStyle={css`
                             fill: var(--g-600);
@@ -108,9 +108,9 @@ function MoneyInfoComponent(
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedBride(i => !i)}>
-                        <Text type={'p4'} weight={'bold'} customStyle={css`
-                            color: var(--p-800);
-                        `}>{secondBaseInfo.korean}측</Text>
+                        {/*<Text type={'p4'} weight={'bold'} customStyle={css`*/}
+                        {/*    color: var(--p-800);*/}
+                        {/*`}>{secondBaseInfo.korean}측</Text>*/}
                         <Spacer/>
                         <Icon iconType={IconType.ExpandArrow} customStyle={css`
                             fill: var(--p-800);
@@ -160,13 +160,13 @@ function MoneyCell(props: {
                 `};
             `}
         >
-            <Text type={'p5'}>{props.name}</Text>
+            {/*<Text type={'p5'}>{props.name}</Text>*/}
             <Row $alignItems={'center'} $customStyle={css`
                 padding: 8px 16px;
                 background: white;
                 border-radius: 4px;
             `}>
-                <Text type={'btn1'}>{fullBankNumber}</Text>
+                {/*<Text type={'btn1'}>{fullBankNumber}</Text>*/}
                 <Spacer/>
                 <Icon iconType={IconType.Copy} size={20} customStyle={css`
                     fill: var(--g-400);

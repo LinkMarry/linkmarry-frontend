@@ -19,7 +19,7 @@ import RsvpDialog from "@src/component/template/dialog/rsvp/RsvpDialog";
 import Cookies from "js-cookie";
 import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
 import {Helmet} from "react-helmet";
-import {optionRecord, OptionType} from "@page/invitation/design/OptionType";
+import {optionRecord, OptionType} from "@page/design/OptionType";
 import RsvpTemplate from "@src/component/template/component/RsvpTemplate";
 import WaterMarkSheet from "@src/component/template/component/WaterMarkSheet";
 import {Column} from "@designsystem/component/FlexLayout";

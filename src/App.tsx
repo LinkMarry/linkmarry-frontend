@@ -2,18 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import config from "@config/config";
 import KakaoRedirectPage from "@page/KakaoRedirectPage";
-import InvitationLayout from "@page/invitation/InvitationLayout";
-import HomePage from "@page/home/HomePage";
-import InvitationDashboard from "@page/invitation/dashboard/InvitationDashboard";
-import InvitationStatistics from "@page/invitation/statistics/InvitationStatistics";
-import InvitationDesign from "@page/invitation/design/InvitationDesign";
-import InvitationStatisticsDetail from "@page/invitation/statistics/detail/InvitationStatisticsDetail";
 import MyPage from "@page/mypage/MyPage";
 import ComponentDemo from "@designsystem/demo/component.demo";
 import FoundationDemo from "@designsystem/demo/foundation.demo";
-import NotificationPage from "@page/notification/NotificationPage";
-import NotificationDetailPage from "@page/notification/detail/NotificationDetailPage";
-import InvitationDashboardGuestComment from "@page/invitation/dashboard/guestComment/InvitationDashboardGuestComment";
 import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import TemplatesPage from "@page/templates/TemplatesPage";
@@ -53,37 +44,16 @@ function App() {
             <Routes>
                 {/*service*/}
                 <Route path={'login'} element={<LoginPage/>}/>
-                <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
-                <Route path={''} element={<HomePage/>}/>
-                <Route element={<InvitationLayout/>}>
-                    <Route path={'dashboard'}>
-                        <Route index={true} element={<InvitationDashboard/>}/>
-                        <Route path={'guest-comment/:url'} element={<InvitationDashboardGuestComment/>}/>
-                        <Route path={'design/:url'} element={<InvitationDesign/>}/>
-                    </Route>
-                    <Route path={'statistics'}>
-                        <Route index={true} element={<InvitationStatistics/>}/>
-                        <Route path={':url'} element={<InvitationStatisticsDetail/>}/>
-                    </Route>
-                </Route>
                 <Route path={'my-page'} element={<MyPage/>}/>
-                <Route path={'notification'} element={<NotificationPage/>}/>
-                <Route path={'notification/:id'} element={<NotificationDetailPage/>}/>
                 <Route path={'templates'} element={<TemplatesPage/>}/>
 
-                {/*design-system*/}
-                {config.env === 'development' && (
-                    <>
-                        <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
-                        <Route path={'design-system/component'} element={<ComponentDemo/>}/>
-                    </>
-                )}
+                {/*auth*/}
+                <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
 
                 {/*not found*/}
                 <Route path={'*'} element={<Navigate to={'/'}/>}/>
 
                 {/*wedding*/}
-                {/*<Route path={'wedding'} element={}/>*/}
                 <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                 <Route path={'sample'} element={(
                     <Row $justifyContent={'center'} $customStyle={css`
@@ -93,6 +63,14 @@ function App() {
                         <TemplateComponent wedding={dummyWedding} isPreview={true}/>
                     </Row>
                 )}/>
+                
+                {/*design-system*/}
+                {config.env === 'development' && (
+                    <>
+                        <Route path={'design-system/foundation'} element={<FoundationDemo/>}/>
+                        <Route path={'design-system/component'} element={<ComponentDemo/>}/>
+                    </>
+                )}
             </Routes>
         </AutoFocusContext.Provider>
     );

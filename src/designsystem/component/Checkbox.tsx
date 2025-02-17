@@ -85,15 +85,15 @@ function Checkbox(
                     `}
                 />}
             </Row>
-            {label && (
-                <Text
-                    type={'p4'}
-                    customStyle={css`
-                        cursor: pointer;
-                    `}
-                    onClick={() => onChange?.(!checked)}
-                >{label}</Text>
-            )}
+            {/*{label && (*/}
+            {/*    <Text*/}
+            {/*        type={'p4'}*/}
+            {/*        customStyle={css`*/}
+            {/*            cursor: pointer;*/}
+            {/*        `}*/}
+            {/*        onClick={() => onChange?.(!checked)}*/}
+            {/*    >{label}</Text>*/}
+            {/*)}*/}
         </S.container>
     );
 }

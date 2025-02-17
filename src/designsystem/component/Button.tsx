@@ -52,13 +52,14 @@ function Button(
         textType: TextType,
         gap: number;
 
+    //todo
     switch (size) {
         case 'large':
             borderRadius = 12;
             contentPadding = '10px 20px';
             iconSize = 20;
             height = 46;
-            textType = 'p4';
+            textType = 'p3';
             gap = 6;
             break;
         case 'medium':
@@ -66,7 +67,7 @@ function Button(
             contentPadding = '8px 16px';
             iconSize = 18;
             height = 37;
-            textType = 'btn1';
+            textType = 'p3';
             gap = 5;
             break;
         case 'small':
@@ -74,7 +75,7 @@ function Button(
             contentPadding = '6px 12px';
             iconSize = 16;
             height = 29;
-            textType = 'caption2';
+            textType = 'p3';
             gap = 4;
             break;
     }

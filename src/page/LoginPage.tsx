@@ -17,9 +17,10 @@ function LoginPage() {
                     <img src="/linkmarry.png" alt="" width={72} height={72} style={{borderRadius: 12}}/>
                     <Spacer h={8}/>
                     <Text type={'h3'}>링크메리 로그인</Text>
-                    <Text type={'p4'} customStyle={css`
-                        color: var(--g-500);
-                    `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
+                    {/*todo*/}
+                    {/*<Text type={'p4'} customStyle={css`*/}
+                    {/*    color: var(--g-500);*/}
+                    {/*`}>모바일 청접장으로 결혼을 더욱 특별하게</Text>*/}
                 </Column>
                 <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
                     cursor: pointer;
@@ -29,7 +30,6 @@ function LoginPage() {
                     border: none;
                     background-color: #FEE500;
                     border-radius: 6px;
-                    ${makeText('p4')};
                     color: black;
                 `} onClick={signInWithKakao}>
                     <Row gap={6} $alignItems={'center'}>

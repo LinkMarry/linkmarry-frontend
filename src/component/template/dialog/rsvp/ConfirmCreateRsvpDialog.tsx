@@ -27,7 +27,7 @@ function ConfirmCreateRsvpDialog(
                 width: 90vw;
             `}>
                 <Column gap={4} $alignItems={'center'}>
-                    <Text type={'h6'}>참석의사 전달</Text>
+                    {/*<Text type={'h6'}>참석의사 전달</Text>*/}
                     <Text type={'caption1'}>참석의사 전달시 수정이 불가능합니다</Text>
                 </Column>
                 <Row gap={12} $alignSelf={'stretch'}>

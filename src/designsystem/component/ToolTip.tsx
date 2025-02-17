@@ -38,7 +38,6 @@ const ContentStyle = styled.span`
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
     word-break: keep-all;
     white-space: nowrap;
-    ${makeText('p5')};
 `;
 
 const ToolTipStyle = styled.div`

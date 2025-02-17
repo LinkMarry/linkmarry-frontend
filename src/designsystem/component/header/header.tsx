@@ -54,7 +54,6 @@ function Header() {
 const S = {
     navItem: styled.li`
         display: flex;
-        ${makeText('p5')};
         white-space: nowrap;
         cursor: pointer;
     `,

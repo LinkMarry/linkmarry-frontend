@@ -130,17 +130,17 @@ function KakaoMapDialog(
                                     }}
                                 >
                                     <Text type={'p2'}>{place.address_name}</Text>
-                                    <Text
-                                        type={'p5'}
-                                        customStyle={css`
-                                            text-decoration: underline;
-                                            color: var(--g-500);
-                                            cursor: pointer;
-                                        `}
-                                        onClick={() => {
-                                            window.open(place.place_url, '_blank');
-                                        }}
-                                    >{place.place_name}</Text>
+                                    {/*<Text*/}
+                                    {/*    type={'p5'}*/}
+                                    {/*    customStyle={css`*/}
+                                    {/*        text-decoration: underline;*/}
+                                    {/*        color: var(--g-500);*/}
+                                    {/*        cursor: pointer;*/}
+                                    {/*    `}*/}
+                                    {/*    onClick={() => {*/}
+                                    {/*        window.open(place.place_url, '_blank');*/}
+                                    {/*    }}*/}
+                                    {/*>{place.place_name}</Text>*/}
                                 </Column>
                             );
                         })}

@@ -95,15 +95,16 @@ function Radio(
                     `}
                 />
             </CustomStyle>
-            {label && (
-                <Text
-                    type={'p4'}
-                    customStyle={css`
-                        cursor: pointer;
-                    `}
-                    onClick={() => onChange?.(!selected)}
-                >{label}</Text>
-            )}
+            {/*todo*/}
+            {/*{label && (*/}
+            {/*    <Text*/}
+            {/*        type={'p4'}*/}
+            {/*        customStyle={css`*/}
+            {/*            cursor: pointer;*/}
+            {/*        `}*/}
+            {/*        onClick={() => onChange?.(!selected)}*/}
+            {/*    >{label}</Text>*/}
+            {/*)}*/}
         </S.container>
     );
 }
@@ -117,8 +118,6 @@ const S = {
     `,
     title: styled.span`
         display: inline-flex;
-
-        ${makeText('p4')};
     `
 }
 

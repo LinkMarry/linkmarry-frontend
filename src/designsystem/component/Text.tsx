@@ -10,6 +10,7 @@ interface Props extends ComponentPropsWithRef<'span'> {
     weight?: CSSProperties['fontWeight'];
     size?: number;
     lineHeight?: CSSProperties['lineHeight'];
+    bold?: boolean;
     customStyle?: RuleSet;
     children?: React.ReactNode;
 }
@@ -22,6 +23,7 @@ function Text(
         size,
         customStyle,
         lineHeight,
+        bold = false,
         children,
         ...props
     }: Props,
@@ -35,7 +37,7 @@ function Text(
             $customStyle={css`
                 ${implementText({
                     fontFamily: font ?? properties?.fontFamily,
-                    fontWeight: weight ?? properties?.fontWeight,
+                    fontWeight: weight ?? (bold ? properties?.boldFontWeight : properties?.fontWeight),
                     fontSize: size ?? properties?.fontSize,
                     lineHeight: lineHeight ?? properties?.lineHeight,
                 })};

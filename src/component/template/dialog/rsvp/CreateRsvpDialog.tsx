@@ -6,8 +6,8 @@ import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/icon";
 import Button from "@designsystem/component/Button";
-import OptionSegmentedButton from "@page/invitation/design/component/OptionSegmentedButton";
-import OptionTextField from "@page/invitation/design/component/OptionTextField";
+import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
+import OptionTextField from "@page/design/component/OptionTextField";
 import weddingApi from "@remote/api/WeddingApi";
 import GuestType from "@remote/enumeration/GuestType";
 import Rsvp from "@remote/value/Rsvp";
@@ -110,59 +110,60 @@ function CreateRsvpDialog(
                     padding: 36px 40px 0 40px;
                 `}>
                     <Column gap={28} $alignItems={'stretch'}>
-                        <Column gap={4} $alignItems={'stretch'}>
-                            <Text type={'p5'}>어느 분의 하객인가요?</Text>
-                            <OptionSegmentedButton
-                                selectedIndex={guestType}
-                                items={['신랑', '신부']}
-                                onClickItem={index => {
-                                    setGuestType(index);
-                                }}
-                            />
-                        </Column>
-                        <Column gap={4} $alignItems={'stretch'}>
-                            <Text type={'p5'}>참석 여부를 선택해 주세요.</Text>
-                            <OptionSegmentedButton
-                                selectedIndex={isAttend}
-                                items={['참석할게요', '참석이 어려워요']}
-                                onClickItem={index => {
-                                    setIsAttend(index);
-                                }}
-                            />
-                        </Column>
-                        {rsvp.attendMealStatus && (
-                            <Column gap={4} $alignItems={'stretch'}>
-                                <Text type={'p5'}>식사 여부를 선택해 주세요.</Text>
-                                <OptionSegmentedButton
-                                    selectedIndex={isMeal} items={['식사함', '식사안함']}
-                                    onClickItem={index => {
-                                        setIsMeal(index);
-                                    }}
-                                />
-                            </Column>
-                        )}
-                        <Row gap={18} $alignItems={'center'}>
-                            <Text type={'p5'} style={{width: 75}}>참석자 성함</Text>
-                            <OptionTextField ref={guestNameRef} placeholder={'참석자 본인 성함'} style={{flex: 1}}/>
-                        </Row>
-                        {rsvp.attendPhoneStatus && (
-                            <Row gap={18} $alignItems={'center'}>
-                                <Text type={'p5'} style={{width: 75}}>연락처</Text>
-                                <OptionTextField ref={guestPhoneRef} placeholder={'- 없이 입력'} style={{flex: 1}}/>
-                            </Row>
-                        )}
-                        {rsvp.attendGuestCntStatus && (
-                            <Row gap={18} $alignItems={'center'}>
-                                <Text type={'p5'} style={{width: 75}}>동행 인원</Text>
-                                <OptionTextField ref={guestCntRef} placeholder={'본인 제외한 추가 참석 인원'} fieldProps={{
-                                    defaultValue: 0,
-                                    type: 'number'
-                                }} style={{flex: 1}}/>
-                            </Row>
-                        )}
+                        {/*todo*/}
+                        {/*<Column gap={4} $alignItems={'stretch'}>*/}
+                        {/*    <Text type={'p5'}>어느 분의 하객인가요?</Text>*/}
+                        {/*    <OptionSegmentedButton*/}
+                        {/*        selectedIndex={guestType}*/}
+                        {/*        items={['신랑', '신부']}*/}
+                        {/*        onClickItem={index => {*/}
+                        {/*            setGuestType(index);*/}
+                        {/*        }}*/}
+                        {/*    />*/}
+                        {/*</Column>*/}
+                        {/*<Column gap={4} $alignItems={'stretch'}>*/}
+                        {/*    <Text type={'p5'}>참석 여부를 선택해 주세요.</Text>*/}
+                        {/*    <OptionSegmentedButton*/}
+                        {/*        selectedIndex={isAttend}*/}
+                        {/*        items={['참석할게요', '참석이 어려워요']}*/}
+                        {/*        onClickItem={index => {*/}
+                        {/*            setIsAttend(index);*/}
+                        {/*        }}*/}
+                        {/*    />*/}
+                        {/*</Column>*/}
+                        {/*{rsvp.attendMealStatus && (*/}
+                        {/*    <Column gap={4} $alignItems={'stretch'}>*/}
+                        {/*        <Text type={'p5'}>식사 여부를 선택해 주세요.</Text>*/}
+                        {/*        <OptionSegmentedButton*/}
+                        {/*            selectedIndex={isMeal} items={['식사함', '식사안함']}*/}
+                        {/*            onClickItem={index => {*/}
+                        {/*                setIsMeal(index);*/}
+                        {/*            }}*/}
+                        {/*        />*/}
+                        {/*    </Column>*/}
+                        {/*)}*/}
+                        {/*<Row gap={18} $alignItems={'center'}>*/}
+                        {/*    <Text type={'p5'} style={{width: 75}}>참석자 성함</Text>*/}
+                        {/*    <OptionTextField ref={guestNameRef} placeholder={'참석자 본인 성함'} style={{flex: 1}}/>*/}
+                        {/*</Row>*/}
+                        {/*{rsvp.attendPhoneStatus && (*/}
+                        {/*    <Row gap={18} $alignItems={'center'}>*/}
+                        {/*        <Text type={'p5'} style={{width: 75}}>연락처</Text>*/}
+                        {/*        <OptionTextField ref={guestPhoneRef} placeholder={'- 없이 입력'} style={{flex: 1}}/>*/}
+                        {/*    </Row>*/}
+                        {/*)}*/}
+                        {/*{rsvp.attendGuestCntStatus && (*/}
+                        {/*    <Row gap={18} $alignItems={'center'}>*/}
+                        {/*        <Text type={'p5'} style={{width: 75}}>동행 인원</Text>*/}
+                        {/*        <OptionTextField ref={guestCntRef} placeholder={'본인 제외한 추가 참석 인원'} fieldProps={{*/}
+                        {/*            defaultValue: 0,*/}
+                        {/*            type: 'number'*/}
+                        {/*        }} style={{flex: 1}}/>*/}
+                        {/*    </Row>*/}
+                        {/*)}*/}
                         {rsvp.attendEtcStatus && (
                             <Column gap={4} $alignItems={'stretch'}>
-                                <Text type={'p5'}>추가로 전달할 내용을 입력해 주세요.</Text>
+                                <Text type={'p3'}>추가로 전달할 내용을 입력해 주세요.</Text>
                                 <OptionTextField ref={guestCommentRef} autoWidth={false} placeholder={'내용 입력'}/>
                             </Column>
                         )}
