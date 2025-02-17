@@ -86,8 +86,8 @@ function ComponentDemo() {
                     marginTop: 32
                 }}
                 label={'title'}
-                checked={checked}
-                onChange={setChecked}
+                Checked={checked}
+                OnChange={setChecked}
             />
             <Radio
                 label={'title'}

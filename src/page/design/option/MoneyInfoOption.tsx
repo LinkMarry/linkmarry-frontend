@@ -42,8 +42,8 @@ function MoneyInfoOption(
                         <Column gap={8}>
                             <Checkbox
                                 label={'카카오페이'}
-                                checked={moneyInfo.kakaoStatus}
-                                onChange={event => onChange({...moneyInfo, kakaoStatus: event})}
+                                Checked={moneyInfo.kakaoStatus}
+                                OnChange={event => onChange({...moneyInfo, kakaoStatus: event})}
                             />
                             {moneyInfo.kakaoStatus && <S.kakaoPayHelper>카카오페이 연동하는 법</S.kakaoPayHelper>}
                         </Column>

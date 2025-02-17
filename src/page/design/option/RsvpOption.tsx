@@ -44,21 +44,21 @@ function RsvpOption(
                         <OptionLabel label={'항목'} style={{alignSelf: 'flex-start'}}/>
                         <Column gap={12}>
                             <Checkbox
-                                checked={rsvp.attendMealStatus}
-                                onChange={checked => onChange({...rsvp, attendMealStatus: checked})}
+                                Checked={rsvp.attendMealStatus}
+                                OnChange={checked => onChange({...rsvp, attendMealStatus: checked})}
                                 label={'식사 여부'}
                             />
                             <Checkbox
-                                checked={rsvp.attendGuestCntStatus}
-                                onChange={checked => onChange({...rsvp, attendGuestCntStatus: checked})}
+                                Checked={rsvp.attendGuestCntStatus}
+                                OnChange={checked => onChange({...rsvp, attendGuestCntStatus: checked})}
                                 label={'참석 인원'}/>
                             <Checkbox
-                                checked={rsvp.attendPhoneStatus}
-                                onChange={checked => onChange({...rsvp, attendPhoneStatus: checked})}
+                                Checked={rsvp.attendPhoneStatus}
+                                OnChange={checked => onChange({...rsvp, attendPhoneStatus: checked})}
                                 label={'연락처'}/>
                             <Checkbox
-                                checked={rsvp.attendEtcStatus}
-                                onChange={checked => onChange({...rsvp, attendEtcStatus: checked})}
+                                Checked={rsvp.attendEtcStatus}
+                                OnChange={checked => onChange({...rsvp, attendEtcStatus: checked})}
                                 label={'추가 전달사항'}
                             />
                         </Column>
@@ -67,8 +67,8 @@ function RsvpOption(
                         <OptionLabel label={'팝업 안내'} style={{alignSelf: 'flex-start'}}/>
                         <Row gap={16}>
                             <Checkbox
-                                checked={rsvp.startPopupStatus}
-                                onChange={checked => onChange({...rsvp, startPopupStatus: checked})}
+                                Checked={rsvp.startPopupStatus}
+                                OnChange={checked => onChange({...rsvp, startPopupStatus: checked})}
                             />
                             <Text type={'caption1'} customStyle={css`
                                 color: var(--g-300);

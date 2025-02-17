@@ -221,8 +221,8 @@ function BaseMusicOption(
                 <Row gap={12} $alignItems={'center'}>
                     <OptionLabel label={'효과'}/>
                     <Checkbox
-                        checked={baseMusic.effect}
-                        onChange={checked => onChange({...baseMusic, effect: checked})}
+                        Checked={baseMusic.effect}
+                        OnChange={checked => onChange({...baseMusic, effect: checked})}
                         label={'자동 재생'}
                     />
                 </Row>
