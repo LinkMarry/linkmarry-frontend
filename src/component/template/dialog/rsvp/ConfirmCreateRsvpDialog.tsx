@@ -31,7 +31,7 @@ function ConfirmCreateRsvpDialog(
                     <Text type={'caption1'}>참석의사 전달시 수정이 불가능합니다</Text>
                 </Column>
                 <Row gap={12} $alignSelf={'stretch'}>
-                    <Button text={'취소'} role={'assistive'} onClick={dismiss} style={{flex: 1}}/>
+                    <Button text={'취소'} buttonType={'outlined'} onClick={dismiss} style={{flex: 1}}/>
                     <Button text={'확인'} onClick={onConfirm} style={{flex: 1}}/>
                 </Row>
             </Column>

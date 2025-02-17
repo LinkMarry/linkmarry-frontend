@@ -62,7 +62,7 @@ function RemoveGuestCommentDialog(
                     `}>관리자와 글 작성자만 글을 삭제할 수 있습니다</Text>
                 </Column>
                 <TextField ref={passwordRef} placeholder={'비밀번호 입력'}/>
-                <Button text={'삭제'} role={'assistive'} onClick={onClickRemove}/>
+                <Button text={'삭제'} buttonType={'outlined'} onClick={onClickRemove}/>
             </S.container>
         </BaseDialog>
     );

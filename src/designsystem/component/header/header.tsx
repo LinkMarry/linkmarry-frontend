@@ -43,7 +43,7 @@ function Header() {
                             navigate('/my-page');
                         }}>마이페이지</S.navItem>
                     ) : (
-                        <Button text={'로그인'} onClick={() => navigate('/login')} role={'assistive'}/>
+                        <Button text={'로그인'} onClick={() => navigate('/login')} buttonType={'outlined'}/>
                     )}
                 </Row>
             </Row>

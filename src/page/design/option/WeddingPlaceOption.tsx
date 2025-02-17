@@ -39,7 +39,7 @@ function WeddingPlaceOption(
                                 value: weddingPlace.addressName,
                                 disabled: true
                             }} width={184}/>
-                            <Button text={'검색'} role={'assistive'} customStyle={css`
+                            <Button text={'검색'} buttonType={'outlined'} customStyle={css`
                                 border-radius: 8px;
                                 width: 68px;
                             `} onClick={() => {

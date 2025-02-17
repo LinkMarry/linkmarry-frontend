@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
-import Button, {ButtonRole, ButtonSize} from "@designsystem/component/Button";
+import Button, {ButtonSize, ButtonType} from "@designsystem/component/Button";
 import Divider, {DividerSize} from "@designsystem/component/Divider";
 import TextField from "@designsystem/component/TextField";
 import Checkbox from "@designsystem/component/Checkbox";
 import Radio from "@designsystem/component/Radio";
 import Toggle from "@designsystem/component/Toggle";
+import {Column} from "@designsystem/component/FlexLayout";
+import {css} from "styled-components";
+import {IconType} from "@designsystem/foundation/icon";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
-    const buttonRoles: ButtonRole[] = ['primary', 'secondary', 'assistive'];
+    const buttonRoles: ButtonType[] = ['filled', 'outlined', 'tonal'];
 
     const dividerSizes: DividerSize[] = ['large', 'medium', 'small'];
 
@@ -19,11 +22,9 @@ function ComponentDemo() {
     const [toggleChecked, setToggleChecked] = useState(false);
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 8
-        }}>
+        <Column gap={8} $customStyle={css`
+            padding: 20px;
+        `}>
             {buttonRoles.map(role => (
                 <div style={{
                     display: 'flex',
@@ -34,8 +35,8 @@ function ComponentDemo() {
                             display: 'flex',
                             gap: 8
                         }}>
-                            <Button text={'Button'} role={role} size={size}/>
-                            <Button text={'Button'} role={role} size={size} enabled={false}/>
+                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine} buttonType={role} size={size}/>
+                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine} buttonType={role} size={size} enabled={false}/>
                         </div>
                     )}
                 </div>
@@ -92,7 +93,7 @@ function ComponentDemo() {
                 checked={toggleChecked}
                 onChange={setToggleChecked}
             />
-        </div>
+        </Column>
     );
 }
 

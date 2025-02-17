@@ -83,7 +83,7 @@ function VideoOption(
                         <Button
                             text={'파일 업로드'}
                             leadingIcon={IconType.AddLine}
-                            role={'assistive'}
+                            buttonType={'outlined'}
                             customStyle={css`
                                 width: 264px;
                                 pointer-events: none;
