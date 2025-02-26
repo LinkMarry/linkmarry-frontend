@@ -78,7 +78,7 @@ function DesktopMyPageLayout() {
     return (
         <HasHeader>
             <Row $justifyContent={'center'} flex={1} $customStyle={css`
-                padding: 72px 16px 0 16px;
+                padding: 72px 24px 0 24px;
                 overflow-y: scroll;
             `}>
                 <Row gap={32} $customStyle={css`

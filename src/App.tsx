@@ -16,6 +16,7 @@ import {css} from "styled-components";
 import {Row} from "@designsystem/component/FlexLayout";
 import MyPageWedding from "@page/mypage/MyPageWedding";
 import MyPageInfo from "@page/mypage/MyPageInfo";
+import HomePage from "@page/HomePage";
 
 const {Kakao} = window as any;
 
@@ -45,6 +46,7 @@ function App() {
             </Helmet>
             <Routes>
                 {/*service*/}
+                <Route path={''} element={<HomePage/>}/>
                 <Route path={'login'} element={<LoginPage/>}/>
                 <Route path={'mypage'} element={<MyPageLayout/>}>
                     <Route path={'wedding'} element={<MyPageWedding/>}/>
