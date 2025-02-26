@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, ReactElement, SVGProps} from "react";
+import React, {ReactElement, SVGProps} from "react";
 import AddEmoji from "@designsystem/foundation/icon/AddEmoji";
 import AddFill from "@designsystem/foundation/icon/AddFill";
 import AddLine from "@designsystem/foundation/icon/AddLine";
@@ -34,7 +34,7 @@ import Ping from "@designsystem/foundation/icon/Ping";
 import Photo from "@designsystem/foundation/icon/Photo";
 import PersonFill from "@designsystem/foundation/icon/PersonFill";
 import NormalArrow from "@designsystem/foundation/icon/NormalArrow";
-import Pen from "@designsystem/foundation/icon/Pen";
+import PenFill from "@designsystem/foundation/icon/PenFill";
 import CurveArrow from "@designsystem/foundation/icon/CurveArrow";
 import Detail from "@designsystem/foundation/icon/Detail";
 import ExclamationLine from "@designsystem/foundation/icon/ExclamationLine";
@@ -59,6 +59,8 @@ import Call from "@designsystem/foundation/icon/Call";
 import Statistics from "@designsystem/foundation/icon/Statistics";
 import PersonLine from "@designsystem/foundation/icon/PersonLine";
 import Envelope from "@designsystem/foundation/icon/Envelope";
+import Link from "@designsystem/foundation/icon/Link";
+import PenLine from "@designsystem/foundation/icon/PenLine";
 
 export enum IconType {
     AddEmoji,
@@ -96,12 +98,14 @@ export enum IconType {
     HeartLine,
     Hide,
     Home,
+    Link,
     Logout,
     LoudSpeaker,
     Manage,
     Moon,
     NormalArrow,
-    Pen,
+    PenFill,
+    PenLine,
     PersonFill,
     PersonLine,
     Photo,
@@ -208,6 +212,8 @@ function Icon(
                 return <Hide {...svgProps}/>;
             case IconType.Home:
                 return <Home {...svgProps}/>;
+            case IconType.Link:
+                return <Link {...svgProps}/>;
             case IconType.Logout:
                 return <Logout {...svgProps}/>;
             case IconType.LoudSpeaker:
@@ -218,8 +224,10 @@ function Icon(
                 return <Moon {...svgProps}/>;
             case IconType.NormalArrow:
                 return <NormalArrow {...svgProps}/>;
-            case IconType.Pen:
-                return <Pen {...svgProps}/>;
+            case IconType.PenFill:
+                return <PenFill {...svgProps}/>;
+            case IconType.PenLine:
+                return <PenLine {...svgProps}/>;
             case IconType.PersonFill:
                 return <PersonFill {...svgProps}/>;
             case IconType.PersonLine:

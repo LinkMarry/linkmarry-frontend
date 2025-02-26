@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import React from 'react';
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";

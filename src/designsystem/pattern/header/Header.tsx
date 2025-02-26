@@ -8,14 +8,14 @@ import {useNavigate} from "react-router-dom";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Popover, {PopoverItem} from "@designsystem/pattern/Popover";
-import {useMediaQuery} from "react-responsive";
 import Divider from "@designsystem/component/Divider";
 import CustomStyle from "@designsystem/component/CustomStyle";
+import useResponsive from "@hook/useResponsive";
 
 function Header() {
-    const isMobile = useMediaQuery({maxWidth: 767});
+    const {deviceSize} = useResponsive();
 
-    if (isMobile) {
+    if (deviceSize === 'mobile') {
         return <MobileHeader/>;
     }
 
@@ -105,7 +105,7 @@ function DesktopHeader() {
     return (
         <Row $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
             width: 100vw;
-            height: 72px;
+            min-height: 72px;
             background: white;
             border-bottom: 1px solid var(--g-200);
             padding: 0 24px;
@@ -129,8 +129,8 @@ function DesktopHeader() {
                 {authorized ? (
 
                     <CustomStyle $customStyle={css`
-                    position: relative;
-                `}>
+                        position: relative;
+                    `}>
                         <DesktopHeaderItem text={'내 정보'} popoverItems={[]} onClick={() => {
                             setOpenMyInfoPopover(i => !i);
                         }}/>
@@ -156,9 +156,8 @@ function DesktopHeader() {
                                     setOpenMyInfoPopover(false);
                                 }}
                                 customStyle={css`
-                                position: absolute;
-                                right: 0;
-                            `}
+                                    right: 0;
+                                `}
                             />
                         )}
                     </CustomStyle>

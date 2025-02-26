@@ -44,6 +44,7 @@ function Popover(
         <Column ref={popoverRef} gap={4} $alignItems={'stretch'} $customStyle={css`
             width: 160px;
             padding: 8px;
+            position: absolute;
             border-radius: 10px;
             background: white;
             box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);

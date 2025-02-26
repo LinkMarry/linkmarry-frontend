@@ -7,6 +7,7 @@ import InfoMember from "@remote/value/InfoMember";
 import memberApi from "@remote/api/MemberApi";
 import {css} from "styled-components";
 import MyPageSidebar from "@page/mypage/MyPageSidebar";
+import useResponsive from "@hook/useResponsive";
 
 function MyPageLayout() {
     const [member, setMember] = useState<InfoMember>();
@@ -14,6 +15,7 @@ function MyPageLayout() {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
     const [editMemberName, setEditMemberName] = useState('');
     const navigate = useNavigate();
+    const {deviceSize} = useResponsive();
 
     const onClickSettingName = () => {
         if (!member) return;
@@ -47,10 +49,37 @@ function MyPageLayout() {
     //     })();
     // }, []);
 
+    if (deviceSize === 'mobile') {
+        return <MobileMyPageLayout/>;
+    }
+
+    return <DesktopMyPageLayout/>;
+}
+
+function MobileMyPageLayout() {
     return (
         <HasHeader>
-            <Row $justifyContent={'center'} $customStyle={css`
+            <Row $justifyContent={'center'} flex={1} $customStyle={css`
+                overflow-y: scroll;
+                padding: 24px 16px 0 16px;
+            `}>
+                <Row gap={32} $customStyle={css`
+                    max-width: 1100px;
+                    flex: 1;
+                `}>
+                    <Outlet/>
+                </Row>
+            </Row>
+        </HasHeader>
+    )
+}
+
+function DesktopMyPageLayout() {
+    return (
+        <HasHeader>
+            <Row $justifyContent={'center'} flex={1} $customStyle={css`
                 padding: 72px 16px 0 16px;
+                overflow-y: scroll;
             `}>
                 <Row gap={32} $customStyle={css`
                     max-width: 1100px;
