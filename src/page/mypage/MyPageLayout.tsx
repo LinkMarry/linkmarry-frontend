@@ -1,19 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import HasHeader from "@designsystem/pattern/header/HasHeader";
 import Text from "@designsystem/component/Text";
 import {Column, Row} from "@designsystem/component/FlexLayout";
-import Button from "@designsystem/component/Button";
-import Spacer from "@designsystem/component/Spacer";
-import {useNavigate} from "react-router-dom";
-import Cookies from "js-cookie";
-import RemoveMemberDialog from "@page/mypage/dialog/RemoveMemberDialog";
+import {Outlet, useNavigate} from "react-router-dom";
 import InfoMember from "@remote/value/InfoMember";
 import memberApi from "@remote/api/MemberApi";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/component/CustomStyle";
-import makeText from "@designsystem/foundation/text/TextType";
+import MyPageSidebar from "@page/mypage/MyPageSidebar";
 
-function MyPage() {
+function MyPageLayout() {
     const [member, setMember] = useState<InfoMember>();
     const [isSettingMode, setIsSettingMode] = useState(false);
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
@@ -45,18 +40,28 @@ function MyPage() {
         }
     }
 
-    useEffect(() => {
-        (async () => {
-            const {data} = await memberApi.getMyProfile();
-            setMember(data);
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         const {data} = await memberApi.getMyProfile();
+    //         setMember(data);
+    //     })();
+    // }, []);
 
     return (
         <HasHeader>
-            
+            <Row $justifyContent={'center'} $customStyle={css`
+                padding: 72px 16px 0 16px;
+            `}>
+                <Row gap={32} $customStyle={css`
+                    max-width: 1100px;
+                    flex: 1;
+                `}>
+                    <MyPageSidebar/>
+                    <Outlet/>
+                </Row>
+            </Row>
         </HasHeader>
     );
 }
 
-export default MyPage;
+export default MyPageLayout;

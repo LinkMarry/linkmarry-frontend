@@ -127,7 +127,7 @@ const ButtonStyle = styled.button<{
     border: none;
     word-break: keep-all;
     white-space: nowrap;
-    transition: 0.1s scale ease-in-out;
+    transition: 0.1s scale ease-in-out, 0.1s opacity;
     
     ${({size}) => {
         const style = buttonSizeToStyleRecord[size];

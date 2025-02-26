@@ -108,11 +108,11 @@ function DesktopHeader() {
             height: 72px;
             background: white;
             border-bottom: 1px solid var(--g-200);
+            padding: 0 24px;
         `}>
             <Row $alignItems={'center'} $customStyle={css`
                 max-width: 1100px;
                 flex: 1;
-                padding: 0 24px;
             `}>
                 <Row gap={40} $alignItems={'center'}>
                     <Logo/>

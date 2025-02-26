@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import config from "@config/config";
 import KakaoRedirectPage from "@page/KakaoRedirectPage";
-import MyPage from "@page/mypage/MyPage";
+import MyPageLayout from "@page/mypage/MyPageLayout";
 import ComponentDemo from "@designsystem/demo/ComponentDemo";
 import FoundationDemo from "@designsystem/demo/FoundationDemo";
 import TemplateComponent from "@src/component/template/TemplateComponent";
@@ -14,6 +14,8 @@ import LoginPage from "@page/LoginPage";
 import AutoFocusContext from "@src/context/AutoFocusContext";
 import {css} from "styled-components";
 import {Row} from "@designsystem/component/FlexLayout";
+import MyPageWedding from "@page/mypage/MyPageWedding";
+import MyPageInfo from "@page/mypage/MyPageInfo";
 
 const {Kakao} = window as any;
 
@@ -44,7 +46,10 @@ function App() {
             <Routes>
                 {/*service*/}
                 <Route path={'login'} element={<LoginPage/>}/>
-                <Route path={'my-page'} element={<MyPage/>}/>
+                <Route path={'mypage'} element={<MyPageLayout/>}>
+                    <Route path={'wedding'} element={<MyPageWedding/>}/>
+                    <Route path={'info'} element={<MyPageInfo/>}/>
+                </Route>
                 <Route path={'templates'} element={<TemplatesPage/>}/>
 
                 {/*auth*/}
@@ -63,7 +68,7 @@ function App() {
                         <TemplateComponent wedding={dummyWedding} isPreview={true}/>
                     </Row>
                 )}/>
-                
+
                 {/*design-system*/}
                 {config.env === 'development' && (
                     <>
