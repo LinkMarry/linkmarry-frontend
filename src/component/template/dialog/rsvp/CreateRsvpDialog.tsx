@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import styled, {css} from "styled-components";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Button from "@designsystem/component/Button";
 import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
 import OptionTextField from "@page/design/component/OptionTextField";

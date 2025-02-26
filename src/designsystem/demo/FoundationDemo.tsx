@@ -1,6 +1,6 @@
 import React from 'react';
 import {linkMarryFonts, textTypes} from "@designsystem/foundation/text/TextType";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import {allCasesOfEnum} from "@util/enum.util";
 import CustomStyle from "@designsystem/component/CustomStyle";

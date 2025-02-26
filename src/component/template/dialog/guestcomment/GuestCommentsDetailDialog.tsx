@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import {BasicGuestComment} from "@src/component/template/component/GuestCommentsTemplate";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import Divider from "@designsystem/component/Divider";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import GuestComment from "@remote/value/GuestComment";
 
 interface GuestCommentsDetailDialogProps {

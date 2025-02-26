@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {Column} from "@designsystem/component/FlexLayout";
 import CustomStyle from "@designsystem/component/CustomStyle";
 import Button from "@designsystem/component/Button";

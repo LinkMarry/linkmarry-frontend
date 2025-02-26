@@ -4,7 +4,7 @@ import {Column, Row} from "@designsystem/component/FlexLayout";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionTextField from "@page/design/component/OptionTextField";
 import Button from "@designsystem/component/Button";
-import {IconType} from "@designsystem/foundation/icon";
+import {IconType} from "@designsystem/foundation/Icon";
 import Video from "@remote/value/Video";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";

@@ -5,7 +5,7 @@ import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import CustomStyle from "@designsystem/component/CustomStyle";

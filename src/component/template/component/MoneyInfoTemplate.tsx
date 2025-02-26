@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled, {css} from "styled-components";
 import MoneyInfo, {getMoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
 import Spacer from "@designsystem/component/Spacer";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";

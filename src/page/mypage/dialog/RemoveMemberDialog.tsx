@@ -2,7 +2,7 @@ import React from 'react';
 import memberApi from "@remote/api/MemberApi";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
-import Dialog from "@designsystem/component/dialog/dialog";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
 import {css} from "styled-components";
 
 interface RemoveMemberDialogProps {

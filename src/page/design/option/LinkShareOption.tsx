@@ -4,7 +4,7 @@ import {Column, Row} from "@designsystem/component/FlexLayout";
 import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionTextField from "@page/design/component/OptionTextField";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import LinkShare from "@remote/value/LinkShare";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";

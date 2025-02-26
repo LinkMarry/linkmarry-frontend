@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import styled, {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";

@@ -1,5 +1,5 @@
 import styled, {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import makeText, {TextType} from "@designsystem/foundation/text/TextType";
 import {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from "react";
 

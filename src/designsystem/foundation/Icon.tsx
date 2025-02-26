@@ -32,7 +32,7 @@ import RadioFill from "@designsystem/foundation/icon/RadioFill";
 import RadioLine from "@designsystem/foundation/icon/RadioLine";
 import Ping from "@designsystem/foundation/icon/Ping";
 import Photo from "@designsystem/foundation/icon/Photo";
-import Person from "@designsystem/foundation/icon/Person";
+import PersonFill from "@designsystem/foundation/icon/PersonFill";
 import NormalArrow from "@designsystem/foundation/icon/NormalArrow";
 import Pen from "@designsystem/foundation/icon/Pen";
 import CurveArrow from "@designsystem/foundation/icon/CurveArrow";
@@ -57,6 +57,8 @@ import styled, {RuleSet} from "styled-components";
 import Share from "@designsystem/foundation/icon/Share";
 import Call from "@designsystem/foundation/icon/Call";
 import Statistics from "@designsystem/foundation/icon/Statistics";
+import PersonLine from "@designsystem/foundation/icon/PersonLine";
+import Envelope from "@designsystem/foundation/icon/Envelope";
 
 export enum IconType {
     AddEmoji,
@@ -84,6 +86,7 @@ export enum IconType {
     Crown,
     CurveArrow,
     Detail,
+    Envelope,
     ExclamationFill,
     ExclamationLine,
     ExpandArrow,
@@ -99,7 +102,8 @@ export enum IconType {
     Moon,
     NormalArrow,
     Pen,
-    Person,
+    PersonFill,
+    PersonLine,
     Photo,
     Ping,
     RadioFill,
@@ -184,6 +188,8 @@ function Icon(
                 return <CurveArrow {...svgProps}/>;
             case IconType.Detail:
                 return <Detail {...svgProps}/>;
+            case IconType.Envelope:
+                return <Envelope {...svgProps}/>;
             case IconType.ExclamationFill:
                 return <ExclamationFill {...svgProps}/>;
             case IconType.ExclamationLine:
@@ -214,8 +220,10 @@ function Icon(
                 return <NormalArrow {...svgProps}/>;
             case IconType.Pen:
                 return <Pen {...svgProps}/>;
-            case IconType.Person:
-                return <Person {...svgProps}/>;
+            case IconType.PersonFill:
+                return <PersonFill {...svgProps}/>;
+            case IconType.PersonLine:
+                return <PersonLine {...svgProps}/>;
             case IconType.Photo:
                 return <Photo {...svgProps}/>;
             case IconType.Ping:

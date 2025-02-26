@@ -1,5 +1,5 @@
 import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import styled, {css} from "styled-components";
 import CustomStyle from "@designsystem/component/CustomStyle";
 

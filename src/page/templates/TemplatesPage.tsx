@@ -1,5 +1,5 @@
 import React from 'react';
-import HasHeader from "@designsystem/component/header/hasHeader";
+import HasHeader from "@designsystem/pattern/header/HasHeader";
 import Text from "@designsystem/component/Text";
 import TemplateCell from "@page/templates/component/TemplateCell";
 import {templateNames} from "@remote/value/Template";

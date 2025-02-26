@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import HasHeader from "@designsystem/component/header/hasHeader";
+import HasHeader from "@designsystem/pattern/header/HasHeader";
 import Text from "@designsystem/component/Text";
-import Divider from "@designsystem/component/Divider";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Button from "@designsystem/component/Button";
 import Spacer from "@designsystem/component/Spacer";

@@ -4,7 +4,7 @@ import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Design from "@remote/enumeration/Design";
 import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";

@@ -3,7 +3,7 @@ import styled, {css} from "styled-components";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
 import OptionLabel from "@page/design/component/OptionLabel";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import ImgDesign, {imgDesignRecord, imgDesigns} from "@remote/enumeration/ImgDesign";
 import fileApi from "@remote/api/FileApi";
 import Text from "@designsystem/component/Text";

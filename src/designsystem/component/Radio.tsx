@@ -7,7 +7,7 @@ import React, {
     useState
 } from 'react';
 import styled, {css} from "styled-components";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import makeText from "@designsystem/foundation/text/TextType";
 import CustomStyle from "@designsystem/component/CustomStyle";
 import Text from "@designsystem/component/Text";

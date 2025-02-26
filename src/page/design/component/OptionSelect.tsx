@@ -1,7 +1,7 @@
 import React, {ForwardedRef, forwardRef, ReactElement, SelectHTMLAttributes} from 'react';
 import styled, {css} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 interface OptionTextFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
     items: string[],

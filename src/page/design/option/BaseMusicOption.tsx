@@ -4,7 +4,7 @@ import {Column, Row} from "@designsystem/component/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/design/component/OptionLabel";
 import Checkbox from "@designsystem/component/Checkbox";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
 import Text from "@designsystem/component/Text";
 import BaseMusic from "@remote/value/BaseMusic";

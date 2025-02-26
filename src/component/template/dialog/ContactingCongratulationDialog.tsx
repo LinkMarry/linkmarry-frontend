@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import styled, {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {Column, Row} from "@designsystem/component/FlexLayout";
 import Text from "@designsystem/component/Text";
 import makeText from "@designsystem/foundation/text/TextType";
 import Phone from "@remote/value/Phone";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import Spacer from "@designsystem/component/Spacer";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 interface ContactTemplateDialogProps {
     baseInfo: BaseInfo;

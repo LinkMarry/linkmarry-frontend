@@ -7,8 +7,9 @@ import Radio from "@designsystem/component/Radio";
 import Toggle from "@designsystem/component/Toggle";
 import {Column} from "@designsystem/component/FlexLayout";
 import {css} from "styled-components";
-import {IconType} from "@designsystem/foundation/icon";
-import Dialog from "@designsystem/component/dialog/dialog";
+import {IconType} from "@designsystem/foundation/Icon";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
+import Popover from "@designsystem/pattern/Popover";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -112,6 +113,27 @@ function ComponentDemo() {
                     }}
                 />
             )}
+            <Popover
+                items={[
+                    {
+                        icon: IconType.Book,
+                        text: 'title',
+                        onClick: () => {
+
+                        },
+                    },
+                    {
+                        icon: IconType.Book,
+                        text: 'title',
+                        type: 'destructive',
+                        onClick: () => {
+
+                        },
+                    }
+                ]}
+                dismiss={() => {
+                }}
+            />
         </Column>
     );
 }

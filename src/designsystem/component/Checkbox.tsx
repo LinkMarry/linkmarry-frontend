@@ -8,7 +8,7 @@ import React, {
     useState
 } from 'react';
 import styled, {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import makeText from "@designsystem/foundation/text/TextType";
 import Text from "@designsystem/component/Text";
 import {Row} from "@designsystem/component/FlexLayout";

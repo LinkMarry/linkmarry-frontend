@@ -5,7 +5,7 @@ import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/design/component/OptionLabel";
 import Checkbox from "@designsystem/component/Checkbox";
 import OptionField from "@page/design/component/OptionField";
-import {IconType} from "@designsystem/foundation/icon";
+import {IconType} from "@designsystem/foundation/Icon";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 
 interface WeddingScheduleOptionProps {

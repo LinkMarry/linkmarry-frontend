@@ -12,7 +12,7 @@ import Template, {
 } from "@remote/value/Template";
 import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/TextType";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
 import LoadingOverlay from "@src/component/LoadingOverlay";
