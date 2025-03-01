@@ -1,12 +1,12 @@
-import {RefObject, useContext, useEffect, useState} from "react";
-import AutoFocusContext from "@src/context/AutoFocusContext";
+import {RefObject, useEffect, useState} from "react";
+import {useAutoFocus} from "@src/context/AutoFocusContext";
 
 export default function useScrollOnUpdate<T extends HTMLElement>(
     ref: RefObject<T | null>,
     deps: any[]
 ) {
     const [isLoadedCount, setIsLoadedCount] = useState(0);
-    const {autoFocus} = useContext(AutoFocusContext);
+    const {autoFocus} = useAutoFocus();
     
     useEffect(() => {
         if (!autoFocus) {

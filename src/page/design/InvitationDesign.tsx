@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful-dnd';
 import OptionCell from "@page/design/component/OptionCell";
 import {allCasesOfEnum} from "@util/enum.util";
@@ -39,7 +39,7 @@ import GalleryOption from "@page/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingDto from "@remote/value/WeddingDto";
-import AutoFocusContext from "@src/context/AutoFocusContext";
+import {useAutoFocus} from "@src/context/AutoFocusContext";
 import {css} from "styled-components";
 import CustomStyle from "@designsystem/component/CustomStyle";
 import Divider from "@designsystem/component/Divider";
@@ -95,7 +95,7 @@ function InvitationDesign() {
     const [draggableOptions, setDraggableOptions] = useState(allCasesOfEnum(OptionType).filter(option => optionRecord[option].mode === 'draggable'));
     const position = draggableOptions.map(option => optionRecord[option].index);
 
-    const {autoFocus, setAutoFocus} = useContext(AutoFocusContext);
+    const {autoFocus, setAutoFocus} = useAutoFocus();
 
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) return;
