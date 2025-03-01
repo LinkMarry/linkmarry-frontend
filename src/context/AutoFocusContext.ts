@@ -1,13 +1,17 @@
 import {createContext, useContext} from "react";
 
-const AutoFocusContext = createContext<{
+type AutoFocusObject = {
     autoFocus: boolean;
     setAutoFocus: (value: boolean) => void;
-}>({
-    autoFocus: true,
-    setAutoFocus: () => {},
-});
+};
+const AutoFocusContext = createContext<AutoFocusObject | null>(null);
 
-export const useAutoFocus = () => useContext(AutoFocusContext);
+export const useAutoFocus = () => {
+    const object = useContext(AutoFocusContext);
+    if (!object) {
+        throw new Error("useAutoFocus must be used within a Provider");
+    }
+    return object;
+}
 
 export default AutoFocusContext;
