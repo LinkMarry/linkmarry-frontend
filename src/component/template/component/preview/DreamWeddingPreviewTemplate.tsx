@@ -1,8 +1,8 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import Text from "@designsystem/component/Text";

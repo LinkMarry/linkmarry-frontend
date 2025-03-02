@@ -1,5 +1,5 @@
 import React, {
-    ComponentPropsWithoutRef, ComponentPropsWithRef,
+    ComponentPropsWithRef,
     ForwardedRef,
     forwardRef, useEffect,
     useImperativeHandle,
@@ -7,8 +7,8 @@ import React, {
     useState
 } from 'react';
 import {css, RuleSet} from "styled-components";
-import {Row} from "@designsystem/component/FlexLayout";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import {Row} from "@designsystem/component/core/FlexLayout";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 interface Props extends ComponentPropsWithRef<'div'> {
     Checked?: boolean;

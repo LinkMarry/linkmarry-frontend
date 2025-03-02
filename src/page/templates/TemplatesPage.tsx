@@ -3,10 +3,10 @@ import HasHeader from "@designsystem/pattern/header/HasHeader";
 import Text from "@designsystem/component/Text";
 import TemplateCell from "@page/templates/component/TemplateCell";
 import {templateNames} from "@remote/value/Template";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import {css} from "styled-components";
 import GuideLine from "@util/GuideLine";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 function TemplatesPage() {
     return (

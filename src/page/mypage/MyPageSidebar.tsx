@@ -1,13 +1,15 @@
 import React, {ComponentPropsWithoutRef} from 'react';
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import {css} from "styled-components";
 import MyPageSidebarType, {myPageSidebarRecord} from "@page/mypage/MyPageSidebarType";
 import Text from "@designsystem/component/Text";
 import Icon from "@designsystem/foundation/Icon";
 import useMyPage from "@page/mypage/useMyPage";
+import useAuth from "@hook/useAuth";
 
 function MyPageSidebar() {
     const {currentSidebar, navigate} = useMyPage();
+    const {signOut} = useAuth();
 
     return (
         <Column gap={32} $alignItems={'stretch'} $customStyle={css`
@@ -18,7 +20,7 @@ function MyPageSidebar() {
                 <Item selected={currentSidebar === 'info'} type={'info'} onClick={() => navigate('info')}/>
             </Column>
             <Item selected={currentSidebar === 'logout'} type={'logout'} onClick={() => {
-                // todo: remove session
+                signOut();
             }}/>
         </Column>
     );

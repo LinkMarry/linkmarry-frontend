@@ -1,11 +1,9 @@
 import React, {useEffect, useRef} from 'react';
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import styled, {css} from "styled-components";
-import Text from "@designsystem/component/Text";
-import {fadeInAnimationStyle} from "@designsystem/animation/fade.animation";
+import fadeInAnimationStyle from "@designsystem/animation/fadeInAnimationStyle";
 import Button from "@designsystem/component/Button";
 import {useNavigate} from "react-router-dom";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 interface Props {
     url: string;

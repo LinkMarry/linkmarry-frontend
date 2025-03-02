@@ -1,9 +1,9 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";

@@ -1,13 +1,13 @@
 import React, {ComponentProps} from 'react';
 import {css} from "styled-components";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 function NatureBlissPreviewTemplate(
     {

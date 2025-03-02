@@ -11,6 +11,8 @@ export const popupAnimation = keyframes`
     }
 `;
 
-export const popupAnimationStyle = css`
+const popupAnimationStyle = css`
     animation: ${popupAnimation} 0.2s;
 `;
+
+export default popupAnimationStyle;

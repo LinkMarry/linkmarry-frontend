@@ -1,8 +1,8 @@
 import React from 'react';
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 function WeddingStyleCell() {
     return (

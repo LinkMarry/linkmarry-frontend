@@ -1,10 +1,8 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import styled from "styled-components";
-import makeText from "@designsystem/foundation/text/TextType";
 
-interface Props {
+interface Props extends PropsWithChildren {
     content: React.ReactNode;
-    children?: React.ReactNode;
 }
 
 function ToolTip(

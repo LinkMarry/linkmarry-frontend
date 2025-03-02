@@ -1,4 +1,4 @@
-import {LinkMarryFont} from "@designsystem/foundation/text/TextType";
+import {FontFamily} from "@designsystem/foundation/text/TextType";
 
 export type TemplateName =
     '화이트 모먼트'
@@ -110,7 +110,7 @@ export default interface Template {
     templateColor: TemplateColor;
 
     // 선택한 템플릿 폰트
-    templateFont: LinkMarryFont;
+    templateFont: FontFamily;
 
     // 선택한 템플릿 폰트 사이즈
     templateFontSize: TemplateFontSize;

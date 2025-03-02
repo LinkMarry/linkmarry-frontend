@@ -1,10 +1,10 @@
 import React from 'react';
 import HasHeader from "@designsystem/pattern/header/HasHeader";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import {css} from "styled-components";
 import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
 import Spacer from "@designsystem/component/Spacer";
 import {hideScrollBar} from "@util/css.util";

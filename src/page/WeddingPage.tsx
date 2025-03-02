@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
 import {useParams} from "react-router-dom";
-import {Row} from "@designsystem/component/FlexLayout";
+import {Row} from "@designsystem/component/core/FlexLayout";
 import TemplateComponent from "@src/component/template/TemplateComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
 import Cookies from "js-cookie";
@@ -19,7 +19,7 @@ function WeddingPage() {
             await getWedding();
         })();
     }, []);
-    
+
     const getWedding = async () => {
         if (!url) return;
         const cookieKey = `firstVisitor_${url}`;
@@ -29,7 +29,7 @@ function WeddingPage() {
         if (isFirstVisitor) {
             Cookies.set(cookieKey, "false", {expires: 365}); // 1년 동안 유지
         }
-        
+
         try {
             const {data} = await weddingApi.getWeddingInvitation(url, {
                 deviceType: getDeviceType(),

@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
 import styled, {css, CSSProperties} from "styled-components";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionSelect from "@page/design/component/OptionSelect";
@@ -10,7 +10,7 @@ import Template, {
     templateFontSizeRecord,
     templateFontSizes, templateNames
 } from "@remote/value/Template";
-import {LinkMarryFont, linkMarryFonts} from "@designsystem/foundation/text/TextType";
+import {FontFamily, fontList} from "@designsystem/foundation/text/TextType";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import VoidInput from "@src/component/VoidInput";
@@ -90,11 +90,11 @@ function TemplateOption(
                     <OptionLabel label={'폰트'} style={{alignSelf: 'flex-start'}}/>
                     <Row gap={12}>
                         <OptionSelect
-                            items={linkMarryFonts}
+                            items={fontList}
                             width={154}
                             value={template.templateFont}
                             onChange={event => {
-                                const changedFont = event.target.value as LinkMarryFont;
+                                const changedFont = event.target.value as FontFamily;
                                 if (changedFont) {
                                     onChange({...template, templateFont: changedFont})
                                 }

@@ -2,7 +2,6 @@ import React, {
     ChangeEvent,
     ChangeEventHandler, ComponentPropsWithRef,
     CSSProperties, ForwardedRef, forwardRef,
-    HTMLAttributes,
     InputHTMLAttributes,
     useRef,
     useState
@@ -10,7 +9,6 @@ import React, {
 import styled, {css} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import Text from "@designsystem/component/Text";
 
 interface Props extends ComponentPropsWithRef<'div'> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;

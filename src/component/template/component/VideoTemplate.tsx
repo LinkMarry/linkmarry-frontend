@@ -1,10 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import Video from "@remote/value/Video";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 interface VideoTemplateProps {

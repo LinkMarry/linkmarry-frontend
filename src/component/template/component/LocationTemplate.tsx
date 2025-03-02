@@ -1,11 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import Spacer from "@designsystem/component/Spacer";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 const {kakao} = window as any;

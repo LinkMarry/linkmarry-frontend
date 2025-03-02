@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionTextField from "@page/design/component/OptionTextField";
 import Button from "@designsystem/component/Button";

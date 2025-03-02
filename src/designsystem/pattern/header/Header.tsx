@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef, Dispatch, SetStateAction, useState} from 'react';
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Spacer from "@designsystem/component/Spacer";
 import useAuth from "@hook/useAuth";
 import Button from "@designsystem/component/Button";
@@ -9,7 +9,7 @@ import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Popover, {PopoverItem} from "@designsystem/pattern/Popover";
 import Divider from "@designsystem/component/Divider";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import useResponsive from "@hook/useResponsive";
 
 function Header() {
@@ -40,12 +40,17 @@ function MobileHeader() {
                     width: 100vw;
                     background: white;
                     height: calc(100vh - 60px);
+                    z-index: 100;
                 `}>
                     {authorized ? (
                         <Column gap={8} $alignItems={'stretch'}>
                             <MobileHeaderItem text={'내 모바일 청첩장'} icon={IconType.Envelope} onClick={() => {
+                                navigate('/mypage/wedding');
+                                setOpenDetail(false);
                             }}/>
                             <MobileHeaderItem text={'회원정보'} icon={IconType.PersonLine} onClick={() => {
+                                navigate('/mypage/info');
+                                setOpenDetail(false);
                             }}/>
                         </Column>
                     ) : (
@@ -57,6 +62,9 @@ function MobileHeader() {
                     )}
                     <Divider size={'large'}/>
                     <Column gap={8} $alignItems={'stretch'}>
+                        <MobileHeaderItem text={'청첩장 만들기'} onClick={() => {
+                            navigate('/editor');
+                        }}/>
                         <MobileHeaderItem text={'공지사항'} onClick={() => {
                         }}/>
                         <MobileHeaderItem text={'네이버스토어'} onClick={() => {
@@ -117,6 +125,9 @@ function DesktopHeader() {
                 <Row gap={40} $alignItems={'center'}>
                     <Logo/>
                     <Row gap={12} $alignItems={'center'}>
+                        <DesktopHeaderItem text={'청첩장 만들기'} onClick={() => {
+                            navigate('/editor');
+                        }}/>
                         <DesktopHeaderItem text={'공지사항'} onClick={() => {
                             // todo: navigate to notion.
                         }}/>
@@ -141,14 +152,14 @@ function DesktopHeader() {
                                         icon: IconType.Envelope,
                                         text: '내 모바일 청첩장',
                                         onClick: () => {
-                                            // todo: navigate to 
+                                            navigate('/mypage/wedding');
                                         }
                                     },
                                     {
                                         icon: IconType.PersonLine,
                                         text: '회원정보',
                                         onClick: () => {
-                                            // todo: navigate to 
+                                            navigate('/mypage/info');
                                         }
                                     }
                                 ]}
@@ -162,13 +173,9 @@ function DesktopHeader() {
                         )}
                     </CustomStyle>
                 ) : (
-                    <Row gap={12} $alignItems={'center'}>
-                        <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
-                            navigate('/login');
-                        }}/>
-                        <Button text={'청첩장 만들기'} size={'medium'} onClick={() => {
-                        }}/>
-                    </Row>
+                    <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
+                        navigate('/login');
+                    }}/>
                 )}
             </Row>
         </Row>

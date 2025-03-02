@@ -1,10 +1,10 @@
 import React from 'react';
-import {linkMarryFonts, textTypes} from "@designsystem/foundation/text/TextType";
+import {fontList, textTypes} from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import {allCasesOfEnum} from "@util/enum.util";
-import CustomStyle from "@designsystem/component/CustomStyle";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 
@@ -23,7 +23,7 @@ function FoundationDemo() {
             </Column>
             <Divider/>
             <Column gap={20}>
-                {linkMarryFonts.map(font => (
+                {fontList.map(font => (
                     <Row>
                         <Text type={'p3'} customStyle={css`
                             width: 256px;

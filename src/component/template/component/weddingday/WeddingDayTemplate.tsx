@@ -1,13 +1,13 @@
 import React from 'react';
 import Text from "@designsystem/component/Text";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import styled, {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 import {format, parse} from "date-fns";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import FadeIn from "@designsystem/component/fadein/FadeIn";
 
 interface Props {

@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import styled, {css} from "styled-components";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import TextField from "@designsystem/component/TextField";
 import Textarea from "@designsystem/component/Textarea";

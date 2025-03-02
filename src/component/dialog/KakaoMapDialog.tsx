@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
-import {Column} from "@designsystem/component/FlexLayout";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import {Column} from "@designsystem/component/core/FlexLayout";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import Button from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
 import WeddingPlace from "@remote/value/WeddingPlace";

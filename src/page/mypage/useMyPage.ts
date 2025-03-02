@@ -7,12 +7,12 @@ function useMyPage() {
     const localNavigate = useNavigate();
 
     const currentSidebar = ((): MyPageSidebarType | undefined => {
-        if (!pathname.startsWith('/mypage')) return undefined;
+        if (!pathname.startsWith('/mypage')) return;
         const path = pathname.split('/')[2];
 
         return myPageSidebarTypeList.find(type => type === path);
     })();
-    
+
     const navigate = useCallback((pathname: MyPageSidebarType) => {
         localNavigate(`/mypage/${pathname}`);
     }, [localNavigate]);

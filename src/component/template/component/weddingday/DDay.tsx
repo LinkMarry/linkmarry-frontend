@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import styled, {css} from "styled-components";
@@ -52,7 +52,7 @@ function DDay(
             }
 
             setRemainingTime({
-                days: Math.floor(timeDiff / (1000 * 60 * 60 * 24)), // 남은 일수 
+                days: Math.floor(timeDiff / (1000 * 60 * 60 * 24)), // 남은 일수
                 hours: Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
                 minutes: Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)),
                 seconds: Math.floor((timeDiff % (1000 * 60)) / 1000)

@@ -1,18 +1,23 @@
-import React, {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from 'react';
+import React, {
+    ComponentPropsWithRef,
+    CSSProperties,
+    ForwardedRef,
+    forwardRef,
+    PropsWithChildren
+} from 'react';
 import {css, RuleSet} from "styled-components";
-import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
+import {FontFamily, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
-interface Props extends ComponentPropsWithRef<'span'> {
+interface Props extends PropsWithChildren<ComponentPropsWithRef<'span'>> {
     type?: TextType;
-    font?: LinkMarryFont;
+    font?: FontFamily;
     weight?: CSSProperties['fontWeight'];
     size?: number;
     lineHeight?: CSSProperties['lineHeight'];
     bold?: boolean;
     customStyle?: RuleSet;
-    children?: React.ReactNode;
 }
 
 function Text(
@@ -29,7 +34,7 @@ function Text(
     }: Props,
     ref: ForwardedRef<HTMLSpanElement>
 ) {
-    const properties = type ? textTypeMap[type] : undefined;
+    const properties = type && textTypeMap[type];
     return (
         <CustomStyle
             ref={ref}

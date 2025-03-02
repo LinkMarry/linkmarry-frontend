@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 import React, {useEffect, useRef} from "react";
-import {fadeInAnimationStyle} from "@designsystem/animation/fade.animation";
-import {popupAnimationStyle} from "@designsystem/animation/popup.animation";
+import fadeInAnimationStyle from "@designsystem/animation/fadeInAnimationStyle";
+import popupAnimationStyle from "@designsystem/animation/popupAnimationStyle";
 import {hideScrollBar} from "@util/css.util";
 
 interface BaseDialogProps {

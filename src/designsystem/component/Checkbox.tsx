@@ -1,18 +1,16 @@
 import React, {
     ComponentPropsWithoutRef,
-    CSSProperties,
     ForwardedRef,
     forwardRef, useEffect,
     useImperativeHandle,
     useRef,
     useState
 } from 'react';
-import styled, {css, RuleSet} from "styled-components";
+import styled, {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import makeText from "@designsystem/foundation/text/TextType";
 import Text from "@designsystem/component/Text";
-import {Row} from "@designsystem/component/FlexLayout";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import {Row} from "@designsystem/component/core/FlexLayout";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     Checked?: boolean;

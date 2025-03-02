@@ -1,8 +1,8 @@
 import {RuleSet} from "styled-components";
-import TextProperties, {implementText} from "@designsystem/foundation/text/TextProperties";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 import {CSSProperties} from "react";
 
-export type LinkMarryFont =
+export type FontFamily =
     'Pretendard'
     | 'Aleo'
     | 'Rufina'
@@ -17,7 +17,7 @@ export type LinkMarryFont =
     | 'TheFaceShopInklipquid'
     | 'KyoboHandwriting2020';
 
-export const linkMarryFonts: LinkMarryFont[] = [
+export const fontList: FontFamily[] = [
     'Pretendard',
     'Aleo',
     'Rufina',
@@ -58,7 +58,7 @@ export const textTypes: TextType[] = [
 ];
 
 export const textTypeMap: Record<TextType, {
-    fontFamily: LinkMarryFont;
+    fontFamily: FontFamily;
     fontWeight: CSSProperties['fontWeight'];
     boldFontWeight: CSSProperties['fontWeight'];
     fontSize: number;

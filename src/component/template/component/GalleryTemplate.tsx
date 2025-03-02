@@ -3,7 +3,7 @@ import Text from "@designsystem/component/Text";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@util/css.util";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@designsystem/component/fadein/FadeIn";

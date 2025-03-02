@@ -12,29 +12,23 @@ import WeddingPage from "@page/WeddingPage";
 import {Helmet} from "react-helmet";
 import LoginPage from "@page/LoginPage";
 import {css} from "styled-components";
-import {Row} from "@designsystem/component/FlexLayout";
+import {Row} from "@designsystem/component/core/FlexLayout";
 import MyPageWedding from "@page/mypage/MyPageWedding";
 import MyPageInfo from "@page/mypage/MyPageInfo";
 import HomePage from "@page/HomePage";
-import AutoFocusContext from "@src/context/AutoFocusContext";
+import Providers from "@src/Providers";
 
 const {Kakao} = window as any;
 
 function App() {
     useEffect(() => {
-        // 카카오 객체를 초기화 (필수)
         if (!Kakao?.isInitialized()) {
             Kakao?.init(config.kakao.javascriptKey);
         }
     }, []);
 
-    const [autoFocus, setAutoFocus] = useState(true);
-
     return (
-        <AutoFocusContext.Provider value={{
-            autoFocus,
-            setAutoFocus: value => setAutoFocus(value),
-        }}>
+        <Providers>
             <Helmet>
                 <meta property="og:title" content="링크메리"/>
                 <meta property="og:description"
@@ -79,7 +73,7 @@ function App() {
                     </>
                 )}
             </Routes>
-        </AutoFocusContext.Provider>
+        </Providers>
     );
 }
 

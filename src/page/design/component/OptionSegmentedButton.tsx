@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef, HTMLAttributes} from 'react';
-import {Row} from "@designsystem/component/FlexLayout";
+import {Row} from "@designsystem/component/core/FlexLayout";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 
 interface OptionSegmentedButtonProps extends ComponentPropsWithoutRef<'div'> {
@@ -23,7 +23,7 @@ function OptionSegmentedButton(
                     key={index}
                     onClick={() => {
                         onClickItem(index);
-                    }} 
+                    }}
                     selected={index === selectedIndex}
                 >{item}</SegmentedButton>
             ))}

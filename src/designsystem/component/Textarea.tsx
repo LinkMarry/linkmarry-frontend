@@ -1,7 +1,6 @@
 import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
 import {css, RuleSet} from "styled-components";
-import makeText from "@designsystem/foundation/text/TextType";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 interface Props extends ComponentPropsWithRef<'textarea'> {
     customStyle?: RuleSet;

@@ -3,12 +3,12 @@ import styled, {css} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Spacer from "@designsystem/component/Spacer";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import {DraggableProvidedDragHandleProps} from "react-beautiful-dnd";
 import {OptionTypeMode} from "@page/design/OptionType";
 import Toggle from "@designsystem/component/Toggle";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 interface OptionCellProps extends ComponentPropsWithRef<'div'> {
     title: string;

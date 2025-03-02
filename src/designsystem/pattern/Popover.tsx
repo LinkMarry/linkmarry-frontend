@@ -1,9 +1,9 @@
 import React, {ComponentPropsWithoutRef, useEffect, useRef} from 'react';
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
-import {fadeInAnimationStyle} from "@designsystem/animation/fade.animation";
+import fadeInAnimationStyle from "@designsystem/animation/fadeInAnimationStyle";
 
 export interface PopoverItem {
     icon: IconType;
@@ -34,12 +34,12 @@ function Popover(
                 dismiss();
             }
         };
-        document.addEventListener("mousedown", handleOutsideClick);
+        document.addEventListener("mouseup", handleOutsideClick);
         return () => {
-            document.removeEventListener("mousedown", handleOutsideClick);
+            document.removeEventListener("mouseup", handleOutsideClick);
         }
     }, []);
-    
+
     return (
         <Column ref={popoverRef} gap={4} $alignItems={'stretch'} $customStyle={css`
             width: 160px;
@@ -65,7 +65,10 @@ function Popover(
                     &:active {
                         background: var(--g-200);
                     }
-                `}>
+                `} onClick={() => {
+                    item.onClick();
+                    dismiss();
+                }}>
                     <Icon iconType={item.icon} width={20} height={20} customStyle={css`
                         ${(item.type ?? 'normal') === 'normal' ? css`
                             fill: var(--g-800);

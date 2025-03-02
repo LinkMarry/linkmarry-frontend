@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import Text from "@designsystem/component/Text";
 import Greeting from "@remote/value/Greeting";

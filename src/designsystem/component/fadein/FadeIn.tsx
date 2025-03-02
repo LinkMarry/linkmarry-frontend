@@ -5,7 +5,7 @@ import React, {
     useEffect,
     useState
 } from 'react';
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import {css, RuleSet} from "styled-components";
 import useFadeIn from "@designsystem/component/fadein/useFadeIn";
 

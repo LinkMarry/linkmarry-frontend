@@ -8,8 +8,8 @@ import React, {
 } from 'react';
 import styled, {css} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
-import {Row} from "@designsystem/component/FlexLayout";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import {Row} from "@designsystem/component/core/FlexLayout";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 
 interface OptionTextFieldProps extends ComponentPropsWithRef<'div'> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;

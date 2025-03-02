@@ -1,5 +1,4 @@
 import styled, {css} from "styled-components";
-import makeText from "@designsystem/foundation/text/TextType";
 
 const SegmentedButton = styled.button<{ selected: boolean; }>`
     height: 44px;
@@ -13,7 +12,7 @@ const SegmentedButton = styled.button<{ selected: boolean; }>`
     ` : css`
         border: 2px solid var(--g-200);
         color: var(--g-400);
-    `}
+    `};
 `;
 
 export default SegmentedButton;

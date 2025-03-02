@@ -6,6 +6,12 @@ import {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from "re
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonType = 'filled' | 'outlined' | 'tonal';
 
+const iconSizeMap: Record<ButtonSize, number> = {
+    large: 18,
+    medium: 16,
+    small: 14
+};
+
 export interface Props extends ComponentPropsWithRef<'button'> {
     text: string;
     size?: ButtonSize;
@@ -31,12 +37,8 @@ function Button(
 ) {
     const iconColor = buttonTypeToStyleRecord[buttonType].color;
 
-    const iconSizeRecord: Record<ButtonSize, number> = {
-        large: 18,
-        medium: 16,
-        small: 14
-    };
-    const iconSize = iconSizeRecord[size];
+
+    const iconSize = iconSizeMap[size];
 
     return (
         <ButtonStyle
@@ -44,12 +46,7 @@ function Button(
             $buttonType={buttonType}
             ref={ref}
             disabled={!enabled}
-            $customStyle={css`
-                ${buttonType === 'outlined' && css`
-                    outline: 1px solid var(--g-200);
-                `};
-                ${customStyle};
-            `}
+            $customStyle={customStyle}
             {...props}
         >
             {leadingIcon && (
@@ -68,31 +65,31 @@ function Button(
 }
 
 const buttonSizeToStyleRecord: Record<ButtonSize, {
-    $borderRadius: number;
+    borderRadius: number;
     padding: CSSProperties['padding'];
     gap: number;
-    $textType: TextType;
+    textType: TextType;
     height: number;
 }> = {
     large: {
-        $borderRadius: 10,
+        borderRadius: 10,
         padding: '10px 24px',
         gap: 6,
-        $textType: 'p3',
+        textType: 'p3',
         height: 44
     },
     medium: {
-        $borderRadius: 8,
+        borderRadius: 8,
         padding: '8px 20px',
         gap: 5,
-        $textType: 'caption1',
+        textType: 'caption1',
         height: 37
     },
     small: {
-        $borderRadius: 6,
+        borderRadius: 6,
         padding: '6px 16px',
         gap: 4,
-        $textType: 'caption2',
+        textType: 'caption2',
         height: 30
     }
 }
@@ -100,6 +97,7 @@ const buttonSizeToStyleRecord: Record<ButtonSize, {
 const buttonTypeToStyleRecord: Record<ButtonType, {
     background: CSSProperties['background'];
     color: CSSProperties['color'];
+    outline?: CSSProperties['outline'];
 }> = {
     filled: {
         background: '#171717',
@@ -107,7 +105,8 @@ const buttonTypeToStyleRecord: Record<ButtonType, {
     },
     outlined: {
         background: 'transparent',
-        color: 'var(--g-500)'
+        color: 'var(--g-500)',
+        outline: '1px solid var(--g-200)'
     },
     tonal: {
         background: 'var(--g-100)',
@@ -132,8 +131,8 @@ const ButtonStyle = styled.button<{
     ${({size}) => {
         const style = buttonSizeToStyleRecord[size];
         return css`
-            ${makeText(style.$textType)};
-            border-radius: ${style.$borderRadius}px;
+            ${makeText(style.textType)};
+            border-radius: ${style.borderRadius}px;
             padding: ${style.padding};
             gap: ${style.gap}px;
             height: ${style.height}px;
@@ -144,6 +143,9 @@ const ButtonStyle = styled.button<{
         return css`
             color: ${style.color};
             background: ${style.background};
+            ${style.outline && css`
+                outline: ${style.outline};
+            `};
         `;
     }}
     

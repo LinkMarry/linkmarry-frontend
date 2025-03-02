@@ -1,5 +1,5 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {TemplateColor} from "@remote/value/Template";
 import Button from "@designsystem/component/Button";

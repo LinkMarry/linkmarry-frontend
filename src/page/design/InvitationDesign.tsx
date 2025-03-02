@@ -14,7 +14,7 @@ import MoneyInfoOption from "@page/design/option/MoneyInfoOption";
 import VideoOption from "@page/design/option/VideoOption";
 import PhoneOption from "@page/design/option/PhoneOption";
 import RsvpOption from "@page/design/option/RsvpOption";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import Button from "@designsystem/component/Button";
@@ -41,7 +41,7 @@ import weddingApi from "@remote/api/WeddingApi";
 import WeddingDto from "@remote/value/WeddingDto";
 import {useAutoFocus} from "@src/context/AutoFocusContext";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import CustomStyle from "@designsystem/component/core/CustomStyle";
 import Divider from "@designsystem/component/Divider";
 import Checkbox from "@designsystem/component/Checkbox";
 
@@ -281,7 +281,7 @@ function InvitationDesign() {
                     <Row gap={12} $alignItems={'center'}>
                         <Checkbox
                             label={'자동 포커스'}
-                            Checked={autoFocus} 
+                            Checked={autoFocus}
                             OnChange={checked => setAutoFocus(checked)}
                         />
                         <Text

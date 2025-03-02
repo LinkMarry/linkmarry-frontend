@@ -1,6 +1,6 @@
 import React, {RefObject} from 'react';
 import styled from "styled-components";
-import {Column, Row} from "@designsystem/component/FlexLayout";
+import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionTextField from "@page/design/component/OptionTextField";
 import Textarea from "@designsystem/component/Textarea";

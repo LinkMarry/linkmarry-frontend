@@ -1,7 +1,7 @@
 import React from "react";
 import {css} from "styled-components";
 import Header from "@designsystem/pattern/header/Header";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 
 interface HasHeaderProps {
     children?: React.ReactNode;

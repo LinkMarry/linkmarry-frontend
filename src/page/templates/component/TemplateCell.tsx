@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from "styled-components";
-import {Column} from "@designsystem/component/FlexLayout";
+import {Column} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {TemplateName, templateNameRecord} from "@remote/value/Template";
 import Spacer from "@designsystem/component/Spacer";
