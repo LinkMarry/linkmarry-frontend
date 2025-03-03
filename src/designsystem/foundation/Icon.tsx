@@ -62,11 +62,13 @@ import Envelope from "@designsystem/foundation/icon/Envelope";
 import Link from "@designsystem/foundation/icon/Link";
 import PenLine from "@designsystem/foundation/icon/PenLine";
 import DoubleArrowLeft from "@designsystem/foundation/icon/DoubleArrowLeft";
+import AddPhoto from "@designsystem/foundation/icon/AddPhoto";
 
 export enum IconType {
     AddEmoji,
     AddFill,
     AddLine,
+    AddPhoto,
     AddRing,
     Alarm,
     AlarmDisabled,
@@ -150,6 +152,8 @@ function Icon(
                 return <AddFill {...svgProps}/>;
             case IconType.AddLine:
                 return <AddLine {...svgProps}/>;
+            case IconType.AddPhoto:
+                return <AddPhoto {...svgProps}/>;
             case IconType.AddRing:
                 return <AddRing {...svgProps}/>;
             case IconType.Alarm:

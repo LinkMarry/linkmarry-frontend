@@ -7,13 +7,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
     h?: number;
 }
 
-function Spacer(
-    {
-        w,
-        h,
-        ...props
-    }: Props
-) {
+function Spacer({w, h, ...props}: Props) {
     return (
         <CustomStyle $customStyle={css`
             ${w && css`

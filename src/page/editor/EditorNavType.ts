@@ -41,65 +41,21 @@ export const editorNavTypeMap: Record<EditorNavType, {
     text: string;
     icon: IconType;
 }> = {
-    backgroundMusic: {
-        icon: IconType.Envelope,
-        text: '디자인'
-    },
-    bride: {
-        icon: IconType.Envelope,
-        text: '신랑측'
-    },
-    changeOrder: {
-        icon: IconType.Envelope,
-        text: '신부측'
-    },
     design: {
         icon: IconType.Envelope,
-        text: '인사말'
-    },
-    fontAndStyle: {
-        icon: IconType.Envelope,
-        text: '폰트 및 스타일'
-    },
-    gallery: {
-        icon: IconType.Envelope,
-        text: '갤러리'
-    },
-    greeting: {
-        icon: IconType.Envelope,
-        text: '인사말'
+        text: '디자인'
     },
     groom: {
         icon: IconType.Envelope,
         text: '신랑측'
     },
-    guestComment: {
+    bride: {
         icon: IconType.Envelope,
-        text: '방명록'
+        text: '신부측'
     },
-    kakaoInvitationLetter: {
+    greeting: {
         icon: IconType.Envelope,
-        text: '카카오톡 초대장'
-    },
-    money: {
-        icon: IconType.Envelope,
-        text: '축의금'
-    },
-    phone: {
-        icon: IconType.Envelope,
-        text: '연락처'
-    },
-    rsvp: {
-        icon: IconType.Envelope,
-        text: '참석의사 RSVP'
-    },
-    urlShare: {
-        icon: IconType.Envelope,
-        text: 'URL 공유'
-    },
-    video: {
-        icon: IconType.Envelope,
-        text: '동영상'
+        text: '인사말'
     },
     weddingLocation: {
         icon: IconType.Envelope,
@@ -108,6 +64,50 @@ export const editorNavTypeMap: Record<EditorNavType, {
     weddingSchedule: {
         icon: IconType.Envelope,
         text: '예식 일시'
+    },
+    gallery: {
+        icon: IconType.Envelope,
+        text: '갤러리'
+    },
+    backgroundMusic: {
+        icon: IconType.Envelope,
+        text: '인사말'
+    },
+    money: {
+        icon: IconType.Envelope,
+        text: '축의금'
+    },
+    video: {
+        icon: IconType.Envelope,
+        text: '동영상'
+    },
+    rsvp: {
+        icon: IconType.Envelope,
+        text: '참석의사 RSVP'
+    },
+    phone: {
+        icon: IconType.Envelope,
+        text: '연락처'
+    },
+    guestComment: {
+        icon: IconType.Envelope,
+        text: '방명록'
+    },
+    fontAndStyle: {
+        icon: IconType.Envelope,
+        text: '폰트 및 스타일'
+    },
+    urlShare: {
+        icon: IconType.Envelope,
+        text: 'URL 공유'
+    },
+    kakaoInvitationLetter: {
+        icon: IconType.Envelope,
+        text: '카카오톡 초대장'
+    },
+    changeOrder: {
+        icon: IconType.Envelope,
+        text: '순서 변경'
     }
 };
 

@@ -5,6 +5,7 @@ import {css} from "styled-components";
 import EditorNavigationBar from "@page/editor/EditorNavigationBar";
 import EditorNavType from "@page/editor/EditorNavType";
 import EditorPreview from "@page/editor/EditorPreview";
+import EditorInspector from "@page/editor/EditorInspector";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
@@ -19,6 +20,7 @@ const EditorPage = () => {
                 min-height: 0;
             `}>
                 <EditorNavigationBar currentNavType={currentNavType} onChangeNavType={type => setCurrentNavType(type)}/>
+                <EditorInspector currentNavType={currentNavType}/>
                 <EditorPreview/>
             </Row>
         </Column>

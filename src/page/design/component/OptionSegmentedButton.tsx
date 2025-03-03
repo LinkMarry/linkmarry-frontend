@@ -1,6 +1,5 @@
-import React, {ComponentPropsWithoutRef, HTMLAttributes} from 'react';
+import React, {ComponentPropsWithoutRef} from 'react';
 import {Row} from "@designsystem/core/FlexLayout";
-import SegmentedButton from "@designsystem/component/SegmentedButton";
 
 interface OptionSegmentedButtonProps extends ComponentPropsWithoutRef<'div'> {
     selectedIndex?: number;
@@ -18,15 +17,15 @@ function OptionSegmentedButton(
 ) {
     return (
         <Row gap={8} {...props}>
-            {items.map((item, index) => (
-                <SegmentedButton
-                    key={index}
-                    onClick={() => {
-                        onClickItem(index);
-                    }}
-                    selected={index === selectedIndex}
-                >{item}</SegmentedButton>
-            ))}
+            {/*{items.map((item, index) => (*/}
+            {/*    <SegmentedButton*/}
+            {/*        key={index}*/}
+            {/*        onClick={() => {*/}
+            {/*            onClickItem(index);*/}
+            {/*        }}*/}
+            {/*        selected={index === selectedIndex}*/}
+            {/*    >{item}</SegmentedButton>*/}
+            {/*))}*/}
         </Row>
     );
 }

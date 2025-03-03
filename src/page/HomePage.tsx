@@ -6,7 +6,7 @@ import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
 import CustomStyle from "@designsystem/core/CustomStyle";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
-import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
+import TabBar, {dummyTabBarItems} from "@designsystem/component/TabBar";
 
 function HomePage() {
     const {deviceSize} = useResponsive();
@@ -40,16 +40,7 @@ function HomePage() {
                     {/*content*/}
                     <Column gap={16} $alignItems={'stretch'}>
                         <Row $justifyContent={'center'}>
-                            <Row gap={8} $customStyle={css`
-                                overflow-x: scroll;
-                                ${hideScrollBar};
-                            `}>
-                                <SegmentedButton selected={false} text={'모던'}/>
-                                <SegmentedButton selected={true} text={'빈티지'}/>
-                                <SegmentedButton selected={false} text={'레트로'}/>
-                                <SegmentedButton selected={false} text={'로맨틱'}/>
-                                <SegmentedButton selected={false} text={'클래식'}/>
-                            </Row>
+                            <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {}}/>
                         </Row>
                         <CustomStyle $customStyle={css`
                             display: grid;
@@ -75,39 +66,6 @@ function HomePage() {
             </Column>
         </MainWrapper>
     )
-}
-
-function SegmentedButton(props: {
-    selected: boolean;
-    text: string;
-}) {
-    return (
-        <Column $alignItems={'center'} $customStyle={css`
-            min-width: 68px;
-            padding: 10px 0;
-            border-radius: 6px;
-            position: relative;
-            ${makeInteractionEffect('strong')};
-        `}>
-            <Text type={'p3'} bold={true} customStyle={css`
-                ${props.selected ? css`
-                    color: var(--g-800);
-                ` : css`
-                    color: var(--g-500);
-                `}
-            `}>{props.text}</Text>
-            {props.selected && (
-                <CustomStyle $customStyle={css`
-                    position: absolute;
-                    width: 29px;
-                    height: 2px;
-                    border-radius: 10px;
-                    background: var(--g-800);
-                    bottom: 0;
-                `}/>
-            )}
-        </Column>
-    );
 }
 
 export default HomePage;

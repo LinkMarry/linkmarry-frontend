@@ -10,6 +10,7 @@ import {css} from "styled-components";
 import {IconType} from "@designsystem/foundation/Icon";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import Popover from "@designsystem/pattern/Popover";
+import SegmentedButton from "@designsystem/component/SegmentedButton";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -24,6 +25,8 @@ function ComponentDemo() {
     const [toggleChecked, setToggleChecked] = useState(false);
 
     const [showDialog, setShowDialog] = useState(false);
+
+    const [selectedTabBarIndex, setSelectedTabBarIndex] = useState(0);
 
     return (
         <Column gap={8} $customStyle={css`
@@ -133,7 +136,17 @@ function ComponentDemo() {
                 ]}
                 dismiss={() => {
                 }}
+                customStyle={css`
+                    position: relative;
+                `}
             />
+            <SegmentedButton items={[
+                '레터링',
+                '타이핑',
+                '타이핑'
+            ]} selectedTab={selectedTabBarIndex} customStyle={css`
+                width: 316px;
+            `} onChange={tab => setSelectedTabBarIndex(tab)}/>
         </Column>
     );
 }

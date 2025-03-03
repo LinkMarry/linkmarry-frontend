@@ -11,7 +11,6 @@ import Template, {
     templateFontSizes, templateNames
 } from "@remote/value/Template";
 import {FontFamily, fontList} from "@designsystem/foundation/text/TextType";
-import SegmentedButton from "@designsystem/component/SegmentedButton";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
@@ -59,17 +58,17 @@ function TemplateOption(
                 <Row gap={12}>
                     <OptionLabel label={'디자인'} style={{alignSelf: 'flex-start'}}/>
                     <S.designWrapper>
-                        {templateNames.map((templateName, index) => (
-                            <SegmentedButton
-                                key={index}
-                                selected={templateName === template.templateName}
-                                style={{width: 126}}
-                                onClick={() => {
-                                    onChange({...template, templateName});
-                                }}>
-                                {templateName}
-                            </SegmentedButton>
-                        ))}
+                        {/*{templateNames.map((templateName, index) => (*/}
+                        {/*    <SegmentedButton*/}
+                        {/*        key={index}*/}
+                        {/*        selected={templateName === template.templateName}*/}
+                        {/*        style={{width: 126}}*/}
+                        {/*        onClick={() => {*/}
+                        {/*            onChange({...template, templateName});*/}
+                        {/*        }}>*/}
+                        {/*        {templateName}*/}
+                        {/*    </SegmentedButton>*/}
+                        {/*))}*/}
                     </S.designWrapper>
                 </Row>
                 <Divider/>
