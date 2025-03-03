@@ -39,7 +39,7 @@ import GalleryOption from "@page/design/option/GalleryOption";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 import weddingApi from "@remote/api/WeddingApi";
 import WeddingDto from "@remote/value/WeddingDto";
-import {useAutoFocus} from "@src/context/AutoFocusContext";
+import useAutoFocus from "@hook/useAutoFocus";
 import {css} from "styled-components";
 import CustomStyle from "@designsystem/component/core/CustomStyle";
 import Divider from "@designsystem/component/Divider";

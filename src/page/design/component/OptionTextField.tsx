@@ -2,12 +2,10 @@ import React, {
     ComponentPropsWithRef,
     ForwardedRef,
     forwardRef,
-    HTMLAttributes,
     InputHTMLAttributes,
     ReactNode
 } from 'react';
-import styled, {css} from "styled-components";
-import makeText from "@designsystem/foundation/text/TextType";
+import {css} from "styled-components";
 import {Row} from "@designsystem/component/core/FlexLayout";
 import CustomStyle from "@designsystem/component/core/CustomStyle";
 

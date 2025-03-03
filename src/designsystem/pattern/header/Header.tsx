@@ -2,15 +2,17 @@ import React, {ComponentPropsWithoutRef, Dispatch, SetStateAction, useState} fro
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Spacer from "@designsystem/component/Spacer";
-import useAuth from "@hook/useAuth";
 import Button from "@designsystem/component/Button";
 import {useNavigate} from "react-router-dom";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import Popover, {PopoverItem} from "@designsystem/pattern/Popover";
+import Popover from "@designsystem/pattern/Popover";
 import Divider from "@designsystem/component/Divider";
 import CustomStyle from "@designsystem/component/core/CustomStyle";
 import useResponsive from "@hook/useResponsive";
+import Logo from "@src/component/Logo";
+import useJwt from "@hook/useJwt";
+import useAuth from "@hook/useAuth";
 
 function Header() {
     const {deviceSize} = useResponsive();
@@ -29,7 +31,7 @@ function MobileHeader() {
 
     if (openDetail) {
         return (
-            <Column $alignItems={'stretch'} $customStyle={css`
+            <Column as={'header'} $alignItems={'stretch'} $customStyle={css`
                 position: relative;
             `}>
                 <MobileHeaderContent openDetail={openDetail} setOpenDetail={setOpenDetail}/>
@@ -91,7 +93,7 @@ function MobileHeaderContent(props: {
             border-bottom: 1px solid var(--g-200);
             padding: 0 16px;
         `}>
-            <Logo/>
+            <LogoInHeader/>
             <Spacer/>
             <Icon iconType={props.openDetail ? IconType.CrossLine : IconType.Hamburger} width={24} height={24}
                   customStyle={css`
@@ -111,7 +113,7 @@ function DesktopHeader() {
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
 
     return (
-        <Row $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
+        <Row as={'header'} $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
             width: 100vw;
             min-height: 72px;
             background: white;
@@ -123,7 +125,7 @@ function DesktopHeader() {
                 flex: 1;
             `}>
                 <Row gap={40} $alignItems={'center'}>
-                    <Logo/>
+                    <LogoInHeader/>
                     <Row gap={12} $alignItems={'center'}>
                         <DesktopHeaderItem text={'청첩장 만들기'} onClick={() => {
                             navigate('/editor');
@@ -138,11 +140,10 @@ function DesktopHeader() {
                 </Row>
                 <Spacer/>
                 {authorized ? (
-
                     <CustomStyle $customStyle={css`
                         position: relative;
                     `}>
-                        <DesktopHeaderItem text={'내 정보'} popoverItems={[]} onClick={() => {
+                        <DesktopHeaderItem text={'내 정보'} hasPopover={true} onClick={() => {
                             setOpenMyInfoPopover(i => !i);
                         }}/>
                         {openMyInfoPopover && (
@@ -212,9 +213,9 @@ function MobileHeaderItem(props: {
     )
 }
 
-function DesktopHeaderItem(props: {
+function DesktopHeaderItem({text, hasPopover = false, ...props}: {
     text: string;
-    popoverItems?: PopoverItem[];
+    hasPopover?: boolean;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
         <Row gap={8} $alignItems={'center'} $customStyle={css`
@@ -233,8 +234,8 @@ function DesktopHeaderItem(props: {
         `} {...props}>
             <Text type={'p3'} bold={true} customStyle={css`
                 white-space: nowrap;
-            `}>{props.text}</Text>
-            {props.popoverItems && (
+            `}>{text}</Text>
+            {hasPopover && (
                 <Icon iconType={IconType.ExpandArrow} width={20} height={20} customStyle={css`
                     rotate: -90deg;
                     fill: var(--g-400);
@@ -244,10 +245,12 @@ function DesktopHeaderItem(props: {
     );
 }
 
-function Logo() {
+function LogoInHeader() {
     const navigate = useNavigate();
     return (
-        <img src={'/logo.svg'} width={103} alt={'logo'} style={{cursor: 'pointer'}} onClick={() => {
+        <Logo customStyle={css`
+            cursor: pointer;
+        `} onClick={() => {
             navigate('/');
         }}/>
     );

@@ -1,93 +1,79 @@
 import React from 'react';
-import HasHeader from "@designsystem/pattern/header/HasHeader";
+import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import {css} from "styled-components";
 import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
 import CustomStyle from "@designsystem/component/core/CustomStyle";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
-import Spacer from "@designsystem/component/Spacer";
 import {hideScrollBar} from "@util/css.util";
-import Divider from "@designsystem/component/Divider";
-import Footer from "@src/component/Footer";
 
 function HomePage() {
     const {deviceSize} = useResponsive();
 
     return (
-        <HasHeader>
-            <Column $alignItems={'center'} flex={1} $customStyle={css`
+        <MainWrapper>
+            <Column $alignItems={'center'} $customStyle={css`
                 ${deviceSize === 'desktop' ? css`
-                    padding: 72px 24px 0 24px;
+                    padding: 72px 24px 40px 24px;
                 ` : css`
-                    padding: 24px 16px 0 16px;
-                `}
-                overflow-y: scroll;
+                    padding: 24px 16px 40px 16px;
+                `};
             `}>
-                <HomePageImpl/>
-            </Column>
-        </HasHeader>
-    );
-}
-
-function HomePageImpl() {
-    const {deviceSize} = useResponsive();
-
-    return (
-        <Column gap={40} $alignItems={'stretch'} $customStyle={css`
-            max-width: 1100px;
-            width: 100%;
-            flex: 1;
-        `}>
-            {/*header*/}
-            <Column gap={16} $alignItems={'center'}>
-                <Text type={deviceSize === 'desktop' ? 'h2' : 'h4'} bold={true} customStyle={css`
-                    text-align: center;
-                `}>특별한 순간 특별한 초대<br/>
-                    링크메리와 함께</Text>
-                <Text type={'p3'} customStyle={css`
-                    text-align: center;
-                    word-break: break-word;
-                    color: var(--g-500);
-                `}>100가지가 넘는 다양한 스타일, 나만의 청첩장을 무료로 만들어볼 수 있습니다</Text>
-            </Column>
-            {/*content*/}
-            <Column gap={16} $alignItems={'stretch'}>
-                <Row $justifyContent={'center'}>
-                    <Row gap={8} $customStyle={css`
-                        overflow-x: scroll;
-                        ${hideScrollBar};
-                    `}>
-                        <SegmentedButton selected={false} text={'모던'}/>
-                        <SegmentedButton selected={true} text={'빈티지'}/>
-                        <SegmentedButton selected={false} text={'레트로'}/>
-                        <SegmentedButton selected={false} text={'로맨틱'}/>
-                        <SegmentedButton selected={false} text={'클래식'}/>
-                    </Row>
-                </Row>
-                <CustomStyle $customStyle={css`
-                    display: grid;
-                    max-width: 960px;
-                    align-self: center;
+                <Column gap={40} $alignItems={'stretch'} $customStyle={css`
+                    max-width: 1100px;
                     width: 100%;
-                    grid-template-columns: repeat(4, 1fr);
-                    ${deviceSize === 'mobile' && css`
-                        grid-template-columns: repeat(2, 1fr);
-                    `};
-                    grid-column-gap: 14px;
-                    grid-row-gap: 32px;
+                    flex: 1;
                 `}>
-                    <WeddingStyleCell/>
-                    <WeddingStyleCell/>
-                    <WeddingStyleCell/>
-                    <WeddingStyleCell/>
-                    <WeddingStyleCell/>
-                    <WeddingStyleCell/>
-                </CustomStyle>
+                    {/*header*/}
+                    <Column gap={16} $alignItems={'center'}>
+                        <Text type={deviceSize === 'desktop' ? 'h2' : 'h4'} bold={true} customStyle={css`
+                            text-align: center;
+                        `}>특별한 순간 특별한 초대<br/>
+                            링크메리와 함께</Text>
+                        <Text type={'p3'} customStyle={css`
+                            text-align: center;
+                            word-break: break-word;
+                            color: var(--g-500);
+                        `}>100가지가 넘는 다양한 스타일, 나만의 청첩장을 무료로 만들어볼 수 있습니다</Text>
+                    </Column>
+                    {/*content*/}
+                    <Column gap={16} $alignItems={'stretch'}>
+                        <Row $justifyContent={'center'}>
+                            <Row gap={8} $customStyle={css`
+                                overflow-x: scroll;
+                                ${hideScrollBar};
+                            `}>
+                                <SegmentedButton selected={false} text={'모던'}/>
+                                <SegmentedButton selected={true} text={'빈티지'}/>
+                                <SegmentedButton selected={false} text={'레트로'}/>
+                                <SegmentedButton selected={false} text={'로맨틱'}/>
+                                <SegmentedButton selected={false} text={'클래식'}/>
+                            </Row>
+                        </Row>
+                        <CustomStyle $customStyle={css`
+                            display: grid;
+                            max-width: 960px;
+                            align-self: center;
+                            width: 100%;
+                            grid-template-columns: repeat(4, 1fr);
+                            ${deviceSize === 'mobile' && css`
+                                grid-template-columns: repeat(2, 1fr);
+                            `};
+                            grid-column-gap: 14px;
+                            grid-row-gap: 32px;
+                        `}>
+                            <WeddingStyleCell/>
+                            <WeddingStyleCell/>
+                            <WeddingStyleCell/>
+                            <WeddingStyleCell/>
+                            <WeddingStyleCell/>
+                            <WeddingStyleCell/>
+                        </CustomStyle>
+                    </Column>
+                </Column>
             </Column>
-            <Divider/>
-            <Footer/>
-        </Column>
+        </MainWrapper>
     )
 }
 

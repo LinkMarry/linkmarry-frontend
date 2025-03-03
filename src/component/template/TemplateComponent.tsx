@@ -16,7 +16,6 @@ import InvitationLetterTemplate, {
     InvitationLetterStyle
 } from "@src/component/template/component/InvitationLetterTemplate";
 import RsvpDialog from "@src/component/template/dialog/rsvp/RsvpDialog";
-import Cookies from "js-cookie";
 import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
 import {Helmet} from "react-helmet";
 import {optionRecord, OptionType} from "@page/design/OptionType";
@@ -43,7 +42,8 @@ function TemplateComponent(
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
         if (isPreview) return false;
         if (!wedding.rsvp.startPopupStatus) return false;
-        return Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
+        // todo: fix
+        // return Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
     })());
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
     const {templateColor, templateFont, templateFontSize} = wedding.template;
@@ -52,7 +52,8 @@ function TemplateComponent(
     (() => {
         const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
         increaseFontSize(rootRef, addFontSize);
-        Cookies.remove('hide_RsvpDialog')
+        // todo: fix
+        // Cookies.remove('hide_RsvpDialog')
     })();
 
     useEffect(() => {

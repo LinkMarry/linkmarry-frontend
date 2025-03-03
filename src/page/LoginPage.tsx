@@ -1,6 +1,6 @@
 import React from 'react';
 import {css} from "styled-components";
-import HasHeader from "@designsystem/pattern/header/HasHeader";
+import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Column, Row} from "@designsystem/component/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import useAuth from "@hook/useAuth";
@@ -10,7 +10,7 @@ function LoginPage() {
     const {signInWithKakao} = useAuth();
 
     return (
-        <HasHeader>
+        <MainWrapper hasFooter={false}>
             <Column gap={32} flex={1} $alignItems={'center'} $justifyContent={'center'}>
                 <Column gap={8} $alignItems={'center'}>
                     <CustomStyle as={'img'} src="/linkmarry.png" alt="" width={72} height={72} $customStyle={css`
@@ -39,7 +39,7 @@ function LoginPage() {
                     </Row>
                 </Row>
             </Column>
-        </HasHeader>
+        </MainWrapper>
     );
 }
 

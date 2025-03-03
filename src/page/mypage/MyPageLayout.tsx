@@ -1,5 +1,5 @@
 import React from 'react';
-import HasHeader from "@designsystem/pattern/header/HasHeader";
+import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Row} from "@designsystem/component/core/FlexLayout";
 import {Outlet} from "react-router-dom";
 import {css} from "styled-components";
@@ -18,7 +18,7 @@ function MyPageLayout() {
 
 function MobileMyPageLayout() {
     return (
-        <HasHeader>
+        <MainWrapper>
             <Row $justifyContent={'center'} flex={1} $customStyle={css`
                 overflow-y: scroll;
                 padding: 24px 16px 0 16px;
@@ -30,13 +30,13 @@ function MobileMyPageLayout() {
                     <Outlet/>
                 </Row>
             </Row>
-        </HasHeader>
+        </MainWrapper>
     )
 }
 
 function DesktopMyPageLayout() {
     return (
-        <HasHeader>
+        <MainWrapper>
             <Row $justifyContent={'center'} flex={1} $customStyle={css`
                 padding: 72px 24px 0 24px;
                 overflow-y: scroll;
@@ -49,7 +49,7 @@ function DesktopMyPageLayout() {
                     <Outlet/>
                 </Row>
             </Row>
-        </HasHeader>
+        </MainWrapper>
     );
 }
 

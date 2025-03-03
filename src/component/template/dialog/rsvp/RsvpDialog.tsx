@@ -10,7 +10,6 @@ import WeddingPlace from "@remote/value/WeddingPlace";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import Button from "@designsystem/component/Button";
-import Cookies from "js-cookie";
 import Rsvp from "@remote/value/Rsvp";
 
 interface RsvpDialogProps {
@@ -82,7 +81,8 @@ function RsvpDialog(
                             cursor: pointer;
                         `}
                         onClick={() => {
-                            Cookies.set(`hide_RsvpDialog_${url}`, 'true', {expires: 1});
+                            // todo: fix
+                            // Cookies.set(`hide_RsvpDialog_${url}`, 'true', {expires: 1});
                             dismiss();
                         }}
                     >오늘 하루 보지 않기</Text>
