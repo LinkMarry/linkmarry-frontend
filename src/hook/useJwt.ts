@@ -6,13 +6,11 @@ const useJwt = () => {
     const [cookie, setCookie, removeCookie] = useCookies(['accessToken', 'refreshToken']);
 
     const setToken = useCallback((jwt: Jwt) => {
-        console.log('setToken', jwt);
         setCookie('accessToken', jwt.accessToken);
         setCookie('refreshToken', jwt.refreshToken);
     }, [setCookie]);
 
     const clearToken = useCallback(() => {
-        console.log('clearToken');
         removeCookie('accessToken');
         removeCookie('refreshToken');
     }, [removeCookie]);

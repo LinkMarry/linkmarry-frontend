@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row} from "@designsystem/component/core/FlexLayout";
+import {Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Logo from "@src/component/Logo";
 import {useNavigate} from "react-router-dom";

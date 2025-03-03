@@ -1,9 +1,10 @@
 import React, {ComponentPropsWithoutRef, useEffect, useRef} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
 import fadeInAnimationStyle from "@designsystem/animation/fadeInAnimationStyle";
+import {makeInteractionEffect} from "@util/css.util";
 
 export interface PopoverItem {
     icon: IconType;
@@ -55,16 +56,7 @@ function Popover(
                 <Row key={index} gap={8} $alignItems={'center'} $customStyle={css`
                     padding: 8px 12px;
                     border-radius: 6px;
-                    transition: 0.1s background;
-                    cursor: pointer;
-                    
-                    &:hover {
-                        background: var(--g-100);
-                    }
-                    
-                    &:active {
-                        background: var(--g-200);
-                    }
+                    ${makeInteractionEffect('strong')};
                 `} onClick={() => {
                     item.onClick();
                     dismiss();

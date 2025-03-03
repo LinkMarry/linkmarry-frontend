@@ -61,6 +61,7 @@ import PersonLine from "@designsystem/foundation/icon/PersonLine";
 import Envelope from "@designsystem/foundation/icon/Envelope";
 import Link from "@designsystem/foundation/icon/Link";
 import PenLine from "@designsystem/foundation/icon/PenLine";
+import DoubleArrowLeft from "@designsystem/foundation/icon/DoubleArrowLeft";
 
 export enum IconType {
     AddEmoji,
@@ -88,6 +89,7 @@ export enum IconType {
     Crown,
     CurveArrow,
     Detail,
+    DoubleArrowLeft,
     Envelope,
     ExclamationFill,
     ExclamationLine,
@@ -192,6 +194,8 @@ function Icon(
                 return <CurveArrow {...svgProps}/>;
             case IconType.Detail:
                 return <Detail {...svgProps}/>;
+            case IconType.DoubleArrowLeft:
+                return <DoubleArrowLeft {...svgProps}/>;
             case IconType.Envelope:
                 return <Envelope {...svgProps}/>;
             case IconType.ExclamationFill:

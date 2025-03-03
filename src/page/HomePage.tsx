@@ -1,12 +1,12 @@
 import React from 'react';
 import MainWrapper from "@designsystem/pattern/header/MainWrapper";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
-import {hideScrollBar} from "@util/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 
 function HomePage() {
     const {deviceSize} = useResponsive();
@@ -85,18 +85,9 @@ function SegmentedButton(props: {
         <Column $alignItems={'center'} $customStyle={css`
             min-width: 68px;
             padding: 10px 0;
-            cursor: pointer;
             border-radius: 6px;
-            transition: 0.1s background;
             position: relative;
-
-            &:hover {
-                background: var(--g-100);
-            }
-
-            &:active {
-                background: var(--g-200);
-            }
+            ${makeInteractionEffect('strong')};
         `}>
             <Text type={'p3'} bold={true} customStyle={css`
                 ${props.selected ? css`

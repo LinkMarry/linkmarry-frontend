@@ -7,8 +7,8 @@ import React, {
     useState
 } from 'react';
 import {css, RuleSet} from "styled-components";
-import {Row} from "@designsystem/component/core/FlexLayout";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import {Row} from "@designsystem/core/FlexLayout";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props extends ComponentPropsWithRef<'div'> {
     Checked?: boolean;
@@ -79,6 +79,7 @@ function Toggle(
                     `};
                     border-radius: 100px;
                     outline: none;
+                    transition: 0.2s background ease-out;
                 `}
             />
             <CustomStyle as={'span'} $customStyle={css`
@@ -90,10 +91,11 @@ function Toggle(
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
                 top: 3px;
                 ${localChecked ? css`
-                    right: 3px;
+                    left: 30px;
                 ` : css`
                     left: 3px;
                 `};
+                transition: 0.2s left ease-out;
                 pointer-events: none;
             `}></CustomStyle>
         </Row>

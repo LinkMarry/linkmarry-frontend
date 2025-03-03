@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef, Dispatch, SetStateAction, useState} from 'react';
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Spacer from "@designsystem/component/Spacer";
 import Button from "@designsystem/component/Button";
 import {useNavigate} from "react-router-dom";
@@ -8,11 +8,11 @@ import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Popover from "@designsystem/pattern/Popover";
 import Divider from "@designsystem/component/Divider";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import useResponsive from "@hook/useResponsive";
 import Logo from "@src/component/Logo";
-import useJwt from "@hook/useJwt";
 import useAuth from "@hook/useAuth";
+import {makeInteractionEffect} from "@util/css.util";
 
 function Header() {
     const {deviceSize} = useResponsive();
@@ -190,16 +190,7 @@ function MobileHeaderItem(props: {
     return (
         <Row gap={8} {...props} $customStyle={css`
             padding: 12px 16px;
-            transition: 0.1s background;
-            cursor: pointer;
-
-            &:hover {
-                background: var(--g-100);
-            }
-
-            &:active {
-                background: var(--g-200);
-            }
+            ${makeInteractionEffect('strong')};
         `}>
             {props.icon && (
                 <Icon iconType={props.icon} width={20} height={20} customStyle={css`
@@ -219,18 +210,9 @@ function DesktopHeaderItem({text, hasPopover = false, ...props}: {
 } & ComponentPropsWithoutRef<'div'>) {
     return (
         <Row gap={8} $alignItems={'center'} $customStyle={css`
-            cursor: pointer;
             padding: 8px 16px;
             border-radius: 6px;
-            transition: 0.1s background;
-
-            &:hover {
-                background: var(--g-100);
-            }
-
-            &:active {
-                background: var(--g-200);
-            }
+            ${makeInteractionEffect('strong')};
         `} {...props}>
             <Text type={'p3'} bold={true} customStyle={css`
                 white-space: nowrap;
