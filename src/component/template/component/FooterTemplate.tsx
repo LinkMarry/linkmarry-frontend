@@ -1,8 +1,8 @@
 import React, {ComponentPropsWithoutRef} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
+import FadeIn from "@src/component/fadein/FadeIn";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<'div'> {
     background: string;

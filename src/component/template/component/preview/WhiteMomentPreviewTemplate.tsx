@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import {format} from "date-fns";
@@ -8,7 +8,7 @@ import {ko} from "date-fns/locale";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import {getDetails} from "@remote/value/WeddingSchedule";
 
 function WhiteMomentPreviewTemplate(

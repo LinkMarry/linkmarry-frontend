@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
 import {useParams} from "react-router-dom";
-import {Row} from "@designsystem/component/core/FlexLayout";
+import {Row} from "@designsystem/core/FlexLayout";
 import TemplateComponent from "@src/component/template/TemplateComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
 import Text from "@designsystem/component/Text";

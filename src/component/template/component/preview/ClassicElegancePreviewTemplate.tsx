@@ -1,11 +1,11 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import {Column} from "@designsystem/component/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 import {differenceInDays, format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 function ClassicElegancePreviewTemplate(

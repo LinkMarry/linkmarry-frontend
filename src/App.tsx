@@ -10,7 +10,7 @@ import {dummyWedding} from "@remote/value/Wedding";
 import WeddingPage from "@page/WeddingPage";
 import LoginPage from "@page/LoginPage";
 import {css} from "styled-components";
-import {Row} from "@designsystem/component/core/FlexLayout";
+import {Row} from "@designsystem/core/FlexLayout";
 import MyPageWedding from "@page/mypage/MyPageWedding";
 import MyPageInfo from "@page/mypage/MyPageInfo";
 import HomePage from "@page/HomePage";

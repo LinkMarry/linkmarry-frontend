@@ -1,7 +1,7 @@
 import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import styled, {css} from "styled-components";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface AddDismissButtonProps extends ComponentProps<'div'> {
     dismiss: () => void;

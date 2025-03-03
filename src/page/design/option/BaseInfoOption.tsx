@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {BaseFlex, Column, Row} from "@designsystem/component/core/FlexLayout";
+import {BaseFlex, Column, Row} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionTextField from "@page/design/component/OptionTextField";

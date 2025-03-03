@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import MyPageSidebarType, {myPageSidebarRecord} from "@page/mypage/MyPageSidebarType";
 import Text from "@designsystem/component/Text";

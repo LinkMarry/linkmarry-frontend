@@ -1,13 +1,13 @@
 import React, {ComponentProps} from 'react';
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import previewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 function ForestLovePreviewTemplate(
     {

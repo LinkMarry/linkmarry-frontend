@@ -1,5 +1,5 @@
 import {ComponentPropsWithoutRef} from "react";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import {css} from "styled-components";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {

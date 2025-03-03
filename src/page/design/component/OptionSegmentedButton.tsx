@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef, HTMLAttributes} from 'react';
-import {Row} from "@designsystem/component/core/FlexLayout";
+import {Row} from "@designsystem/core/FlexLayout";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 
 interface OptionSegmentedButtonProps extends ComponentPropsWithoutRef<'div'> {

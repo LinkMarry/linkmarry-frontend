@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled, {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import makeText from "@designsystem/foundation/text/TextType";
 import Phone from "@remote/value/Phone";

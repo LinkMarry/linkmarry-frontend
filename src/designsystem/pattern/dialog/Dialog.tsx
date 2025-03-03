@@ -1,7 +1,7 @@
 import React from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Button, {Props} from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
 

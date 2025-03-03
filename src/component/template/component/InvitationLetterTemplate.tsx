@@ -1,12 +1,12 @@
 import React, {useRef} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import Text from "@designsystem/component/Text";
 import Greeting from "@remote/value/Greeting";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import {css} from "styled-components";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
+import FadeIn from "@src/component/fadein/FadeIn";
 
 export type InvitationLetterStyle = 'style1' | 'style2' | 'style3';
 

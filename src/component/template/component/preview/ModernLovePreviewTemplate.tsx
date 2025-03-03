@@ -1,8 +1,8 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";

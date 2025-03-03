@@ -1,9 +1,9 @@
 import React, {ComponentPropsWithoutRef} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 import useResponsive from "@hook/useResponsive";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import Divider from "@designsystem/component/Divider";
 
 const detail1 = ['산다(SANDA)', '대표 : 양예성', '주소 : 경상북도 포항시 북구 장량주택로 3번길 6, 301호 (양덕동)', '전화 : 010-5584-3914', '이메일 : official.linkmarry@gmail.com'];

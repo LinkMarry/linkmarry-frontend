@@ -3,8 +3,8 @@ import {fontList, textTypes} from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import {allCasesOfEnum} from "@util/enum.util";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import CustomStyle from "@designsystem/core/CustomStyle";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 

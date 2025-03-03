@@ -1,10 +1,10 @@
 import React from 'react';
 import {css} from "styled-components";
 import MainWrapper from "@designsystem/pattern/header/MainWrapper";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import useAuth from "@hook/useAuth";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 function LoginPage() {
     const {signInWithKakao} = useAuth();

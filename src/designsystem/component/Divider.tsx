@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {css, RuleSet} from "styled-components";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 export type DividerSize = 'large' | 'medium' | 'small';
 export type DividerDirection = 'horizontal' | 'vertical';

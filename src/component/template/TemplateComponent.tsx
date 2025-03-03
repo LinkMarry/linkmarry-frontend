@@ -21,7 +21,7 @@ import {Helmet} from "react-helmet";
 import {optionRecord, OptionType} from "@page/design/OptionType";
 import RsvpTemplate from "@src/component/template/component/RsvpTemplate";
 import WaterMarkSheet from "@src/component/template/component/WaterMarkSheet";
-import {Column} from "@designsystem/component/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
 

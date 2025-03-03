@@ -8,7 +8,7 @@ import React, {
 import {css, RuleSet} from "styled-components";
 import {FontFamily, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props extends PropsWithChildren<ComponentPropsWithRef<'span'>> {
     type?: TextType;

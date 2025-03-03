@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import Divider from "@designsystem/component/Divider";
 import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import {hideScrollBar} from "@util/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import Spacer from "@designsystem/component/Spacer";
 import Popover from "@designsystem/pattern/Popover";
 import useResponsive from "@hook/useResponsive";
@@ -71,17 +71,8 @@ function WeddingCell() {
                                     $customStyle={css`
                                         align-items: center;
                                         padding: 4px;
-                                        cursor: pointer;
                                         border-radius: 6px;
-                                        transition: 0.1s background;
-
-                                        &:hover {
-                                            background: var(--g-100);
-                                        }
-
-                                        &:active {
-                                            background: var(--g-200);
-                                        }
+                                        ${makeInteractionEffect('strong')};
                                     `}
                                     onClick={() => setOpenDetailPopover(true)}
                                 >

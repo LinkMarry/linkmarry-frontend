@@ -1,7 +1,7 @@
 import React, {ComponentPropsWithoutRef, HTMLAttributes, useRef, useState} from 'react';
 import styled, {css, CSSProperties} from "styled-components";
 import Comment from "@remote/value/Comment";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
@@ -14,8 +14,8 @@ import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcommen
 import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
 import CreateGuestCommentDialog from "@src/component/template/dialog/guestcomment/CreateGuestCommentDialog";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import FadeIn from "@src/component/fadein/FadeIn";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface GuestCommentsTemplateProps {
     templateColor: string;

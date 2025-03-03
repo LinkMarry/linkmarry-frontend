@@ -15,7 +15,7 @@ import DreamWeddingPreviewTemplate from "@src/component/template/component/previ
 import PureLovePreviewTemplate from "@src/component/template/component/preview/PureLovePreviewTemplate";
 import ModernLovePreviewTemplate from "@src/component/template/component/preview/ModernLovePreviewTemplate";
 import ClassicRomancePreviewTemplate from "@src/component/template/component/preview/ClassicRomancePreviewTemplate";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
+import FadeIn from "@src/component/fadein/FadeIn";
 
 export interface PreviewTemplateProps {
     template: Template;

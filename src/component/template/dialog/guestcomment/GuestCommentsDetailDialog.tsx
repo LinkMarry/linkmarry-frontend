@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import Comment from "@remote/value/Comment";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import {BasicGuestComment} from "@src/component/template/component/GuestCommentsTemplate";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";

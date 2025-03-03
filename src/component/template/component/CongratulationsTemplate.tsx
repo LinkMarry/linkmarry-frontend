@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import Button from "@designsystem/component/Button";
@@ -8,7 +8,7 @@ import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
 import Phone from "@remote/value/Phone";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
+import FadeIn from "@src/component/fadein/FadeIn";
 
 interface CongratulationsProps {
     baseInfo: BaseInfo;

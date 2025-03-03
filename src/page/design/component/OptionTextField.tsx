@@ -6,8 +6,8 @@ import React, {
     ReactNode
 } from 'react';
 import {css} from "styled-components";
-import {Row} from "@designsystem/component/core/FlexLayout";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import {Row} from "@designsystem/core/FlexLayout";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface OptionTextFieldProps extends ComponentPropsWithRef<'div'> {
     fieldProps?: InputHTMLAttributes<HTMLInputElement>;

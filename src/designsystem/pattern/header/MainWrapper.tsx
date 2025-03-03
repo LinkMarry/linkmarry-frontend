@@ -1,7 +1,7 @@
 import {ReactElement} from "react";
 import {css} from "styled-components";
 import Header from "@designsystem/pattern/header/Header";
-import {Column} from "@designsystem/component/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import Footer from "@src/component/Footer";
 
 interface Props {

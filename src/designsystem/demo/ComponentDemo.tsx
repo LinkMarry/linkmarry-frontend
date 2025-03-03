@@ -5,7 +5,7 @@ import TextField from "@designsystem/component/TextField";
 import Checkbox from "@designsystem/component/Checkbox";
 import Radio from "@designsystem/component/Radio";
 import Toggle from "@designsystem/component/Toggle";
-import {Column} from "@designsystem/component/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import {IconType} from "@designsystem/foundation/Icon";
 import Dialog from "@designsystem/pattern/dialog/Dialog";

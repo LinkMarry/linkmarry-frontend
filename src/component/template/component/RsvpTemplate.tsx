@@ -1,5 +1,5 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {TemplateColor} from "@remote/value/Template";
 import Button from "@designsystem/component/Button";
@@ -10,7 +10,7 @@ import WeddingSchedule from "@remote/value/WeddingSchedule";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import {css} from "styled-components";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
+import FadeIn from "@src/component/fadein/FadeIn";
 
 interface RsvpTemplateProps {
     templateColor: TemplateColor;

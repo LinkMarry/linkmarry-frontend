@@ -1,6 +1,6 @@
 import React from 'react';
 import MainWrapper from "@designsystem/pattern/header/MainWrapper";
-import {Row} from "@designsystem/component/core/FlexLayout";
+import {Row} from "@designsystem/core/FlexLayout";
 import {Outlet} from "react-router-dom";
 import {css} from "styled-components";
 import MyPageSidebar from "@page/mypage/MyPageSidebar";

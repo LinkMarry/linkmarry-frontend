@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import styled, {css} from "styled-components";
 import fadeInAnimationStyle from "@designsystem/animation/fadeInAnimationStyle";
 import Button from "@designsystem/component/Button";

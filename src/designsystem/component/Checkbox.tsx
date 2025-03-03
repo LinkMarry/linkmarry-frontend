@@ -9,8 +9,8 @@ import React, {
 import styled, {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
-import {Row} from "@designsystem/component/core/FlexLayout";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import {Row} from "@designsystem/core/FlexLayout";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     Checked?: boolean;

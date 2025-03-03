@@ -5,9 +5,9 @@ import React, {
     useEffect,
     useState
 } from 'react';
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import CustomStyle from "@designsystem/core/CustomStyle";
 import {css, RuleSet} from "styled-components";
-import useFadeIn from "@designsystem/component/fadein/useFadeIn";
+import useFadeIn from "@src/component/fadein/useFadeIn";
 
 type Provided = {
     style: RuleSet;

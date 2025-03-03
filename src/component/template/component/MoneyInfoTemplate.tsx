@@ -3,12 +3,12 @@ import styled, {css} from "styled-components";
 import MoneyInfo, {getMoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
 import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import FadeIn from "@designsystem/component/fadein/FadeIn";
-import CustomStyle from "@designsystem/component/core/CustomStyle";
+import FadeIn from "@src/component/fadein/FadeIn";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props {
     baseInfo: BaseInfo;

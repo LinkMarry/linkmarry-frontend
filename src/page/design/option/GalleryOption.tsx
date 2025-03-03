@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
 import OptionLabel from "@page/design/component/OptionLabel";
 import Icon, {IconType} from "@designsystem/foundation/Icon";

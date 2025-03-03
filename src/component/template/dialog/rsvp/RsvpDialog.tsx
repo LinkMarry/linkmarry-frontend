@@ -1,7 +1,7 @@
 import React from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import styled, {css} from "styled-components";
-import {Column} from "@designsystem/component/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";

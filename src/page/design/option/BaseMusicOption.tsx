@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
-import {Column, Row} from "@designsystem/component/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/design/component/OptionLabel";
 import Checkbox from "@designsystem/component/Checkbox";
