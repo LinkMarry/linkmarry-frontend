@@ -5,14 +5,27 @@ import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
 import Toggle from "@designsystem/component/Toggle";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import {makeInteractionEffect} from "@util/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
+import TemplateComponent from "@src/component/template/TemplateComponent";
+import {dummyWedding} from "@remote/value/Wedding";
 
 const EditorPreview = () => {
     return (
-        <Column flex={1} $customStyle={css`
+        <Column flex={1} $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
             background: var(--g-100);
             position: relative;
         `}>
+            <Column $alignItems={'stretch'} $customStyle={css`
+                max-width: 368px;
+                max-height: 733px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                border-radius: 36px;
+                box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+                ${hideScrollBar};
+            `}>
+                <TemplateComponent wedding={dummyWedding} isPreview={true}/>
+            </Column>
             <PreviewSetting/>
         </Column>
     );

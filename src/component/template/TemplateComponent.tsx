@@ -103,7 +103,7 @@ function TemplateComponent(
     return (
         <Column ref={rootRef} $customStyle={css`
             max-width: 436px;
-            width: 100vw;
+            width: 100%;
             align-items: stretch;
 
             *:not(.override-font):not(.override-font *) {
@@ -111,10 +111,6 @@ function TemplateComponent(
                     fontFamily: templateFont
                 })};
             }
-
-            border-radius: 12px;
-            box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.16);
-            overflow: hidden;
         `}>
             <audio
                 src={wedding.baseMusic.musicUrl}
@@ -225,7 +221,7 @@ function TemplateComponent(
                     dismiss={() => setShowCreateRsvpDialog(false)}
                 />
             )}
-            {wedding.waterMark && (
+            {wedding.waterMark && !isPreview && (
                 <WaterMarkSheet url={wedding.url}/>
             )}
         </Column>
