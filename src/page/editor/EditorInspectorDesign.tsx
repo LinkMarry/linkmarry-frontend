@@ -39,7 +39,7 @@ const EditorInspectorDesign = () => {
                 </Column>
                 <Column $alignItems={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>문구</Text>
-                    
+
                 </Column>
             </Column>
         </Column>

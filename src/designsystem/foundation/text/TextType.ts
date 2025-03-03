@@ -136,7 +136,7 @@ export const textTypeMap: Record<TextType, {
     },
 });
 
-export default function makeText(text: TextType, bold: boolean = true): RuleSet {
+export default function makeText(text: TextType, bold: boolean = false): RuleSet {
     const properties = textTypeMap[text];
     return implementText({
         fontFamily: properties.fontFamily,

@@ -11,6 +11,7 @@ import {IconType} from "@designsystem/foundation/Icon";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import Popover from "@designsystem/pattern/Popover";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
+import Input from "@designsystem/component/Input";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -147,6 +148,9 @@ function ComponentDemo() {
             ]} selectedTab={selectedTabBarIndex} customStyle={css`
                 width: 316px;
             `} onChange={tab => setSelectedTabBarIndex(tab)}/>
+            <Input placeholder={'Label'} customStyle={css`
+                margin-top: 24px;
+            `}/>
         </Column>
     );
 }
