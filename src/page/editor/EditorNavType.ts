@@ -15,7 +15,7 @@ type EditorNavType = 'design' |
     'guestComment' |
     'fontAndStyle' |
     'urlShare' |
-    'kakaoInvitationLetter' |
+    'kakaotalkInvitationLetter' |
     'changeOrder';
 
 export const editorNavList: EditorNavType[] = [
@@ -34,7 +34,7 @@ export const editorNavList: EditorNavType[] = [
     'guestComment',
     'fontAndStyle',
     'urlShare',
-    'kakaoInvitationLetter',
+    'kakaotalkInvitationLetter',
     'changeOrder',
 ];
 export const editorNavTypeMap: Record<EditorNavType, {
@@ -83,7 +83,7 @@ export const editorNavTypeMap: Record<EditorNavType, {
     },
     rsvp: {
         icon: IconType.Envelope,
-        text: '참석의사 RSVP'
+        text: '참석의사'
     },
     phone: {
         icon: IconType.Envelope,
@@ -95,15 +95,15 @@ export const editorNavTypeMap: Record<EditorNavType, {
     },
     fontAndStyle: {
         icon: IconType.Envelope,
-        text: '폰트 및 스타일'
+        text: '폰트'
     },
     urlShare: {
         icon: IconType.Envelope,
-        text: 'URL 공유'
+        text: '링크 공유'
     },
-    kakaoInvitationLetter: {
+    kakaotalkInvitationLetter: {
         icon: IconType.Envelope,
-        text: '카카오톡 초대장'
+        text: '카카오 공유'
     },
     changeOrder: {
         icon: IconType.Envelope,
