@@ -85,7 +85,6 @@ function ComponentDemo() {
                     marginTop: 32
                 }}
             />
-
             <Checkbox
                 style={{
                     marginTop: 32

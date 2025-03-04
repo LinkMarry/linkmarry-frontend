@@ -26,7 +26,7 @@ const TabBar = ({items, selectedTab, onChange, customStyle}: {
             ${customStyle};
         `}>
             {items.map((item, index) => (
-                <Item selected={index === selectedTab} text={item} onClick={() => {
+                <Item key={index} selected={index === selectedTab} text={item} onClick={() => {
                     onChange(index);
                 }}/>
             ))}

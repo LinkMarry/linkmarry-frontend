@@ -1,4 +1,4 @@
-import {createContext, PropsWithChildren, useContext, useEffect, useMemo, useState} from "react";
+import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
 import config from "@config/config";
 import kakaoApi from "@remote/api/KakaoApi";
 import {useNavigate} from "react-router-dom";
@@ -23,7 +23,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     const navigate = useNavigate();
     const [member, setMember] = useState<InfoMember>();
     const {jwt, setToken, clearToken} = useJwt();
-    const authorized = jwt.accessToken && jwt.refreshToken;
+    const authorized: boolean = jwt.accessToken && jwt.refreshToken;
 
     const signInWithKakao = () => {
         Kakao?.Auth?.authorize({
@@ -67,12 +67,10 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     };
 
     useEffect(() => {
-        if (!authorized) return;
-
         (async () => {
             await fetchMember();
         })();
-    }, [authorized]);
+    }, []);
 
     return (
         <AuthContext.Provider value={{

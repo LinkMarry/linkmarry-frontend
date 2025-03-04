@@ -18,12 +18,12 @@ import HelmetMetaTags from "@src/HelmetMetaTags";
 import EditorPage from "@page/editor/EditorPage";
 import {AuthProvider} from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
-import useAxiosInterceptor from "@hook/useAxiosInterceptor";
+import useAxios from "@hook/useAxios";
 
 const {Kakao} = window as any;
 
 function App() {
-    useAxiosInterceptor();
+    useAxios();
     useEffect(() => {
         if (!Kakao?.isInitialized()) {
             Kakao?.init(config.kakao.javascriptKey);
