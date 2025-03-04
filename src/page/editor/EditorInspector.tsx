@@ -20,19 +20,27 @@ import EditorInspectorUrlShare from "@page/editor/EditorInspectorUrlShare";
 import EditorInspectorWeddingSchedule from "@page/editor/EditorInspectorWeddingSchedule";
 import EditorInspectorWeddingLocation from "@page/editor/EditorInspectorWeddingLocation";
 import {hideScrollBar} from "@util/css.util";
+import useResponsive from "@hook/useResponsive";
 
 interface Props {
     currentNavType: EditorNavType;
 }
 
 const EditorInspector = ({currentNavType}: Props) => {
+    const {deviceSize} = useResponsive();
 
     return (
         <Column $alignItems={'stretch'} $customStyle={css`
+            min-width: 412px;
             width: 412px;
             padding: 32px 24px 100px 24px;
             overflow-y: scroll;
             ${hideScrollBar};
+            
+            ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`
+                min-width: 0;
+                width: auto;
+            `};
         `}>
             {(() => {
                 const view: Record<EditorNavType, ReactElement> = {
