@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Button, {ButtonSize, ButtonType} from "@designsystem/component/Button";
 import Divider, {DividerSize} from "@designsystem/component/Divider";
-import TextField from "@designsystem/component/TextField";
 import Checkbox from "@designsystem/component/Checkbox";
 import Radio from "@designsystem/component/Radio";
 import Toggle from "@designsystem/component/Toggle";
@@ -13,6 +12,7 @@ import Popover from "@designsystem/pattern/Popover";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import Input from "@designsystem/component/Input";
 import Select from "@designsystem/component/Select";
+import Textarea from "@designsystem/component/Textarea";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -20,7 +20,7 @@ function ComponentDemo() {
 
     const dividerSizes: DividerSize[] = ['large', 'medium', 'small'];
 
-    const [input, setInput] = useState('');
+    const [textareaText, setTextareaText] = useState('');
 
     const [checked, setChecked] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -57,36 +57,6 @@ function ComponentDemo() {
             {dividerSizes.map(size => (
                 <Divider size={size}/>
             ))}
-
-            <TextField
-                placeholder={'placeholder'}
-                label={'label'}
-                supportingText={'supportingText'}
-                value={input}
-                onChange={e => setInput(e.target.value)}
-            />
-            <TextField
-                placeholder={'placeholder'}
-                label={'label'}
-                supportingText={'supportingText'}
-                isError={true}
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                style={{
-                    marginTop: 32
-                }}
-            />
-            <TextField
-                placeholder={'placeholder'}
-                label={'label'}
-                supportingText={'supportingText'}
-                enabled={false}
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                style={{
-                    marginTop: 32
-                }}
-            />
             <Checkbox
                 style={{
                     marginTop: 32
@@ -155,6 +125,10 @@ function ComponentDemo() {
             <Input placeholder={'Label'} hasLabel={false} customStyle={css`
                 margin-top: 24px;
             `}/>
+            <Textarea placeholder={'Label'} customStyle={css`
+                margin-top: 24px;
+            `}/>
+            <Textarea placeholder={'Label'} hasLabel={false}/>
             <Select
                 items={[
                     'Option1',

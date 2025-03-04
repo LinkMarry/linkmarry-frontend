@@ -1,9 +1,8 @@
-import React, {RefObject} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import OptionLabel from "@page/design/component/OptionLabel";
 import OptionTextField from "@page/design/component/OptionTextField";
-import Textarea from "@designsystem/component/Textarea";
 import Greeting from "@remote/value/Greeting";
 
 interface GreetingOptionProps {
@@ -29,11 +28,11 @@ function GreetingOption(
                 </Row>
                 <Row>
                     <OptionLabel label={'내용'} style={{alignSelf: 'flex-start'}}/>
-                    <Textarea
-                        value={greeting.greetingContent}
-                        onChange={event => onChange({...greeting, greetingContent: event.target.value})}
-                        style={{width: 264}}
-                    />
+                    {/*<Textarea*/}
+                    {/*    value={greeting.greetingContent}*/}
+                    {/*    onChange={event => onChange({...greeting, greetingContent: event.target.value})}*/}
+                    {/*    style={{width: 264}}*/}
+                    {/*/>*/}
                 </Row>
             </Column>
         </S.container>

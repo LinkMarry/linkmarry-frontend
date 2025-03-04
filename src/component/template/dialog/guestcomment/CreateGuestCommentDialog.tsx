@@ -3,8 +3,6 @@ import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/B
 import styled, {css} from "styled-components";
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import TextField from "@designsystem/component/TextField";
-import Textarea from "@designsystem/component/Textarea";
 import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import {useNavigate} from "react-router-dom";
@@ -69,9 +67,9 @@ function CreateGuestCommentDialog(
                     `}>저희에게 따뜻한 말을 남겨주세요</Text>
                 </Column>
                 <Column gap={12} $alignItems={'stretch'}>
-                    <TextField ref={nameRef} placeholder={'성함'}/>
-                    <TextField ref={passwordRef} placeholder={'비밀번호 입력'} fieldProps={{type: 'password'}}/>
-                    <Textarea ref={commentRef} placeholder={'200자 이내로 작성'} maxLength={200}/>
+                    {/*<TextField ref={nameRef} placeholder={'성함'}/>*/}
+                    {/*<TextField ref={passwordRef} placeholder={'비밀번호 입력'} fieldProps={{type: 'password'}}/>*/}
+                    {/*<Textarea ref={commentRef} placeholder={'200자 이내로 작성'} maxLength={200}/>*/}
                 </Column>
                 <Button text={'방명록 남기기'} onClick={onClickSave}/>
             </S.container>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import OptionLabel from "@page/design/component/OptionLabel";
@@ -7,7 +7,6 @@ import Checkbox from "@designsystem/component/Checkbox";
 import OptionTextField from "@page/design/component/OptionTextField";
 import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 import WeddingPlace from "@remote/value/WeddingPlace";
-import Textarea from "@designsystem/component/Textarea";
 import Button from "@designsystem/component/Button";
 
 interface WeddingPlaceOptionProps {
@@ -70,17 +69,17 @@ function WeddingPlaceOption(
                     </Row>
                     <Row gap={12}>
                         <OptionLabel label={'교통편'} style={{alignSelf: 'flex-start'}}/>
-                        <Textarea
-                            value={weddingPlace.placeTransportation}
-                            onChange={event => onChange({
-                                ...weddingPlace,
-                                placeTransportation: event.target.value
-                            })}
-                            placeholder={'주변 교통편 입력'}
-                            customStyle={css`
-                                width: 264px;
-                            `}
-                        />
+                        {/*<Textarea*/}
+                        {/*    value={weddingPlace.placeTransportation}*/}
+                        {/*    onChange={event => onChange({*/}
+                        {/*        ...weddingPlace,*/}
+                        {/*        placeTransportation: event.target.value*/}
+                        {/*    })}*/}
+                        {/*    placeholder={'주변 교통편 입력'}*/}
+                        {/*    customStyle={css`*/}
+                        {/*        width: 264px;*/}
+                        {/*    `}*/}
+                        {/*/>*/}
                     </Row>
                 </Column>
                 <Divider/>
