@@ -18,7 +18,6 @@ import InvitationLetterTemplate, {
 import RsvpDialog from "@src/component/template/dialog/rsvp/RsvpDialog";
 import CreateRsvpDialog from "@src/component/template/dialog/rsvp/CreateRsvpDialog";
 import {Helmet} from "react-helmet";
-import {optionRecord, OptionType} from "@page/design/OptionType";
 import RsvpTemplate from "@src/component/template/component/RsvpTemplate";
 import WaterMarkSheet from "@src/component/template/component/WaterMarkSheet";
 import {Column} from "@designsystem/core/FlexLayout";
@@ -129,76 +128,76 @@ function TemplateComponent(
                 weddingPlace={wedding.weddingPlace}
                 weddingSchedule={wedding.weddingSchedule}
             />
-            {wedding.position.map(index => {
-                switch (index) {
-                    case optionRecord[OptionType.Greeting].index:
-                        return <InvitationLetterTemplate
-                            key={index}
-                            baseInfo={wedding.baseInfo}
-                            greeting={wedding.greeting}
-                            invitationLetterStyle={invitationLetterStyle}
-                        />;
-                    case optionRecord[OptionType.WeddingSchedule].index:
-                        return <WeddingDayTemplate
-                            key={index}
-                            baseInfo={wedding.baseInfo}
-                            weddingSchedule={wedding.weddingSchedule}
-                            dDayStyle={dDayStyle}
-                        />
-                    case optionRecord[OptionType.Phone].index:
-                        return <CongratulationsTemplate
-                            key={index}
-                            baseInfo={wedding.baseInfo}
-                            phone={wedding.phone}
-                            templateColor={templateColor}
-                        />
-                    case optionRecord[OptionType.Gallery].index:
-                        return <GalleryTemplate
-                            key={index}
-                            rootRef={rootRef}
-                            imgDesign={wedding.imgDesign}
-                            imgList={wedding.imgList}
-                            slideStyle={slideStyle}
-                        />
-                    case optionRecord[OptionType.WeddingPlace].index:
-                        return <LocationTemplate
-                            key={index}
-                            templateColor={templateColor}
-                            weddingPlace={wedding.weddingPlace}
-                        />
-                    case optionRecord[OptionType.Video].index:
-                        return <VideoTemplate
-                            key={index}
-                            video={wedding.video}
-                        />
-                    case optionRecord[OptionType.MoneyInfo].index:
-                        return <MoneyInfoTemplate
-                            key={index}
-                            baseInfo={wedding.baseInfo}
-                            moneyInfo={wedding.moneyInfo}
-                        />
-                    case optionRecord[OptionType.GuestComment].index:
-                        return <GuestCommentsTemplate
-                            key={index}
-                            templateColor={templateColor}
-                            url={wedding.url}
-                            guestComments={wedding.guestCommentList}
-                            guestComment={wedding.guestComment}
-                            onRefresh={onRefresh ?? (() => {
-                            })}
-                        />
-                    case optionRecord[OptionType.Rsvp].index:
-                        return <RsvpTemplate
-                            key={index}
-                            templateColor={templateColor}
-                            baseInfo={wedding.baseInfo}
-                            weddingSchedule={wedding.weddingSchedule}
-                            onClickCreateRsvp={() => setShowRsvpDialog(true)}
-                        />
-                    default:
-                        return <></>;
-                }
-            })}
+            {/*{wedding.position.map(index => {*/}
+            {/*    switch (index) {*/}
+            {/*        case optionRecord[OptionType.Greeting].index:*/}
+            {/*            return <InvitationLetterTemplate*/}
+            {/*                key={index}*/}
+            {/*                baseInfo={wedding.baseInfo}*/}
+            {/*                greeting={wedding.greeting}*/}
+            {/*                invitationLetterStyle={invitationLetterStyle}*/}
+            {/*            />;*/}
+            {/*        case optionRecord[OptionType.WeddingSchedule].index:*/}
+            {/*            return <WeddingDayTemplate*/}
+            {/*                key={index}*/}
+            {/*                baseInfo={wedding.baseInfo}*/}
+            {/*                weddingSchedule={wedding.weddingSchedule}*/}
+            {/*                dDayStyle={dDayStyle}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.Phone].index:*/}
+            {/*            return <CongratulationsTemplate*/}
+            {/*                key={index}*/}
+            {/*                baseInfo={wedding.baseInfo}*/}
+            {/*                phone={wedding.phone}*/}
+            {/*                templateColor={templateColor}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.Gallery].index:*/}
+            {/*            return <GalleryTemplate*/}
+            {/*                key={index}*/}
+            {/*                rootRef={rootRef}*/}
+            {/*                imgDesign={wedding.imgDesign}*/}
+            {/*                imgList={wedding.imgList}*/}
+            {/*                slideStyle={slideStyle}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.WeddingPlace].index:*/}
+            {/*            return <LocationTemplate*/}
+            {/*                key={index}*/}
+            {/*                templateColor={templateColor}*/}
+            {/*                weddingPlace={wedding.weddingPlace}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.Video].index:*/}
+            {/*            return <VideoTemplate*/}
+            {/*                key={index}*/}
+            {/*                video={wedding.video}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.MoneyInfo].index:*/}
+            {/*            return <MoneyInfoTemplate*/}
+            {/*                key={index}*/}
+            {/*                baseInfo={wedding.baseInfo}*/}
+            {/*                moneyInfo={wedding.moneyInfo}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.GuestComment].index:*/}
+            {/*            return <GuestCommentsTemplate*/}
+            {/*                key={index}*/}
+            {/*                templateColor={templateColor}*/}
+            {/*                url={wedding.url}*/}
+            {/*                guestComments={wedding.guestCommentList}*/}
+            {/*                guestComment={wedding.guestComment}*/}
+            {/*                onRefresh={onRefresh ?? (() => {*/}
+            {/*                })}*/}
+            {/*            />*/}
+            {/*        case optionRecord[OptionType.Rsvp].index:*/}
+            {/*            return <RsvpTemplate*/}
+            {/*                key={index}*/}
+            {/*                templateColor={templateColor}*/}
+            {/*                baseInfo={wedding.baseInfo}*/}
+            {/*                weddingSchedule={wedding.weddingSchedule}*/}
+            {/*                onClickCreateRsvp={() => setShowRsvpDialog(true)}*/}
+            {/*            />*/}
+            {/*        default:*/}
+            {/*            return <></>;*/}
+            {/*    }*/}
+            {/*})}*/}
             <FooterTemplate background={templateColor}/>
             {showRsvpDialog && (
                 <RsvpDialog
