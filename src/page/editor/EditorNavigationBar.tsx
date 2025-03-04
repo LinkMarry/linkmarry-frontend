@@ -1,4 +1,4 @@
-import React, {ComponentProps, ComponentPropsWithoutRef, ReactNode} from 'react';
+import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
@@ -6,14 +6,13 @@ import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import EditorNavType, {editorNavList, editorNavTypeMap} from "@page/editor/EditorNavType";
 import Text from "@designsystem/component/Text";
 import useResponsive from "@hook/useResponsive";
-import CustomStyle from "@designsystem/core/CustomStyle";
 import Spacer from "@designsystem/component/Spacer";
 
 interface Props extends EditorNavigationBarImplProps {
     children?: ReactNode;
 }
 
-const EditorNavigationBar = ({currentNavType, onChangeNavType, children}: Props) => {
+const EditorNavigationBar = ({children, ...props}: Props) => {
     const {deviceSize} = useResponsive();
     if (deviceSize === 'mobile' || deviceSize === 'tablet') {
         return (
@@ -22,7 +21,7 @@ const EditorNavigationBar = ({currentNavType, onChangeNavType, children}: Props)
             `}>
                 {children}
                 <Spacer/>
-                <EditorNavigationBarImpl currentNavType={currentNavType} onChangeNavType={onChangeNavType}/>
+                <EditorNavigationBarImpl {...props}/>
             </Column>
         );
     }
@@ -31,7 +30,7 @@ const EditorNavigationBar = ({currentNavType, onChangeNavType, children}: Props)
         <Row $alignItems={'stretch'} flex={1} $customStyle={css`
             min-height: 0;
         `}>
-            <EditorNavigationBarImpl currentNavType={currentNavType} onChangeNavType={onChangeNavType}/>
+            <EditorNavigationBarImpl {...props}/>
             {children}
         </Row>
     )
@@ -40,6 +39,7 @@ const EditorNavigationBar = ({currentNavType, onChangeNavType, children}: Props)
 interface EditorNavigationBarImplProps {
     currentNavType: EditorNavType;
     onChangeNavType: (type: EditorNavType) => void;
+    onToggleInspector: () => void;
 }
 
 const EditorNavigationBarImpl = (props: EditorNavigationBarImplProps) => {
@@ -71,7 +71,11 @@ const SmallEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorN
 }
 
 
-const DesktopEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorNavigationBarImplProps) => {
+const DesktopEditorNavigationBarImpl = ({
+                                            currentNavType,
+                                            onChangeNavType,
+                                            onToggleInspector
+                                        }: EditorNavigationBarImplProps) => {
     return (
         <Column $customStyle={css`
             border-right: 1px solid var(--g-100);
@@ -91,14 +95,15 @@ const DesktopEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: Edito
             <Column $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
                 width: 72px;
                 height: 72px;
-            `}>
+            `} onClick={() => {
+                onToggleInspector();
+            }}>
                 <Icon iconType={IconType.DoubleArrowLeft} width={24} height={24} customStyle={css`
                     padding: 12px;
                     fill: var(--g-500);
                     border-radius: 12px;
                     ${makeInteractionEffect('strong')};
-                `} onClick={() => {
-                }}/>
+                `}/>
             </Column>
         </Column>
     );

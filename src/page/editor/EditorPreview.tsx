@@ -3,7 +3,6 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
-import Toggle from "@designsystem/component/Toggle";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import TemplateComponent from "@src/component/template/TemplateComponent";
