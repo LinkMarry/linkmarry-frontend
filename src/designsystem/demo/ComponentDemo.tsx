@@ -150,6 +150,9 @@ function ComponentDemo() {
             <Input placeholder={'Label'} customStyle={css`
                 margin-top: 24px;
             `}/>
+            <Input placeholder={'Label'} hasLabel={false} customStyle={css`
+                margin-top: 24px;
+            `}/>
         </Column>
     );
 }
