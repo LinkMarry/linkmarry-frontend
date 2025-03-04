@@ -12,6 +12,7 @@ import Dialog from "@designsystem/pattern/dialog/Dialog";
 import Popover from "@designsystem/pattern/Popover";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import Input from "@designsystem/component/Input";
+import Select from "@designsystem/component/Select";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -28,6 +29,7 @@ function ComponentDemo() {
     const [showDialog, setShowDialog] = useState(false);
 
     const [selectedTabBarIndex, setSelectedTabBarIndex] = useState(0);
+    const [selectedSelectIndex, setSelectedSelectIndex] = useState(0);
 
     return (
         <Column gap={8} $customStyle={css`
@@ -153,6 +155,16 @@ function ComponentDemo() {
             <Input placeholder={'Label'} hasLabel={false} customStyle={css`
                 margin-top: 24px;
             `}/>
+            <Select
+                items={[
+                    'Option1',
+                    'Option2'
+                ]}
+                selected={selectedSelectIndex}
+                OnChange={index => {
+                    setSelectedSelectIndex(index);
+                }}
+            />
         </Column>
     );
 }

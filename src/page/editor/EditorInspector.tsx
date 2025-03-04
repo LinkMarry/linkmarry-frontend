@@ -3,6 +3,7 @@ import EditorNavType from "@page/editor/EditorNavType";
 import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import EditorInspectorDesign from "@page/editor/EditorInspectorDesign";
+import EditorInspectorBride from "@page/editor/EditorInspectorBride";
 
 interface Props {
     currentNavType: EditorNavType;
@@ -17,10 +18,10 @@ const EditorInspector = ({currentNavType}: Props) => {
         `}>
             {(() => {
                 const view: Record<EditorNavType, ReactElement> = {
-                    backgroundMusic: <></>,
-                    bride: <></>,
-                    changeOrder: <></>,
                     design: <EditorInspectorDesign/>,
+                    bride: <EditorInspectorBride/>,
+                    backgroundMusic: <></>,
+                    changeOrder: <></>,
                     fontAndStyle: <></>,
                     gallery: <></>,
                     greeting: <></>,

@@ -12,20 +12,24 @@ interface Props extends ComponentPropsWithRef<'input'> {
 const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => {
     return (
         <CustomStyle $customStyle={css`
+            display: flex;
             position: relative;
             ${customStyle};
         `}>
             <CustomStyle
                 as={'input'}
                 $customStyle={css`
+                    display: flex;
                     height: 52px;
                     border: none;
+                    flex: 1;
+                    width: 100%;
                     outline: 1px solid var(--g-300);
                     border-radius: 8px;
                     padding: 0 16px;
                     color: var(--g-800);
                     ${makeText('p2')};
-                    
+
                     &::placeholder {
                         color: var(--g-400);
                     }

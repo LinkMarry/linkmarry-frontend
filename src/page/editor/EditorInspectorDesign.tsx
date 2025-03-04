@@ -4,6 +4,7 @@ import Text from "@designsystem/component/Text";
 import TabBar, {dummyTabBarItems} from "@designsystem/component/TabBar";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
+import Input from "@designsystem/component/Input";
 
 const EditorInspectorDesign = () => {
     const [selectedOpenningAnimationTab, setSelectedOpenningAnimationTab] = useState(0);
@@ -39,7 +40,7 @@ const EditorInspectorDesign = () => {
                 </Column>
                 <Column $alignItems={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>문구</Text>
-
+                    <Input hasLabel={false}/>
                 </Column>
             </Column>
         </Column>
