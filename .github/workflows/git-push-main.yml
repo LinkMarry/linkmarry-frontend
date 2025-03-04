@@ -2,7 +2,7 @@ name: git push into another repo to deploy to vercel
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
   workflow_dispatch:
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
         with:
           source-directory: 'output'
           destination-github-username: hhhello0507
-          destination-repository-name: linkmarry-frontend-dev
+          destination-repository-name: linkmarry-frontend
           user-email: ${{ secrets.WEB_ACCOUNT_EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
