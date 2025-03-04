@@ -13,7 +13,7 @@ const EditorInspectorBackgroundMusic = () => {
     return (
         <Column $alignItems={'stretch'} gap={32}>
             <Row $alignItems={'center'}>
-                <Text type={'p1'} bold={true}>Title</Text>
+                <Text type={'p1'} bold={true}>배경음악</Text>
                 <Spacer/>
                 <Toggle checked={false} OnChange={checked => {
                 }}/>

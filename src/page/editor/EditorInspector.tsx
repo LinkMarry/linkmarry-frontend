@@ -37,22 +37,22 @@ const EditorInspector = ({currentNavType}: Props) => {
             {(() => {
                 const view: Record<EditorNavType, ReactElement> = {
                     design: <EditorInspectorDesign/>,
-                    bride: <EditorInspectorBride/>,
-                    backgroundMusic: <EditorInspectorBackgroundMusic/>,
-                    changeOrder: <EditorInspectorChangeOrder/>,
-                    fontAndStyle: <EditorInspectorFontAndStyle/>,
-                    gallery: <EditorInspectorGallery/>,
-                    greeting: <EditorInspectorGreeting/>,
                     groom: <EditorInspectorGroom/>,
-                    guestComment: <EditorInspectorGuestComment/>,
-                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter/>,
-                    money: <EditorInspectorMoney/>,
-                    phone: <EditorInspectorPhone/>,
-                    rsvp: <EditorInspectorRsvp/>,
-                    urlShare: <EditorInspectorUrlShare/>,
-                    video: <EditorInspectorVideo/>,
+                    bride: <EditorInspectorBride/>,
+                    greeting: <EditorInspectorGreeting/>,
+                    weddingSchedule: <EditorInspectorWeddingSchedule/>,
                     weddingLocation: <EditorInspectorWeddingLocation/>,
-                    weddingSchedule: <EditorInspectorWeddingSchedule/>
+                    gallery: <EditorInspectorGallery/>,
+                    backgroundMusic: <EditorInspectorBackgroundMusic/>,
+                    money: <EditorInspectorMoney/>,
+                    video: <EditorInspectorVideo/>,
+                    rsvp: <EditorInspectorRsvp/>,
+                    phone: <EditorInspectorPhone/>,
+                    guestComment: <EditorInspectorGuestComment/>,
+                    fontAndStyle: <EditorInspectorFontAndStyle/>,
+                    urlShare: <EditorInspectorUrlShare/>,
+                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter/>,
+                    changeOrder: <EditorInspectorChangeOrder/>,
                 }
                 return view[currentNavType];
             })()}

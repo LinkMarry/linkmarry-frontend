@@ -19,7 +19,7 @@ const EditorInspectorWeddingLocation = () => {
             </Column>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'}>교통편</Text>
+                <Text type={'p3'} bold={true}>교통편</Text>
                 <Input placeholder={'버스'}/>
                 <Input placeholder={'지하철'}/>
                 <Input placeholder={'주차안내'}/>

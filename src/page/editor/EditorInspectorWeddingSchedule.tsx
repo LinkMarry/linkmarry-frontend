@@ -12,15 +12,15 @@ const EditorInspectorWeddingSchedule = () => {
             <Text type={'p1'} bold={true}>예식 일시</Text>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'}>예식일</Text>
+                <Text type={'p3'} bold={true}>예식일</Text>
                 <Input type={'date'}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'}>예식 시간</Text>
+                <Text type={'p3'} bold={true}>예식 시간</Text>
                 <Input type={'time'}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'}>추가 요소</Text>
+                <Text type={'p3'} bold={true}>추가 요소</Text>
                 <FormToggleSet>
                     <FormToggle checked={false} OnChange={checked => {
                     }} label={'캘린더'}/>

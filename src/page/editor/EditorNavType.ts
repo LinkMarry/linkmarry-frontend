@@ -71,7 +71,7 @@ export const editorNavTypeMap: Record<EditorNavType, {
     },
     backgroundMusic: {
         icon: IconType.CirclePlay,
-        text: '인사말'
+        text: '배경음악'
     },
     money: {
         icon: IconType.Money,
