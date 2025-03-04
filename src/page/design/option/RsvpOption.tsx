@@ -44,20 +44,20 @@ function RsvpOption(
                         <OptionLabel label={'항목'} style={{alignSelf: 'flex-start'}}/>
                         <Column gap={12}>
                             <Checkbox
-                                Checked={rsvp.attendMealStatus}
+                                checked={rsvp.attendMealStatus}
                                 OnChange={checked => onChange({...rsvp, attendMealStatus: checked})}
                                 label={'식사 여부'}
                             />
                             <Checkbox
-                                Checked={rsvp.attendGuestCntStatus}
+                                checked={rsvp.attendGuestCntStatus}
                                 OnChange={checked => onChange({...rsvp, attendGuestCntStatus: checked})}
                                 label={'참석 인원'}/>
                             <Checkbox
-                                Checked={rsvp.attendPhoneStatus}
+                                checked={rsvp.attendPhoneStatus}
                                 OnChange={checked => onChange({...rsvp, attendPhoneStatus: checked})}
                                 label={'연락처'}/>
                             <Checkbox
-                                Checked={rsvp.attendEtcStatus}
+                                checked={rsvp.attendEtcStatus}
                                 OnChange={checked => onChange({...rsvp, attendEtcStatus: checked})}
                                 label={'추가 전달사항'}
                             />
@@ -67,7 +67,7 @@ function RsvpOption(
                         <OptionLabel label={'팝업 안내'} style={{alignSelf: 'flex-start'}}/>
                         <Row gap={16}>
                             <Checkbox
-                                Checked={rsvp.startPopupStatus}
+                                checked={rsvp.startPopupStatus}
                                 OnChange={checked => onChange({...rsvp, startPopupStatus: checked})}
                             />
                             <Text type={'caption1'} customStyle={css`

@@ -87,7 +87,7 @@ function WeddingPlaceOption(
                 <Row gap={12}>
                     <OptionLabel label={'표시'}/>
                     <Checkbox
-                        Checked={weddingPlace.placeStatus}
+                        checked={weddingPlace.placeStatus}
                         OnChange={checked => onChange({...weddingPlace, placeStatus: checked})}
                         label={'지도 표시'}
                     />

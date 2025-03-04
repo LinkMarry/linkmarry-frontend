@@ -78,7 +78,8 @@ const PreviewSetting = () => {
                     color: var(--g-600);
                 `}>자동포커스</Text>
                 <Spacer/>
-                <Toggle/>
+                {/*todo*/}
+                {/*<Toggle checked={false} customStyle={}/>*/}
             </Row>
         </Column>
     );

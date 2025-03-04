@@ -45,12 +45,12 @@ function WeddingScheduleOption(
                     <OptionLabel style={{alignSelf: 'flex-start'}} label={'표시'}/>
                     <Column gap={12}>
                         <Checkbox
-                            Checked={weddingSchedule.calendar}
+                            checked={weddingSchedule.calendar}
                             OnChange={checked => onChange({...weddingSchedule, calendar: checked})}
                             label={'캘린더'}
                         />
                         <Checkbox
-                            Checked={weddingSchedule.dday}
+                            checked={weddingSchedule.dday}
                             OnChange={checked => onChange({...weddingSchedule, dday: checked})}
                             label={'디데이'}
                         />

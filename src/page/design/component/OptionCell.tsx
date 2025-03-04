@@ -88,7 +88,7 @@ function OptionCell(
                 )}
                 {mode === 'toggle' && toggleModeProps && (
                     <Toggle
-                        Checked={toggleModeProps.checked}
+                        checked={toggleModeProps.checked}
                         OnChange={toggleModeProps.onChange}
                         customStyle={css`
                             margin-right: -16px;

@@ -6,16 +6,17 @@ import React, {
     useRef,
     useState
 } from 'react';
-import styled, {css} from "styled-components";
+import styled, {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
 import {Row} from "@designsystem/core/FlexLayout";
 import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-    Checked?: boolean;
-    OnChange?: (checked: boolean) => void;
+    checked: boolean;
+    OnChange: (checked: boolean) => void;
     label?: string;
+    customStyle?: RuleSet;
 }
 
 export interface CheckboxRef {
@@ -26,19 +27,20 @@ export interface CheckboxRef {
 
 function Checkbox(
     {
-        Checked = false,
+        checked = false,
         OnChange,
         label,
+        customStyle,
         ...props
     }: Props,
     ref: ForwardedRef<CheckboxRef>
 ) {
-    const [localChecked, setLocalChecked] = useState(Checked);
+    const [localChecked, setLocalChecked] = useState(checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setLocalChecked(Checked);
-    }, [Checked]);
+        setLocalChecked(checked);
+    }, [checked]);
 
     useImperativeHandle(ref, () => ({
         value: localChecked,
@@ -56,6 +58,7 @@ function Checkbox(
     return (
         <Row $alignItems={'center'} $customStyle={css`
             width: fit-content;
+            ${customStyle};
         `} {...props}>
             <Row $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
                 position: relative;
@@ -83,7 +86,7 @@ function Checkbox(
                     type={'checkbox'}
                     checked={localChecked}
                     onChange={(e) => {
-                        OnChange?.(e.target.checked);
+                        OnChange(e.target.checked);
                         setLocalChecked(e.target.checked);
                     }}
                 />
@@ -103,7 +106,7 @@ function Checkbox(
                     customStyle={css`
                         cursor: pointer;
                     `}
-                    onClick={() => OnChange?.(!Checked)}
+                    onClick={() => OnChange?.(!checked)}
                 >{label}</Text>
             )}
         </Row>

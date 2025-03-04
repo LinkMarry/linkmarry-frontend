@@ -48,7 +48,7 @@ function BaseInfoOption(
                             flex={1}
                         >
                             <Checkbox
-                                Checked={baseInfo.groomFatherStatus}
+                                checked={baseInfo.groomFatherStatus}
                                 OnChange={checked => onChange({...baseInfo, groomFatherStatus: checked})}
                                 label={'故'}
                             />
@@ -67,7 +67,7 @@ function BaseInfoOption(
                             flex={1}
                         >
                             <Checkbox
-                                Checked={baseInfo.groomMotherStatus}
+                                checked={baseInfo.groomMotherStatus}
                                 OnChange={checked => onChange({...baseInfo, groomMotherStatus: checked})}
                                 label={'故'}
                             />
@@ -101,7 +101,7 @@ function BaseInfoOption(
                             flex={1}
                         >
                             <Checkbox
-                                Checked={baseInfo.brideFatherStatus}
+                                checked={baseInfo.brideFatherStatus}
                                 OnChange={checked => onChange({...baseInfo, brideFatherStatus: checked})}
                                 label={'故'}
                             />
@@ -120,7 +120,7 @@ function BaseInfoOption(
                             flex={1}
                         >
                             <Checkbox
-                                Checked={baseInfo.brideMotherStatus}
+                                checked={baseInfo.brideMotherStatus}
                                 OnChange={checked => onChange({...baseInfo, brideMotherStatus: checked})}
                                 label={'故'}
                             />
@@ -132,7 +132,7 @@ function BaseInfoOption(
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'故人 표기'}/>
                         <Checkbox
-                            Checked={baseInfo.statusFlower}
+                            checked={baseInfo.statusFlower}
                             OnChange={checked => onChange({...baseInfo, statusFlower: checked})}
                             label={'국화 꽃으로 표기'}
                         />
@@ -140,7 +140,7 @@ function BaseInfoOption(
                     <Row $alignItems={'center'} gap={12}>
                         <OptionLabel label={'표시 순서'}/>
                         <Checkbox
-                            Checked={baseInfo.brideMarkFirst}
+                            checked={baseInfo.brideMarkFirst}
                             OnChange={checked => onChange({...baseInfo, brideMarkFirst: checked})}
                             label={'신부 먼저 표시'}
                         />

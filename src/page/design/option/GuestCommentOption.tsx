@@ -59,13 +59,13 @@ function GuestCommentOption(
                     <Column gap={12}>
                         <Checkbox
                             label={'내용 공개'}
-                            Checked={guestComment.privateContent}
+                            checked={guestComment.privateContent}
                             OnChange={checked => onChange({...guestComment, privateContent: checked})}
                         />
                         <Row gap={16}>
                             <Checkbox
                                 label={'날짜 숨김'}
-                                Checked={guestComment.privateDate}
+                                checked={guestComment.privateDate}
                                 OnChange={checked => onChange({...guestComment, privateDate: checked})}
                             />
                             <Text type={'caption1'} customStyle={css`

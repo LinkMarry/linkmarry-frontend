@@ -281,7 +281,7 @@ function InvitationDesign() {
                     <Row gap={12} $alignItems={'center'}>
                         <Checkbox
                             label={'자동 포커스'}
-                            Checked={autoFocus}
+                            checked={autoFocus}
                             OnChange={checked => setAutoFocus(checked)}
                         />
                         <Text

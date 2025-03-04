@@ -92,7 +92,7 @@ function ComponentDemo() {
                     marginTop: 32
                 }}
                 label={'title'}
-                Checked={checked}
+                checked={checked}
                 OnChange={setChecked}
             />
             <Radio
@@ -101,7 +101,7 @@ function ComponentDemo() {
                 onChange={setSelected}
             />
             <Toggle
-                Checked={toggleChecked}
+                checked={toggleChecked}
                 OnChange={setToggleChecked}
             />
             <Button text={'show dialog'} onClick={() => setShowDialog(true)}/>

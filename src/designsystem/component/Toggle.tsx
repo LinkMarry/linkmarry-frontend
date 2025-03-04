@@ -11,8 +11,8 @@ import {Row} from "@designsystem/core/FlexLayout";
 import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props extends ComponentPropsWithRef<'div'> {
-    Checked?: boolean;
-    OnChange?: (checked: boolean) => void;
+    checked: boolean;
+    OnChange: (checked: boolean) => void;
     customStyle?: RuleSet;
 }
 
@@ -24,19 +24,19 @@ export interface ToggleRef {
 
 function Toggle(
     {
-        Checked = false,
+        checked = false,
         OnChange,
         customStyle,
         ...props
     }: Props,
     ref: ForwardedRef<ToggleRef>
 ) {
-    const [localChecked, setLocalChecked] = useState(Checked);
+    const [localChecked, setLocalChecked] = useState(checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setLocalChecked(Checked);
-    }, [Checked]);
+        setLocalChecked(checked);
+    }, [checked]);
 
     useImperativeHandle(ref, () => ({
         value: localChecked,
@@ -46,7 +46,7 @@ function Toggle(
         toggle: () => {
             if (checkboxRef.current) {
                 checkboxRef.current.checked = !checkboxRef.current.checked;
-                OnChange?.(checkboxRef.current.checked);
+                OnChange(checkboxRef.current.checked);
             }
         }
     }));
@@ -63,7 +63,7 @@ function Toggle(
                 type={'checkbox'}
                 checked={localChecked}
                 onChange={(e) => {
-                    OnChange?.(e.target.checked);
+                    OnChange(e.target.checked);
                     setLocalChecked(e.target.checked);
                 }}
                 $customStyle={css`
