@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import {Column} from "@designsystem/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import TabBar, {dummyTabBarItems} from "@designsystem/component/TabBar";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import Input from "@designsystem/component/Input";
+import {css} from "styled-components";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 const EditorInspectorDesign = () => {
     const [selectedOpenningAnimationTab, setSelectedOpenningAnimationTab] = useState(0);
@@ -16,13 +19,22 @@ const EditorInspectorDesign = () => {
             <Column $alignItems={'stretch'} gap={12}>
                 <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {
                 }}/>
-
+                <CustomStyle $customStyle={css`
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-row-gap: 32px;
+                    grid-column-gap: 12px;
+                `}>
+                    {Array.from({length: 5}).map((_, index) => (
+                        <Item text={`item ${index}`} selected={index === 3}/>
+                    ))}
+                </CustomStyle>
             </Column>
 
             {/*대표 사진*/}
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>대표 사진</Text>
-                <PhotoUploadBox/>
+                <PhotoUploadBox title={'사진을 첨부해 주세요'} content={'업로드한 사진은 대표 이미지로 등록됩니다.'}/>
             </Column>
 
             {/*오프닝*/}
@@ -46,5 +58,33 @@ const EditorInspectorDesign = () => {
         </Column>
     );
 };
+
+interface ItemProps {
+    text: string;
+    selected: boolean;
+}
+
+const Item = ({text, selected}: ItemProps) => {
+    return (
+        <Column $alignItems={'stretch'} gap={8}>
+            <div style={{
+                aspectRatio: '9 / 16',
+                background: 'gray'
+            }}></div>
+            <Row $alignItems={'center'}>
+                <Text type={'p3'} customStyle={css`
+                    ${selected && css`
+                        color: var(--g-400);
+                    `};
+                `}>{text}</Text>
+                {selected && (
+                    <Icon iconType={IconType.CheckLine} width={18} height={18} customStyle={css`
+                        fill: #22A2FC;
+                    `}/>
+                )}
+            </Row>
+        </Column>
+    )
+}
 
 export default EditorInspectorDesign;

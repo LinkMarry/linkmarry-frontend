@@ -65,6 +65,12 @@ const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => 
                             display: none;
                         }
                     `};
+                    
+                    &::-webkit-calendar-picker-indicator {
+                        color: var(--g-600);
+                        position: absolute;
+                        right: 16px;
+                    }
                 `}
                 {...props}
                 placeholder={hasLabel ? '' : placeholder}

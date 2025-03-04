@@ -24,7 +24,17 @@ const EditorInspectorBride = () => {
                     </Row>
                     <Row gap={8}>
                         <Select
-                            items={[]}
+                            items={[
+                                '아들',
+                                '장남',
+                                '차남',
+                                '막내',
+                                '조카',
+                                '손자',
+                                '형제',
+                                '남매'
+                            ]}
+                            selected={0}
                             OnChange={index => {
 
                             }}

@@ -20,10 +20,10 @@ const FormToggleSet = ({customStyle, children}: Props) => {
             & > * {
                 border: none;
                 border-radius: 0;
-
-                &:not(:last-child) {
-                    border-bottom: 1px solid var(--g-300);
-                }
+            }
+            
+            & > *:not(:last-child) {
+                border-bottom: 1px solid var(--g-300);
             }
 
             ${customStyle};

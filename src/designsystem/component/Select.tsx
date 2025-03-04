@@ -3,6 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
+import CustomStyle from "@designsystem/core/CustomStyle";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     items: string[];
@@ -28,32 +29,36 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
         }
     }, []);
     return (
-        <Row ref={selectRef} $alignItems={'center'} gap={4} $customStyle={css`
-            padding: 12px 16px;
-            border: 1px solid var(--g-300);
-            border-radius: 8px;
-            cursor: pointer;
+        <CustomStyle ref={selectRef} $customStyle={css`
+            display: flex;
             position: relative;
-
-            &:hover {
-                border: 1px solid var(--g-400);
-            }
-
             ${customStyle};
         `} onClick={() => {
             setOpenOptions(i => !i);
         }} {...props}>
-            <Text type={'p2'} customStyle={css`
-                ${selected === undefined ? css`
-                    color: var(--g-400);
-                ` : css`
-                    color: var(--g-800);
-                `}
-            `}>{selected !== undefined ? items[selected] : placeholder}</Text>
-            <Icon iconType={IconType.ExpandArrow} width={20} height={20} customStyle={css`
-                fill: var(--g-400);
-                rotate: -90deg;
-            `}/>
+            <Row $alignItems={'center'} gap={4} $customStyle={css`
+                padding: 12px 16px;
+                width: 100%;
+                border: 1px solid var(--g-300);
+                border-radius: 8px;
+                cursor: pointer;
+                &:hover {
+                    border: 1px solid var(--g-400);
+                }
+            `}>
+                <Text type={'p2'} customStyle={css`
+                    flex: 1;
+                    ${selected === undefined ? css`
+                        color: var(--g-400);
+                    ` : css`
+                        color: var(--g-800);
+                    `}
+                `}>{selected !== undefined ? items[selected] : placeholder}</Text>
+                <Icon iconType={IconType.ExpandArrow} width={20} height={20} customStyle={css`
+                    fill: var(--g-400);
+                    rotate: -90deg;
+                `}/>
+            </Row>
             {openOptions && (
                 <Column $alignItems={'stretch'} $customStyle={css`
                     position: absolute;
@@ -64,10 +69,13 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                     border-radius: 12px;
                     box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);
                     overflow: hidden;
+                    z-index: 100;
                 `}>
                     {items.map((item, index) => (
                         <Row key={index} $alignItems={'center'} $customStyle={css`
                             padding: 12px 16px;
+                            cursor: pointer;
+                            
                             &:hover {
                                 background: var(--g-100);
                             }
@@ -87,7 +95,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                     ))}
                 </Column>
             )}
-        </Row>
+        </CustomStyle>
     );
 };
 

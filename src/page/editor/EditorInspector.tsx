@@ -19,6 +19,7 @@ import EditorInspectorVideo from "@page/editor/EditorInspectorVideo";
 import EditorInspectorUrlShare from "@page/editor/EditorInspectorUrlShare";
 import EditorInspectorWeddingSchedule from "@page/editor/EditorInspectorWeddingSchedule";
 import EditorInspectorWeddingLocation from "@page/editor/EditorInspectorWeddingLocation";
+import {hideScrollBar} from "@util/css.util";
 
 interface Props {
     currentNavType: EditorNavType;
@@ -30,6 +31,8 @@ const EditorInspector = ({currentNavType}: Props) => {
         <Column $alignItems={'stretch'} $customStyle={css`
             width: 412px;
             padding: 32px 24px 100px 24px;
+            overflow-y: scroll;
+            ${hideScrollBar};
         `}>
             {(() => {
                 const view: Record<EditorNavType, ReactElement> = {
