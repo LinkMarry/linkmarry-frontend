@@ -1,13 +1,11 @@
 import React, {useRef, useState} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Button from "@designsystem/component/Button";
-import OptionSegmentedButton from "@page/design/component/OptionSegmentedButton";
-import OptionTextField from "@page/design/component/OptionTextField";
 import weddingApi from "@remote/api/WeddingApi";
 import GuestType from "@remote/enumeration/GuestType";
 import Rsvp from "@remote/value/Rsvp";
@@ -164,7 +162,7 @@ function CreateRsvpDialog(
                         {rsvp.attendEtcStatus && (
                             <Column gap={4} $alignItems={'stretch'}>
                                 <Text type={'p3'}>추가로 전달할 내용을 입력해 주세요.</Text>
-                                <OptionTextField ref={guestCommentRef} autoWidth={false} placeholder={'내용 입력'}/>
+                                {/*<OptionTextField ref={guestCommentRef} autoWidth={false} placeholder={'내용 입력'}/>*/}
                             </Column>
                         )}
                     </Column>
