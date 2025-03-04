@@ -8,16 +8,17 @@ import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";
 import FormToggle from "@designsystem/component/FormToggle";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import Divider from "@designsystem/component/Divider";
 
 const EditorInspectorRsvp = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Row $alignItems={'center'}>
-                <Text type={'p1'} bold={true}>참석의사 RSVP</Text>
-                <Spacer/>
-                <Toggle checked={false} OnChange={checked => {
-                }}/>
-            </Row>
+        <EditorInspectorWrapper title={'참석의사 RSVP'} toggle={{
+            checked: false,
+            OnChange: () => {
+            }
+        }}>
+            <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false}/>
@@ -33,14 +34,19 @@ const EditorInspectorRsvp = () => {
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>표시 항목</Text>
                 <FormToggleSet>
-                    <FormToggle checked={false} OnChange={() => {}} label={'식사 여부'}/>
-                    <FormToggle checked={false} OnChange={() => {}} label={'참석 인원'}/>
-                    <FormToggle checked={false} OnChange={() => {}} label={'연락처'}/>
-                    <FormToggle checked={false} OnChange={() => {}} label={'버스 탑승 여부'}/>
-                    <FormToggle checked={false} OnChange={() => {}} label={'추가 전달사항'}/>
+                    <FormToggle checked={false} OnChange={() => {
+                    }} label={'식사 여부'}/>
+                    <FormToggle checked={false} OnChange={() => {
+                    }} label={'참석 인원'}/>
+                    <FormToggle checked={false} OnChange={() => {
+                    }} label={'연락처'}/>
+                    <FormToggle checked={false} OnChange={() => {
+                    }} label={'버스 탑승 여부'}/>
+                    <FormToggle checked={false} OnChange={() => {
+                    }} label={'추가 전달사항'}/>
                 </FormToggleSet>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

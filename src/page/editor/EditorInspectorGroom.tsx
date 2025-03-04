@@ -8,11 +8,11 @@ import {css} from "styled-components";
 import Select from "@designsystem/component/Select";
 import Checkbox from "@designsystem/component/Checkbox";
 import FormToggle from "@designsystem/component/FormToggle";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorGroom = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>신랑측 정보</Text>
+        <EditorInspectorWrapper title={'신랑측 정보'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 성함</Text>
@@ -76,7 +76,7 @@ const EditorInspectorGroom = () => {
                     label={'국화꽃으로 표시'}
                 />
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

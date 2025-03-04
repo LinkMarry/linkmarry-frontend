@@ -1,21 +1,18 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Spacer from "@designsystem/component/Spacer";
-import Toggle from "@designsystem/component/Toggle";
 import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorVideo = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Row $alignItems={'center'}>
-                <Text type={'p1'} bold={true}>동영상</Text>
-                <Spacer/>
-                <Toggle checked={false} OnChange={checked => {
-                }}/>
-            </Row>
+        <EditorInspectorWrapper title={'동영상'} toggle={{
+            checked: false,
+            OnChange: () => {
+            }
+        }}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
@@ -29,7 +26,7 @@ const EditorInspectorVideo = () => {
                 <Text type={'p3'} bold={true}>파일로 첨부</Text>
                 <PhotoUploadBox title={'파일을 첨부해 주세요'} content={'mp4 파일 형식만 업로드 가능합니다.'}/>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

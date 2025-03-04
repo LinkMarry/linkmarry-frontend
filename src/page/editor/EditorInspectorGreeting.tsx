@@ -7,11 +7,11 @@ import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";
 import Select from "@designsystem/component/Select";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorGreeting = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>인사말</Text>
+        <EditorInspectorWrapper title={'인사말'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
@@ -31,7 +31,7 @@ const EditorInspectorGreeting = () => {
                 <Text type={'p3'} bold={true}>내용</Text>
                 <SegmentedButton items={['기본', '초대 글자', '꽃 아이콘']} selectedTab={0} onChange={tab => {}}/>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

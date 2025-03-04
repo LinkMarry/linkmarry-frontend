@@ -1,13 +1,13 @@
 import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorFontAndStyle = () => {
     return (
-        <Column gap={32}>
-            <Text type={'p1'} bold={true}>Title</Text>
+        <EditorInspectorWrapper title={'폰트 및 스타일'}>
 
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

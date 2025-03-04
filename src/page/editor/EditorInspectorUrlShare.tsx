@@ -6,11 +6,13 @@ import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SharingLink from "@src/component/SharingLink";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import Divider from "@designsystem/component/Divider";
 
 const EditorInspectorUrlShare = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>URL 공유</Text>
+        <EditorInspectorWrapper title={'URL 공유'}>
+            <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false}/>
@@ -29,7 +31,7 @@ const EditorInspectorUrlShare = () => {
                 <Text type={'p3'} bold={true}>미리보기</Text>
                 <SharingLink button={'none'} orientation={'horizontal'}/>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

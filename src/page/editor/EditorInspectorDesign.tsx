@@ -8,13 +8,13 @@ import Input from "@designsystem/component/Input";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import CustomStyle from "@designsystem/core/CustomStyle";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorDesign = () => {
     const [selectedOpenningAnimationTab, setSelectedOpenningAnimationTab] = useState(0);
 
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>디자인</Text>
+        <EditorInspectorWrapper title={'디자인'}>
             {/*디자인*/}
             <Column $alignItems={'stretch'} gap={12}>
                 <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {
@@ -55,7 +55,7 @@ const EditorInspectorDesign = () => {
                     <Input hasLabel={false}/>
                 </Column>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

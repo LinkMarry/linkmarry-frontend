@@ -4,11 +4,11 @@ import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorChangeOrder = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>Title</Text>
+        <EditorInspectorWrapper title={'순서변경'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Item text={'123'}/>
@@ -16,7 +16,7 @@ const EditorInspectorChangeOrder = () => {
                 <Item text={'123'}/>
                 <Item text={'123'}/>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

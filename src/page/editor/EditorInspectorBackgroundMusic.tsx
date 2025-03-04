@@ -8,16 +8,15 @@ import FormToggle from "@designsystem/component/FormToggle";
 import {css} from "styled-components";
 import Button from "@designsystem/component/Button";
 import {IconType} from "@designsystem/foundation/Icon";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorBackgroundMusic = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Row $alignItems={'center'}>
-                <Text type={'p1'} bold={true}>배경음악</Text>
-                <Spacer/>
-                <Toggle checked={false} OnChange={checked => {
-                }}/>
-            </Row>
+        <EditorInspectorWrapper title={'배경 음악'} toggle={{
+            checked: false,
+            OnChange: () => {
+            }
+        }}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={8}>
                 <Item/>
@@ -31,7 +30,7 @@ const EditorInspectorBackgroundMusic = () => {
             <Text type={'p3'} customStyle={css`
                 color: var(--g-400);
             `}>브라우저 정책에 따라 자동 재생 기능이 작동하지 않을 수 있습니다.</Text>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 
@@ -40,7 +39,7 @@ const Item = () => {
         <Row $alignItems={'center'} gap={16} $customStyle={css`
             padding: 12px;
             border-radius: 12px;
-            
+
             &:hover {
                 background: var(--g-50);
             }

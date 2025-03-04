@@ -40,6 +40,7 @@ const EditorInspector = ({currentNavType}: Props) => {
             ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`
                 min-width: 0;
                 width: auto;
+                padding: 24px 16px 40px 16px;
             `};
         `}>
             {(() => {

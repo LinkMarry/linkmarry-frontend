@@ -5,11 +5,11 @@ import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorWeddingLocation = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>예식 장소</Text>
+        <EditorInspectorWrapper title={'예식 장소'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Input placeholder={'예식장명'}/>
@@ -33,7 +33,7 @@ const EditorInspectorWeddingLocation = () => {
                 <FormToggle checked={false} OnChange={checked => {
                 }} label={'네비게이션'}/>
             </FormToggleSet>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

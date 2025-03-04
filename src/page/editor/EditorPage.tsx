@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Column, Row} from "@designsystem/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import EditorHeader from "@page/editor/EditorHeader";
 import {css} from "styled-components";
 import EditorNavigationBar from "@page/editor/EditorNavigationBar";

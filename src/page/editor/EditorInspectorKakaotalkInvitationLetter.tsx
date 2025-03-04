@@ -7,11 +7,13 @@ import {css} from "styled-components";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SharingLink from "@src/component/SharingLink";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import Divider from "@designsystem/component/Divider";
 
 const EditorInspectorKakaotalkInvitationLetter = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>카카오톡 초대장</Text>
+        <EditorInspectorWrapper title={'카카오톡 초대장'}>
+            <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false}/>
@@ -38,7 +40,7 @@ const EditorInspectorKakaotalkInvitationLetter = () => {
                 <Text type={'p3'} bold={true}>미리보기</Text>
                 <SharingLink button={'rsvp'} orientation={'horizontal'}/>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 

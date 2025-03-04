@@ -7,11 +7,11 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
+import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorGallery = () => {
     return (
-        <Column $alignItems={'stretch'} gap={32}>
-            <Text type={'p1'} bold={true}>갤러리</Text>
+        <EditorInspectorWrapper title={'갤러리'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
@@ -35,7 +35,7 @@ const EditorInspectorGallery = () => {
                     }} label={'이미지 클릭 시 전체 화면'}/>
                 </FormToggleSet>
             </Column>
-        </Column>
+        </EditorInspectorWrapper>
     );
 };
 
