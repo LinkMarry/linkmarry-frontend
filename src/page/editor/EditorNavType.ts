@@ -42,67 +42,67 @@ export const editorNavTypeMap: Record<EditorNavType, {
     icon: IconType;
 }> = {
     design: {
-        icon: IconType.Envelope,
+        icon: IconType.Brush,
         text: '디자인'
     },
     groom: {
-        icon: IconType.Envelope,
+        icon: IconType.PersonLine,
         text: '신랑측'
     },
     bride: {
-        icon: IconType.Envelope,
+        icon: IconType.PersonLine,
         text: '신부측'
     },
     greeting: {
-        icon: IconType.Envelope,
+        icon: IconType.Note,
         text: '인사말'
     },
-    weddingLocation: {
-        icon: IconType.Envelope,
-        text: '예식 장소'
-    },
     weddingSchedule: {
-        icon: IconType.Envelope,
+        icon: IconType.CalendarLine,
         text: '예식 일시'
     },
+    weddingLocation: {
+        icon: IconType.LocationPoint,
+        text: '예식 장소'
+    },
     gallery: {
-        icon: IconType.Envelope,
+        icon: IconType.Photo2,
         text: '갤러리'
     },
     backgroundMusic: {
-        icon: IconType.Envelope,
+        icon: IconType.CirclePlay,
         text: '인사말'
     },
     money: {
-        icon: IconType.Envelope,
+        icon: IconType.Money,
         text: '축의금'
     },
     video: {
-        icon: IconType.Envelope,
+        icon: IconType.Video,
         text: '동영상'
     },
     rsvp: {
-        icon: IconType.Envelope,
+        icon: IconType.EmailOpen,
         text: '참석의사'
     },
     phone: {
-        icon: IconType.Envelope,
+        icon: IconType.Phone,
         text: '연락처'
     },
     guestComment: {
-        icon: IconType.Envelope,
+        icon: IconType.Clipboard,
         text: '방명록'
     },
     fontAndStyle: {
-        icon: IconType.Envelope,
+        icon: IconType.Edit,
         text: '폰트'
     },
     urlShare: {
-        icon: IconType.Envelope,
+        icon: IconType.ShareLine,
         text: '링크 공유'
     },
     kakaotalkInvitationLetter: {
-        icon: IconType.Envelope,
+        icon: IconType.SendLine,
         text: '카카오 공유'
     },
     changeOrder: {

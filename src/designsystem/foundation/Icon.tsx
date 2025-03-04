@@ -63,6 +63,20 @@ import Link from "@designsystem/foundation/icon/Link";
 import PenLine from "@designsystem/foundation/icon/PenLine";
 import DoubleArrowLeft from "@designsystem/foundation/icon/DoubleArrowLeft";
 import AddPhoto from "@designsystem/foundation/icon/AddPhoto";
+import Brush from "@designsystem/foundation/icon/Brush";
+import CalendarLine from "@designsystem/foundation/icon/CalendarLine";
+import CirclePlay from "@designsystem/foundation/icon/CirclePlay";
+import Clipboard from "@designsystem/foundation/icon/Clipboard";
+import EmailOpen from "@designsystem/foundation/icon/EmailOpen";
+import LocationPoint from "@designsystem/foundation/icon/LocationPoint";
+import Money from "@designsystem/foundation/icon/Money";
+import Note from "@designsystem/foundation/icon/Note";
+import Phone from "@designsystem/foundation/icon/Phone";
+import Photo2 from "@designsystem/foundation/icon/Photo2";
+import SendLine from "@designsystem/foundation/icon/SendLine";
+import Video from "@designsystem/foundation/icon/Video";
+import ShareLine from "@designsystem/foundation/icon/ShareLine";
+import Edit from "@designsystem/foundation/icon/Edit";
 
 export enum IconType {
     AddEmoji,
@@ -76,13 +90,17 @@ export enum IconType {
     Book,
     BookmarkFill,
     BookmarkLine,
+    Brush,
     Calendar,
+    CalendarLine,
     Call,
     Camera,
     Chat,
     CheckFill,
     CheckLine,
     CheckRing,
+    CirclePlay,
+    Clipboard,
     Clock,
     Copy,
     CrossFill,
@@ -92,6 +110,8 @@ export enum IconType {
     CurveArrow,
     Detail,
     DoubleArrowLeft,
+    Edit,
+    EmailOpen,
     Envelope,
     ExclamationFill,
     ExclamationLine,
@@ -103,23 +123,30 @@ export enum IconType {
     Hide,
     Home,
     Link,
+    LocationPoint,
     Logout,
     LoudSpeaker,
     Manage,
+    Money,
     Moon,
     NormalArrow,
+    Note,
     PenFill,
     PenLine,
     PersonFill,
     PersonLine,
+    Phone,
     Photo,
+    Photo2,
     Ping,
     RadioFill,
     RadioLine,
     Search,
     Send,
+    SendLine,
     Setting,
     Share,
+    ShareLine,
     Show,
     Star,
     Statistics,
@@ -127,6 +154,7 @@ export enum IconType {
     Substack,
     Trash,
     Utensils,
+    Video,
     Write,
 }
 
@@ -168,8 +196,12 @@ function Icon(
                 return <BookmarkFill {...svgProps}/>;
             case IconType.BookmarkLine:
                 return <BookmarkLine {...svgProps}/>;
+            case IconType.Brush:
+                return <Brush {...svgProps}/>;
             case IconType.Calendar:
                 return <Calendar {...svgProps}/>;
+            case IconType.CalendarLine:
+                return <CalendarLine {...svgProps}/>;
             case IconType.Call:
                 return <Call {...svgProps}/>;
             case IconType.Camera:
@@ -182,6 +214,10 @@ function Icon(
                 return <CheckLine {...svgProps}/>;
             case IconType.CheckRing:
                 return <CheckRing {...svgProps}/>;
+            case IconType.CirclePlay:
+                return <CirclePlay {...svgProps}/>;
+            case IconType.Clipboard:
+                return <Clipboard {...svgProps}/>;
             case IconType.Clock:
                 return <Clock {...svgProps}/>;
             case IconType.Copy:
@@ -200,6 +236,10 @@ function Icon(
                 return <Detail {...svgProps}/>;
             case IconType.DoubleArrowLeft:
                 return <DoubleArrowLeft {...svgProps}/>;
+            case IconType.Edit:
+                return <Edit {...svgProps}/>;
+            case IconType.EmailOpen:
+                return <EmailOpen {...svgProps}/>;
             case IconType.Envelope:
                 return <Envelope {...svgProps}/>;
             case IconType.ExclamationFill:
@@ -222,16 +262,22 @@ function Icon(
                 return <Home {...svgProps}/>;
             case IconType.Link:
                 return <Link {...svgProps}/>;
+            case IconType.LocationPoint:
+                return <LocationPoint {...svgProps}/>;
             case IconType.Logout:
                 return <Logout {...svgProps}/>;
             case IconType.LoudSpeaker:
                 return <LoudSpeaker {...svgProps}/>;
             case IconType.Manage:
                 return <Manage {...svgProps}/>;
+            case IconType.Money:
+                return <Money {...svgProps}/>;
             case IconType.Moon:
                 return <Moon {...svgProps}/>;
             case IconType.NormalArrow:
                 return <NormalArrow {...svgProps}/>;
+            case IconType.Note:
+                return <Note {...svgProps}/>;
             case IconType.PenFill:
                 return <PenFill {...svgProps}/>;
             case IconType.PenLine:
@@ -240,8 +286,12 @@ function Icon(
                 return <PersonFill {...svgProps}/>;
             case IconType.PersonLine:
                 return <PersonLine {...svgProps}/>;
+            case IconType.Phone:
+                return <Phone {...svgProps}/>;
             case IconType.Photo:
                 return <Photo {...svgProps}/>;
+            case IconType.Photo2:
+                return <Photo2 {...svgProps}/>;
             case IconType.Ping:
                 return <Ping {...svgProps}/>;
             case IconType.RadioFill:
@@ -252,10 +302,14 @@ function Icon(
                 return <Search {...svgProps}/>;
             case IconType.Send:
                 return <Send {...svgProps}/>;
+            case IconType.SendLine:
+                return <SendLine {...svgProps}/>;
             case IconType.Setting:
                 return <Setting {...svgProps}/>;
             case IconType.Share:
                 return <Share {...svgProps}/>;
+            case IconType.ShareLine:
+                return <ShareLine {...svgProps}/>;
             case IconType.Show:
                 return <Show {...svgProps}/>;
             case IconType.Star:
@@ -270,6 +324,8 @@ function Icon(
                 return <Trash {...svgProps}/>;
             case IconType.Utensils:
                 return <Utensils {...svgProps}/>;
+            case IconType.Video:
+                return <Video {...svgProps}/>;
             case IconType.Write:
                 return <Write {...svgProps}/>;
         }
