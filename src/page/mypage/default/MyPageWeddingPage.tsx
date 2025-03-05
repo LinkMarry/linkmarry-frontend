@@ -11,7 +11,7 @@ import Spacer from "@designsystem/component/Spacer";
 import Popover from "@designsystem/pattern/Popover";
 import useResponsive from "@hook/useResponsive";
 
-function MyPageWedding() {
+function MyPageWeddingPage() {
     return (
         <Column gap={24} flex={1} $alignItems={'stretch'}>
             <Text type={'h5'} bold={true}>모바일 청첩장</Text>
@@ -200,4 +200,4 @@ function StatisticsCell() {
     );
 }
 
-export default MyPageWedding;
+export default MyPageWeddingPage;

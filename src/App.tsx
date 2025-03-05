@@ -11,8 +11,8 @@ import WeddingPage from "@page/WeddingPage";
 import LoginPage from "@page/LoginPage";
 import {css} from "styled-components";
 import {Row} from "@designsystem/core/FlexLayout";
-import MyPageWedding from "@page/mypage/MyPageWedding";
-import MyPageInfo from "@page/mypage/MyPageInfo";
+import MyPageWeddingPage from "@page/mypage/default/MyPageWeddingPage";
+import MyPageInfoPage from "@page/mypage/default/MyPageInfoPage";
 import HomePage from "@page/HomePage";
 import HelmetMetaTags from "@src/HelmetMetaTags";
 import EditorPage from "@page/editor/EditorPage";
@@ -20,6 +20,9 @@ import {AuthProvider} from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
 import useAxios from "@hook/useAxios";
 import AdminRoute from "@page/AdminRoute";
+import ShowGuestCommentsPage from "@page/mypage/detail/ShowGuestCommentsPage";
+import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
+import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
 
 const {Kakao} = window as any;
 
@@ -40,8 +43,13 @@ function App() {
                     <Route path={''} element={<HomePage/>}/>
                     <Route path={'login'} element={<LoginPage/>}/>
                     <Route path={'mypage'} element={<MyPageLayout/>}>
-                        <Route path={'wedding'} element={<MyPageWedding/>}/>
-                        <Route path={'info'} element={<MyPageInfo/>}/>
+                        <Route element={<MyPageDefaultLayout/>}>
+                            <Route path={'wedding'} element={<MyPageWeddingPage/>}/>
+                            <Route path={'info'} element={<MyPageInfoPage/>}/>
+                        </Route>
+                        <Route element={<MyPageDetailLayout/>}>
+                            <Route path={'wedding/:id/comments'} element={<ShowGuestCommentsPage/>}/>
+                        </Route>
                     </Route>
                     <Route path={'editor'} element={<EditorPage/>}/>
                     <Route path={'wedding/:url'} element={<WeddingPage/>}/>

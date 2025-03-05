@@ -4,7 +4,7 @@ import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import Divider from "@designsystem/component/Divider";
 
-function MyPageInfo() {
+function MyPageInfoPage() {
     return (
         <Column gap={24} $alignItems={'stretch'} $customStyle={css`
             flex: 1;
@@ -63,4 +63,4 @@ function Item(props: {
     );
 }
 
-export default MyPageInfo;
+export default MyPageInfoPage;

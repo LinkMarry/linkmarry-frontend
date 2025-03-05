@@ -1,19 +1,19 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import MyPageSidebarType, {myPageSidebarTypeList} from "@page/mypage/MyPageSidebarType";
+import MyPageDefaultSidebarType, {myPageSidebarTypeList} from "@page/mypage/default/MyPageDefaultSidebarType";
 import {useCallback} from "react";
 
-function useMyPage() {
+function useMyPageDefault() {
     const {pathname} = useLocation();
     const localNavigate = useNavigate();
 
-    const currentSidebar = ((): MyPageSidebarType | undefined => {
+    const currentSidebar = ((): MyPageDefaultSidebarType | undefined => {
         if (!pathname.startsWith('/mypage')) return;
         const path = pathname.split('/')[2];
 
         return myPageSidebarTypeList.find(type => type === path);
     })();
 
-    const navigate = useCallback((pathname: MyPageSidebarType) => {
+    const navigate = useCallback((pathname: MyPageDefaultSidebarType) => {
         localNavigate(`/mypage/${pathname}`);
     }, [localNavigate]);
 
@@ -23,4 +23,4 @@ function useMyPage() {
     };
 }
 
-export default useMyPage;
+export default useMyPageDefault;

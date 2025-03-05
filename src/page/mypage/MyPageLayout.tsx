@@ -3,7 +3,7 @@ import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Row} from "@designsystem/core/FlexLayout";
 import {Outlet} from "react-router-dom";
 import {css} from "styled-components";
-import MyPageSidebar from "@page/mypage/MyPageSidebar";
+import MyPageDefaultSidebar from "@page/mypage/default/MyPageDefaultSidebar";
 import useResponsive from "@hook/useResponsive";
 
 function MyPageLayout() {
@@ -45,7 +45,6 @@ function DesktopMyPageLayout() {
                     max-width: 1100px;
                     flex: 1;
                 `}>
-                    <MyPageSidebar/>
                     <Outlet/>
                 </Row>
             </Row>
