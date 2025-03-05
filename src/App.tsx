@@ -19,6 +19,7 @@ import EditorPage from "@page/editor/EditorPage";
 import {AuthProvider} from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
 import useAxios from "@hook/useAxios";
+import AdminRoute from "@page/AdminRoute";
 
 const {Kakao} = window as any;
 
@@ -56,6 +57,10 @@ function App() {
                     {/*for system*/}
                     <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
                     <Route path={'*'} element={<Navigate to={'/'}/>}/>
+
+                    <Route path={'admin'} element={<AdminRoute/>}>
+                        {/*<Route path={'/tem'}/>*/}
+                    </Route>
 
                     {config.env === 'development' && (
                         <>
