@@ -1,6 +1,8 @@
+import {Updater} from "use-immer";
+
 interface Binding<V> {
     value: V;
-    onChange: (value: V) => void;
+    update: Updater<V>;
 }
 
 export default Binding;

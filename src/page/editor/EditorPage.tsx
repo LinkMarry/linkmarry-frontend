@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import EditorHeader from "@page/editor/EditorHeader";
 import {css} from "styled-components";
@@ -9,12 +9,16 @@ import EditorInspector from "@page/editor/inspector/EditorInspector";
 import useResponsive from "@hook/useResponsive";
 import {hideScrollBar} from "@util/css.util";
 import WeddingDto, {makeDefaultWedding} from "@remote/value/WeddingDto";
+import {useImmer} from "use-immer";
+import WeddingDesign from "@remote/value/WeddingDesign";
+import useWeddingDesigns from "@hook/useWeddingDesigns";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
-    const [wedding, setWedding] = useState<WeddingDto>(makeDefaultWedding(''));
+    const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding(''));
+    const {weddingDesigns} = useWeddingDesigns();
 
     return (
         <Column $alignItems={'stretch'} $customStyle={css`
@@ -45,8 +49,9 @@ const EditorPage = () => {
                     {(openInspector || deviceSize !== 'desktop') && (
                         <EditorInspector
                             value={wedding}
-                            onChange={wedding => setWedding(wedding)}
+                            update={updateWedding}
                             currentNavType={currentNavType}
+                            weddingDesigns={weddingDesigns}
                         />
                     )}
                     {deviceSize === 'desktop' && (

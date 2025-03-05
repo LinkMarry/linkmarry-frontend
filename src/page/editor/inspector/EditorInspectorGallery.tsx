@@ -10,11 +10,12 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import Gallery from "@remote/value/Gallery";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<Gallery> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorGallery = ({value, onChange}: Props) => {
+const EditorInspectorGallery = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'갤러리'}>
             <Divider/>

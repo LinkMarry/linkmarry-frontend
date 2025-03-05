@@ -1,4 +1,5 @@
 import {FontFamily} from "@designsystem/foundation/text/TextType";
+import Opening from "@remote/enumeration/Opening";
 
 export type DesignColor =
     '#F7F7F2'
@@ -48,10 +49,10 @@ export default interface WeddingDesign {
     titleImgUrl: string;
 
     // 오프닝 여부
-    opening: boolean;
+    opening: Opening;
 
     // 오프닝 애니메이션 텍스트
-    openingText: string;
+    openingText: OpeningText;
 }
 
 export const defaultWeddingDesign: WeddingDesign = {
@@ -60,9 +61,13 @@ export const defaultWeddingDesign: WeddingDesign = {
     weddingDesignFont: 'LINESeedKR',
     weddingDesignFontSize: 'medium',
     titleImgUrl: '',
-    opening: true,
-    openingText: '1'
+    opening: Opening.NONE,
+    openingText: "We're getting married!"
 }
+
+export type OpeningText = 'We\'re getting married!' | '저희 둘 결혼합니다' | 'Welcome to Our Wedding' | '새로운 시작을 함께해주세요';
+export const openingTextList = ['We\'re getting married!', '저희 둘 결혼합니다', 'Welcome to Our Wedding', '새로운 시작을 함께해주세요'];
+
 
 export const dummyWeddingDesign: WeddingDesign = {
     weddingDesignName: '화이트 모먼트',
@@ -70,6 +75,6 @@ export const dummyWeddingDesign: WeddingDesign = {
     weddingDesignFont: 'LINESeedKR',
     weddingDesignFontSize: 'large',
     titleImgUrl: 'https://linkmarry.s3.ap-northeast-2.amazonaws.com/27942cb0-58c9-4d44-95a7-c6134547377d-GettyImages-jv12578254.jpg.jpg',
-    opening: true,
-    openingText: '1'
+    opening: Opening.NONE,
+    openingText: "We're getting married!"
 };

@@ -9,15 +9,23 @@ import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import CustomStyle from "@designsystem/core/CustomStyle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
-import WeddingDesign from "@remote/value/WeddingDesign";
+import WeddingDesign, {OpeningText, openingTextList} from "@remote/value/WeddingDesign";
 import Binding from "@src/interface/Binding";
+import WeddingDto from "@remote/value/WeddingDto";
+import WeddingDesignPreset from "@remote/value/WeddingDesignPreset";
+import {allCasesOfEnum} from "@util/enum.util";
+import Opening, {openingList, openingMap} from "@remote/enumeration/Opening";
+import Select from "@designsystem/component/Select";
+import {tab} from "@testing-library/user-event/dist/tab";
 
-interface Props extends Binding<WeddingDesign> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorDesign = ({value, onChange}: Props) => {
-    const [selectedOpeningAnimationTab, setSelectedOpeningAnimationTab] = useState(0);
+export interface WeddingDesignProps {
+    weddingDesigns?: WeddingDesignPreset[];
+}
 
+const EditorInspectorDesign = ({value, update, weddingDesigns}: Props & WeddingDesignProps) => {
     return (
         <EditorInspectorWrapper title={'디자인'}>
             {/*디자인*/}
@@ -30,9 +38,10 @@ const EditorInspectorDesign = ({value, onChange}: Props) => {
                     grid-row-gap: 32px;
                     grid-column-gap: 12px;
                 `}>
-                    {Array.from({length: 5}).map((_, index) => (
-                        <Item key={index} text={`item ${index}`} selected={index === 3}/>
-                    ))}
+                    {/*todo shimmer*/}
+                    {weddingDesigns ? weddingDesigns.map((design, index) => (
+                        <Item key={index} design={design} selected={index === 3}/>
+                    )) : null}
                 </CustomStyle>
             </Column>
 
@@ -47,18 +56,22 @@ const EditorInspectorDesign = ({value, onChange}: Props) => {
                 <Column $alignItems={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>오프닝 애니메이션</Text>
                     <SegmentedButton
-                        items={[
-                            '선택안함',
-                            '레터링',
-                            '타이핑'
-                        ]}
-                        selectedTab={selectedOpeningAnimationTab}
-                        onChange={tab => setSelectedOpeningAnimationTab(tab)}
+                        items={openingList.map(i => openingMap[i].korean)}
+                        selectedTab={openingList.indexOf(value.weddingDesign.opening)}
+                        onChange={tab => {
+                            update(draft => {
+                                draft.weddingDesign.opening = openingList[tab];
+                            })
+                        }}
                     />
                 </Column>
                 <Column $alignItems={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>문구</Text>
-                    <Input hasLabel={false}/>
+                    <Select selected={openingTextList.indexOf(value.weddingDesign.openingText)} items={openingTextList} OnChange={index => {
+                        update(draft => {
+                            draft.weddingDesign.openingText = openingTextList[index] as OpeningText;
+                        })
+                    }}/>
                 </Column>
             </Column>
         </EditorInspectorWrapper>
@@ -66,23 +79,26 @@ const EditorInspectorDesign = ({value, onChange}: Props) => {
 };
 
 interface ItemProps {
-    text: string;
+    design: WeddingDesignPreset;
     selected: boolean;
 }
 
-const Item = ({text, selected}: ItemProps) => {
+const Item = ({design, selected}: ItemProps) => {
     return (
         <Column $alignItems={'stretch'} gap={8}>
-            <div style={{
-                aspectRatio: '9 / 16',
-                background: 'gray'
-            }}></div>
+            <CustomStyle
+                as={'img'}
+                src={design.img}
+                $customStyle={css`
+                    aspect-ratio: 9 / 16;
+                `}
+            />
             <Row $alignItems={'center'}>
                 <Text type={'p3'} customStyle={css`
                     ${selected && css`
                         color: var(--g-400);
                     `};
-                `}>{text}</Text>
+                `}>{design.name}</Text>
                 {selected && (
                     <Icon iconType={IconType.CheckLine} width={18} height={18} customStyle={css`
                         fill: #22A2FC;

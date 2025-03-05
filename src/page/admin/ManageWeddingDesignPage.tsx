@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import weddingDesignApi from "@remote/api/admin/WeddingDesignApi";
+import weddingDesignApi from "@remote/api/WeddingDesignApi";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
@@ -12,7 +12,7 @@ const ManageWeddingDesignPage = () => {
 
     useEffect(() => {
         (async () => {
-            const {data} = await weddingDesignApi.getWeddingDesign();
+            const {data} = await weddingDesignApi.getWeddingDesignPresets();
             setPresets(data);
         })();
     }, []);

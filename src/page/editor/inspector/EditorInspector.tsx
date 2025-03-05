@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import EditorNavType from "@page/editor/EditorNavType";
 import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import EditorInspectorDesign from "@page/editor/inspector/EditorInspectorDesign";
+import EditorInspectorDesign, {WeddingDesignProps} from "@page/editor/inspector/EditorInspectorDesign";
 import EditorInspectorBride from "@page/editor/inspector/EditorInspectorBride";
 import EditorInspectorBackgroundMusic from "@page/editor/inspector/EditorInspectorBackgroundMusic";
 import EditorInspectorChangeOrder from "@page/editor/inspector/EditorInspectorChangeOrder";
@@ -24,11 +24,11 @@ import useResponsive from "@hook/useResponsive";
 import WeddingDto from "@remote/value/WeddingDto";
 import Binding from "@src/interface/Binding";
 
-interface Props extends Binding<WeddingDto> {
+interface Props extends Binding<WeddingDto>, WeddingDesignProps {
     currentNavType: EditorNavType;
 }
 
-const EditorInspector = ({value: wedding, onChange, currentNavType}: Props) => {
+const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns}: Props) => {
     const {deviceSize} = useResponsive();
 
     return (
@@ -47,58 +47,19 @@ const EditorInspector = ({value: wedding, onChange, currentNavType}: Props) => {
         `}>
             {(() => {
                 const view: Record<EditorNavType, ReactElement> = {
-                    design: <EditorInspectorDesign value={wedding.weddingDesign} onChange={value => onChange({
-                        ...wedding,
-                        weddingDesign: value
-                    })}/>,
-                    groom: <EditorInspectorGroom value={wedding.baseInfo} onChange={value => onChange({
-                        ...wedding,
-                        baseInfo: value
-                    })}/>,
-                    bride: <EditorInspectorBride value={wedding.baseInfo} onChange={value => onChange({
-                        ...wedding,
-                        baseInfo: value
-                    })}/>,
-                    greeting: <EditorInspectorGreeting value={wedding.greeting} onChange={value => onChange({
-                        ...wedding,
-                        greeting: value
-                    })}/>,
-                    weddingSchedule: <EditorInspectorWeddingSchedule value={wedding.weddingSchedule} onChange={value => onChange({
-                        ...wedding,
-                        weddingSchedule: value
-                    })}/>,
-                    weddingPlace: <EditorInspectorWeddingPlace value={wedding.weddingPlace} onChange={value => onChange({
-                        ...wedding,
-                        weddingPlace: value
-                    })}/>,
-                    gallery: <EditorInspectorGallery value={wedding.gallery} onChange={value => onChange({
-                        ...wedding,
-                        gallery: value
-                    })}/>,
-                    backgroundMusic: <EditorInspectorBackgroundMusic value={wedding.baseMusic} onChange={value => onChange({
-                        ...wedding,
-                        baseMusic: value
-                    })}/>,
-                    money: <EditorInspectorMoney value={wedding.moneyInfo} onChange={value => onChange({
-                        ...wedding,
-                        moneyInfo: value
-                    })}/>,
-                    video: <EditorInspectorVideo value={wedding.video} onChange={value => onChange({
-                        ...wedding,
-                        video: value
-                    })}/>,
-                    rsvp: <EditorInspectorRsvp value={wedding.rsvp} onChange={value => onChange({
-                        ...wedding,
-                        rsvp: value
-                    })}/>,
-                    phone: <EditorInspectorPhone value={wedding.phone} onChange={value => onChange({
-                        ...wedding,
-                        phone: value
-                    })}/>,
-                    guestComment: <EditorInspectorGuestComment value={wedding.guestComment} onChange={value => onChange({
-                        ...wedding,
-                        guestComment: value
-                    })}/>,
+                    design: <EditorInspectorDesign value={wedding} update={update} weddingDesigns={weddingDesigns}/>,
+                    groom: <EditorInspectorGroom value={wedding} update={update}/>,
+                    bride: <EditorInspectorBride value={wedding} update={update}/>,
+                    greeting: <EditorInspectorGreeting value={wedding} update={update}/>,
+                    weddingSchedule: <EditorInspectorWeddingSchedule value={wedding} update={update}/>,
+                    weddingPlace: <EditorInspectorWeddingPlace value={wedding} update={update}/>,
+                    gallery: <EditorInspectorGallery value={wedding} update={update}/>,
+                    backgroundMusic: <EditorInspectorBackgroundMusic value={wedding} update={update}/>,
+                    money: <EditorInspectorMoney value={wedding} update={update}/>,
+                    video: <EditorInspectorVideo value={wedding} update={update}/>,
+                    rsvp: <EditorInspectorRsvp value={wedding} update={update}/>,
+                    phone: <EditorInspectorPhone value={wedding} update={update}/>,
+                    guestComment: <EditorInspectorGuestComment value={wedding} update={update}/>,
                     fontAndStyle: <EditorInspectorFontAndStyle/>,
                     urlShare: <EditorInspectorUrlShare/>,
                     kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter/>,

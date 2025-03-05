@@ -8,11 +8,12 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import GuestComment from "@remote/value/GuestComment";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<GuestComment> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorGuestComment = ({value, onChange}: Props) => {
+const EditorInspectorGuestComment = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'방명록'}>
             <Divider/>

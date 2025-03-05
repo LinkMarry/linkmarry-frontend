@@ -17,7 +17,8 @@
     "react-helmet-async": "^2.0.5",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^7.0.2",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "use-immer": "^0.11.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",

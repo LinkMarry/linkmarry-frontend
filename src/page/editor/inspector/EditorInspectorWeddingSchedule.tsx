@@ -8,11 +8,12 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<WeddingSchedule> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorWeddingSchedule = ({value, onChange}: Props) => {
+const EditorInspectorWeddingSchedule = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'예식 일시'}>
             <Divider/>

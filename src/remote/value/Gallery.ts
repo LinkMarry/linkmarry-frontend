@@ -5,11 +5,13 @@ export default interface Gallery {
     galleryDesign: GalleryDesign;
     galleryZoom: boolean;
     galleryFullScreen: boolean;
+    imgList: string[];
 }
 
 export const defaultGallery: Gallery = {
     galleryTitle: '',
     galleryDesign: GalleryDesign.SLIDE,
     galleryZoom: false,
-    galleryFullScreen: false
+    galleryFullScreen: false,
+    imgList: []
 };

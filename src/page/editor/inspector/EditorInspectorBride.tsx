@@ -10,11 +10,12 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import BaseInfo from "@remote/value/BaseInfo";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<BaseInfo> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorBride = ({value, onChange}: Props) => {
+const EditorInspectorBride = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'신부측 정보'}>
             <Divider/>

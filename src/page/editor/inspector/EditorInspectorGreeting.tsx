@@ -10,11 +10,12 @@ import SegmentedButton from "@designsystem/component/SegmentedButton";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import Greeting from "@remote/value/Greeting";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<Greeting> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorGreeting = ({value, onChange}: Props) => {
+const EditorInspectorGreeting = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'인사말'}>
             <Divider/>

@@ -7,10 +7,11 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import Video from "@remote/value/Video";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<Video> {}
+interface Props extends Binding<WeddingDto> {}
 
-const EditorInspectorVideo = ({value, onChange}: Props) => {
+const EditorInspectorVideo = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'동영상'} toggle={{
             checked: false,

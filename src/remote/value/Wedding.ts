@@ -2,7 +2,7 @@ import BaseInfo, {dummyBaseInfo} from "@remote/value/BaseInfo";
 import WeddingSchedule, {dummyWeddingSchedule} from "@remote/value/WeddingSchedule";
 import WeddingPlace, {dummyWeddingPlace} from "@remote/value/WeddingPlace";
 import Greeting, {dummyGreeting} from "@remote/value/Greeting";
-import BaseMusic, {dummyBaseMusic} from "@remote/value/BaseMusic";
+import BackgroundMusic, {dummyBaseMusic} from "@remote/value/BackgroundMusic";
 import LinkShare, {dummyLinkShare} from "@remote/value/LinkShare";
 import MoneyInfo, {dummyMoneyInfo} from "@remote/value/MoneyInfo";
 import Video, {dummyVideo} from "@remote/value/Video";
@@ -42,7 +42,7 @@ export default interface Wedding {
     guestCommentList: Comment[];
 
     // 배경음악
-    baseMusic: BaseMusic;
+    baseMusic: BackgroundMusic;
 
     // 링크 공유
     linkShare: LinkShare;

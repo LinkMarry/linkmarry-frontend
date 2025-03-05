@@ -2,7 +2,7 @@ import BaseInfo, {defaultBaseInfo} from "@remote/value/BaseInfo";
 import WeddingSchedule, {defaultWeddingSchedule} from "@remote/value/WeddingSchedule";
 import WeddingPlace, {defaultWeddingPlace} from "@remote/value/WeddingPlace";
 import Greeting, {defaultGreeting} from "@remote/value/Greeting";
-import BaseMusic, {defaultBaseMusic} from "@remote/value/BaseMusic";
+import BackgroundMusic, {defaultBaseMusic} from "@remote/value/BackgroundMusic";
 import LinkShare, {defaultLinkShare} from "@remote/value/LinkShare";
 import MoneyInfo, {defaultMoneyInfo} from "@remote/value/MoneyInfo";
 import Video, {defaultVideo} from "@remote/value/Video";
@@ -39,7 +39,7 @@ export default interface WeddingDto {
     guestComment: GuestComment;
 
     // 배경음악
-    baseMusic: BaseMusic;
+    baseMusic: BackgroundMusic;
 
     // 링크 공유
     linkShare: LinkShare;
@@ -58,7 +58,6 @@ export default interface WeddingDto {
 
      // 갤러리
     gallery: Gallery;
-    imgList: string[];
 }
 
 
@@ -78,7 +77,6 @@ export function makeDefaultWedding(url: string): WeddingDto {
         video: defaultVideo,
         phone: defaultPhone,
         rsvp: defaultRsvp,
-        imgList: [],
         gallery: defaultGallery
     };
 }

@@ -17,7 +17,7 @@ class WeddingDesignApi {
         return data;
     }
 
-    async getWeddingDesign(): Promise<ResponseData<WeddingDesignPreset[]>> {
+    async getWeddingDesignPresets(): Promise<ResponseData<WeddingDesignPreset[]>> {
         const {data} = await api.get(`${WeddingDesignApi.PATH}`);
         return data;
     }

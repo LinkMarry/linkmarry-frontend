@@ -9,12 +9,13 @@ import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import CustomStyle from "@designsystem/core/CustomStyle";
 import Binding from "@src/interface/Binding";
-import BaseMusic from "@remote/value/BaseMusic";
+import BackgroundMusic from "@remote/value/BackgroundMusic";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<BaseMusic> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorBackgroundMusic = ({value, onChange}: Props) => {
+const EditorInspectorBackgroundMusic = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'배경 음악'} toggle={{
             checked: false,

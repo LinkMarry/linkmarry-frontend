@@ -84,7 +84,11 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                         }}>
                             <Text type={'p3'} customStyle={css`
                                 flex: 1;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
                                 color: var(--g-800);
+                                min-width: 0;
+                                overflow: hidden;
                             `}>{item}</Text>
                             {selected === index && (
                                 <Icon iconType={IconType.CheckLine} width={20} height={20} customStyle={css`

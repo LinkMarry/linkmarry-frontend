@@ -7,11 +7,12 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import Phone from "@remote/value/Phone";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<Phone> {
+interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorPhone = ({value, onChange}: Props) => {
+const EditorInspectorPhone = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'연락처'}>
             <Divider/>

@@ -12,10 +12,11 @@ import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrappe
 import Divider from "@designsystem/component/Divider";
 import Binding from "@src/interface/Binding";
 import Rsvp from "@remote/value/Rsvp";
+import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<Rsvp> {}
+interface Props extends Binding<WeddingDto> {}
 
-const EditorInspectorRsvp = ({value, onChange}: Props) => {
+const EditorInspectorRsvp = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper title={'참석의사 RSVP'} toggle={{
             checked: false,
