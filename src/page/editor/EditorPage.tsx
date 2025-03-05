@@ -35,6 +35,7 @@ const EditorPage = () => {
                 <EditorNavigationBar
                     currentNavType={currentNavType}
                     onChangeNavType={type => setCurrentNavType(type)}
+                    openInspector={openInspector}
                     onToggleInspector={() => {
                         setOpenInspector(i => !i);
                     }}

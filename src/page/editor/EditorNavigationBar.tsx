@@ -39,6 +39,7 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
 interface EditorNavigationBarImplProps {
     currentNavType: EditorNavType;
     onChangeNavType: (type: EditorNavType) => void;
+    openInspector: boolean;
     onToggleInspector: () => void;
 }
 
@@ -71,11 +72,14 @@ const SmallEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorN
 }
 
 
-const DesktopEditorNavigationBarImpl = ({
-                                            currentNavType,
-                                            onChangeNavType,
-                                            onToggleInspector
-                                        }: EditorNavigationBarImplProps) => {
+const DesktopEditorNavigationBarImpl = (
+    {
+        currentNavType,
+        onChangeNavType,
+        openInspector,
+        onToggleInspector
+    }: EditorNavigationBarImplProps
+) => {
     return (
         <Column $customStyle={css`
             border-right: 1px solid var(--g-100);
@@ -95,6 +99,10 @@ const DesktopEditorNavigationBarImpl = ({
             <Column $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
                 width: 72px;
                 height: 72px;
+                rotate: 180deg;
+                ${openInspector && css`
+                    rotate: none;
+                `};
             `} onClick={() => {
                 onToggleInspector();
             }}>
