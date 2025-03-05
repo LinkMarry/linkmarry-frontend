@@ -9,7 +9,6 @@ import Checkbox from "@designsystem/component/Checkbox";
 import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import BaseInfo from "@remote/value/BaseInfo";
 import WeddingDto from "@remote/value/WeddingDto";
 
 interface Props extends Binding<WeddingDto> {
@@ -23,7 +22,9 @@ const EditorInspectorBride = ({value, update}: Props) => {
                 <Text type={'p3'} bold={true}>신부 성함</Text>
                 <Column $alignItems={'stretch'} gap={8}>
                     <Row gap={8}>
-                        <Input placeholder={'성'}/>
+                        <Input placeholder={'성'} value={value.baseInfo.brideName} onChange={event => {
+
+                        }}/>
                         <Input placeholder={'이름'}/>
                         <Input placeholder={'관계'}/>
                     </Row>

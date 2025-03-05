@@ -11,25 +11,34 @@ import CustomStyle from "@designsystem/core/CustomStyle";
 import Binding from "@src/interface/Binding";
 import BackgroundMusic from "@remote/value/BackgroundMusic";
 import WeddingDto from "@remote/value/WeddingDto";
+import Music from "@remote/value/Music";
 
 interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorBackgroundMusic = ({value, update}: Props) => {
+export interface BackgroundMusicProps {
+    backgroundMusics?: Music[];
+}
+
+const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props & BackgroundMusicProps) => {
     return (
         <EditorInspectorWrapper title={'배경 음악'} toggle={{
-            checked: false,
-            OnChange: () => {
+            checked: value.backgroundMusic.effect,
+            OnChange: checked => {
+                update(draft => {
+                    draft.backgroundMusic.effect = checked;
+                })
             }
         }}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={8}>
-                <Item isPlaying={true}/>
-                <Item isPlaying={false}/>
-                <Item isPlaying={false}/>
+                {backgroundMusics ? backgroundMusics.map((music, index) => (
+                    <Item key={index} music={music} isPlaying={false}/>
+                )) : null}
+                {/*tood shimmer*/}
             </Column>
             <Button text={'직접 등록'} leadingIcon={IconType.AddLine} buttonType={'outlined'}/>
-            <FormToggle checked={false} OnChange={checked => {
+            <FormToggle checked={value.backgroundMusic.effect} OnChange={checked => {
             }} label={'자동 재생'}/>
             <Divider/>
             <Text type={'p3'} customStyle={css`
@@ -40,10 +49,11 @@ const EditorInspectorBackgroundMusic = ({value, update}: Props) => {
 };
 
 interface ItemProps {
+    music: Music;
     isPlaying: boolean;
 }
 
-const Item = ({isPlaying}: ItemProps) => {
+const Item = ({music, isPlaying}: ItemProps) => {
     const [isHovering, setIsHovering] = useState(false);
 
     return (
@@ -84,8 +94,13 @@ const Item = ({isPlaying}: ItemProps) => {
                     `}/>
                 )}
             </CustomStyle>
-            <Column gap={4}>
-                <Text type={'p3'}>title</Text>
+            <Column gap={4} $customStyle={css`
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            `}>
+                <Text type={'p3'}>{music.name}</Text>
                 <Text type={'caption1'} customStyle={css`
                     color: var(--g-400);
                 `}>tags</Text>

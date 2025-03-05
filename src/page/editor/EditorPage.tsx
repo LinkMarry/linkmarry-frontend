@@ -12,6 +12,7 @@ import WeddingDto, {makeDefaultWedding} from "@remote/value/WeddingDto";
 import {useImmer} from "use-immer";
 import WeddingDesign from "@remote/value/WeddingDesign";
 import useWeddingDesigns from "@hook/useWeddingDesigns";
+import useBackgroundMusics from "@hook/useBackgroundMusics";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
@@ -19,6 +20,7 @@ const EditorPage = () => {
     const [openInspector, setOpenInspector] = useState(true);
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding(''));
     const {weddingDesigns} = useWeddingDesigns();
+    const {musics} = useBackgroundMusics();
 
     return (
         <Column $alignItems={'stretch'} $customStyle={css`
@@ -52,6 +54,7 @@ const EditorPage = () => {
                             update={updateWedding}
                             currentNavType={currentNavType}
                             weddingDesigns={weddingDesigns}
+                            backgroundMusics={musics}
                         />
                     )}
                     {deviceSize === 'desktop' && (

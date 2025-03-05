@@ -11,6 +11,7 @@ import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrappe
 import Binding from "@src/interface/Binding";
 import Greeting from "@remote/value/Greeting";
 import WeddingDto from "@remote/value/WeddingDto";
+import greetingDesign, {greetingDesignList, greetingDesignMap} from "@remote/enumeration/GreetingDesign";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -21,11 +22,15 @@ const EditorInspectorGreeting = ({value, update}: Props) => {
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
-                <Input hasLabel={false}/>
+                <Input hasLabel={false} value={value.greeting.greetingTitle} onChange={event => update(draft => {
+                    draft.greeting.greetingTitle = event.target.value;
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
-                <Textarea hasLabel={false} customStyle={css`
+                <Textarea hasLabel={false} value={value.greeting.greetingContent} onChange={event => update(draft => {
+                    draft.greeting.greetingContent = event.target.value;
+                })} customStyle={css`
                     height: 194px;
                 `}/>
             </Column>
@@ -36,8 +41,15 @@ const EditorInspectorGreeting = ({value, update}: Props) => {
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
-                <SegmentedButton items={['기본', '초대 글자', '꽃 아이콘']} selectedTab={0} onChange={tab => {
-                }}/>
+                <SegmentedButton
+                    items={greetingDesignList.map(i => greetingDesignMap[i].korean)}
+                    selectedTab={greetingDesignList.indexOf(value.greeting.greetingDesign)}
+                    onChange={tab => {
+                        update(draft => {
+                            draft.greeting.greetingDesign = greetingDesignList[tab];
+                        })
+                    }}
+                />
             </Column>
         </EditorInspectorWrapper>
     );

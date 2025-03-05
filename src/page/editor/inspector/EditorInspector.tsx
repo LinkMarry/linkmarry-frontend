@@ -4,7 +4,9 @@ import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import EditorInspectorDesign, {WeddingDesignProps} from "@page/editor/inspector/EditorInspectorDesign";
 import EditorInspectorBride from "@page/editor/inspector/EditorInspectorBride";
-import EditorInspectorBackgroundMusic from "@page/editor/inspector/EditorInspectorBackgroundMusic";
+import EditorInspectorBackgroundMusic, {
+    BackgroundMusicProps
+} from "@page/editor/inspector/EditorInspectorBackgroundMusic";
 import EditorInspectorChangeOrder from "@page/editor/inspector/EditorInspectorChangeOrder";
 import EditorInspectorFontAndStyle from "@page/editor/inspector/EditorInspectorFontAndStyle";
 import EditorInspectorGallery from "@page/editor/inspector/EditorInspectorGallery";
@@ -24,11 +26,11 @@ import useResponsive from "@hook/useResponsive";
 import WeddingDto from "@remote/value/WeddingDto";
 import Binding from "@src/interface/Binding";
 
-interface Props extends Binding<WeddingDto>, WeddingDesignProps {
+interface Props extends Binding<WeddingDto>, WeddingDesignProps, BackgroundMusicProps {
     currentNavType: EditorNavType;
 }
 
-const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns}: Props) => {
+const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns, backgroundMusics}: Props) => {
     const {deviceSize} = useResponsive();
 
     return (
@@ -54,7 +56,11 @@ const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns
                     weddingSchedule: <EditorInspectorWeddingSchedule value={wedding} update={update}/>,
                     weddingPlace: <EditorInspectorWeddingPlace value={wedding} update={update}/>,
                     gallery: <EditorInspectorGallery value={wedding} update={update}/>,
-                    backgroundMusic: <EditorInspectorBackgroundMusic value={wedding} update={update}/>,
+                    backgroundMusic: <EditorInspectorBackgroundMusic
+                        value={wedding}
+                        update={update}
+                        backgroundMusics={backgroundMusics}
+                    />,
                     money: <EditorInspectorMoney value={wedding} update={update}/>,
                     video: <EditorInspectorVideo value={wedding} update={update}/>,
                     rsvp: <EditorInspectorRsvp value={wedding} update={update}/>,
