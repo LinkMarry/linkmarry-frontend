@@ -29,13 +29,13 @@ function Divider(
         switch (direction) {
             case 'vertical':
                 return css`
-                    width: ${dividerSizeMap[size]}px;
-                    height: 100%;
+                    min-width: ${dividerSizeMap[size]}px;
+                    min-height: 100%;
                 `;
             case 'horizontal':
                 return css`
-                    width: 100%;
-                    height: ${dividerSizeMap[size]}px;
+                    min-width: 100%;
+                    min-height: ${dividerSizeMap[size]}px;
                 `;
         }
     })();

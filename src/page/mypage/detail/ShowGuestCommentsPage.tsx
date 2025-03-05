@@ -58,7 +58,7 @@ const Stats = () => {
 
 const DesktopStats = () => {
     return (
-        <Row gap={24}>
+        <Row gap={24} $alignItems={'stretch'}>
             <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
             <Divider direction={'vertical'}/>
             <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
