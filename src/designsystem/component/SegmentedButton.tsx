@@ -30,8 +30,7 @@ const SegmentedButton = ({items, selectedTab, onChange, customStyle}: {
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
             `}/>
             {items.map((item, index) => (
-                <Item selected={index === selectedTab} text={item} onClick={() => {
-                    console.log(`index ${index}`);
+                <Item key={index} selected={index === selectedTab} text={item} onClick={() => {
                     onChange(index);
                 }}/>
             ))}

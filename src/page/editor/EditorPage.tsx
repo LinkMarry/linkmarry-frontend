@@ -12,7 +12,7 @@ import {hideScrollBar} from "@util/css.util";
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
-    const [openInspector, setOpenInspector] = useState(false);
+    const [openInspector, setOpenInspector] = useState(true);
 
     return (
         <Column $alignItems={'stretch'} $customStyle={css`

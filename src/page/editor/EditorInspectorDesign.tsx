@@ -11,7 +11,7 @@ import CustomStyle from "@designsystem/core/CustomStyle";
 import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
 
 const EditorInspectorDesign = () => {
-    const [selectedOpenningAnimationTab, setSelectedOpenningAnimationTab] = useState(0);
+    const [selectedOpeningAnimationTab, setSelectedOpeningAnimationTab] = useState(0);
 
     return (
         <EditorInspectorWrapper title={'디자인'}>
@@ -26,7 +26,7 @@ const EditorInspectorDesign = () => {
                     grid-column-gap: 12px;
                 `}>
                     {Array.from({length: 5}).map((_, index) => (
-                        <Item text={`item ${index}`} selected={index === 3}/>
+                        <Item key={index} text={`item ${index}`} selected={index === 3}/>
                     ))}
                 </CustomStyle>
             </Column>
@@ -46,8 +46,8 @@ const EditorInspectorDesign = () => {
                             '레터링',
                             '타이핑'
                         ]}
-                        selectedTab={selectedOpenningAnimationTab}
-                        onChange={tab => setSelectedOpenningAnimationTab(tab)}
+                        selectedTab={selectedOpeningAnimationTab}
+                        onChange={tab => setSelectedOpeningAnimationTab(tab)}
                     />
                 </Column>
                 <Column $alignItems={'stretch'} gap={12}>

@@ -14,8 +14,6 @@ const useAxios = () => {
 
         if (config.headers.isRefreshing) return config;
 
-        console.log(`requestHandler - ${jwt.accessToken}`);
-
         config.headers.Authorization = jwt.accessToken;
 
         return config;
