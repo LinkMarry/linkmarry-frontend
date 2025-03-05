@@ -1,4 +1,4 @@
-import GalleryDesign from "@remote/enumeration/ImgDesign";
+import GalleryDesign from "@remote/enumeration/GalleryDesign";
 
 export default interface Gallery {
     galleryTitle: string;

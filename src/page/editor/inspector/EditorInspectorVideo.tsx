@@ -6,12 +6,17 @@ import Input from "@designsystem/component/Input";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import Video from "@remote/value/Video";
 import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<WeddingDto> {}
+interface Props extends Binding<WeddingDto> {
+}
 
-const EditorInspectorVideo = ({value, update}: Props) => {
+const EditorInspectorVideo = (
+    {
+        value: {video},
+        update
+    }: Props
+) => {
     return (
         <EditorInspectorWrapper title={'동영상'} toggle={{
             checked: false,
@@ -21,11 +26,15 @@ const EditorInspectorVideo = ({value, update}: Props) => {
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
-                <Input hasLabel={false}/>
+                <Input hasLabel={false} value={video.videoTitle} onChange={event => update(draft => {
+                    draft.video.videoTitle = event.target.value;
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>URL로 첨부</Text>
-                <Input hasLabel={false}/>
+                <Input hasLabel={false} value={video.videoUrl} onChange={event => update(draft => {
+                    draft.video.videoUrl = event.target.value;
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>파일로 첨부</Text>

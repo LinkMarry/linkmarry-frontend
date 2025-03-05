@@ -10,7 +10,7 @@ import Phone, {defaultPhone} from "@remote/value/Phone";
 import Rsvp, {defaultRsvp} from "@remote/value/Rsvp";
 import GuestComment, {defaultGuestComment} from "@remote/value/GuestComment";
 import WeddingDesign, {defaultWeddingDesign} from "@remote/value/WeddingDesign";
-import ImgDesign from "@remote/enumeration/ImgDesign";
+import GalleryDesign from "@remote/enumeration/GalleryDesign";
 import Gallery, {defaultGallery} from "@remote/value/Gallery";
 
 export default interface WeddingDto {

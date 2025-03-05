@@ -35,6 +35,7 @@ const EditorInspectorGreeting = ({value, update}: Props) => {
                 `}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
+                {/*todo*/}
                 <Text type={'p3'} bold={true}>샘플 양식</Text>
                 <Select items={[]} OnChange={index => {
                 }}/>

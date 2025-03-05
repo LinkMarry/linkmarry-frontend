@@ -11,7 +11,7 @@ import Rsvp, {dummyRsvp} from "@remote/value/Rsvp";
 import GuestComment, {dummyGuestComment} from "@remote/value/GuestComment";
 import WeddingDesign, {dummyWeddingDesign} from "@remote/value/WeddingDesign";
 import Comment, {dummyComments} from "@remote/value/Comment";
-import ImgDesign from "@remote/enumeration/ImgDesign";
+import GalleryDesign from "@remote/enumeration/GalleryDesign";
 
 export default interface Wedding {
     // URL 값
@@ -63,7 +63,7 @@ export default interface Wedding {
     imgList: string[];
 
     // 갤러리 디자인
-    imgDesign: ImgDesign;
+    imgDesign: GalleryDesign;
 
     // 워터마크 제거 여부
     waterMark: boolean;
@@ -109,6 +109,6 @@ export const dummyWedding: Wedding = {
         "https://linkmarry.s3.ap-northeast-2.amazonaws.com/da9ea1f5-bb5d-4e85-bed8-63c355ab3e3f-GettyImages-jv12586711%20%281%29.jpg.jpg",
         "https://linkmarry.s3.ap-northeast-2.amazonaws.com/dc68fab8-0042-4b3f-9a2c-892cd722fd03-GettyImages-jv12586711.jpg.jpg"
     ],
-    imgDesign: ImgDesign.SLIDE,
+    imgDesign: GalleryDesign.SLIDE,
     waterMark: true
 }

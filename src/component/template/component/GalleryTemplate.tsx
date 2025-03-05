@@ -1,6 +1,6 @@
 import React, {RefObject, useEffect, useRef, useState} from 'react';
 import Text from "@designsystem/component/Text";
-import ImgDesign from "@remote/enumeration/ImgDesign";
+import GalleryDesign from "@remote/enumeration/GalleryDesign";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@util/css.util";
 import {Column, Row} from "@designsystem/core/FlexLayout";
@@ -12,7 +12,7 @@ export type GallerySlideStyle = 'style1' | 'style2';
 
 interface GalleryTemplateProps {
     rootRef: RefObject<HTMLDivElement>;
-    imgDesign: ImgDesign;
+    galleryDesign: GalleryDesign;
     imgList: string[];
     slideStyle?: GallerySlideStyle;
 }
@@ -20,7 +20,7 @@ interface GalleryTemplateProps {
 function GalleryTemplate(
     {
         rootRef,
-        imgDesign,
+        galleryDesign,
         imgList,
         slideStyle = 'style1'
     }: GalleryTemplateProps
@@ -35,7 +35,7 @@ function GalleryTemplate(
                     color: var(--g-600);
                 `}>GALLERY</Text>
             </FadeIn>
-                {imgDesign === ImgDesign.SLIDE ? (
+                {galleryDesign === GalleryDesign.SLIDE ? (
                     <GallerySlide
                         rootRef={rootRef}
                         imgList={imgList}

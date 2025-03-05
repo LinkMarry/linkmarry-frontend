@@ -10,17 +10,31 @@ import Binding from "@src/interface/Binding";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import WeddingDto from "@remote/value/WeddingDto";
 
-interface Props extends Binding<WeddingDto> {}
+interface Props extends Binding<WeddingDto> {
+}
 
-const EditorInspectorWeddingPlace = ({value, update}: Props) => {
+const EditorInspectorWeddingPlace = (
+    {
+        value: {weddingPlace},
+        update
+    }: Props
+) => {
     return (
         <EditorInspectorWrapper title={'예식 장소'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
-                <Input placeholder={'예식장명'}/>
-                <Input placeholder={'주소'}/>
-                <Input placeholder={'층/홀'}/>
-                <Input placeholder={'연락처'}/>
+                <Input placeholder={'예식장명'} value={weddingPlace.placeName} onChange={event => update(draft => {
+                    draft.weddingPlace.placeName = event.target.value;
+                })}/>
+                <Input placeholder={'주소'} value={weddingPlace.addressName} onChange={event => update(draft => {
+                    draft.weddingPlace.addressName = event.target.value;
+                })}/>
+                <Input placeholder={'층/홀'} value={weddingPlace.floorHall} onChange={event => update(draft => {
+                    draft.weddingPlace.floorHall = event.target.value;
+                })}/>
+                <Input placeholder={'연락처'} value={weddingPlace.placeTel} onChange={event => update(draft => {
+                    draft.weddingPlace.placeTel = event.target.value;
+                })}/>
             </Column>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
@@ -31,12 +45,15 @@ const EditorInspectorWeddingPlace = ({value, update}: Props) => {
             </Column>
             <Divider/>
             <FormToggleSet>
-                <FormToggle checked={false} OnChange={checked => {
-                }} label={'지도 표시'}/>
-                <FormToggle checked={false} OnChange={checked => {
-                }} label={'지도 잠금'}/>
-                <FormToggle checked={false} OnChange={checked => {
-                }} label={'네비게이션'}/>
+                <FormToggle checked={weddingPlace.placeStatus} OnChange={checked => update(draft => {
+                    draft.weddingPlace.placeStatus = checked;
+                })} label={'지도 표시'}/>
+                <FormToggle checked={weddingPlace.placeLock} OnChange={checked => update(draft => {
+                    draft.weddingPlace.placeLock = checked;
+                })} label={'지도 잠금'}/>
+                <FormToggle checked={weddingPlace.placeNav} OnChange={checked => update(draft => {
+                    draft.weddingPlace.placeNav = checked;
+                })} label={'네비게이션'}/>
             </FormToggleSet>
         </EditorInspectorWrapper>
     );

@@ -5,7 +5,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import Design from "@remote/enumeration/Design";
+import GuestCommentDesign from "@remote/enumeration/GuestCommentDesign";
 import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";
 import Button from "@designsystem/component/Button";
@@ -136,7 +136,7 @@ function GuestCommentsTemplate(
 
 interface GuestCommentsProps {
     comments: Comment[];
-    design: Design;
+    design: GuestCommentDesign;
     privateDate: boolean;
     background: CSSProperties['background'];
     onRemove: (comment: Comment) => void;
@@ -152,7 +152,7 @@ function GuestComments(
     }: GuestCommentsProps
 ) {
     switch (design) {
-        case Design.BASIC:
+        case GuestCommentDesign.BASIC:
             return (
                 <Column gap={12} $alignItems={'stretch'}>
                     {trimArray(comments, 3).map((comment, index) => (
@@ -166,7 +166,7 @@ function GuestComments(
                     ))}
                 </Column>
             );
-        case Design.STICKER:
+        case GuestCommentDesign.STICKER:
             return (
                 <Row gap={20} $alignItems={'stretch'}>
                     {trimArray(comments, 2).map((comment, index) => (

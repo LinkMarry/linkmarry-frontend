@@ -9,19 +9,26 @@ import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import Gallery from "@remote/value/Gallery";
 import WeddingDto from "@remote/value/WeddingDto";
+import {galleryDesignList, galleryDesignMap} from "@remote/enumeration/GalleryDesign";
 
 interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorGallery = ({value, update}: Props) => {
+const EditorInspectorGallery = (
+    {
+        value: {gallery},
+        update
+    }: Props
+) => {
     return (
         <EditorInspectorWrapper title={'갤러리'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
-                <Input hasLabel={false}/>
+                <Input hasLabel={false} value={gallery.galleryTitle} onChange={event => update(draft => {
+                    draft.gallery.galleryTitle = event.target.value;
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
@@ -29,16 +36,23 @@ const EditorInspectorGallery = ({value, update}: Props) => {
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
-                <SegmentedButton items={['슬라이드', '하이라이트', '그리드']} selectedTab={0} onChange={tab => {
-                }}/>
+                <SegmentedButton
+                    items={galleryDesignList.map(i => galleryDesignMap[i].korean)}
+                    selectedTab={galleryDesignList.indexOf(gallery.galleryDesign)}
+                    onChange={tab => update(draft => {
+                        draft.gallery.galleryDesign = galleryDesignList[tab];
+                    })}
+                />
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>설정</Text>
                 <FormToggleSet>
-                    <FormToggle checked={false} OnChange={checked => {
-                    }} label={'사진 확대 방지'}/>
-                    <FormToggle checked={false} OnChange={checked => {
-                    }} label={'이미지 클릭 시 전체 화면'}/>
+                    <FormToggle checked={gallery.galleryZoom} OnChange={checked => update(draft => {
+                        draft.gallery.galleryZoom = checked;
+                    })} label={'사진 확대 방지'}/>
+                    <FormToggle checked={gallery.galleryFullScreen} OnChange={checked => update(draft => {
+                        draft.gallery.galleryFullScreen = checked;
+                    })} label={'이미지 클릭 시 전체 화면'}/>
                 </FormToggleSet>
             </Column>
         </EditorInspectorWrapper>

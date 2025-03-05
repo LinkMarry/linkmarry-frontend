@@ -9,29 +9,37 @@ import FormToggle from "@designsystem/component/FormToggle";
 import Checkbox from "@designsystem/component/Checkbox";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import MoneyInfo from "@remote/value/MoneyInfo";
 import WeddingDto from "@remote/value/WeddingDto";
 
 interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorMoney = ({value, update}: Props) => {
+const EditorInspectorMoney = (
+    {
+        value: {moneyInfo},
+        update
+    }: Props
+) => {
     return (
         <EditorInspectorWrapper title={'축의금'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'} bold={true}>대표 사진</Text>
-                <Input hasLabel={false}/>
+                <Text type={'p3'} bold={true}>제목</Text>
+                <Input hasLabel={false} value={moneyInfo.infoTitle} onChange={event => update(draft => {
+                    draft.moneyInfo.infoTitle = event.target.value;
+                })}/>
             </Column>
-
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'} bold={true}>대표 사진</Text>
-                <Textarea hasLabel={false} customStyle={css`
+                <Text type={'p3'} bold={true}>설명</Text>
+                <Textarea hasLabel={false} value={moneyInfo.infoContent} onChange={event => update(draft => {
+                    draft.moneyInfo.infoContent = event.target.value;
+                })} customStyle={css`
                     height: 194px;
                 `}/>
             </Column>
-            <FormToggle checked={false} OnChange={checked => {
-            }} label={'카카오페이 계좌 연동'}/>
+            <FormToggle checked={moneyInfo.kakaoStatus} OnChange={checked => update(draft => {
+                draft.moneyInfo.kakaoStatus = checked;
+            })} label={'카카오페이 계좌 연동'}/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Checkbox checked={false} OnChange={checked => {
                 }} label={'신랑'}/>

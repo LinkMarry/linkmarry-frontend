@@ -27,7 +27,7 @@ const Textarea = ({placeholder, hasLabel = true, customStyle, ...props}: Props) 
                     outline: 1px solid var(--g-300);
                     border-radius: 8px;
                     padding: 12px 16px;
-                    resize: vertical;
+                    resize: none;
                     color: var(--g-800);
                     ${makeText('p2')};
 
