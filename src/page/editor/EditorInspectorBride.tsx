@@ -20,28 +20,12 @@ const EditorInspectorBride = () => {
                     <Row gap={8}>
                         <Input placeholder={'성'}/>
                         <Input placeholder={'이름'}/>
-                        <Input placeholder={'영문 이름'}/>
+                        <Input placeholder={'관계'}/>
                     </Row>
                     <Row gap={8}>
-                        <Select
-                            items={[
-                                '아들',
-                                '장남',
-                                '차남',
-                                '막내',
-                                '조카',
-                                '손자',
-                                '형제',
-                                '남매'
-                            ]}
-                            selected={0}
-                            OnChange={index => {
-
-                            }}
-                            customStyle={css`
-                                flex: 1;
-                            `}
-                        />
+                        <Input placeholder={'영문 이름'} customStyle={css`
+                            flex: 1;
+                        `}/>
                         <Spacer/>
                         <Spacer/>
                     </Row>
@@ -56,10 +40,17 @@ const EditorInspectorBride = () => {
                     <Input placeholder={'이름'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Input placeholder={'관계'} customStyle={css`
+                        flex: 1;
+                    `}/>
+                </Row>
+                <Row gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
                     }} label={'故'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Spacer/>
+                    <Spacer/>
                 </Row>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
@@ -71,10 +62,17 @@ const EditorInspectorBride = () => {
                     <Input placeholder={'이름'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Input placeholder={'관계'} customStyle={css`
+                        flex: 1;
+                    `}/>
+                </Row>
+                <Row gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
                     }} label={'故'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Spacer/>
+                    <Spacer/>
                 </Row>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>

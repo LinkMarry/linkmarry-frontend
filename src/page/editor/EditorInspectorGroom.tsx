@@ -20,18 +20,12 @@ const EditorInspectorGroom = () => {
                     <Row gap={8}>
                         <Input placeholder={'성'}/>
                         <Input placeholder={'이름'}/>
-                        <Input placeholder={'영문 이름'}/>
+                        <Input placeholder={'관계'}/>
                     </Row>
                     <Row gap={8}>
-                        <Select
-                            items={[]}
-                            OnChange={index => {
-
-                            }}
-                            customStyle={css`
-                                flex: 1;
-                            `}
-                        />
+                        <Input placeholder={'영문 이름'} customStyle={css`
+                            flex: 1;
+                        `}/>
                         <Spacer/>
                         <Spacer/>
                     </Row>
@@ -46,10 +40,17 @@ const EditorInspectorGroom = () => {
                     <Input placeholder={'이름'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Input placeholder={'관계'} customStyle={css`
+                        flex: 1;
+                    `}/>
+                </Row>
+                <Row gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
                     }} label={'故'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Spacer/>
+                    <Spacer/>
                 </Row>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
@@ -61,10 +62,17 @@ const EditorInspectorGroom = () => {
                     <Input placeholder={'이름'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Input placeholder={'관계'} customStyle={css`
+                        flex: 1;
+                    `}/>
+                </Row>
+                <Row gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
                     }} label={'故'} customStyle={css`
                         flex: 1;
                     `}/>
+                    <Spacer/>
+                    <Spacer/>
                 </Row>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
