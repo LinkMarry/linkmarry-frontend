@@ -1,7 +1,7 @@
 import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 
 const EditorInspectorFontAndStyle = () => {
     return (

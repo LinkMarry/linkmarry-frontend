@@ -8,10 +8,14 @@ import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";
 import FormToggle from "@designsystem/component/FormToggle";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Divider from "@designsystem/component/Divider";
+import Binding from "@src/interface/Binding";
+import Rsvp from "@remote/value/Rsvp";
 
-const EditorInspectorRsvp = () => {
+interface Props extends Binding<Rsvp> {}
+
+const EditorInspectorRsvp = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'참석의사 RSVP'} toggle={{
             checked: false,

@@ -4,9 +4,13 @@ import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import Video from "@remote/value/Video";
 
-const EditorInspectorVideo = () => {
+interface Props extends Binding<Video> {}
+
+const EditorInspectorVideo = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'동영상'} toggle={{
             checked: false,

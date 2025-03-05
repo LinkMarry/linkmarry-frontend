@@ -1,7 +1,8 @@
 import CreateWeddingDesignRequest from "@remote/value/request/admin/CreateWeddingDesignRequest";
-import {ResponseVoid} from "@remote/value/Response";
+import {ResponseData, ResponseVoid} from "@remote/value/Response";
 import api from "@remote/api/foundation/api";
 import PatchWeddingDesignRequest from "@remote/value/request/admin/PatchWeddingDesignRequest";
+import WeddingDesignPreset from "@remote/value/WeddingDesignPreset";
 
 class WeddingDesignApi {
     static PATH = 'weddingdesign';
@@ -16,8 +17,8 @@ class WeddingDesignApi {
         return data;
     }
 
-    async getWeddingDesign(category: string): Promise<ResponseVoid> {
-        const {data} = await api.get(`${WeddingDesignApi.PATH}/${category}`);
+    async getWeddingDesign(): Promise<ResponseData<WeddingDesignPreset[]>> {
+        const {data} = await api.get(`${WeddingDesignApi.PATH}`);
         return data;
     }
 

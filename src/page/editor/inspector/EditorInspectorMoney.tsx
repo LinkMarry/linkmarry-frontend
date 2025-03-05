@@ -7,9 +7,14 @@ import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";
 import FormToggle from "@designsystem/component/FormToggle";
 import Checkbox from "@designsystem/component/Checkbox";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import MoneyInfo from "@remote/value/MoneyInfo";
 
-const EditorInspectorMoney = () => {
+interface Props extends Binding<MoneyInfo> {
+}
+
+const EditorInspectorMoney = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'축의금'}>
             <Divider/>

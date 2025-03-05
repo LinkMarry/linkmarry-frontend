@@ -7,9 +7,14 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import Gallery from "@remote/value/Gallery";
 
-const EditorInspectorGallery = () => {
+interface Props extends Binding<Gallery> {
+}
+
+const EditorInspectorGallery = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'갤러리'}>
             <Divider/>

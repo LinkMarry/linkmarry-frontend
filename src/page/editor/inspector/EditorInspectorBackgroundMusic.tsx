@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Spacer from "@designsystem/component/Spacer";
-import Toggle from "@designsystem/component/Toggle";
 import Divider from "@designsystem/component/Divider";
 import FormToggle from "@designsystem/component/FormToggle";
 import {css} from "styled-components";
 import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import CustomStyle from "@designsystem/core/CustomStyle";
+import Binding from "@src/interface/Binding";
+import BaseMusic from "@remote/value/BaseMusic";
 
-const EditorInspectorBackgroundMusic = () => {
+interface Props extends Binding<BaseMusic> {
+}
+
+const EditorInspectorBackgroundMusic = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'배경 음악'} toggle={{
             checked: false,
@@ -60,7 +63,7 @@ const Item = ({isPlaying}: ItemProps) => {
                 overflow: hidden;
                 cursor: pointer;
             `} onClick={() => {
-                
+
             }}>
                 <CustomStyle as={'img'} $customStyle={css`
                     width: 100%;

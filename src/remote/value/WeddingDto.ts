@@ -1,16 +1,17 @@
-import BaseInfo from "@remote/value/BaseInfo";
-import WeddingSchedule from "@remote/value/WeddingSchedule";
-import WeddingPlace from "@remote/value/WeddingPlace";
-import Greeting from "@remote/value/Greeting";
-import BaseMusic from "@remote/value/BaseMusic";
-import LinkShare from "@remote/value/LinkShare";
-import MoneyInfo from "@remote/value/MoneyInfo";
-import Video from "@remote/value/Video";
-import Phone from "@remote/value/Phone";
-import Rsvp from "@remote/value/Rsvp";
-import GuestComment from "@remote/value/GuestComment";
-import WeddingDesign from "@remote/value/WeddingDesign";
+import BaseInfo, {defaultBaseInfo} from "@remote/value/BaseInfo";
+import WeddingSchedule, {defaultWeddingSchedule} from "@remote/value/WeddingSchedule";
+import WeddingPlace, {defaultWeddingPlace} from "@remote/value/WeddingPlace";
+import Greeting, {defaultGreeting} from "@remote/value/Greeting";
+import BaseMusic, {defaultBaseMusic} from "@remote/value/BaseMusic";
+import LinkShare, {defaultLinkShare} from "@remote/value/LinkShare";
+import MoneyInfo, {defaultMoneyInfo} from "@remote/value/MoneyInfo";
+import Video, {defaultVideo} from "@remote/value/Video";
+import Phone, {defaultPhone} from "@remote/value/Phone";
+import Rsvp, {defaultRsvp} from "@remote/value/Rsvp";
+import GuestComment, {defaultGuestComment} from "@remote/value/GuestComment";
+import WeddingDesign, {defaultWeddingDesign} from "@remote/value/WeddingDesign";
 import ImgDesign from "@remote/enumeration/ImgDesign";
+import Gallery, {defaultGallery} from "@remote/value/Gallery";
 
 export default interface WeddingDto {
     // URL 값
@@ -20,7 +21,7 @@ export default interface WeddingDto {
     position: number[];
 
     // 템플릿 정보
-    template: WeddingDesign;
+    weddingDesign: WeddingDesign;
 
     // 기본 정보
     baseInfo: BaseInfo;
@@ -56,8 +57,28 @@ export default interface WeddingDto {
     rsvp: Rsvp;
 
      // 갤러리
+    gallery: Gallery;
     imgList: string[];
+}
 
-    // 갤러리 디자인
-    imgDesign: ImgDesign;
+
+export function makeDefaultWedding(url: string): WeddingDto {
+    return {
+        url,
+        position: [],
+        weddingDesign: defaultWeddingDesign,
+        baseInfo: defaultBaseInfo,
+        weddingSchedule: defaultWeddingSchedule,
+        weddingPlace: defaultWeddingPlace,
+        greeting: defaultGreeting,
+        guestComment: defaultGuestComment,
+        baseMusic: defaultBaseMusic,
+        linkShare: defaultLinkShare,
+        moneyInfo: defaultMoneyInfo,
+        video: defaultVideo,
+        phone: defaultPhone,
+        rsvp: defaultRsvp,
+        imgList: [],
+        gallery: defaultGallery
+    };
 }

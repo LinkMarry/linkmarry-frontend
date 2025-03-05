@@ -8,9 +8,14 @@ import Input from "@designsystem/component/Input";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import CustomStyle from "@designsystem/core/CustomStyle";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import WeddingDesign from "@remote/value/WeddingDesign";
+import Binding from "@src/interface/Binding";
 
-const EditorInspectorDesign = () => {
+interface Props extends Binding<WeddingDesign> {
+}
+
+const EditorInspectorDesign = ({value, onChange}: Props) => {
     const [selectedOpeningAnimationTab, setSelectedOpeningAnimationTab] = useState(0);
 
     return (
@@ -43,6 +48,7 @@ const EditorInspectorDesign = () => {
                     <Text type={'p3'} bold={true}>오프닝 애니메이션</Text>
                     <SegmentedButton
                         items={[
+                            '선택안함',
                             '레터링',
                             '타이핑'
                         ]}

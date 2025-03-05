@@ -5,9 +5,14 @@ import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import WeddingSchedule from "@remote/value/WeddingSchedule";
 
-const EditorInspectorWeddingSchedule = () => {
+interface Props extends Binding<WeddingSchedule> {
+}
+
+const EditorInspectorWeddingSchedule = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'예식 일시'}>
             <Divider/>

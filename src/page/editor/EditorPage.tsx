@@ -5,14 +5,16 @@ import {css} from "styled-components";
 import EditorNavigationBar from "@page/editor/EditorNavigationBar";
 import EditorNavType from "@page/editor/EditorNavType";
 import EditorPreview from "@page/editor/EditorPreview";
-import EditorInspector from "@page/editor/EditorInspector";
+import EditorInspector from "@page/editor/inspector/EditorInspector";
 import useResponsive from "@hook/useResponsive";
 import {hideScrollBar} from "@util/css.util";
+import WeddingDto, {makeDefaultWedding} from "@remote/value/WeddingDto";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
+    const [wedding, setWedding] = useState<WeddingDto>(makeDefaultWedding(''));
 
     return (
         <Column $alignItems={'stretch'} $customStyle={css`
@@ -41,7 +43,11 @@ const EditorPage = () => {
                     }}
                 >
                     {(openInspector || deviceSize !== 'desktop') && (
-                        <EditorInspector currentNavType={currentNavType}/>
+                        <EditorInspector
+                            value={wedding}
+                            onChange={wedding => setWedding(wedding)}
+                            currentNavType={currentNavType}
+                        />
                     )}
                     {deviceSize === 'desktop' && (
                         <EditorPreview/>

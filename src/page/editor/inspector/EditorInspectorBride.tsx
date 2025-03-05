@@ -5,17 +5,21 @@ import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import Spacer from "@designsystem/component/Spacer";
 import {css} from "styled-components";
-import Select from "@designsystem/component/Select";
 import Checkbox from "@designsystem/component/Checkbox";
 import FormToggle from "@designsystem/component/FormToggle";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import BaseInfo from "@remote/value/BaseInfo";
 
-const EditorInspectorGroom = () => {
+interface Props extends Binding<BaseInfo> {
+}
+
+const EditorInspectorBride = ({value, onChange}: Props) => {
     return (
-        <EditorInspectorWrapper title={'신랑측 정보'}>
+        <EditorInspectorWrapper title={'신부측 정보'}>
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'} bold={true}>신랑 성함</Text>
+                <Text type={'p3'} bold={true}>신부 성함</Text>
                 <Column $alignItems={'stretch'} gap={8}>
                     <Row gap={8}>
                         <Input placeholder={'성'}/>
@@ -32,7 +36,7 @@ const EditorInspectorGroom = () => {
                 </Column>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'} bold={true}>신랑 아버지</Text>
+                <Text type={'p3'} bold={true}>신부 아버지</Text>
                 <Row gap={8} $alignItems={'center'}>
                     <Input placeholder={'성'} customStyle={css`
                         flex: 1;
@@ -54,7 +58,7 @@ const EditorInspectorGroom = () => {
                 </Row>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'} bold={true}>신랑 어머니</Text>
+                <Text type={'p3'} bold={true}>신부 어머니</Text>
                 <Row gap={8} $alignItems={'center'}>
                     <Input placeholder={'성'} customStyle={css`
                         flex: 1;
@@ -76,7 +80,7 @@ const EditorInspectorGroom = () => {
                 </Row>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
-                <Text type={'p3'} bold={true}>신랑 아버지</Text>
+                <Text type={'p3'} bold={true}>신부 아버지</Text>
                 <FormToggle
                     checked={false}
                     OnChange={checked => {
@@ -88,4 +92,4 @@ const EditorInspectorGroom = () => {
     );
 };
 
-export default EditorInspectorGroom;
+export default EditorInspectorBride;

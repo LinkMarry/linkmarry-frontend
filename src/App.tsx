@@ -19,7 +19,7 @@ import EditorPage from "@page/editor/EditorPage";
 import {AuthProvider} from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
 import useAxios from "@hook/useAxios";
-import AdminRoute from "@page/AdminRoute";
+import AdminRoute from "@page/admin/AdminRoute";
 import ShowGuestCommentsPage from "@page/mypage/detail/ShowGuestCommentsPage";
 import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
 import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";

@@ -4,9 +4,14 @@ import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import FormToggle from "@designsystem/component/FormToggle";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import Phone from "@remote/value/Phone";
 
-const EditorInspectorPhone = () => {
+interface Props extends Binding<Phone> {
+}
+
+const EditorInspectorPhone = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'연락처'}>
             <Divider/>

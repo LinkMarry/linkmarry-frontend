@@ -54,7 +54,7 @@ export default interface WeddingDesign {
     openingText: string;
 }
 
-export const defaultTemplate: WeddingDesign = {
+export const defaultWeddingDesign: WeddingDesign = {
     weddingDesignName: '화이트 모먼트',
     weddingDesignColor: '#F7F7F2',
     weddingDesignFont: 'LINESeedKR',
@@ -64,7 +64,7 @@ export const defaultTemplate: WeddingDesign = {
     openingText: '1'
 }
 
-export const dummyTemplate: WeddingDesign = {
+export const dummyWeddingDesign: WeddingDesign = {
     weddingDesignName: '화이트 모먼트',
     weddingDesignColor: '#FFFEF5',
     weddingDesignFont: 'LINESeedKR',

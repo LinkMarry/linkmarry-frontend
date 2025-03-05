@@ -9,7 +9,7 @@ import Video, {dummyVideo} from "@remote/value/Video";
 import Phone, {dummyPhone} from "@remote/value/Phone";
 import Rsvp, {dummyRsvp} from "@remote/value/Rsvp";
 import GuestComment, {dummyGuestComment} from "@remote/value/GuestComment";
-import WeddingDesign, {dummyTemplate} from "@remote/value/WeddingDesign";
+import WeddingDesign, {dummyWeddingDesign} from "@remote/value/WeddingDesign";
 import Comment, {dummyComments} from "@remote/value/Comment";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 
@@ -82,7 +82,7 @@ export const dummyWedding: Wedding = {
         11,
         12
     ],
-    template: dummyTemplate,
+    template: dummyWeddingDesign,
     baseInfo: dummyBaseInfo,
     weddingSchedule: dummyWeddingSchedule,
     weddingPlace: dummyWeddingPlace,

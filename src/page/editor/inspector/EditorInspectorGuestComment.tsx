@@ -5,9 +5,14 @@ import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import FormToggle from "@designsystem/component/FormToggle";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import GuestComment from "@remote/value/GuestComment";
 
-const EditorInspectorGuestComment = () => {
+interface Props extends Binding<GuestComment> {
+}
+
+const EditorInspectorGuestComment = ({value, onChange}: Props) => {
     return (
         <EditorInspectorWrapper title={'방명록'}>
             <Divider/>

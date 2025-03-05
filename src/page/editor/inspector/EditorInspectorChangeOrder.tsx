@@ -4,7 +4,7 @@ import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import EditorInspectorWrapper from "@page/editor/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import {DragDropContext, Draggable, DraggableProvidedDragHandleProps, Droppable, DropResult} from "react-beautiful-dnd";
 import CustomStyle from "@designsystem/core/CustomStyle";
 import DndUtil from "@util/dnd.util";

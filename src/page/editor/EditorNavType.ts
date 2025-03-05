@@ -5,7 +5,7 @@ type EditorNavType = 'design' |
     'bride' |
     'greeting' |
     'weddingSchedule' |
-    'weddingLocation' |
+    'weddingPlace' |
     'gallery' |
     'backgroundMusic' |
     'money' |
@@ -24,7 +24,7 @@ export const editorNavList: EditorNavType[] = [
     'bride',
     'greeting',
     'weddingSchedule',
-    'weddingLocation',
+    'weddingPlace',
     'gallery',
     'backgroundMusic',
     'money',
@@ -61,7 +61,7 @@ export const editorNavTypeMap: Record<EditorNavType, {
         icon: IconType.CalendarLine,
         text: '예식 일시'
     },
-    weddingLocation: {
+    weddingPlace: {
         icon: IconType.LocationPoint,
         text: '예식 장소'
     },
