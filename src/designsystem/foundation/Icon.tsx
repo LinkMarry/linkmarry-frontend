@@ -78,6 +78,8 @@ import Video from "@designsystem/foundation/icon/Video";
 import ShareLine from "@designsystem/foundation/icon/ShareLine";
 import Edit from "@designsystem/foundation/icon/Edit";
 import StopArrowDown from "@designsystem/foundation/icon/StopArrowDown";
+import Play from "@designsystem/foundation/icon/Play";
+import Pause from "@designsystem/foundation/icon/Pause";
 
 export enum IconType {
     AddEmoji,
@@ -132,6 +134,7 @@ export enum IconType {
     Moon,
     NormalArrow,
     Note,
+    Pause,
     PenFill,
     PenLine,
     PersonFill,
@@ -140,6 +143,7 @@ export enum IconType {
     Photo,
     Photo2,
     Ping,
+    Play,
     RadioFill,
     RadioLine,
     Search,
@@ -280,6 +284,8 @@ function Icon(
                 return <NormalArrow {...svgProps}/>;
             case IconType.Note:
                 return <Note {...svgProps}/>;
+            case IconType.Pause:
+                return <Pause {...svgProps}/>;
             case IconType.PenFill:
                 return <PenFill {...svgProps}/>;
             case IconType.PenLine:
@@ -296,6 +302,8 @@ function Icon(
                 return <Photo2 {...svgProps}/>;
             case IconType.Ping:
                 return <Ping {...svgProps}/>;
+            case IconType.Play:
+                return <Play {...svgProps}/>;
             case IconType.RadioFill:
                 return <RadioFill {...svgProps}/>;
             case IconType.RadioLine:
