@@ -17,6 +17,7 @@ import {allCasesOfEnum} from "@util/enum.util";
 import Opening, {openingList, openingMap} from "@remote/enumeration/Opening";
 import Select from "@designsystem/component/Select";
 import {tab} from "@testing-library/user-event/dist/tab";
+import {groupByCategory} from "@remote/value/GroupedCategory";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -26,12 +27,20 @@ export interface WeddingDesignProps {
 }
 
 const EditorInspectorDesign = ({value, update, weddingDesigns}: Props & WeddingDesignProps) => {
+    const groupedCategories = weddingDesigns ? groupByCategory(weddingDesigns) : undefined;
+    const [selectedCategory, setSelectedCategory] = useState(groupedCategories?.[0]?.category);
+    const categories = groupedCategories?.map(i => i.category);
+    const selectedWeddingDesigns = groupedCategories?.find(i => i.category === selectedCategory)?.items;
+
     return (
         <EditorInspectorWrapper title={'디자인'}>
             {/*디자인*/}
             <Column $alignItems={'stretch'} gap={12}>
-                <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {
-                }}/>
+                {categories ? (
+                    <TabBar items={categories} selectedTab={categories.indexOf(selectedCategory!)} onChange={tab => {
+                        setSelectedCategory(categories[tab]);
+                    }}/>
+                ) : null}
                 <CustomStyle $customStyle={css`
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
@@ -39,7 +48,7 @@ const EditorInspectorDesign = ({value, update, weddingDesigns}: Props & WeddingD
                     grid-column-gap: 12px;
                 `}>
                     {/*todo shimmer*/}
-                    {weddingDesigns ? weddingDesigns.map((design, index) => (
+                    {selectedWeddingDesigns ? selectedWeddingDesigns.map((design, index) => (
                         <Item key={index} design={design} selected={index === 3}/>
                     )) : null}
                 </CustomStyle>
@@ -67,11 +76,12 @@ const EditorInspectorDesign = ({value, update, weddingDesigns}: Props & WeddingD
                 </Column>
                 <Column $alignItems={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>문구</Text>
-                    <Select selected={openingTextList.indexOf(value.weddingDesign.openingText)} items={openingTextList} OnChange={index => {
-                        update(draft => {
-                            draft.weddingDesign.openingText = openingTextList[index] as OpeningText;
-                        })
-                    }}/>
+                    <Select selected={openingTextList.indexOf(value.weddingDesign.openingText)} items={openingTextList}
+                            OnChange={index => {
+                                update(draft => {
+                                    draft.weddingDesign.openingText = openingTextList[index] as OpeningText;
+                                })
+                            }}/>
                 </Column>
             </Column>
         </EditorInspectorWrapper>

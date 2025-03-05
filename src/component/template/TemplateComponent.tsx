@@ -58,7 +58,7 @@ function TemplateComponent(
     useEffect(() => {
         (async () => {
             const audio = audioRef.current;
-            if (wedding.baseMusic.effect && !isPreview && audio) {
+            if (wedding.backgroundMusic.effect && !isPreview && audio) {
                 await navigator.mediaDevices.getUserMedia({audio: true});
                 await audio.play();
                 audio.volume = 0.15;
@@ -112,7 +112,7 @@ function TemplateComponent(
             }
         `}>
             <audio
-                src={wedding.baseMusic.musicUrl}
+                src={wedding.backgroundMusic.musicUrl}
                 ref={audioRef}
                 loop={true}
             />
