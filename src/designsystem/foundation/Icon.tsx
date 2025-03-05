@@ -77,6 +77,7 @@ import SendLine from "@designsystem/foundation/icon/SendLine";
 import Video from "@designsystem/foundation/icon/Video";
 import ShareLine from "@designsystem/foundation/icon/ShareLine";
 import Edit from "@designsystem/foundation/icon/Edit";
+import StopArrowDown from "@designsystem/foundation/icon/StopArrowDown";
 
 export enum IconType {
     AddEmoji,
@@ -151,6 +152,7 @@ export enum IconType {
     Star,
     Statistics,
     StopArrow,
+    StopArrowDown,
     Substack,
     Trash,
     Utensils,
@@ -318,6 +320,8 @@ function Icon(
                 return <Statistics {...svgProps}/>;
             case IconType.StopArrow:
                 return <StopArrow {...svgProps}/>;
+            case IconType.StopArrowDown:
+                return <StopArrowDown {...svgProps}/>;
             case IconType.Substack:
                 return <Substack {...svgProps}/>;
             case IconType.Trash:
