@@ -9,19 +9,19 @@ import Video, {dummyVideo} from "@remote/value/Video";
 import Phone, {dummyPhone} from "@remote/value/Phone";
 import Rsvp, {dummyRsvp} from "@remote/value/Rsvp";
 import GuestComment, {dummyGuestComment} from "@remote/value/GuestComment";
-import Template, {dummyTemplate} from "@remote/value/Template";
+import WeddingDesign, {dummyTemplate} from "@remote/value/WeddingDesign";
 import Comment, {dummyComments} from "@remote/value/Comment";
 import ImgDesign from "@remote/enumeration/ImgDesign";
 
 export default interface Wedding {
     // URL 값
     url: string;
-    
+
     // 아래 내용 위치
     position: number[];
 
     // 템플릿 정보
-    template: Template;
+    template: WeddingDesign;
 
     // 기본 정보
     baseInfo: BaseInfo;
@@ -61,7 +61,7 @@ export default interface Wedding {
 
     // 갤러리
     imgList: string[];
-    
+
     // 갤러리 디자인
     imgDesign: ImgDesign;
 

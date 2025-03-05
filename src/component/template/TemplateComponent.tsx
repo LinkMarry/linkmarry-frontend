@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import MoneyInfoTemplate from "@src/component/template/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/template/component/FooterTemplate";
-import {templateFontSizeRecord} from "@remote/value/Template";
+import {templateFontSizeRecord} from "@remote/value/WeddingDesign";
 import GuestCommentsTemplate from "@src/component/template/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
 import CongratulationsTemplate from "@src/component/template/component/CongratulationsTemplate";
@@ -45,11 +45,11 @@ function TemplateComponent(
         // return Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
     })());
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
-    const {templateColor, templateFont, templateFontSize} = wedding.template;
+    const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.template;
     const rootRef = useRef<HTMLDivElement>(null);
 
     (() => {
-        const addFontSize = templateFontSizeRecord[templateFontSize].addFontSize;
+        const addFontSize = templateFontSizeRecord[weddingDesignFontSize].addFontSize;
         increaseFontSize(rootRef, addFontSize);
         // todo: fix
         // Cookies.remove('hide_RsvpDialog')
@@ -106,8 +106,8 @@ function TemplateComponent(
             align-items: stretch;
 
             *:not(.override-font):not(.override-font *) {
-                ${templateFont && implementText({
-                    fontFamily: templateFont
+                ${weddingDesignFont && implementText({
+                    fontFamily: weddingDesignFont
                 })};
             }
         `}>
@@ -198,7 +198,7 @@ function TemplateComponent(
             {/*            return <></>;*/}
             {/*    }*/}
             {/*})}*/}
-            <FooterTemplate background={templateColor}/>
+            <FooterTemplate background={weddingDesignColor}/>
             {showRsvpDialog && (
                 <RsvpDialog
                     url={wedding.url}

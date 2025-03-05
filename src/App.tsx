@@ -55,7 +55,7 @@ function App() {
                     <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                     <Route path={'sample'} element={(
                         <Row $justifyContent={'center'} $customStyle={css`
-                            background: ${dummyWedding.template.templateColor};
+                            background: ${dummyWedding.template.weddingDesignColor};
                             padding: 64px 0;
                         `}>
                             <TemplateComponent wedding={dummyWedding} isPreview={true}/>

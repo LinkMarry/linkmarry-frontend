@@ -25,7 +25,7 @@ function WhiteMomentPreviewTemplate(
     return (
         <Column $alignItems={'stretch'} $customStyle={css`
             padding: 44px 30px;
-            background: ${template.templateColor};
+            background: ${template.weddingDesignColor};
         `}>
             <Column gap={36} $alignItems={'center'} $customStyle={css`
                 margin: 0 23px 44px 23px;

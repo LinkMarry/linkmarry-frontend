@@ -67,6 +67,7 @@ function CreateRsvpDialog(
             isMeal: isMeal === 0,
             guestName: guestName?.value ?? '',
             guestPhone: guestPhone?.value ?? '',
+            bus: false,
             guestCnt: Number(guestCnt?.value) ?? '',
             guestComment: guestComment?.value ?? '',
         });

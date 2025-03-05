@@ -17,6 +17,12 @@ export default interface BaseInfo {
     // 관계 (기본값 : 아들)
     groomFamilyName: string;
 
+    // 관계 (기본값 : 아버지)
+    groomFatherFamilyName: string;
+
+    // 관계 (기본값 : 어머니)
+    groomMotherFamilyName: string;
+
     // 신부 이름
     brideName: string;
 
@@ -35,6 +41,12 @@ export default interface BaseInfo {
     // 관계 (기본값 : 딸)
     brideFamilyName: string;
 
+    // 관계 (기본값 : 아버지)
+    brideFatherFamilyName: string;
+
+    // 관계 (기본값 : 어머니)
+    brideMotherFamilyName: string;
+
     // 국화로 표시 (기본값 : false)
     statusFlower: boolean;
 
@@ -49,12 +61,16 @@ export const defaultBaseInfo: BaseInfo = {
     groomMotherName: "",
     groomMotherStatus: false,
     groomFamilyName: "아들",
+    groomFatherFamilyName: '아버지',
+    groomMotherFamilyName: '어머니',
     brideName: "",
     brideFatherName: "",
     brideFatherStatus: false,
     brideMotherName: "",
     brideMotherStatus: false,
     brideFamilyName: "딸",
+    brideFatherFamilyName: '아버지',
+    brideMotherFamilyName: '어머니',
     statusFlower: false,
     brideMarkFirst: false,
 }
@@ -66,15 +82,19 @@ export const dummyBaseInfo: BaseInfo = {
     groomMotherName: "이수진",
     groomMotherStatus: false,
     groomFamilyName: "아들",
+    groomFatherFamilyName: '',
+    groomMotherFamilyName: '',
     brideName: "김민지",
     brideFatherName: "김강민",
     brideFatherStatus: false,
     brideMotherName: "이지안",
     brideMotherStatus: false,
     brideFamilyName: "딸",
+    brideFatherFamilyName: '',
+    brideMotherFamilyName: '',
     statusFlower: false,
     brideMarkFirst: false
-}
+};
 
 type InfoByBrideMarkFirst = {
     name: string;
@@ -109,7 +129,7 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
         familyName: baseInfo.brideFamilyName,
         korean: '신부'
     };
-    
+
     if (baseInfo.brideMarkFirst) {
         return {
             first: brideInfo,

@@ -2,7 +2,7 @@ import React from 'react';
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import BaseInfo from "@remote/value/BaseInfo";
-import Template from "@remote/value/Template";
+import WeddingDesign from "@remote/value/WeddingDesign";
 import WhiteMomentPreviewTemplate from "@src/component/template/component/preview/WhiteMomentPreviewTemplate";
 import ForestLovePreviewTemplate from "@src/component/template/component/preview/ForestLovePreviewTemplate";
 import NatureBlissPreviewTemplate from "@src/component/template/component/preview/NatureBlissPreviewTemplate";
@@ -18,7 +18,7 @@ import ClassicRomancePreviewTemplate from "@src/component/template/component/pre
 import FadeIn from "@src/component/fadein/FadeIn";
 
 export interface PreviewTemplateProps {
-    template: Template;
+    template: WeddingDesign;
     baseInfo: BaseInfo;
     weddingPlace: WeddingPlace;
     weddingSchedule: WeddingSchedule;
@@ -28,7 +28,7 @@ function PreviewTemplate(
     props: PreviewTemplateProps
 ) {
     const content = () => {
-        switch (props.template.templateName) {
+        switch (props.template.weddingDesignName) {
             case '화이트 모먼트':
                 return <WhiteMomentPreviewTemplate {...props}/>;
             case '포레스트 러브':

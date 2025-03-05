@@ -20,7 +20,7 @@ function SoulmatePreviewTemplate(
 
     return (
         <Column $alignItems={'stretch'} $customStyle={css`
-                    background: ${template.templateColor};
+                    background: ${template.weddingDesignColor};
                 `}>
             <Column gap={12} $alignItems={'center'} $customStyle={css`
                         margin: 40px 0;

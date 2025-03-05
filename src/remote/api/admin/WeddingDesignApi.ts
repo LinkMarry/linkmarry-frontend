@@ -4,7 +4,7 @@ import api from "@remote/api/foundation/api";
 import PatchWeddingDesignRequest from "@remote/value/request/admin/PatchWeddingDesignRequest";
 
 class WeddingDesignApi {
-    static PATH = '';
+    static PATH = 'weddingdesign';
 
     async createWeddingDesign(request: CreateWeddingDesignRequest): Promise<ResponseVoid> {
         const {data} = await api.post(`${WeddingDesignApi.PATH}`, request);
