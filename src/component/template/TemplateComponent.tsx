@@ -23,6 +23,7 @@ import WaterMarkSheet from "@src/component/template/component/WaterMarkSheet";
 import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
+import useAudio from "@hook/useAudio";
 
 interface Template1Props {
     wedding: Wedding;
@@ -37,7 +38,7 @@ function TemplateComponent(
         onRefresh
     }: Template1Props
 ) {
-    const audioRef = useRef<HTMLAudioElement>(null);
+    const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview);
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
         if (isPreview) return false;
         if (!wedding.rsvp.startPopupStatus) return false;
@@ -48,56 +49,10 @@ function TemplateComponent(
     const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.template;
     const rootRef = useRef<HTMLDivElement>(null);
 
-    (() => {
-        const addFontSize = templateFontSizeRecord[weddingDesignFontSize].addFontSize;
-        increaseFontSize(rootRef, addFontSize);
-        // todo: fix
-        // Cookies.remove('hide_RsvpDialog')
-    })();
-
-    useEffect(() => {
-        (async () => {
-            const audio = audioRef.current;
-            if (wedding.backgroundMusic.effect && !isPreview && audio) {
-                await navigator.mediaDevices.getUserMedia({audio: true});
-                await audio.play();
-                audio.volume = 0.15;
-            }
-        })()
-    }, []);
-
-    // TODO: Temp
-    const slideStyle: GallerySlideStyle = 'style1';
-    const dDayStyle: DDayStyle = 'style1';
-    const invitationLetterStyle: InvitationLetterStyle = 'style1';
-    // const slideStyle: Record<TemplateName, GallerySlideStyle | undefined> = {
-    //     템플릿1: 'style1',
-    //     템플릿2: 'style2',
-    //     템플릿3: 'style1',
-    //     템플릿4: 'style2',
-    //     템플릿5: undefined,
-    //     템플릿6: 'style1',
-    // };
-    //
-    // const dDayStyle: Record<TemplateName, DDayStyle> = {
-    //     템플릿1: 'style1',
-    //     템플릿2: 'style2',
-    //     템플릿3: 'style1',
-    //     템플릿4: 'style2',
-    //     템플릿5: 'style2',
-    //     템플릿6: 'style1',
-    // }
-    //
-    // const invitationLetterStyle: Record<TemplateName, InvitationLetterStyle> = {
-    //     템플릿1: 'style1',
-    //     템플릿2: 'style1',
-    //     템플릿3: 'style2',
-    //     템플릿4: 'style3',
-    //     템플릿5: 'style3',
-    //     템플릿6: 'style2',
-    // }
-
-    // console.log(`pos - ${wedding.position}`)
+    const addFontSize = templateFontSizeRecord[weddingDesignFontSize].addFontSize;
+    increaseFontSize(rootRef, addFontSize);
+    // todo: fix
+    // Cookies.remove('hide_RsvpDialog')
 
     return (
         <Column ref={rootRef} $customStyle={css`
@@ -111,11 +66,7 @@ function TemplateComponent(
                 })};
             }
         `}>
-            <audio
-                src={wedding.backgroundMusic.backgroundMusic}
-                ref={audioRef}
-                loop={true}
-            />
+            <audio ref={ref} src={wedding.backgroundMusic.backgroundMusic} loop={true}/>
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>

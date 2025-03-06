@@ -36,7 +36,7 @@ const EditorInspectorVideo = (
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>파일로 첨부</Text>
-                <PhotoUploadBox id={'EditorInspectorVideo-'} onChange={images => update(draft => {
+                <PhotoUploadBox id={'EditorInspectorVideo-videoUrl'} value={[video.videoUrl]} onChange={images => update(draft => {
                     draft.video.videoUrl = images[0];
                 })}/>
             </Column>

@@ -5,58 +5,162 @@ import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
+import CustomStyle from "@designsystem/core/CustomStyle";
+import AddRemoveButton from "@src/component/AddDismissButton";
+import {hideScrollBar} from "@util/css.util";
 
-interface Props {
+interface Props<V = string | string[]> {
     id: string;
-    multiple?: boolean;
-    onChange: (images: string[]) => void;
+    value: V;
+    onChange: (newValue: V) => void;
 }
 
-const PhotoUploadBox = ({id, multiple = false}: Props) => {
+const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) => {
+    const isEmpty = (() => {
+        if (typeof value === 'string') {
+            return value.length === 0;
+        } else if (Array.isArray(value)) {
+            return value.length === 0;
+        } else {
+            throw Error('Type error');
+        }
+    })();
     const [isFetching, setIsFetching] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
-    const uploadImages = async (event: ChangeEvent<HTMLInputElement>) => {
+    const handleInput = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (!files || !inputRef.current) return;
 
         setIsFetching(true);
 
-        const uploadPromises = Array.from(files).map(file => fileApi.upload(file));
-        const results = await Promise.allSettled(uploadPromises);
-        // const fulfilledResults: string[] = results
-        //     .map(result => result.status === 'fulfilled' ? result.value.data.url : null)
-        //     .filter((result): result is string => result !== null);
-        // onChangeImgList([...fulfilledResults, ...imgList]);
+        if (typeof value === 'string') {
+            if (files.length !== 1) return;
+            const url = await uploadImage(files[0]);
+            onChange(url as V);
+        } else if (Array.isArray(value)) {
+            const urls = await uploadImages(files);
+            onChange([...value, ...urls] as V);
+        }
+
         setIsFetching(false);
         inputRef.current.value = '';
     };
 
+    const uploadImage = async (file: File): Promise<string> => {
+        const {data: {url}} = await fileApi.upload(file);
+        return url;
+    };
+
+    const uploadImages = async (files: FileList): Promise<string[]> => {
+        const uploadPromises = Array.from(files).map(file => fileApi.upload(file));
+        const results = await Promise.allSettled(uploadPromises);
+        return results
+            .map(result => result.status === 'fulfilled' ? result.value.data.url : null)
+            .filter((result): result is string => result !== null);
+    };
+
+    const handleRemove = (index: number) => {
+        if (Array.isArray(value)) {
+            const copiedValue = [...value];
+            copiedValue.splice(index, 1);
+            onChange(copiedValue as V);
+        }
+    };
+
     return (
-        <Column as={'label'} gap={12} $alignItems={'center'} htmlFor={id} $customStyle={css`
-            padding: 56px 0;
-            border-radius: 8px;
-            background: var(--g-50);
-            cursor: pointer;
-        `}>
+        <Column
+            as={isEmpty ? 'label' : undefined}
+            htmlFor={isEmpty ? id : undefined}
+            gap={12}
+            $alignItems={'center'}
+            $justifyContent={'center'}
+            $customStyle={css`
+                border-radius: 8px;
+                background: var(--g-50);
+                height: 172px;
+                padding: 20px;
+                ${isEmpty && css`
+                    cursor: pointer;
+                `};
+            `}
+        >
             <VoidInput
                 ref={inputRef}
                 id={id}
                 type={'file'}
                 accept={'image/*'}
-                multiple={multiple}
-                onChange={uploadImages}
+                multiple={Array.isArray(value)}
+                onChange={handleInput}
             />
-            <Row gap={8} $alignItems={'center'}>
-                <Icon iconType={IconType.AddPhoto}/>
-                <Text type={'p2'} customStyle={css`
-                    color: var(--g-900);
-                `}>사진을 첨부해 주세요</Text>
-            </Row>
+            {isEmpty ? (
+                <Row gap={8} $alignItems={'center'}>
+                    <Icon iconType={IconType.AddPhoto}/>
+                    <Text type={'p2'} customStyle={css`
+                        color: var(--g-900);
+                    `}>사진을 첨부해 주세요</Text>
+                </Row>
+            ) : (
+                <Row gap={6} $customStyle={css`
+                    align-self: stretch;
+                    overflow-x: scroll;
+                    min-height: 106px;
+                    ${hideScrollBar};
+                `}>
+                    {typeof value === 'string' && (
+                        <Image src={value} dismiss={() => onChange('' as V)}/>
+                    )}
+                    {Array.isArray(value) && (
+                        <>
+                            <Column
+                                as={'label'}
+                                gap={2}
+                                htmlFor={id}
+                                $alignItems={'center'}
+                                $justifyContent={'center'}
+                                $customStyle={css`
+                                    min-width: 106px;
+                                    min-height: 106px;
+                                    background: var(--g-100);
+                                    cursor: pointer;
+                                `}>
+                                <Icon iconType={IconType.AddPhoto} width={24} height={24} customStyle={css`
+                                    fill: var(--g-500);
+                                `}/>
+                                <Text type={'caption2'} customStyle={css`
+                                    color: var(--g-500);
+                                `}>사진 첨부</Text>
+                            </Column>
+                            {value.map((value, index) => (
+                                <Image key={index} dismiss={() => handleRemove(index)} src={value}/>
+                            ))}
+                        </>
+                    )}
+                </Row>
+            )}
             <Text type={'caption1'} customStyle={css`
                 color: var(--g-400);
             `}>업로드한 사진은 대표 이미지로 등록됩니다.</Text>
         </Column>
     );
+};
+
+interface ImageProps {
+    dismiss: () => void;
+    src: string;
+}
+
+const Image = ({dismiss, src}: ImageProps) => {
+    return (
+        <AddRemoveButton dismiss={dismiss}>
+            <CustomStyle as={'img'} src={src} $customStyle={css`
+                min-width: 106px;
+                width: 106px;
+                min-height: 106px;
+                height: 106px;
+                object-fit: cover;
+            `}/>
+        </AddRemoveButton>
+    )
 };
 
 export default PhotoUploadBox;

@@ -31,9 +31,13 @@ const EditorInspectorGallery = (
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
-                <PhotoUploadBox id={'EditorInspectorGallery'} onChange={images => update(draft => {
-                    draft.gallery.imgList = images;
-                })}/>
+                <PhotoUploadBox
+                    id={'EditorInspectorGallery-imgList'}
+                    value={gallery.imgList}
+                    onChange={images => update(draft => {
+                        draft.gallery.imgList = images;
+                    })}
+                />
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>

@@ -8,7 +8,6 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SharingLink from "@src/component/SharingLink";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
-import Divider from "@designsystem/component/Divider";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import {getKoreanByKakaoStyle, kakaoStyleList} from "@remote/value/LinkShare";
@@ -41,9 +40,13 @@ const EditorInspectorKakaotalkInvitationLetter = (
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
-                <PhotoUploadBox id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'} onChange={images => update(draft => {
-                    draft.linkShare.kakaoImgUrl = images[0];
-                })}/>
+                <PhotoUploadBox
+                    id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'}
+                    value={[linkShare.kakaoImgUrl]}
+                    onChange={images => update(draft => {
+                        draft.linkShare.kakaoImgUrl = images[0];
+                    })}
+                />
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>버튼 추가</Text>
