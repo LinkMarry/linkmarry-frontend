@@ -72,8 +72,8 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             as={isEmpty ? 'label' : undefined}
             htmlFor={isEmpty ? id : undefined}
             gap={12}
-            $alignItems={'center'}
-            $justifyContent={'center'}
+            alignment={'center'}
+            arrangement={'center'}
             ui={css`
                 border-radius: 8px;
                 background: var(--g-50);
@@ -93,7 +93,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                 onChange={handleInput}
             />
             {isEmpty ? (
-                <Row gap={8} $alignItems={'center'}>
+                <Row gap={8} alignment={'center'}>
                     <Icon iconType={IconType.AddPhoto}/>
                     <Text type={'p2'} ui={css`
                         color: var(--g-900);
@@ -119,8 +119,8 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                                 as={'label'}
                                 gap={2}
                                 htmlFor={id}
-                                $alignItems={'center'}
-                                $justifyContent={'center'}
+                                alignment={'center'}
+                                arrangement={'center'}
                                 ui={css`
                                     min-width: 106px;
                                     min-height: 106px;

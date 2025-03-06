@@ -19,9 +19,9 @@ interface Props extends Binding<WeddingDto> {
 const EditorInspectorGroom = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper type={'groom'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 성함</Text>
-                <Column $alignItems={'stretch'} gap={8}>
+                <Column alignment={'stretch'} gap={8}>
                     <Row gap={8}>
                         <Input placeholder={'성'}/>
                         <Input placeholder={'이름'}/>
@@ -36,9 +36,9 @@ const EditorInspectorGroom = ({value, update}: Props) => {
                     </Row>
                 </Column>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 아버지</Text>
-                <Row gap={8} $alignItems={'center'}>
+                <Row gap={8} alignment={'center'}>
                     <Input placeholder={'성'} ui={css`
                         flex: 1;
                     `}/>
@@ -58,9 +58,9 @@ const EditorInspectorGroom = ({value, update}: Props) => {
                     <Spacer/>
                 </Row>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 어머니</Text>
-                <Row gap={8} $alignItems={'center'}>
+                <Row gap={8} alignment={'center'}>
                     <Input placeholder={'성'} ui={css`
                         flex: 1;
                     `}/>
@@ -80,7 +80,7 @@ const EditorInspectorGroom = ({value, update}: Props) => {
                     <Spacer/>
                 </Row>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 아버지</Text>
                 <FormToggle
                     checked={false}

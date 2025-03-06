@@ -25,11 +25,11 @@ function MoneyInfoTemplate(
     useScrollOnUpdate(moneyInfoRef, [moneyInfo]);
 
     return (
-        <Column $alignItems={'stretch'} ref={moneyInfoRef} ui={css`
+        <Column alignment={'stretch'} ref={moneyInfoRef} ui={css`
             padding: 92px 60px;
             background: white;
         `}>
-            <Column gap={40} $alignItems={'center'}>
+            <Column gap={40} alignment={'center'}>
                 <FadeIn>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
@@ -62,13 +62,13 @@ function MoneyInfoComponent(
     } = getMoneyInfoByBrideMarkFirst(moneyInfo, baseInfo.brideMarkFirst);
 
     return (
-        <Column gap={16} $alignItems={'stretch'} $alignSelf={'stretch'}>
+        <Column gap={16} alignment={'stretch'} $alignSelf={'stretch'}>
             <FadeIn>
                 <View ui={css`
                     border-radius: 12px;
                     background: var(--g-100);
                 `}>
-                    <Row $alignItems={'center'} ui={css`
+                    <Row alignment={'center'} ui={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedGroom(i => !i)}>
@@ -104,7 +104,7 @@ function MoneyInfoComponent(
                     border-radius: 12px;
                     background: var(--p-100);
                 `}>
-                    <Row $alignItems={'center'} ui={css`
+                    <Row alignment={'center'} ui={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedBride(i => !i)}>
@@ -150,7 +150,7 @@ function MoneyCell(props: {
     return (
         <Column
             gap={8}
-            $alignItems={'stretch'}
+            alignment={'stretch'}
             ui={css`
                 padding: 12px 20px;
                 ${props.isGroom ? css`
@@ -161,7 +161,7 @@ function MoneyCell(props: {
             `}
         >
             {/*<Text type={'p5'}>{props.name}</Text>*/}
-            <Row $alignItems={'center'} ui={css`
+            <Row alignment={'center'} ui={css`
                 padding: 8px 16px;
                 background: white;
                 border-radius: 4px;

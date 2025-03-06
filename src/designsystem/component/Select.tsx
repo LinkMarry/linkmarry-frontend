@@ -36,7 +36,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
         `} onClick={() => {
             setOpenOptions(i => !i);
         }} {...props}>
-            <Row $alignItems={'center'} gap={4} ui={css`
+            <Row alignment={'center'} gap={4} ui={css`
                 padding: 12px 16px;
                 width: 100%;
                 border: 1px solid var(--g-300);
@@ -60,7 +60,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                 `}/>
             </Row>
             {openOptions && (
-                <Column $alignItems={'stretch'} ui={css`
+                <Column alignment={'stretch'} ui={css`
                     position: absolute;
                     top: 52px;
                     left: 0;
@@ -72,7 +72,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                     z-index: 100;
                 `}>
                     {items.map((item, index) => (
-                        <Row key={index} $alignItems={'center'} ui={css`
+                        <Row key={index} alignment={'center'} ui={css`
                             padding: 12px 16px;
                             cursor: pointer;
                             

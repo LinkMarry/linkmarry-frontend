@@ -20,7 +20,7 @@ function NaturalGardenPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column gap={44} $alignItems={'stretch'} ui={css`
+        <Column gap={44} alignment={'stretch'} ui={css`
             padding: 64px 0;
 
             * {
@@ -28,7 +28,7 @@ function NaturalGardenPreviewTemplate(
             }
         `}>
             <img src={'/NaturalGardenDeco.svg'} alt="" width={'100%'}/>
-            <Column $alignItems={'stretch'} gap={40} ui={css`
+            <Column alignment={'stretch'} gap={40} ui={css`
                 padding: 0 32px;
             `}>
                 <View as={'img'} src={template.titleImgUrl} ui={css`
@@ -36,16 +36,16 @@ function NaturalGardenPreviewTemplate(
                     border-radius: 500px 500px 0 0;
                     object-fit: cover;
                 `}/>
-                <Column $alignItems={'stretch'} gap={20}>
+                <Column alignment={'stretch'} gap={20}>
                     <Text weight={400} size={28}>
-                        <Row gap={32} $alignItems={'center'} $justifyContent={'center'}>
+                        <Row gap={32} alignment={'center'} arrangement={'center'}>
                             <span>{first.name}</span>
                             <span>&</span>
                             <span>{second.name}</span>
                         </Row>
                     </Text>
                     <Text size={20} weight={300}>
-                        <Column gap={6} $alignItems={'center'}>
+                        <Column gap={6} alignment={'center'}>
                             {isValidDate && (
                                 <span>{format(date, 'yyyy. MM. dd E HH:mm')}</span>
                             )}

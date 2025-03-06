@@ -5,7 +5,7 @@ import Text from "@designsystem/component/Text";
 
 const FileUploadBox = () => {
     return (
-        <Column gap={12} $alignItems={'center'} ui={css`
+        <Column gap={12} alignment={'center'} ui={css`
             padding: 56px 0;
             border-radius: 8px;
             background: var(--g-50);

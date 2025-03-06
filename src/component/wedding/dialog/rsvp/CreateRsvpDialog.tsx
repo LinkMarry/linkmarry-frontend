@@ -76,7 +76,7 @@ function CreateRsvpDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $alignItems={'stretch'} ui={css`
+            <Column alignment={'stretch'} ui={css`
                 max-width: 436px;
                 width: 100vw;
                 max-height: 100vh;
@@ -86,7 +86,7 @@ function CreateRsvpDialog(
                 border-radius: 4px;
                 ${applyBaseDialogContent()};
             `}>
-                <Row $alignItems={'center'} ui={css`
+                <Row alignment={'center'} ui={css`
                     position: relative;
                     padding: 24px 0;
                 `}>
@@ -105,10 +105,10 @@ function CreateRsvpDialog(
                         onClick={dismiss}
                     />
                 </Row>
-                <Column gap={36} $alignItems={'stretch'} ui={css`
+                <Column gap={36} alignment={'stretch'} ui={css`
                     padding: 36px 40px 0 40px;
                 `}>
-                    <Column gap={28} $alignItems={'stretch'}>
+                    <Column gap={28} alignment={'stretch'}>
                         {/*todo*/}
                         {/*<Column gap={4} $alignItems={'stretch'}>*/}
                         {/*    <Text type={'p5'}>어느 분의 하객인가요?</Text>*/}
@@ -161,7 +161,7 @@ function CreateRsvpDialog(
                         {/*    </Row>*/}
                         {/*)}*/}
                         {rsvp.attendEtcStatus && (
-                            <Column gap={4} $alignItems={'stretch'}>
+                            <Column gap={4} alignment={'stretch'}>
                                 <Text type={'p3'}>추가로 전달할 내용을 입력해 주세요.</Text>
                                 {/*<OptionTextField ref={guestCommentRef} autoWidth={false} placeholder={'내용 입력'}/>*/}
                             </Column>

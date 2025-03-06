@@ -45,8 +45,8 @@ function GuestCommentsTemplate(
     return (
         <FadeIn>
             <S.root background={weddingDesignColor} ref={guestCommentRef}>
-                <Column gap={40} $alignItems={'stretch'}>
-                    <Column gap={12} $alignItems={'center'}>
+                <Column gap={40} alignment={'stretch'}>
+                    <Column gap={12} alignment={'center'}>
                         <FadeIn>
                             <Text size={20} weight={300} ui={css`
                                 color: var(--g-600);
@@ -64,7 +64,7 @@ function GuestCommentsTemplate(
                     </Column>
                     {guestComment.privateContent && (
                         <FadeIn delay={320}>
-                            <Column gap={12} $alignItems={'stretch'}>
+                            <Column gap={12} alignment={'stretch'}>
                                 <GuestComments
                                     comments={guestComments}
                                     design={guestComment.design}
@@ -154,7 +154,7 @@ function GuestComments(
     switch (design) {
         case GuestCommentDesign.BASIC:
             return (
-                <Column gap={12} $alignItems={'stretch'}>
+                <Column gap={12} alignment={'stretch'}>
                     {trimArray(comments, 3).map((comment, index) => (
                         <BasicGuestComment
                             key={index}
@@ -168,7 +168,7 @@ function GuestComments(
             );
         case GuestCommentDesign.STICKER:
             return (
-                <Row gap={20} $alignItems={'stretch'}>
+                <Row gap={20} alignment={'stretch'}>
                     {trimArray(comments, 2).map((comment, index) => (
                         <StickerGuestComment
                             key={index}
@@ -230,7 +230,7 @@ export function BasicGuestComment(
 ) {
     return (
         <S.basicContainer background={background} {...props}>
-            <Row gap={8} $alignItems={'center'}>
+            <Row gap={8} alignment={'center'}>
                 <Text size={18} weight={300} ui={css`
                     color: var(--g-600);
                 `}>

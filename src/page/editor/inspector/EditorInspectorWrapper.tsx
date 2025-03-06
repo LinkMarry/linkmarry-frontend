@@ -28,8 +28,8 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
     });
 
     return (
-        <Column $alignItems={'stretch'} gap={deviceSize === 'desktop' ? 32 : 24}>
-            <Row $alignItems={'center'}>
+        <Column alignment={'stretch'} gap={deviceSize === 'desktop' ? 32 : 24}>
+            <Row alignment={'center'}>
                 <Text type={'p1'} bold={true}>{editorNavTypeMap[type].inspectorText}</Text>
                 <Spacer/>
                 {toggle && (
@@ -51,7 +51,7 @@ interface EmptyProps {
 const Empty = ({type}: EmptyProps) => {
     const {icon, inspectorText} = editorNavTypeMap[type];
     return (
-        <Column gap={12} $alignItems={'stretch'} $justifyContent={'center'} ui={css`
+        <Column gap={12} alignment={'stretch'} arrangement={'center'} ui={css`
             height: 436px;
         `}>
             <Icon iconType={icon} width={24} height={24} ui={css`

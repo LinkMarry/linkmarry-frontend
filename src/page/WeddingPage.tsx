@@ -43,7 +43,7 @@ function WeddingPage() {
     }
 
     return (
-        <Row $justifyContent={'center'} ui={css`
+        <Row arrangement={'center'} ui={css`
             background: ${wedding?.weddingDesign.weddingDesignColor};
             padding: 64px 0;
         `}>

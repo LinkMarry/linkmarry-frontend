@@ -23,11 +23,11 @@ function VideoTemplate(
 
     return (
         <FadeIn>
-            <Column gap={40} $alignItems={'stretch'} ref={videoRef} ui={css`
+            <Column gap={40} alignment={'stretch'} ref={videoRef} ui={css`
                 padding: 92px 0;
                 background: white;
             `}>
-                <Column gap={12} $alignItems="center">
+                <Column gap={12} alignment="center">
                     <FadeIn>
                         <Text size={20} weight={300} ui={css`
                             color: var(--g-600);

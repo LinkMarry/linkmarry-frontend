@@ -53,7 +53,7 @@ function RemoveGuestCommentDialog(
     return (
         <BaseDialog dismiss={dismiss}>
             <S.container>
-                <Column gap={4} $alignItems={'center'}>
+                <Column gap={4} alignment={'center'}>
                     {/*<Text type={'h6'}>글 삭제하기</Text>*/}
                     <Text type={'caption1'} ui={css`
                         color: var(--g-400);

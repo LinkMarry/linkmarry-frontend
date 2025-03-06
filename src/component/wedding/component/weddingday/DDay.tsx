@@ -70,7 +70,7 @@ function DDay(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
-        <Column gap={24} $alignItems={'center'}>
+        <Column gap={24} alignment={'center'}>
             <RemainTimeComponent
                 dDayStyle={dDayStyle}
                 remainingTime={remainingTime}
@@ -108,7 +108,7 @@ function RemainTimeComponent(
     switch (dDayStyle) {
         case 'style1':
             return (
-                <Row gap={12} $alignItems={'center'} ui={css`
+                <Row gap={12} alignment={'center'} ui={css`
                     padding: 0 50px;
                 `}>
                     <FadeIn>
@@ -155,8 +155,8 @@ function RemainTimeComponent(
             )
         case 'style2':
             return (
-                <Row $alignItems={'flex-end'}>
-                    <Column gap={4} $alignItems={'center'}>
+                <Row alignment={'flex-end'}>
+                    <Column gap={4} alignment={'center'}>
                         <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>SEC</Text>
@@ -167,7 +167,7 @@ function RemainTimeComponent(
                     <Text size={24} weight={300} ui={css`
                         color: var(--g-600);
                     `} style={{width: 28, textAlign: 'center'}}>:</Text>
-                    <Column gap={4} $alignItems={'center'}>
+                    <Column gap={4} alignment={'center'}>
                         <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>HOUR</Text>
@@ -178,7 +178,7 @@ function RemainTimeComponent(
                     <Text size={24} weight={300} ui={css`
                         color: var(--g-600);
                     `} style={{width: 28, textAlign: 'center'}}>:</Text>
-                    <Column gap={4} $alignItems={'center'}>
+                    <Column gap={4} alignment={'center'}>
                         <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>MIN</Text>
@@ -189,7 +189,7 @@ function RemainTimeComponent(
                     <Text size={24} weight={300} ui={css`
                         color: var(--g-600);
                     `} style={{width: 28, textAlign: 'center'}}>:</Text>
-                    <Column gap={4} $alignItems={'center'}>
+                    <Column gap={4} alignment={'center'}>
                         <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>SEC</Text>

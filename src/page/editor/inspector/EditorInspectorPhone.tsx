@@ -19,7 +19,7 @@ const EditorInspectorPhone = (
 ) => {
     return (
         <EditorInspectorWrapper type={'phone'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 신부 전화번호</Text>
                 <Input placeholder={'신랑'} value={phone.groomTel} onChange={event => update(draft => {
                     draft.phone.groomTel = event.target.value;
@@ -28,12 +28,12 @@ const EditorInspectorPhone = (
                     draft.phone.brideTel = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>혼주 전화번호</Text>
                 <FormToggle checked={false} OnChange={checked => {
                 }} label={'혼주 연락처'}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑측 혼주</Text>
                 <Input placeholder={'신랑 아버지'} value={phone.groomFatherTel} onChange={event => update(draft => {
                     draft.phone.groomFatherTel = event.target.value;
@@ -42,7 +42,7 @@ const EditorInspectorPhone = (
                     draft.phone.groomMotherTel = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신부측 혼주</Text>
                 <Input placeholder={'신부 아버지'} value={phone.brideFatherTel} onChange={event => update(draft => {
                     draft.phone.brideFatherTel = event.target.value;

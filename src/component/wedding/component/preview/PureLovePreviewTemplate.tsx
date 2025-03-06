@@ -18,7 +18,7 @@ function PureLovePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} ui={css`
+        <Column alignment={'stretch'} ui={css`
             position: relative;
         `}>
             <View as={'img'} src={template.titleImgUrl} ui={css`
@@ -40,7 +40,7 @@ function PureLovePreviewTemplate(
                 left: 50%;
                 transform: translateX(-50%);
             `}>
-                <Column gap={12} $alignItems={'center'}>
+                <Column gap={12} alignment={'center'}>
                     <span>{first.name}</span>
                     <span>{second.name}</span>
                 </Column>

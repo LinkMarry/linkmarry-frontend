@@ -19,7 +19,7 @@ function RomanticForestPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column $alignItems={'stretch'} ui={css`
+        <Column alignment={'stretch'} ui={css`
             position: relative;
         `}>
             <View as={'img'} src={template.titleImgUrl} ui={css`

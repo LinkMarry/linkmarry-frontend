@@ -16,7 +16,7 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
     const {deviceSize} = useResponsive();
     if (deviceSize === 'mobile' || deviceSize === 'tablet') {
         return (
-            <Column $alignItems={'stretch'} flex={1} ui={css`
+            <Column alignment={'stretch'} flex={1} ui={css`
                 min-height: 0;
             `}>
                 {children}
@@ -27,7 +27,7 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
     }
 
     return (
-        <Row $alignItems={'stretch'} flex={1} ui={css`
+        <Row alignment={'stretch'} flex={1} ui={css`
             min-height: 0;
         `}>
             <EditorNavigationBarImpl {...props}/>
@@ -96,7 +96,7 @@ const DesktopEditorNavigationBarImpl = (
                     }}/>
                 ))}
             </Column>
-            <Column $alignItems={'center'} $justifyContent={'center'} ui={css`
+            <Column alignment={'center'} arrangement={'center'} ui={css`
                 width: 72px;
                 height: 72px;
                 rotate: 180deg;
@@ -123,7 +123,7 @@ const Item = ({type, selected, ...props}: {
 } & ComponentPropsWithoutRef<'div'>) => {
     const {icon, navigationBarText} = editorNavTypeMap[type];
     return (
-        <Column gap={2} $alignItems={'center'} $justifyContent={'center'} ui={css`
+        <Column gap={2} alignment={'center'} arrangement={'center'} ui={css`
             min-width: 56px;
             width: 56px;
             min-height: 56px;

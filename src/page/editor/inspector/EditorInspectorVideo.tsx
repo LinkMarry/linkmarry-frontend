@@ -22,19 +22,19 @@ const EditorInspectorVideo = (
             OnChange: () => {
             }
         }}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={video.videoTitle} onChange={event => update(draft => {
                     draft.video.videoTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>URL로 첨부</Text>
                 <Input hasLabel={false} value={video.videoUrl} onChange={event => update(draft => {
                     draft.video.videoUrl = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>파일로 첨부</Text>
                 <PhotoUploadBox id={'EditorInspectorVideo-videoUrl'} value={[video.videoUrl]} onChange={images => update(draft => {
                     draft.video.videoUrl = images[0];

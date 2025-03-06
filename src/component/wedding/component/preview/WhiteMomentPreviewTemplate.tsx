@@ -23,24 +23,24 @@ function WhiteMomentPreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} ui={css`
+        <Column alignment={'stretch'} ui={css`
             padding: 44px 30px;
             background: ${template.weddingDesignColor};
         `}>
-            <Column gap={36} $alignItems={'center'} ui={css`
+            <Column gap={36} alignment={'center'} ui={css`
                 margin: 0 23px 44px 23px;
             `}>
                 <Text size={24} weight={100}>{first.name} & {second.name}</Text>
                 <Divider ui={css`
                     background: black;
                 `}/>
-                <Column $alignItems={'center'} gap={12}>
+                <Column alignment={'center'} gap={12}>
                     <Text size={18}
                           weight={300}>{isValidDate && format(date, 'yyyy년 M월 d일 EEEE a h시', {locale: ko})}</Text>
                     <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
                 </Column>
             </Column>
-            <Column gap={44} $alignItems={'center'}>
+            <Column gap={44} alignment={'center'}>
                 <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} ui={css`
                     display: flex;
                     width: 100%;
@@ -50,7 +50,7 @@ function WhiteMomentPreviewTemplate(
                     border: none;
                     outline: none;
                 `}/>
-                <Row gap={8} $alignItems={'center'}>
+                <Row gap={8} alignment={'center'}>
                     <Text size={16} weight={300}>{first.korean} {first.name}</Text>
                     <Icon iconType={IconType.HeartFill} size={16} ui={css`
                         fill: black;

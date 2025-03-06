@@ -20,7 +20,7 @@ function ClassicElegancePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'}>
+        <Column alignment={'stretch'}>
             <View ui={css`
                 position: relative;
             `}>
@@ -30,7 +30,7 @@ function ClassicElegancePreviewTemplate(
                     height: 100vh;
                     max-height: 810px;
                 `}/>
-                <Column $alignItems={'center'} gap={20} ui={css`
+                <Column alignment={'center'} gap={20} ui={css`
                     position: absolute;
                     top: 72px;
                     left: 50%;
@@ -46,7 +46,7 @@ function ClassicElegancePreviewTemplate(
                     <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} ui={css`
                         color: white;
                     `}>
-                        <Column $alignItems={'center'} gap={8}>
+                        <Column alignment={'center'} gap={8}>
                             <span>{first.name}</span>
                             <span>{second.name}</span>
                         </Column>
@@ -54,7 +54,7 @@ function ClassicElegancePreviewTemplate(
                 </Column>
             </View>
             <Text size={20} weight={400}>
-                <Column gap={8} $alignItems={'center'} ui={css`
+                <Column gap={8} alignment={'center'} ui={css`
                     padding: 32px 8px;
                 `}>
                     {isValidDate && (

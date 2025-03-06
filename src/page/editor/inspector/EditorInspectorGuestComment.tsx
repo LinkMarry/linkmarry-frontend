@@ -21,13 +21,13 @@ const EditorInspectorGuestComment = (
 ) => {
     return (
         <EditorInspectorWrapper type={'guestComment'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={guestComment.title} onChange={event => update(draft => {
                     draft.guestComment.title = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
                     items={guestCommentDesignList.map(i => guestCommentDesignMap[i].korean)}

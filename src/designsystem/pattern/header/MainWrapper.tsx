@@ -18,16 +18,16 @@ function MainWrapper(
     }: Props
 ) {
     return (
-        <Column $alignItems={'stretch'} ui={css`
+        <Column alignment={'stretch'} ui={css`
             width: 100vw;
             height: 100vh;
             overflow: hidden;
         `}>
             {hasHeader && <Header/>}
-            <Column $alignItems={'stretch'} flex={1} ui={css`
+            <Column alignment={'stretch'} flex={1} ui={css`
                 overflow: scroll;
             `}>
-                <Column as={'main'} $alignItems={'stretch'} flex={1}>
+                <Column as={'main'} alignment={'stretch'} flex={1}>
                     {children}
                 </Column>
                 {hasFooter && <Footer/>}

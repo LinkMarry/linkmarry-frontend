@@ -12,7 +12,7 @@ interface Props {
 
 const SharingLink = ({button, Style}: Props) => {
     return (
-        <Column $alignItems={'stretch'} $justifyContent={'flex-end'} ui={css`
+        <Column alignment={'stretch'} arrangement={'flex-end'} ui={css`
             border-radius: 8px;
             width: 300px;
             background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDD3-VTr8lfMnJAJy95JDZLG-MJMMpk3uM3A&s");
@@ -22,7 +22,7 @@ const SharingLink = ({button, Style}: Props) => {
                 min-height: 363px;
             `};
         `}>
-            <Column gap={12} $alignItems={'stretch'} ui={css`
+            <Column gap={12} alignment={'stretch'} ui={css`
                 padding: 12px 12px 16px 12px;
                 background: var(--g-50);
                 background-size: cover;
@@ -47,7 +47,7 @@ const SharingLink = ({button, Style}: Props) => {
                         )}
                     </Row>
                 )}
-                <Row gap={4} $alignItems={'center'}>
+                <Row gap={4} alignment={'center'}>
                     {button && (
                         <img width={12} src={'logo192.png'}/>
                     )}

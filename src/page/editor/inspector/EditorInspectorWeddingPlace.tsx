@@ -23,7 +23,7 @@ const EditorInspectorWeddingPlace = (
 ) => {
     return (
         <EditorInspectorWrapper type={'weddingPlace'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Input placeholder={'예식장명'} value={weddingPlace.placeName} onChange={event => update(draft => {
                     draft.weddingPlace.placeName = event.target.value;
                 })}/>
@@ -38,7 +38,7 @@ const EditorInspectorWeddingPlace = (
                 })}/>
             </Column>
             <Divider/>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>교통편</Text>
                 {Array.from(weddingPlace.placeTransportation).map((item, index) => (
                     <Input key={index} placeholder={getPlaceholder(index)} value={item} onChange={event => update(draft => {

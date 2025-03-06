@@ -23,13 +23,13 @@ const EditorInspectorGallery = (
 ) => {
     return (
         <EditorInspectorWrapper type={'gallery'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={gallery.galleryTitle} onChange={event => update(draft => {
                     draft.gallery.galleryTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
                     id={'EditorInspectorGallery-imgList'}
@@ -39,7 +39,7 @@ const EditorInspectorGallery = (
                     })}
                 />
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
                     items={galleryDesignList.map(i => galleryDesignMap[i].korean)}
@@ -49,7 +49,7 @@ const EditorInspectorGallery = (
                     })}
                 />
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>설정</Text>
                 <FormToggleSet>
                     <FormToggle checked={gallery.galleryZoom} OnChange={checked => update(draft => {

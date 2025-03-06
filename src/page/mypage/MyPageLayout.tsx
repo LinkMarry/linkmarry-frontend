@@ -19,7 +19,7 @@ function MyPageLayout() {
 function MobileMyPageLayout() {
     return (
         <MainWrapper>
-            <Row $justifyContent={'center'} flex={1} ui={css`
+            <Row arrangement={'center'} flex={1} ui={css`
                 overflow-y: scroll;
                 padding: 24px 16px 0 16px;
             `}>
@@ -37,7 +37,7 @@ function MobileMyPageLayout() {
 function DesktopMyPageLayout() {
     return (
         <MainWrapper>
-            <Row $justifyContent={'center'} flex={1} ui={css`
+            <Row arrangement={'center'} flex={1} ui={css`
                 padding: 72px 24px 0 24px;
                 overflow-y: scroll;
             `}>

@@ -40,7 +40,7 @@ function RsvpDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column gap={48} $alignItems={'stretch'} ui={css`
+            <Column gap={48} alignment={'stretch'} ui={css`
                 ${applyBaseDialogContent()};
                 max-width: 436px;
                 width: 90vw;
@@ -48,8 +48,8 @@ function RsvpDialog(
                 background: white;
                 padding: 44px 24px;
             `}>
-                <Column gap={24} $alignItems={'stretch'}>
-                    <Column gap={4} $alignItems={'center'}>
+                <Column gap={24} alignment={'stretch'}>
+                    <Column gap={4} alignment={'center'}>
                         {/*todo*/}
                         {/*<Text type={'h6'} customStyle={css`*/}
                         {/*    word-break: break-all;*/}
@@ -63,7 +63,7 @@ function RsvpDialog(
                     </Column>
                     <Divider/>
                     <Text type={'caption1'}>
-                        <Column $alignItems={'center'}>
+                        <Column alignment={'center'}>
                             <span>{first.korean} {first.name} & {second.korean} {second.name}</span>
                             {isValidDate && (
                                 <span>{format(date, 'yyyy년 M월 d일 EEEE a h시', {locale: ko})}</span>
@@ -72,7 +72,7 @@ function RsvpDialog(
                         </Column>
                     </Text>
                 </Column>
-                <Column gap={12} $alignItems={'center'} $alignSelf={'stretch'}>
+                <Column gap={12} alignment={'center'} $alignSelf={'stretch'}>
                     <Button text={'참석의사 전달하기'} onClick={onConfirm} style={{alignSelf: 'stretch'}}/>
                     <Text
                         type={'caption1'}

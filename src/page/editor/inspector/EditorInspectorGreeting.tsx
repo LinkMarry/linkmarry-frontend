@@ -19,13 +19,13 @@ interface Props extends Binding<WeddingDto> {
 const EditorInspectorGreeting = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper type={'greeting'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={value.greeting.greetingTitle} onChange={event => update(draft => {
                     draft.greeting.greetingTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={value.greeting.greetingContent} onChange={event => update(draft => {
                     draft.greeting.greetingContent = event.target.value;
@@ -33,13 +33,13 @@ const EditorInspectorGreeting = ({value, update}: Props) => {
                     height: 194px;
                 `}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 {/*todo*/}
                 <Text type={'p3'} bold={true}>샘플 양식</Text>
                 <Select items={[]} OnChange={index => {
                 }}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
                 <SegmentedButton
                     items={greetingDesignList.map(i => greetingDesignMap[i].korean)}

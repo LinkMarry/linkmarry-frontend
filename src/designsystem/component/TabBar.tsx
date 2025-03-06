@@ -39,7 +39,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <Column $alignItems={'center'} ui={css`
+        <Column alignment={'center'} ui={css`
             min-width: 68px;
             padding: 10px 0;
             border-radius: 6px;

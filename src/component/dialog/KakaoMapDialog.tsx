@@ -80,7 +80,7 @@ function KakaoMapDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $alignItems={'stretch'} ui={css`
+            <Column alignment={'stretch'} ui={css`
                 width: 90vw;
                 max-width: 412px;
                 height: 75vh;
@@ -95,10 +95,10 @@ function KakaoMapDialog(
                 `}>
                 </View>
                 {/* 결과 출력 */}
-                <Column gap={10} $alignItems={'stretch'} ui={css`
+                <Column gap={10} alignment={'stretch'} ui={css`
                     padding: 16px;
                 `}>
-                    <Column as={'ul'} gap={4} $alignItems={'stretch'} ui={css`
+                    <Column as={'ul'} gap={4} alignment={'stretch'} ui={css`
                         height: 128px;
                         overflow-y: scroll;
                         padding: 4px;

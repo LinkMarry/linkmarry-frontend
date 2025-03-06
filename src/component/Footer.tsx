@@ -13,15 +13,15 @@ function Footer() {
     const {deviceSize} = useResponsive();
 
     return (
-        <Column as={'footer'} $alignItems={'center'} ui={css`
+        <Column as={'footer'} alignment={'center'} ui={css`
             padding: 0 24px;
         `}>
-            <Column gap={40} $alignItems={'stretch'} ui={css`
+            <Column gap={40} alignment={'stretch'} ui={css`
                 max-width: 1100px;
                 width: 100%;
             `}>
                 <Divider/>
-                <Column gap={72} $alignItems={'stretch'} ui={css`
+                <Column gap={72} alignment={'stretch'} ui={css`
                     padding-bottom: 72px;
                 `}>
                     <View ui={css`

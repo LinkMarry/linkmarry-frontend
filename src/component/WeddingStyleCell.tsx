@@ -6,7 +6,7 @@ import View from "@designsystem/core/View";
 
 function WeddingStyleCell() {
     return (
-        <Column gap={8} $alignItems={'stretch'}>
+        <Column gap={8} alignment={'stretch'}>
             <View ui={css`
                 aspect-ratio: 9 / 16;
                 background: var(--g-100);

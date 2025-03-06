@@ -33,7 +33,7 @@ function GuestCommentsDetailDialog(
                         height: 81,
                         position: 'relative',
                     }}
-                    $alignItems={'center'}
+                    alignment={'center'}
                 >
                     <Spacer/>
                     <Text type={'p2'}>글 전체 보기</Text>
@@ -57,7 +57,7 @@ function GuestCommentsDetailDialog(
                         padding: '32px 30px',
                         overflowY: 'scroll'
                     }}
-                    $alignItems={'stretch'}
+                    alignment={'stretch'}
                 >
                     {comments.map((comment, index) => (
                         <BasicGuestComment

@@ -20,14 +20,14 @@ function NatureBlissPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} ui={css`
+        <Column alignment={'stretch'} ui={css`
             background: white;
         `}>
-            <Column gap={16} $alignItems={'center'} ui={css`
+            <Column gap={16} alignment={'center'} ui={css`
                 padding: 52px 0;
             `}>
                 <Text size={24} weight={100}>{first.name} & {second.name}</Text>
-                <Column gap={4} $alignItems={'center'}>
+                <Column gap={4} alignment={'center'}>
                     <Text size={14}
                           weight={300}>{isValidDate && format(date, 'yyyy.MM.dd a h시', {locale: ko})}</Text>
                     <Text

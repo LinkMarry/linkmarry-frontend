@@ -22,13 +22,13 @@ const EditorInspectorMoney = (
 ) => {
     return (
         <EditorInspectorWrapper type={'money'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={moneyInfo.infoTitle} onChange={event => update(draft => {
                     draft.moneyInfo.infoTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>설명</Text>
                 <Textarea hasLabel={false} value={moneyInfo.infoContent} onChange={event => update(draft => {
                     draft.moneyInfo.infoContent = event.target.value;
@@ -39,7 +39,7 @@ const EditorInspectorMoney = (
             <FormToggle checked={moneyInfo.kakaoStatus} OnChange={checked => update(draft => {
                 draft.moneyInfo.kakaoStatus = checked;
             })} label={'카카오페이 계좌 연동'}/>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Checkbox checked={false} OnChange={checked => {
                 }} label={'신랑'}/>
                 <Row gap={12}>

@@ -11,7 +11,7 @@ const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     ui?: RuleSet;
 }) => {
     return (
-        <Row $alignItems={'stretch'} ui={css`
+        <Row alignment={'stretch'} ui={css`
             background: var(--g-100);
             border-radius: 12px;
             height: 48px;

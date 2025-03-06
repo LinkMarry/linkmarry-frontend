@@ -42,7 +42,7 @@ const EditorInspectorDesign = (
     return (
         <EditorInspectorWrapper type={'design'} hasDivider={false}>
             {/*디자인*/}
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 {categories ? (
                     <TabBar items={categories} selectedTab={categories.indexOf(selectedCategory!)} onChange={tab => {
                         setSelectedCategory(categories[tab]);
@@ -62,7 +62,7 @@ const EditorInspectorDesign = (
             </Column>
 
             {/*대표 사진*/}
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>대표 사진</Text>
                 <PhotoUploadBox
                     id={'EditorInspectorDesign-titleImgUrl'}
@@ -74,8 +74,8 @@ const EditorInspectorDesign = (
             </Column>
 
             {/*오프닝*/}
-            <Column $alignItems={'stretch'} gap={12}>
-                <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
+                <Column alignment={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>오프닝 애니메이션</Text>
                     <SegmentedButton
                         items={openingList.map(i => openingMap[i].korean)}
@@ -87,7 +87,7 @@ const EditorInspectorDesign = (
                         }}
                     />
                 </Column>
-                <Column $alignItems={'stretch'} gap={12}>
+                <Column alignment={'stretch'} gap={12}>
                     <Text type={'p3'} bold={true}>문구</Text>
                     <Select
                         selected={openingTextList.indexOf(weddingDesign.openingText)} items={openingTextList}
@@ -110,7 +110,7 @@ interface ItemProps {
 
 const Item = ({design, selected}: ItemProps) => {
     return (
-        <Column $alignItems={'stretch'} gap={8}>
+        <Column alignment={'stretch'} gap={8}>
             <View
                 as={'img'}
                 src={design.img}
@@ -118,7 +118,7 @@ const Item = ({design, selected}: ItemProps) => {
                     aspect-ratio: 9 / 16;
                 `}
             />
-            <Row $alignItems={'center'}>
+            <Row alignment={'center'}>
                 <Text type={'p3'} ui={css`
                     ${selected && css`
                         color: var(--g-400);

@@ -60,13 +60,13 @@ function CreateGuestCommentDialog(
     return (
         <BaseDialog dismiss={dismiss}>
             <S.container>
-                <Column gap={4} $alignItems={'center'}>
+                <Column gap={4} alignment={'center'}>
                     {/*<Text type={'h6'}>방명록 작성하기</Text>*/}
                     <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>저희에게 따뜻한 말을 남겨주세요</Text>
                 </Column>
-                <Column gap={12} $alignItems={'stretch'}>
+                <Column gap={12} alignment={'stretch'}>
                     {/*<TextField ref={nameRef} placeholder={'성함'}/>*/}
                     {/*<TextField ref={passwordRef} placeholder={'비밀번호 입력'} fieldProps={{type: 'password'}}/>*/}
                     {/*<Textarea ref={commentRef} placeholder={'200자 이내로 작성'} maxLength={200}/>*/}

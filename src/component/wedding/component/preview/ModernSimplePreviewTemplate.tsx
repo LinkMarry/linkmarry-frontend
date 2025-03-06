@@ -18,7 +18,7 @@ function ModernSimplePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column gap={60} $alignItems={'center'} ui={css`
+        <Column gap={60} alignment={'center'} ui={css`
             padding: 92px 0;
             * {
                 color: #333333;
@@ -29,9 +29,9 @@ function ModernSimplePreviewTemplate(
                 align-self: stretch;
                 max-height: 312px;
             `}/>
-            <Column $alignItems={'center'} gap={24}>
+            <Column alignment={'center'} gap={24}>
                 <Text size={40} weight={400}>
-                    <Column $alignItems={'center'} gap={16}>
+                    <Column alignment={'center'} gap={16}>
                         <span>{first.name}</span>
                         <span>{second.name}</span>
                     </Column>

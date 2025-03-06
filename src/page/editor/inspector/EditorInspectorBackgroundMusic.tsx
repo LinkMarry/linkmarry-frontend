@@ -29,7 +29,7 @@ const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props
                 })
             }
         }}>
-            <Column $alignItems={'stretch'} gap={8}>
+            <Column alignment={'stretch'} gap={8}>
                 {backgroundMusics ? backgroundMusics.map((music, index) => (
                     <Item key={index} music={music} isPlaying={false}/>
                 )) : null}
@@ -55,7 +55,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
     const [isHovering, setIsHovering] = useState(false);
 
     return (
-        <Row $alignItems={'center'} onMouseOver={() => setIsHovering(true)} onMouseOut={() => setIsHovering(false)}
+        <Row alignment={'center'} onMouseOver={() => setIsHovering(true)} onMouseOut={() => setIsHovering(false)}
              gap={16} ui={css`
             padding: 12px;
             border-radius: 12px;

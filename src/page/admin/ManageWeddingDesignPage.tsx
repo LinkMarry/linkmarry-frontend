@@ -39,12 +39,12 @@ interface ItemProps {
 
 const Item = ({text}: ItemProps) => {
     return (
-        <Column $alignItems={'stretch'} gap={8}>
+        <Column alignment={'stretch'} gap={8}>
             <div style={{
                 aspectRatio: '9 / 16',
                 background: 'gray'
             }}></div>
-            <Row $alignItems={'center'}>
+            <Row alignment={'center'}>
                 <Text type={'p3'}>{text}</Text>
             </Row>
         </Column>

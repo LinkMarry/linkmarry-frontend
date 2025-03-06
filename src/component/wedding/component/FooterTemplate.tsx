@@ -22,15 +22,15 @@ function FooterTemplate(
                     width: '100%',
                     padding: '32px 0'
                 }}
-                $alignItems={'center'}
+                alignment={'center'}
             >
-                <Row gap={8} $alignItems={'center'}>
+                <Row gap={8} alignment={'center'}>
                     <img src={'/kakao.svg'} alt={'kakao'} width={20} height={20}/>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-600);
                     `}>카카오톡으로 청첩장 보내기</Text>
                 </Row>
-                <Row gap={4} $alignItems={'center'}>
+                <Row gap={4} alignment={'center'}>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-300);
                     `}>Copyrightⓒ2025.</Text>

@@ -24,13 +24,13 @@ const EditorInspectorKakaotalkInvitationLetter = (
 ) => {
     return (
         <EditorInspectorWrapper type={'kakaotalkInvitationLetter'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={linkShare.kakaoTitle} onChange={event => update(draft => {
                     draft.linkShare.kakaoTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={linkShare.kakaoContent} onChange={event => update(draft => {
                     draft.linkShare.kakaoContent = event.target.value;
@@ -38,7 +38,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                     height: 194px;
                 `}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
                     id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'}
@@ -48,7 +48,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                     })}
                 />
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>버튼 추가</Text>
                 <SegmentedButton
                     items={kakaoButtonList.map(i => kakaoButtonMap[i].korean)}
@@ -58,7 +58,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                     })}
                 />
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>스타일</Text>
                 <SegmentedButton
                     items={kakaoStyleList.map(i => getKoreanByKakaoStyle(i))}
@@ -68,7 +68,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                     })}
                 />
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
                 <SharingLink button={linkShare.kakaoButton} Style={linkShare.kakaoStyle}/>
             </Column>

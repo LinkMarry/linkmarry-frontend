@@ -24,13 +24,13 @@ const EditorInspectorUrlShare = (
 ) => {
     return (
         <EditorInspectorWrapper type={'urlShare'}>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={linkShare.urlTitle} onChange={event => update(draft => {
                     draft.linkShare.urlTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={linkShare.urlContent} onChange={event => update(draft => {
                     draft.linkShare.urlContent = event.target.value;
@@ -38,7 +38,7 @@ const EditorInspectorUrlShare = (
                     height: 194px;
                 `}/>
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
                     id={'EditorInspectorUrlShare-urlImgUrl'} value={[linkShare.urlImgUrl]}
@@ -47,7 +47,7 @@ const EditorInspectorUrlShare = (
                     })}
                 />
             </Column>
-            <Column $alignItems={'stretch'} gap={12}>
+            <Column alignment={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
                 <SharingLink Style={true}/>
             </Column>

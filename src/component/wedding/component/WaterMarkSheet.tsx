@@ -24,7 +24,7 @@ function WaterMarkSheet(
     return (
         // <SheetStyle ref={dialogRef}>
         <SheetStyle>
-            <Column gap={28} $alignItems={'center'} ui={css`
+            <Column gap={28} alignment={'center'} ui={css`
                 padding: 32px 24px;
                 background: var(--p-100);
                 border-radius: 16px;
