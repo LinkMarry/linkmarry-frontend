@@ -5,7 +5,7 @@ import Spacer from "@designsystem/component/Spacer";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
-import TemplateComponent from "@src/component/template/TemplateComponent";
+import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import useAutoFocus from "@hook/useAutoFocus";
 import Toggle from "@designsystem/component/Toggle";
@@ -25,7 +25,7 @@ const EditorPreview = () => {
                 box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
                 ${hideScrollBar};
             `}>
-                <TemplateComponent wedding={dummyWedding} isPreview={true}/>
+                <WeddingComponent wedding={dummyWedding} isPreview={true}/>
             </Column>
             <PreviewSetting/>
         </Column>

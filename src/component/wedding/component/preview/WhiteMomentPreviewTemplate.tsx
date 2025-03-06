@@ -7,7 +7,7 @@ import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
-import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
+import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import Style from "@designsystem/core/Style";
 import {getDetails} from "@remote/value/WeddingSchedule";
 

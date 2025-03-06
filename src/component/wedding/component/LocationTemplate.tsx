@@ -11,13 +11,13 @@ import FadeIn from "@src/component/fadein/FadeIn";
 const {kakao} = window as any;
 
 interface LocationProps {
-    templateColor: string;
+    weddingDesignColor: string;
     weddingPlace: WeddingPlace;
 }
 
 function LocationTemplate(
     {
-        templateColor,
+        weddingDesignColor,
         weddingPlace
     }: LocationProps
 ) {
@@ -49,7 +49,7 @@ function LocationTemplate(
 
     return (
         <Column $alignItems={'stretch'} ref={weddingPlaceRef} css={css`
-            background: ${templateColor};
+            background: ${weddingDesignColor};
             align-items: stretch;
         `}>
             <Spacer h={92}/>

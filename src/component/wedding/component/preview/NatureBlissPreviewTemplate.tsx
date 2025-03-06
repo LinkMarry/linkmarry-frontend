@@ -6,7 +6,7 @@ import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
-import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
+import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import Style from "@designsystem/core/Style";
 
 function NatureBlissPreviewTemplate(

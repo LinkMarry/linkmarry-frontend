@@ -1,5 +1,5 @@
 import React, {ComponentProps} from 'react';
-import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
+import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import Style from "@designsystem/core/Style";
 import {css} from "styled-components";
 import {Column} from "@designsystem/core/FlexLayout";

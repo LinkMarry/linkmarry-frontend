@@ -5,7 +5,7 @@ import KakaoRedirectPage from "@page/KakaoRedirectPage";
 import MyPageLayout from "@page/mypage/MyPageLayout";
 import ComponentDemo from "@designsystem/demo/ComponentDemo";
 import FoundationDemo from "@designsystem/demo/FoundationDemo";
-import TemplateComponent from "@src/component/template/TemplateComponent";
+import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {dummyWedding} from "@remote/value/Wedding";
 import WeddingPage from "@page/WeddingPage";
 import LoginPage from "@page/LoginPage";
@@ -55,10 +55,10 @@ function App() {
                     <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                     <Route path={'sample'} element={(
                         <Row $justifyContent={'center'} css={css`
-                            background: ${dummyWedding.template.weddingDesignColor};
+                            background: ${dummyWedding.weddingDesign.weddingDesignColor};
                             padding: 64px 0;
                         `}>
-                            <TemplateComponent wedding={dummyWedding} isPreview={true}/>
+                            <WeddingComponent wedding={dummyWedding} isPreview={true}/>
                         </Row>
                     )}/>
 

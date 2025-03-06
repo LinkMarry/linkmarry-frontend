@@ -3,7 +3,7 @@ import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
 import {useParams} from "react-router-dom";
 import {Row} from "@designsystem/core/FlexLayout";
-import TemplateComponent from "@src/component/template/TemplateComponent";
+import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
@@ -44,11 +44,11 @@ function WeddingPage() {
 
     return (
         <Row $justifyContent={'center'} css={css`
-            background: ${wedding?.template.weddingDesignColor};
+            background: ${wedding?.weddingDesign.weddingDesignColor};
             padding: 64px 0;
         `}>
             {wedding && (
-                <TemplateComponent
+                <WeddingComponent
                     wedding={wedding}
                     onRefresh={getWedding}
                 />

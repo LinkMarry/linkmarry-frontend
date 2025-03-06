@@ -9,7 +9,7 @@ import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import GuestType from "@remote/enumeration/GuestType";
 import Rsvp from "@remote/value/Rsvp";
-import ConfirmCreateRsvpDialog from "@src/component/template/dialog/rsvp/ConfirmCreateRsvpDialog";
+import ConfirmCreateRsvpDialog from "@src/component/wedding/dialog/rsvp/ConfirmCreateRsvpDialog";
 
 interface CreateRsvpDialogProps {
     url: string;

@@ -1,5 +1,5 @@
 import React, {ComponentProps} from 'react';
-import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
+import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";

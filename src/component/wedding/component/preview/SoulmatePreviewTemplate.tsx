@@ -3,7 +3,7 @@ import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {format} from "date-fns";
-import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
+import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import Style from "@designsystem/core/Style";

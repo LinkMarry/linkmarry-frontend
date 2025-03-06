@@ -5,7 +5,7 @@ import Divider from "@designsystem/component/Divider";
 import Button from "@designsystem/component/Button";
 import {css} from "styled-components";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
-import ContactingCongratulationDialog from "@src/component/template/dialog/ContactingCongratulationDialog";
+import ContactingCongratulationDialog from "@src/component/wedding/dialog/ContactingCongratulationDialog";
 import Phone from "@remote/value/Phone";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
@@ -13,14 +13,14 @@ import FadeIn from "@src/component/fadein/FadeIn";
 interface CongratulationsProps {
     baseInfo: BaseInfo;
     phone: Phone;
-    templateColor: string;
+    weddingDesignColor: string;
 }
 
 function CongratulationsTemplate(
     {
         baseInfo,
         phone,
-        templateColor
+        weddingDesignColor
     }: CongratulationsProps
 ) {
     const [showContactingCongratulationDialog, setShowContactingCongratulationDialog] = useState(false);
@@ -32,7 +32,7 @@ function CongratulationsTemplate(
 
     return (
         <Column $alignItems={'stretch'} css={css`
-            background: ${templateColor};
+            background: ${weddingDesignColor};
             padding: 92px 60px;
             align-items: stretch;
         `} ref={congratulationsRef}>

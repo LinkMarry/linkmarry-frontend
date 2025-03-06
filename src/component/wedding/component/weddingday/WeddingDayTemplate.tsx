@@ -5,7 +5,7 @@ import Divider from "@designsystem/component/Divider";
 import styled, {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
-import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
+import DDay, {DDayStyle} from "@src/component/wedding/component/weddingday/DDay";
 import {format, parse} from "date-fns";
 import Style from "@designsystem/core/Style";
 import FadeIn from "@src/component/fadein/FadeIn";

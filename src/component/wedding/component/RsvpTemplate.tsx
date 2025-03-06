@@ -13,7 +13,7 @@ import {css} from "styled-components";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 interface RsvpTemplateProps {
-    templateColor: DesignColor;
+    weddingDesignColor: DesignColor;
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
     onClickCreateRsvp: () => void;
@@ -21,7 +21,7 @@ interface RsvpTemplateProps {
 
 function RsvpTemplate(
     {
-        templateColor,
+        weddingDesignColor,
         baseInfo,
         weddingSchedule,
         onClickCreateRsvp
@@ -37,7 +37,7 @@ function RsvpTemplate(
         <FadeIn>
             <Column gap={40} $alignItems={'center'} css={css`
                 padding: 92px 60px;
-                background: ${templateColor};
+                background: ${weddingDesignColor};
             `}>
                 <Column $alignItems={'center'}>
                     <FadeIn>

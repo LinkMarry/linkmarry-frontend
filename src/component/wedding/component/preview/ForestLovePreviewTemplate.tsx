@@ -4,7 +4,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
-import previewTemplate from "@src/component/template/component/preview/PreviewTemplate";
+import previewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import Style from "@designsystem/core/Style";

@@ -10,15 +10,15 @@ import {trimArray} from "@util/array.util";
 import {trimString} from "@util/string.util";
 import Button from "@designsystem/component/Button";
 import GuestComment from "@remote/value/GuestComment";
-import RemoveGuestCommentDialog from "@src/component/template/dialog/guestcomment/RemoveGuestCommentDialog";
-import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomment/GuestCommentsDetailDialog";
-import CreateGuestCommentDialog from "@src/component/template/dialog/guestcomment/CreateGuestCommentDialog";
+import RemoveGuestCommentDialog from "@src/component/wedding/dialog/guestcomment/RemoveGuestCommentDialog";
+import GuestCommentsDetailDialog from "@src/component/wedding/dialog/guestcomment/GuestCommentsDetailDialog";
+import CreateGuestCommentDialog from "@src/component/wedding/dialog/guestcomment/CreateGuestCommentDialog";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
 import Style from "@designsystem/core/Style";
 
 interface GuestCommentsTemplateProps {
-    templateColor: string;
+    weddingDesignColor: string;
     url: string;
     guestComments: Comment[];
     guestComment: GuestComment;
@@ -27,7 +27,7 @@ interface GuestCommentsTemplateProps {
 
 function GuestCommentsTemplate(
     {
-        templateColor,
+        weddingDesignColor,
         url,
         guestComments,
         guestComment,
@@ -44,7 +44,7 @@ function GuestCommentsTemplate(
 
     return (
         <FadeIn>
-            <S.root background={templateColor} ref={guestCommentRef}>
+            <S.root background={weddingDesignColor} ref={guestCommentRef}>
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={12} $alignItems={'center'}>
                         <FadeIn>
