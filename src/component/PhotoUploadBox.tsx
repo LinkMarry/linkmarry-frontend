@@ -107,7 +107,11 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                     ${hideScrollBar};
                 `}>
                     {typeof value === 'string' && (
-                        <Image src={value} dismiss={() => onChange('' as V)}/>
+                        <Style css={css`
+                            margin: 0 auto;
+                        `}>
+                            <Image src={value} dismiss={() => onChange('' as V)}/>
+                        </Style>
                     )}
                     {Array.isArray(value) && (
                         <>
