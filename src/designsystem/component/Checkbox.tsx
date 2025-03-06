@@ -16,7 +16,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
     checked: boolean;
     OnChange: (checked: boolean) => void;
     label?: string;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 export interface CheckboxRef {
@@ -30,7 +30,7 @@ function Checkbox(
         checked = false,
         OnChange,
         label,
-        customStyle,
+        ui,
         ...props
     }: Props,
     ref: ForwardedRef<CheckboxRef>
@@ -58,7 +58,7 @@ function Checkbox(
     return (
         <Row $alignItems={'center'} css={css`
             width: fit-content;
-            ${customStyle};
+            ${ui};
         `} {...props}>
             <Row $justifyContent={'center'} $alignItems={'center'} css={css`
                 position: relative;
@@ -93,7 +93,7 @@ function Checkbox(
                 {localChecked && <Icon
                     iconType={IconType.CheckLine}
                     size={18}
-                    customStyle={css`
+                    ui={css`
                         fill: white;
                         position: absolute;
                         pointer-events: none;
@@ -103,7 +103,7 @@ function Checkbox(
             {label && (
                 <Text
                     type={'p3'}
-                    customStyle={css`
+                    ui={css`
                         cursor: pointer;
                     `}
                     onClick={() => OnChange?.(!checked)}

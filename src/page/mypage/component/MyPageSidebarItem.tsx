@@ -24,10 +24,10 @@ function MyPageSidebarItem({icon, text, selected = false, ...props}: {
                 }`
             };
         `} {...props}>
-            <Icon iconType={icon} width={24} height={24} customStyle={css`
+            <Icon iconType={icon} width={24} height={24} ui={css`
                 fill: var(--g-600);
             `}/>
-            <Text type={'p2'} bold={true} customStyle={css`
+            <Text type={'p2'} bold={true} ui={css`
                 color: var(--g-600);
             `}>{text}</Text>
         </Row>

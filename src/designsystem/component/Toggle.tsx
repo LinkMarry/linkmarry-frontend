@@ -10,7 +10,7 @@ import Style from "@designsystem/core/Style";
 interface Props extends ComponentPropsWithRef<'div'> {
     checked: boolean;
     OnChange: (checked: boolean) => void;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 
@@ -18,7 +18,7 @@ function Toggle(
     {
         checked = false,
         OnChange,
-        customStyle,
+        ui,
         ...props
     }: Props,
     ref?: ForwardedRef<HTMLInputElement>
@@ -27,7 +27,7 @@ function Toggle(
         <Row css={css`
             position: relative;
             width: fit-content;
-            ${customStyle};
+            ${ui};
         `} {...props}>
             <Row
                 as={'input'}

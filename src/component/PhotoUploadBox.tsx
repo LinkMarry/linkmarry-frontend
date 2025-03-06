@@ -95,7 +95,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             {isEmpty ? (
                 <Row gap={8} $alignItems={'center'}>
                     <Icon iconType={IconType.AddPhoto}/>
-                    <Text type={'p2'} customStyle={css`
+                    <Text type={'p2'} ui={css`
                         color: var(--g-900);
                     `}>사진을 첨부해 주세요</Text>
                 </Row>
@@ -127,10 +127,10 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                                     background: var(--g-100);
                                     cursor: pointer;
                                 `}>
-                                <Icon iconType={IconType.AddPhoto} width={24} height={24} customStyle={css`
+                                <Icon iconType={IconType.AddPhoto} width={24} height={24} ui={css`
                                     fill: var(--g-500);
                                 `}/>
-                                <Text type={'caption2'} customStyle={css`
+                                <Text type={'caption2'} ui={css`
                                     color: var(--g-500);
                                 `}>사진 첨부</Text>
                             </Column>
@@ -141,7 +141,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                     )}
                 </Row>
             )}
-            <Text type={'caption1'} customStyle={css`
+            <Text type={'caption1'} ui={css`
                 color: var(--g-400);
             `}>업로드한 사진은 대표 이미지로 등록됩니다.</Text>
         </Column>

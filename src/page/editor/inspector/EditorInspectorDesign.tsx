@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import TabBar from "@designsystem/component/TabBar";
@@ -31,9 +31,13 @@ const EditorInspectorDesign = (
     }: Props & WeddingDesignProps
 ) => {
     const groupedCategories = weddingDesigns ? groupByCategory(weddingDesigns) : undefined;
-    const [selectedCategory, setSelectedCategory] = useState(groupedCategories?.[0]?.category);
+    const [selectedCategory, setSelectedCategory] = useState<string>();
     const categories = groupedCategories?.map(i => i.category);
     const selectedWeddingDesigns = groupedCategories?.find(i => i.category === selectedCategory)?.items;
+
+    useEffect(() => {
+        setSelectedCategory(groupedCategories?.[0]?.category);
+    }, [weddingDesigns]);
 
     return (
         <EditorInspectorWrapper type={'design'} hasDivider={false}>
@@ -115,13 +119,13 @@ const Item = ({design, selected}: ItemProps) => {
                 `}
             />
             <Row $alignItems={'center'}>
-                <Text type={'p3'} customStyle={css`
+                <Text type={'p3'} ui={css`
                     ${selected && css`
                         color: var(--g-400);
                     `};
                 `}>{design.name}</Text>
                 {selected && (
-                    <Icon iconType={IconType.CheckLine} width={18} height={18} customStyle={css`
+                    <Icon iconType={IconType.CheckLine} width={18} height={18} ui={css`
                         fill: #22A2FC;
                     `}/>
                 )}

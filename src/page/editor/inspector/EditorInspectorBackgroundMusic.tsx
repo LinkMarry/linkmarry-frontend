@@ -39,7 +39,7 @@ const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props
             <FormToggle checked={value.backgroundMusic.effect} OnChange={checked => {
             }} label={'자동 재생'}/>
             <Divider/>
-            <Text type={'p3'} customStyle={css`
+            <Text type={'p3'} ui={css`
                 color: var(--g-400);
             `}>브라우저 정책에 따라 자동 재생 기능이 작동하지 않을 수 있습니다.</Text>
         </EditorInspectorWrapper>
@@ -83,7 +83,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
 
                 }}></Style>
                 {(isHovering || isPlaying) && (
-                    <Icon iconType={isPlaying ? IconType.Pause : IconType.Play} customStyle={css`
+                    <Icon iconType={isPlaying ? IconType.Pause : IconType.Play} ui={css`
                         fill: white;
                         position: absolute;
                         top: 50%;
@@ -99,7 +99,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                 text-overflow: ellipsis;
             `}>
                 <Text type={'p3'}>{music.name}</Text>
-                <Text type={'caption1'} customStyle={css`
+                <Text type={'caption1'} ui={css`
                     color: var(--g-400);
                 `}>tags</Text>
             </Column>

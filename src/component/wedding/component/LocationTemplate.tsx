@@ -55,7 +55,7 @@ function LocationTemplate(
             <Spacer h={92}/>
             <Column gap={40} $alignItems={'center'}>
                 <FadeIn>
-                    <Text size={20} weight={300} customStyle={css`
+                    <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
                     `}>LOCATION</Text>
                 </FadeIn>

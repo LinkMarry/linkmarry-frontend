@@ -43,7 +43,7 @@ function ClassicElegancePreviewTemplate(
                     `}>
                         <Text size={18} weight={400}>D-{differenceInDays(date, new Date())}</Text>
                     </Style>
-                    <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} customStyle={css`
+                    <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} ui={css`
                         color: white;
                     `}>
                         <Column $alignItems={'center'} gap={8}>

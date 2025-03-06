@@ -60,11 +60,11 @@ const PreviewSetting = () => {
             `} onClick={() => {
                 setOpenSetting(i => !i);
             }}>
-                <Text type={'p3'} bold={true} customStyle={css`
+                <Text type={'p3'} bold={true} ui={css`
                     color: var(--g-800);
                 `}>미리보기 설정</Text>
                 <Spacer/>
-                <Icon iconType={IconType.ExpandArrow} width={18} height={18} customStyle={css`
+                <Icon iconType={IconType.ExpandArrow} width={18} height={18} ui={css`
                     fill: var(--g-400);
                     transition: 0.2s rotate ease-out;
                     ${openSetting ? css`
@@ -77,7 +77,7 @@ const PreviewSetting = () => {
             <Row $alignItems={'center'} css={css`
                 padding: 6px;
             `}>
-                <Text type={'p3'} customStyle={css`
+                <Text type={'p3'} ui={css`
                     color: var(--g-600);
                 `}>자동포커스</Text>
                 <Spacer/>

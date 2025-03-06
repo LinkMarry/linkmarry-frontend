@@ -96,7 +96,7 @@ function CreateRsvpDialog(
                     <Icon
                         iconType={IconType.CrossLine}
                         size={20}
-                        customStyle={css`
+                        ui={css`
                             fill: var(--g-600);
                             cursor: pointer;
                             right: 32px;

@@ -31,7 +31,7 @@ function MoneyInfoTemplate(
         `}>
             <Column gap={40} $alignItems={'center'}>
                 <FadeIn>
-                    <Text size={20} weight={300} customStyle={css`
+                    <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
                     `}>마음 전하실 곳</Text>
                 </FadeIn>
@@ -76,7 +76,7 @@ function MoneyInfoComponent(
                         {/*    color: var(--g-600);*/}
                         {/*`}>{firstBaseInfo.korean}측</Text>*/}
                         <Spacer/>
-                        <Icon iconType={IconType.ExpandArrow} customStyle={css`
+                        <Icon iconType={IconType.ExpandArrow} ui={css`
                             fill: var(--g-600);
                             ${clickedGroom ? css`
                                 rotate: 90deg;
@@ -112,7 +112,7 @@ function MoneyInfoComponent(
                         {/*    color: var(--p-800);*/}
                         {/*`}>{secondBaseInfo.korean}측</Text>*/}
                         <Spacer/>
-                        <Icon iconType={IconType.ExpandArrow} customStyle={css`
+                        <Icon iconType={IconType.ExpandArrow} ui={css`
                             fill: var(--p-800);
                             ${clickedBride ? css`
                                 rotate: 90deg;
@@ -168,7 +168,7 @@ function MoneyCell(props: {
             `}>
                 {/*<Text type={'btn1'}>{fullBankNumber}</Text>*/}
                 <Spacer/>
-                <Icon iconType={IconType.Copy} size={20} customStyle={css`
+                <Icon iconType={IconType.Copy} size={20} ui={css`
                     fill: var(--g-400);
                 `} onClick={async () => {
                     try {

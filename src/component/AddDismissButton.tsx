@@ -23,7 +23,7 @@ function AddRemoveButton(
             <Icon
                 iconType={IconType.CrossLine}
                 size={20}
-                customStyle={css`
+                ui={css`
                     fill: white;
                     display: flex;
                     position: absolute;

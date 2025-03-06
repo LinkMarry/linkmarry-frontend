@@ -27,7 +27,7 @@ const SmallEditorHeader = () => {
             padding: 12px 16px;
             border-bottom: 1px solid var(--g-100);
         `}>
-            <Logo customStyle={css`
+            <Logo ui={css`
                 cursor: pointer;
             `} onClick={() => {
                 navigate('/');
@@ -50,7 +50,7 @@ const DesktopEditorHeader = () => {
             padding: 0 24px;
             border-bottom: 1px solid var(--g-100);
         `}>
-            <Logo customStyle={css`
+            <Logo ui={css`
                 cursor: pointer;
             `} onClick={() => {
                 navigate('/');

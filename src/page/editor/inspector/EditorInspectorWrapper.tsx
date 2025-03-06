@@ -54,10 +54,10 @@ const Empty = ({type}: EmptyProps) => {
         <Column gap={12} $alignItems={'stretch'} $justifyContent={'center'} css={css`
             height: 436px;
         `}>
-            <Icon iconType={icon} width={24} height={24} customStyle={css`
+            <Icon iconType={icon} width={24} height={24} ui={css`
                 fill: var(--g-400);
             `}/>
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 text-align: center;
                 color: var(--g-400);
             `}>토글을 활성화하여<br/>{inspectorText}을 설정할 수 있습니다.</Text>

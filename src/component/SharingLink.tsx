@@ -32,16 +32,16 @@ const SharingLink = ({button, Style}: Props) => {
                 <Text type={'p3'} bold={true}>2월 15일, 저희 결혼합니다.</Text>
                 {button && (
                     <Row gap={2}>
-                        <Button text={'모바일 청첩장'} buttonType={'tonal'} customStyle={css`
+                        <Button text={'모바일 청첩장'} buttonType={'tonal'} ui={css`
                             flex: 1;
                         `}/>
                         {button === KakaoButton.ATTEND && (
-                            <Button text={'참석의사 전달'} buttonType={'tonal'} customStyle={css`
+                            <Button text={'참석의사 전달'} buttonType={'tonal'} ui={css`
                                 flex: 1;
                             `}/>
                         )}
                         {button === KakaoButton.PLACE && (
-                            <Button text={'위치 보기'} buttonType={'tonal'} customStyle={css`
+                            <Button text={'위치 보기'} buttonType={'tonal'} ui={css`
                                 flex: 1;
                             `}/>
                         )}
@@ -51,7 +51,7 @@ const SharingLink = ({button, Style}: Props) => {
                     {button && (
                         <img width={12} src={'logo192.png'}/>
                     )}
-                    <Text type={'caption2'} customStyle={css`
+                    <Text type={'caption2'} ui={css`
                         color: var(--g-400);
                     `}>linkmarry.com</Text>
                 </Row>

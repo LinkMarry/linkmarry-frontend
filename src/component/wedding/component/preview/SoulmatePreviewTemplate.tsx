@@ -26,7 +26,7 @@ function SoulmatePreviewTemplate(
                         margin: 40px 0;
                     `}>
                 <Text size={40} weight={100}>{isValidDate && format(date, 'MM / dd')}</Text>
-                <Text size={20} weight={300} customStyle={css`
+                <Text size={20} weight={300} ui={css`
                             color: var(--g-600);
                         `}>
                     <Row gap={24} $alignItems={'center'}>

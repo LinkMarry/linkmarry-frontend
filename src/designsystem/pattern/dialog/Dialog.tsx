@@ -36,11 +36,11 @@ function Dialog(
                 ${applyBaseDialogContent()};
             `}>
                 <Column gap={4} $alignItems={'stretch'}>
-                    <Text type={'h5'} bold={true} customStyle={css`
+                    <Text type={'h5'} bold={true} ui={css`
                         text-align: center;
                         white-space: pre-wrap;
                     `}>{title}</Text>
-                    <Text type={'p2'} customStyle={css`
+                    <Text type={'p2'} ui={css`
                         color: var(--g-500);
                         text-align: center;
                     `}>{description}</Text>

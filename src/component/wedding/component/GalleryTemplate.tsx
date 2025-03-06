@@ -31,7 +31,7 @@ function GalleryTemplate(
             padding: 92px 0;
         `}>
             <FadeIn>
-                <Text size={20} weight={300} customStyle={css`
+                <Text size={20} weight={300} ui={css`
                     color: var(--g-600);
                 `}>GALLERY</Text>
             </FadeIn>
@@ -185,14 +185,14 @@ function GalleryStyleIndicator(
                         padding: 0 45px;
                     `}
                 >
-                    <Icon iconType={IconType.ExpandArrow} size={24} customStyle={css`
+                    <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
                         fill: var(--g-500);
                         cursor: pointer;
                     `} onClick={() => {
                         onClick('moveLeft');
                     }}/>
                     <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-                    <Icon iconType={IconType.ExpandArrow} size={24} customStyle={css`
+                    <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
                         rotate: 180deg;
                         fill: var(--g-500);
                         cursor: pointer;

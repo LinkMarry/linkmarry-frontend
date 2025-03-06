@@ -167,14 +167,14 @@ export enum IconType {
 interface Props extends SVGProps<SVGSVGElement> {
     iconType: IconType;
     size?: number;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 function Icon(
     {
         iconType,
         size = 24,
-        customStyle,
+        ui,
         ...props
     }: Props
 ): ReactElement {
@@ -344,19 +344,19 @@ function Icon(
     }
 
     return (
-        <IconWrapper $customStyle={customStyle}>
+        <IconWrapper ui={ui}>
             <IconContent width={size} height={size} {...props}/>
         </IconWrapper>
     );
 }
 
 const IconWrapper = styled.div<{
-    $customStyle?: RuleSet;
+    ui?: RuleSet;
 }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${({$customStyle}) => $customStyle};
+    ${({ui}) => ui};
 `;
 
 export default Icon;

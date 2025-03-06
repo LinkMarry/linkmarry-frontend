@@ -49,7 +49,7 @@ function WaterMarkSheet(
                 {/*    <br/>*/}
                 {/*    버튼을 통해 제거할 수 있습니다.</Text>*/}
                 <Row gap={12} $alignSelf={'stretch'}>
-                    <Button text={'구매하기'} customStyle={css`
+                    <Button text={'구매하기'} ui={css`
                         flex: 1;
                         background: var(--p-100);
                         color: var(--p-800);

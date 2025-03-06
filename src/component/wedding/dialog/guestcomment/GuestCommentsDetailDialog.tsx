@@ -41,7 +41,7 @@ function GuestCommentsDetailDialog(
                     <Icon
                         iconType={IconType.CrossLine}
                         size={20}
-                        customStyle={css`
+                        ui={css`
                             cursor: pointer;
                             right: 32px;
                             position: absolute;

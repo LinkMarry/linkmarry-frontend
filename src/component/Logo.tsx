@@ -3,13 +3,13 @@ import {css, RuleSet} from "styled-components";
 import Style from "@designsystem/core/Style";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
-const Logo = ({customStyle, ...props}: Props) => {
+const Logo = ({ui, ...props}: Props) => {
     return (
         <Style as={'img'} src={'/logo.svg'} width={103} alt={'logo'} css={css`
-            ${customStyle};
+            ${ui};
         `} {...props}/>
     );
 };

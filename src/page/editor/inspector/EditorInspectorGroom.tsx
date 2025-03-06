@@ -28,7 +28,7 @@ const EditorInspectorGroom = ({value, update}: Props) => {
                         <Input placeholder={'관계'}/>
                     </Row>
                     <Row gap={8}>
-                        <Input placeholder={'영문 이름'} customStyle={css`
+                        <Input placeholder={'영문 이름'} ui={css`
                             flex: 1;
                         `}/>
                         <Spacer/>
@@ -39,19 +39,19 @@ const EditorInspectorGroom = ({value, update}: Props) => {
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 아버지</Text>
                 <Row gap={8} $alignItems={'center'}>
-                    <Input placeholder={'성'} customStyle={css`
+                    <Input placeholder={'성'} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'이름'} customStyle={css`
+                    <Input placeholder={'이름'} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'관계'} customStyle={css`
+                    <Input placeholder={'관계'} ui={css`
                         flex: 1;
                     `}/>
                 </Row>
                 <Row gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
-                    }} label={'故'} customStyle={css`
+                    }} label={'故'} ui={css`
                         flex: 1;
                     `}/>
                     <Spacer/>
@@ -61,19 +61,19 @@ const EditorInspectorGroom = ({value, update}: Props) => {
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 어머니</Text>
                 <Row gap={8} $alignItems={'center'}>
-                    <Input placeholder={'성'} customStyle={css`
+                    <Input placeholder={'성'} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'이름'} customStyle={css`
+                    <Input placeholder={'이름'} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'관계'} customStyle={css`
+                    <Input placeholder={'관계'} ui={css`
                         flex: 1;
                     `}/>
                 </Row>
                 <Row gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
-                    }} label={'故'} customStyle={css`
+                    }} label={'故'} ui={css`
                         flex: 1;
                     `}/>
                     <Spacer/>

@@ -32,7 +32,7 @@ const EditorInspectorMoney = (
                 <Text type={'p3'} bold={true}>설명</Text>
                 <Textarea hasLabel={false} value={moneyInfo.infoContent} onChange={event => update(draft => {
                     draft.moneyInfo.infoContent = event.target.value;
-                })} customStyle={css`
+                })} ui={css`
                     height: 194px;
                 `}/>
             </Column>
@@ -43,10 +43,10 @@ const EditorInspectorMoney = (
                 <Checkbox checked={false} OnChange={checked => {
                 }} label={'신랑'}/>
                 <Row gap={12}>
-                    <Input placeholder={'예금주'} customStyle={css`
+                    <Input placeholder={'예금주'} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'예금주'} customStyle={css`
+                    <Input placeholder={'예금주'} ui={css`
                         flex: 1;
                     `}/>
                 </Row>

@@ -16,14 +16,14 @@ export interface PopoverItem {
 interface Props extends ComponentPropsWithoutRef<'div'> {
     items: PopoverItem[];
     dismiss: () => void;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 function Popover(
     {
         items,
         dismiss,
-        customStyle,
+        ui,
         ...props
     }: Props
 ) {
@@ -49,7 +49,7 @@ function Popover(
             border-radius: 10px;
             background: white;
             box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);
-            ${customStyle};
+            ${ui};
             ${fadeInAnimationStyle};
         `} {...props}>
             {items.map((item, index) => (
@@ -61,14 +61,14 @@ function Popover(
                     item.onClick();
                     dismiss();
                 }}>
-                    <Icon iconType={item.icon} width={20} height={20} customStyle={css`
+                    <Icon iconType={item.icon} width={20} height={20} ui={css`
                         ${(item.type ?? 'normal') === 'normal' ? css`
                             fill: var(--g-800);
                         ` : css`
                             fill: #F33C2F;
                         `};
                     `}/>
-                    <Text type={'caption1'} bold={true} customStyle={css`
+                    <Text type={'caption1'} bold={true} ui={css`
                         ${(item.type ?? 'normal') === 'normal' ? css`
                             color: var(--g-800);
                         ` : css`

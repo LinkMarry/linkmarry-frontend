@@ -18,7 +18,7 @@ const ShowGuestCommentsPage = () => {
 
     return (
         <Column $alignItems={'stretch'} gap={24} flex={1}>
-            <Text type={'h5'} bold={true} customStyle={css`
+            <Text type={'h5'} bold={true} ui={css`
                 color: var(--g-800);
             `}>
                 방명록 확인
@@ -96,10 +96,10 @@ const StatCell = (props: StatCellProps) => {
 const DesktopStatCell = ({title, value}: StatCellProps) => {
     return (
         <Column $alignItems={'stretch'} flex={1}>
-            <Text type={'p2'} customStyle={css`
+            <Text type={'p2'} ui={css`
                 color: var(--g-500);
             `}>{title}</Text>
-            <Text type={'p2'} bold={true} customStyle={css`
+            <Text type={'p2'} bold={true} ui={css`
                 color: var(--g-600);
             `}>{value}</Text>
         </Column>
@@ -109,11 +109,11 @@ const DesktopStatCell = ({title, value}: StatCellProps) => {
 const MobileStatCell = ({title, value}: StatCellProps) => {
     return (
         <Row>
-            <Text type={'p3'} customStyle={css`
+            <Text type={'p3'} ui={css`
                 color: var(--g-500);
             `}>{title}</Text>
             <Spacer/>
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-600);
             `}>{value}</Text>
         </Row>

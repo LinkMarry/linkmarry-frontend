@@ -4,11 +4,11 @@ import {css, RuleSet} from "styled-components";
 import Text from "@designsystem/component/Text";
 import Style from "@designsystem/core/Style";
 
-const SegmentedButton = ({items, selectedTab, onChange, customStyle}: {
+const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     items: string[];
     selectedTab: number;
     onChange: (tab: number) => void;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }) => {
     return (
         <Row $alignItems={'stretch'} css={css`
@@ -16,7 +16,7 @@ const SegmentedButton = ({items, selectedTab, onChange, customStyle}: {
             border-radius: 12px;
             height: 48px;
             position: relative;
-            ${customStyle};
+            ${ui};
         `}>
             <Style css={css`
                 position: absolute;
@@ -54,7 +54,7 @@ const Item = ({selected, text, ...props}: {
             cursor: pointer;
             z-index: 1;
         `} {...props}>
-            <Text type={'p3'} customStyle={css`
+            <Text type={'p3'} ui={css`
                 ${selected ? css`
                     color: var(--g-900);
                 ` : css`

@@ -14,14 +14,14 @@ const dividerSizeMap: Record<DividerSize, number> = {
 interface Props extends ComponentPropsWithoutRef<'div'> {
     size?: DividerSize;
     direction?: DividerDirection;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 function Divider(
     {
         size = 'small',
         direction = 'horizontal',
-        customStyle,
+        ui,
         ...props
     }: Props
 ) {
@@ -44,7 +44,7 @@ function Divider(
         <Style css={css`
             background: var(--g-100);
             ${style};
-            ${customStyle};
+            ${ui};
         `} {...props}/>
     );
 }

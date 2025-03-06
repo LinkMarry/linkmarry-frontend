@@ -11,10 +11,10 @@ const FileUploadBox = () => {
             background: var(--g-50);
             cursor: pointer;
         `}>
-            <Text type={'p2'} customStyle={css`
+            <Text type={'p2'} ui={css`
                 color: var(--g-900);
             `}>파일을 첨부해 주세요</Text>
-            <Text type={'caption1'} customStyle={css`
+            <Text type={'caption1'} ui={css`
                 color: var(--g-400);
             `}>mp4 파일 형식만 업로드 가능합니다.</Text>
         </Column>

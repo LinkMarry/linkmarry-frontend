@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef, HTMLAttributes, useRef, useState} from 'react';
+import React, {ComponentPropsWithoutRef, useRef, useState} from 'react';
 import styled, {css, CSSProperties} from "styled-components";
 import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/core/FlexLayout";
@@ -48,14 +48,14 @@ function GuestCommentsTemplate(
                 <Column gap={40} $alignItems={'stretch'}>
                     <Column gap={12} $alignItems={'center'}>
                         <FadeIn>
-                            <Text size={20} weight={300} customStyle={css`
+                            <Text size={20} weight={300} ui={css`
                                 color: var(--g-600);
                                 word-break: break-all;
                                 text-align: center;
                             `}>{guestComment.title}</Text>
                         </FadeIn>
                         <FadeIn delay={160}>
-                            <Text size={16} weight={300} customStyle={css`
+                            <Text size={16} weight={300} ui={css`
                                 color: var(--g-600);
                                 word-break: break-all;
                                 text-align: center;
@@ -77,7 +77,7 @@ function GuestCommentsTemplate(
                                 />
                                 <Text
                                     size={14} weight={300}
-                                    customStyle={css`
+                                    ui={css`
                                         color: var(--g-600);
                                         align-self: flex-end;
                                         padding-right: 4px;
@@ -231,25 +231,25 @@ export function BasicGuestComment(
     return (
         <S.basicContainer background={background} {...props}>
             <Row gap={8} $alignItems={'center'}>
-                <Text size={18} weight={300} customStyle={css`
+                <Text size={18} weight={300} ui={css`
                     color: var(--g-600);
                 `}>
                     From. {comment.name}
                 </Text>
                 {!privateContent && (
-                    <Text size={12} weight={300} customStyle={css`
+                    <Text size={12} weight={300} ui={css`
                         color: var(--g-300);
                     `}>
                         {trimString(comment.createdDate, 10)}
                     </Text>
                 )}
                 <Spacer/>
-                <Icon iconType={IconType.CrossLine} size={20} customStyle={css`
+                <Icon iconType={IconType.CrossLine} size={20} ui={css`
                     cursor: pointer;
                     fill: var(--g-300);
                 `} onClick={onRemove}/>
             </Row>
-            <Text size={16} weight={300} customStyle={css`
+            <Text size={16} weight={300} ui={css`
                 color: var(--g-600);
             `}>
                 {comment.comment}
@@ -270,7 +270,7 @@ export function StickerGuestComment(
         <S.stickerContainer background={background}>
             <Icon
                 iconType={IconType.CrossLine} size={20}
-                customStyle={css`
+                ui={css`
                     align-self: flex-end;
                     cursor: pointer;
                     fill: var(--g-300);
@@ -278,16 +278,16 @@ export function StickerGuestComment(
                 onClick={onRemove}
             />
             <Column flex={1}>
-                <Text size={16} weight={300} customStyle={css`
+                <Text size={16} weight={300} ui={css`
                     color: var(--g-600);
                 `}>{comment.comment}</Text>
                 <Spacer/>
                 <Column gap={4}>
-                    <Text size={16} weight={300} customStyle={css`
+                    <Text size={16} weight={300} ui={css`
                         color: var(--g-600);
                     `}>from. {comment.name}</Text>
                     {!privateContent && (
-                        <Text size={12} weight={300} customStyle={css`
+                        <Text size={12} weight={300} ui={css`
                             color: var(--g-300);
                         `}>{trimString(comment.createdDate, 10)}</Text>
                     )}

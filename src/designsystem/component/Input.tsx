@@ -6,15 +6,15 @@ import makeText from "@designsystem/foundation/text/TextType";
 interface Props extends ComponentPropsWithRef<'input'> {
     placeholder?: string;
     hasLabel?: boolean;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
-const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => {
+const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
     return (
         <Style css={css`
             display: flex;
             position: relative;
-            ${customStyle};
+            ${ui};
         `}>
             <Style
                 as={'input'}

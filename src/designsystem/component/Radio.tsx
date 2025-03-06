@@ -82,7 +82,7 @@ function Radio(
                 <Icon
                     iconType={localSelected ? IconType.RadioFill : IconType.RadioLine}
                     size={24}
-                    customStyle={css`
+                    ui={css`
                         position: absolute;
                         pointer-events: none;
                         ${localSelected ? css`

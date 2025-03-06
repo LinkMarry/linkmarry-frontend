@@ -17,7 +17,7 @@ interface Props extends PropsWithChildren<ComponentPropsWithRef<'span'>> {
     size?: number;
     lineHeight?: CSSProperties['lineHeight'];
     bold?: boolean;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 function Text(
@@ -26,7 +26,7 @@ function Text(
         font,
         weight,
         size,
-        customStyle,
+        ui,
         lineHeight,
         bold = false,
         children,
@@ -46,7 +46,7 @@ function Text(
                     fontSize: size ?? properties?.fontSize,
                     lineHeight: lineHeight ?? properties?.lineHeight,
                 })};
-                ${customStyle};
+                ${ui};
             `}
             {...props}
         >{children}</Style>

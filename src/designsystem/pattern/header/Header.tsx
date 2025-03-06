@@ -56,7 +56,7 @@ function MobileHeader() {
                             }}/>
                         </Column>
                     ) : (
-                        <Button text={'로그인'} buttonType={'outlined'} customStyle={css`
+                        <Button text={'로그인'} buttonType={'outlined'} ui={css`
                             margin: 0 24px;
                         `} onClick={() => {
                             navigate('/login');
@@ -96,7 +96,7 @@ function MobileHeaderContent(props: {
             <LogoInHeader/>
             <Spacer/>
             <Icon iconType={props.openDetail ? IconType.CrossLine : IconType.Hamburger} width={24} height={24}
-                  customStyle={css`
+                  ui={css`
                       fill: var(--g-900);
                       padding: 4px;
                       cursor: pointer;
@@ -167,7 +167,7 @@ function DesktopHeader() {
                                 dismiss={() => {
                                     setOpenMyInfoPopover(false);
                                 }}
-                                customStyle={css`
+                                ui={css`
                                     right: 0;
                                 `}
                             />
@@ -193,11 +193,11 @@ function MobileHeaderItem(props: {
             ${makeInteractionEffect('strong')};
         `}>
             {props.icon && (
-                <Icon iconType={props.icon} width={20} height={20} customStyle={css`
+                <Icon iconType={props.icon} width={20} height={20} ui={css`
                     fill: var(--g-800);
                 `}/>
             )}
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-800);
             `}>{props.text}</Text>
         </Row>
@@ -214,11 +214,11 @@ function DesktopHeaderItem({text, hasPopover = false, ...props}: {
             border-radius: 6px;
             ${makeInteractionEffect('strong')};
         `} {...props}>
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 white-space: nowrap;
             `}>{text}</Text>
             {hasPopover && (
-                <Icon iconType={IconType.ExpandArrow} width={20} height={20} customStyle={css`
+                <Icon iconType={IconType.ExpandArrow} width={20} height={20} ui={css`
                     rotate: -90deg;
                     fill: var(--g-400);
                 `}/>
@@ -230,7 +230,7 @@ function DesktopHeaderItem({text, hasPopover = false, ...props}: {
 function LogoInHeader() {
     const navigate = useNavigate();
     return (
-        <Logo customStyle={css`
+        <Logo ui={css`
             cursor: pointer;
         `} onClick={() => {
             navigate('/');

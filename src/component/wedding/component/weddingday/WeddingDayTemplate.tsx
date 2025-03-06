@@ -34,10 +34,10 @@ function WeddingDayTemplate(
                 background: white;
                 height: 100vh;
             `}>
-                <Text size={36} weight={300} customStyle={css`
+                <Text size={36} weight={300} ui={css`
                     color: var(--g-500);
                 `}>{isValidDate && date.getFullYear()}</Text>
-                <Text size={36} weight={300} customStyle={css`
+                <Text size={36} weight={300} ui={css`
                     color: var(--g-500);
                 `}>{isValidDate && format(date, 'MMMM d')}</Text>
             </Column>
@@ -50,7 +50,7 @@ function WeddingDayTemplate(
             background: white;
         `}>
             <FadeIn>
-                <Text size={20} weight={300} customStyle={css`
+                <Text size={20} weight={300} ui={css`
                     color: var(--g-600);
                 `}>WEDDING DAY</Text>
             </FadeIn>
@@ -80,7 +80,7 @@ function WeddingDayTemplate(
                                                     font={'Pretendard'}
                                                     size={16}
                                                     weight={300}
-                                                    customStyle={css`
+                                                    ui={css`
                                                         color: var(--g-500);
                                                     `}
                                                 >{i}</Text>
@@ -110,7 +110,7 @@ function WeddingDayTemplate(
                                                     >
                                                         <Text
                                                             font={'Pretendard'} size={16} weight={300}
-                                                            customStyle={css`
+                                                            ui={css`
                                                                 ${(dayIndex === 0 || dayIndex === 6) && (
                                                                     css`
                                                                         opacity: 0.4;

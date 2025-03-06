@@ -74,13 +74,13 @@ const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDiv
             border: 1px solid var(--g-300);
             background: white;
         `} {...props}>
-            <Text type={'p2'} customStyle={css`
+            <Text type={'p2'} ui={css`
                 flex: 1;
             `}>{text}</Text>
             <Style css={css`
                 display: flex;
             `}>
-                <Icon iconType={IconType.Hamburger} width={24} height={24} customStyle={css`
+                <Icon iconType={IconType.Hamburger} width={24} height={24} ui={css`
                     fill: var(--g-600);
                 `}/>
             </Style>

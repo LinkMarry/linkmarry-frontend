@@ -50,10 +50,10 @@ function WeddingCell() {
                 <Column gap={8} $alignItems={'stretch'}>
                     <Row gap={8} $alignItems={'flex-end'}>
                         <Column flex={1}>
-                            <Text type={'p1'} bold={true} customStyle={css`
+                            <Text type={'p1'} bold={true} ui={css`
                                 color: var(--g-800);
                             `}>Title</Text>
-                            <Text type={'caption2'} customStyle={css`
+                            <Text type={'caption2'} ui={css`
                                 color: var(--g-500);
                             `}>https://linkmarry.com/wedding/temp-url</Text>
                         </Column>
@@ -76,7 +76,7 @@ function WeddingCell() {
                                     `}
                                     onClick={() => setOpenDetailPopover(true)}
                                 >
-                                    <Icon iconType={IconType.Detail} width={24} height={24} customStyle={css`
+                                    <Icon iconType={IconType.Detail} width={24} height={24} ui={css`
                                         fill: var(--g-500);
                                     `}/>
                                 </Column>
@@ -112,7 +112,7 @@ function WeddingCell() {
                                             }
                                         ]}
                                         dismiss={() => setOpenDetailPopover(false)}
-                                        customStyle={css`
+                                        ui={css`
                                             right: 0;
                                         `}
                                     />
@@ -131,7 +131,7 @@ function WeddingCell() {
                     `}>
                         {/*방명록 미리보기*/}
                         <Column gap={8} $alignItems={'stretch'} flex={1}>
-                            <Text type={'caption2'} bold={true} customStyle={css`
+                            <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-400);
                             `}>방명록 미리보기</Text>
                             <Column gap={8} $alignItems={'stretch'} flex={1} css={css`
@@ -147,7 +147,7 @@ function WeddingCell() {
 
                         {/*통계*/}
                         <Column gap={8} $alignItems={'stretch'} flex={1}>
-                            <Text type={'caption2'} bold={true} customStyle={css`
+                            <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-400);
                             `}>통계</Text>
                             <Column gap={8} $alignItems={'stretch'} flex={1} css={css`
@@ -171,14 +171,14 @@ function CommentCell() {
     return (
         <Column $alignItems={'stretch'}>
             <Row gap={4} $alignItems={'flex-end'}>
-                <Text type={'p3'} bold={true} customStyle={css`
+                <Text type={'p3'} bold={true} ui={css`
                     color: var(--g-600);
                 `}>Name</Text>
-                <Text type={'caption1'} customStyle={css`
+                <Text type={'caption1'} ui={css`
                     color: var(--g-400);
                 `}>Time ago</Text>
             </Row>
-            <Text type={'p3'} customStyle={css`
+            <Text type={'p3'} ui={css`
                 color: var(--g-500);
                 word-break: break-word;
             `}>ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</Text>
@@ -189,11 +189,11 @@ function CommentCell() {
 function StatisticsCell() {
     return (
         <Row>
-            <Text type={'p3'} customStyle={css`
+            <Text type={'p3'} ui={css`
                 color: var(--g-500);
             `}>Title</Text>
             <Spacer/>
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-600);
             `}>Value</Text>
         </Row>

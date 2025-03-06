@@ -41,14 +41,14 @@ function RsvpTemplate(
             `}>
                 <Column $alignItems={'center'}>
                     <FadeIn>
-                        <Text size={24} weight={300} customStyle={css`
+                        <Text size={24} weight={300} ui={css`
                             color: var(--g-600);
                             word-break: break-all;
                             text-align: center;
                         `}>RSVP</Text>
                     </FadeIn>
                     <FadeIn>
-                        <Text size={18} weight={300} customStyle={css`
+                        <Text size={18} weight={300} ui={css`
                             color: var(--g-600);
                             word-break: break-all;
                             text-align: center;
@@ -68,15 +68,15 @@ function RsvpTemplate(
                                 `}>
                                     <Text
                                         size={16} weight={300}
-                                        customStyle={css`
+                                        ui={css`
                                             flex: 1;
                                             text-align: center;
                                         `}
                                     >{first.korean} {first.name}</Text>
-                                    <Icon iconType={IconType.HeartFill} size={16} customStyle={css`
+                                    <Icon iconType={IconType.HeartFill} size={16} ui={css`
                                         fill: var(--g-600);
                                     `}/>
-                                    <Text size={16} weight={300} customStyle={css`
+                                    <Text size={16} weight={300} ui={css`
                                         flex: 1;
                                         text-align: center;
                                     `}>{second.korean} {second.name}</Text>
@@ -84,7 +84,7 @@ function RsvpTemplate(
                                 <Divider/>
                             </Column>
                             {isValidDate && (
-                                <Text type={'p3'} customStyle={css`
+                                <Text type={'p3'} ui={css`
                                     color: var(--g-600);
                                 `}>
                                     <Column gap={12} $alignItems={'center'}>
@@ -95,7 +95,7 @@ function RsvpTemplate(
                             )}
                         </Column>
                     </FadeIn>
-                    <FadeIn customStyle={css`
+                    <FadeIn ui={css`
                         display: flex;
                         flex-direction: column;
                         align-items: stretch;

@@ -4,11 +4,11 @@ import {Column} from "@designsystem/core/FlexLayout";
 import FormToggle from "@designsystem/component/FormToggle";
 
 interface Props {
-    customStyle?: RuleSet;
+    ui?: RuleSet;
     children?: ReactNode;
 }
 
-const FormToggleSet = ({customStyle, children}: Props) => {
+const FormToggleSet = ({ui, children}: Props) => {
     const filteredChildren = Children.toArray(children).filter((child) =>
         isValidElement(child) && child.type === FormToggle
     ) as ReactElement<typeof FormToggle>[];
@@ -26,7 +26,7 @@ const FormToggleSet = ({customStyle, children}: Props) => {
                 border-bottom: 1px solid var(--g-300) !important;
             }
 
-            ${customStyle};
+            ${ui};
         `}>
             {filteredChildren}
         </Column>

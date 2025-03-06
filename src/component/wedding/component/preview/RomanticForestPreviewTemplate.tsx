@@ -35,7 +35,7 @@ function RomanticForestPreviewTemplate(
                 width: 100%;
             `}/>
             {isValidDate && (
-                <Text size={24} weight={700} customStyle={css`
+                <Text size={24} weight={700} ui={css`
                     position: absolute;
                     color: white;
                     top: 60px;
@@ -51,7 +51,7 @@ function RomanticForestPreviewTemplate(
                 bottom: 0;
                 width: 100%;
             `}/>
-            <Text size={24} weight={700} customStyle={css`
+            <Text size={24} weight={700} ui={css`
                 color: white;
                 bottom: 32px;
                 margin: 0 32px;

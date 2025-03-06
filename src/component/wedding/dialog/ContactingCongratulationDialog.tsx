@@ -88,7 +88,7 @@ function ContactingCongratulationDialog(
             `}>
                 <Column gap={4} $alignItems={'center'}>
                     {/*<Text type={'h6'}>축하 연락하기</Text>*/}
-                    <Text type={'caption1'} customStyle={css`
+                    <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>축하의 마음을 전하세요</Text>
                 </Column>
@@ -108,7 +108,7 @@ function ContactingCongratulationDialog(
                         `}>
                             <Row gap={12} $alignItems={'center'}>
                                 {/*<Text type={'p5'}>{tel.name}</Text>*/}
-                                <Text type={'caption1'} customStyle={css`
+                                <Text type={'caption1'} ui={css`
                                     color: var(--g-300);
                                 `}>{tel.familyName}</Text>
                             </Row>
@@ -117,14 +117,14 @@ function ContactingCongratulationDialog(
                                 <S.iconWrapper onClick={() => {
                                     window.open(`sms:${tel.tel}`)
                                 }}>
-                                    <Icon iconType={IconType.Chat} size={20} customStyle={css`
+                                    <Icon iconType={IconType.Chat} size={20} ui={css`
                                         fill: var(--g-600);
                                     `}/>
                                 </S.iconWrapper>
                                 <S.iconWrapper onClick={() => {
                                     window.open(`tel:${tel.tel}`);
                                 }}>
-                                    <Icon iconType={IconType.Call} size={20} customStyle={css`
+                                    <Icon iconType={IconType.Call} size={20} ui={css`
                                         fill: var(--g-600);
                                     `}/>
                                 </S.iconWrapper>

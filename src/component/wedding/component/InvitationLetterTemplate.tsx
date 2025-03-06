@@ -35,7 +35,7 @@ function InvitationLetterTemplate(
             `}>
                 {invitationLetterStyle === 'style1' ? (
                     <FadeIn>
-                        <Text className={'override-font'} weight={300} size={12} font={'Aleo'} customStyle={css`
+                        <Text className={'override-font'} weight={300} size={12} font={'Aleo'} ui={css`
                             color: var(--g-300);
                         `}>Wedding Invitation</Text>
                     </FadeIn>
@@ -55,7 +55,7 @@ function InvitationLetterTemplate(
                     <Divider style={{width: 140}}/>
                 </FadeIn>
                 <FadeIn delay={600}>
-                    <Text weight={300} size={14} customStyle={css`
+                    <Text weight={300} size={14} ui={css`
                         color: var(--g-600);
                     `}>
                         <Row $alignItems={'center'} gap={8}>
@@ -70,7 +70,7 @@ function InvitationLetterTemplate(
 
 function GreetingContent(props: { text: string }) {
     return (
-        <Text size={14} weight={300} customStyle={css`
+        <Text size={14} weight={300} ui={css`
             color: var(--g-600);
             overflow: hidden;
             word-break: break-all;

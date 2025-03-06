@@ -108,7 +108,7 @@ function ComponentDemo() {
                 ]}
                 dismiss={() => {
                 }}
-                customStyle={css`
+                ui={css`
                     position: relative;
                 `}
             />
@@ -116,16 +116,16 @@ function ComponentDemo() {
                 '레터링',
                 '타이핑',
                 '타이핑'
-            ]} selectedTab={selectedTabBarIndex} customStyle={css`
+            ]} selectedTab={selectedTabBarIndex} ui={css`
                 width: 316px;
             `} onChange={tab => setSelectedTabBarIndex(tab)}/>
-            <Input placeholder={'Label'} customStyle={css`
+            <Input placeholder={'Label'} ui={css`
                 margin-top: 24px;
             `}/>
-            <Input placeholder={'Label'} hasLabel={false} customStyle={css`
+            <Input placeholder={'Label'} hasLabel={false} ui={css`
                 margin-top: 24px;
             `}/>
-            <Textarea placeholder={'Label'} customStyle={css`
+            <Textarea placeholder={'Label'} ui={css`
                 margin-top: 24px;
             `}/>
             <Textarea placeholder={'Label'} hasLabel={false}/>

@@ -29,7 +29,7 @@ function DreamWeddingPreviewTemplate(
                     color: #4A3F35;
                 }
             `}/>
-            <Text className={'override-font'} size={88} font={'iceJaram'} customStyle={css`
+            <Text className={'override-font'} size={88} font={'iceJaram'} ui={css`
                 position: absolute;
                 top: 36px;
                 left: 28px;

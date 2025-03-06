@@ -106,7 +106,7 @@ const DesktopEditorNavigationBarImpl = (
             `} onClick={() => {
                 onToggleInspector();
             }}>
-                <Icon iconType={IconType.DoubleArrowLeft} width={24} height={24} customStyle={css`
+                <Icon iconType={IconType.DoubleArrowLeft} width={24} height={24} ui={css`
                     padding: 12px;
                     fill: var(--g-500);
                     border-radius: 12px;
@@ -131,14 +131,14 @@ const Item = ({type, selected, ...props}: {
             border-radius: 12px;
             ${makeInteractionEffect('strong')};
         `} {...props}>
-            <Icon iconType={icon} width={24} height={24} customStyle={css`
+            <Icon iconType={icon} width={24} height={24} ui={css`
                 ${selected ? css`
                     fill: var(--g-700);
                 ` : css`
                     fill: var(--g-400);
                 `};
             `}/>
-            <Text type={'caption2'} customStyle={css`
+            <Text type={'caption2'} ui={css`
                 ${selected ? css`
                     color: var(--g-700);
                 ` : css`

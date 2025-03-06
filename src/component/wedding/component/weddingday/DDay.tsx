@@ -81,12 +81,12 @@ function DDay(
                     <Icon
                         iconType={IconType.HeartFill}
                         size={16}
-                        customStyle={css`
+                        ui={css`
                             fill: black;
                         `}
                     />
                     <Text size={14} weight={300}>{second.name}의 결혼식이</Text>
-                    <Text size={14} weight={300} customStyle={css`
+                    <Text size={14} weight={300} ui={css`
                         color: var(--p-800);
                     `}>{remainingTime.days}</Text>
                     <Text size={14} weight={300}>일 남았습니다.</Text>
@@ -113,40 +113,40 @@ function RemainTimeComponent(
                 `}>
                     <FadeIn>
                         <S.dateCell>
-                            <Text size={12} weight={400} customStyle={css`
+                            <Text size={12} weight={400} ui={css`
                                 color: var(--g-300);
                             `}>DAYS</Text>
-                            <Text size={24} weight={300} customStyle={css`
+                            <Text size={24} weight={300} ui={css`
                                 color: var(--g-600);
                             `}>{remainingTime.days}</Text>
                         </S.dateCell>
                     </FadeIn>
                     <FadeIn delay={120}>
                         <S.dateCell>
-                            <Text size={12} weight={400} customStyle={css`
+                            <Text size={12} weight={400} ui={css`
                                 color: var(--g-300);
                             `}>HOUR</Text>
-                            <Text size={24} weight={300} customStyle={css`
+                            <Text size={24} weight={300} ui={css`
                                 color: var(--g-600);
                             `}>{remainingTime.hours}</Text>
                         </S.dateCell>
                     </FadeIn>
                     <FadeIn delay={240}>
                         <S.dateCell>
-                            <Text size={12} weight={400} customStyle={css`
+                            <Text size={12} weight={400} ui={css`
                                 color: var(--g-300);
                             `}>MIN</Text>
-                            <Text size={24} weight={300} customStyle={css`
+                            <Text size={24} weight={300} ui={css`
                                 color: var(--g-600);
                             `}>{remainingTime.minutes}</Text>
                         </S.dateCell>
                     </FadeIn>
                     <FadeIn delay={360}>
                         <S.dateCell>
-                            <Text size={12} weight={400} customStyle={css`
+                            <Text size={12} weight={400} ui={css`
                                 color: var(--g-300);
                             `}>SEC</Text>
-                            <Text size={24} weight={300} customStyle={css`
+                            <Text size={24} weight={300} ui={css`
                                 color: var(--g-600);
                             `}>{remainingTime.seconds}</Text>
                         </S.dateCell>
@@ -157,43 +157,43 @@ function RemainTimeComponent(
             return (
                 <Row $alignItems={'flex-end'}>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} customStyle={css`
+                        <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>SEC</Text>
-                        <Text size={24} weight={300} customStyle={css`
+                        <Text size={24} weight={300} ui={css`
                             color: var(--g-600);
                         `}>{remainingTime.days}</Text>
                     </Column>
-                    <Text size={24} weight={300} customStyle={css`
+                    <Text size={24} weight={300} ui={css`
                         color: var(--g-600);
                     `} style={{width: 28, textAlign: 'center'}}>:</Text>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} customStyle={css`
+                        <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>HOUR</Text>
-                        <Text size={24} weight={300} customStyle={css`
+                        <Text size={24} weight={300} ui={css`
                             color: var(--g-600);
                         `}>{remainingTime.hours}</Text>
                     </Column>
-                    <Text size={24} weight={300} customStyle={css`
+                    <Text size={24} weight={300} ui={css`
                         color: var(--g-600);
                     `} style={{width: 28, textAlign: 'center'}}>:</Text>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} customStyle={css`
+                        <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>MIN</Text>
-                        <Text size={24} weight={300} customStyle={css`
+                        <Text size={24} weight={300} ui={css`
                             color: var(--g-600);
                         `}>{remainingTime.minutes}</Text>
                     </Column>
-                    <Text size={24} weight={300} customStyle={css`
+                    <Text size={24} weight={300} ui={css`
                         color: var(--g-600);
                     `} style={{width: 28, textAlign: 'center'}}>:</Text>
                     <Column gap={4} $alignItems={'center'}>
-                        <Text size={12} weight={400} customStyle={css`
+                        <Text size={12} weight={400} ui={css`
                             color: var(--g-300);
                         `}>SEC</Text>
-                        <Text size={24} weight={300} customStyle={css`
+                        <Text size={24} weight={300} ui={css`
                             color: var(--g-600);
                         `}>{remainingTime.seconds}</Text>
                     </Column>

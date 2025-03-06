@@ -40,7 +40,7 @@ function CongratulationsTemplate(
                 <Column gap={40} $alignItems={'stretch'}>
                     <FadeIn>
                         <Column gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                            <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                 color: var(--g-600);
                                 display: flex;
                                 justify-content: center;
@@ -59,7 +59,7 @@ function CongratulationsTemplate(
                                 </Row>
                             </Text>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                                <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{first.korean}&nbsp;</Text>
                                 <Text font={'GangwonEduAll'} weight={100} size={24}>
@@ -69,13 +69,13 @@ function CongratulationsTemplate(
                         </Column>
                     </FadeIn>
                     <FadeIn>
-                        <Divider customStyle={css`
+                        <Divider ui={css`
                             color: var(--g-200);
                         `}/>
                     </FadeIn>
                     <FadeIn>
                         <Column gap={8} $alignItems={'center'}>
-                            <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                            <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                 color: var(--g-600);
                                 display: flex;
                                 justify-content: center;
@@ -94,7 +94,7 @@ function CongratulationsTemplate(
                                 </Row>
                             </Text>
                             <Row gap={8} $alignItems={'center'}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24} customStyle={css`
+                                <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{second.korean}&nbsp;</Text>
                                 <Text font={'GangwonEduAll'} weight={100} size={24}>
@@ -104,7 +104,7 @@ function CongratulationsTemplate(
                         </Column>
                     </FadeIn>
                 </Column>
-                <FadeIn customStyle={css`
+                <FadeIn ui={css`
                     display: flex;
                     flex-direction: column;
                     align-items: stretch;

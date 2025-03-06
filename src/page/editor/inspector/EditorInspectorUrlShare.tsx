@@ -34,7 +34,7 @@ const EditorInspectorUrlShare = (
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={linkShare.urlContent} onChange={event => update(draft => {
                     draft.linkShare.urlContent = event.target.value;
-                })} customStyle={css`
+                })} ui={css`
                     height: 194px;
                 `}/>
             </Column>

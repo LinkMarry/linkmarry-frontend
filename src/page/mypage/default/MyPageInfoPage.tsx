@@ -18,7 +18,7 @@ function MyPageInfoPage() {
                 <Divider/>
                 <Text
                     type={'p3'}
-                    customStyle={css`
+                    ui={css`
                         color: var(--g-500);
                         text-decoration: underline;
                         height: 52px;
@@ -46,14 +46,14 @@ function Item(props: {
         `}>
             <Text
                 type={'p3'}
-                customStyle={css`
+                ui={css`
                     width: 122px;
                     color: var(--g-500);
                 `}
             >{props.title}</Text>
             <Text
                 type={'p3'}
-                customStyle={css`
+                ui={css`
                     width: 122px;
                     color: var(--g-600);
                 `}

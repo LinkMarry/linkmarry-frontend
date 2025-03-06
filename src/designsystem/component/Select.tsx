@@ -10,10 +10,10 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
     selected?: number;
     OnChange: (index: number) => void;
     placeholder?: string;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
-const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}: Props) => {
+const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) => {
     const [openOptions, setOpenOptions] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +32,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
         <Style ref={selectRef} css={css`
             display: flex;
             position: relative;
-            ${customStyle};
+            ${ui};
         `} onClick={() => {
             setOpenOptions(i => !i);
         }} {...props}>
@@ -46,7 +46,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                     border: 1px solid var(--g-400);
                 }
             `}>
-                <Text type={'p2'} customStyle={css`
+                <Text type={'p2'} ui={css`
                     flex: 1;
                     ${selected === undefined ? css`
                         color: var(--g-400);
@@ -54,7 +54,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                         color: var(--g-800);
                     `}
                 `}>{selected !== undefined ? items[selected] : placeholder}</Text>
-                <Icon iconType={IconType.ExpandArrow} width={20} height={20} customStyle={css`
+                <Icon iconType={IconType.ExpandArrow} width={20} height={20} ui={css`
                     fill: var(--g-400);
                     rotate: -90deg;
                 `}/>
@@ -82,7 +82,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                         `} onClick={() => {
                             OnChange(index);
                         }}>
-                            <Text type={'p3'} customStyle={css`
+                            <Text type={'p3'} ui={css`
                                 flex: 1;
                                 white-space: nowrap;
                                 text-overflow: ellipsis;
@@ -91,7 +91,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                                 overflow: hidden;
                             `}>{item}</Text>
                             {selected === index && (
-                                <Icon iconType={IconType.CheckLine} width={20} height={20} customStyle={css`
+                                <Icon iconType={IconType.CheckLine} width={20} height={20} ui={css`
                                     fill: var(--g-700);
                                 `}/>
                             )}

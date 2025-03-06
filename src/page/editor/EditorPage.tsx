@@ -10,7 +10,6 @@ import useResponsive from "@hook/useResponsive";
 import {hideScrollBar} from "@util/css.util";
 import WeddingDto, {makeDefaultWedding} from "@remote/value/WeddingDto";
 import {useImmer} from "use-immer";
-import WeddingDesign from "@remote/value/WeddingDesign";
 import useWeddingDesigns from "@hook/useWeddingDesigns";
 import useBackgroundMusics from "@hook/useBackgroundMusics";
 

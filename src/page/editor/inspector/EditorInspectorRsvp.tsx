@@ -39,7 +39,7 @@ const EditorInspectorRsvp = (
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={rsvp.rsvpContent} onChange={event => update(draft => {
                     draft.rsvp.rsvpContent = event.target.value;
-                })} customStyle={css`
+                })} ui={css`
                     height: 194px;
                 `}/>
             </Column>
@@ -62,7 +62,7 @@ const EditorInspectorRsvp = (
                 </FormToggleSet>
             </Column>
             <Divider/>
-            <Text type={'p3'} customStyle={css`
+            <Text type={'p3'} ui={css`
                 color: var(--g-400);
             `}>
                 참석 여부는 내정보 {'>'} 모바일 청첩장 메뉴에서 확인하실 수 있습니다.

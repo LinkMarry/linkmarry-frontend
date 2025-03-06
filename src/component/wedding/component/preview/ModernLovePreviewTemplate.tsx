@@ -24,7 +24,7 @@ function ModernLovePreviewTemplate(
                 border-radius: 500px;
                 object-fit: cover;
             `}/>
-            <Text className={'override-font'} font={'UnrealScienceMedicine'} size={60} weight={400} customStyle={css`
+            <Text className={'override-font'} font={'UnrealScienceMedicine'} size={60} weight={400} ui={css`
                 position: absolute;
                 white-space: nowrap;
                 color: #556B2F;
@@ -33,7 +33,7 @@ function ModernLovePreviewTemplate(
                 left: 50%;
                 transform: translateX(-50%);
             `}>Together Forever</Text>
-            <Text size={40} weight={400} customStyle={css`
+            <Text size={40} weight={400} ui={css`
                 color: #556B2F;
             `}>
                 <Row gap={36} $alignItems={'center'}>

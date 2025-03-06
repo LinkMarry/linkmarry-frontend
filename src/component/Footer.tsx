@@ -33,10 +33,10 @@ function Footer() {
                         `};
                     `}>
                         <Column gap={4}>
-                            <Text type={'caption2'} bold={true} customStyle={css`
+                            <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-600);
                             `} onClick={() => window.open('https://pf.kakao.com/_BzqCn')}>고객센터</Text>
-                            <Text type={'caption1'} customStyle={css`
+                            <Text type={'caption1'} ui={css`
                                 color: var(--g-500);
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
                         </Column>
@@ -75,14 +75,14 @@ function Footer() {
                             <>
                                 <Row gap={16}>
                                     {detail1.map((text, index) => (
-                                        <Text key={index} type={'caption2'} customStyle={css`
+                                        <Text key={index} type={'caption2'} ui={css`
                                             color: var(--g-500);
                                         `}>{text}</Text>
                                     ))}
                                 </Row>
                                 <Row gap={16}>
                                     {detail2.map((text, index) => (
-                                        <Text key={index} type={'caption2'} customStyle={css`
+                                        <Text key={index} type={'caption2'} ui={css`
                                             color: var(--g-500);
                                         `}>{text}</Text>
                                     ))}
@@ -91,7 +91,7 @@ function Footer() {
                         ) : (
                             <>
                                 {[...detail1, ...detail2].map(text => (
-                                    <Text type={'caption2'} customStyle={css`
+                                    <Text type={'caption2'} ui={css`
                                         color: var(--g-500);
                                     `}>{text}</Text>
                                 ))}
@@ -108,7 +108,7 @@ function Item(props: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
-        <Text type={'caption2'} bold={true} customStyle={css`
+        <Text type={'caption2'} bold={true} ui={css`
             color: var(--g-600);
         `} {...props}>{props.text}</Text>
     );

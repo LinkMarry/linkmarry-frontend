@@ -19,7 +19,7 @@ export interface Props extends ComponentPropsWithRef<'button'> {
     leadingIcon?: IconType;
     trailingIcon?: IconType;
     enabled?: boolean;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 function Button(
@@ -30,7 +30,7 @@ function Button(
         leadingIcon,
         trailingIcon,
         enabled = true,
-        customStyle,
+        ui,
         ...props
     }: Props,
     ref: ForwardedRef<HTMLButtonElement>
@@ -46,17 +46,17 @@ function Button(
             $buttonType={buttonType}
             ref={ref}
             disabled={!enabled}
-            $customStyle={customStyle}
+            ui={ui}
             {...props}
         >
             {leadingIcon && (
-                <Icon iconType={leadingIcon} size={iconSize} customStyle={css`
+                <Icon iconType={leadingIcon} size={iconSize} ui={css`
                     fill: ${iconColor};
                 `}/>
             )}
             {text}
             {trailingIcon && (
-                <Icon iconType={trailingIcon} size={iconSize} customStyle={css`
+                <Icon iconType={trailingIcon} size={iconSize} ui={css`
                     fill: ${iconColor};
                 `}/>
             )}
@@ -117,7 +117,7 @@ const buttonTypeToStyleRecord: Record<ButtonType, {
 const ButtonStyle = styled.button<{
     size: ButtonSize;
     $buttonType: ButtonType;
-    $customStyle?: RuleSet;
+    ui?: RuleSet;
 }>`
     display: flex;
     align-items: center;
@@ -149,7 +149,7 @@ const ButtonStyle = styled.button<{
         `;
     }}
     
-    ${({$customStyle}) => $customStyle};
+    ${({ui}) => ui};
 
     &:disabled {
         opacity: 0.65;

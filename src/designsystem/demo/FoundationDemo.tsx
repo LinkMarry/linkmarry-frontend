@@ -25,7 +25,7 @@ function FoundationDemo() {
             <Column gap={20}>
                 {fontList.map(font => (
                     <Row>
-                        <Text type={'p3'} customStyle={css`
+                        <Text type={'p3'} ui={css`
                             width: 256px;
                         `}>{font}</Text>
                         <Column>
@@ -44,7 +44,7 @@ function FoundationDemo() {
             `}>
                 {allCasesOfEnum(IconType)
                     .map((icon) => (
-                        <Icon iconType={icon} size={32} customStyle={css`
+                        <Icon iconType={icon} size={32} ui={css`
                             fill: gray;
                         `}/>
                     ))}

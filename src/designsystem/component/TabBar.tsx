@@ -13,17 +13,17 @@ export const dummyTabBarItems = [
     '클래식'
 ]
 
-const TabBar = ({items, selectedTab, onChange, customStyle}: {
+const TabBar = ({items, selectedTab, onChange, ui}: {
     items: string[];
     selectedTab: number;
     onChange: (tab: number) => void;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }) => {
     return (
         <Row gap={8} css={css`
             overflow-x: scroll;
             ${hideScrollBar};
-            ${customStyle};
+            ${ui};
         `}>
             {items.map((item, index) => (
                 <Item key={index} selected={index === selectedTab} text={item} onClick={() => {
@@ -46,7 +46,7 @@ const Item = ({selected, text, ...props}: {
             position: relative;
             ${makeInteractionEffect('strong')};
         `} {...props}>
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 ${selected ? css`
                     color: var(--g-800);
                 ` : css`

@@ -12,7 +12,7 @@ function WeddingStyleCell() {
                 background: var(--g-100);
                 border-radius: 8px;
             `}/>
-            <Text type={'p3'} bold={true} customStyle={css`
+            <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-900);
             `}>스타일 이름</Text>
         </Column>

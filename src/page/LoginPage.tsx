@@ -18,7 +18,7 @@ function LoginPage() {
                     `}/>
                     <Column gap={4} $alignItems={'center'}>
                         <Text type={'h4'} bold={true}>링크메리 로그인</Text>
-                        <Text type={'p3'} customStyle={css`
+                        <Text type={'p3'} ui={css`
                             color: var(--g-500);
                         `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                     </Column>

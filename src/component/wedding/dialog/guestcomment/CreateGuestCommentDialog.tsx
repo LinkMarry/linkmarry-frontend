@@ -62,7 +62,7 @@ function CreateGuestCommentDialog(
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
                     {/*<Text type={'h6'}>방명록 작성하기</Text>*/}
-                    <Text type={'caption1'} customStyle={css`
+                    <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>저희에게 따뜻한 말을 남겨주세요</Text>
                 </Column>

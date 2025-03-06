@@ -54,7 +54,7 @@ function WeddingPage() {
                 />
             )}
             {isError && (
-                <Text type={'h5'} customStyle={css`
+                <Text type={'h5'} ui={css`
                     margin-top: 20px;
                 `}>청첩장을 찾을 수 없습니다</Text>
             )}

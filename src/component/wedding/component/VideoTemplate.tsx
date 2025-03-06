@@ -29,12 +29,12 @@ function VideoTemplate(
             `}>
                 <Column gap={12} $alignItems="center">
                     <FadeIn>
-                        <Text size={20} weight={300} customStyle={css`
+                        <Text size={20} weight={300} ui={css`
                             color: var(--g-600);
                         `}>VIDEO</Text>
                     </FadeIn>
                     <FadeIn delay={160}>
-                        <Text size={16} weight={300} customStyle={css`
+                        <Text size={16} weight={300} ui={css`
                             color: var(--g-600);
                         `}>{video.videoTitle}</Text>
                     </FadeIn>

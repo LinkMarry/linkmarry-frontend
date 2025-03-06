@@ -55,7 +55,7 @@ function RemoveGuestCommentDialog(
             <S.container>
                 <Column gap={4} $alignItems={'center'}>
                     {/*<Text type={'h6'}>글 삭제하기</Text>*/}
-                    <Text type={'caption1'} customStyle={css`
+                    <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>관리자와 글 작성자만 글을 삭제할 수 있습니다</Text>
                 </Column>

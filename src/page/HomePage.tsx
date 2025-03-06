@@ -27,11 +27,11 @@ function HomePage() {
                 `}>
                     {/*header*/}
                     <Column gap={16} $alignItems={'center'}>
-                        <Text type={deviceSize === 'desktop' ? 'h2' : 'h4'} bold={true} customStyle={css`
+                        <Text type={deviceSize === 'desktop' ? 'h2' : 'h4'} bold={true} ui={css`
                             text-align: center;
                         `}>특별한 순간 특별한 초대<br/>
                             링크메리와 함께</Text>
-                        <Text type={'p3'} customStyle={css`
+                        <Text type={'p3'} ui={css`
                             text-align: center;
                             word-break: break-word;
                             color: var(--g-500);

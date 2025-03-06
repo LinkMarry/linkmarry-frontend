@@ -55,7 +55,7 @@ function RsvpDialog(
                         {/*    word-break: break-all;*/}
                         {/*    text-align: center;*/}
                         {/*`}>{rsvp.rsvpTitle}</Text>*/}
-                        <Text type={'caption1'} customStyle={css`
+                        <Text type={'caption1'} ui={css`
                             word-break: break-all;
                             text-align: center;
                             color: var(--g-400);
@@ -76,7 +76,7 @@ function RsvpDialog(
                     <Button text={'참석의사 전달하기'} onClick={onConfirm} style={{alignSelf: 'stretch'}}/>
                     <Text
                         type={'caption1'}
-                        customStyle={css`
+                        ui={css`
                             color: var(--g-400);
                             cursor: pointer;
                         `}

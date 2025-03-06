@@ -33,7 +33,7 @@ function PureLovePreviewTemplate(
                 height: 247px;
                 background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.60) 55.5%, rgba(255, 255, 255, 0.00) 100%);
             `}/>
-            <Text size={24} weight={500} customStyle={css`
+            <Text size={24} weight={500} ui={css`
                 color: #002147;
                 position: absolute;
                 top: 92px;
@@ -59,7 +59,7 @@ function PureLovePreviewTemplate(
                 transform: translateX(-50%);
             `}>
                 {isValidDate && (
-                    <Text size={20} weight={500} customStyle={css`
+                    <Text size={20} weight={500} ui={css`
                         color: white;
                     `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
                 )}

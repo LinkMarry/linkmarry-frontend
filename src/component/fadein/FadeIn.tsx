@@ -16,14 +16,14 @@ type Provided = {
 
 interface Props {
     delay?: number;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
     children: ((provided: Provided) => ReactNode) | ReactNode;
 }
 
 function FadeIn(
     {
         delay,
-        customStyle,
+        ui,
         children
     }: Props
 ) {
@@ -61,7 +61,7 @@ function FadeIn(
         return (
             <Style ref={ref} css={css`
                 ${style};
-                ${customStyle};
+                ${ui};
             `}>
                 {children}
             </Style>
