@@ -7,6 +7,8 @@ import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import TemplateComponent from "@src/component/template/TemplateComponent";
 import {dummyWedding} from "@remote/value/Wedding";
+import useAutoFocus from "@hook/useAutoFocus";
+import Toggle from "@designsystem/component/Toggle";
 
 const EditorPreview = () => {
     return (
@@ -32,10 +34,12 @@ const EditorPreview = () => {
 
 const PreviewSetting = () => {
     const [openSetting, setOpenSetting] = useState(false);
+    const {autoFocus, setAutoFocus} = useAutoFocus();
+
     return (
-        <Column gap={8} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={4} $alignItems={'stretch'} $customStyle={css`
             width: 220px;
-            padding: 8px;
+            padding: 10px;
             background: white;
             border-radius: 12px;
             position: absolute;
@@ -50,7 +54,7 @@ const PreviewSetting = () => {
             overflow: hidden;
         `}>
             <Row $alignItems={'center'} $customStyle={css`
-                padding: 8px;
+                padding: 6px;
                 border-radius: 6px;
                 ${makeInteractionEffect('strong')};
             `} onClick={() => {
@@ -71,14 +75,13 @@ const PreviewSetting = () => {
                 `}/>
             </Row>
             <Row $alignItems={'center'} $customStyle={css`
-                padding: 4px 8px;
+                padding: 6px;
             `}>
                 <Text type={'p3'} customStyle={css`
                     color: var(--g-600);
                 `}>자동포커스</Text>
                 <Spacer/>
-                {/*todo*/}
-                {/*<Toggle checked={false} customStyle={}/>*/}
+                <Toggle checked={autoFocus} OnChange={checked => setAutoFocus(checked)}/>
             </Row>
         </Column>
     );
