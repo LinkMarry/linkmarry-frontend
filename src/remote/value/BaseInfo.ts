@@ -1,61 +1,76 @@
 export default interface BaseInfo {
-    // 신랑 이름
-    groomName: string;
 
-    // 신랑 아빠 이름
+    //	신랑 이름 성
+    groomFirstName: string;
+
+    //	신랑 이름
+    groomLastName: string;
+
+    //	신랑 영어 이름
+    groomEnglishName: string;
+
+    //	신랑 아빠 이름
     groomFatherName: string;
 
-    // 신랑 아빠 생존 상태
+    //	신랑 아빠 생존 상태
     groomFatherStatus: boolean;
 
-    // 신랑 엄마 이름
+    //	신랑 엄마 이름
     groomMotherName: string;
 
-    // 신랑 엄마 생존 상태
+    //	신랑 엄마 생존 상태
     groomMotherStatus: boolean;
 
-    // 관계 (기본값 : 아들)
+    //	관계 (기본값 : 아들)
     groomFamilyName: string;
 
-    // 관계 (기본값 : 아버지)
+    //	관계 (기본값 : 아버지)
     groomFatherFamilyName: string;
 
-    // 관계 (기본값 : 어머니)
+    //	관계 (기본값 : 어머니)
     groomMotherFamilyName: string;
 
-    // 신부 이름
-    brideName: string;
+    //	신부 이름 성
+    brideFirstName: string;
 
-    // 신부 아빠 이름
+    //	신부 이름
+    brideLastName: string;
+
+    //	신부 영어 이름
+    brideEnglishName: string;
+
+    //	신부 아빠 이름
     brideFatherName: string;
 
-    // 신부 아빠 생존 상태
+    //	신부 아빠 생존 상태
     brideFatherStatus: boolean;
 
-    // 신부 엄마 이름
+    //	신부 엄마 이름
     brideMotherName: string;
 
-    // 신부 엄마 생존 상태
+    //	신부 엄마 생존 상태
     brideMotherStatus: boolean;
 
-    // 관계 (기본값 : 딸)
+    //	관계 (기본값 : 딸)
     brideFamilyName: string;
 
-    // 관계 (기본값 : 아버지)
+    //	관계 (기본값 : 아버지)
     brideFatherFamilyName: string;
 
-    // 관계 (기본값 : 어머니)
+    //	관계 (기본값 : 어머니)
     brideMotherFamilyName: string;
 
-    // 국화로 표시 (기본값 : false)
+    //	국화로 표시 (기본값 : false)
     statusFlower: boolean;
 
-    // 신부먼저 표시 (기본값 : false)
+    //	신부먼저 표시 (기본값 : false)
     brideMarkFirst: boolean;
 }
 
 export const defaultBaseInfo: BaseInfo = {
-    groomName: "",
+    groomFirstName: '',
+    groomLastName: '',
+    groomEnglishName: '',
     groomFatherName: "",
     groomFatherStatus: false,
     groomMotherName: "",
@@ -63,7 +78,9 @@ export const defaultBaseInfo: BaseInfo = {
     groomFamilyName: "아들",
     groomFatherFamilyName: '아버지',
     groomMotherFamilyName: '어머니',
-    brideName: "",
+    brideFirstName: "",
+    brideLastName: '',
+    brideEnglishName: '',
     brideFatherName: "",
     brideFatherStatus: false,
     brideMotherName: "",
@@ -76,7 +93,9 @@ export const defaultBaseInfo: BaseInfo = {
 }
 
 export const dummyBaseInfo: BaseInfo = {
-    groomName: "김민수",
+    groomFirstName: "김",
+    groomLastName: '민수',
+    groomEnglishName: 'MINSU',
     groomFatherName: "김수민",
     groomFatherStatus: false,
     groomMotherName: "이수진",
@@ -84,7 +103,9 @@ export const dummyBaseInfo: BaseInfo = {
     groomFamilyName: "아들",
     groomFatherFamilyName: '',
     groomMotherFamilyName: '',
-    brideName: "김민지",
+    brideFirstName: "김",
+    brideLastName: '민지',
+    brideEnglishName: 'MINJI',
     brideFatherName: "김강민",
     brideFatherStatus: false,
     brideMotherName: "이지안",
@@ -111,7 +132,7 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
     second: InfoByBrideMarkFirst;
 } {
     const groomInfo: InfoByBrideMarkFirst = {
-        name: baseInfo.groomName,
+        name: 'baseInfo.groomName',
         fatherName: baseInfo.groomFatherName,
         fatherStatus: baseInfo.groomFatherStatus,
         motherName: baseInfo.groomMotherName,
@@ -121,7 +142,7 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
     };
 
     const brideInfo: InfoByBrideMarkFirst = {
-        name: baseInfo.brideName,
+        name: 'baseInfo.brideName',
         fatherName: baseInfo.brideFatherName,
         fatherStatus: baseInfo.brideFatherStatus,
         motherName: baseInfo.brideMotherName,

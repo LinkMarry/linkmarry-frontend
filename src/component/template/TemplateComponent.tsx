@@ -112,7 +112,7 @@ function TemplateComponent(
             }
         `}>
             <audio
-                src={wedding.backgroundMusic.musicUrl}
+                src={wedding.backgroundMusic.backgroundMusic}
                 ref={audioRef}
                 loop={true}
             />

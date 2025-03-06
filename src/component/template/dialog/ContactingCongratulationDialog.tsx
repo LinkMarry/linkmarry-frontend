@@ -34,7 +34,7 @@ function ContactingCongratulationDialog(
     const tels = ((): Tel[] => {
         const groomTels: Tel[] = [
             {
-                name: baseInfo.groomName,
+                name: 'baseInfo.groomName',
                 familyName: '신랑',
                 tel: phone.groomTel
             },
@@ -52,7 +52,7 @@ function ContactingCongratulationDialog(
 
         const brideTels: Tel[] = [
             {
-                name: baseInfo.brideName,
+                name: 'baseInfo.brideName',
                 familyName: '신부',
                 tel: phone.brideTel
             },

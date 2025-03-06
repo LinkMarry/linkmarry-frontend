@@ -25,6 +25,9 @@ export default interface Rsvp {
 
     // 청첩장 열 때 팝업 여부
     startPopupStatus: boolean;
+
+    // RSVP 활성화 여부
+    rsvpActivate: boolean;
 }
 
 export const defaultRsvp: Rsvp = {
@@ -37,6 +40,7 @@ export const defaultRsvp: Rsvp = {
     attendBusStatus: false,
     attendEtcStatus: false,
     startPopupStatus: false,
+    rsvpActivate: true,
 }
 
 export const dummyRsvp: Rsvp = {
@@ -49,4 +53,5 @@ export const dummyRsvp: Rsvp = {
     attendBusStatus: false,
     attendEtcStatus: true,
     startPopupStatus: true,
+    rsvpActivate: true,
 };

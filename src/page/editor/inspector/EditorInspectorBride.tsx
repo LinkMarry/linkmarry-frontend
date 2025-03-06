@@ -1,7 +1,6 @@
 import React from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import Spacer from "@designsystem/component/Spacer";
 import {css} from "styled-components";
@@ -14,21 +13,34 @@ import WeddingDto from "@remote/value/WeddingDto";
 interface Props extends Binding<WeddingDto> {
 }
 
-const EditorInspectorBride = ({value, update}: Props) => {
+const EditorInspectorBride = (
+    {
+        value: {
+            baseInfo
+        },
+        update
+    }: Props
+) => {
     return (
         <EditorInspectorWrapper type={'bride'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신부 성함</Text>
                 <Column $alignItems={'stretch'} gap={8}>
                     <Row gap={8}>
-                        <Input placeholder={'성'} value={value.baseInfo.brideName} onChange={event => {
-
-                        }}/>
-                        <Input placeholder={'이름'}/>
-                        <Input placeholder={'관계'}/>
+                        <Input placeholder={'성'} value={baseInfo.brideFirstName} onChange={event => update(draft => {
+                            draft.baseInfo.brideFirstName = event.target.value;
+                        })}/>
+                        <Input placeholder={'이름'} value={baseInfo.brideLastName} onChange={event => update(draft => {
+                            draft.baseInfo.brideLastName = event.target.value;
+                        })}/>
+                        <Input placeholder={'관계'} value={baseInfo.brideFamilyName} onChange={event => update(draft => {
+                            draft.baseInfo.brideFamilyName = event.target.value;
+                        })}/>
                     </Row>
                     <Row gap={8}>
-                        <Input placeholder={'영문 이름'} customStyle={css`
+                        <Input placeholder={'영문 이름'} value={baseInfo.brideEnglishName} onChange={event => update(draft => {
+                            draft.baseInfo.brideEnglishName = event.target.value;
+                        })} customStyle={css`
                             flex: 1;
                         `}/>
                         <Spacer/>
