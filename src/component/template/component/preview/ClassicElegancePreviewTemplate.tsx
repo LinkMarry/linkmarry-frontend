@@ -5,7 +5,7 @@ import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 import {differenceInDays, format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 function ClassicElegancePreviewTemplate(
@@ -21,10 +21,10 @@ function ClassicElegancePreviewTemplate(
 
     return (
         <Column $alignItems={'stretch'}>
-            <CustomStyle css={css`
+            <Style css={css`
                 position: relative;
             `}>
-                <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+                <Style as={'img'} src={template.titleImgUrl} css={css`
                     width: 100%;
                     object-fit: cover;
                     height: 100vh;
@@ -36,13 +36,13 @@ function ClassicElegancePreviewTemplate(
                     left: 50%;
                     transform: translateX(-50%);
                 `}>
-                    <CustomStyle css={css`
+                    <Style css={css`
                         padding: 0 12px;
                         background: white;
                         border-radius: 100px;
                     `}>
                         <Text size={18} weight={400}>D-{differenceInDays(date, new Date())}</Text>
-                    </CustomStyle>
+                    </Style>
                     <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} customStyle={css`
                         color: white;
                     `}>
@@ -52,7 +52,7 @@ function ClassicElegancePreviewTemplate(
                         </Column>
                     </Text>
                 </Column>
-            </CustomStyle>
+            </Style>
             <Text size={20} weight={400}>
                 <Column gap={8} $alignItems={'center'} css={css`
                     padding: 32px 8px;

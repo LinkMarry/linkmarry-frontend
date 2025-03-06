@@ -6,13 +6,13 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import Style from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import {OpeningText, openingTextList} from "@remote/value/WeddingDesign";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import WeddingDesignPreset from "@remote/value/WeddingDesignPreset";
-import Opening, {openingList, openingMap} from "@remote/enumeration/Opening";
+import {openingList, openingMap} from "@remote/enumeration/Opening";
 import Select from "@designsystem/component/Select";
 import {groupByCategory} from "@remote/value/GroupedCategory";
 

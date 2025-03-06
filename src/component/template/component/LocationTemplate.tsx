@@ -5,7 +5,7 @@ import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 const {kakao} = window as any;
@@ -69,14 +69,14 @@ function LocationTemplate(
                         </Text>
                     </Column>
                 </FadeIn>
-                <CustomStyle ref={kakaoMapRef} css={css`
+                <Style ref={kakaoMapRef} css={css`
                     display: flex;
                     align-self: stretch;
                     height: 307px;
                     ${!weddingPlace.placeStatus && css`
                         display: none;
                     `}
-                `}></CustomStyle>
+                `}></Style>
                 <FadeIn>
                     <Text size={16} weight={300} style={{
                         marginLeft: 24,

@@ -7,7 +7,7 @@ import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/template/component/weddingday/DDay";
 import {format, parse} from "date-fns";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 interface Props {
@@ -63,11 +63,11 @@ function WeddingDayTemplate(
                         <Column as={'table'} gap={8} $alignItems={'stretch'} css={css`
                             margin: 24px 19px;
                         `}>
-                            <CustomStyle as={'thead'} css={css`
+                            <Style as={'thead'} css={css`
                                 display: flex;
                                 padding: 12px 20px;
                             `}>
-                                <CustomStyle as={'tr'} css={css`
+                                <Style as={'tr'} css={css`
                                     display: flex;
                                     justify-content: space-between;
                                     color: var(--g-500);
@@ -87,8 +87,8 @@ function WeddingDayTemplate(
                                             </th>
                                         </FadeIn>
                                     ))}
-                                </CustomStyle>
-                            </CustomStyle>
+                                </Style>
+                            </Style>
                             <Column as={'tbody'} $alignItems={'stretch'} gap={4}>
                                 {calendar && calendar.map((week, weekIndex) => (
                                     <Row as={'tr'} key={weekIndex}>

@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {Column} from "@designsystem/core/FlexLayout";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import Button from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
 import WeddingPlace from "@remote/value/WeddingPlace";
@@ -88,12 +88,12 @@ function KakaoMapDialog(
                 border-radius: 12px;
                 background: white;
             `}>
-                <CustomStyle ref={kakaoMap} css={css`
+                <Style ref={kakaoMap} css={css`
                     display: flex;
                     flex: 1;
                     position: relative;
                 `}>
-                </CustomStyle>
+                </Style>
                 {/* 결과 출력 */}
                 <Column gap={10} $alignItems={'stretch'} css={css`
                     padding: 16px;

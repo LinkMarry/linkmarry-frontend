@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
@@ -19,7 +19,7 @@ function ModernLovePreviewTemplate(
             padding: 108px 32px 40px 32px;
             position: relative;
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+            <Style as={'img'} src={template.titleImgUrl} css={css`
                 min-height: 580px;
                 border-radius: 500px;
                 object-fit: cover;

@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import styled, {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface Props {
     selected?: boolean;
@@ -54,7 +54,7 @@ function Radio(
 
     return (
         <S.container style={style}>
-            <CustomStyle css={css`
+            <Style css={css`
                 display: flex;
                 position: relative;
                 justify-content: center;
@@ -92,7 +92,7 @@ function Radio(
                         `}
                     `}
                 />
-            </CustomStyle>
+            </Style>
             {/*todo*/}
             {/*{label && (*/}
             {/*    <Text*/}

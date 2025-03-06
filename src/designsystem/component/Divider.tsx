@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {css, RuleSet} from "styled-components";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 export type DividerSize = 'large' | 'medium' | 'small';
 export type DividerDirection = 'horizontal' | 'vertical';
@@ -41,7 +41,7 @@ function Divider(
     })();
 
     return (
-        <CustomStyle css={css`
+        <Style css={css`
             background: var(--g-100);
             ${style};
             ${customStyle};

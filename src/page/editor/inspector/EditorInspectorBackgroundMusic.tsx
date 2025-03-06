@@ -7,7 +7,7 @@ import {css} from "styled-components";
 import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import Music from "@remote/value/Music";
@@ -64,7 +64,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                 background: var(--g-50);
             }
         `}>
-            <CustomStyle css={css`
+            <Style css={css`
                 position: relative;
                 width: 60px;
                 height: 60px;
@@ -74,14 +74,14 @@ const Item = ({music, isPlaying}: ItemProps) => {
             `} onClick={() => {
 
             }}>
-                <CustomStyle as={'img'} css={css`
+                <Style as={'img'} css={css`
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                     background: gray; // dummy
                 `} onClick={() => {
 
-                }}></CustomStyle>
+                }}></Style>
                 {(isHovering || isPlaying) && (
                     <Icon iconType={isPlaying ? IconType.Pause : IconType.Play} customStyle={css`
                         fill: white;
@@ -91,7 +91,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                         transform: translate(-50%, -50%);
                     `}/>
                 )}
-            </CustomStyle>
+            </Style>
             <Column gap={4} css={css`
                 flex: 1;
                 min-width: 0;

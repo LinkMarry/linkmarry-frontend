@@ -15,7 +15,7 @@ import GuestCommentsDetailDialog from "@src/component/template/dialog/guestcomme
 import CreateGuestCommentDialog from "@src/component/template/dialog/guestcomment/CreateGuestCommentDialog";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface GuestCommentsTemplateProps {
     templateColor: string;
@@ -91,7 +91,7 @@ function GuestCommentsTemplate(
                         </FadeIn>
                     )}
                 </Column>
-                <CustomStyle css={css`
+                <Style css={css`
                     align-self: center;
                 `}>
                     <FadeIn delay={480}>
@@ -102,7 +102,7 @@ function GuestCommentsTemplate(
                             }}
                         />
                     </FadeIn>
-                </CustomStyle>
+                </Style>
                 {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
                     <RemoveGuestCommentDialog
                         selectedGuestComment={selectedRemoveGuestComment}

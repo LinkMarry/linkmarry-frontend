@@ -2,7 +2,7 @@ import React, {ComponentPropsWithoutRef} from 'react';
 import {Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 const SegmentedButton = ({items, selectedTab, onChange, customStyle}: {
     items: string[];
@@ -18,7 +18,7 @@ const SegmentedButton = ({items, selectedTab, onChange, customStyle}: {
             position: relative;
             ${customStyle};
         `}>
-            <CustomStyle css={css`
+            <Style css={css`
                 position: absolute;
                 height: 40px;
                 width: calc(100% / ${items.length} - 8px);

@@ -3,7 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 export const dummyTabBarItems = [
     '모던',
@@ -54,7 +54,7 @@ const Item = ({selected, text, ...props}: {
                 `}
             `}>{text}</Text>
             {selected && (
-                <CustomStyle css={css`
+                <Style css={css`
                     position: absolute;
                     width: 29px;
                     height: 2px;

@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import Text from "@designsystem/component/Text";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
@@ -31,7 +31,7 @@ function NaturalGardenPreviewTemplate(
             <Column $alignItems={'stretch'} gap={40} css={css`
                 padding: 0 32px;
             `}>
-                <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+                <Style as={'img'} src={template.titleImgUrl} css={css`
                     height: 512px;
                     border-radius: 500px 500px 0 0;
                     object-fit: cover;

@@ -10,7 +10,7 @@ import styled, {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
 import {Row} from "@designsystem/core/FlexLayout";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     checked: boolean;
@@ -65,7 +65,7 @@ function Checkbox(
                 width: 40px;
                 height: 40px;
             `}>
-                <CustomStyle css={css`
+                <Style css={css`
                     position: absolute;
                     top: 50%;
                     left: 50%;

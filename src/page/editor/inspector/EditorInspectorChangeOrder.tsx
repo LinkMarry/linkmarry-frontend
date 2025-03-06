@@ -6,7 +6,7 @@ import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import DndUtil from "@util/dnd.util";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
@@ -77,13 +77,13 @@ const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDiv
             <Text type={'p2'} customStyle={css`
                 flex: 1;
             `}>{text}</Text>
-            <CustomStyle css={css`
+            <Style css={css`
                 display: flex;
             `}>
                 <Icon iconType={IconType.Hamburger} width={24} height={24} customStyle={css`
                     fill: var(--g-600);
                 `}/>
-            </CustomStyle>
+            </Style>
         </Row>
     )
 })

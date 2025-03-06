@@ -6,7 +6,7 @@ import {format} from "date-fns";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 function SoulmatePreviewTemplate(
     {
@@ -36,7 +36,7 @@ function SoulmatePreviewTemplate(
                     </Row>
                 </Text>
             </Column>
-            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+            <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

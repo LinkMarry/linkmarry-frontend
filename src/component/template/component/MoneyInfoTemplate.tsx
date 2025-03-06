@@ -8,7 +8,7 @@ import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -64,7 +64,7 @@ function MoneyInfoComponent(
     return (
         <Column gap={16} $alignItems={'stretch'} $alignSelf={'stretch'}>
             <FadeIn>
-                <CustomStyle css={css`
+                <Style css={css`
                     border-radius: 12px;
                     background: var(--g-100);
                 `}>
@@ -97,10 +97,10 @@ function MoneyInfoComponent(
                                        bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
                         </>
                     )}
-                </CustomStyle>
+                </Style>
             </FadeIn>
             <FadeIn>
-                <CustomStyle css={css`
+                <Style css={css`
                     border-radius: 12px;
                     background: var(--p-100);
                 `}>
@@ -134,7 +134,7 @@ function MoneyInfoComponent(
                                        bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
                         </>
                     )}
-                </CustomStyle>
+                </Style>
             </FadeIn>
         </Column>
     );

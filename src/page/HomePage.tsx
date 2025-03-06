@@ -4,7 +4,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
 import TabBar, {dummyTabBarItems} from "@designsystem/component/TabBar";
 
@@ -42,7 +42,7 @@ function HomePage() {
                         <Row $justifyContent={'center'}>
                             <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {}}/>
                         </Row>
-                        <CustomStyle css={css`
+                        <Style css={css`
                             display: grid;
                             max-width: 960px;
                             align-self: center;
@@ -60,7 +60,7 @@ function HomePage() {
                             <WeddingStyleCell/>
                             <WeddingStyleCell/>
                             <WeddingStyleCell/>
-                        </CustomStyle>
+                        </Style>
                     </Column>
                 </Column>
             </Column>

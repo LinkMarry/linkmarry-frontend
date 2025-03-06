@@ -7,7 +7,7 @@ import {ko} from "date-fns/locale";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 function NatureBlissPreviewTemplate(
     {
@@ -36,7 +36,7 @@ function NatureBlissPreviewTemplate(
                     >{weddingPlace.placeName}</Text>
                 </Column>
             </Column>
-            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+            <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

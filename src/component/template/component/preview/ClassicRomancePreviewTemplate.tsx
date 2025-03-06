@@ -3,7 +3,7 @@ import PreviewTemplate from "@src/component/template/component/preview/PreviewTe
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import Text from "@designsystem/component/Text";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {format} from "date-fns";
@@ -26,7 +26,7 @@ function ClassicRomancePreviewTemplate(
                 color: #989796;
             }
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+            <Style as={'img'} src={template.titleImgUrl} css={css`
                 min-height: 516px;
                 object-fit: cover;
             `}/>

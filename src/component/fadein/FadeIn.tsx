@@ -5,7 +5,7 @@ import React, {
     useEffect,
     useState
 } from 'react';
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {css, RuleSet} from "styled-components";
 import useFadeIn from "@src/component/fadein/useFadeIn";
 
@@ -59,12 +59,12 @@ function FadeIn(
         );
     } else if (isValidElement(children)) {
         return (
-            <CustomStyle ref={ref} css={css`
+            <Style ref={ref} css={css`
                 ${style};
                 ${customStyle};
             `}>
                 {children}
-            </CustomStyle>
+            </Style>
         );
     } else {
         return (

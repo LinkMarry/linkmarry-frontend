@@ -5,7 +5,7 @@ import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import AddRemoveButton from "@src/component/AddDismissButton";
 import {hideScrollBar} from "@util/css.util";
 
@@ -152,7 +152,7 @@ interface ImageProps {
 const Image = ({dismiss, src}: ImageProps) => {
     return (
         <AddRemoveButton dismiss={dismiss}>
-            <CustomStyle as={'img'} src={src} css={css`
+            <Style as={'img'} src={src} css={css`
                 min-width: 106px;
                 width: 106px;
                 min-height: 106px;

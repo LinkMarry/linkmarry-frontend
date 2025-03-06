@@ -8,7 +8,7 @@ import {ko} from "date-fns/locale";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {getDetails} from "@remote/value/WeddingSchedule";
 
 function WhiteMomentPreviewTemplate(
@@ -41,7 +41,7 @@ function WhiteMomentPreviewTemplate(
                 </Column>
             </Column>
             <Column gap={44} $alignItems={'center'}>
-                <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+                <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                     display: flex;
                     width: 100%;
                     height: 512px;

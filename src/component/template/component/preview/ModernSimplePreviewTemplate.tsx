@@ -3,7 +3,7 @@ import PreviewTemplate from "@src/component/template/component/preview/PreviewTe
 import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
@@ -25,7 +25,7 @@ function ModernSimplePreviewTemplate(
             }
         `}>
             <Text size={44} weight={400}>Our Wedding Day</Text>
-            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+            <Style as={'img'} src={template.titleImgUrl} css={css`
                 align-self: stretch;
                 max-height: 312px;
             `}/>

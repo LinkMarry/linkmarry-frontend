@@ -8,7 +8,7 @@ import React, {
 import {css, RuleSet} from "styled-components";
 import {FontFamily, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface Props extends PropsWithChildren<ComponentPropsWithRef<'span'>> {
     type?: TextType;
@@ -36,7 +36,7 @@ function Text(
 ) {
     const properties = type && textTypeMap[type];
     return (
-        <CustomStyle
+        <Style
             ref={ref}
             as={'span'}
             css={css`
@@ -49,7 +49,7 @@ function Text(
                 ${customStyle};
             `}
             {...props}
-        >{children}</CustomStyle>
+        >{children}</Style>
     );
 }
 

@@ -7,7 +7,7 @@ import {ko} from "date-fns/locale";
 import previewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 function ForestLovePreviewTemplate(
     {
@@ -27,7 +27,7 @@ function ForestLovePreviewTemplate(
                 <Text size={28} weight={300}>{isValidDate && format(date, 'yyyy/MM/dd', {locale: ko})}</Text>
                 <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
             </Column>
-            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+            <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                 display: flex;
                 padding: 0 32px;
                 object-fit: cover;

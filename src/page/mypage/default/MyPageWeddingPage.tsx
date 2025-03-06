@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import Divider from "@designsystem/component/Divider";
 import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
@@ -37,7 +37,7 @@ function WeddingCell() {
                 height: 144px;
             `};
         `}>
-            <CustomStyle css={css`
+            <Style css={css`
                 width: calc(360px * 9 / 16);
                 ${deviceSize === "mobile" && css`
                     width: calc(144px * 9 / 16);
@@ -64,7 +64,7 @@ function WeddingCell() {
                                     <Button text={'방명록 확인'} size={'medium'}/>
                                 </>
                             )}
-                            <CustomStyle css={css`
+                            <Style css={css`
                                 position: relative;
                             `}>
                                 <Column
@@ -117,7 +117,7 @@ function WeddingCell() {
                                         `}
                                     />
                                 )}
-                            </CustomStyle>
+                            </Style>
                         </Row>
                     </Row>
                     {deviceSize === 'desktop' && (

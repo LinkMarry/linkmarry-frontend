@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {css} from "styled-components";
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
@@ -21,12 +21,12 @@ function PureLovePreviewTemplate(
         <Column $alignItems={'stretch'} css={css`
             position: relative;
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+            <Style as={'img'} src={template.titleImgUrl} css={css`
                 height: 100vh;
                 max-height: 800px;
                 object-fit: cover;
             `}/>
-            <CustomStyle css={css`
+            <Style css={css`
                 position: absolute;
                 top: 0;
                 width: 100%;
@@ -45,14 +45,14 @@ function PureLovePreviewTemplate(
                     <span>{second.name}</span>
                 </Column>
             </Text>
-            <CustomStyle css={css`
+            <Style css={css`
                 position: absolute;
                 bottom: 0;
                 width: 100%;
                 height: 247px;
                 background: linear-gradient(0deg, rgba(0, 33, 71, 0.40) 0%, rgba(0, 33, 71, 0.40) 55.5%, rgba(0, 33, 71, 0.00) 100%);
             `}/>
-            <CustomStyle css={css`
+            <Style css={css`
                 position: absolute;
                 bottom: 44px;
                 left: 50%;
@@ -63,7 +63,7 @@ function PureLovePreviewTemplate(
                         color: white;
                     `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
                 )}
-            </CustomStyle>
+            </Style>
         </Column>
     );
 }

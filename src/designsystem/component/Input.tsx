@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithRef} from 'react';
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {css, RuleSet} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 
@@ -11,12 +11,12 @@ interface Props extends ComponentPropsWithRef<'input'> {
 
 const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => {
     return (
-        <CustomStyle css={css`
+        <Style css={css`
             display: flex;
             position: relative;
             ${customStyle};
         `}>
-            <CustomStyle
+            <Style
                 as={'input'}
                 css={css`
                     display: flex;
@@ -75,7 +75,7 @@ const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => 
                 {...props}
                 placeholder={hasLabel ? '' : placeholder}
             />
-            <CustomStyle as={'label'} css={css`
+            <Style as={'label'} css={css`
                 position: absolute;
                 left: 16px;
                 top: 12px;
@@ -83,15 +83,15 @@ const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => 
                 pointer-events: none;
                 background: white;
             `}>
-                <CustomStyle as={'legend'} css={css`
+                <Style as={'legend'} css={css`
                     color: var(--g-400);
                     transition: 0.1s font-size ease-out;
                     ${makeText('p2')};
                 `}>
                     {placeholder}
-                </CustomStyle>
-            </CustomStyle>
-        </CustomStyle>
+                </Style>
+            </Style>
+        </Style>
     );
 };
 

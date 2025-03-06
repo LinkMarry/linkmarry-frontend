@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import {css, RuleSet} from "styled-components";
 import {Row} from "@designsystem/core/FlexLayout";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface Props extends ComponentPropsWithRef<'div'> {
     checked: boolean;
@@ -53,7 +53,7 @@ function Toggle(
                     transition: 0.2s background ease-out;
                 `}
             />
-            <CustomStyle as={'span'} css={css`
+            <Style as={'span'} css={css`
                 position: absolute;
                 width: 26px;
                 height: 26px;

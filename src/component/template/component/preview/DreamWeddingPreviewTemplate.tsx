@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import Text from "@designsystem/component/Text";
@@ -22,7 +22,7 @@ function DreamWeddingPreviewTemplate(
             padding: 78px 28px 72px 28px;
             position: relative;
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+            <Style as={'img'} src={template.titleImgUrl} css={css`
                 object-fit: cover;
                 min-height: 517px;
                 * {

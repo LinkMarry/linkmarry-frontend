@@ -4,7 +4,7 @@ import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import styled, {css} from "styled-components";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 interface VideoTemplateProps {
@@ -40,7 +40,7 @@ function VideoTemplate(
                     </FadeIn>
                 </Column>
                 {isYoutubeUrl ? (
-                    <CustomStyle
+                    <Style
                         as={'iframe'}
                         height={250} title={video.videoTitle}
                         src={video.videoUrl}
@@ -48,7 +48,7 @@ function VideoTemplate(
                             display: flex;
                             object-fit: cover;
                         `}
-                    ></CustomStyle>
+                    ></Style>
                 ) : (
                     <video src={video.videoUrl} controls={true}></video>
                 )}

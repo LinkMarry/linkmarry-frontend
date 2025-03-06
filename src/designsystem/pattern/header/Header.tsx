@@ -8,7 +8,7 @@ import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Popover from "@designsystem/pattern/Popover";
 import Divider from "@designsystem/component/Divider";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import useResponsive from "@hook/useResponsive";
 import Logo from "@src/component/Logo";
 import useAuth from "@hook/useAuth";
@@ -140,7 +140,7 @@ function DesktopHeader() {
                 </Row>
                 <Spacer/>
                 {authorized ? (
-                    <CustomStyle css={css`
+                    <Style css={css`
                         position: relative;
                     `}>
                         <DesktopHeaderItem text={'내 정보'} hasPopover={true} onClick={() => {
@@ -172,7 +172,7 @@ function DesktopHeader() {
                                 `}
                             />
                         )}
-                    </CustomStyle>
+                    </Style>
                 ) : (
                     <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
                         navigate('/login');

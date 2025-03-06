@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/template/component/preview/PreviewTemplate";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {getDetails} from "@remote/value/WeddingSchedule";
@@ -22,12 +22,12 @@ function RomanticForestPreviewTemplate(
         <Column $alignItems={'stretch'} css={css`
             position: relative;
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
+            <Style as={'img'} src={template.titleImgUrl} css={css`
                 height: 100vh;
                 max-height: 810px;
                 object-fit: cover;
             `}/>
-            <CustomStyle css={css`
+            <Style css={css`
                 background: linear-gradient(180deg, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
                 height: 140px;
                 position: absolute;
@@ -44,7 +44,7 @@ function RomanticForestPreviewTemplate(
                     transform: translateX(-50%);
                 `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
             )}
-            <CustomStyle css={css`
+            <Style css={css`
                 background: linear-gradient(0, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
                 height: 140px;
                 position: absolute;

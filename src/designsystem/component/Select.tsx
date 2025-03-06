@@ -3,7 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     items: string[];
@@ -29,7 +29,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
         }
     }, []);
     return (
-        <CustomStyle ref={selectRef} css={css`
+        <Style ref={selectRef} css={css`
             display: flex;
             position: relative;
             ${customStyle};
@@ -99,7 +99,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                     ))}
                 </Column>
             )}
-        </CustomStyle>
+        </Style>
     );
 };
 

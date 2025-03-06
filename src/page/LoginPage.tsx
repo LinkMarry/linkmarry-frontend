@@ -4,7 +4,7 @@ import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import useAuth from "@hook/useAuth";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
 function LoginPage() {
     const {signInWithKakao} = useAuth();
@@ -13,7 +13,7 @@ function LoginPage() {
         <MainWrapper hasFooter={false}>
             <Column gap={32} flex={1} $alignItems={'center'} $justifyContent={'center'}>
                 <Column gap={8} $alignItems={'center'}>
-                    <CustomStyle as={'img'} src="/linkmarry.png" alt="" width={72} height={72} css={css`
+                    <Style as={'img'} src="/linkmarry.png" alt="" width={72} height={72} css={css`
                         border-radius: 18px;
                     `}/>
                     <Column gap={4} $alignItems={'center'}>

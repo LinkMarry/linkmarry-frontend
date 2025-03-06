@@ -1,28 +1,28 @@
 import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/Style";
 
-interface AddDismissButtonProps extends ComponentProps<'div'> {
+interface Props extends ComponentProps<'div'> {
     dismiss: () => void;
     children?: React.ReactNode;
 }
 
-function AddDismissButton(
+function AddRemoveButton(
     {
         dismiss,
         children,
         ...props
-    }: AddDismissButtonProps,
-    ref: ForwardedRef<HTMLDivElement>
+    }: Props,
+    ref?: ForwardedRef<HTMLDivElement>
 ) {
     return (
-        <CustomStyle ref={ref} css={css`
+        <Style ref={ref} css={css`
             position: relative;
         `} {...props}>
             <Icon
                 iconType={IconType.CrossLine}
-                size={16}
+                size={20}
                 customStyle={css`
                     fill: white;
                     display: flex;
@@ -35,8 +35,8 @@ function AddDismissButton(
                 onClick={dismiss}
             />
             {children}
-        </CustomStyle>
+        </Style>
     );
 }
 
-export default forwardRef(AddDismissButton);
+export default forwardRef(AddRemoveButton);
