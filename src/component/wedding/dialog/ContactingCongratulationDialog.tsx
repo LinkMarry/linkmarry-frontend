@@ -39,12 +39,12 @@ function ContactingCongratulationDialog(
                 tel: phone.groomTel
             },
             {
-                name: baseInfo.groomFatherName,
+                name: 'baseInfo.groomFatherName',
                 familyName: '아버지',
                 tel: phone.groomFatherTel
             },
             {
-                name: baseInfo.groomMotherName,
+                name: 'baseInfo.groomMotherName',
                 familyName: '어머니',
                 tel: phone.groomMotherTel
             }
@@ -57,12 +57,12 @@ function ContactingCongratulationDialog(
                 tel: phone.brideTel
             },
             {
-                name: baseInfo.brideFatherName,
+                name: 'baseInfo.brideFatherName',
                 familyName: '아버지',
                 tel: phone.brideFatherTel
             },
             {
-                name: baseInfo.brideMotherName,
+                name: 'baseInfo.brideMotherName',
                 familyName: '어머니',
                 tel: phone.brideMotherTel
             }

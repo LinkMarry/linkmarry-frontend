@@ -1,5 +1,5 @@
 import React from 'react';
-import {Column} from "@designsystem/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
@@ -10,7 +10,9 @@ import Binding from "@src/interface/Binding";
 import {getPlaceholder} from "@remote/value/WeddingPlace";
 import WeddingDto from "@remote/value/WeddingDto";
 import Button from "@designsystem/component/Button";
-import {IconType} from "@designsystem/foundation/Icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
+import {css} from "styled-components";
+import View from "@designsystem/core/View";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -40,11 +42,44 @@ const EditorInspectorWeddingPlace = (
             <Divider/>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>교통편</Text>
-                {Array.from(weddingPlace.placeTransportation).map((item, index) => (
-                    <Input key={index} placeholder={getPlaceholder(index)} value={item} onChange={event => update(draft => {
-                        draft.weddingPlace.placeTransportation[index] = event.target.value;
-                    })}/>
-                ))}
+                {Array.from(weddingPlace.placeTransportation).map((item, index) => {
+                    const input = <Input
+                        key={index}
+                        placeholder={getPlaceholder(index)}
+                        value={item}
+                        onChange={event => update(draft => {
+                            draft.weddingPlace.placeTransportation[index] = event.target.value;
+                        })}
+                        ui={css`
+                            flex: 1;
+                        `}
+                    />;
+                    if (index <= 2) {
+                        return input;
+                    } else {
+                        return (
+                            <Row key={index} $gap={12} $alignItems={'center'}>
+                                {input}
+                                <View $ui={css`
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                `} onClick={() => {
+                                    const copiedPlaceTransportation = [...weddingPlace.placeTransportation];
+                                    copiedPlaceTransportation.splice(index, 1);
+                                    update(draft => {
+                                        draft.weddingPlace.placeTransportation = copiedPlaceTransportation;
+                                    });
+                                }}>
+                                    <Icon iconType={IconType.Trash} width={24} height={24} ui={css`
+                                        padding: 8px;
+                                        cursor: pointer;
+                                    `}/>
+                                </View>
+                            </Row>
+                        );
+                    }
+                })}
                 <Button text={'교통편 추가'} leadingIcon={IconType.AddLine} buttonType={'tonal'} onClick={() => {
                     update(draft => {
                         draft.weddingPlace.placeTransportation.push('');

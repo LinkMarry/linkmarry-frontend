@@ -1,15 +1,12 @@
 import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
-import {Simulate} from "react-dom/test-utils";
-import drag = Simulate.drag;
 
 interface Props extends Binding<WeddingDto> {
 }

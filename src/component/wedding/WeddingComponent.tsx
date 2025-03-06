@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useRef, useState} from 'react';
+import React, {ReactNode, useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import MoneyInfoTemplate from "@src/component/wedding/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/wedding/component/FooterTemplate";
@@ -9,12 +9,9 @@ import CongratulationsTemplate from "@src/component/wedding/component/Congratula
 import WeddingDayTemplate from "@src/component/wedding/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "@src/component/wedding/component/LocationTemplate";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
-import GalleryTemplate, {GallerySlideStyle} from "@src/component/wedding/component/GalleryTemplate";
+import GalleryTemplate from "@src/component/wedding/component/GalleryTemplate";
 import VideoTemplate from "@src/component/wedding/component/VideoTemplate";
-import {DDayStyle} from "@src/component/wedding/component/weddingday/DDay";
-import InvitationLetterTemplate, {
-    InvitationLetterStyle
-} from "@src/component/wedding/component/InvitationLetterTemplate";
+import InvitationLetterTemplate from "@src/component/wedding/component/InvitationLetterTemplate";
 import RsvpDialog from "@src/component/wedding/dialog/rsvp/RsvpDialog";
 import CreateRsvpDialog from "@src/component/wedding/dialog/rsvp/CreateRsvpDialog";
 import {Helmet} from "react-helmet";

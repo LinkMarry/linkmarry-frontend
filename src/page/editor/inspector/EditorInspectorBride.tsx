@@ -5,7 +5,6 @@ import Input from "@designsystem/component/Input";
 import Spacer from "@designsystem/component/Spacer";
 import {css} from "styled-components";
 import Checkbox from "@designsystem/component/Checkbox";
-import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
@@ -38,9 +37,10 @@ const EditorInspectorBride = (
                         })}/>
                     </Row>
                     <Row $gap={8}>
-                        <Input placeholder={'영문 이름'} value={baseInfo.brideEnglishName} onChange={event => update(draft => {
-                            draft.baseInfo.brideEnglishName = event.target.value;
-                        })} ui={css`
+                        <Input placeholder={'영문 이름'} value={baseInfo.brideEnglishName}
+                               onChange={event => update(draft => {
+                                   draft.baseInfo.brideEnglishName = event.target.value;
+                               })} ui={css`
                             flex: 1;
                         `}/>
                         <Spacer/>
@@ -51,19 +51,27 @@ const EditorInspectorBride = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신부 아버지</Text>
                 <Row $gap={8} $alignItems={'center'}>
-                    <Input placeholder={'성'} ui={css`
+                    <Input placeholder={'성'} value={baseInfo.brideFatherFirstName} onChange={event => update(draft => {
+                        draft.baseInfo.brideFatherFirstName = event.target.value;
+                    })} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'이름'} ui={css`
+                    <Input placeholder={'이름'} value={baseInfo.brideFatherLastName} onChange={event => update(draft => {
+                        draft.baseInfo.brideFatherLastName = event.target.value;
+                    })} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'관계'} ui={css`
+                    <Input placeholder={'관계'} value={baseInfo.brideFatherFamilyName}
+                           onChange={event => update(draft => {
+                               draft.baseInfo.brideFatherFamilyName = event.target.value;
+                           })} ui={css`
                         flex: 1;
                     `}/>
                 </Row>
                 <Row $gap={8}>
-                    <Checkbox checked={false} OnChange={checked => {
-                    }} label={'故'} ui={css`
+                    <Checkbox checked={baseInfo.brideFatherStatus} OnChange={checked => update(draft => {
+                        draft.baseInfo.brideFatherStatus = checked;
+                    })} label={'故'} ui={css`
                         flex: 1;
                     `}/>
                     <Spacer/>
@@ -73,33 +81,32 @@ const EditorInspectorBride = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신부 어머니</Text>
                 <Row $gap={8} $alignItems={'center'}>
-                    <Input placeholder={'성'} ui={css`
+                    <Input placeholder={'성'} value={baseInfo.brideMotherFirstName} onChange={event => update(draft => {
+                        draft.baseInfo.brideMotherFirstName = event.target.value;
+                    })} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'이름'} ui={css`
+                    <Input placeholder={'이름'} value={baseInfo.brideMotherLastName} onChange={event => update(draft => {
+                        draft.baseInfo.brideMotherLastName = event.target.value;
+                    })} ui={css`
                         flex: 1;
                     `}/>
-                    <Input placeholder={'관계'} ui={css`
+                    <Input placeholder={'관계'} value={baseInfo.brideMotherFamilyName}
+                           onChange={event => update(draft => {
+                               draft.baseInfo.brideMotherFamilyName = event.target.value;
+                           })} ui={css`
                         flex: 1;
                     `}/>
                 </Row>
                 <Row $gap={8}>
-                    <Checkbox checked={false} OnChange={checked => {
-                    }} label={'故'} ui={css`
+                    <Checkbox checked={baseInfo.brideMotherStatus} OnChange={checked => update(draft => {
+                        draft.baseInfo.brideMotherStatus = checked;
+                    })} label={'故'} ui={css`
                         flex: 1;
                     `}/>
                     <Spacer/>
                     <Spacer/>
                 </Row>
-            </Column>
-            <Column $alignItems={'stretch'} $gap={12}>
-                <Text type={'p3'} bold={true}>신부 아버지</Text>
-                <FormToggle
-                    checked={false}
-                    OnChange={checked => {
-                    }}
-                    label={'국화꽃으로 표시'}
-                />
             </Column>
         </EditorInspectorWrapper>
     );

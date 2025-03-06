@@ -1,7 +1,6 @@
 import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";
@@ -9,9 +8,8 @@ import Select from "@designsystem/component/Select";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import Greeting from "@remote/value/Greeting";
 import WeddingDto from "@remote/value/WeddingDto";
-import greetingDesign, {greetingDesignList, greetingDesignMap} from "@remote/enumeration/GreetingDesign";
+import {greetingDesignList, greetingDesignMap} from "@remote/enumeration/GreetingDesign";
 
 interface Props extends Binding<WeddingDto> {
 }
