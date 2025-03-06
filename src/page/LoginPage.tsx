@@ -13,7 +13,7 @@ function LoginPage() {
         <MainWrapper hasFooter={false}>
             <Column gap={32} flex={1} $alignItems={'center'} $justifyContent={'center'}>
                 <Column gap={8} $alignItems={'center'}>
-                    <CustomStyle as={'img'} src="/linkmarry.png" alt="" width={72} height={72} $customStyle={css`
+                    <CustomStyle as={'img'} src="/linkmarry.png" alt="" width={72} height={72} css={css`
                         border-radius: 18px;
                     `}/>
                     <Column gap={4} $alignItems={'center'}>
@@ -23,7 +23,7 @@ function LoginPage() {
                         `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                     </Column>
                 </Column>
-                <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
+                <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} css={css`
                     cursor: pointer;
                     width: 300px;
                     height: 45px;

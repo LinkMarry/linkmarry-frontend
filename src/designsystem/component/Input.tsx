@@ -11,14 +11,14 @@ interface Props extends ComponentPropsWithRef<'input'> {
 
 const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => {
     return (
-        <CustomStyle $customStyle={css`
+        <CustomStyle css={css`
             display: flex;
             position: relative;
             ${customStyle};
         `}>
             <CustomStyle
                 as={'input'}
-                $customStyle={css`
+                css={css`
                     display: flex;
                     height: 52px;
                     border: none;
@@ -75,7 +75,7 @@ const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => 
                 {...props}
                 placeholder={hasLabel ? '' : placeholder}
             />
-            <CustomStyle as={'label'} $customStyle={css`
+            <CustomStyle as={'label'} css={css`
                 position: absolute;
                 left: 16px;
                 top: 12px;
@@ -83,7 +83,7 @@ const Input = ({placeholder, hasLabel = true, customStyle, ...props}: Props) => 
                 pointer-events: none;
                 background: white;
             `}>
-                <CustomStyle as={'legend'} $customStyle={css`
+                <CustomStyle as={'legend'} css={css`
                     color: var(--g-400);
                     transition: 0.1s font-size ease-out;
                     ${makeText('p2')};

@@ -24,7 +24,7 @@ function Toggle(
     ref?: ForwardedRef<HTMLInputElement>
 ) {
     return (
-        <Row $customStyle={css`
+        <Row css={css`
             position: relative;
             width: fit-content;
             ${customStyle};
@@ -37,7 +37,7 @@ function Toggle(
                 onChange={(e) => {
                     OnChange(e.target.checked);
                 }}
-                $customStyle={css`
+                css={css`
                     display: flex;
                     width: 60px;
                     height: 32px;
@@ -53,7 +53,7 @@ function Toggle(
                     transition: 0.2s background ease-out;
                 `}
             />
-            <CustomStyle as={'span'} $customStyle={css`
+            <CustomStyle as={'span'} css={css`
                 position: absolute;
                 width: 26px;
                 height: 26px;

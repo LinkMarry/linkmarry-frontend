@@ -20,10 +20,10 @@ function NatureBlissPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} $customStyle={css`
+        <Column $alignItems={'stretch'} css={css`
             background: white;
         `}>
-            <Column gap={16} $alignItems={'center'} $customStyle={css`
+            <Column gap={16} $alignItems={'center'} css={css`
                 padding: 52px 0;
             `}>
                 <Text size={24} weight={100}>{first.name} & {second.name}</Text>
@@ -36,7 +36,7 @@ function NatureBlissPreviewTemplate(
                     >{weddingPlace.placeName}</Text>
                 </Column>
             </Column>
-            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $customStyle={css`
+            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

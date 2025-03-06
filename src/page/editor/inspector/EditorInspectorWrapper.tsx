@@ -51,7 +51,7 @@ interface EmptyProps {
 const Empty = ({type}: EmptyProps) => {
     const {icon, inspectorText} = editorNavTypeMap[type];
     return (
-        <Column gap={12} $alignItems={'stretch'} $justifyContent={'center'} $customStyle={css`
+        <Column gap={12} $alignItems={'stretch'} $justifyContent={'center'} css={css`
             height: 436px;
         `}>
             <Icon iconType={icon} width={24} height={24} customStyle={css`

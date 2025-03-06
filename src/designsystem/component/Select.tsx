@@ -29,14 +29,14 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
         }
     }, []);
     return (
-        <CustomStyle ref={selectRef} $customStyle={css`
+        <CustomStyle ref={selectRef} css={css`
             display: flex;
             position: relative;
             ${customStyle};
         `} onClick={() => {
             setOpenOptions(i => !i);
         }} {...props}>
-            <Row $alignItems={'center'} gap={4} $customStyle={css`
+            <Row $alignItems={'center'} gap={4} css={css`
                 padding: 12px 16px;
                 width: 100%;
                 border: 1px solid var(--g-300);
@@ -60,7 +60,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                 `}/>
             </Row>
             {openOptions && (
-                <Column $alignItems={'stretch'} $customStyle={css`
+                <Column $alignItems={'stretch'} css={css`
                     position: absolute;
                     top: 52px;
                     left: 0;
@@ -72,7 +72,7 @@ const Select = ({items, selected, OnChange, placeholder, customStyle, ...props}:
                     z-index: 100;
                 `}>
                     {items.map((item, index) => (
-                        <Row key={index} $alignItems={'center'} $customStyle={css`
+                        <Row key={index} $alignItems={'center'} css={css`
                             padding: 12px 16px;
                             cursor: pointer;
                             

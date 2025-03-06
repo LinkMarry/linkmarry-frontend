@@ -91,7 +91,7 @@ function GuestCommentsTemplate(
                         </FadeIn>
                     )}
                 </Column>
-                <CustomStyle $customStyle={css`
+                <CustomStyle css={css`
                     align-self: center;
                 `}>
                     <FadeIn delay={480}>

@@ -39,7 +39,7 @@ function Text(
         <CustomStyle
             ref={ref}
             as={'span'}
-            $customStyle={css`
+            css={css`
                 ${implementText({
                     fontFamily: font ?? properties?.fontFamily,
                     fontWeight: weight ?? (bold ? properties?.boldFontWeight : properties?.fontWeight),

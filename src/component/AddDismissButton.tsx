@@ -17,7 +17,7 @@ function AddDismissButton(
     ref: ForwardedRef<HTMLDivElement>
 ) {
     return (
-        <CustomStyle ref={ref} $customStyle={css`
+        <CustomStyle ref={ref} css={css`
             position: relative;
         `} {...props}>
             <Icon

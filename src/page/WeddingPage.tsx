@@ -43,7 +43,7 @@ function WeddingPage() {
     }
 
     return (
-        <Row $justifyContent={'center'} $customStyle={css`
+        <Row $justifyContent={'center'} css={css`
             background: ${wedding?.template.weddingDesignColor};
             padding: 64px 0;
         `}>

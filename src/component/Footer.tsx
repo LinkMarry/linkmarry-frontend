@@ -13,18 +13,18 @@ function Footer() {
     const {deviceSize} = useResponsive();
 
     return (
-        <Column as={'footer'} $alignItems={'center'} $customStyle={css`
+        <Column as={'footer'} $alignItems={'center'} css={css`
             padding: 0 24px;
         `}>
-            <Column gap={40} $alignItems={'stretch'} $customStyle={css`
+            <Column gap={40} $alignItems={'stretch'} css={css`
                 max-width: 1100px;
                 width: 100%;
             `}>
                 <Divider/>
-                <Column gap={72} $alignItems={'stretch'} $customStyle={css`
+                <Column gap={72} $alignItems={'stretch'} css={css`
                     padding-bottom: 72px;
                 `}>
-                    <CustomStyle $customStyle={css`
+                    <CustomStyle css={css`
                         display: flex;
                         justify-content: space-between;
                         ${deviceSize === 'mobile' && css`
@@ -40,26 +40,26 @@ function Footer() {
                                 color: var(--g-500);
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
                         </Column>
-                        <CustomStyle $customStyle={css`
+                        <CustomStyle css={css`
                             display: flex;
                             ${deviceSize === 'mobile' && css`
                                 flex-direction: column;
                                 gap: 16px;
                             `};
                         `}>
-                            <Column gap={4} $customStyle={css`
+                            <Column gap={4} css={css`
                                 width: 180px;
                             `}>
                                 <Item text={'모바일 청첩장'}/>
                                 <Item text={'회원정보'}/>
                             </Column>
-                            <Column gap={4} $customStyle={css`
+                            <Column gap={4} css={css`
                                 width: 180px;
                             `}>
                                 <Item text={'공지사항'}/>
                                 <Item text={'네이버스토어'}/>
                             </Column>
-                            <Column gap={4} $customStyle={css`
+                            <Column gap={4} css={css`
                                 width: 180px;
                             `}>
                                 <Item text={'이용약관'}

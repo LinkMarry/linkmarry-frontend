@@ -40,7 +40,7 @@ function RsvpDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column gap={48} $alignItems={'stretch'} $customStyle={css`
+            <Column gap={48} $alignItems={'stretch'} css={css`
                 ${applyBaseDialogContent()};
                 max-width: 436px;
                 width: 90vw;

@@ -56,7 +56,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
 
     return (
         <Row $alignItems={'center'} onMouseOver={() => setIsHovering(true)} onMouseOut={() => setIsHovering(false)}
-             gap={16} $customStyle={css`
+             gap={16} css={css`
             padding: 12px;
             border-radius: 12px;
 
@@ -64,7 +64,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                 background: var(--g-50);
             }
         `}>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 position: relative;
                 width: 60px;
                 height: 60px;
@@ -74,7 +74,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
             `} onClick={() => {
 
             }}>
-                <CustomStyle as={'img'} $customStyle={css`
+                <CustomStyle as={'img'} css={css`
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -92,7 +92,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                     `}/>
                 )}
             </CustomStyle>
-            <Column gap={4} $customStyle={css`
+            <Column gap={4} css={css`
                 flex: 1;
                 min-width: 0;
                 overflow: hidden;

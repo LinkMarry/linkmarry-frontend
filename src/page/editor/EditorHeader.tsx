@@ -22,7 +22,7 @@ const SmallEditorHeader = () => {
     const navigate = useNavigate();
 
     return (
-        <Row as={'header'} $alignItems={'center'} $customStyle={css`
+        <Row as={'header'} $alignItems={'center'} css={css`
             min-height: 60px;
             padding: 12px 16px;
             border-bottom: 1px solid var(--g-100);
@@ -45,7 +45,7 @@ const DesktopEditorHeader = () => {
     const navigate = useNavigate();
 
     return (
-        <Row as={'header'} $alignItems={'center'} $customStyle={css`
+        <Row as={'header'} $alignItems={'center'} css={css`
             min-height: 72px;
             padding: 0 24px;
             border-bottom: 1px solid var(--g-100);

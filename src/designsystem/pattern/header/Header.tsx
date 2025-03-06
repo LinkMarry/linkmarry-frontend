@@ -31,11 +31,11 @@ function MobileHeader() {
 
     if (openDetail) {
         return (
-            <Column as={'header'} $alignItems={'stretch'} $customStyle={css`
+            <Column as={'header'} $alignItems={'stretch'} css={css`
                 position: relative;
             `}>
                 <MobileHeaderContent openDetail={openDetail} setOpenDetail={setOpenDetail}/>
-                <Column gap={16} $alignItems={'stretch'} $customStyle={css`
+                <Column gap={16} $alignItems={'stretch'} css={css`
                     padding-top: 24px;
                     position: absolute;
                     margin-top: 60px;
@@ -86,7 +86,7 @@ function MobileHeaderContent(props: {
     setOpenDetail: Dispatch<SetStateAction<boolean>>;
 }) {
     return (
-        <Row $alignItems={'center'} $customStyle={css`
+        <Row $alignItems={'center'} css={css`
             width: 100vw;
             height: 60px;
             background: white;
@@ -113,14 +113,14 @@ function DesktopHeader() {
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
 
     return (
-        <Row as={'header'} $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
+        <Row as={'header'} $justifyContent={'center'} $alignItems={'center'} css={css`
             width: 100vw;
             min-height: 72px;
             background: white;
             border-bottom: 1px solid var(--g-200);
             padding: 0 24px;
         `}>
-            <Row $alignItems={'center'} $customStyle={css`
+            <Row $alignItems={'center'} css={css`
                 max-width: 1100px;
                 flex: 1;
             `}>
@@ -140,7 +140,7 @@ function DesktopHeader() {
                 </Row>
                 <Spacer/>
                 {authorized ? (
-                    <CustomStyle $customStyle={css`
+                    <CustomStyle css={css`
                         position: relative;
                     `}>
                         <DesktopHeaderItem text={'내 정보'} hasPopover={true} onClick={() => {
@@ -188,7 +188,7 @@ function MobileHeaderItem(props: {
     icon?: IconType;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
-        <Row gap={8} {...props} $customStyle={css`
+        <Row gap={8} {...props} css={css`
             padding: 12px 16px;
             ${makeInteractionEffect('strong')};
         `}>
@@ -209,7 +209,7 @@ function DesktopHeaderItem({text, hasPopover = false, ...props}: {
     hasPopover?: boolean;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
-        <Row gap={8} $alignItems={'center'} $customStyle={css`
+        <Row gap={8} $alignItems={'center'} css={css`
             padding: 8px 16px;
             border-radius: 6px;
             ${makeInteractionEffect('strong')};

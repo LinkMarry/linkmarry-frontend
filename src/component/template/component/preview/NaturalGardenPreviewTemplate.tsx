@@ -20,7 +20,7 @@ function NaturalGardenPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column gap={44} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={44} $alignItems={'stretch'} css={css`
             padding: 64px 0;
 
             * {
@@ -28,10 +28,10 @@ function NaturalGardenPreviewTemplate(
             }
         `}>
             <img src={'/NaturalGardenDeco.svg'} alt="" width={'100%'}/>
-            <Column $alignItems={'stretch'} gap={40} $customStyle={css`
+            <Column $alignItems={'stretch'} gap={40} css={css`
                 padding: 0 32px;
             `}>
-                <CustomStyle as={'img'} src={template.titleImgUrl} $customStyle={css`
+                <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
                     height: 512px;
                     border-radius: 500px 500px 0 0;
                     object-fit: cover;

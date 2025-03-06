@@ -48,7 +48,7 @@ function LocationTemplate(
     }, []);
 
     return (
-        <Column $alignItems={'stretch'} ref={weddingPlaceRef} $customStyle={css`
+        <Column $alignItems={'stretch'} ref={weddingPlaceRef} css={css`
             background: ${templateColor};
             align-items: stretch;
         `}>
@@ -69,7 +69,7 @@ function LocationTemplate(
                         </Text>
                     </Column>
                 </FadeIn>
-                <CustomStyle ref={kakaoMapRef} $customStyle={css`
+                <CustomStyle ref={kakaoMapRef} css={css`
                     display: flex;
                     align-self: stretch;
                     height: 307px;

@@ -18,11 +18,11 @@ function DreamWeddingPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column gap={64} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={64} $alignItems={'stretch'} css={css`
             padding: 78px 28px 72px 28px;
             position: relative;
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} $customStyle={css`
+            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
                 object-fit: cover;
                 min-height: 517px;
                 * {

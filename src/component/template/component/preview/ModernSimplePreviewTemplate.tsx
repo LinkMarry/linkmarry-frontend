@@ -18,14 +18,14 @@ function ModernSimplePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column gap={60} $alignItems={'center'} $customStyle={css`
+        <Column gap={60} $alignItems={'center'} css={css`
             padding: 92px 0;
             * {
                 color: #333333;
             }
         `}>
             <Text size={44} weight={400}>Our Wedding Day</Text>
-            <CustomStyle as={'img'} src={template.titleImgUrl} $customStyle={css`
+            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
                 align-self: stretch;
                 max-height: 312px;
             `}/>

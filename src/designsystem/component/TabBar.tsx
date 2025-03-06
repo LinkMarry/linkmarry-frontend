@@ -20,7 +20,7 @@ const TabBar = ({items, selectedTab, onChange, customStyle}: {
     customStyle?: RuleSet;
 }) => {
     return (
-        <Row gap={8} $customStyle={css`
+        <Row gap={8} css={css`
             overflow-x: scroll;
             ${hideScrollBar};
             ${customStyle};
@@ -39,7 +39,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <Column $alignItems={'center'} $customStyle={css`
+        <Column $alignItems={'center'} css={css`
             min-width: 68px;
             padding: 10px 0;
             border-radius: 6px;
@@ -54,7 +54,7 @@ const Item = ({selected, text, ...props}: {
                 `}
             `}>{text}</Text>
             {selected && (
-                <CustomStyle $customStyle={css`
+                <CustomStyle css={css`
                     position: absolute;
                     width: 29px;
                     height: 2px;

@@ -21,22 +21,22 @@ function ClassicElegancePreviewTemplate(
 
     return (
         <Column $alignItems={'stretch'}>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 position: relative;
             `}>
-                <CustomStyle as={'img'} src={template.titleImgUrl} $customStyle={css`
+                <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
                     width: 100%;
                     object-fit: cover;
                     height: 100vh;
                     max-height: 810px;
                 `}/>
-                <Column $alignItems={'center'} gap={20} $customStyle={css`
+                <Column $alignItems={'center'} gap={20} css={css`
                     position: absolute;
                     top: 72px;
                     left: 50%;
                     transform: translateX(-50%);
                 `}>
-                    <CustomStyle $customStyle={css`
+                    <CustomStyle css={css`
                         padding: 0 12px;
                         background: white;
                         border-radius: 100px;
@@ -54,7 +54,7 @@ function ClassicElegancePreviewTemplate(
                 </Column>
             </CustomStyle>
             <Text size={20} weight={400}>
-                <Column gap={8} $alignItems={'center'} $customStyle={css`
+                <Column gap={8} $alignItems={'center'} css={css`
                     padding: 32px 8px;
                 `}>
                     {isValidDate && (

@@ -41,7 +41,7 @@ function Divider(
     })();
 
     return (
-        <CustomStyle $customStyle={css`
+        <CustomStyle css={css`
             background: var(--g-100);
             ${style};
             ${customStyle};

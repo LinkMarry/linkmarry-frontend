@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 function Spacer({w, h, ...props}: Props) {
     return (
-        <CustomStyle $customStyle={css`
+        <CustomStyle css={css`
             ${w && css`
                 min-width: ${w}px;
             `};

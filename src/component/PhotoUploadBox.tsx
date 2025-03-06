@@ -74,7 +74,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             gap={12}
             $alignItems={'center'}
             $justifyContent={'center'}
-            $customStyle={css`
+            css={css`
                 border-radius: 8px;
                 background: var(--g-50);
                 height: 172px;
@@ -100,7 +100,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                     `}>사진을 첨부해 주세요</Text>
                 </Row>
             ) : (
-                <Row gap={6} $customStyle={css`
+                <Row gap={6} css={css`
                     align-self: stretch;
                     overflow-x: scroll;
                     min-height: 106px;
@@ -117,7 +117,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                                 htmlFor={id}
                                 $alignItems={'center'}
                                 $justifyContent={'center'}
-                                $customStyle={css`
+                                css={css`
                                     min-width: 106px;
                                     min-height: 106px;
                                     background: var(--g-100);
@@ -152,7 +152,7 @@ interface ImageProps {
 const Image = ({dismiss, src}: ImageProps) => {
     return (
         <AddRemoveButton dismiss={dismiss}>
-            <CustomStyle as={'img'} src={src} $customStyle={css`
+            <CustomStyle as={'img'} src={src} css={css`
                 min-width: 106px;
                 width: 106px;
                 min-height: 106px;

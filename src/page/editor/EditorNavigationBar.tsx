@@ -16,7 +16,7 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
     const {deviceSize} = useResponsive();
     if (deviceSize === 'mobile' || deviceSize === 'tablet') {
         return (
-            <Column $alignItems={'stretch'} flex={1} $customStyle={css`
+            <Column $alignItems={'stretch'} flex={1} css={css`
                 min-height: 0;
             `}>
                 {children}
@@ -27,7 +27,7 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
     }
 
     return (
-        <Row $alignItems={'stretch'} flex={1} $customStyle={css`
+        <Row $alignItems={'stretch'} flex={1} css={css`
             min-height: 0;
         `}>
             <EditorNavigationBarImpl {...props}/>
@@ -55,7 +55,7 @@ const EditorNavigationBarImpl = (props: EditorNavigationBarImplProps) => {
 
 const SmallEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorNavigationBarImplProps) => {
     return (
-        <Row gap={12} $customStyle={css`
+        <Row gap={12} css={css`
             ${hideScrollBar};
             padding: 8px 32px;
             border-top: 1px solid var(--g-100);
@@ -81,11 +81,11 @@ const DesktopEditorNavigationBarImpl = (
     }: EditorNavigationBarImplProps
 ) => {
     return (
-        <Column $customStyle={css`
+        <Column css={css`
             border-right: 1px solid var(--g-100);
             width: 72px;
         `}>
-            <Column gap={10} flex={1} $customStyle={css`
+            <Column gap={10} flex={1} css={css`
                 padding: 8px;
                 overflow-y: scroll;
                 ${hideScrollBar};
@@ -96,7 +96,7 @@ const DesktopEditorNavigationBarImpl = (
                     }}/>
                 ))}
             </Column>
-            <Column $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
+            <Column $alignItems={'center'} $justifyContent={'center'} css={css`
                 width: 72px;
                 height: 72px;
                 rotate: 180deg;
@@ -123,7 +123,7 @@ const Item = ({type, selected, ...props}: {
 } & ComponentPropsWithoutRef<'div'>) => {
     const {icon, navigationBarText} = editorNavTypeMap[type];
     return (
-        <Column gap={2} $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
+        <Column gap={2} $alignItems={'center'} $justifyContent={'center'} css={css`
             min-width: 56px;
             width: 56px;
             min-height: 56px;

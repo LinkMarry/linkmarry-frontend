@@ -23,7 +23,7 @@ function VideoTemplate(
 
     return (
         <FadeIn>
-            <Column gap={40} $alignItems={'stretch'} ref={videoRef} $customStyle={css`
+            <Column gap={40} $alignItems={'stretch'} ref={videoRef} css={css`
                 padding: 92px 0;
                 background: white;
             `}>
@@ -44,7 +44,7 @@ function VideoTemplate(
                         as={'iframe'}
                         height={250} title={video.videoTitle}
                         src={video.videoUrl}
-                        $customStyle={css`
+                        css={css`
                             display: flex;
                             object-fit: cover;
                         `}

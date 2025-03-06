@@ -80,7 +80,7 @@ function KakaoMapDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $alignItems={'stretch'} $customStyle={css`
+            <Column $alignItems={'stretch'} css={css`
                 width: 90vw;
                 max-width: 412px;
                 height: 75vh;
@@ -88,17 +88,17 @@ function KakaoMapDialog(
                 border-radius: 12px;
                 background: white;
             `}>
-                <CustomStyle ref={kakaoMap} $customStyle={css`
+                <CustomStyle ref={kakaoMap} css={css`
                     display: flex;
                     flex: 1;
                     position: relative;
                 `}>
                 </CustomStyle>
                 {/* 결과 출력 */}
-                <Column gap={10} $alignItems={'stretch'} $customStyle={css`
+                <Column gap={10} $alignItems={'stretch'} css={css`
                     padding: 16px;
                 `}>
-                    <Column as={'ul'} gap={4} $alignItems={'stretch'} $customStyle={css`
+                    <Column as={'ul'} gap={4} $alignItems={'stretch'} css={css`
                         height: 128px;
                         overflow-y: scroll;
                         padding: 4px;
@@ -108,7 +108,7 @@ function KakaoMapDialog(
                             return (
                                 <Column
                                     key={index} as={'li'}
-                                    $customStyle={css`
+                                    css={css`
                                         &:hover {
                                             background: var(--g-100);
                                         }

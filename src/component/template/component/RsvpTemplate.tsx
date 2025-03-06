@@ -35,7 +35,7 @@ function RsvpTemplate(
 
     return (
         <FadeIn>
-            <Column gap={40} $alignItems={'center'} $customStyle={css`
+            <Column gap={40} $alignItems={'center'} css={css`
                 padding: 92px 60px;
                 background: ${templateColor};
             `}>
@@ -55,7 +55,7 @@ function RsvpTemplate(
                         `}>참석의사를 알려주세요!</Text>
                     </FadeIn>
                 </Column>
-                <Column $alignItems={'stretch'} $alignSelf={'stretch'} gap={62} $customStyle={css`
+                <Column $alignItems={'stretch'} $alignSelf={'stretch'} gap={62} css={css`
                     padding: 32px 28px;
                     background: white;
                     border-radius: 12px;
@@ -63,7 +63,7 @@ function RsvpTemplate(
                     <FadeIn>
                         <Column gap={40} $alignItems={'stretch'}>
                             <Column gap={20} $alignItems={'stretch'}>
-                                <Row gap={6} $alignItems={'center'} $customStyle={css`
+                                <Row gap={6} $alignItems={'center'} css={css`
                                     padding: 5px 0;
                                 `}>
                                     <Text

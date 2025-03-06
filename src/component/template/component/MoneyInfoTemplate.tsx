@@ -25,7 +25,7 @@ function MoneyInfoTemplate(
     useScrollOnUpdate(moneyInfoRef, [moneyInfo]);
 
     return (
-        <Column $alignItems={'stretch'} ref={moneyInfoRef} $customStyle={css`
+        <Column $alignItems={'stretch'} ref={moneyInfoRef} css={css`
             padding: 92px 60px;
             background: white;
         `}>
@@ -64,11 +64,11 @@ function MoneyInfoComponent(
     return (
         <Column gap={16} $alignItems={'stretch'} $alignSelf={'stretch'}>
             <FadeIn>
-                <CustomStyle $customStyle={css`
+                <CustomStyle css={css`
                     border-radius: 12px;
                     background: var(--g-100);
                 `}>
-                    <Row $alignItems={'center'} $customStyle={css`
+                    <Row $alignItems={'center'} css={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedGroom(i => !i)}>
@@ -100,11 +100,11 @@ function MoneyInfoComponent(
                 </CustomStyle>
             </FadeIn>
             <FadeIn>
-                <CustomStyle $customStyle={css`
+                <CustomStyle css={css`
                     border-radius: 12px;
                     background: var(--p-100);
                 `}>
-                    <Row $alignItems={'center'} $customStyle={css`
+                    <Row $alignItems={'center'} css={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedBride(i => !i)}>
@@ -151,7 +151,7 @@ function MoneyCell(props: {
         <Column
             gap={8}
             $alignItems={'stretch'}
-            $customStyle={css`
+            css={css`
                 padding: 12px 20px;
                 ${props.isGroom ? css`
                     border-top: 1px solid var(--g-200);
@@ -161,7 +161,7 @@ function MoneyCell(props: {
             `}
         >
             {/*<Text type={'p5'}>{props.name}</Text>*/}
-            <Row $alignItems={'center'} $customStyle={css`
+            <Row $alignItems={'center'} css={css`
                 padding: 8px 16px;
                 background: white;
                 border-radius: 4px;

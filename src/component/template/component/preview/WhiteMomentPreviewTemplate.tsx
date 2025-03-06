@@ -23,11 +23,11 @@ function WhiteMomentPreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} $customStyle={css`
+        <Column $alignItems={'stretch'} css={css`
             padding: 44px 30px;
             background: ${template.weddingDesignColor};
         `}>
-            <Column gap={36} $alignItems={'center'} $customStyle={css`
+            <Column gap={36} $alignItems={'center'} css={css`
                 margin: 0 23px 44px 23px;
             `}>
                 <Text size={24} weight={100}>{first.name} & {second.name}</Text>
@@ -41,7 +41,7 @@ function WhiteMomentPreviewTemplate(
                 </Column>
             </Column>
             <Column gap={44} $alignItems={'center'}>
-                <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $customStyle={css`
+                <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                     display: flex;
                     width: 100%;
                     height: 512px;

@@ -55,7 +55,7 @@ function TemplateComponent(
     // Cookies.remove('hide_RsvpDialog')
 
     return (
-        <Column ref={rootRef} $customStyle={css`
+        <Column ref={rootRef} css={css`
             max-width: 436px;
             width: 100%;
             align-items: stretch;

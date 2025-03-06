@@ -54,7 +54,7 @@ function App() {
                     <Route path={'editor'} element={<EditorPage/>}/>
                     <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                     <Route path={'sample'} element={(
-                        <Row $justifyContent={'center'} $customStyle={css`
+                        <Row $justifyContent={'center'} css={css`
                             background: ${dummyWedding.template.weddingDesignColor};
                             padding: 64px 0;
                         `}>

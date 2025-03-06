@@ -1,9 +1,9 @@
 import styled, {RuleSet} from "styled-components";
 
 const CustomStyle = styled.div<{
-    $customStyle: RuleSet;
+    css: RuleSet;
 }>`
-    ${({$customStyle}) => $customStyle};
+    ${({css}) => css};
 `;
 
 export default CustomStyle;

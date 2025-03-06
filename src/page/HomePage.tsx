@@ -13,14 +13,14 @@ function HomePage() {
 
     return (
         <MainWrapper>
-            <Column $alignItems={'center'} $customStyle={css`
+            <Column $alignItems={'center'} css={css`
                 ${deviceSize === 'desktop' ? css`
                     padding: 72px 24px 40px 24px;
                 ` : css`
                     padding: 24px 16px 40px 16px;
                 `};
             `}>
-                <Column gap={40} $alignItems={'stretch'} $customStyle={css`
+                <Column gap={40} $alignItems={'stretch'} css={css`
                     max-width: 1100px;
                     width: 100%;
                     flex: 1;
@@ -42,7 +42,7 @@ function HomePage() {
                         <Row $justifyContent={'center'}>
                             <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {}}/>
                         </Row>
-                        <CustomStyle $customStyle={css`
+                        <CustomStyle css={css`
                             display: grid;
                             max-width: 960px;
                             align-self: center;

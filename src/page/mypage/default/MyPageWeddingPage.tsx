@@ -31,13 +31,13 @@ function WeddingCell() {
     const {deviceSize} = useResponsive();
 
     return (
-        <Row gap={16} $alignItems={'stretch'} $customStyle={css`
+        <Row gap={16} $alignItems={'stretch'} css={css`
             height: 360px;
             ${deviceSize === "mobile" && css`
                 height: 144px;
             `};
         `}>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 width: calc(360px * 9 / 16);
                 ${deviceSize === "mobile" && css`
                     width: calc(144px * 9 / 16);
@@ -64,11 +64,11 @@ function WeddingCell() {
                                     <Button text={'방명록 확인'} size={'medium'}/>
                                 </>
                             )}
-                            <CustomStyle $customStyle={css`
+                            <CustomStyle css={css`
                                 position: relative;
                             `}>
                                 <Column
-                                    $customStyle={css`
+                                    css={css`
                                         align-items: center;
                                         padding: 4px;
                                         border-radius: 6px;
@@ -126,7 +126,7 @@ function WeddingCell() {
                 </Column>
                 {/*content*/}
                 {deviceSize === 'desktop' && (
-                    <Row gap={16} flex={1} $alignItems={'stretch'} $customStyle={css`
+                    <Row gap={16} flex={1} $alignItems={'stretch'} css={css`
                         min-height: 0;
                     `}>
                         {/*방명록 미리보기*/}
@@ -134,7 +134,7 @@ function WeddingCell() {
                             <Text type={'caption2'} bold={true} customStyle={css`
                                 color: var(--g-400);
                             `}>방명록 미리보기</Text>
-                            <Column gap={8} $alignItems={'stretch'} flex={1} $customStyle={css`
+                            <Column gap={8} $alignItems={'stretch'} flex={1} css={css`
                                 min-height: 0;
                                 overflow-y: scroll;
                                 ${hideScrollBar};
@@ -150,7 +150,7 @@ function WeddingCell() {
                             <Text type={'caption2'} bold={true} customStyle={css`
                                 color: var(--g-400);
                             `}>통계</Text>
-                            <Column gap={8} $alignItems={'stretch'} flex={1} $customStyle={css`
+                            <Column gap={8} $alignItems={'stretch'} flex={1} css={css`
                                 min-height: 0;
                                 overflow-y: scroll;
                                 ${hideScrollBar};

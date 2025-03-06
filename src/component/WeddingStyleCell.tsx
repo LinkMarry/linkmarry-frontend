@@ -7,7 +7,7 @@ import CustomStyle from "@designsystem/core/CustomStyle";
 function WeddingStyleCell() {
     return (
         <Column gap={8} $alignItems={'stretch'}>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 aspect-ratio: 9 / 16;
                 background: var(--g-100);
                 border-radius: 8px;

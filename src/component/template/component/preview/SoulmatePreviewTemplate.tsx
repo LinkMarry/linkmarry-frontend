@@ -19,10 +19,10 @@ function SoulmatePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} $customStyle={css`
+        <Column $alignItems={'stretch'} css={css`
                     background: ${template.weddingDesignColor};
                 `}>
-            <Column gap={12} $alignItems={'center'} $customStyle={css`
+            <Column gap={12} $alignItems={'center'} css={css`
                         margin: 40px 0;
                     `}>
                 <Text size={40} weight={100}>{isValidDate && format(date, 'MM / dd')}</Text>
@@ -36,7 +36,7 @@ function SoulmatePreviewTemplate(
                     </Row>
                 </Text>
             </Column>
-            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $customStyle={css`
+            <CustomStyle as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

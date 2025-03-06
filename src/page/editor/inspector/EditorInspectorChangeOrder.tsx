@@ -68,7 +68,7 @@ interface ItemProps extends ComponentPropsWithRef<'div'> {
 
 const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
-        <Row ref={ref} $alignItems={'center'} $customStyle={css`
+        <Row ref={ref} $alignItems={'center'} css={css`
             padding: 12px 16px;
             border-radius: 8px;
             border: 1px solid var(--g-300);
@@ -77,7 +77,7 @@ const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDiv
             <Text type={'p2'} customStyle={css`
                 flex: 1;
             `}>{text}</Text>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 display: flex;
             `}>
                 <Icon iconType={IconType.Hamburger} width={24} height={24} customStyle={css`

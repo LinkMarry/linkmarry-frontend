@@ -29,7 +29,7 @@ function InvitationLetterTemplate(
 
     return (
         <FadeIn>
-            <Column gap={40} $alignItems={'center'} ref={invitationLetterRef} $customStyle={css`
+            <Column gap={40} $alignItems={'center'} ref={invitationLetterRef} css={css`
                 padding: 72px 60px;
                 background: white;
             `}>

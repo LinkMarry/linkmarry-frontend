@@ -6,7 +6,7 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import CustomStyle from "@designsystem/core/CustomStyle";
+import Style from "@designsystem/core/CustomStyle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import {OpeningText, openingTextList} from "@remote/value/WeddingDesign";
 import Binding from "@src/interface/Binding";
@@ -44,7 +44,7 @@ const EditorInspectorDesign = (
                         setSelectedCategory(categories[tab]);
                     }}/>
                 ) : null}
-                <CustomStyle $customStyle={css`
+                <Style css={css`
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
                     grid-row-gap: 32px;
@@ -54,7 +54,7 @@ const EditorInspectorDesign = (
                     {selectedWeddingDesigns ? selectedWeddingDesigns.map((design, index) => (
                         <Item key={index} design={design} selected={index === 3}/>
                     )) : null}
-                </CustomStyle>
+                </Style>
             </Column>
 
             {/*대표 사진*/}
@@ -107,10 +107,10 @@ interface ItemProps {
 const Item = ({design, selected}: ItemProps) => {
     return (
         <Column $alignItems={'stretch'} gap={8}>
-            <CustomStyle
+            <Style
                 as={'img'}
                 src={design.img}
-                $customStyle={css`
+                css={css`
                     aspect-ratio: 9 / 16;
                 `}
             />

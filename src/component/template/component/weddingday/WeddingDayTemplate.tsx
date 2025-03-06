@@ -30,7 +30,7 @@ function WeddingDayTemplate(
 
     if (!weddingSchedule.calendar && !weddingSchedule.dday) {
         return (
-            <Column gap={12} $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
+            <Column gap={12} $alignItems={'center'} $justifyContent={'center'} css={css`
                 background: white;
                 height: 100vh;
             `}>
@@ -45,7 +45,7 @@ function WeddingDayTemplate(
     }
 
     return (
-        <Column $alignItems={'center'} gap={40} $customStyle={css`
+        <Column $alignItems={'center'} gap={40} css={css`
             padding: 92px 22px;
             background: white;
         `}>
@@ -60,14 +60,14 @@ function WeddingDayTemplate(
                         <Divider/>
                     </FadeIn>
                     <FadeIn>
-                        <Column as={'table'} gap={8} $alignItems={'stretch'} $customStyle={css`
+                        <Column as={'table'} gap={8} $alignItems={'stretch'} css={css`
                             margin: 24px 19px;
                         `}>
-                            <CustomStyle as={'thead'} $customStyle={css`
+                            <CustomStyle as={'thead'} css={css`
                                 display: flex;
                                 padding: 12px 20px;
                             `}>
-                                <CustomStyle as={'tr'} $customStyle={css`
+                                <CustomStyle as={'tr'} css={css`
                                     display: flex;
                                     justify-content: space-between;
                                     color: var(--g-500);
@@ -99,7 +99,7 @@ function WeddingDayTemplate(
                                                         key={dayIndex} as={'td'}
                                                         ref={provided.ref}
                                                         flex={1} $alignItems={'center'} $justifyContent={'center'}
-                                                        $customStyle={css`
+                                                        css={css`
                                                             height: 48px;
                                                             border-radius: 100px;
                                                             ${day.isWeddingDay && css`

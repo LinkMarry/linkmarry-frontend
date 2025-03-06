@@ -11,14 +11,14 @@ const SegmentedButton = ({items, selectedTab, onChange, customStyle}: {
     customStyle?: RuleSet;
 }) => {
     return (
-        <Row $alignItems={'stretch'} $customStyle={css`
+        <Row $alignItems={'stretch'} css={css`
             background: var(--g-100);
             border-radius: 12px;
             height: 48px;
             position: relative;
             ${customStyle};
         `}>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 position: absolute;
                 height: 40px;
                 width: calc(100% / ${items.length} - 8px);
@@ -43,7 +43,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <Row flex={1} $customStyle={css`
+        <Row flex={1} css={css`
             justify-content: center;
             align-items: center;
             outline: none;

@@ -19,14 +19,14 @@ function ClassicRomancePreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column gap={28} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={28} $alignItems={'stretch'} css={css`
             padding: 96px 36px;
 
             * {
                 color: #989796;
             }
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} $customStyle={css`
+            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
                 min-height: 516px;
                 object-fit: cover;
             `}/>

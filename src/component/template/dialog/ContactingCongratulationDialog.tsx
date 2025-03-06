@@ -75,7 +75,7 @@ function ContactingCongratulationDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $customStyle={css`
+            <Column css={css`
                 width: 90vw;
                 min-width: 240px;
                 max-width: 388px;
@@ -100,7 +100,7 @@ function ContactingCongratulationDialog(
                 </Row>
                 <Column gap={16} $alignItems={'stretch'}>
                     {tels.map(tel => (
-                        <Row $customStyle={css`
+                        <Row css={css`
                             padding: 20px 16px;
                             align-items: center;
                             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);

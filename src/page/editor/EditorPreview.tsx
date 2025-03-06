@@ -12,11 +12,11 @@ import Toggle from "@designsystem/component/Toggle";
 
 const EditorPreview = () => {
     return (
-        <Column flex={1} $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
+        <Column flex={1} $alignItems={'center'} $justifyContent={'center'} css={css`
             background: var(--g-100);
             position: relative;
         `}>
-            <Column $alignItems={'stretch'} $customStyle={css`
+            <Column $alignItems={'stretch'} css={css`
                 max-width: 368px;
                 max-height: 733px;
                 overflow-y: scroll;
@@ -37,7 +37,7 @@ const PreviewSetting = () => {
     const {autoFocus, setAutoFocus} = useAutoFocus();
 
     return (
-        <Column gap={4} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={4} $alignItems={'stretch'} css={css`
             width: 220px;
             padding: 10px;
             background: white;
@@ -53,7 +53,7 @@ const PreviewSetting = () => {
             transition: 0.2s max-height ease-out;
             overflow: hidden;
         `}>
-            <Row $alignItems={'center'} $customStyle={css`
+            <Row $alignItems={'center'} css={css`
                 padding: 6px;
                 border-radius: 6px;
                 ${makeInteractionEffect('strong')};
@@ -74,7 +74,7 @@ const PreviewSetting = () => {
                     `};
                 `}/>
             </Row>
-            <Row $alignItems={'center'} $customStyle={css`
+            <Row $alignItems={'center'} css={css`
                 padding: 6px;
             `}>
                 <Text type={'p3'} customStyle={css`

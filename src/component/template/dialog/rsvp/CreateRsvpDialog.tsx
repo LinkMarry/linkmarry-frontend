@@ -76,7 +76,7 @@ function CreateRsvpDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $alignItems={'stretch'} $customStyle={css`
+            <Column $alignItems={'stretch'} css={css`
                 max-width: 436px;
                 width: 100vw;
                 max-height: 100vh;
@@ -86,7 +86,7 @@ function CreateRsvpDialog(
                 border-radius: 4px;
                 ${applyBaseDialogContent()};
             `}>
-                <Row $alignItems={'center'} $customStyle={css`
+                <Row $alignItems={'center'} css={css`
                     position: relative;
                     padding: 24px 0;
                 `}>
@@ -105,7 +105,7 @@ function CreateRsvpDialog(
                         onClick={dismiss}
                     />
                 </Row>
-                <Column gap={36} $alignItems={'stretch'} $customStyle={css`
+                <Column gap={36} $alignItems={'stretch'} css={css`
                     padding: 36px 40px 0 40px;
                 `}>
                     <Column gap={28} $alignItems={'stretch'}>

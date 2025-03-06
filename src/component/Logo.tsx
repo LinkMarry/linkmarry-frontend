@@ -8,7 +8,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 const Logo = ({customStyle, ...props}: Props) => {
     return (
-        <CustomStyle as={'img'} src={'/logo.svg'} width={103} alt={'logo'} $customStyle={css`
+        <CustomStyle as={'img'} src={'/logo.svg'} width={103} alt={'logo'} css={css`
             ${customStyle};
         `} {...props}/>
     );

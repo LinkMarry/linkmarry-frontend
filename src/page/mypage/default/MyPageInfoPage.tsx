@@ -6,7 +6,7 @@ import Divider from "@designsystem/component/Divider";
 
 function MyPageInfoPage() {
     return (
-        <Column gap={24} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={24} $alignItems={'stretch'} css={css`
             flex: 1;
         `}>
             <Text type={'h5'} bold={true}>회원정보</Text>
@@ -41,7 +41,7 @@ function Item(props: {
     value: string;
 }) {
     return (
-        <Row $alignItems={'center'} $customStyle={css`
+        <Row $alignItems={'center'} css={css`
             height: 52px;
         `}>
             <Text

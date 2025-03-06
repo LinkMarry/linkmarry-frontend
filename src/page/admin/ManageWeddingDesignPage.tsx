@@ -20,7 +20,7 @@ const ManageWeddingDesignPage = () => {
     return (
         <Column>
             Manage
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 display: grid;
                 grid-row-gap: 10px;
                 grid-column-gap: 44px;

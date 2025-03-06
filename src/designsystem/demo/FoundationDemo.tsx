@@ -10,7 +10,7 @@ import Divider from "@designsystem/component/Divider";
 
 function FoundationDemo() {
     return (
-        <Column gap={20} $customStyle={css`
+        <Column gap={20} css={css`
             padding: 20px;
         `}>
             <Column>
@@ -37,7 +37,7 @@ function FoundationDemo() {
                 ))}
             </Column>
             <Divider/>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 display: flex;
                 flex-wrap: wrap;
                 width: 256px;

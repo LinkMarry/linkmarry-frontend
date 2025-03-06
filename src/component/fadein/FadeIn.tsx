@@ -59,7 +59,7 @@ function FadeIn(
         );
     } else if (isValidElement(children)) {
         return (
-            <CustomStyle ref={ref} $customStyle={css`
+            <CustomStyle ref={ref} css={css`
                 ${style};
                 ${customStyle};
             `}>

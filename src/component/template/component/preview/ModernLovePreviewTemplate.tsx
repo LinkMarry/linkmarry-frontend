@@ -15,11 +15,11 @@ function ModernLovePreviewTemplate(
 ) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column gap={36} $alignItems={'stretch'} $customStyle={css`
+        <Column gap={36} $alignItems={'stretch'} css={css`
             padding: 108px 32px 40px 32px;
             position: relative;
         `}>
-            <CustomStyle as={'img'} src={template.titleImgUrl} $customStyle={css`
+            <CustomStyle as={'img'} src={template.titleImgUrl} css={css`
                 min-height: 580px;
                 border-radius: 500px;
                 object-fit: cover;

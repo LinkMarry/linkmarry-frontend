@@ -54,7 +54,7 @@ function Radio(
 
     return (
         <S.container style={style}>
-            <CustomStyle $customStyle={css`
+            <CustomStyle css={css`
                 display: flex;
                 position: relative;
                 justify-content: center;
