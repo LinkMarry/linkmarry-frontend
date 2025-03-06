@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Divider from "@designsystem/component/Divider";
 import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
@@ -31,13 +31,13 @@ function WeddingCell() {
     const {deviceSize} = useResponsive();
 
     return (
-        <Row gap={16} $alignItems={'stretch'} css={css`
+        <Row gap={16} $alignItems={'stretch'} ui={css`
             height: 360px;
             ${deviceSize === "mobile" && css`
                 height: 144px;
             `};
         `}>
-            <Style css={css`
+            <View ui={css`
                 width: calc(360px * 9 / 16);
                 ${deviceSize === "mobile" && css`
                     width: calc(144px * 9 / 16);
@@ -64,11 +64,11 @@ function WeddingCell() {
                                     <Button text={'방명록 확인'} size={'medium'}/>
                                 </>
                             )}
-                            <Style css={css`
+                            <View ui={css`
                                 position: relative;
                             `}>
                                 <Column
-                                    css={css`
+                                    ui={css`
                                         align-items: center;
                                         padding: 4px;
                                         border-radius: 6px;
@@ -117,7 +117,7 @@ function WeddingCell() {
                                         `}
                                     />
                                 )}
-                            </Style>
+                            </View>
                         </Row>
                     </Row>
                     {deviceSize === 'desktop' && (
@@ -126,7 +126,7 @@ function WeddingCell() {
                 </Column>
                 {/*content*/}
                 {deviceSize === 'desktop' && (
-                    <Row gap={16} flex={1} $alignItems={'stretch'} css={css`
+                    <Row gap={16} flex={1} $alignItems={'stretch'} ui={css`
                         min-height: 0;
                     `}>
                         {/*방명록 미리보기*/}
@@ -134,7 +134,7 @@ function WeddingCell() {
                             <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-400);
                             `}>방명록 미리보기</Text>
-                            <Column gap={8} $alignItems={'stretch'} flex={1} css={css`
+                            <Column gap={8} $alignItems={'stretch'} flex={1} ui={css`
                                 min-height: 0;
                                 overflow-y: scroll;
                                 ${hideScrollBar};
@@ -150,7 +150,7 @@ function WeddingCell() {
                             <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-400);
                             `}>통계</Text>
-                            <Column gap={8} $alignItems={'stretch'} flex={1} css={css`
+                            <Column gap={8} $alignItems={'stretch'} flex={1} ui={css`
                                 min-height: 0;
                                 overflow-y: scroll;
                                 ${hideScrollBar};

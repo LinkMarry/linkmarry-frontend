@@ -5,7 +5,7 @@ import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import AddRemoveButton from "@src/component/AddDismissButton";
 import {hideScrollBar} from "@util/css.util";
 
@@ -74,7 +74,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             gap={12}
             $alignItems={'center'}
             $justifyContent={'center'}
-            css={css`
+            ui={css`
                 border-radius: 8px;
                 background: var(--g-50);
                 height: 172px;
@@ -100,18 +100,18 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                     `}>사진을 첨부해 주세요</Text>
                 </Row>
             ) : (
-                <Row gap={6} css={css`
+                <Row gap={6} ui={css`
                     align-self: stretch;
                     overflow-x: scroll;
                     min-height: 106px;
                     ${hideScrollBar};
                 `}>
                     {typeof value === 'string' && (
-                        <Style css={css`
+                        <View ui={css`
                             margin: 0 auto;
                         `}>
                             <Image src={value} dismiss={() => onChange('' as V)}/>
-                        </Style>
+                        </View>
                     )}
                     {Array.isArray(value) && (
                         <>
@@ -121,7 +121,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                                 htmlFor={id}
                                 $alignItems={'center'}
                                 $justifyContent={'center'}
-                                css={css`
+                                ui={css`
                                     min-width: 106px;
                                     min-height: 106px;
                                     background: var(--g-100);
@@ -156,7 +156,7 @@ interface ImageProps {
 const Image = ({dismiss, src}: ImageProps) => {
     return (
         <AddRemoveButton dismiss={dismiss}>
-            <Style as={'img'} src={src} css={css`
+            <View as={'img'} src={src} ui={css`
                 min-width: 106px;
                 width: 106px;
                 min-height: 106px;

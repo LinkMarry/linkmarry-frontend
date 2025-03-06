@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
@@ -15,11 +15,11 @@ function ModernLovePreviewTemplate(
 ) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column gap={36} $alignItems={'stretch'} css={css`
+        <Column gap={36} $alignItems={'stretch'} ui={css`
             padding: 108px 32px 40px 32px;
             position: relative;
         `}>
-            <Style as={'img'} src={template.titleImgUrl} css={css`
+            <View as={'img'} src={template.titleImgUrl} ui={css`
                 min-height: 580px;
                 border-radius: 500px;
                 object-fit: cover;

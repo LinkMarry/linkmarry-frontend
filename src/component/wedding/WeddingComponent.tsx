@@ -56,7 +56,7 @@ function WeddingComponent(
     // Cookies.remove('hide_RsvpDialog')
 
     return (
-        <Column ref={rootRef} css={css`
+        <Column ref={rootRef} ui={css`
             max-width: 436px;
             width: 100%;
             align-items: stretch;

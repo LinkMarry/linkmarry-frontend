@@ -4,7 +4,7 @@ import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import useAuth from "@hook/useAuth";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 function LoginPage() {
     const {signInWithKakao} = useAuth();
@@ -13,7 +13,7 @@ function LoginPage() {
         <MainWrapper hasFooter={false}>
             <Column gap={32} flex={1} $alignItems={'center'} $justifyContent={'center'}>
                 <Column gap={8} $alignItems={'center'}>
-                    <Style as={'img'} src="/linkmarry.png" alt="" width={72} height={72} css={css`
+                    <View as={'img'} src="/linkmarry.png" alt="" width={72} height={72} ui={css`
                         border-radius: 18px;
                     `}/>
                     <Column gap={4} $alignItems={'center'}>
@@ -23,7 +23,7 @@ function LoginPage() {
                         `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                     </Column>
                 </Column>
-                <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} css={css`
+                <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} ui={css`
                     cursor: pointer;
                     width: 300px;
                     height: 45px;

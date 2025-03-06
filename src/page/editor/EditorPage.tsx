@@ -22,14 +22,14 @@ const EditorPage = () => {
     const {musics} = useBackgroundMusics();
 
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             width: 100vw;
             height: 100vh;
             overflow: hidden;
             ${hideScrollBar};
             background: var(--g-100);
         `}>
-            <Column $alignItems={'stretch'} flex={1} css={css`
+            <Column $alignItems={'stretch'} flex={1} ui={css`
                 overflow: hidden;
                 background: white;
                 ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`

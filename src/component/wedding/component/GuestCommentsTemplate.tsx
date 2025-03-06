@@ -15,7 +15,7 @@ import GuestCommentsDetailDialog from "@src/component/wedding/dialog/guestcommen
 import CreateGuestCommentDialog from "@src/component/wedding/dialog/guestcomment/CreateGuestCommentDialog";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface GuestCommentsTemplateProps {
     weddingDesignColor: string;
@@ -91,7 +91,7 @@ function GuestCommentsTemplate(
                         </FadeIn>
                     )}
                 </Column>
-                <Style css={css`
+                <View ui={css`
                     align-self: center;
                 `}>
                     <FadeIn delay={480}>
@@ -102,7 +102,7 @@ function GuestCommentsTemplate(
                             }}
                         />
                     </FadeIn>
-                </Style>
+                </View>
                 {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
                     <RemoveGuestCommentDialog
                         selectedGuestComment={selectedRemoveGuestComment}

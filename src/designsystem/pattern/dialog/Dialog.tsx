@@ -26,7 +26,7 @@ function Dialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column gap={32} $alignItems={'stretch'} css={css`
+            <Column gap={32} $alignItems={'stretch'} ui={css`
                 width: 90vw;
                 max-width: 380px;
                 padding: 48px 36px 36px 36px;
@@ -46,7 +46,7 @@ function Dialog(
                     `}>{description}</Text>
                 </Column>
                 {children}
-                <Row gap={12} css={css`
+                <Row gap={12} ui={css`
                     & > * {
                         flex: 1;
                     }

@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {Column} from "@designsystem/core/FlexLayout";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Button from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
 import WeddingPlace from "@remote/value/WeddingPlace";
@@ -80,7 +80,7 @@ function KakaoMapDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $alignItems={'stretch'} css={css`
+            <Column $alignItems={'stretch'} ui={css`
                 width: 90vw;
                 max-width: 412px;
                 height: 75vh;
@@ -88,17 +88,17 @@ function KakaoMapDialog(
                 border-radius: 12px;
                 background: white;
             `}>
-                <Style ref={kakaoMap} css={css`
+                <View ref={kakaoMap} ui={css`
                     display: flex;
                     flex: 1;
                     position: relative;
                 `}>
-                </Style>
+                </View>
                 {/* 결과 출력 */}
-                <Column gap={10} $alignItems={'stretch'} css={css`
+                <Column gap={10} $alignItems={'stretch'} ui={css`
                     padding: 16px;
                 `}>
-                    <Column as={'ul'} gap={4} $alignItems={'stretch'} css={css`
+                    <Column as={'ul'} gap={4} $alignItems={'stretch'} ui={css`
                         height: 128px;
                         overflow-y: scroll;
                         padding: 4px;
@@ -108,7 +108,7 @@ function KakaoMapDialog(
                             return (
                                 <Column
                                     key={index} as={'li'}
-                                    css={css`
+                                    ui={css`
                                         &:hover {
                                             background: var(--g-100);
                                         }

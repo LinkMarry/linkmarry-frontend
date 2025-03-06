@@ -6,7 +6,7 @@ import {format} from "date-fns";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 function SoulmatePreviewTemplate(
     {
@@ -19,10 +19,10 @@ function SoulmatePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
                     background: ${template.weddingDesignColor};
                 `}>
-            <Column gap={12} $alignItems={'center'} css={css`
+            <Column gap={12} $alignItems={'center'} ui={css`
                         margin: 40px 0;
                     `}>
                 <Text size={40} weight={100}>{isValidDate && format(date, 'MM / dd')}</Text>
@@ -36,7 +36,7 @@ function SoulmatePreviewTemplate(
                     </Row>
                 </Text>
             </Column>
-            <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} ui={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

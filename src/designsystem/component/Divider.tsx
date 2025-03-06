@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {css, RuleSet} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 export type DividerSize = 'large' | 'medium' | 'small';
 export type DividerDirection = 'horizontal' | 'vertical';
@@ -41,7 +41,7 @@ function Divider(
     })();
 
     return (
-        <Style css={css`
+        <View ui={css`
             background: var(--g-100);
             ${style};
             ${ui};

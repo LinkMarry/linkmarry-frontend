@@ -3,7 +3,7 @@ import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTem
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Text from "@designsystem/component/Text";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {format} from "date-fns";
@@ -19,14 +19,14 @@ function ClassicRomancePreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column gap={28} $alignItems={'stretch'} css={css`
+        <Column gap={28} $alignItems={'stretch'} ui={css`
             padding: 96px 36px;
 
             * {
                 color: #989796;
             }
         `}>
-            <Style as={'img'} src={template.titleImgUrl} css={css`
+            <View as={'img'} src={template.titleImgUrl} ui={css`
                 min-height: 516px;
                 object-fit: cover;
             `}/>

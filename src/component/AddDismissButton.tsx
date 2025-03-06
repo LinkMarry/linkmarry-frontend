@@ -1,7 +1,7 @@
 import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends ComponentProps<'div'> {
     dismiss: () => void;
@@ -17,7 +17,7 @@ function AddRemoveButton(
     ref?: ForwardedRef<HTMLDivElement>
 ) {
     return (
-        <Style ref={ref} css={css`
+        <View ref={ref} ui={css`
             position: relative;
         `} {...props}>
             <Icon
@@ -35,7 +35,7 @@ function AddRemoveButton(
                 onClick={dismiss}
             />
             {children}
-        </Style>
+        </View>
     );
 }
 

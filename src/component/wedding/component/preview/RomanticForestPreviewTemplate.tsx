@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {getDetails} from "@remote/value/WeddingSchedule";
@@ -19,15 +19,15 @@ function RomanticForestPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             position: relative;
         `}>
-            <Style as={'img'} src={template.titleImgUrl} css={css`
+            <View as={'img'} src={template.titleImgUrl} ui={css`
                 height: 100vh;
                 max-height: 810px;
                 object-fit: cover;
             `}/>
-            <Style css={css`
+            <View ui={css`
                 background: linear-gradient(180deg, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
                 height: 140px;
                 position: absolute;
@@ -44,7 +44,7 @@ function RomanticForestPreviewTemplate(
                     transform: translateX(-50%);
                 `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
             )}
-            <Style css={css`
+            <View ui={css`
                 background: linear-gradient(0, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
                 height: 140px;
                 position: absolute;

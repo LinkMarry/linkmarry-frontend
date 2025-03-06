@@ -26,7 +26,7 @@ function GalleryTemplate(
     }: GalleryTemplateProps
 ) {
     return (
-        <Column $alignItems={'center'} gap={40} css={css`
+        <Column $alignItems={'center'} gap={40} ui={css`
             background: white;
             padding: 92px 0;
         `}>
@@ -181,7 +181,7 @@ function GalleryStyleIndicator(
                 <Row
                     $alignItems={'center'}
                     $justifyContent={'space-between'}
-                    css={css`
+                    ui={css`
                         padding: 0 45px;
                     `}
                 >

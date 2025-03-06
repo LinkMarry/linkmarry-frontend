@@ -7,7 +7,7 @@ import {ko} from "date-fns/locale";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 function NatureBlissPreviewTemplate(
     {
@@ -20,10 +20,10 @@ function NatureBlissPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             background: white;
         `}>
-            <Column gap={16} $alignItems={'center'} css={css`
+            <Column gap={16} $alignItems={'center'} ui={css`
                 padding: 52px 0;
             `}>
                 <Text size={24} weight={100}>{first.name} & {second.name}</Text>
@@ -36,7 +36,7 @@ function NatureBlissPreviewTemplate(
                     >{weddingPlace.placeName}</Text>
                 </Column>
             </Column>
-            <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} ui={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

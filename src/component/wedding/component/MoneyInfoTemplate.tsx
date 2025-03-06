@@ -8,7 +8,7 @@ import Text from "@designsystem/component/Text";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -25,7 +25,7 @@ function MoneyInfoTemplate(
     useScrollOnUpdate(moneyInfoRef, [moneyInfo]);
 
     return (
-        <Column $alignItems={'stretch'} ref={moneyInfoRef} css={css`
+        <Column $alignItems={'stretch'} ref={moneyInfoRef} ui={css`
             padding: 92px 60px;
             background: white;
         `}>
@@ -64,11 +64,11 @@ function MoneyInfoComponent(
     return (
         <Column gap={16} $alignItems={'stretch'} $alignSelf={'stretch'}>
             <FadeIn>
-                <Style css={css`
+                <View ui={css`
                     border-radius: 12px;
                     background: var(--g-100);
                 `}>
-                    <Row $alignItems={'center'} css={css`
+                    <Row $alignItems={'center'} ui={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedGroom(i => !i)}>
@@ -97,14 +97,14 @@ function MoneyInfoComponent(
                                        bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
                         </>
                     )}
-                </Style>
+                </View>
             </FadeIn>
             <FadeIn>
-                <Style css={css`
+                <View ui={css`
                     border-radius: 12px;
                     background: var(--p-100);
                 `}>
-                    <Row $alignItems={'center'} css={css`
+                    <Row $alignItems={'center'} ui={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedBride(i => !i)}>
@@ -134,7 +134,7 @@ function MoneyInfoComponent(
                                        bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
                         </>
                     )}
-                </Style>
+                </View>
             </FadeIn>
         </Column>
     );
@@ -151,7 +151,7 @@ function MoneyCell(props: {
         <Column
             gap={8}
             $alignItems={'stretch'}
-            css={css`
+            ui={css`
                 padding: 12px 20px;
                 ${props.isGroom ? css`
                     border-top: 1px solid var(--g-200);
@@ -161,7 +161,7 @@ function MoneyCell(props: {
             `}
         >
             {/*<Text type={'p5'}>{props.name}</Text>*/}
-            <Row $alignItems={'center'} css={css`
+            <Row $alignItems={'center'} ui={css`
                 padding: 8px 16px;
                 background: white;
                 border-radius: 4px;

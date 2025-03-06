@@ -5,7 +5,7 @@ import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 import {differenceInDays, format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 function ClassicElegancePreviewTemplate(
@@ -21,28 +21,28 @@ function ClassicElegancePreviewTemplate(
 
     return (
         <Column $alignItems={'stretch'}>
-            <Style css={css`
+            <View ui={css`
                 position: relative;
             `}>
-                <Style as={'img'} src={template.titleImgUrl} css={css`
+                <View as={'img'} src={template.titleImgUrl} ui={css`
                     width: 100%;
                     object-fit: cover;
                     height: 100vh;
                     max-height: 810px;
                 `}/>
-                <Column $alignItems={'center'} gap={20} css={css`
+                <Column $alignItems={'center'} gap={20} ui={css`
                     position: absolute;
                     top: 72px;
                     left: 50%;
                     transform: translateX(-50%);
                 `}>
-                    <Style css={css`
+                    <View ui={css`
                         padding: 0 12px;
                         background: white;
                         border-radius: 100px;
                     `}>
                         <Text size={18} weight={400}>D-{differenceInDays(date, new Date())}</Text>
-                    </Style>
+                    </View>
                     <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} ui={css`
                         color: white;
                     `}>
@@ -52,9 +52,9 @@ function ClassicElegancePreviewTemplate(
                         </Column>
                     </Text>
                 </Column>
-            </Style>
+            </View>
             <Text size={20} weight={400}>
-                <Column gap={8} $alignItems={'center'} css={css`
+                <Column gap={8} $alignItems={'center'} ui={css`
                     padding: 32px 8px;
                 `}>
                     {isValidDate && (

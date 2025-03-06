@@ -13,7 +13,7 @@ const FormToggleSet = ({ui, children}: Props) => {
         isValidElement(child) && child.type === FormToggle
     ) as ReactElement<typeof FormToggle>[];
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             border: 1px solid var(--g-300);
             border-radius: 8px;
 

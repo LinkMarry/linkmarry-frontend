@@ -5,7 +5,7 @@ import React, {
     useEffect,
     useState
 } from 'react';
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {css, RuleSet} from "styled-components";
 import useFadeIn from "@src/component/fadein/useFadeIn";
 
@@ -59,12 +59,12 @@ function FadeIn(
         );
     } else if (isValidElement(children)) {
         return (
-            <Style ref={ref} css={css`
+            <View ref={ref} ui={css`
                 ${style};
                 ${ui};
             `}>
                 {children}
-            </Style>
+            </View>
         );
     } else {
         return (

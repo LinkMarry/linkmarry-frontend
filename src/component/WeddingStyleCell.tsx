@@ -2,12 +2,12 @@ import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 function WeddingStyleCell() {
     return (
         <Column gap={8} $alignItems={'stretch'}>
-            <Style css={css`
+            <View ui={css`
                 aspect-ratio: 9 / 16;
                 background: var(--g-100);
                 border-radius: 8px;

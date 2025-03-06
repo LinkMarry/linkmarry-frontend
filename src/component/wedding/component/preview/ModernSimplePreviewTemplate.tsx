@@ -3,7 +3,7 @@ import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTem
 import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
@@ -18,14 +18,14 @@ function ModernSimplePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column gap={60} $alignItems={'center'} css={css`
+        <Column gap={60} $alignItems={'center'} ui={css`
             padding: 92px 0;
             * {
                 color: #333333;
             }
         `}>
             <Text size={44} weight={400}>Our Wedding Day</Text>
-            <Style as={'img'} src={template.titleImgUrl} css={css`
+            <View as={'img'} src={template.titleImgUrl} ui={css`
                 align-self: stretch;
                 max-height: 312px;
             `}/>

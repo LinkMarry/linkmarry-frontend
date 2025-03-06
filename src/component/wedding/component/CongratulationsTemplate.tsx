@@ -31,7 +31,7 @@ function CongratulationsTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             background: ${weddingDesignColor};
             padding: 92px 60px;
             align-items: stretch;

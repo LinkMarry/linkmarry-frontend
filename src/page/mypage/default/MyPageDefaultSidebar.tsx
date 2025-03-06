@@ -11,7 +11,7 @@ function MyPageDefaultSidebar() {
     const {signOut} = useAuth();
 
     return (
-        <Column gap={32} $alignItems={'stretch'} css={css`
+        <Column gap={32} $alignItems={'stretch'} ui={css`
             width: 216px;
         `}>
             <Column $alignItems={'stretch'} gap={4}>

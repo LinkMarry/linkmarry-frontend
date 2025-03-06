@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithRef} from 'react';
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {css, RuleSet} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
 
@@ -11,14 +11,14 @@ interface Props extends ComponentPropsWithRef<'textarea'> {
 
 const Textarea = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
     return (
-        <Style css={css`
+        <View ui={css`
             display: flex;
             position: relative;
             ${ui};
         `}>
-            <Style
+            <View
                 as={'textarea'}
-                css={css`
+                ui={css`
                     display: flex;
                     min-height: 52px;
                     border: none;
@@ -70,7 +70,7 @@ const Textarea = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                 {...props}
                 placeholder={hasLabel ? '' : placeholder}
             />
-            <Style as={'label'} css={css`
+            <View as={'label'} ui={css`
                 position: absolute;
                 left: 16px;
                 top: 12px;
@@ -78,15 +78,15 @@ const Textarea = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                 pointer-events: none;
                 background: white; // It has problem that hide another object
             `}>
-                <Style as={'legend'} css={css`
+                <View as={'legend'} ui={css`
                     color: var(--g-400);
                     transition: 0.1s font-size ease-out;
                     ${makeText('p2')};
                 `}>
                     {placeholder}
-                </Style>
-            </Style>
-        </Style>
+                </View>
+            </View>
+        </View>
     );
 };
 

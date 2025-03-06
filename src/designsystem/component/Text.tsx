@@ -8,7 +8,7 @@ import React, {
 import {css, RuleSet} from "styled-components";
 import {FontFamily, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends PropsWithChildren<ComponentPropsWithRef<'span'>> {
     type?: TextType;
@@ -36,10 +36,10 @@ function Text(
 ) {
     const properties = type && textTypeMap[type];
     return (
-        <Style
+        <View
             ref={ref}
             as={'span'}
-            css={css`
+            ui={css`
                 ${implementText({
                     fontFamily: font ?? properties?.fontFamily,
                     fontWeight: weight ?? (bold ? properties?.boldFontWeight : properties?.fontWeight),
@@ -49,7 +49,7 @@ function Text(
                 ${ui};
             `}
             {...props}
-        >{children}</Style>
+        >{children}</View>
     );
 }
 

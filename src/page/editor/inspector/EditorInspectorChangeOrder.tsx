@@ -6,7 +6,7 @@ import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import DndUtil from "@util/dnd.util";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
@@ -68,7 +68,7 @@ interface ItemProps extends ComponentPropsWithRef<'div'> {
 
 const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
-        <Row ref={ref} $alignItems={'center'} css={css`
+        <Row ref={ref} $alignItems={'center'} ui={css`
             padding: 12px 16px;
             border-radius: 8px;
             border: 1px solid var(--g-300);
@@ -77,13 +77,13 @@ const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDiv
             <Text type={'p2'} ui={css`
                 flex: 1;
             `}>{text}</Text>
-            <Style css={css`
+            <View ui={css`
                 display: flex;
             `}>
                 <Icon iconType={IconType.Hamburger} width={24} height={24} ui={css`
                     fill: var(--g-600);
                 `}/>
-            </Style>
+            </View>
         </Row>
     )
 })

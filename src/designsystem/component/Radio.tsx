@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import styled, {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props {
     selected?: boolean;
@@ -54,7 +54,7 @@ function Radio(
 
     return (
         <S.container style={style}>
-            <Style css={css`
+            <View ui={css`
                 display: flex;
                 position: relative;
                 justify-content: center;
@@ -92,7 +92,7 @@ function Radio(
                         `}
                     `}
                 />
-            </Style>
+            </View>
             {/*todo*/}
             {/*{label && (*/}
             {/*    <Text*/}

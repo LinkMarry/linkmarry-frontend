@@ -7,7 +7,7 @@ import {css} from "styled-components";
 import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import Music from "@remote/value/Music";
@@ -56,7 +56,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
 
     return (
         <Row $alignItems={'center'} onMouseOver={() => setIsHovering(true)} onMouseOut={() => setIsHovering(false)}
-             gap={16} css={css`
+             gap={16} ui={css`
             padding: 12px;
             border-radius: 12px;
 
@@ -64,7 +64,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                 background: var(--g-50);
             }
         `}>
-            <Style css={css`
+            <View ui={css`
                 position: relative;
                 width: 60px;
                 height: 60px;
@@ -74,14 +74,14 @@ const Item = ({music, isPlaying}: ItemProps) => {
             `} onClick={() => {
 
             }}>
-                <Style as={'img'} css={css`
+                <View as={'img'} ui={css`
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                     background: gray; // dummy
                 `} onClick={() => {
 
-                }}></Style>
+                }}></View>
                 {(isHovering || isPlaying) && (
                     <Icon iconType={isPlaying ? IconType.Pause : IconType.Play} ui={css`
                         fill: white;
@@ -91,8 +91,8 @@ const Item = ({music, isPlaying}: ItemProps) => {
                         transform: translate(-50%, -50%);
                     `}/>
                 )}
-            </Style>
-            <Column gap={4} css={css`
+            </View>
+            <Column gap={4} ui={css`
                 flex: 1;
                 min-width: 0;
                 overflow: hidden;

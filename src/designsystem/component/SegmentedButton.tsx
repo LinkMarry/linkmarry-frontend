@@ -2,7 +2,7 @@ import React, {ComponentPropsWithoutRef} from 'react';
 import {Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Text from "@designsystem/component/Text";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     items: string[];
@@ -11,14 +11,14 @@ const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     ui?: RuleSet;
 }) => {
     return (
-        <Row $alignItems={'stretch'} css={css`
+        <Row $alignItems={'stretch'} ui={css`
             background: var(--g-100);
             border-radius: 12px;
             height: 48px;
             position: relative;
             ${ui};
         `}>
-            <Style css={css`
+            <View ui={css`
                 position: absolute;
                 height: 40px;
                 width: calc(100% / ${items.length} - 8px);
@@ -43,7 +43,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <Row flex={1} css={css`
+        <Row flex={1} ui={css`
             justify-content: center;
             align-items: center;
             outline: none;

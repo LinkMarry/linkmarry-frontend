@@ -4,7 +4,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
 import TabBar, {dummyTabBarItems} from "@designsystem/component/TabBar";
 
@@ -13,14 +13,14 @@ function HomePage() {
 
     return (
         <MainWrapper>
-            <Column $alignItems={'center'} css={css`
+            <Column $alignItems={'center'} ui={css`
                 ${deviceSize === 'desktop' ? css`
                     padding: 72px 24px 40px 24px;
                 ` : css`
                     padding: 24px 16px 40px 16px;
                 `};
             `}>
-                <Column gap={40} $alignItems={'stretch'} css={css`
+                <Column gap={40} $alignItems={'stretch'} ui={css`
                     max-width: 1100px;
                     width: 100%;
                     flex: 1;
@@ -42,7 +42,7 @@ function HomePage() {
                         <Row $justifyContent={'center'}>
                             <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {}}/>
                         </Row>
-                        <Style css={css`
+                        <View ui={css`
                             display: grid;
                             max-width: 960px;
                             align-self: center;
@@ -60,7 +60,7 @@ function HomePage() {
                             <WeddingStyleCell/>
                             <WeddingStyleCell/>
                             <WeddingStyleCell/>
-                        </Style>
+                        </View>
                     </Column>
                 </Column>
             </Column>

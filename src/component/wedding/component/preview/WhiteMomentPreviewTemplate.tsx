@@ -8,7 +8,7 @@ import {ko} from "date-fns/locale";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {getDetails} from "@remote/value/WeddingSchedule";
 
 function WhiteMomentPreviewTemplate(
@@ -23,11 +23,11 @@ function WhiteMomentPreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             padding: 44px 30px;
             background: ${template.weddingDesignColor};
         `}>
-            <Column gap={36} $alignItems={'center'} css={css`
+            <Column gap={36} $alignItems={'center'} ui={css`
                 margin: 0 23px 44px 23px;
             `}>
                 <Text size={24} weight={100}>{first.name} & {second.name}</Text>
@@ -41,7 +41,7 @@ function WhiteMomentPreviewTemplate(
                 </Column>
             </Column>
             <Column gap={44} $alignItems={'center'}>
-                <Style as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} css={css`
+                <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} ui={css`
                     display: flex;
                     width: 100%;
                     height: 512px;

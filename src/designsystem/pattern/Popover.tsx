@@ -42,7 +42,7 @@ function Popover(
     }, []);
 
     return (
-        <Column ref={popoverRef} gap={4} $alignItems={'stretch'} css={css`
+        <Column ref={popoverRef} gap={4} $alignItems={'stretch'} ui={css`
             width: 160px;
             padding: 8px;
             position: absolute;
@@ -53,7 +53,7 @@ function Popover(
             ${fadeInAnimationStyle};
         `} {...props}>
             {items.map((item, index) => (
-                <Row key={index} gap={8} $alignItems={'center'} css={css`
+                <Row key={index} gap={8} $alignItems={'center'} ui={css`
                     padding: 8px 12px;
                     border-radius: 6px;
                     ${makeInteractionEffect('strong')};

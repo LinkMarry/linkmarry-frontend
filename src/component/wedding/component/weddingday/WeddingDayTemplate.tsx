@@ -7,7 +7,7 @@ import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
 import DDay, {DDayStyle} from "@src/component/wedding/component/weddingday/DDay";
 import {format, parse} from "date-fns";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 interface Props {
@@ -30,7 +30,7 @@ function WeddingDayTemplate(
 
     if (!weddingSchedule.calendar && !weddingSchedule.dday) {
         return (
-            <Column gap={12} $alignItems={'center'} $justifyContent={'center'} css={css`
+            <Column gap={12} $alignItems={'center'} $justifyContent={'center'} ui={css`
                 background: white;
                 height: 100vh;
             `}>
@@ -45,7 +45,7 @@ function WeddingDayTemplate(
     }
 
     return (
-        <Column $alignItems={'center'} gap={40} css={css`
+        <Column $alignItems={'center'} gap={40} ui={css`
             padding: 92px 22px;
             background: white;
         `}>
@@ -60,14 +60,14 @@ function WeddingDayTemplate(
                         <Divider/>
                     </FadeIn>
                     <FadeIn>
-                        <Column as={'table'} gap={8} $alignItems={'stretch'} css={css`
+                        <Column as={'table'} gap={8} $alignItems={'stretch'} ui={css`
                             margin: 24px 19px;
                         `}>
-                            <Style as={'thead'} css={css`
+                            <View as={'thead'} ui={css`
                                 display: flex;
                                 padding: 12px 20px;
                             `}>
-                                <Style as={'tr'} css={css`
+                                <View as={'tr'} ui={css`
                                     display: flex;
                                     justify-content: space-between;
                                     color: var(--g-500);
@@ -87,8 +87,8 @@ function WeddingDayTemplate(
                                             </th>
                                         </FadeIn>
                                     ))}
-                                </Style>
-                            </Style>
+                                </View>
+                            </View>
                             <Column as={'tbody'} $alignItems={'stretch'} gap={4}>
                                 {calendar && calendar.map((week, weekIndex) => (
                                     <Row as={'tr'} key={weekIndex}>
@@ -99,7 +99,7 @@ function WeddingDayTemplate(
                                                         key={dayIndex} as={'td'}
                                                         ref={provided.ref}
                                                         flex={1} $alignItems={'center'} $justifyContent={'center'}
-                                                        css={css`
+                                                        ui={css`
                                                             height: 48px;
                                                             border-radius: 100px;
                                                             ${day.isWeddingDay && css`

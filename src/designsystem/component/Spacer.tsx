@@ -1,5 +1,5 @@
 import {ComponentPropsWithoutRef} from "react";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {css} from "styled-components";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 function Spacer({w, h, ...props}: Props) {
     return (
-        <Style css={css`
+        <View ui={css`
             ${w && css`
                 min-width: ${w}px;
             `};

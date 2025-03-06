@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Text from "@designsystem/component/Text";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
@@ -20,7 +20,7 @@ function NaturalGardenPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column gap={44} $alignItems={'stretch'} css={css`
+        <Column gap={44} $alignItems={'stretch'} ui={css`
             padding: 64px 0;
 
             * {
@@ -28,10 +28,10 @@ function NaturalGardenPreviewTemplate(
             }
         `}>
             <img src={'/NaturalGardenDeco.svg'} alt="" width={'100%'}/>
-            <Column $alignItems={'stretch'} gap={40} css={css`
+            <Column $alignItems={'stretch'} gap={40} ui={css`
                 padding: 0 32px;
             `}>
-                <Style as={'img'} src={template.titleImgUrl} css={css`
+                <View as={'img'} src={template.titleImgUrl} ui={css`
                     height: 512px;
                     border-radius: 500px 500px 0 0;
                     object-fit: cover;

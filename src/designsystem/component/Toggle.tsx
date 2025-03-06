@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import {css, RuleSet} from "styled-components";
 import {Row} from "@designsystem/core/FlexLayout";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends ComponentPropsWithRef<'div'> {
     checked: boolean;
@@ -24,7 +24,7 @@ function Toggle(
     ref?: ForwardedRef<HTMLInputElement>
 ) {
     return (
-        <Row css={css`
+        <Row ui={css`
             position: relative;
             width: fit-content;
             ${ui};
@@ -37,7 +37,7 @@ function Toggle(
                 onChange={(e) => {
                     OnChange(e.target.checked);
                 }}
-                css={css`
+                ui={css`
                     display: flex;
                     width: 60px;
                     height: 32px;
@@ -53,7 +53,7 @@ function Toggle(
                     transition: 0.2s background ease-out;
                 `}
             />
-            <Style as={'span'} css={css`
+            <View as={'span'} ui={css`
                 position: absolute;
                 width: 26px;
                 height: 26px;

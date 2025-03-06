@@ -9,7 +9,7 @@ const MyPageDetailSidebar = () => {
     const navigate = useNavigate();
 
     return (
-        <Column gap={32} $alignItems={'stretch'} css={css`
+        <Column gap={32} $alignItems={'stretch'} ui={css`
             width: 216px;
         `}>
             <MyPageSidebarItem icon={IconType.ExpandArrow} text={'돌아가기'} onClick={() => {

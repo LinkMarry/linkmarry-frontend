@@ -10,7 +10,7 @@ import styled, {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
 import {Row} from "@designsystem/core/FlexLayout";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     checked: boolean;
@@ -56,16 +56,16 @@ function Checkbox(
     }));
 
     return (
-        <Row $alignItems={'center'} css={css`
+        <Row $alignItems={'center'} ui={css`
             width: fit-content;
             ${ui};
         `} {...props}>
-            <Row $justifyContent={'center'} $alignItems={'center'} css={css`
+            <Row $justifyContent={'center'} $alignItems={'center'} ui={css`
                 position: relative;
                 width: 40px;
                 height: 40px;
             `}>
-                <Style css={css`
+                <View ui={css`
                     position: absolute;
                     top: 50%;
                     left: 50%;

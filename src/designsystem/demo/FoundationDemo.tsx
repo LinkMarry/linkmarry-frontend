@@ -3,14 +3,14 @@ import {fontList, textTypes} from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import {allCasesOfEnum} from "@util/enum.util";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 
 function FoundationDemo() {
     return (
-        <Column gap={20} css={css`
+        <Column gap={20} ui={css`
             padding: 20px;
         `}>
             <Column>
@@ -37,7 +37,7 @@ function FoundationDemo() {
                 ))}
             </Column>
             <Divider/>
-            <Style css={css`
+            <View ui={css`
                 display: flex;
                 flex-wrap: wrap;
                 width: 256px;
@@ -48,7 +48,7 @@ function FoundationDemo() {
                             fill: gray;
                         `}/>
                     ))}
-            </Style>
+            </View>
         </Column>
     );
 }

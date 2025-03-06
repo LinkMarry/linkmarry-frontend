@@ -10,7 +10,7 @@ function MyPageSidebarItem({icon, text, selected = false, ...props}: {
     selected?: boolean;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
-        <Row gap={8} $alignItems={'center'} css={css`
+        <Row gap={8} $alignItems={'center'} ui={css`
             padding: 16px;
             cursor: pointer;
             transition: 0.1s background;

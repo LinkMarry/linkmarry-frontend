@@ -3,7 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 import useResponsive from "@hook/useResponsive";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import Divider from "@designsystem/component/Divider";
 
 const detail1 = ['산다(SANDA)', '대표 : 양예성', '주소 : 경상북도 포항시 북구 장량주택로 3번길 6, 301호 (양덕동)', '전화 : 010-5584-3914', '이메일 : official.linkmarry@gmail.com'];
@@ -13,18 +13,18 @@ function Footer() {
     const {deviceSize} = useResponsive();
 
     return (
-        <Column as={'footer'} $alignItems={'center'} css={css`
+        <Column as={'footer'} $alignItems={'center'} ui={css`
             padding: 0 24px;
         `}>
-            <Column gap={40} $alignItems={'stretch'} css={css`
+            <Column gap={40} $alignItems={'stretch'} ui={css`
                 max-width: 1100px;
                 width: 100%;
             `}>
                 <Divider/>
-                <Column gap={72} $alignItems={'stretch'} css={css`
+                <Column gap={72} $alignItems={'stretch'} ui={css`
                     padding-bottom: 72px;
                 `}>
-                    <Style css={css`
+                    <View ui={css`
                         display: flex;
                         justify-content: space-between;
                         ${deviceSize === 'mobile' && css`
@@ -40,26 +40,26 @@ function Footer() {
                                 color: var(--g-500);
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
                         </Column>
-                        <Style css={css`
+                        <View ui={css`
                             display: flex;
                             ${deviceSize === 'mobile' && css`
                                 flex-direction: column;
                                 gap: 16px;
                             `};
                         `}>
-                            <Column gap={4} css={css`
+                            <Column gap={4} ui={css`
                                 width: 180px;
                             `}>
                                 <Item text={'모바일 청첩장'}/>
                                 <Item text={'회원정보'}/>
                             </Column>
-                            <Column gap={4} css={css`
+                            <Column gap={4} ui={css`
                                 width: 180px;
                             `}>
                                 <Item text={'공지사항'}/>
                                 <Item text={'네이버스토어'}/>
                             </Column>
-                            <Column gap={4} css={css`
+                            <Column gap={4} ui={css`
                                 width: 180px;
                             `}>
                                 <Item text={'이용약관'}
@@ -68,8 +68,8 @@ function Footer() {
                                       onClick={() => window.open('https://0start.notion.site/212c52cf731445bb803be1e62c694ea5?pvs=4')}/>
                                 <Item text={'사업자 정보 확인'}/>
                             </Column>
-                        </Style>
-                    </Style>
+                        </View>
+                    </View>
                     <Column gap={4}>
                         {deviceSize === 'desktop' ? (
                             <>

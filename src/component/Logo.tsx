@@ -1,6 +1,6 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {css, RuleSet} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     ui?: RuleSet;
@@ -8,7 +8,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 const Logo = ({ui, ...props}: Props) => {
     return (
-        <Style as={'img'} src={'/logo.svg'} width={103} alt={'logo'} css={css`
+        <View as={'img'} src={'/logo.svg'} width={103} alt={'logo'} ui={css`
             ${ui};
         `} {...props}/>
     );

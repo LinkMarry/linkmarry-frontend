@@ -108,7 +108,7 @@ function RemainTimeComponent(
     switch (dDayStyle) {
         case 'style1':
             return (
-                <Row gap={12} $alignItems={'center'} css={css`
+                <Row gap={12} $alignItems={'center'} ui={css`
                     padding: 0 50px;
                 `}>
                     <FadeIn>

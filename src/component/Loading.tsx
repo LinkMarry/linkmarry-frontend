@@ -1,7 +1,7 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {css, RuleSet} from "styled-components";
 import {Row} from "@designsystem/core/FlexLayout";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     ui?: RuleSet;
@@ -14,7 +14,7 @@ function Loading(
     }: Props
 ) {
     return (
-        <Row gap={8} css={ui} {...props}>
+        <Row gap={8} ui={ui} {...props}>
             <LoadingItem/>
             <LoadingItem/>
             <LoadingItem/>
@@ -24,7 +24,7 @@ function Loading(
 
 function LoadingItem() {
     return (
-        <Style css={css`
+        <View ui={css`
             @keyframes loadingAnimation {
                 0% {
                     opacity: 1;

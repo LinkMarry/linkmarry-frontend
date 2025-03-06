@@ -32,7 +32,7 @@ function ComponentDemo() {
     const [selectedSelectIndex, setSelectedSelectIndex] = useState(0);
 
     return (
-        <Column gap={8} css={css`
+        <Column gap={8} ui={css`
             padding: 20px;
         `}>
             {buttonRoles.map(role => (

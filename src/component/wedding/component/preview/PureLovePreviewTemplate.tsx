@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {css} from "styled-components";
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
@@ -18,15 +18,15 @@ function PureLovePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} css={css`
+        <Column $alignItems={'stretch'} ui={css`
             position: relative;
         `}>
-            <Style as={'img'} src={template.titleImgUrl} css={css`
+            <View as={'img'} src={template.titleImgUrl} ui={css`
                 height: 100vh;
                 max-height: 800px;
                 object-fit: cover;
             `}/>
-            <Style css={css`
+            <View ui={css`
                 position: absolute;
                 top: 0;
                 width: 100%;
@@ -45,14 +45,14 @@ function PureLovePreviewTemplate(
                     <span>{second.name}</span>
                 </Column>
             </Text>
-            <Style css={css`
+            <View ui={css`
                 position: absolute;
                 bottom: 0;
                 width: 100%;
                 height: 247px;
                 background: linear-gradient(0deg, rgba(0, 33, 71, 0.40) 0%, rgba(0, 33, 71, 0.40) 55.5%, rgba(0, 33, 71, 0.00) 100%);
             `}/>
-            <Style css={css`
+            <View ui={css`
                 position: absolute;
                 bottom: 44px;
                 left: 50%;
@@ -63,7 +63,7 @@ function PureLovePreviewTemplate(
                         color: white;
                     `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
                 )}
-            </Style>
+            </View>
         </Column>
     );
 }

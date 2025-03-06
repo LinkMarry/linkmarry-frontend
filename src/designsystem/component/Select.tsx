@@ -3,7 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     items: string[];
@@ -29,14 +29,14 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
         }
     }, []);
     return (
-        <Style ref={selectRef} css={css`
+        <View ref={selectRef} ui={css`
             display: flex;
             position: relative;
             ${ui};
         `} onClick={() => {
             setOpenOptions(i => !i);
         }} {...props}>
-            <Row $alignItems={'center'} gap={4} css={css`
+            <Row $alignItems={'center'} gap={4} ui={css`
                 padding: 12px 16px;
                 width: 100%;
                 border: 1px solid var(--g-300);
@@ -60,7 +60,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                 `}/>
             </Row>
             {openOptions && (
-                <Column $alignItems={'stretch'} css={css`
+                <Column $alignItems={'stretch'} ui={css`
                     position: absolute;
                     top: 52px;
                     left: 0;
@@ -72,7 +72,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                     z-index: 100;
                 `}>
                     {items.map((item, index) => (
-                        <Row key={index} $alignItems={'center'} css={css`
+                        <Row key={index} $alignItems={'center'} ui={css`
                             padding: 12px 16px;
                             cursor: pointer;
                             
@@ -99,7 +99,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                     ))}
                 </Column>
             )}
-        </Style>
+        </View>
     );
 };
 

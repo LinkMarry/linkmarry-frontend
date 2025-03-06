@@ -3,7 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import Text from "@designsystem/component/Text";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 
 export const dummyTabBarItems = [
     '모던',
@@ -20,7 +20,7 @@ const TabBar = ({items, selectedTab, onChange, ui}: {
     ui?: RuleSet;
 }) => {
     return (
-        <Row gap={8} css={css`
+        <Row gap={8} ui={css`
             overflow-x: scroll;
             ${hideScrollBar};
             ${ui};
@@ -39,7 +39,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <Column $alignItems={'center'} css={css`
+        <Column $alignItems={'center'} ui={css`
             min-width: 68px;
             padding: 10px 0;
             border-radius: 6px;
@@ -54,7 +54,7 @@ const Item = ({selected, text, ...props}: {
                 `}
             `}>{text}</Text>
             {selected && (
-                <Style css={css`
+                <View ui={css`
                     position: absolute;
                     width: 29px;
                     height: 2px;

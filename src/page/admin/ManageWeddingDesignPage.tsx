@@ -3,7 +3,7 @@ import weddingDesignApi from "@remote/api/WeddingDesignApi";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import WeddingDesignPreset from "@remote/value/WeddingDesignPreset";
 
 // todo: refactor
@@ -20,7 +20,7 @@ const ManageWeddingDesignPage = () => {
     return (
         <Column>
             Manage
-            <Style css={css`
+            <View ui={css`
                 display: grid;
                 grid-row-gap: 10px;
                 grid-column-gap: 44px;
@@ -28,7 +28,7 @@ const ManageWeddingDesignPage = () => {
                 {presets && presets.map((item, index) => (
                     <Item text={item.name}/>
                 ))}
-            </Style>
+            </View>
         </Column>
     );
 };

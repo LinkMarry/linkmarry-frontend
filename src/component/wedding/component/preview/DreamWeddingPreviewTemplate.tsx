@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
-import Style from "@designsystem/core/Style";
+import View from "@designsystem/core/View";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import Text from "@designsystem/component/Text";
@@ -18,11 +18,11 @@ function DreamWeddingPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column gap={64} $alignItems={'stretch'} css={css`
+        <Column gap={64} $alignItems={'stretch'} ui={css`
             padding: 78px 28px 72px 28px;
             position: relative;
         `}>
-            <Style as={'img'} src={template.titleImgUrl} css={css`
+            <View as={'img'} src={template.titleImgUrl} ui={css`
                 object-fit: cover;
                 min-height: 517px;
                 * {

@@ -18,7 +18,7 @@ function ConfirmCreateRsvpDialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column gap={48} $alignItems={'center'} css={css`
+            <Column gap={48} $alignItems={'center'} ui={css`
                 ${applyBaseDialogContent()};
                 border-radius: 12px;
                 padding: 44px 36px;
