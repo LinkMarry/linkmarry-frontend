@@ -41,7 +41,9 @@ const EditorInspectorKakaotalkInvitationLetter = (
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
-                <PhotoUploadBox title={'사진을 첨부해 주세요'} content={'업로드한 사진은 대표 이미지로 등록됩니다.'}/>
+                <PhotoUploadBox id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'} onChange={images => update(draft => {
+                    draft.linkShare.kakaoImgUrl = images[0];
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>버튼 추가</Text>

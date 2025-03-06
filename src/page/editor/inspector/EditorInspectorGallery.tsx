@@ -31,7 +31,9 @@ const EditorInspectorGallery = (
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
-                <PhotoUploadBox title={'사진을 첨부해 주세요'} content={'사진은 최대 30장까지 업로드 가능합니다.'}/>
+                <PhotoUploadBox id={'EditorInspectorGallery'} onChange={images => update(draft => {
+                    draft.gallery.imgList = images;
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
