@@ -7,8 +7,10 @@ import FormToggleSet from "@designsystem/component/FormToggleSet";
 import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import WeddingPlace from "@remote/value/WeddingPlace";
+import {getPlaceholder} from "@remote/value/WeddingPlace";
 import WeddingDto from "@remote/value/WeddingDto";
+import Button from "@designsystem/component/Button";
+import {IconType} from "@designsystem/foundation/Icon";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -38,9 +40,16 @@ const EditorInspectorWeddingPlace = (
             <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>교통편</Text>
-                <Input placeholder={'버스'}/>
-                <Input placeholder={'지하철'}/>
-                <Input placeholder={'주차안내'}/>
+                {Array.from(weddingPlace.placeTransportation).map((item, index) => (
+                    <Input key={index} placeholder={getPlaceholder(index)} value={item} onChange={event => update(draft => {
+                        draft.weddingPlace.placeTransportation[index] = event.target.value;
+                    })}/>
+                ))}
+                <Button text={'교통편 추가'} leadingIcon={IconType.AddLine} buttonType={'tonal'} onClick={() => {
+                    update(draft => {
+                        draft.weddingPlace.placeTransportation.push('');
+                    })
+                }}/>
             </Column>
             <Divider/>
             <FormToggleSet>
