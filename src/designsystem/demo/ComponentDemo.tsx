@@ -32,7 +32,7 @@ function ComponentDemo() {
     const [selectedSelectIndex, setSelectedSelectIndex] = useState(0);
 
     return (
-        <Column gap={8} ui={css`
+        <Column $gap={8} $ui={css`
             padding: 20px;
         `}>
             {buttonRoles.map(role => (
@@ -125,7 +125,7 @@ function ComponentDemo() {
             <Input placeholder={'Label'} hasLabel={false} ui={css`
                 margin-top: 24px;
             `}/>
-            <Textarea placeholder={'Label'} ui={css`
+            <Textarea placeholder={'Label'} $ui={css`
                 margin-top: 24px;
             `}/>
             <Textarea placeholder={'Label'} hasLabel={false}/>

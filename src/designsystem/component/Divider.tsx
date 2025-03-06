@@ -41,7 +41,7 @@ function Divider(
     })();
 
     return (
-        <View ui={css`
+        <View $ui={css`
             background: var(--g-100);
             ${style};
             ${ui};

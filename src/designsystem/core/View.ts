@@ -1,9 +1,9 @@
 import styled, {RuleSet} from "styled-components";
 
 const View = styled.div<{
-    ui: RuleSet;
+    $ui: RuleSet;
 }>`
-    ${({ui}) => ui};
+    ${({$ui}) => $ui};
 `;
 
 export default View;

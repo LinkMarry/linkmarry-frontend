@@ -1,27 +1,27 @@
 import styled, {CSSProperties, css, RuleSet} from "styled-components";
 
 export interface BaseFlexProps {
-    gap?: number;
-    alignment?: CSSProperties['alignItems'];
+    $gap?: number;
+    $alignItems?: CSSProperties['alignItems'];
     $alignSelf?: CSSProperties['alignSelf'];
-    arrangement?: CSSProperties['justifyContent'];
-    flex?: CSSProperties['flex'];
-    fill?: string;
+    $justifyContent?: CSSProperties['justifyContent'];
+    $flex?: CSSProperties['flex'];
+    $fill?: string;
     $wrap?: boolean;
-    ui?: RuleSet;
+    $ui?: RuleSet;
 }
 
 export const BaseFlex = styled.div<BaseFlexProps>`
     display: flex;
-    ${({gap, alignment, $alignSelf, arrangement, flex, fill, $wrap, ui}) => css`
-        ${gap !== undefined ? css`gap: ${gap}px;` : undefined}
-        align-items: ${alignment || 'flex-start'};
+    ${({$gap, $alignItems, $alignSelf, $justifyContent, $flex, $fill, $wrap, $ui}) => css`
+        ${$gap !== undefined ? css`gap: ${$gap}px;` : undefined}
+        align-items: ${$alignItems || 'flex-start'};
         align-self: ${$alignSelf};
-        justify-content: ${arrangement || 'flex-start'};
-        flex: ${flex};
+        justify-content: ${$justifyContent || 'flex-start'};
+        flex: ${$flex};
         flex-wrap: ${$wrap ? 'wrap' : 'nowrap'};
-        width: ${fill || 'auto'};
-        ${ui};
+        width: ${$fill || 'auto'};
+        ${$ui};
     `};
 }`;
 

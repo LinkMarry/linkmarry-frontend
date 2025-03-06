@@ -36,7 +36,7 @@ const EditorInspectorChangeOrder = (
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId={'EditorInspectorChangeOrder-droppable'}>
                     {provided => (
-                        <Column ref={provided.innerRef} alignment={'stretch'} gap={12} {...provided.droppableProps}>
+                        <Column ref={provided.innerRef} $alignItems={'stretch'} $gap={12} {...provided.droppableProps}>
                             {position.map((item, index) => (
                                 <Draggable
                                     key={String(item)}
@@ -68,7 +68,7 @@ interface ItemProps extends ComponentPropsWithRef<'div'> {
 
 const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
-        <Row ref={ref} alignment={'center'} ui={css`
+        <Row ref={ref} $alignItems={'center'} $ui={css`
             padding: 12px 16px;
             border-radius: 8px;
             border: 1px solid var(--g-300);
@@ -77,7 +77,7 @@ const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDiv
             <Text type={'p2'} ui={css`
                 flex: 1;
             `}>{text}</Text>
-            <View ui={css`
+            <View $ui={css`
                 display: flex;
             `}>
                 <Icon iconType={IconType.Hamburger} width={24} height={24} ui={css`

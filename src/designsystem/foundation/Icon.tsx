@@ -344,19 +344,19 @@ function Icon(
     }
 
     return (
-        <IconWrapper ui={ui}>
+        <IconWrapper $ui={ui}>
             <IconContent width={size} height={size} {...props}/>
         </IconWrapper>
     );
 }
 
 const IconWrapper = styled.div<{
-    ui?: RuleSet;
+    $ui?: RuleSet;
 }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${({ui}) => ui};
+    ${({$ui}) => $ui};
 `;
 
 export default Icon;

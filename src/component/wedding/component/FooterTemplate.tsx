@@ -15,22 +15,22 @@ function FooterTemplate(
     }: FooterTemplateProps
 ) {
     return (
-        <Container background={background} {...props}>
+        <Container $background={background} {...props}>
             <Column
-                gap={28}
+                $gap={28}
                 style={{
                     width: '100%',
                     padding: '32px 0'
                 }}
-                alignment={'center'}
+                $alignItems={'center'}
             >
-                <Row gap={8} alignment={'center'}>
+                <Row $gap={8} $alignItems={'center'}>
                     <img src={'/kakao.svg'} alt={'kakao'} width={20} height={20}/>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-600);
                     `}>카카오톡으로 청첩장 보내기</Text>
                 </Row>
-                <Row gap={4} alignment={'center'}>
+                <Row $gap={4} $alignItems={'center'}>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-300);
                     `}>Copyrightⓒ2025.</Text>
@@ -43,10 +43,10 @@ function FooterTemplate(
     );
 }
 
-const Container = styled.div<{ background: string }>`
+const Container = styled.div<{ $background: string }>`
     display: flex;
     flex-direction: column;
-    background: ${({background}) => background};
+    background: ${({$background}) => $background};
 `
 
 export default FooterTemplate;

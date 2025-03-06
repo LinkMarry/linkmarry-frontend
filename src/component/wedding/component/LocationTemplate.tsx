@@ -48,19 +48,19 @@ function LocationTemplate(
     }, []);
 
     return (
-        <Column alignment={'stretch'} ref={weddingPlaceRef} ui={css`
+        <Column $alignItems={'stretch'} ref={weddingPlaceRef} $ui={css`
             background: ${weddingDesignColor};
             align-items: stretch;
         `}>
             <Spacer h={92}/>
-            <Column gap={40} alignment={'center'}>
+            <Column $gap={40} $alignItems={'center'}>
                 <FadeIn>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
                     `}>LOCATION</Text>
                 </FadeIn>
                 <FadeIn>
-                    <Column alignment={'center'}>
+                    <Column $alignItems={'center'}>
                         <Text size={16} weight={300}>
                             {weddingPlace.placeName}
                         </Text>
@@ -69,7 +69,7 @@ function LocationTemplate(
                         </Text>
                     </Column>
                 </FadeIn>
-                <View ref={kakaoMapRef} ui={css`
+                <View ref={kakaoMapRef} $ui={css`
                     display: flex;
                     align-self: stretch;
                     height: 307px;

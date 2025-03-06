@@ -11,14 +11,14 @@ interface Props extends ComponentPropsWithRef<'input'> {
 
 const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
     return (
-        <View ui={css`
+        <View $ui={css`
             display: flex;
             position: relative;
             ${ui};
         `}>
             <View
                 as={'input'}
-                ui={css`
+                $ui={css`
                     display: flex;
                     height: 52px;
                     border: none;
@@ -75,7 +75,7 @@ const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                 {...props}
                 placeholder={hasLabel ? '' : placeholder}
             />
-            <View as={'label'} ui={css`
+            <View as={'label'} $ui={css`
                 position: absolute;
                 left: 16px;
                 top: 12px;
@@ -83,7 +83,7 @@ const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                 pointer-events: none;
                 background: white;
             `}>
-                <View as={'legend'} ui={css`
+                <View as={'legend'} $ui={css`
                     color: var(--g-400);
                     transition: 0.1s font-size ease-out;
                     ${makeText('p2')};

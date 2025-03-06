@@ -44,9 +44,9 @@ function GuestCommentsTemplate(
 
     return (
         <FadeIn>
-            <S.root background={weddingDesignColor} ref={guestCommentRef}>
-                <Column gap={40} alignment={'stretch'}>
-                    <Column gap={12} alignment={'center'}>
+            <S.root $background={weddingDesignColor} ref={guestCommentRef}>
+                <Column $gap={40} $alignItems={'stretch'}>
+                    <Column $gap={12} $alignItems={'center'}>
                         <FadeIn>
                             <Text size={20} weight={300} ui={css`
                                 color: var(--g-600);
@@ -64,7 +64,7 @@ function GuestCommentsTemplate(
                     </Column>
                     {guestComment.privateContent && (
                         <FadeIn delay={320}>
-                            <Column gap={12} alignment={'stretch'}>
+                            <Column $gap={12} $alignItems={'stretch'}>
                                 <GuestComments
                                     comments={guestComments}
                                     design={guestComment.design}
@@ -91,7 +91,7 @@ function GuestCommentsTemplate(
                         </FadeIn>
                     )}
                 </Column>
-                <View ui={css`
+                <View $ui={css`
                     align-self: center;
                 `}>
                     <FadeIn delay={480}>
@@ -154,7 +154,7 @@ function GuestComments(
     switch (design) {
         case GuestCommentDesign.BASIC:
             return (
-                <Column gap={12} alignment={'stretch'}>
+                <Column $gap={12} $alignItems={'stretch'}>
                     {trimArray(comments, 3).map((comment, index) => (
                         <BasicGuestComment
                             key={index}
@@ -168,7 +168,7 @@ function GuestComments(
             );
         case GuestCommentDesign.STICKER:
             return (
-                <Row gap={20} alignment={'stretch'}>
+                <Row $gap={20} $alignItems={'stretch'}>
                     {trimArray(comments, 2).map((comment, index) => (
                         <StickerGuestComment
                             key={index}
@@ -185,30 +185,30 @@ function GuestComments(
 
 
 const S = {
-    root: styled.div<{ background: string }>`
+    root: styled.div<{ $background: string }>`
         display: flex;
         flex-direction: column;
         padding: 92px 30px;
         gap: 40px;
-        background: ${({background}) => background};
+        background: ${({$background}) => $background};
         align-items: stretch;
     `,
-    basicContainer: styled.div<{ background: CSSProperties['background'] }>`
+    basicContainer: styled.div<{ $background: CSSProperties['background'] }>`
         display: flex;
         flex-direction: column;
         padding: 24px;
         gap: 16px;
-        background: ${({background}) => background};
+        background: ${({$background}) => $background};
         border-radius: 12px;
     `,
-    stickerContainer: styled.div<{ background: CSSProperties['background'] }>`
+    stickerContainer: styled.div<{ $background: CSSProperties['background'] }>`
         display: flex;
         flex-direction: column;
         gap: 8px;
         height: 228px;
         flex: 1;
         padding: 12px;
-        background: ${({background}) => background};
+        background: ${({$background}) => $background};
     `
 }
 
@@ -229,8 +229,8 @@ export function BasicGuestComment(
     }: GuestCommentProps
 ) {
     return (
-        <S.basicContainer background={background} {...props}>
-            <Row gap={8} alignment={'center'}>
+        <S.basicContainer $background={background} {...props}>
+            <Row $gap={8} $alignItems={'center'}>
                 <Text size={18} weight={300} ui={css`
                     color: var(--g-600);
                 `}>
@@ -267,7 +267,7 @@ export function StickerGuestComment(
     }: GuestCommentProps
 ) {
     return (
-        <S.stickerContainer background={background}>
+        <S.stickerContainer $background={background}>
             <Icon
                 iconType={IconType.CrossLine} size={20}
                 ui={css`
@@ -277,12 +277,12 @@ export function StickerGuestComment(
                 `}
                 onClick={onRemove}
             />
-            <Column flex={1}>
+            <Column $flex={1}>
                 <Text size={16} weight={300} ui={css`
                     color: var(--g-600);
                 `}>{comment.comment}</Text>
                 <Spacer/>
-                <Column gap={4}>
+                <Column $gap={4}>
                     <Text size={16} weight={300} ui={css`
                         color: var(--g-600);
                     `}>from. {comment.name}</Text>

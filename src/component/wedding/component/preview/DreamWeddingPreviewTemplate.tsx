@@ -18,11 +18,11 @@ function DreamWeddingPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column gap={64} alignment={'stretch'} ui={css`
+        <Column $gap={64} $alignItems={'stretch'} $ui={css`
             padding: 78px 28px 72px 28px;
             position: relative;
         `}>
-            <View as={'img'} src={template.titleImgUrl} ui={css`
+            <View as={'img'} src={template.titleImgUrl} $ui={css`
                 object-fit: cover;
                 min-height: 517px;
                 * {
@@ -35,8 +35,8 @@ function DreamWeddingPreviewTemplate(
                 left: 28px;
                 color: #AAAD99;
             `}>love</Text>
-            <Column gap={32} alignment={'center'}>
-                <Row gap={24} alignment={'flex-end'}>
+            <Column $gap={32} $alignItems={'center'}>
+                <Row $gap={24} $alignItems={'flex-end'}>
                     <Text size={28} weight={700}>{first.name}</Text>
                     <Text size={24} weight={700}>그리고</Text>
                     <Text size={28} weight={700}>{second.name}</Text>

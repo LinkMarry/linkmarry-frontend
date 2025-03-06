@@ -24,7 +24,7 @@ function Toggle(
     ref?: ForwardedRef<HTMLInputElement>
 ) {
     return (
-        <Row ui={css`
+        <Row $ui={css`
             position: relative;
             width: fit-content;
             ${ui};
@@ -37,7 +37,7 @@ function Toggle(
                 onChange={(e) => {
                     OnChange(e.target.checked);
                 }}
-                ui={css`
+                $ui={css`
                     display: flex;
                     width: 60px;
                     height: 32px;
@@ -53,7 +53,7 @@ function Toggle(
                     transition: 0.2s background ease-out;
                 `}
             />
-            <View as={'span'} ui={css`
+            <View as={'span'} $ui={css`
                 position: absolute;
                 width: 26px;
                 height: 26px;

@@ -21,19 +21,19 @@ const EditorInspectorWeddingSchedule = (
 ) => {
     return (
         <EditorInspectorWrapper type={'weddingSchedule'}>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>예식일</Text>
                 <Input type={'date'} value={weddingSchedule.weddingDate} onChange={event => update(draft => {
                     draft.weddingSchedule.weddingDate = event.target.value;
                 })}/>
             </Column>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>예식 시간</Text>
                 <Input type={'time'} value={weddingSchedule.weddingTime} onChange={event => update(draft => {
                     draft.weddingSchedule.weddingTime = event.target.value;
                 })}/>
             </Column>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>추가 요소</Text>
                 <FormToggleSet>
                     <FormToggle checked={weddingSchedule.calendar} OnChange={checked => update(draft => {

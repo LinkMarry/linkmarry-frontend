@@ -56,16 +56,16 @@ function Checkbox(
     }));
 
     return (
-        <Row alignment={'center'} ui={css`
+        <Row $alignItems={'center'} $ui={css`
             width: fit-content;
             ${ui};
         `} {...props}>
-            <Row arrangement={'center'} alignment={'center'} ui={css`
+            <Row $justifyContent={'center'} $alignItems={'center'} $ui={css`
                 position: relative;
                 width: 40px;
                 height: 40px;
             `}>
-                <View ui={css`
+                <View $ui={css`
                     position: absolute;
                     top: 50%;
                     left: 50%;

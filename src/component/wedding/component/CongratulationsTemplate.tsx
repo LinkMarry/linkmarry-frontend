@@ -31,15 +31,15 @@ function CongratulationsTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
-        <Column alignment={'stretch'} ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
             background: ${weddingDesignColor};
             padding: 92px 60px;
             align-items: stretch;
         `} ref={congratulationsRef}>
-            <Column gap={96} alignment={'stretch'}>
-                <Column gap={40} alignment={'stretch'}>
+            <Column $gap={96} $alignItems={'stretch'}>
+                <Column $gap={40} $alignItems={'stretch'}>
                     <FadeIn>
-                        <Column gap={8} alignment={'center'}>
+                        <Column $gap={8} $alignItems={'center'}>
                             <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                 color: var(--g-600);
                                 display: flex;
@@ -47,7 +47,7 @@ function CongratulationsTemplate(
                                 align-self: stretch;
                                 word-break: break-all;
                             `}>
-                                <Row alignment={'center'} gap={4}>
+                                <Row $alignItems={'center'} $gap={4}>
                                     {first.fatherStatus && (
                                         <img src={'/Flower.svg'} alt=""/>
                                     )}
@@ -58,7 +58,7 @@ function CongratulationsTemplate(
                                     {first.motherName}의 {first.familyName}
                                 </Row>
                             </Text>
-                            <Row gap={8} alignment={'center'}>
+                            <Row $gap={8} $alignItems={'center'}>
                                 <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{first.korean}&nbsp;</Text>
@@ -74,7 +74,7 @@ function CongratulationsTemplate(
                         `}/>
                     </FadeIn>
                     <FadeIn>
-                        <Column gap={8} alignment={'center'}>
+                        <Column $gap={8} $alignItems={'center'}>
                             <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                 color: var(--g-600);
                                 display: flex;
@@ -82,7 +82,7 @@ function CongratulationsTemplate(
                                 align-self: stretch;
                                 word-break: break-all;
                             `}>
-                                <Row alignment={'center'} gap={4}>
+                                <Row $alignItems={'center'} $gap={4}>
                                     {second.fatherStatus && (
                                         <img src={'/Flower.svg'} alt=""/>
                                     )}
@@ -93,7 +93,7 @@ function CongratulationsTemplate(
                                     {second.motherName}의 {second.familyName}
                                 </Row>
                             </Text>
-                            <Row gap={8} alignment={'center'}>
+                            <Row $gap={8} $alignItems={'center'}>
                                 <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{second.korean}&nbsp;</Text>

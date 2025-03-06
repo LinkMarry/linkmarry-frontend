@@ -18,15 +18,15 @@ function PureLovePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column alignment={'stretch'} ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
             position: relative;
         `}>
-            <View as={'img'} src={template.titleImgUrl} ui={css`
+            <View as={'img'} src={template.titleImgUrl} $ui={css`
                 height: 100vh;
                 max-height: 800px;
                 object-fit: cover;
             `}/>
-            <View ui={css`
+            <View $ui={css`
                 position: absolute;
                 top: 0;
                 width: 100%;
@@ -40,19 +40,19 @@ function PureLovePreviewTemplate(
                 left: 50%;
                 transform: translateX(-50%);
             `}>
-                <Column gap={12} alignment={'center'}>
+                <Column $gap={12} $alignItems={'center'}>
                     <span>{first.name}</span>
                     <span>{second.name}</span>
                 </Column>
             </Text>
-            <View ui={css`
+            <View $ui={css`
                 position: absolute;
                 bottom: 0;
                 width: 100%;
                 height: 247px;
                 background: linear-gradient(0deg, rgba(0, 33, 71, 0.40) 0%, rgba(0, 33, 71, 0.40) 55.5%, rgba(0, 33, 71, 0.00) 100%);
             `}/>
-            <View ui={css`
+            <View $ui={css`
                 position: absolute;
                 bottom: 44px;
                 left: 50%;

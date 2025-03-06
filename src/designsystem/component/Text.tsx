@@ -39,7 +39,7 @@ function Text(
         <View
             ref={ref}
             as={'span'}
-            ui={css`
+            $ui={css`
                 ${implementText({
                     fontFamily: font ?? properties?.fontFamily,
                     fontWeight: weight ?? (bold ? properties?.boldFontWeight : properties?.fontWeight),

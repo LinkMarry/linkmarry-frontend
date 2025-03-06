@@ -54,7 +54,7 @@ function Radio(
 
     return (
         <S.container style={style}>
-            <View ui={css`
+            <View $ui={css`
                 display: flex;
                 position: relative;
                 justify-content: center;

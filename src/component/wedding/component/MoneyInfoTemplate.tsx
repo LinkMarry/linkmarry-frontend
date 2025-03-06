@@ -25,11 +25,11 @@ function MoneyInfoTemplate(
     useScrollOnUpdate(moneyInfoRef, [moneyInfo]);
 
     return (
-        <Column alignment={'stretch'} ref={moneyInfoRef} ui={css`
+        <Column $alignItems={'stretch'} ref={moneyInfoRef} $ui={css`
             padding: 92px 60px;
             background: white;
         `}>
-            <Column gap={40} alignment={'center'}>
+            <Column $gap={40} $alignItems={'center'}>
                 <FadeIn>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
@@ -62,13 +62,13 @@ function MoneyInfoComponent(
     } = getMoneyInfoByBrideMarkFirst(moneyInfo, baseInfo.brideMarkFirst);
 
     return (
-        <Column gap={16} alignment={'stretch'} $alignSelf={'stretch'}>
+        <Column $gap={16} $alignItems={'stretch'} $alignSelf={'stretch'}>
             <FadeIn>
-                <View ui={css`
+                <View $ui={css`
                     border-radius: 12px;
                     background: var(--g-100);
                 `}>
-                    <Row alignment={'center'} ui={css`
+                    <Row $alignItems={'center'} $ui={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedGroom(i => !i)}>
@@ -100,11 +100,11 @@ function MoneyInfoComponent(
                 </View>
             </FadeIn>
             <FadeIn>
-                <View ui={css`
+                <View $ui={css`
                     border-radius: 12px;
                     background: var(--p-100);
                 `}>
-                    <Row alignment={'center'} ui={css`
+                    <Row $alignItems={'center'} $ui={css`
                         padding: 10px 20px;
                         cursor: pointer;
                     `} onClick={() => setClickedBride(i => !i)}>
@@ -149,9 +149,9 @@ function MoneyCell(props: {
     const fullBankNumber = `${props.bankName} ${props.bankNumber}`;
     return (
         <Column
-            gap={8}
-            alignment={'stretch'}
-            ui={css`
+            $gap={8}
+            $alignItems={'stretch'}
+            $ui={css`
                 padding: 12px 20px;
                 ${props.isGroom ? css`
                     border-top: 1px solid var(--g-200);
@@ -161,7 +161,7 @@ function MoneyCell(props: {
             `}
         >
             {/*<Text type={'p5'}>{props.name}</Text>*/}
-            <Row alignment={'center'} ui={css`
+            <Row $alignItems={'center'} $ui={css`
                 padding: 8px 16px;
                 background: white;
                 border-radius: 4px;

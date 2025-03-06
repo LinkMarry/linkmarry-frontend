@@ -11,10 +11,10 @@ function MyPageDefaultSidebar() {
     const {signOut} = useAuth();
 
     return (
-        <Column gap={32} alignment={'stretch'} ui={css`
+        <Column $gap={32} $alignItems={'stretch'} $ui={css`
             width: 216px;
         `}>
-            <Column alignment={'stretch'} gap={4}>
+            <Column $alignItems={'stretch'} $gap={4}>
                 <MyPageSidebarItem icon={IconType.Envelope} text={'모바일 청첩장'} selected={currentSidebar === 'wedding'}
                                    onClick={() => navigate('wedding')}/>
                 <MyPageSidebarItem icon={IconType.PersonLine} text={'회원정보'} selected={currentSidebar === 'info'} onClick={() => navigate('info')}/>

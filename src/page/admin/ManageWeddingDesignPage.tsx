@@ -20,7 +20,7 @@ const ManageWeddingDesignPage = () => {
     return (
         <Column>
             Manage
-            <View ui={css`
+            <View $ui={css`
                 display: grid;
                 grid-row-gap: 10px;
                 grid-column-gap: 44px;
@@ -39,12 +39,12 @@ interface ItemProps {
 
 const Item = ({text}: ItemProps) => {
     return (
-        <Column alignment={'stretch'} gap={8}>
+        <Column $alignItems={'stretch'} $gap={8}>
             <div style={{
                 aspectRatio: '9 / 16',
                 background: 'gray'
             }}></div>
-            <Row alignment={'center'}>
+            <Row $alignItems={'center'}>
                 <Text type={'p3'}>{text}</Text>
             </Row>
         </Column>

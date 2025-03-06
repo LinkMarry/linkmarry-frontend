@@ -18,7 +18,7 @@ function ConfirmCreateRsvpDialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column gap={48} alignment={'center'} ui={css`
+            <Column $gap={48} $alignItems={'center'} $ui={css`
                 ${applyBaseDialogContent()};
                 border-radius: 12px;
                 padding: 44px 36px;
@@ -26,11 +26,11 @@ function ConfirmCreateRsvpDialog(
                 max-width: 388px;
                 width: 90vw;
             `}>
-                <Column gap={4} alignment={'center'}>
+                <Column $gap={4} $alignItems={'center'}>
                     {/*<Text type={'h6'}>참석의사 전달</Text>*/}
                     <Text type={'caption1'}>참석의사 전달시 수정이 불가능합니다</Text>
                 </Column>
-                <Row gap={12} $alignSelf={'stretch'}>
+                <Row $gap={12} $alignSelf={'stretch'}>
                     <Button text={'취소'} buttonType={'outlined'} onClick={dismiss} style={{flex: 1}}/>
                     <Button text={'확인'} onClick={onConfirm} style={{flex: 1}}/>
                 </Row>

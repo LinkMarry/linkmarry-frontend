@@ -30,7 +30,7 @@ function WeddingDayTemplate(
 
     if (!weddingSchedule.calendar && !weddingSchedule.dday) {
         return (
-            <Column gap={12} alignment={'center'} arrangement={'center'} ui={css`
+            <Column $gap={12} $alignItems={'center'} $justifyContent={'center'} $ui={css`
                 background: white;
                 height: 100vh;
             `}>
@@ -45,7 +45,7 @@ function WeddingDayTemplate(
     }
 
     return (
-        <Column alignment={'center'} gap={40} ui={css`
+        <Column $alignItems={'center'} $gap={40} $ui={css`
             padding: 92px 22px;
             background: white;
         `}>
@@ -55,19 +55,19 @@ function WeddingDayTemplate(
                 `}>WEDDING DAY</Text>
             </FadeIn>
             {weddingSchedule.calendar && (
-                <Column gap={25} $alignSelf={'stretch'} alignment={'stretch'}>
+                <Column $gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
                     <FadeIn>
                         <Divider/>
                     </FadeIn>
                     <FadeIn>
-                        <Column as={'table'} gap={8} alignment={'stretch'} ui={css`
+                        <Column as={'table'} $gap={8} $alignItems={'stretch'} $ui={css`
                             margin: 24px 19px;
                         `}>
-                            <View as={'thead'} ui={css`
+                            <View as={'thead'} $ui={css`
                                 display: flex;
                                 padding: 12px 20px;
                             `}>
-                                <View as={'tr'} ui={css`
+                                <View as={'tr'} $ui={css`
                                     display: flex;
                                     justify-content: space-between;
                                     color: var(--g-500);
@@ -89,7 +89,7 @@ function WeddingDayTemplate(
                                     ))}
                                 </View>
                             </View>
-                            <Column as={'tbody'} alignment={'stretch'} gap={4}>
+                            <Column as={'tbody'} $alignItems={'stretch'} $gap={4}>
                                 {calendar && calendar.map((week, weekIndex) => (
                                     <Row as={'tr'} key={weekIndex}>
                                         {week.map((day, dayIndex) => (
@@ -98,8 +98,8 @@ function WeddingDayTemplate(
                                                     <Row
                                                         key={dayIndex} as={'td'}
                                                         ref={provided.ref}
-                                                        flex={1} alignment={'center'} arrangement={'center'}
-                                                        ui={css`
+                                                        $flex={1} $alignItems={'center'} $justifyContent={'center'}
+                                                        $ui={css`
                                                             height: 48px;
                                                             border-radius: 100px;
                                                             ${day.isWeddingDay && css`

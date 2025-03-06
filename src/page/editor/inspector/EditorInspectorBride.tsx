@@ -23,10 +23,10 @@ const EditorInspectorBride = (
 ) => {
     return (
         <EditorInspectorWrapper type={'bride'}>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신부 성함</Text>
-                <Column alignment={'stretch'} gap={8}>
-                    <Row gap={8}>
+                <Column $alignItems={'stretch'} $gap={8}>
+                    <Row $gap={8}>
                         <Input placeholder={'성'} value={baseInfo.brideFirstName} onChange={event => update(draft => {
                             draft.baseInfo.brideFirstName = event.target.value;
                         })}/>
@@ -37,7 +37,7 @@ const EditorInspectorBride = (
                             draft.baseInfo.brideFamilyName = event.target.value;
                         })}/>
                     </Row>
-                    <Row gap={8}>
+                    <Row $gap={8}>
                         <Input placeholder={'영문 이름'} value={baseInfo.brideEnglishName} onChange={event => update(draft => {
                             draft.baseInfo.brideEnglishName = event.target.value;
                         })} ui={css`
@@ -48,9 +48,9 @@ const EditorInspectorBride = (
                     </Row>
                 </Column>
             </Column>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신부 아버지</Text>
-                <Row gap={8} alignment={'center'}>
+                <Row $gap={8} $alignItems={'center'}>
                     <Input placeholder={'성'} ui={css`
                         flex: 1;
                     `}/>
@@ -61,7 +61,7 @@ const EditorInspectorBride = (
                         flex: 1;
                     `}/>
                 </Row>
-                <Row gap={8}>
+                <Row $gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
                     }} label={'故'} ui={css`
                         flex: 1;
@@ -70,9 +70,9 @@ const EditorInspectorBride = (
                     <Spacer/>
                 </Row>
             </Column>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신부 어머니</Text>
-                <Row gap={8} alignment={'center'}>
+                <Row $gap={8} $alignItems={'center'}>
                     <Input placeholder={'성'} ui={css`
                         flex: 1;
                     `}/>
@@ -83,7 +83,7 @@ const EditorInspectorBride = (
                         flex: 1;
                     `}/>
                 </Row>
-                <Row gap={8}>
+                <Row $gap={8}>
                     <Checkbox checked={false} OnChange={checked => {
                     }} label={'故'} ui={css`
                         flex: 1;
@@ -92,7 +92,7 @@ const EditorInspectorBride = (
                     <Spacer/>
                 </Row>
             </Column>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신부 아버지</Text>
                 <FormToggle
                     checked={false}

@@ -10,7 +10,7 @@ import Divider from "@designsystem/component/Divider";
 
 function FoundationDemo() {
     return (
-        <Column gap={20} ui={css`
+        <Column $gap={20} $ui={css`
             padding: 20px;
         `}>
             <Column>
@@ -22,7 +22,7 @@ function FoundationDemo() {
                 ))}
             </Column>
             <Divider/>
-            <Column gap={20}>
+            <Column $gap={20}>
                 {fontList.map(font => (
                     <Row>
                         <Text type={'p3'} ui={css`
@@ -37,7 +37,7 @@ function FoundationDemo() {
                 ))}
             </Column>
             <Divider/>
-            <View ui={css`
+            <View $ui={css`
                 display: flex;
                 flex-wrap: wrap;
                 width: 256px;

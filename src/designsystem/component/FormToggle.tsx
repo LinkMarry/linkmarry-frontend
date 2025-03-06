@@ -12,7 +12,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 const FormToggle = ({checked, OnChange, label}: Props) => {
     return (
-        <Row gap={4} alignment={'center'} ui={css`
+        <Row $gap={4} $alignItems={'center'} $ui={css`
             padding: 0 16px;
             height: 52px;
             border-radius: 8px;

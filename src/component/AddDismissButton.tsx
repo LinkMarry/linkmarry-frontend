@@ -17,7 +17,7 @@ function AddRemoveButton(
     ref?: ForwardedRef<HTMLDivElement>
 ) {
     return (
-        <View ref={ref} ui={css`
+        <View ref={ref} $ui={css`
             position: relative;
         `} {...props}>
             <Icon

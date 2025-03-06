@@ -19,20 +19,20 @@ function ClassicRomancePreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column gap={28} alignment={'stretch'} ui={css`
+        <Column $gap={28} $alignItems={'stretch'} $ui={css`
             padding: 96px 36px;
 
             * {
                 color: #989796;
             }
         `}>
-            <View as={'img'} src={template.titleImgUrl} ui={css`
+            <View as={'img'} src={template.titleImgUrl} $ui={css`
                 min-height: 516px;
                 object-fit: cover;
             `}/>
-            <Column gap={12} alignment={'center'}>
+            <Column $gap={12} $alignItems={'center'}>
                 <Text size={36} weight={400}>
-                    <Row gap={20} alignment={'center'}>
+                    <Row $gap={20} $alignItems={'center'}>
                         <span>{first.name}</span>
                         <span>&</span>
                         <span>{second.name}</span>

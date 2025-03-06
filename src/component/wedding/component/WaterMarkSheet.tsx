@@ -24,7 +24,7 @@ function WaterMarkSheet(
     return (
         // <SheetStyle ref={dialogRef}>
         <SheetStyle>
-            <Column gap={28} alignment={'center'} ui={css`
+            <Column $gap={28} $alignItems={'center'} $ui={css`
                 padding: 32px 24px;
                 background: var(--p-100);
                 border-radius: 16px;
@@ -48,7 +48,7 @@ function WaterMarkSheet(
                 {/*`}>결제 후 대시보드 &gt; 워터마크 제거*/}
                 {/*    <br/>*/}
                 {/*    버튼을 통해 제거할 수 있습니다.</Text>*/}
-                <Row gap={12} $alignSelf={'stretch'}>
+                <Row $gap={12} $alignSelf={'stretch'}>
                     <Button text={'구매하기'} ui={css`
                         flex: 1;
                         background: var(--p-100);

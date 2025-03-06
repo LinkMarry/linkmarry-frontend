@@ -35,11 +35,11 @@ function RsvpTemplate(
 
     return (
         <FadeIn>
-            <Column gap={40} alignment={'center'} ui={css`
+            <Column $gap={40} $alignItems={'center'} $ui={css`
                 padding: 92px 60px;
                 background: ${weddingDesignColor};
             `}>
-                <Column alignment={'center'}>
+                <Column $alignItems={'center'}>
                     <FadeIn>
                         <Text size={24} weight={300} ui={css`
                             color: var(--g-600);
@@ -55,15 +55,15 @@ function RsvpTemplate(
                         `}>참석의사를 알려주세요!</Text>
                     </FadeIn>
                 </Column>
-                <Column alignment={'stretch'} $alignSelf={'stretch'} gap={62} ui={css`
+                <Column $alignItems={'stretch'} $alignSelf={'stretch'} $gap={62} $ui={css`
                     padding: 32px 28px;
                     background: white;
                     border-radius: 12px;
                 `}>
                     <FadeIn>
-                        <Column gap={40} alignment={'stretch'}>
-                            <Column gap={20} alignment={'stretch'}>
-                                <Row gap={6} alignment={'center'} ui={css`
+                        <Column $gap={40} $alignItems={'stretch'}>
+                            <Column $gap={20} $alignItems={'stretch'}>
+                                <Row $gap={6} $alignItems={'center'} $ui={css`
                                     padding: 5px 0;
                                 `}>
                                     <Text
@@ -87,7 +87,7 @@ function RsvpTemplate(
                                 <Text type={'p3'} ui={css`
                                     color: var(--g-600);
                                 `}>
-                                    <Column gap={12} alignment={'center'}>
+                                    <Column $gap={12} $alignItems={'center'}>
                                         <span>{format(date, 'yyyy년 M월 d일')}</span>
                                         <span>{format(date, 'EEEE a h시', {locale: ko})}</span>
                                     </Column>

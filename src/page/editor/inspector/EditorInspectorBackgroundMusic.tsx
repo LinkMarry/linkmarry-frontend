@@ -29,7 +29,7 @@ const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props
                 })
             }
         }}>
-            <Column alignment={'stretch'} gap={8}>
+            <Column $alignItems={'stretch'} $gap={8}>
                 {backgroundMusics ? backgroundMusics.map((music, index) => (
                     <Item key={index} music={music} isPlaying={false}/>
                 )) : null}
@@ -55,8 +55,8 @@ const Item = ({music, isPlaying}: ItemProps) => {
     const [isHovering, setIsHovering] = useState(false);
 
     return (
-        <Row alignment={'center'} onMouseOver={() => setIsHovering(true)} onMouseOut={() => setIsHovering(false)}
-             gap={16} ui={css`
+        <Row $alignItems={'center'} onMouseOver={() => setIsHovering(true)} onMouseOut={() => setIsHovering(false)}
+             $gap={16} $ui={css`
             padding: 12px;
             border-radius: 12px;
 
@@ -64,7 +64,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                 background: var(--g-50);
             }
         `}>
-            <View ui={css`
+            <View $ui={css`
                 position: relative;
                 width: 60px;
                 height: 60px;
@@ -74,7 +74,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
             `} onClick={() => {
 
             }}>
-                <View as={'img'} ui={css`
+                <View as={'img'} $ui={css`
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -92,7 +92,7 @@ const Item = ({music, isPlaying}: ItemProps) => {
                     `}/>
                 )}
             </View>
-            <Column gap={4} ui={css`
+            <Column $gap={4} $ui={css`
                 flex: 1;
                 min-width: 0;
                 overflow: hidden;

@@ -20,19 +20,19 @@ function ForestLovePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
-        <Column alignment={'stretch'} ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
             background: white;
         `}>
-            <Column alignment={'center'} gap={8} style={{padding: '72px 0'}}>
+            <Column $alignItems={'center'} $gap={8} style={{padding: '72px 0'}}>
                 <Text size={28} weight={300}>{isValidDate && format(date, 'yyyy/MM/dd', {locale: ko})}</Text>
                 <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
             </Column>
-            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} ui={css`
+            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
                 display: flex;
                 padding: 0 32px;
                 object-fit: cover;
             `}/>
-            <Row gap={12} alignment={'center'} arrangement={'center'} ui={css`
+            <Row $gap={12} $alignItems={'center'} $justifyContent={'center'} $ui={css`
                 padding: 72px 0;
             `}>
                 <Text size={20} weight={300}>{first.name}</Text>

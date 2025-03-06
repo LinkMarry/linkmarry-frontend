@@ -19,24 +19,24 @@ function SoulmatePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column alignment={'stretch'} ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
                     background: ${template.weddingDesignColor};
                 `}>
-            <Column gap={12} alignment={'center'} ui={css`
+            <Column $gap={12} $alignItems={'center'} $ui={css`
                         margin: 40px 0;
                     `}>
                 <Text size={40} weight={100}>{isValidDate && format(date, 'MM / dd')}</Text>
                 <Text size={20} weight={300} ui={css`
                             color: var(--g-600);
                         `}>
-                    <Row gap={24} alignment={'center'}>
+                    <Row $gap={24} $alignItems={'center'}>
                         <span>{first.name}</span>
                         <span>그리고</span>
                         <span>{second.name}</span>
                     </Row>
                 </Text>
             </Column>
-            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} ui={css`
+            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

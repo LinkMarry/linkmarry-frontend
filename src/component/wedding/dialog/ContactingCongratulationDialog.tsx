@@ -75,7 +75,7 @@ function ContactingCongratulationDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column ui={css`
+            <Column $ui={css`
                 width: 90vw;
                 min-width: 240px;
                 max-width: 388px;
@@ -86,34 +86,34 @@ function ContactingCongratulationDialog(
                 border-radius: 12px;
                 ${applyBaseDialogContent()};
             `}>
-                <Column gap={4} alignment={'center'}>
+                <Column $gap={4} $alignItems={'center'}>
                     {/*<Text type={'h6'}>축하 연락하기</Text>*/}
                     <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>축하의 마음을 전하세요</Text>
                 </Column>
-                <Row alignment={'stretch'}>
+                <Row $alignItems={'stretch'}>
                     <S.selector selected={selectedIndex === 0}
                                 onClick={() => setSelectedIndex(0)}>{first.korean}측</S.selector>
                     <S.selector selected={selectedIndex === 1}
                                 onClick={() => setSelectedIndex(1)}>{second.korean}측</S.selector>
                 </Row>
-                <Column gap={16} alignment={'stretch'}>
+                <Column $gap={16} $alignItems={'stretch'}>
                     {tels.map(tel => (
-                        <Row ui={css`
+                        <Row $ui={css`
                             padding: 20px 16px;
                             align-items: center;
                             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
                             border-radius: 8px;
                         `}>
-                            <Row gap={12} alignment={'center'}>
+                            <Row $gap={12} $alignItems={'center'}>
                                 {/*<Text type={'p5'}>{tel.name}</Text>*/}
                                 <Text type={'caption1'} ui={css`
                                     color: var(--g-300);
                                 `}>{tel.familyName}</Text>
                             </Row>
                             <Spacer/>
-                            <Row gap={12} alignment={'center'}>
+                            <Row $gap={12} $alignItems={'center'}>
                                 <S.iconWrapper onClick={() => {
                                     window.open(`sms:${tel.tel}`)
                                 }}>

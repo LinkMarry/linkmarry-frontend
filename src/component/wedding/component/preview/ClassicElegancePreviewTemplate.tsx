@@ -20,23 +20,23 @@ function ClassicElegancePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column alignment={'stretch'}>
-            <View ui={css`
+        <Column $alignItems={'stretch'}>
+            <View $ui={css`
                 position: relative;
             `}>
-                <View as={'img'} src={template.titleImgUrl} ui={css`
+                <View as={'img'} src={template.titleImgUrl} $ui={css`
                     width: 100%;
                     object-fit: cover;
                     height: 100vh;
                     max-height: 810px;
                 `}/>
-                <Column alignment={'center'} gap={20} ui={css`
+                <Column $alignItems={'center'} $gap={20} $ui={css`
                     position: absolute;
                     top: 72px;
                     left: 50%;
                     transform: translateX(-50%);
                 `}>
-                    <View ui={css`
+                    <View $ui={css`
                         padding: 0 12px;
                         background: white;
                         border-radius: 100px;
@@ -46,7 +46,7 @@ function ClassicElegancePreviewTemplate(
                     <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} ui={css`
                         color: white;
                     `}>
-                        <Column alignment={'center'} gap={8}>
+                        <Column $alignItems={'center'} $gap={8}>
                             <span>{first.name}</span>
                             <span>{second.name}</span>
                         </Column>
@@ -54,7 +54,7 @@ function ClassicElegancePreviewTemplate(
                 </Column>
             </View>
             <Text size={20} weight={400}>
-                <Column gap={8} alignment={'center'} ui={css`
+                <Column $gap={8} $alignItems={'center'} $ui={css`
                     padding: 32px 8px;
                 `}>
                     {isValidDate && (

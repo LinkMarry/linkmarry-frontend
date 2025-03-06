@@ -15,6 +15,7 @@ import WeddingDesignPreset from "@remote/value/WeddingDesignPreset";
 import {openingList, openingMap} from "@remote/enumeration/Opening";
 import Select from "@designsystem/component/Select";
 import {groupByCategory} from "@remote/value/GroupedCategory";
+import Loading from "@src/component/Loading";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -42,27 +43,31 @@ const EditorInspectorDesign = (
     return (
         <EditorInspectorWrapper type={'design'} hasDivider={false}>
             {/*디자인*/}
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 {categories ? (
                     <TabBar items={categories} selectedTab={categories.indexOf(selectedCategory!)} onChange={tab => {
                         setSelectedCategory(categories[tab]);
                     }}/>
-                ) : null}
-                <View ui={css`
+                ) : (
+                    <Loading ui={css`
+                        margin: 40px 0;
+                    `}/>
+                )}
+                <View $ui={css`
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
                     grid-row-gap: 32px;
                     grid-column-gap: 12px;
                 `}>
                     {/*todo shimmer*/}
-                    {selectedWeddingDesigns ? selectedWeddingDesigns.map((design, index) => (
+                    {selectedWeddingDesigns && selectedWeddingDesigns.map((design, index) => (
                         <Item key={index} design={design} selected={index === 3}/>
-                    )) : null}
+                    ))}
                 </View>
             </Column>
 
             {/*대표 사진*/}
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>대표 사진</Text>
                 <PhotoUploadBox
                     id={'EditorInspectorDesign-titleImgUrl'}
@@ -74,8 +79,8 @@ const EditorInspectorDesign = (
             </Column>
 
             {/*오프닝*/}
-            <Column alignment={'stretch'} gap={12}>
-                <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
+                <Column $alignItems={'stretch'} $gap={12}>
                     <Text type={'p3'} bold={true}>오프닝 애니메이션</Text>
                     <SegmentedButton
                         items={openingList.map(i => openingMap[i].korean)}
@@ -87,7 +92,7 @@ const EditorInspectorDesign = (
                         }}
                     />
                 </Column>
-                <Column alignment={'stretch'} gap={12}>
+                <Column $alignItems={'stretch'} $gap={12}>
                     <Text type={'p3'} bold={true}>문구</Text>
                     <Select
                         selected={openingTextList.indexOf(weddingDesign.openingText)} items={openingTextList}
@@ -110,15 +115,17 @@ interface ItemProps {
 
 const Item = ({design, selected}: ItemProps) => {
     return (
-        <Column alignment={'stretch'} gap={8}>
+        <Column $alignItems={'stretch'} $gap={8}>
             <View
                 as={'img'}
                 src={design.img}
-                ui={css`
+                $ui={css`
                     aspect-ratio: 9 / 16;
+                    //object-fit: cover;
+                    //overflow: hidden;
                 `}
             />
-            <Row alignment={'center'}>
+            <Row $alignItems={'center'}>
                 <Text type={'p3'} ui={css`
                     ${selected && css`
                         color: var(--g-400);

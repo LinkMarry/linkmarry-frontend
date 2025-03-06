@@ -71,10 +71,10 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
         <Column
             as={isEmpty ? 'label' : undefined}
             htmlFor={isEmpty ? id : undefined}
-            gap={12}
-            alignment={'center'}
-            arrangement={'center'}
-            ui={css`
+            $gap={12}
+            $alignItems={'center'}
+            $justifyContent={'center'}
+            $ui={css`
                 border-radius: 8px;
                 background: var(--g-50);
                 height: 172px;
@@ -93,21 +93,21 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                 onChange={handleInput}
             />
             {isEmpty ? (
-                <Row gap={8} alignment={'center'}>
+                <Row $gap={8} $alignItems={'center'}>
                     <Icon iconType={IconType.AddPhoto}/>
                     <Text type={'p2'} ui={css`
                         color: var(--g-900);
                     `}>사진을 첨부해 주세요</Text>
                 </Row>
             ) : (
-                <Row gap={6} ui={css`
+                <Row $gap={6} $ui={css`
                     align-self: stretch;
                     overflow-x: scroll;
                     min-height: 106px;
                     ${hideScrollBar};
                 `}>
                     {typeof value === 'string' && (
-                        <View ui={css`
+                        <View $ui={css`
                             margin: 0 auto;
                         `}>
                             <Image src={value} dismiss={() => onChange('' as V)}/>
@@ -117,11 +117,11 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                         <>
                             <Column
                                 as={'label'}
-                                gap={2}
+                                $gap={2}
                                 htmlFor={id}
-                                alignment={'center'}
-                                arrangement={'center'}
-                                ui={css`
+                                $alignItems={'center'}
+                                $justifyContent={'center'}
+                                $ui={css`
                                     min-width: 106px;
                                     min-height: 106px;
                                     background: var(--g-100);
@@ -156,7 +156,7 @@ interface ImageProps {
 const Image = ({dismiss, src}: ImageProps) => {
     return (
         <AddRemoveButton dismiss={dismiss}>
-            <View as={'img'} src={src} ui={css`
+            <View as={'img'} src={src} $ui={css`
                 min-width: 106px;
                 width: 106px;
                 min-height: 106px;

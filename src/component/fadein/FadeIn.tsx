@@ -59,7 +59,7 @@ function FadeIn(
         );
     } else if (isValidElement(children)) {
         return (
-            <View ref={ref} ui={css`
+            <View ref={ref} $ui={css`
                 ${style};
                 ${ui};
             `}>

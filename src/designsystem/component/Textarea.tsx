@@ -6,19 +6,19 @@ import makeText from "@designsystem/foundation/text/TextType";
 interface Props extends ComponentPropsWithRef<'textarea'> {
     placeholder?: string;
     hasLabel?: boolean;
-    ui?: RuleSet;
+    $ui?: RuleSet;
 }
 
-const Textarea = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
+const Textarea = ({placeholder, hasLabel = true, $ui, ...props}: Props) => {
     return (
-        <View ui={css`
+        <View $ui={css`
             display: flex;
             position: relative;
-            ${ui};
+            ${$ui};
         `}>
             <View
                 as={'textarea'}
-                ui={css`
+                $ui={css`
                     display: flex;
                     min-height: 52px;
                     border: none;
@@ -70,7 +70,7 @@ const Textarea = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                 {...props}
                 placeholder={hasLabel ? '' : placeholder}
             />
-            <View as={'label'} ui={css`
+            <View as={'label'} $ui={css`
                 position: absolute;
                 left: 16px;
                 top: 12px;
@@ -78,7 +78,7 @@ const Textarea = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                 pointer-events: none;
                 background: white; // It has problem that hide another object
             `}>
-                <View as={'legend'} ui={css`
+                <View as={'legend'} $ui={css`
                     color: var(--g-400);
                     transition: 0.1s font-size ease-out;
                     ${makeText('p2')};

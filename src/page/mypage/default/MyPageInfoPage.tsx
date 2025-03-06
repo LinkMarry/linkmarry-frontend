@@ -6,12 +6,12 @@ import Divider from "@designsystem/component/Divider";
 
 function MyPageInfoPage() {
     return (
-        <Column gap={24} alignment={'stretch'} ui={css`
+        <Column $gap={24} $alignItems={'stretch'} $ui={css`
             flex: 1;
         `}>
             <Text type={'h5'} bold={true}>회원정보</Text>
-            <Column gap={8} alignment={'stretch'}>
-                <Column alignment={'stretch'}>
+            <Column $gap={8} $alignItems={'stretch'}>
+                <Column $alignItems={'stretch'}>
                     <Item title={'이름'} value={'name'}/>
                     <Item title={'이메일'} value={'email'}/>
                 </Column>
@@ -41,7 +41,7 @@ function Item(props: {
     value: string;
 }) {
     return (
-        <Row alignment={'center'} ui={css`
+        <Row $alignItems={'center'} $ui={css`
             height: 52px;
         `}>
             <Text

@@ -29,7 +29,7 @@ function InvitationLetterTemplate(
 
     return (
         <FadeIn>
-            <Column gap={40} alignment={'center'} ref={invitationLetterRef} ui={css`
+            <Column $gap={40} $alignItems={'center'} ref={invitationLetterRef} $ui={css`
                 padding: 72px 60px;
                 background: white;
             `}>
@@ -58,7 +58,7 @@ function InvitationLetterTemplate(
                     <Text weight={300} size={14} ui={css`
                         color: var(--g-600);
                     `}>
-                        <Row alignment={'center'} gap={8}>
+                        <Row $alignItems={'center'} $gap={8}>
                             <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
                         </Row>
                     </Text>

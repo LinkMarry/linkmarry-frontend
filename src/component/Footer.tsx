@@ -13,18 +13,18 @@ function Footer() {
     const {deviceSize} = useResponsive();
 
     return (
-        <Column as={'footer'} alignment={'center'} ui={css`
+        <Column as={'footer'} $alignItems={'center'} $ui={css`
             padding: 0 24px;
         `}>
-            <Column gap={40} alignment={'stretch'} ui={css`
+            <Column $gap={40} $alignItems={'stretch'} $ui={css`
                 max-width: 1100px;
                 width: 100%;
             `}>
                 <Divider/>
-                <Column gap={72} alignment={'stretch'} ui={css`
+                <Column $gap={72} $alignItems={'stretch'} $ui={css`
                     padding-bottom: 72px;
                 `}>
-                    <View ui={css`
+                    <View $ui={css`
                         display: flex;
                         justify-content: space-between;
                         ${deviceSize === 'mobile' && css`
@@ -32,7 +32,7 @@ function Footer() {
                             gap: 24px;
                         `};
                     `}>
-                        <Column gap={4}>
+                        <Column $gap={4}>
                             <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-600);
                             `} onClick={() => window.open('https://pf.kakao.com/_BzqCn')}>고객센터</Text>
@@ -40,26 +40,26 @@ function Footer() {
                                 color: var(--g-500);
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
                         </Column>
-                        <View ui={css`
+                        <View $ui={css`
                             display: flex;
                             ${deviceSize === 'mobile' && css`
                                 flex-direction: column;
                                 gap: 16px;
                             `};
                         `}>
-                            <Column gap={4} ui={css`
+                            <Column $gap={4} $ui={css`
                                 width: 180px;
                             `}>
                                 <Item text={'모바일 청첩장'}/>
                                 <Item text={'회원정보'}/>
                             </Column>
-                            <Column gap={4} ui={css`
+                            <Column $gap={4} $ui={css`
                                 width: 180px;
                             `}>
                                 <Item text={'공지사항'}/>
                                 <Item text={'네이버스토어'}/>
                             </Column>
-                            <Column gap={4} ui={css`
+                            <Column $gap={4} $ui={css`
                                 width: 180px;
                             `}>
                                 <Item text={'이용약관'}
@@ -70,17 +70,17 @@ function Footer() {
                             </Column>
                         </View>
                     </View>
-                    <Column gap={4}>
+                    <Column $gap={4}>
                         {deviceSize === 'desktop' ? (
                             <>
-                                <Row gap={16}>
+                                <Row $gap={16}>
                                     {detail1.map((text, index) => (
                                         <Text key={index} type={'caption2'} ui={css`
                                             color: var(--g-500);
                                         `}>{text}</Text>
                                     ))}
                                 </Row>
-                                <Row gap={16}>
+                                <Row $gap={16}>
                                     {detail2.map((text, index) => (
                                         <Text key={index} type={'caption2'} ui={css`
                                             color: var(--g-500);

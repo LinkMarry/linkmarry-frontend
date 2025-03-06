@@ -13,20 +13,20 @@ function HomePage() {
 
     return (
         <MainWrapper>
-            <Column alignment={'center'} ui={css`
+            <Column $alignItems={'center'} $ui={css`
                 ${deviceSize === 'desktop' ? css`
                     padding: 72px 24px 40px 24px;
                 ` : css`
                     padding: 24px 16px 40px 16px;
                 `};
             `}>
-                <Column gap={40} alignment={'stretch'} ui={css`
+                <Column $gap={40} $alignItems={'stretch'} $ui={css`
                     max-width: 1100px;
                     width: 100%;
                     flex: 1;
                 `}>
                     {/*header*/}
-                    <Column gap={16} alignment={'center'}>
+                    <Column $gap={16} $alignItems={'center'}>
                         <Text type={deviceSize === 'desktop' ? 'h2' : 'h4'} bold={true} ui={css`
                             text-align: center;
                         `}>특별한 순간 특별한 초대<br/>
@@ -38,11 +38,11 @@ function HomePage() {
                         `}>100가지가 넘는 다양한 스타일, 나만의 청첩장을 무료로 만들어볼 수 있습니다</Text>
                     </Column>
                     {/*content*/}
-                    <Column gap={16} alignment={'stretch'}>
-                        <Row arrangement={'center'}>
+                    <Column $gap={16} $alignItems={'stretch'}>
+                        <Row $justifyContent={'center'}>
                             <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {}}/>
                         </Row>
-                        <View ui={css`
+                        <View $ui={css`
                             display: grid;
                             max-width: 960px;
                             align-self: center;

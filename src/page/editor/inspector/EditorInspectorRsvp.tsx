@@ -29,24 +29,24 @@ const EditorInspectorRsvp = (
             OnChange: () => {
             }
         }}>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={rsvp.rsvpTitle} onChange={event => update(draft => {
                     draft.rsvp.rsvpTitle = event.target.value;
                 })}/>
             </Column>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={rsvp.rsvpContent} onChange={event => update(draft => {
                     draft.rsvp.rsvpContent = event.target.value;
-                })} ui={css`
+                })} $ui={css`
                     height: 194px;
                 `}/>
             </Column>
             <FormToggle checked={rsvp.startPopupStatus} OnChange={checked => update(draft => {
                 draft.rsvp.startPopupStatus = checked;
             })} label={'청첩장 접속 시 팝업 띄우기'}/>
-            <Column alignment={'stretch'} gap={12}>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>표시 항목</Text>
                 <FormToggleSet>
                     <FormToggle checked={rsvp.attendMealStatus} OnChange={() => update(draft => {

@@ -34,7 +34,7 @@ const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns
     const {deviceSize} = useResponsive();
 
     return (
-        <Column alignment={'stretch'} ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
             min-width: 412px;
             width: 412px;
             padding: 32px 24px 100px 24px;

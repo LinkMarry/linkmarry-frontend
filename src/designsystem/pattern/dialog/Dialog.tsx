@@ -26,7 +26,7 @@ function Dialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column gap={32} alignment={'stretch'} ui={css`
+            <Column $gap={32} $alignItems={'stretch'} $ui={css`
                 width: 90vw;
                 max-width: 380px;
                 padding: 48px 36px 36px 36px;
@@ -35,7 +35,7 @@ function Dialog(
                 background: white;
                 ${applyBaseDialogContent()};
             `}>
-                <Column gap={4} alignment={'stretch'}>
+                <Column $gap={4} $alignItems={'stretch'}>
                     <Text type={'h5'} bold={true} ui={css`
                         text-align: center;
                         white-space: pre-wrap;
@@ -46,7 +46,7 @@ function Dialog(
                     `}>{description}</Text>
                 </Column>
                 {children}
-                <Row gap={12} ui={css`
+                <Row $gap={12} $ui={css`
                     & > * {
                         flex: 1;
                     }

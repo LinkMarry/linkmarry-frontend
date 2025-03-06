@@ -19,11 +19,11 @@ function MyPageLayout() {
 function MobileMyPageLayout() {
     return (
         <MainWrapper>
-            <Row arrangement={'center'} flex={1} ui={css`
+            <Row $justifyContent={'center'} $flex={1} $ui={css`
                 overflow-y: scroll;
                 padding: 24px 16px 0 16px;
             `}>
-                <Row gap={32} ui={css`
+                <Row $gap={32} $ui={css`
                     max-width: 1100px;
                     flex: 1;
                 `}>
@@ -37,11 +37,11 @@ function MobileMyPageLayout() {
 function DesktopMyPageLayout() {
     return (
         <MainWrapper>
-            <Row arrangement={'center'} flex={1} ui={css`
+            <Row $justifyContent={'center'} $flex={1} $ui={css`
                 padding: 72px 24px 0 24px;
                 overflow-y: scroll;
             `}>
-                <Row gap={32} ui={css`
+                <Row $gap={32} $ui={css`
                     max-width: 1100px;
                     flex: 1;
                 `}>

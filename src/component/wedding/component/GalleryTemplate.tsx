@@ -26,7 +26,7 @@ function GalleryTemplate(
     }: GalleryTemplateProps
 ) {
     return (
-        <Column alignment={'center'} gap={40} ui={css`
+        <Column $alignItems={'center'} $gap={40} $ui={css`
             background: white;
             padding: 92px 0;
         `}>
@@ -170,7 +170,7 @@ function GalleryStyleIndicator(
     switch (slideStyle) {
         case 'style1':
             return (
-                <Row gap={8} $alignSelf={'center'}>
+                <Row $gap={8} $alignSelf={'center'}>
                     {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
                         <S.indicator key={index} selected={i === currentImageIndex}/>
                     ))}
@@ -179,9 +179,9 @@ function GalleryStyleIndicator(
         case 'style2':
             return (
                 <Row
-                    alignment={'center'}
-                    arrangement={'space-between'}
-                    ui={css`
+                    $alignItems={'center'}
+                    $justifyContent={'space-between'}
+                    $ui={css`
                         padding: 0 45px;
                     `}
                 >

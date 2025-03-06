@@ -19,15 +19,15 @@ function RomanticForestPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column alignment={'stretch'} ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
             position: relative;
         `}>
-            <View as={'img'} src={template.titleImgUrl} ui={css`
+            <View as={'img'} src={template.titleImgUrl} $ui={css`
                 height: 100vh;
                 max-height: 810px;
                 object-fit: cover;
             `}/>
-            <View ui={css`
+            <View $ui={css`
                 background: linear-gradient(180deg, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
                 height: 140px;
                 position: absolute;
@@ -44,7 +44,7 @@ function RomanticForestPreviewTemplate(
                     transform: translateX(-50%);
                 `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
             )}
-            <View ui={css`
+            <View $ui={css`
                 background: linear-gradient(0, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
                 height: 140px;
                 position: absolute;

@@ -11,14 +11,14 @@ const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     ui?: RuleSet;
 }) => {
     return (
-        <Row alignment={'stretch'} ui={css`
+        <Row $alignItems={'stretch'} $ui={css`
             background: var(--g-100);
             border-radius: 12px;
             height: 48px;
             position: relative;
             ${ui};
         `}>
-            <View ui={css`
+            <View $ui={css`
                 position: absolute;
                 height: 40px;
                 width: calc(100% / ${items.length} - 8px);
@@ -43,7 +43,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <Row flex={1} ui={css`
+        <Row $flex={1} $ui={css`
             justify-content: center;
             align-items: center;
             outline: none;

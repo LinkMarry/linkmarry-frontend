@@ -14,7 +14,7 @@ function Loading(
     }: Props
 ) {
     return (
-        <Row gap={8} ui={ui} {...props}>
+        <Row $justifyContent={'center'} $gap={8} $ui={ui} {...props}>
             <LoadingItem/>
             <LoadingItem/>
             <LoadingItem/>
@@ -24,7 +24,7 @@ function Loading(
 
 function LoadingItem() {
     return (
-        <View ui={css`
+        <View $ui={css`
             @keyframes loadingAnimation {
                 0% {
                     opacity: 1;
