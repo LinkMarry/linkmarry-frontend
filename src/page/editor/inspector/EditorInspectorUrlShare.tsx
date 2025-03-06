@@ -7,9 +7,9 @@ import {css} from "styled-components";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SharingLink from "@src/component/SharingLink";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
-import Divider from "@designsystem/component/Divider";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
+import KakaoButton from "@remote/enumeration/KakaoButton";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -26,11 +26,15 @@ const EditorInspectorUrlShare = (
         <EditorInspectorWrapper type={'urlShare'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
-                <Input hasLabel={false}/>
+                <Input hasLabel={false} value={linkShare.urlTitle} onChange={event => update(draft => {
+                    draft.linkShare.urlTitle = event.target.value;
+                })}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
-                <Textarea hasLabel={false} customStyle={css`
+                <Textarea hasLabel={false} value={linkShare.urlContent} onChange={event => update(draft => {
+                    draft.linkShare.urlContent = event.target.value;
+                })} customStyle={css`
                     height: 194px;
                 `}/>
             </Column>
@@ -40,7 +44,7 @@ const EditorInspectorUrlShare = (
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
-                <SharingLink button={'none'} orientation={'horizontal'}/>
+                <SharingLink Style={true}/>
             </Column>
         </EditorInspectorWrapper>
     );

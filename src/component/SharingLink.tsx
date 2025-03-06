@@ -3,21 +3,20 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@designsystem/component/Text";
 import Button from "@designsystem/component/Button";
-
-type ButtonType = 'none' | 'invitation' | 'location' | 'rsvp';
+import KakaoButton from "@remote/enumeration/KakaoButton";
 
 interface Props {
-    button: ButtonType;
-    orientation: 'horizontal' | 'vertical';
+    button?: KakaoButton;
+    Style: boolean;
 }
 
-const SharingLink = ({button, orientation}: Props) => {
+const SharingLink = ({button, Style}: Props) => {
     return (
         <Column $alignItems={'stretch'} $justifyContent={'flex-end'} $customStyle={css`
             border-radius: 8px;
             width: 300px;
             background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDD3-VTr8lfMnJAJy95JDZLG-MJMMpk3uM3A&s");
-            ${orientation === 'horizontal' ? css`
+            ${Style ? css`
                 min-height: 297px;
             ` : css`
                 min-height: 363px;
@@ -31,25 +30,25 @@ const SharingLink = ({button, orientation}: Props) => {
             `}>
                 {/*// todo*/}
                 <Text type={'p3'} bold={true}>2월 15일, 저희 결혼합니다.</Text>
-                <Row gap={2}>
-                    {button !== 'none' && (
+                {button && (
+                    <Row gap={2}>
                         <Button text={'모바일 청첩장'} buttonType={'tonal'} customStyle={css`
                             flex: 1;
                         `}/>
-                    )}
-                    {button === 'rsvp' && (
-                        <Button text={'참석의사 전달'} buttonType={'tonal'} customStyle={css`
-                            flex: 1;
-                        `}/>
-                    )}
-                    {button === 'location' && (
-                        <Button text={'위치 보기'} buttonType={'tonal'} customStyle={css`
-                            flex: 1;
-                        `}/>
-                    )}
-                </Row>
+                        {button === KakaoButton.ATTEND && (
+                            <Button text={'참석의사 전달'} buttonType={'tonal'} customStyle={css`
+                                flex: 1;
+                            `}/>
+                        )}
+                        {button === KakaoButton.PLACE && (
+                            <Button text={'위치 보기'} buttonType={'tonal'} customStyle={css`
+                                flex: 1;
+                            `}/>
+                        )}
+                    </Row>
+                )}
                 <Row gap={4} $alignItems={'center'}>
-                    {button !== 'none' && (
+                    {button && (
                         <img width={12} src={'logo192.png'}/>
                     )}
                     <Text type={'caption2'} customStyle={css`
