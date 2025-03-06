@@ -60,7 +60,6 @@ export default interface WeddingDto {
     gallery: Gallery;
 }
 
-
 export function makeDefaultWedding(url: string): WeddingDto {
     return {
         url,

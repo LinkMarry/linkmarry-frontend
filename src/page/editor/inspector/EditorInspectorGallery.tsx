@@ -22,8 +22,7 @@ const EditorInspectorGallery = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'갤러리'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'gallery'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={gallery.galleryTitle} onChange={event => update(draft => {

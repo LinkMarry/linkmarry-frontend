@@ -9,7 +9,6 @@ import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import CustomStyle from "@designsystem/core/CustomStyle";
 import Binding from "@src/interface/Binding";
-import BackgroundMusic from "@remote/value/BackgroundMusic";
 import WeddingDto from "@remote/value/WeddingDto";
 import Music from "@remote/value/Music";
 
@@ -22,7 +21,7 @@ export interface BackgroundMusicProps {
 
 const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props & BackgroundMusicProps) => {
     return (
-        <EditorInspectorWrapper title={'배경 음악'} toggle={{
+        <EditorInspectorWrapper type={'backgroundMusic'} toggle={{
             checked: value.backgroundMusic.effect,
             OnChange: checked => {
                 update(draft => {
@@ -30,7 +29,6 @@ const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props
                 })
             }
         }}>
-            <Divider/>
             <Column $alignItems={'stretch'} gap={8}>
                 {backgroundMusics ? backgroundMusics.map((music, index) => (
                     <Item key={index} music={music} isPlaying={false}/>

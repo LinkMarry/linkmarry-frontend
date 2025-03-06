@@ -9,11 +9,21 @@ import SharingLink from "@src/component/SharingLink";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Divider from "@designsystem/component/Divider";
 import Binding from "@src/interface/Binding";
+import WeddingDto from "@remote/value/WeddingDto";
 
-const EditorInspectorUrlShare = () => {
+interface Props extends Binding<WeddingDto> {
+}
+
+const EditorInspectorUrlShare = (
+    {
+        value: {
+            linkShare
+        },
+        update
+    }: Props
+) => {
     return (
-        <EditorInspectorWrapper title={'URL 공유'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'urlShare'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false}/>

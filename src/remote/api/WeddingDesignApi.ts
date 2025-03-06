@@ -5,7 +5,7 @@ import PatchWeddingDesignRequest from "@remote/value/request/admin/PatchWeddingD
 import WeddingDesignPreset from "@remote/value/WeddingDesignPreset";
 
 class WeddingDesignApi {
-    static PATH = 'weddingdesign';
+    static PATH = 'wedding-design-preset';
 
     async createWeddingDesign(request: CreateWeddingDesignRequest): Promise<ResponseVoid> {
         const {data} = await api.post(`${WeddingDesignApi.PATH}`, request);

@@ -20,8 +20,7 @@ const EditorInspectorWeddingSchedule = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'예식 일시'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'weddingSchedule'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>예식일</Text>
                 <Input type={'date'} value={weddingSchedule.weddingDate} onChange={event => update(draft => {

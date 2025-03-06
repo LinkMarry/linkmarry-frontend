@@ -16,8 +16,7 @@ interface Props extends Binding<WeddingDto> {
 
 const EditorInspectorBride = ({value, update}: Props) => {
     return (
-        <EditorInspectorWrapper title={'신부측 정보'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'bride'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신부 성함</Text>
                 <Column $alignItems={'stretch'} gap={8}>

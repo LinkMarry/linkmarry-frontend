@@ -121,7 +121,7 @@ const Item = ({type, selected, ...props}: {
     type: EditorNavType;
     selected: boolean;
 } & ComponentPropsWithoutRef<'div'>) => {
-    const {icon, text} = editorNavTypeMap[type];
+    const {icon, navigationBarText} = editorNavTypeMap[type];
     return (
         <Column gap={2} $alignItems={'center'} $justifyContent={'center'} $customStyle={css`
             min-width: 56px;
@@ -144,7 +144,7 @@ const Item = ({type, selected, ...props}: {
                 ` : css`
                     color: var(--g-400);
                 `};
-            `}>{text}</Text>
+            `}>{navigationBarText}</Text>
         </Column>
     );
 };

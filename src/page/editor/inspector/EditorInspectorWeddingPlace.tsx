@@ -20,8 +20,7 @@ const EditorInspectorWeddingPlace = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'예식 장소'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'weddingPlace'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Input placeholder={'예식장명'} value={weddingPlace.placeName} onChange={event => update(draft => {
                     draft.weddingPlace.placeName = event.target.value;

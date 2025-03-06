@@ -2,10 +2,20 @@ import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
+import Binding from "@src/interface/Binding";
+import WeddingDto from "@remote/value/WeddingDto";
 
-const EditorInspectorFontAndStyle = () => {
+interface Props extends Binding<WeddingDto> {
+}
+
+const EditorInspectorFontAndStyle = (
+    {
+        value: {weddingDesign},
+        update
+    }: Props
+) => {
     return (
-        <EditorInspectorWrapper title={'폰트 및 스타일'}>
+        <EditorInspectorWrapper type={'fontAndStyle'} hasDivider={false}>
 
         </EditorInspectorWrapper>
     );

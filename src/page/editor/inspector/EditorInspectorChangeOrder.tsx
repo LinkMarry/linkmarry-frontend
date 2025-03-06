@@ -1,53 +1,46 @@
-import React, {ComponentPropsWithRef, ForwardedRef, forwardRef, useState} from 'react';
+import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
-import {DragDropContext, Draggable, DraggableProvidedDragHandleProps, Droppable, DropResult} from "react-beautiful-dnd";
+import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import CustomStyle from "@designsystem/core/CustomStyle";
 import DndUtil from "@util/dnd.util";
+import Binding from "@src/interface/Binding";
+import WeddingDto from "@remote/value/WeddingDto";
+import Positions, {positionMap} from "@remote/value/Positions";
 
-const EditorInspectorChangeOrder = () => {
-    const [dummyPositions, setDummyPositions] = useState([
-        {
-            id: 1,
-            text: 'Option1'
-        },
-        {
-            id: 2,
-            text: 'Option2'
-        },
-        {
-            id: 3,
-            text: 'Option3'
-        },
-        {
-            id: 4,
-            text: 'Option4'
-        }
-    ]);
+interface Props extends Binding<WeddingDto> {
+}
 
+const EditorInspectorChangeOrder = (
+    {
+        value: {position},
+        update,
+    }: Props
+) => {
     const onDragEnd = (result: DropResult) => {
-        const reorderedItems = DndUtil.reorderedItems(result, dummyPositions);
+        const reorderedItems = DndUtil.reorderedItems(result, position);
 
         if (reorderedItems) {
-            setDummyPositions(reorderedItems);
+            update(draft => {
+                draft.position = reorderedItems;
+            });
         }
     };
 
     return (
-        <EditorInspectorWrapper title={'순서변경'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'changeOrder'}>
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId={'EditorInspectorChangeOrder-droppable'}>
                     {provided => (
                         <Column ref={provided.innerRef} $alignItems={'stretch'} gap={12} {...provided.droppableProps}>
-                            {dummyPositions.map((item, index) => (
+                            {position.map((item, index) => (
                                 <Draggable
-                                    key={String(item.id)}
-                                    draggableId={String(item.id)}
+                                    key={String(item)}
+                                    draggableId={String(item)}
                                     index={index}
                                 >
                                     {provided => (
@@ -55,7 +48,7 @@ const EditorInspectorChangeOrder = () => {
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}
-                                            text={item.text}
+                                            text={positionMap[item as Positions].korean}
                                         />
                                     )}
                                 </Draggable>
@@ -69,11 +62,11 @@ const EditorInspectorChangeOrder = () => {
     );
 };
 
-interface Props extends ComponentPropsWithRef<'div'> {
+interface ItemProps extends ComponentPropsWithRef<'div'> {
     text: string;
 }
 
-const Item = forwardRef(({text, ...props}: Props, ref?: ForwardedRef<HTMLDivElement>) => {
+const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
         <Row ref={ref} $alignItems={'center'} $customStyle={css`
             padding: 12px 16px;

@@ -20,8 +20,7 @@ const EditorInspectorGuestComment = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'방명록'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'guestComment'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={guestComment.title} onChange={event => update(draft => {

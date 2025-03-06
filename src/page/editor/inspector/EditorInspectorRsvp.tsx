@@ -24,12 +24,11 @@ const EditorInspectorRsvp = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'참석의사 RSVP'} toggle={{
+        <EditorInspectorWrapper type={'rsvp'} toggle={{
             checked: false,
             OnChange: () => {
             }
         }}>
-            <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={rsvp.rsvpTitle} onChange={event => update(draft => {

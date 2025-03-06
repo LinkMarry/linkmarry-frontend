@@ -6,7 +6,6 @@ import Input from "@designsystem/component/Input";
 import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
-import Phone from "@remote/value/Phone";
 import WeddingDto from "@remote/value/WeddingDto";
 
 interface Props extends Binding<WeddingDto> {
@@ -19,8 +18,7 @@ const EditorInspectorPhone = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'연락처'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'phone'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>신랑 신부 전화번호</Text>
                 <Input placeholder={'신랑'} value={phone.groomTel} onChange={event => update(draft => {

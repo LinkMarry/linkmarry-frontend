@@ -18,8 +18,7 @@ interface Props extends Binding<WeddingDto> {
 
 const EditorInspectorGreeting = ({value, update}: Props) => {
     return (
-        <EditorInspectorWrapper title={'인사말'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'greeting'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={value.greeting.greetingTitle} onChange={event => update(draft => {

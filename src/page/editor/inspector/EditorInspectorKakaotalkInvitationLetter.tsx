@@ -9,11 +9,20 @@ import SharingLink from "@src/component/SharingLink";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Divider from "@designsystem/component/Divider";
+import Binding from "@src/interface/Binding";
+import WeddingDto from "@remote/value/WeddingDto";
 
-const EditorInspectorKakaotalkInvitationLetter = () => {
+interface Props extends Binding<WeddingDto> {
+}
+
+const EditorInspectorKakaotalkInvitationLetter = (
+    {
+        value: {linkShare},
+        update
+    }: Props
+) => {
     return (
-        <EditorInspectorWrapper title={'카카오톡 초대장'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'kakaotalkInvitationLetter'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false}/>
@@ -30,11 +39,13 @@ const EditorInspectorKakaotalkInvitationLetter = () => {
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>버튼 추가</Text>
-                <SegmentedButton items={['설정 안 함', '위치 보기', '참석의사']} selectedTab={0} onChange={tab => {}}/>
+                <SegmentedButton items={['설정 안 함', '위치 보기', '참석의사']} selectedTab={0} onChange={tab => {
+                }}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>스타일</Text>
-                <SegmentedButton items={['가로', '세로']} selectedTab={0} onChange={tab => {}}/>
+                <SegmentedButton items={['가로', '세로']} selectedTab={0} onChange={tab => {
+                }}/>
             </Column>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>

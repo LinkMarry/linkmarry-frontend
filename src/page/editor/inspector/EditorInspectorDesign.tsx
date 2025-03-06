@@ -33,7 +33,7 @@ const EditorInspectorDesign = ({value, update, weddingDesigns}: Props & WeddingD
     const selectedWeddingDesigns = groupedCategories?.find(i => i.category === selectedCategory)?.items;
 
     return (
-        <EditorInspectorWrapper title={'디자인'}>
+        <EditorInspectorWrapper type={'design'} hasDivider={false}>
             {/*디자인*/}
             <Column $alignItems={'stretch'} gap={12}>
                 {categories ? (

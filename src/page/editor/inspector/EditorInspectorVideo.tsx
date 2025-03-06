@@ -18,12 +18,11 @@ const EditorInspectorVideo = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'동영상'} toggle={{
+        <EditorInspectorWrapper type={'video'} toggle={{
             checked: false,
             OnChange: () => {
             }
         }}>
-            <Divider/>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={video.videoTitle} onChange={event => update(draft => {

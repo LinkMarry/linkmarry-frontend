@@ -66,10 +66,10 @@ const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns
                     rsvp: <EditorInspectorRsvp value={wedding} update={update}/>,
                     phone: <EditorInspectorPhone value={wedding} update={update}/>,
                     guestComment: <EditorInspectorGuestComment value={wedding} update={update}/>,
-                    fontAndStyle: <EditorInspectorFontAndStyle/>,
-                    urlShare: <EditorInspectorUrlShare/>,
-                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter/>,
-                    changeOrder: <EditorInspectorChangeOrder/>,
+                    fontAndStyle: <EditorInspectorFontAndStyle value={wedding} update={update}/>,
+                    urlShare: <EditorInspectorUrlShare value={wedding} update={update}/>,
+                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter value={wedding} update={update}/>,
+                    changeOrder: <EditorInspectorChangeOrder value={wedding} update={update}/>,
                 }
                 return view[currentNavType];
             })()}

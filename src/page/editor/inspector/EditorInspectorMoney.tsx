@@ -21,8 +21,7 @@ const EditorInspectorMoney = (
     }: Props
 ) => {
     return (
-        <EditorInspectorWrapper title={'축의금'}>
-            <Divider/>
+        <EditorInspectorWrapper type={'money'}>
             <Column $alignItems={'stretch'} gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={moneyInfo.infoTitle} onChange={event => update(draft => {
