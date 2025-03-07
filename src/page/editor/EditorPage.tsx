@@ -8,16 +8,15 @@ import EditorPreview from "@page/editor/EditorPreview";
 import EditorInspector from "@page/editor/inspector/EditorInspector";
 import useResponsive from "@hook/useResponsive";
 import {hideScrollBar} from "@util/css.util";
-import WeddingDto, {makeDefaultWedding} from "@remote/value/WeddingDto";
-import {useImmer} from "use-immer";
 import useWeddingDesigns from "@hook/useWeddingDesigns";
 import useBackgroundMusics from "@hook/useBackgroundMusics";
+import useWedding from "@hook/useWedding";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
-    const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding(''));
+    const {wedding, updateWedding, saveWedding} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
 
@@ -38,7 +37,12 @@ const EditorPage = () => {
                     margin: 0 auto;
                 `};
             `}>
-                <EditorHeader/>
+                <EditorHeader
+                    onShowPreview={() => {
+                        // todo:
+                    }}
+                    onSave={saveWedding}
+                />
                 <EditorNavigationBar
                     currentNavType={currentNavType}
                     onChangeNavType={type => setCurrentNavType(type)}

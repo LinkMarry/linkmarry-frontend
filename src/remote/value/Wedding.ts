@@ -12,13 +12,14 @@ import GuestComment, {dummyGuestComment} from "@remote/value/GuestComment";
 import WeddingDesign, {dummyWeddingDesign} from "@remote/value/WeddingDesign";
 import Comment, {dummyComments} from "@remote/value/Comment";
 import Gallery, {dummyGallery} from "@remote/value/Gallery";
+import Position from "@remote/value/Position";
 
 export default interface Wedding {
     // URL 값
     url: string;
 
     // 아래 내용 위치
-    position: number[];
+    position: Position[];
 
     // 템플릿 정보
     weddingDesign: WeddingDesign;
@@ -74,10 +75,6 @@ export const dummyWedding: Wedding = {
         4,
         5,
         8,
-        9,
-        10,
-        11,
-        12
     ],
     weddingDesign: dummyWeddingDesign,
     baseInfo: dummyBaseInfo,

@@ -9,16 +9,21 @@ import useResponsive from "@hook/useResponsive";
 
 // TODO: 에디터에서 나가시겠습니까?
 
-const EditorHeader = () => {
+interface Props {
+    onShowPreview: () => void;
+    onSave: () => void;
+}
+
+const EditorHeader = (props: Props) => {
     const {deviceSize} = useResponsive();
     if (deviceSize === 'mobile' || deviceSize === 'tablet') {
-        return <SmallEditorHeader/>;
+        return <SmallEditorHeader {...props}/>;
     }
 
-    return <DesktopEditorHeader/>;
+    return <DesktopEditorHeader {...props}/>;
 };
 
-const SmallEditorHeader = () => {
+const SmallEditorHeader = ({onShowPreview, onSave}: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -34,14 +39,14 @@ const SmallEditorHeader = () => {
             }}/>
             <Spacer/>
             <Row $gap={8}>
-                <Button text={'미리보기'} size={'small'} buttonType={'tonal'}/>
-                <Button text={'저장하기'} size={'small'}/>
+                <Button text={'미리보기'} size={'small'} buttonType={'tonal'} onClick={onShowPreview}/>
+                <Button text={'저장하기'} size={'small'} onClick={onSave}/>
             </Row>
         </Row>
     )
 }
 
-const DesktopEditorHeader = () => {
+const DesktopEditorHeader = ({onSave}: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -56,7 +61,7 @@ const DesktopEditorHeader = () => {
                 navigate('/');
             }}/>
             <Spacer/>
-            <Button text={'저장하기'} size={'medium'}/>
+            <Button text={'저장하기'} size={'medium'} onClick={onSave}/>
         </Row>
     )
 }
