@@ -69,6 +69,17 @@ const EditorInspectorFontAndStyle = (
                                     })}
                                 />
                             ))}
+                            <View as={'input'} type={'color'} $ui={css`
+                                aspect-ratio: 1;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                outline: 1px solid var(--g-200);
+                                position: relative;
+                            `}>
+                                {/*<Text type={'caption1'} ui={css`*/}
+                                {/*    color: var(--g-500);*/}
+                                {/*`}>직접 선택</Text>*/}
+                            </View>
                         </View>
                     </Column>
                     <Column $gap={4} $alignItems={'stretch'}>
@@ -101,7 +112,7 @@ const FontItem = ({fontFamily}: FontItemProps) => {
                 특별한 결혼을 위해<br/>링크메리
             </Text>
         </Column>
-    )
+    );
 }
 
 interface ColorItemProps extends ComponentPropsWithoutRef<'div'> {

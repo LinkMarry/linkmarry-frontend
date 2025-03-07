@@ -60,19 +60,19 @@ const EditorInspectorBackgroundMusic = (
         audio.volume = 0.15;
 
         if (!backgroundMusic.backgroundMusic) {
-            setSelectedPlayingMusicUrl(music.url);
-            audio.src = music.url;
+            setSelectedPlayingMusicUrl(music.musicUrl);
+            audio.src = music.musicUrl;
             await audio.play();
             return;
         }
 
-        if (music.url === selectedPlayingMusicUrl) {
+        if (music.musicUrl === selectedPlayingMusicUrl) {
             setSelectedPlayingMusicUrl(undefined);
             audio.src = '';
             audio.pause();
         } else {
-            setSelectedPlayingMusicUrl(music.url);
-            audio.src = music.url;
+            setSelectedPlayingMusicUrl(music.musicUrl);
+            audio.src = music.musicUrl;
             await audio.play();
         }
     }
@@ -90,14 +90,14 @@ const EditorInspectorBackgroundMusic = (
                     <Item
                         key={index}
                         music={music}
-                        selected={music.url === backgroundMusic.backgroundMusic}
-                        isPlaying={music.url === selectedPlayingMusicUrl}
+                        selected={music.musicUrl === backgroundMusic.backgroundMusic}
+                        isPlaying={music.musicUrl === selectedPlayingMusicUrl}
                         onPlay={async () => {
                             await onClickPlayMusic(music);
                         }}
                         onClick={() => update(draft => {
                             draft.backgroundMusic.backgroundMusicName = music.name;
-                            draft.backgroundMusic.backgroundMusic = music.url;
+                            draft.backgroundMusic.backgroundMusic = music.musicUrl;
                         })}
                     />
                 )) : (
@@ -107,7 +107,7 @@ const EditorInspectorBackgroundMusic = (
                 )}
             </Column>
             {backgroundMusics && (
-                (backgroundMusic.backgroundMusic === '' || backgroundMusics.map(i => i.url).includes(backgroundMusic.backgroundMusic)) ? (
+                (backgroundMusic.backgroundMusic === '' || backgroundMusics.map(i => i.musicUrl).includes(backgroundMusic.backgroundMusic)) ? (
                     <Column as={'label'} htmlFor={inputId} $alignItems={'stretch'} $ui={css`
                         cursor: pointer;
                     `}>

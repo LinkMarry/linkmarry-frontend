@@ -1,6 +1,9 @@
 export default interface Music {
+    id: number;
     name: string;
-    url: string;
+    imgUrl: string;
+    musicUrl: string;
+    tag: string;
 }
 
 export function getMusicName(music: Music) {

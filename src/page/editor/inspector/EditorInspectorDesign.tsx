@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ComponentPropsWithoutRef, useEffect, useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import TabBar from "@designsystem/component/TabBar";
@@ -59,9 +59,10 @@ const EditorInspectorDesign = (
                     grid-row-gap: 32px;
                     grid-column-gap: 12px;
                 `}>
-                    {/*todo shimmer*/}
                     {selectedWeddingDesigns && selectedWeddingDesigns.map((design, index) => (
-                        <Item key={index} design={design} selected={index === 3}/>
+                        <Item key={index} design={design} selected={design.name === weddingDesign.weddingDesignName} onClick={() => update(draft => {
+                            draft.weddingDesign.weddingDesignName = design.name;
+                        })}/>
                     ))}
                 </View>
             </Column>
@@ -108,26 +109,34 @@ const EditorInspectorDesign = (
     );
 };
 
-interface ItemProps {
+interface ItemProps extends ComponentPropsWithoutRef<'div'> {
     design: WeddingDesignPreset;
     selected: boolean;
 }
 
-const Item = ({design, selected}: ItemProps) => {
+const Item = ({design, selected, ...props}: ItemProps) => {
     return (
-        <Column $alignItems={'stretch'} $gap={8}>
+        <Column $alignItems={'stretch'} $gap={8} $ui={css`
+            cursor: pointer;
+            min-width: 0;
+        `} {...props}>
             <View
                 as={'img'}
                 src={design.img}
                 $ui={css`
                     aspect-ratio: 9 / 16;
-                    //object-fit: cover;
-                    //overflow: hidden;
+                    object-fit: cover;
+                    border-radius: 8px;
                 `}
             />
             <Row $alignItems={'center'}>
                 <Text type={'p3'} ui={css`
-                    ${selected && css`
+                    flex: 1;
+                    min-width: 0;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    ${!selected && css`
                         color: var(--g-400);
                     `};
                 `}>{design.name}</Text>
