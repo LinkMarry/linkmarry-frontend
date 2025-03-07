@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
@@ -9,9 +9,9 @@ interface DialogProps {
     title: string;
     description?: string;
     dismiss: () => void;
-    dismissButtonProps: Props;
+    dismissButtonProps?: Props;
     confirmButtonProps: Props;
-    children?: React.ReactNode;
+    children?: ReactNode;
 }
 
 function Dialog(
@@ -51,11 +51,13 @@ function Dialog(
                         flex: 1;
                     }
                 `}>
-                    <Button {...{
-                        buttonType: 'tonal',
-                        onClick: dismiss,
-                        ...dismissButtonProps
-                    }}/>
+                    {dismissButtonProps && (
+                        <Button {...{
+                            buttonType: 'tonal',
+                            onClick: dismiss,
+                            ...dismissButtonProps
+                        }}/>
+                    )}
                     <Button {...confirmButtonProps}/>
                 </Row>
             </Column>

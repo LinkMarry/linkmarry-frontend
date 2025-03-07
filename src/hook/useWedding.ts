@@ -25,7 +25,8 @@ function useWedding() {
     return {
         wedding,
         updateWedding,
-        saveWedding
+        saveWedding,
+        isCreateMode
     }
 }
 

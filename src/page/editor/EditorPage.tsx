@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Column} from "@designsystem/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import EditorHeader from "@page/editor/EditorHeader";
 import {css} from "styled-components";
 import EditorNavigationBar from "@page/editor/EditorNavigationBar";
@@ -11,14 +11,17 @@ import {hideScrollBar} from "@util/css.util";
 import useWeddingDesigns from "@hook/useWeddingDesigns";
 import useBackgroundMusics from "@hook/useBackgroundMusics";
 import useWedding from "@hook/useWedding";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
+import Input from "@designsystem/component/Input";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
-    const {wedding, updateWedding, saveWedding} = useWedding();
+    const {wedding, updateWedding, saveWedding, isCreateMode} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
+    const [showCreateWeddingDialog, setShowCreateWeddingDialog] = useState(isCreateMode);
 
     return (
         <Column $alignItems={'stretch'} $ui={css`
@@ -28,6 +31,23 @@ const EditorPage = () => {
             ${hideScrollBar};
             background: var(--g-100);
         `}>
+            {showCreateWeddingDialog && (
+                <Dialog
+                    title={'새 디자인 만들기'}
+                    description={'청첩장에 사용할 링크를 입력해 주세요.'}
+                    dismiss={() => {
+                    }}
+                    confirmButtonProps={{
+                        text: '만들기',
+                        enabled: wedding.url.length > 0,
+                        onClick: () => setShowCreateWeddingDialog(false)
+                    }}
+                >
+                    <Input value={`wedding/${wedding.url}`} onChange={event => updateWedding(draft => {
+                        draft.url = event.target.value.slice(8);
+                    })} placeholder={'링크'}/>
+                </Dialog>
+            )}
             <Column $alignItems={'stretch'} $flex={1} $ui={css`
                 overflow: hidden;
                 background: white;
