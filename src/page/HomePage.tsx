@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
@@ -6,10 +6,22 @@ import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
 import View from "@designsystem/core/View";
 import WeddingStyleCell from "@src/component/WeddingStyleCell";
-import TabBar, {dummyTabBarItems} from "@designsystem/component/TabBar";
+import TabBar from "@designsystem/component/TabBar";
+import useWeddingDesigns from "@hook/useWeddingDesigns";
+import {groupByCategory} from "@remote/value/GroupedCategory";
+import Loading from "@src/component/Loading";
 
 function HomePage() {
     const {deviceSize} = useResponsive();
+    const {weddingDesigns} = useWeddingDesigns();
+    const groupedCategories = weddingDesigns ? groupByCategory(weddingDesigns) : undefined;
+    const [selectedCategory, setSelectedCategory] = useState<string>();
+    const categories = groupedCategories ? ['전체', ...groupedCategories.map(i => i.category)] : undefined;
+    const selectedWeddingDesigns = selectedCategory === '전체' ? weddingDesigns : groupedCategories?.find(i => i.category === selectedCategory)?.items;
+
+    useEffect(() => {
+        setSelectedCategory(groupedCategories?.[0]?.category);
+    }, [weddingDesigns]);
 
     return (
         <MainWrapper>
@@ -39,28 +51,39 @@ function HomePage() {
                     </Column>
                     {/*content*/}
                     <Column $gap={16} $alignItems={'stretch'}>
-                        <Row $justifyContent={'center'}>
-                            <TabBar items={dummyTabBarItems} selectedTab={0} onChange={tab => {}}/>
-                        </Row>
-                        <View $ui={css`
-                            display: grid;
-                            max-width: 960px;
-                            align-self: center;
-                            width: 100%;
-                            grid-template-columns: repeat(4, 1fr);
-                            ${deviceSize === 'mobile' && css`
-                                grid-template-columns: repeat(2, 1fr);
-                            `};
-                            grid-column-gap: 14px;
-                            grid-row-gap: 32px;
-                        `}>
-                            <WeddingStyleCell/>
-                            <WeddingStyleCell/>
-                            <WeddingStyleCell/>
-                            <WeddingStyleCell/>
-                            <WeddingStyleCell/>
-                            <WeddingStyleCell/>
-                        </View>
+                        {categories && (
+                            <Row $justifyContent={'center'}>
+                                <TabBar
+                                    items={categories}
+                                    selectedTab={categories.indexOf(selectedCategory!)}
+                                    onChange={tab => {
+                                        setSelectedCategory(categories[tab]);
+                                    }}
+                                />
+                            </Row>
+                        )}
+                        {selectedWeddingDesigns ? (
+                            <View $ui={css`
+                                display: grid;
+                                max-width: 960px;
+                                align-self: center;
+                                width: 100%;
+                                grid-template-columns: repeat(4, 1fr);
+                                ${deviceSize === 'mobile' && css`
+                                    grid-template-columns: repeat(2, 1fr);
+                                `};
+                                grid-column-gap: 14px;
+                                grid-row-gap: 32px;
+                            `}>
+                                {selectedWeddingDesigns.map(design => (
+                                    <WeddingStyleCell key={design.id} weddingDesign={design}/>
+                                ))}
+                            </View>
+                        ) : (
+                            <Loading ui={css`
+                                margin-top: 40px;
+                            `}/>
+                        )}
                     </Column>
                 </Column>
             </Column>
