@@ -11,13 +11,14 @@ import Rsvp, {defaultRsvp} from "@remote/value/Rsvp";
 import GuestComment, {defaultGuestComment} from "@remote/value/GuestComment";
 import WeddingDesign, {defaultWeddingDesign} from "@remote/value/WeddingDesign";
 import Gallery, {defaultGallery} from "@remote/value/Gallery";
+import Position, {positionList} from "@remote/value/Position";
 
 export default interface WeddingDto {
     // URL 값
     url: string;
 
      // 아래 내용 위치
-    position: number[];
+    position: Position[];
 
     // 템플릿 정보
     weddingDesign: WeddingDesign;
@@ -62,7 +63,7 @@ export default interface WeddingDto {
 export function makeDefaultWedding(url: string): WeddingDto {
     return {
         url,
-        position: [],
+        position: positionList,
         weddingDesign: defaultWeddingDesign,
         baseInfo: defaultBaseInfo,
         weddingSchedule: defaultWeddingSchedule,

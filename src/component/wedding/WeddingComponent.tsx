@@ -21,7 +21,7 @@ import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
 import useAudio from "@hook/useAudio";
-import Positions from "@remote/value/Positions";
+import Position from "@remote/value/Position";
 
 interface Template1Props {
     wedding: Wedding;
@@ -78,7 +78,7 @@ function WeddingComponent(
                 weddingSchedule={wedding.weddingSchedule}
             />
             {wedding.position.map(index => {
-                const view: Record<Positions, ReactNode> = {
+                const view: Record<Position, ReactNode> = {
                     0: <InvitationLetterTemplate
                         key={index}
                         baseInfo={wedding.baseInfo}
@@ -135,7 +135,7 @@ function WeddingComponent(
                         onClickCreateRsvp={() => setShowRsvpDialog(true)}
                     />
                 };
-                return view[index as Positions];
+                return view[index as Position];
             })}
             <FooterTemplate background={weddingDesignColor}/>
             {showRsvpDialog && (

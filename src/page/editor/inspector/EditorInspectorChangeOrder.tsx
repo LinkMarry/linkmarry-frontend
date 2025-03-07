@@ -1,7 +1,6 @@
 import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Divider from "@designsystem/component/Divider";
 import {css} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
@@ -10,7 +9,7 @@ import View from "@designsystem/core/View";
 import DndUtil from "@util/dnd.util";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
-import Positions, {positionMap} from "@remote/value/Positions";
+import Position, {positionMap} from "@remote/value/Position";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -48,7 +47,7 @@ const EditorInspectorChangeOrder = (
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}
-                                            text={positionMap[item as Positions].korean}
+                                            text={positionMap[item as Position].korean}
                                         />
                                     )}
                                 </Draggable>
