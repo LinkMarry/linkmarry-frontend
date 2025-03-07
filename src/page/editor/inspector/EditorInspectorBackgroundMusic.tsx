@@ -210,14 +210,13 @@ const Item = ({music, selected, isPlaying, onPlay, ...props}: ItemProps & Compon
                 event.stopPropagation();
                 onPlay();
             }}>
-                <View as={'img'} $ui={css`
+                <View as={'img'} src={music.imgUrl} $ui={css`
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    background: gray; // dummy
                 `} onClick={() => {
 
-                }}></View>
+                }}/>
                 {(isHovering || isPlaying) && (
                     <Icon iconType={isPlaying ? IconType.Pause : IconType.Play} ui={css`
                         fill: white;

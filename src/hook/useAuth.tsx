@@ -80,7 +80,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
             signIn,
             signOut,
             removeMember,
-            fetchMember
+            fetchMember,
         }}>
             {children}
         </AuthContext.Provider>

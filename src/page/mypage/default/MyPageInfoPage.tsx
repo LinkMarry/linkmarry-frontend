@@ -1,14 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import Divider from "@designsystem/component/Divider";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
+import useAuth from "@hook/useAuth";
 
 function MyPageInfoPage() {
+    const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
+    const {removeMember} = useAuth();
+
     return (
         <Column $gap={24} $alignItems={'stretch'} $ui={css`
             flex: 1;
         `}>
+            {showRemoveMemberDialog && (
+                <Dialog
+                    title={'정말 멤버를 탈퇴하시겠습니까?'}
+                    dismiss={() => setShowRemoveMemberDialog(false)}
+                    dismissButtonProps={{text: '취소'}}
+                    confirmButtonProps={{
+                        text: '탈퇴',
+                        onClick: async () => {
+                            await removeMember();
+                        }
+                    }}
+                />
+            )}
             <Text type={'h5'} bold={true}>회원정보</Text>
             <Column $gap={8} $alignItems={'stretch'}>
                 <Column $alignItems={'stretch'}>
@@ -28,7 +46,7 @@ function MyPageInfoPage() {
                         align-items: center;
                     `}
                     onClick={() => {
-                        // todo: api
+                        setShowRemoveMemberDialog(true);
                     }}
                 >{'회원탈퇴'}</Text>
             </Column>
