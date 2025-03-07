@@ -8,12 +8,13 @@ import View from "@designsystem/core/View";
 import useUpload from "@hook/useUpload";
 import {makeInteractionEffect} from "@util/css.util";
 import Spacer from "@designsystem/component/Spacer";
+import Upload from "@remote/value/Upload";
 
 interface Props {
     id: string;
     value: string;
     label: string;
-    onChange: (newValue: string) => void;
+    onChange: (newValue: Upload) => void;
 }
 
 const FileUploadBox = ({id, value, label, onChange}: Props) => {
@@ -28,8 +29,8 @@ const FileUploadBox = ({id, value, label, onChange}: Props) => {
 
         setIsFetching(true);
 
-        const {url} = await uploadFile(files[0]);
-        onChange(url);
+        const data = await uploadFile(files[0]);
+        onChange(data);
 
         setIsFetching(false);
         inputRef.current.value = '';
@@ -92,7 +93,11 @@ const FileUploadBox = ({id, value, label, onChange}: Props) => {
                         cursor: pointer;
                         border-radius: 6px;
                         ${makeInteractionEffect('strong')};
-                    `} onClick={() => onChange('')}>
+                    `} onClick={() => onChange({
+                        name: '',
+                        url: '',
+                        byte: 0
+                    })}>
                         <Icon iconType={IconType.Trash} width={24} height={24} ui={css`
                             fill: var(--g-600);
                         `}/>
