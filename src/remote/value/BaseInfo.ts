@@ -147,25 +147,26 @@ type InfoByBrideMarkFirst = {
     korean: string;
 }
 
+// firstname + lastname 임시
 export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
     first: InfoByBrideMarkFirst;
     second: InfoByBrideMarkFirst;
 } {
     const groomInfo: InfoByBrideMarkFirst = {
-        name: 'baseInfo.groomName',
-        fatherName: 'baseInfo.groomFatherName',
+        name: baseInfo.groomFirstName + baseInfo.groomLastName,
+        fatherName: baseInfo.groomFatherFirstName + baseInfo.groomFatherLastName,
         fatherStatus: baseInfo.groomFatherStatus,
-        motherName: 'baseInfo.groomMotherName',
+        motherName: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
         motherStatus: baseInfo.groomMotherStatus,
         familyName: baseInfo.groomFamilyName,
         korean: '신랑'
     };
 
     const brideInfo: InfoByBrideMarkFirst = {
-        name: 'baseInfo.brideName',
-        fatherName: 'baseInfo.brideFatherName',
+        name: baseInfo.brideFirstName + baseInfo.brideLastName,
+        fatherName: baseInfo.brideFatherFirstName + baseInfo.brideFatherLastName,
         fatherStatus: baseInfo.brideFatherStatus,
-        motherName: 'baseInfo.brideMotherName',
+        motherName: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,
         motherStatus: baseInfo.brideMotherStatus,
         familyName: baseInfo.brideFamilyName,
         korean: '신부'

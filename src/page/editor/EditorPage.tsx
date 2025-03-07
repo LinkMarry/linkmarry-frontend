@@ -13,6 +13,7 @@ import useBackgroundMusics from "@hook/useBackgroundMusics";
 import useWedding from "@hook/useWedding";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import Input from "@designsystem/component/Input";
+import {toDomain} from "@remote/value/WeddingDto";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
@@ -81,7 +82,7 @@ const EditorPage = () => {
                         />
                     )}
                     {deviceSize === 'desktop' && (
-                        <EditorPreview/>
+                        <EditorPreview wedding={toDomain(wedding, true)}/>
                     )}
                 </EditorNavigationBar>
             </Column>

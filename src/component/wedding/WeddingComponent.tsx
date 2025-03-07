@@ -47,7 +47,7 @@ function WeddingComponent(
     const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.weddingDesign;
     const rootRef = useRef<HTMLDivElement>(null);
 
-    const addFontSize = weddingDesignFontSizeMap[weddingDesignFontSize].addFontSize;
+    const {addFontSize} = weddingDesignFontSizeMap[weddingDesignFontSize];
     increaseFontSize(rootRef, addFontSize);
     // todo: fix
     // Cookies.remove('hide_RsvpDialog')
@@ -55,7 +55,6 @@ function WeddingComponent(
     return (
         <Column ref={rootRef} $ui={css`
             max-width: 436px;
-            width: 100%;
             align-items: stretch;
 
             *:not(.override-font):not(.override-font *) {

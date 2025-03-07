@@ -6,26 +6,30 @@ import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import WeddingComponent from "@src/component/wedding/WeddingComponent";
-import {dummyWedding} from "@remote/value/Wedding";
+import Wedding from "@remote/value/Wedding";
 import useAutoFocus from "@hook/useAutoFocus";
 import Toggle from "@designsystem/component/Toggle";
 
-const EditorPreview = () => {
+interface Props {
+    wedding: Wedding;
+}
+
+const EditorPreview = ({wedding}: Props) => {
     return (
         <Column $flex={1} $alignItems={'center'} $justifyContent={'center'} $ui={css`
             background: var(--g-100);
             position: relative;
         `}>
             <Column $alignItems={'stretch'} $ui={css`
-                max-width: 368px;
                 max-height: 733px;
                 overflow-y: scroll;
                 overflow-x: hidden;
+                width: 380px;
                 border-radius: 36px;
                 box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
                 ${hideScrollBar};
             `}>
-                <WeddingComponent wedding={dummyWedding} isPreview={true}/>
+                <WeddingComponent wedding={wedding} isPreview={true}/>
             </Column>
             <PreviewSetting/>
         </Column>

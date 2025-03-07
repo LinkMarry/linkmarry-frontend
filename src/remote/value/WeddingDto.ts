@@ -12,6 +12,8 @@ import GuestComment, {defaultGuestComment} from "@remote/value/GuestComment";
 import WeddingDesign, {defaultWeddingDesign} from "@remote/value/WeddingDesign";
 import Gallery, {defaultGallery} from "@remote/value/Gallery";
 import Position, {positionList} from "@remote/value/Position";
+import Wedding from "@remote/value/Wedding";
+import {dummyComments} from "@remote/value/Comment";
 
 export default interface WeddingDto {
     // URL 값
@@ -78,4 +80,26 @@ export function makeDefaultWedding(url: string): WeddingDto {
         rsvp: defaultRsvp,
         gallery: defaultGallery
     };
+}
+
+export function toDomain(dto: WeddingDto, hasDummy: boolean): Wedding {
+    return {
+        url: dto.url,
+        position: dto.position,
+        weddingDesign: dto.weddingDesign,
+        baseInfo: dto.baseInfo,
+        weddingSchedule: dto.weddingSchedule,
+        weddingPlace: dto.weddingPlace,
+        greeting: dto.greeting,
+        guestComment: dto.guestComment,
+        backgroundMusic: dto.backgroundMusic,
+        linkShare: dto.linkShare,
+        moneyInfo: dto.moneyInfo,
+        video: dto.video,
+        phone: dto.phone,
+        rsvp: dto.rsvp,
+        gallery: dto.gallery,
+        waterMark: false,
+        guestCommentList: hasDummy ? dummyComments : []
+    }
 }
