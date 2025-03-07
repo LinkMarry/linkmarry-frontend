@@ -1,5 +1,5 @@
 import React from 'react';
-import {fontList, textTypes} from "@designsystem/foundation/text/TextType";
+import {fontFamilyList, textTypes} from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import {allCasesOfEnum} from "@util/enum.util";
@@ -23,7 +23,7 @@ function FoundationDemo() {
             </Column>
             <Divider/>
             <Column $gap={20}>
-                {fontList.map(font => (
+                {fontFamilyList.map(font => (
                     <Row>
                         <Text type={'p3'} ui={css`
                             width: 256px;

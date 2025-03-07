@@ -17,7 +17,7 @@ export type FontFamily =
     | 'TheFaceShopInklipquid'
     | 'KyoboHandwriting2020';
 
-export const fontList: FontFamily[] = [
+export const fontFamilyList: FontFamily[] = [
     'Pretendard',
     'Aleo',
     'Rufina',
@@ -44,6 +44,7 @@ export type TextType =
     'p3' |
     'caption1' |
     'caption2';
+
 export const textTypes: TextType[] = [
     'h1',
     'h2',

@@ -2,7 +2,7 @@ import React, {ReactNode, useRef, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import MoneyInfoTemplate from "@src/component/wedding/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/component/wedding/component/FooterTemplate";
-import {templateFontSizeRecord} from "@remote/value/WeddingDesign";
+import {weddingDesignFontSizeMap} from "@remote/value/WeddingDesign";
 import GuestCommentsTemplate from "@src/component/wedding/component/GuestCommentsTemplate";
 import {increaseFontSize} from "@util/html.util";
 import CongratulationsTemplate from "@src/component/wedding/component/CongratulationsTemplate";
@@ -47,7 +47,7 @@ function WeddingComponent(
     const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.weddingDesign;
     const rootRef = useRef<HTMLDivElement>(null);
 
-    const addFontSize = templateFontSizeRecord[weddingDesignFontSize].addFontSize;
+    const addFontSize = weddingDesignFontSizeMap[weddingDesignFontSize].addFontSize;
     increaseFontSize(rootRef, addFontSize);
     // todo: fix
     // Cookies.remove('hide_RsvpDialog')

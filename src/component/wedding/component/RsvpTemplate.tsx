@@ -1,7 +1,7 @@
 import React from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import {DesignColor} from "@remote/value/WeddingDesign";
+import {WeddingDesignColor} from "@remote/value/WeddingDesign";
 import Button from "@designsystem/component/Button";
 import Divider from "@designsystem/component/Divider";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
@@ -13,7 +13,7 @@ import {css} from "styled-components";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 interface RsvpTemplateProps {
-    weddingDesignColor: DesignColor;
+    weddingDesignColor: WeddingDesignColor;
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
     onClickCreateRsvp: () => void;
