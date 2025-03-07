@@ -24,7 +24,9 @@ export default interface WeddingDesign {
     openingText: OpeningText;
 }
 
-export type WeddingDesignColor =
+export type WeddingDesignColor = WeddingDesignDefaultColor | WeddingDesignPaperColor | string;
+
+export type WeddingDesignDefaultColor =
     '#FFFFFF'
     | '#F7F7F2'
     | '#F6F2F2'
@@ -32,7 +34,9 @@ export type WeddingDesignColor =
     | '#FFFEF5'
     | '#EDF8F8'
     | '#ECECEC';
-export const weddingDesignColorList: WeddingDesignColor[] = [
+
+
+export const weddingDesignDefaultColorList: WeddingDesignColor[] = [
     '#FFFFFF',
     '#F7F7F2',
     '#F6F2F2',
@@ -41,6 +45,23 @@ export const weddingDesignColorList: WeddingDesignColor[] = [
     '#EDF8F8',
     '#ECECEC',
 ];
+
+export type WeddingDesignPaperColor =
+    'paper1' |
+    'paper2' |
+    'paper3' |
+    'paper4';
+
+export const weddingDesignPaperColorList: WeddingDesignPaperColor[] = [
+    'paper1',
+    'paper2',
+    'paper3',
+    'paper4'
+];
+
+export function isPaperColor(weddingDesignColor: WeddingDesignColor): boolean {
+    return weddingDesignColor.startsWith('paper');
+}
 
 export type WeddingDesignFontSize = 'basic' | 'large' | 'extraLarge'
 export const weddingDesignFontSizeList: WeddingDesignFontSize[] = ['basic', 'large', 'extraLarge'];

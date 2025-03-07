@@ -92,8 +92,7 @@ function KakaoMapDialog(
                     display: flex;
                     flex: 1;
                     position: relative;
-                `}>
-                </View>
+                `}/>
                 {/* 결과 출력 */}
                 <Column $gap={10} $alignItems={'stretch'} $ui={css`
                     padding: 16px;
@@ -118,7 +117,7 @@ function KakaoMapDialog(
                                         transition: 0.1s background;
 
                                         ${selected && css`
-                                            border: 1px solid var(--p-800);
+                                            border: 1px solid var(--g-800);
                                         `};
                                     `}
                                     onClick={() => {
@@ -130,17 +129,13 @@ function KakaoMapDialog(
                                     }}
                                 >
                                     <Text type={'p2'}>{place.address_name}</Text>
-                                    {/*<Text*/}
-                                    {/*    type={'p5'}*/}
-                                    {/*    customStyle={css`*/}
-                                    {/*        text-decoration: underline;*/}
-                                    {/*        color: var(--g-500);*/}
-                                    {/*        cursor: pointer;*/}
-                                    {/*    `}*/}
-                                    {/*    onClick={() => {*/}
-                                    {/*        window.open(place.place_url, '_blank');*/}
-                                    {/*    }}*/}
-                                    {/*>{place.place_name}</Text>*/}
+                                    <Text type={'p3'} ui={css`
+                                        text-decoration: underline;
+                                        color: var(--g-500);
+                                        cursor: pointer;
+                                    `} onClick={() => {
+                                        window.open(place.place_url, '_blank');
+                                    }}>{place.place_name}</Text>
                                 </Column>
                             );
                         })}

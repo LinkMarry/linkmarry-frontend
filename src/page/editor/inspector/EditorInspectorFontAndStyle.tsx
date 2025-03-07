@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import React, {ComponentPropsWithoutRef, useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
@@ -6,16 +6,19 @@ import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import {
+    isPaperColor,
     WeddingDesignColor,
-    weddingDesignColorList,
+    weddingDesignDefaultColorList,
     weddingDesignFontSizeList,
-    weddingDesignFontSizeMap
+    weddingDesignFontSizeMap, weddingDesignPaperColorList
 } from "@remote/value/WeddingDesign";
 import View from "@designsystem/core/View";
 import {css} from "styled-components";
 import Spacer from "@designsystem/component/Spacer";
 import {FontFamily, fontFamilyList} from "@designsystem/foundation/text/TextType";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
+import BasePopover from "@designsystem/component/BasePopover";
+import {HexColorPicker} from "react-colorful";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -26,6 +29,14 @@ const EditorInspectorFontAndStyle = (
         update
     }: Props
 ) => {
+    const [showColorPicker, setShowColorPicker] = useState(false);
+
+    const handleColorChanged = (color: WeddingDesignColor) => {
+        update(draft => {
+            draft.weddingDesign.weddingDesignColor = color;
+        })
+    };
+
     return (
         <EditorInspectorWrapper type={'fontAndStyle'} hasDivider={false}>
             <View $ui={css`
@@ -34,7 +45,14 @@ const EditorInspectorFontAndStyle = (
                 gap: 16px;
             `}>
                 {fontFamilyList.map((item, index) => (
-                    <FontItem fontFamily={item}/>
+                    <FontItem
+                        key={index}
+                        fontFamily={item}
+                        selected={item === weddingDesign.weddingDesignFont}
+                        onClick={() => update(draft => {
+                            draft.weddingDesign.weddingDesignFont = item;
+                        })}
+                    />
                 ))}
             </View>
             <Column $gap={12} $alignItems={'stretch'}>
@@ -59,7 +77,7 @@ const EditorInspectorFontAndStyle = (
                             grid-template-columns: repeat(4, 1fr);
                             gap: 8px;
                         `}>
-                            {weddingDesignColorList.map((color, index) => (
+                            {weddingDesignDefaultColorList.map((color, index) => (
                                 <ColorItem
                                     key={index}
                                     color={color}
@@ -69,23 +87,54 @@ const EditorInspectorFontAndStyle = (
                                     })}
                                 />
                             ))}
-                            <View as={'input'} type={'color'} $ui={css`
+                            <Column $alignItems={'center'} $justifyContent={'center'} $ui={css`
                                 aspect-ratio: 1;
                                 border-radius: 8px;
                                 cursor: pointer;
                                 outline: 1px solid var(--g-200);
                                 position: relative;
-                            `}>
-                                {/*<Text type={'caption1'} ui={css`*/}
-                                {/*    color: var(--g-500);*/}
-                                {/*`}>직접 선택</Text>*/}
-                            </View>
+                            `} onClick={() => {
+                                setShowColorPicker(true);
+                            }}>
+                                <Text type={'caption1'} ui={css`
+                                    color: var(--g-500);
+                                `}>직접 선택</Text>
+                                {showColorPicker && (
+                                    <BasePopover ui={css`
+                                        position: absolute;
+                                        top: 60px;
+                                        right: -12px;
+                                        z-index: 2;
+                                    `} dismiss={() => setShowColorPicker(false)}>
+                                        <HexColorPicker
+                                            color={weddingDesign.weddingDesignColor}
+                                            onChange={handleColorChanged}
+                                        />
+                                    </BasePopover>
+                                )}
+                            </Column>
                         </View>
                     </Column>
                     <Column $gap={4} $alignItems={'stretch'}>
                         <Text type={'caption1'} ui={css`
                             color: var(--g-500);
                         `}>페이퍼</Text>
+                        <View $ui={css`
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 8px;
+                        `}>
+                            {weddingDesignPaperColorList.map((color, index) => (
+                                <ColorItem
+                                    key={index}
+                                    color={color}
+                                    selected={color === weddingDesign.weddingDesignColor}
+                                    onClick={() => update(draft => {
+                                        draft.weddingDesign.weddingDesignColor = color;
+                                    })}
+                                />
+                            ))}
+                        </View>
                     </Column>
                 </Column>
             </Column>
@@ -93,21 +142,29 @@ const EditorInspectorFontAndStyle = (
     );
 };
 
-interface FontItemProps {
+interface FontItemProps extends ComponentPropsWithoutRef<'div'> {
     fontFamily: FontFamily;
+    selected: boolean;
 }
 
-const FontItem = ({fontFamily}: FontItemProps) => {
+const FontItem = ({fontFamily, selected, ...props}: FontItemProps) => {
     return (
-        <Column $alignItems={'stretch'}>
+        <Column $alignItems={'stretch'} $ui={css`
+            border-radius: 6px;
+            cursor: pointer;
+            ${selected && css`
+                outline: 1px solid black;
+            `};
+        `} {...props}>
             <Row $ui={css`
+                padding: 2px 0 4px 6px;
                 border-bottom: 1px solid var(--g-100);
             `}>
                 <Text type={'caption2'} font={fontFamily} bold={true}>{fontFamily}</Text>
                 <Spacer/>
             </Row>
             <Text type={'p3'} font={fontFamily} ui={css`
-                padding-top: 6px;
+                padding: 6px 6px 2px 6px;
             `}>
                 특별한 결혼을 위해<br/>링크메리
             </Text>
@@ -123,7 +180,11 @@ interface ColorItemProps extends ComponentPropsWithoutRef<'div'> {
 const ColorItem = ({color, selected, ...props}: ColorItemProps) => {
     return (
         <View $ui={css`
-            background: ${color};
+            ${isPaperColor(color) ? css`
+                background: url("/paper/${color}.png");
+            ` : css`
+                background: ${color};
+            `};
             aspect-ratio: 1;
             border-radius: 8px;
             cursor: pointer;

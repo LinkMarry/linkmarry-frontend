@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
@@ -13,6 +13,7 @@ import Button from "@designsystem/component/Button";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import View from "@designsystem/core/View";
+import KakaoMapDialog from "@src/component/dialog/KakaoMapDialog";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -23,15 +24,34 @@ const EditorInspectorWeddingPlace = (
         update
     }: Props
 ) => {
+    const [showKakaoMapDialog, setShowKakaoMapDialog] = useState(false);
+
     return (
         <EditorInspectorWrapper type={'weddingPlace'}>
+            {showKakaoMapDialog && (
+                <KakaoMapDialog
+                    weddingPlace={weddingPlace}
+                    onChange={weddingPlace => update(draft => {
+                        draft.weddingPlace = weddingPlace;
+                    })}
+                    dismiss={() => setShowKakaoMapDialog(false)}
+                />
+            )}
             <Column $alignItems={'stretch'} $gap={12}>
                 <Input placeholder={'예식장명'} value={weddingPlace.placeName} onChange={event => update(draft => {
                     draft.weddingPlace.placeName = event.target.value;
                 })}/>
-                <Input placeholder={'주소'} value={weddingPlace.addressName} onChange={event => update(draft => {
-                    draft.weddingPlace.addressName = event.target.value;
-                })}/>
+                <Row $gap={12} $alignItems={'stretch'}>
+                    <Input placeholder={'주소'} value={weddingPlace.addressName} onChange={event => update(draft => {
+                        draft.weddingPlace.addressName = event.target.value;
+                    })} ui={css`
+                        flex: 1;
+                        min-width: 0;
+                    `}/>
+                    <Button text={'검색'} buttonType={'tonal'} ui={css`
+                        height: auto;
+                    `} onClick={() => setShowKakaoMapDialog(true)}/>
+                </Row>
                 <Input placeholder={'층/홀'} value={weddingPlace.floorHall} onChange={event => update(draft => {
                     draft.weddingPlace.floorHall = event.target.value;
                 })}/>
