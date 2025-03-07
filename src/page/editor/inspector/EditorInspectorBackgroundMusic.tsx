@@ -59,12 +59,12 @@ const EditorInspectorBackgroundMusic = (
 
         audio.volume = 0.15;
 
-        if (!backgroundMusic.backgroundMusic) {
-            setSelectedPlayingMusicUrl(music.musicUrl);
-            audio.src = music.musicUrl;
-            await audio.play();
-            return;
-        }
+        // if (!backgroundMusic.backgroundMusic) {
+        //     setSelectedPlayingMusicUrl(music.musicUrl);
+        //     audio.src = music.musicUrl;
+        //     await audio.play();
+        //     return;
+        // }
 
         if (music.musicUrl === selectedPlayingMusicUrl) {
             setSelectedPlayingMusicUrl(undefined);
