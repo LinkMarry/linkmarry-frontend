@@ -42,9 +42,9 @@ const EditorInspectorKakaotalkInvitationLetter = (
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
                     id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'}
-                    value={[linkShare.kakaoImgUrl]}
-                    onChange={images => update(draft => {
-                        draft.linkShare.kakaoImgUrl = images[0];
+                    value={linkShare.kakaoImgUrl}
+                    onChange={newValue => update(draft => {
+                        draft.linkShare.kakaoImgUrl = newValue;
                     })}
                 />
             </Column>
@@ -70,7 +70,11 @@ const EditorInspectorKakaotalkInvitationLetter = (
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
-                <SharingLink button={linkShare.kakaoButton} Style={linkShare.kakaoStyle}/>
+                <SharingLink
+                    button={linkShare.kakaoButton}
+                    background={linkShare.kakaoImgUrl}
+                    Style={linkShare.kakaoStyle}
+                />
             </Column>
         </EditorInspectorWrapper>
     );

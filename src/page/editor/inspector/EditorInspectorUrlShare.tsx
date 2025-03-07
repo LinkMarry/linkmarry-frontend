@@ -9,7 +9,6 @@ import SharingLink from "@src/component/SharingLink";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
-import KakaoButton from "@remote/enumeration/KakaoButton";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -41,15 +40,15 @@ const EditorInspectorUrlShare = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
-                    id={'EditorInspectorUrlShare-urlImgUrl'} value={[linkShare.urlImgUrl]}
+                    id={'EditorInspectorUrlShare-urlImgUrl'} value={linkShare.urlImgUrl}
                     onChange={images => update(draft => {
-                        draft.linkShare.urlImgUrl = images[0];
+                        draft.linkShare.urlImgUrl = images;
                     })}
                 />
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
-                <SharingLink Style={true}/>
+                <SharingLink background={linkShare.urlImgUrl} Style={true}/>
             </Column>
         </EditorInspectorWrapper>
     );

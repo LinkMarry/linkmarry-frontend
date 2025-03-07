@@ -7,15 +7,21 @@ import KakaoButton from "@remote/enumeration/KakaoButton";
 
 interface Props {
     button?: KakaoButton;
+    background?: string;
     Style: boolean;
 }
 
-const SharingLink = ({button, Style}: Props) => {
+const SharingLink = ({button, background, Style}: Props) => {
     return (
         <Column $alignItems={'stretch'} $justifyContent={'flex-end'} $ui={css`
             border-radius: 8px;
             width: 300px;
-            background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDD3-VTr8lfMnJAJy95JDZLG-MJMMpk3uM3A&s");
+            ${background ? css`
+                background: url(${background});
+            ` : css`
+                background: var(--g-100);
+            `};
+            background-size: cover;
             ${Style ? css`
                 min-height: 297px;
             ` : css`
@@ -31,7 +37,7 @@ const SharingLink = ({button, Style}: Props) => {
                 {/*// todo*/}
                 <Text type={'p3'} bold={true}>2월 15일, 저희 결혼합니다.</Text>
                 {button && (
-                    <Row $gap={2}>
+                    <Row $gap={8}>
                         <Button text={'모바일 청첩장'} buttonType={'tonal'} ui={css`
                             flex: 1;
                         `}/>
