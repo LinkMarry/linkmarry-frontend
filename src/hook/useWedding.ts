@@ -20,7 +20,7 @@ function useWedding() {
         } catch (error) {
             console.error(error);
         }
-    }, [searchParams, setSearchParams]);
+    }, [isCreateMode, setSearchParams, wedding]);
 
     return {
         wedding,
