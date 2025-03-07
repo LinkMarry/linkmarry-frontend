@@ -20,7 +20,7 @@ function HomePage() {
     const selectedWeddingDesigns = selectedCategory === '전체' ? weddingDesigns : groupedCategories?.find(i => i.category === selectedCategory)?.items;
 
     useEffect(() => {
-        setSelectedCategory(groupedCategories?.[0]?.category);
+        setSelectedCategory('전체');
     }, [weddingDesigns]);
 
     return (
