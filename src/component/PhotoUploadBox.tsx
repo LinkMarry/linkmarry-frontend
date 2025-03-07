@@ -8,6 +8,7 @@ import fileApi from "@remote/api/FileApi";
 import View from "@designsystem/core/View";
 import AddRemoveButton from "@src/component/AddDismissButton";
 import {hideScrollBar} from "@util/css.util";
+import useUpload from "@hook/useUpload";
 
 interface Props<V = string | string[]> {
     id: string;
@@ -27,36 +28,28 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
     })();
     const [isFetching, setIsFetching] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+    const {uploadFile, uploadFiles} = useUpload();
     const handleInput = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (!files || !inputRef.current) return;
 
         setIsFetching(true);
 
-        if (typeof value === 'string') {
-            if (files.length !== 1) return;
-            const url = await uploadImage(files[0]);
-            onChange(url as V);
-        } else if (Array.isArray(value)) {
-            const urls = await uploadImages(files);
-            onChange([...value, ...urls] as V);
+        try {
+            if (typeof value === 'string') {
+                if (files.length !== 1) return;
+                const {url} = await uploadFile(files[0]);
+                onChange(url as V);
+            } else if (Array.isArray(value)) {
+                const uploads = await uploadFiles(files);
+                onChange([...value, ...uploads.map(i => i.url)] as V);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsFetching(false);
+            inputRef.current.value = '';
         }
-
-        setIsFetching(false);
-        inputRef.current.value = '';
-    };
-
-    const uploadImage = async (file: File): Promise<string> => {
-        const {data: {url}} = await fileApi.upload(file);
-        return url;
-    };
-
-    const uploadImages = async (files: FileList): Promise<string[]> => {
-        const uploadPromises = Array.from(files).map(file => fileApi.upload(file));
-        const results = await Promise.allSettled(uploadPromises);
-        return results
-            .map(result => result.status === 'fulfilled' ? result.value.data.url : null)
-            .filter((result): result is string => result !== null);
     };
 
     const handleRemove = (index: number) => {

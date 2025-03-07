@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, ChangeEventHandler, useRef, useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Divider from "@designsystem/component/Divider";
@@ -11,6 +11,10 @@ import View from "@designsystem/core/View";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import Music from "@remote/value/Music";
+import VoidInput from "@src/component/VoidInput";
+import fileApi from "@remote/api/FileApi";
+import useUpload from "@hook/useUpload";
+import Loading from "@src/component/Loading";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -19,25 +23,73 @@ export interface BackgroundMusicProps {
     backgroundMusics?: Music[];
 }
 
-const EditorInspectorBackgroundMusic = ({value, update, backgroundMusics}: Props & BackgroundMusicProps) => {
+const inputId = 'EditorInspectorBackgroundMusic-backgroundMusic';
+
+const EditorInspectorBackgroundMusic = (
+    {
+        value: {backgroundMusic},
+        update,
+        backgroundMusics
+    }: Props & BackgroundMusicProps
+) => {
+    const {uploadFile} = useUpload();
+    const inputRef = useRef<HTMLInputElement>(null);
+    const handleInput = async (event: ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (!files || !files.length || !inputRef.current) return;
+
+        const {url} = await uploadFile(files[0]);
+
+        update(draft => {
+            draft.backgroundMusic.backgroundMusic = url;
+        });
+
+        inputRef.current.value = '';
+    };
+
     return (
         <EditorInspectorWrapper type={'backgroundMusic'} toggle={{
-            checked: value.backgroundMusic.effect,
-            OnChange: checked => {
-                update(draft => {
-                    draft.backgroundMusic.effect = checked;
-                })
-            }
+            checked: backgroundMusic.backgroundMusicActivate,
+            OnChange: checked => update(draft => {
+                draft.backgroundMusic.backgroundMusicActivate = checked;
+            })
         }}>
             <Column $alignItems={'stretch'} $gap={8}>
                 {backgroundMusics ? backgroundMusics.map((music, index) => (
                     <Item key={index} music={music} isPlaying={false}/>
-                )) : null}
-                {/*tood shimmer*/}
+                )) : (
+                    <Loading ui={css`
+                        margin: 40px 0;
+                    `}/>
+                )}
             </Column>
-            <Button text={'직접 등록'} leadingIcon={IconType.AddLine} buttonType={'outlined'}/>
-            <FormToggle checked={value.backgroundMusic.effect} OnChange={checked => {
-            }} label={'자동 재생'}/>
+            {backgroundMusics && (
+                (backgroundMusic.backgroundMusic === '' || backgroundMusics.map(i => i.url).includes(backgroundMusic.backgroundMusic)) ? (
+                    <Column as={'label'} htmlFor={inputId} $alignItems={'stretch'} $ui={css`
+                        cursor: pointer;
+                    `}>
+                        <VoidInput
+                            ref={inputRef}
+                            id={inputId}
+                            type={'file'}
+                            accept={'audio/*'}
+                            onChange={handleInput}
+                        />
+                        <Button text={'직접 등록'} leadingIcon={IconType.AddLine} buttonType={'outlined'} ui={css`
+                            pointer-events: none;
+                        `}/>
+                    </Column>
+                ) : (
+                    <Row $alignItems={'center'} $gap={10} $ui={css`
+                        height: 44px;
+                    `}>
+
+                    </Row>
+                )
+            )}
+            <FormToggle checked={backgroundMusic.effect} OnChange={checked => update(draft => {
+                draft.backgroundMusic.effect = checked;
+            })} label={'자동 재생'}/>
             <Divider/>
             <Text type={'p3'} ui={css`
                 color: var(--g-400);

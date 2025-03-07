@@ -1,7 +1,6 @@
 import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import SegmentedButton from "@designsystem/component/SegmentedButton";

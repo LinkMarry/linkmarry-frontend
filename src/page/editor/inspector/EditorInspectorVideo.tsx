@@ -6,6 +6,7 @@ import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
+import FileUploadBox from "@src/component/FileUploadBox";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -18,9 +19,10 @@ const EditorInspectorVideo = (
 ) => {
     return (
         <EditorInspectorWrapper type={'video'} toggle={{
-            checked: false,
-            OnChange: () => {
-            }
+            checked: video.videoActive,
+            OnChange: checked => update(draft => {
+                draft.video.videoActive = checked;
+            })
         }}>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
@@ -36,9 +38,14 @@ const EditorInspectorVideo = (
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>파일로 첨부</Text>
-                <PhotoUploadBox id={'EditorInspectorVideo-videoUrl'} value={[video.videoUrl]} onChange={images => update(draft => {
-                    draft.video.videoUrl = images[0];
-                })}/>
+                <FileUploadBox
+                    id={'EditorInspectorVideo-videoUrl'}
+                    value={video.videoUrl}
+                    label={video.videoTitle} // todo: fix
+                    onChange={images => update(draft => {
+                        draft.video.videoUrl = images;
+                    })}
+                />
             </Column>
         </EditorInspectorWrapper>
     );
