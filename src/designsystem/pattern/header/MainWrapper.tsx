@@ -1,4 +1,4 @@
-import {ReactElement} from "react";
+import {ReactNode} from "react";
 import {css} from "styled-components";
 import Header from "@designsystem/pattern/header/Header";
 import {Column} from "@designsystem/core/FlexLayout";
@@ -7,7 +7,7 @@ import Footer from "@src/component/Footer";
 interface Props {
     hasHeader?: boolean;
     hasFooter?: boolean;
-    children: ReactElement;
+    children?: ReactNode;
 }
 
 function MainWrapper(

@@ -23,7 +23,7 @@ import {implementText} from "@designsystem/foundation/text/TextProperties";
 import useAudio from "@hook/useAudio";
 import Position from "@remote/value/Position";
 
-interface Template1Props {
+interface WeddingComponentProps {
     wedding: Wedding;
     isPreview?: boolean;
     onRefresh?: () => void;
@@ -34,7 +34,7 @@ function WeddingComponent(
         wedding,
         isPreview = false,
         onRefresh
-    }: Template1Props
+    }: WeddingComponentProps
 ) {
     const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview);
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {

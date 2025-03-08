@@ -25,7 +25,6 @@ export default function BaseDialog(
         <S.container ref={dialogRef}>
             {children}
             <S.backdrop onClick={() => {
-                dialogRef.current?.close();
                 dismiss();
             }}/>
         </S.container>

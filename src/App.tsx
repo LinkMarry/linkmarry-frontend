@@ -23,6 +23,7 @@ import AdminRoute from "@page/admin/AdminRoute";
 import ShowGuestCommentsPage from "@page/mypage/detail/ShowGuestCommentsPage";
 import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
 import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
+import AiCustomPage from "@src/ai/AICustomPage";
 
 const {Kakao} = window as any;
 
@@ -61,6 +62,7 @@ function App() {
                             <WeddingComponent wedding={dummyWedding} isPreview={true}/>
                         </Row>
                     )}/>
+                    <Route path={'ai-custom'} element={<AiCustomPage/>}/>
 
                     {/*for system*/}
                     <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
