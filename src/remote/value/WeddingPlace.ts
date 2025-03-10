@@ -39,7 +39,7 @@ export function getPlaceholder(index: number): string {
         case 0:
             return '버스';
         case 1:
-            return '주차';
+            return '지하철';
         case 2:
             return '주차안내';
         default:

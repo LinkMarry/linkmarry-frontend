@@ -56,10 +56,13 @@ function PreviewTemplate(
         }
     };
     return (
-        <FadeIn>
+        <>
             {content()}
-        </FadeIn>
+        </>
+        // <FadeIn>
+        // </FadeIn>
     )
 }
 
+//todo: temp to remove fade in
 export default PreviewTemplate;

@@ -71,6 +71,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
                 <SharingLink
+                    title={linkShare.kakaoTitle}
                     button={linkShare.kakaoButton}
                     background={linkShare.kakaoImgUrl}
                     Style={linkShare.kakaoStyle}

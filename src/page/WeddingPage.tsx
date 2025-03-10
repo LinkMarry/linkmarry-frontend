@@ -30,16 +30,16 @@ function WeddingPage() {
         //     Cookies.set(cookieKey, "false", {expires: 365}); // 1년 동안 유지
         // }
         //
-        // try {
-        //     const {data} = await weddingApi.getWeddingInvitation(url, {
-        //         deviceType: getDeviceType(),
-        //         firstVisitor: isFirstVisitor
-        //     });
-        //     setWedding(data);
-        // } catch (error) {
-        //     console.error(error);
-        //     setIsError(true);
-        // }
+        try {
+            const {data} = await weddingApi.getWeddingInvitation(url, {
+                deviceType: getDeviceType(),
+                firstVisitor: false
+            });
+            setWedding(data);
+        } catch (error) {
+            console.error(error);
+            setIsError(true);
+        }
     }
 
     return (

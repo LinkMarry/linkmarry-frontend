@@ -52,7 +52,7 @@ function App() {
                             <Route path={'wedding/:id/comments'} element={<ShowGuestCommentsPage/>}/>
                         </Route>
                     </Route>
-                    <Route path={'editor'} element={<EditorPage/>}/>
+                    <Route path={'editor/:url?'} element={<EditorPage/>}/>
                     <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                     <Route path={'sample'} element={(
                         <Row $justifyContent={'center'} $ui={css`

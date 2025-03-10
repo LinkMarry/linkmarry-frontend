@@ -2,10 +2,10 @@ import React from 'react';
 import Text from "@designsystem/component/Text";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import BaseInfo from "@remote/value/BaseInfo";
-import DDay, {DDayStyle} from "@src/component/wedding/component/weddingday/DDay";
+import DDay from "@src/component/wedding/component/weddingday/DDay";
 import {format, parse} from "date-fns";
 import View from "@designsystem/core/View";
 import FadeIn from "@src/component/fadein/FadeIn";
@@ -13,14 +13,12 @@ import FadeIn from "@src/component/fadein/FadeIn";
 interface Props {
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
-    dDayStyle: DDayStyle;
 }
 
 function WeddingDayTemplate(
     {
         baseInfo,
         weddingSchedule,
-        dDayStyle
     }: Props
 ) {
     const weddingDate = weddingSchedule.weddingDate;
@@ -138,7 +136,6 @@ function WeddingDayTemplate(
                 <DDay
                     baseInfo={baseInfo}
                     weddingSchedule={weddingSchedule}
-                    dDayStyle={dDayStyle}
                 />
             )}
         </Column>

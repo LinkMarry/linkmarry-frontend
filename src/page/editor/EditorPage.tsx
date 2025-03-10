@@ -12,42 +12,41 @@ import useWeddingDesigns from "@hook/useWeddingDesigns";
 import useBackgroundMusics from "@hook/useBackgroundMusics";
 import useWedding from "@hook/useWedding";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
-import Input from "@designsystem/component/Input";
 import {toDomain} from "@remote/value/WeddingDto";
+import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
-    const {wedding, updateWedding, saveWedding, isCreateMode} = useWedding();
+    const {wedding, updateWedding, saveWedding} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
-    const [showCreateWeddingDialog, setShowCreateWeddingDialog] = useState(isCreateMode);
+    const [showSaveSuccessDialog, setShowSaveSuccessDialog] = useState(false);
 
     return (
         <Column $alignItems={'stretch'} $ui={css`
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            ${hideScrollBar};
             background: var(--g-100);
+            ${hideScrollBar};
         `}>
-            {showCreateWeddingDialog && (
+            <CreateWeddingDialog
+                wedding={wedding}
+                onChange={url => updateWedding(draft => {
+                    draft.url = url;
+                })}
+            />
+            {showSaveSuccessDialog && (
                 <Dialog
-                    title={'새 디자인 만들기'}
-                    description={'청첩장에 사용할 링크를 입력해 주세요.'}
-                    dismiss={() => {
-                    }}
+                    title={'청첩장이 완성되었어요! 🎉'}
+                    dismiss={() => setShowSaveSuccessDialog(false)}
                     confirmButtonProps={{
-                        text: '만들기',
-                        enabled: wedding.url.length > 0,
-                        onClick: () => setShowCreateWeddingDialog(false)
+                        text: '닫기',
+                        buttonType: 'tonal'
                     }}
-                >
-                    <Input value={`wedding/${wedding.url}`} onChange={event => updateWedding(draft => {
-                        draft.url = event.target.value.slice(8);
-                    })} placeholder={'링크'}/>
-                </Dialog>
+                />
             )}
             <Column $alignItems={'stretch'} $flex={1} $ui={css`
                 overflow: hidden;
@@ -60,9 +59,11 @@ const EditorPage = () => {
             `}>
                 <EditorHeader
                     onShowPreview={() => {
-                        // todo:
                     }}
-                    onSave={saveWedding}
+                    onSave={async () => {
+                        await saveWedding();
+                        setShowSaveSuccessDialog(true);
+                    }}
                 />
                 <EditorNavigationBar
                     currentNavType={currentNavType}

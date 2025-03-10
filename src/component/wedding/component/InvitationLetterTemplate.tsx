@@ -8,19 +8,15 @@ import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import {css} from "styled-components";
 import FadeIn from "@src/component/fadein/FadeIn";
 
-export type InvitationLetterStyle = 'style1' | 'style2' | 'style3';
-
 interface InvitationLetterTemplateProps {
     baseInfo: BaseInfo;
     greeting: Greeting;
-    invitationLetterStyle: InvitationLetterStyle;
 }
 
 function InvitationLetterTemplate(
     {
         baseInfo,
         greeting,
-        invitationLetterStyle
     }: InvitationLetterTemplateProps
 ) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
@@ -33,20 +29,19 @@ function InvitationLetterTemplate(
                 padding: 72px 60px;
                 background: white;
             `}>
-                {invitationLetterStyle === 'style1' ? (
+                {greeting.greetingDesign === 'TEXT' && (
                     <FadeIn>
                         <Text className={'override-font'} weight={300} size={12} font={'Aleo'} ui={css`
                             color: var(--g-300);
                         `}>Wedding Invitation</Text>
                     </FadeIn>
-                ) : invitationLetterStyle === 'style3' ? (
+                )}
+                {greeting.greetingDesign === 'FLOWER' && (
                     <FadeIn>
                         <img src={'/invitationLetterIcon.svg'} width={20} height={20} alt="" style={{
                             color: 'white'
                         }}/>
                     </FadeIn>
-                ) : (
-                    <></>
                 )}
                 <FadeIn delay={200}>
                     <GreetingContent text={greeting.greetingContent}/>

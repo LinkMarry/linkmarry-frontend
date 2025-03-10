@@ -12,6 +12,7 @@ const Chat = ({message, ...props}: Props) => {
         <BaseChat ui={css`
             ${props.type === 'user' ? css`
                 align-self: flex-end;
+                color: white;
             ` : css`
                 align-self: flex-start;
             `};

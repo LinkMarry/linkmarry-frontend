@@ -48,7 +48,7 @@ const EditorInspectorUrlShare = (
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>미리보기</Text>
-                <SharingLink background={linkShare.urlImgUrl} Style={true}/>
+                <SharingLink title={linkShare.urlTitle} background={linkShare.urlImgUrl} Style={true}/>
             </Column>
         </EditorInspectorWrapper>
     );

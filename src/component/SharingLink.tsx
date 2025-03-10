@@ -6,12 +6,13 @@ import Button from "@designsystem/component/Button";
 import KakaoButton from "@remote/enumeration/KakaoButton";
 
 interface Props {
+    title: string;
     button?: KakaoButton;
     background?: string;
     Style: boolean;
 }
 
-const SharingLink = ({button, background, Style}: Props) => {
+const SharingLink = ({title, button, background, Style}: Props) => {
     return (
         <Column $alignItems={'stretch'} $justifyContent={'flex-end'} $ui={css`
             border-radius: 8px;
@@ -34,8 +35,7 @@ const SharingLink = ({button, background, Style}: Props) => {
                 background-size: cover;
                 background-repeat: no-repeat;
             `}>
-                {/*// todo*/}
-                <Text type={'p3'} bold={true}>2월 15일, 저희 결혼합니다.</Text>
+                <Text type={'p3'} bold={true}>{title}</Text>
                 {button && (
                     <Row $gap={8}>
                         <Button text={'모바일 청첩장'} buttonType={'tonal'} ui={css`

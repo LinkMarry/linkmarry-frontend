@@ -56,12 +56,17 @@ function WeddingComponent(
         <Column ref={rootRef} $ui={css`
             max-width: 436px;
             align-items: stretch;
+            background: white;
 
             *:not(.override-font):not(.override-font *) {
                 ${weddingDesignFont && implementText({
                     fontFamily: weddingDesignFont
                 })};
             }
+
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
         `}>
             <audio ref={ref} src={wedding.backgroundMusic.backgroundMusic} loop={true}/>
             <Helmet>
@@ -82,13 +87,11 @@ function WeddingComponent(
                         key={index}
                         baseInfo={wedding.baseInfo}
                         greeting={wedding.greeting}
-                        invitationLetterStyle={'style3'}
                     />,
                     1: <WeddingDayTemplate
                         key={index}
                         baseInfo={wedding.baseInfo}
                         weddingSchedule={wedding.weddingSchedule}
-                        dDayStyle={'style2'}
                     />,
                     2: <MoneyInfoTemplate
                         key={index}
@@ -98,9 +101,7 @@ function WeddingComponent(
                     3: <GalleryTemplate
                         key={index}
                         rootRef={rootRef}
-                        galleryDesign={wedding.gallery.galleryDesign}
-                        imgList={wedding.gallery.imgList}
-                        slideStyle={'style2'}
+                        gallery={wedding.gallery}
                     />,
                     4: <LocationTemplate
                         key={index}
@@ -158,9 +159,10 @@ function WeddingComponent(
                     dismiss={() => setShowCreateRsvpDialog(false)}
                 />
             )}
-            {wedding.waterMark && !isPreview && (
-                <WaterMarkSheet url={wedding.url}/>
-            )}
+            {/*todo*/}
+            {/*{wedding.waterMark && !isPreview && (*/}
+            {/*    <WaterMarkSheet url={wedding.url}/>*/}
+            {/*)}*/}
         </Column>
     );
 }

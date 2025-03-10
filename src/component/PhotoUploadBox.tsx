@@ -31,7 +31,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
     const {uploadFile, uploadFiles} = useUpload();
     const handleInput = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
-        if (!files || !inputRef.current) return;
+        if (!files) return;
 
         setIsFetching(true);
 
@@ -48,7 +48,9 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             console.error(error);
         } finally {
             setIsFetching(false);
-            inputRef.current.value = '';
+            if (inputRef.current) {
+                inputRef.current.value = '';
+            }
         }
     };
 
