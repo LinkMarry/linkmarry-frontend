@@ -14,6 +14,7 @@ import useWedding from "@hook/useWedding";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import {toDomain} from "@remote/value/WeddingDto";
 import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
+import {useNavigate} from "react-router-dom";
 
 const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
@@ -23,6 +24,7 @@ const EditorPage = () => {
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
     const [showSaveSuccessDialog, setShowSaveSuccessDialog] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <Column $alignItems={'stretch'} $ui={css`
@@ -59,6 +61,7 @@ const EditorPage = () => {
             `}>
                 <EditorHeader
                     onShowPreview={() => {
+                        navigate(`/wedding/${wedding.url}`);
                     }}
                     onSave={async () => {
                         await saveWedding();

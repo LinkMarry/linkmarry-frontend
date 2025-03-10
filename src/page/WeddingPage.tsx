@@ -7,6 +7,7 @@ import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
+import View from "@designsystem/core/View";
 
 function WeddingPage() {
     const {url} = useParams();
@@ -48,10 +49,16 @@ function WeddingPage() {
             padding: 64px 0;
         `}>
             {wedding && (
-                <WeddingComponent
-                    wedding={wedding}
-                    onRefresh={getWedding}
-                />
+                <View $ui={css`
+                    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+                    border-radius: 16px;
+                    overflow: hidden;
+                `}>
+                    <WeddingComponent
+                        wedding={wedding}
+                        onRefresh={getWedding}
+                    />
+                </View>
             )}
             {isError && (
                 <Text type={'h5'} ui={css`
