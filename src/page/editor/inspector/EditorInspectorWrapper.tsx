@@ -8,6 +8,7 @@ import {css} from "styled-components";
 import EditorNavType, {editorNavTypeMap} from "@page/editor/EditorNavType";
 import Divider from "@designsystem/component/Divider";
 import Icon from "@designsystem/foundation/Icon";
+import {hideScrollBar} from "@util/css.util";
 
 interface Props {
     type: EditorNavType;
@@ -28,7 +29,14 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
     });
 
     return (
-        <Column $alignItems={'stretch'} $gap={deviceSize === 'desktop' ? 32 : 24}>
+        <Column $alignItems={'stretch'} $gap={deviceSize === 'desktop' ? 32 : 24} $ui={css`
+            overflow-y: scroll;
+            ${hideScrollBar};
+            padding: 32px 24px 100px 24px;
+            ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`
+                padding: 24px 16px 40px 16px;
+            `};
+        `}>
             <Row $alignItems={'center'}>
                 <Text type={'p1'} bold={true}>{editorNavTypeMap[type].inspectorText}</Text>
                 <Spacer/>

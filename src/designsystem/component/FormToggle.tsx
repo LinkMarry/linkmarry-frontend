@@ -14,7 +14,7 @@ const FormToggle = ({checked, OnChange, label}: Props) => {
     return (
         <Row $gap={4} $alignItems={'center'} $ui={css`
             padding: 0 16px;
-            height: 52px;
+            min-height: 52px;
             border-radius: 8px;
             border: 1px solid var(--g-300);
         `}>

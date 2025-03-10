@@ -21,7 +21,6 @@ import EditorInspectorVideo from "@page/editor/inspector/EditorInspectorVideo";
 import EditorInspectorUrlShare from "@page/editor/inspector/EditorInspectorUrlShare";
 import EditorInspectorWeddingSchedule from "@page/editor/inspector/EditorInspectorWeddingSchedule";
 import EditorInspectorWeddingPlace from "@page/editor/inspector/EditorInspectorWeddingPlace";
-import {hideScrollBar} from "@util/css.util";
 import useResponsive from "@hook/useResponsive";
 import WeddingDto from "@remote/value/WeddingDto";
 import Binding from "@src/interface/Binding";
@@ -37,14 +36,12 @@ const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns
         <Column $alignItems={'stretch'} $ui={css`
             min-width: 412px;
             width: 412px;
-            padding: 32px 24px 100px 24px;
-            overflow-y: scroll;
-            ${hideScrollBar};
 
             ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`
                 min-width: 0;
                 width: auto;
-                padding: 24px 16px 40px 16px;
+                flex: 1;
+                min-height: 0;
             `};
         `}>
             {(() => {

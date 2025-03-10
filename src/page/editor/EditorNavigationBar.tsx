@@ -6,7 +6,6 @@ import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import EditorNavType, {editorNavList, editorNavTypeMap} from "@page/editor/EditorNavType";
 import Text from "@designsystem/component/Text";
 import useResponsive from "@hook/useResponsive";
-import Spacer from "@designsystem/component/Spacer";
 
 interface Props extends EditorNavigationBarImplProps {
     children?: ReactNode;
@@ -20,7 +19,6 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
                 min-height: 0;
             `}>
                 {children}
-                <Spacer/>
                 <EditorNavigationBarImpl {...props}/>
             </Column>
         );
