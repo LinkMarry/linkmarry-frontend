@@ -14,9 +14,12 @@ import useWedding from "@hook/useWedding";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import {toDomain} from "@remote/value/WeddingDto";
 import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 const EditorPage = () => {
+    const [searchParams] = useSearchParams();
+    const designId = searchParams.get('designId');
+    const numericDesignId = designId ? parseInt(designId) : null;
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
@@ -25,6 +28,15 @@ const EditorPage = () => {
     const {musics} = useBackgroundMusics();
     const [showSaveSuccessDialog, setShowSaveSuccessDialog] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        updateWedding(draft => {
+            const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
+            if (weddingDesign) {
+                draft.weddingDesign.weddingDesignName = weddingDesign.name;
+            }
+        })
+    }, [numericDesignId, weddingDesigns]);
 
     return (
         <Column $alignItems={'stretch'} $ui={css`

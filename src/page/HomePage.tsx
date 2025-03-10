@@ -5,7 +5,7 @@ import {css} from "styled-components";
 import useResponsive from "@hook/useResponsive";
 import Text from "@designsystem/component/Text";
 import View from "@designsystem/core/View";
-import WeddingStyleCell from "@src/component/WeddingStyleCell";
+import WeddingDesignPresetCell from "@src/component/WeddingStyleCell";
 import TabBar from "@designsystem/component/TabBar";
 import useWeddingDesigns from "@hook/useWeddingDesigns";
 import {groupByCategory} from "@remote/value/GroupedCategory";
@@ -76,7 +76,7 @@ function HomePage() {
                                 grid-row-gap: 32px;
                             `}>
                                 {selectedWeddingDesigns.map(design => (
-                                    <WeddingStyleCell key={design.id} weddingDesign={design}/>
+                                    <WeddingDesignPresetCell key={design.id} weddingDesign={design}/>
                                 ))}
                             </View>
                         ) : (
