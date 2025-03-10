@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Input from "@designsystem/component/Input";
@@ -9,6 +9,8 @@ import Checkbox from "@designsystem/component/Checkbox";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
+import View from "@designsystem/core/View";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -19,8 +21,45 @@ const EditorInspectorMoney = (
         update
     }: Props
 ) => {
+    const [showHelperDialog, setShowHelperDialog] = useState(false);
+
     return (
         <EditorInspectorWrapper type={'money'}>
+            {showHelperDialog && (
+                <Dialog
+                    title={'카카오페이 링크 연동 방법'}
+                    dismiss={() => setShowHelperDialog(false)}
+                    confirmButtonProps={{
+                        text: '닫기',
+                        onClick: () => setShowHelperDialog(false)
+                    }}
+                >
+                    <Row $gap={16}>
+                        <Column $alignItems={'center'} $gap={20} $ui={css`
+                            flex: 1;
+                        `}>
+                            <View as={'img'} src={'/kakaopayhelper/step1.png'} $ui={css`
+
+                            `}/>
+                            <Text type={'caption1'} bold={true} ui={css`
+                                color: var(--g-800);
+                            `}>내 프로필 우측 상단의<br/>
+                                송금코드를 클릭합니다.</Text>
+                        </Column>
+                        <Column $alignItems={'center'} $gap={20} $ui={css`
+                            flex: 1;
+                        `}>
+                            <View as={'img'} src={'/kakaopayhelper/step2.png'} $ui={css`
+
+                            `}/>
+                            <Text type={'caption1'} bold={true} ui={css`
+                                color: var(--g-800);
+                            `}>링크 아이콘을 클릭하여<br/>
+                                송금코드를 복사합니다.</Text>
+                        </Column>
+                    </Row>
+                </Dialog>
+            )}
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>제목</Text>
                 <Input hasLabel={false} value={moneyInfo.infoTitle} onChange={event => update(draft => {
@@ -35,9 +74,19 @@ const EditorInspectorMoney = (
                     height: 194px;
                 `}/>
             </Column>
-            <FormToggle checked={moneyInfo.kakaoStatus} OnChange={checked => update(draft => {
-                draft.moneyInfo.kakaoStatus = checked;
-            })} label={'카카오페이 계좌 연동'}/>
+            <Column $gap={8} $alignItems={'stretch'}>
+                <FormToggle checked={moneyInfo.kakaoStatus} OnChange={checked => update(draft => {
+                    draft.moneyInfo.kakaoStatus = checked;
+                })} label={'카카오페이 계좌 연동'}/>
+                {moneyInfo.kakaoStatus && (
+                    <Text type={'caption1'} onClick={() => setShowHelperDialog(true)} ui={css`
+                        color: var(--g-400);
+                        text-decoration: underline;
+                        align-self: flex-end;
+                        cursor: pointer;
+                    `}>카카오페이 연동하는 방법</Text>
+                )}
+            </Column>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Checkbox checked={moneyInfo.groomToggle} OnChange={checked => update(draft => {
                     draft.moneyInfo.groomToggle = checked;
