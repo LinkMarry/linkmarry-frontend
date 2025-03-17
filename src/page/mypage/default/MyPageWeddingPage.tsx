@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
@@ -10,25 +10,63 @@ import {hideScrollBar, makeInteractionEffect} from "@util/css.util";
 import Spacer from "@designsystem/component/Spacer";
 import Popover from "@designsystem/pattern/Popover";
 import useResponsive from "@hook/useResponsive";
+import WeddingDashboard from "@remote/value/WeddingDashboard";
+import weddingApi from "@remote/api/WeddingApi";
+import Loading from "@src/component/Loading";
+import WeddingInfo from "@remote/value/WeddingInfo";
+import WeddingStatistics from "@remote/value/WeddingStatistics";
+import Comment from "@remote/value/Comment";
+import DateUtil from "@util/date.util";
 
 function MyPageWeddingPage() {
+    const [weddings, setWeddings] = useState<WeddingDashboard>();
+
+    useEffect(() => {
+        (async () => {
+            const {data} = await weddingApi.getMyWedding();
+            setWeddings(data);
+        })();
+    }, []);
+
     return (
         <Column $gap={24} $flex={1} $alignItems={'stretch'}>
             <Text type={'h5'} bold={true}>모바일 청첩장</Text>
             <Column $alignItems={'stretch'} $gap={16}>
-                <WeddingCell/>
-                <WeddingCell/>
-                <WeddingCell/>
-                <WeddingCell/>
-                <WeddingCell/>
+                {weddings ? weddings.weddingInfo.map(wedding => (
+                    <WeddingCell key={wedding.url} weddingInfo={wedding}/>
+                )) : (
+                    <Loading/>
+                )}
             </Column>
         </Column>
     );
 }
 
-function WeddingCell() {
+function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
     const [openDetailPopover, setOpenDetailPopover] = useState(false);
+    const [statistics, setStatistics] = useState<WeddingStatistics>();
+    const [comments, setComments] = useState<Comment[]>();
     const {deviceSize} = useResponsive();
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const {data} = await weddingApi.getStatistics(weddingInfo.url);
+                setStatistics(data);
+            } catch (error) {
+                console.error(error);
+            }
+        })();
+
+        (async () => {
+            try {
+                const {data} = await weddingApi.getComments(weddingInfo.url);
+                setComments(data);
+            } catch (error) {
+                console.error(error);
+            }
+        })();
+    }, [weddingInfo]);
 
     return (
         <Row $gap={16} $alignItems={'stretch'} $ui={css`
@@ -55,7 +93,7 @@ function WeddingCell() {
                             `}>Title</Text>
                             <Text type={'caption2'} ui={css`
                                 color: var(--g-500);
-                            `}>https://linkmarry.com/wedding/temp-url</Text>
+                            `}>https://linkmarry.com/wedding/{weddingInfo.url}</Text>
                         </Column>
                         <Row $gap={8} $alignItems={'center'}>
                             {deviceSize === 'desktop' && (
@@ -139,9 +177,21 @@ function WeddingCell() {
                                 overflow-y: scroll;
                                 ${hideScrollBar};
                             `}>
-                                <CommentCell/>
-                                <CommentCell/>
-                                <CommentCell/>
+                                {comments ? (
+                                    comments.length === 0 ? (
+                                        <Text type={'p3'} ui={css`
+                                            align-self: center;
+                                            margin-top: 24px;
+                                            color: var(--g-500);
+                                        `}>아직 방명록이 없어요</Text>
+                                    ) : (
+                                        comments.map((comment, index) => (
+                                            <CommentCell key={index} comment={comment}/>
+                                        )
+                                    )
+                                )) : (
+                                    <Loading/>
+                                )}
                             </Column>
                         </Column>
 
@@ -155,9 +205,15 @@ function WeddingCell() {
                                 overflow-y: scroll;
                                 ${hideScrollBar};
                             `}>
-                                <StatisticsCell/>
-                                <StatisticsCell/>
-                                <StatisticsCell/>
+                                {statistics ? (
+                                    <>
+                                        <StatisticsCell title={'총 참석 가능 인원'} value={`${statistics.totalVisitorCnt}명`}/>
+                                        <StatisticsCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
+                                        <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalLinkShareCnt}회`}/>
+                                    </>
+                                ) : (
+                                    <Loading/>
+                                )}
                             </Column>
                         </Column>
                     </Row>
@@ -167,35 +223,38 @@ function WeddingCell() {
     )
 }
 
-function CommentCell() {
+function CommentCell({comment}: { comment: Comment }) {
     return (
         <Column $alignItems={'stretch'}>
             <Row $gap={4} $alignItems={'flex-end'}>
                 <Text type={'p3'} bold={true} ui={css`
                     color: var(--g-600);
-                `}>Name</Text>
+                `}>{comment.name}</Text>
                 <Text type={'caption1'} ui={css`
                     color: var(--g-400);
-                `}>Time ago</Text>
+                `}>{DateUtil.getTimeAgo(new Date(comment.createdDate))}</Text>
             </Row>
             <Text type={'p3'} ui={css`
                 color: var(--g-500);
                 word-break: break-word;
-            `}>ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</Text>
+            `}>{comment.comment}</Text>
         </Column>
     );
 }
 
-function StatisticsCell() {
+function StatisticsCell({title, value}: {
+    title: string;
+    value: string;
+}) {
     return (
         <Row>
             <Text type={'p3'} ui={css`
                 color: var(--g-500);
-            `}>Title</Text>
+            `}>{title}</Text>
             <Spacer/>
             <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-600);
-            `}>Value</Text>
+            `}>{value}</Text>
         </Row>
     );
 }
