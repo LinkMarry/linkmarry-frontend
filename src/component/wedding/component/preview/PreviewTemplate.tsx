@@ -18,7 +18,7 @@ import ClassicRomancePreviewTemplate from "@src/component/wedding/component/prev
 import FadeIn from "@src/component/fadein/FadeIn";
 
 export interface PreviewTemplateProps {
-    template: WeddingDesign;
+    weddingDesign: WeddingDesign;
     baseInfo: BaseInfo;
     weddingPlace: WeddingPlace;
     weddingSchedule: WeddingSchedule;
@@ -28,14 +28,14 @@ function PreviewTemplate(
     props: PreviewTemplateProps
 ) {
     const content = () => {
-        switch (props.template.weddingDesignName) {
+        switch (props.weddingDesign.weddingDesignName) {
             case '화이트 모먼트':
                 return <WhiteMomentPreviewTemplate {...props}/>;
             case '포레스트 러브':
                 return <ForestLovePreviewTemplate {...props}/>;
             case '네이처 블리스':
                 return <NatureBlissPreviewTemplate {...props}/>;
-            case '소울메이트':
+            case '소울 메이트':
                 return <SoulmatePreviewTemplate {...props}/>;
             case '클래식 엘레강스':
                 return <ClassicElegancePreviewTemplate {...props}/>;

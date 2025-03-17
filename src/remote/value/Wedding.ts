@@ -18,6 +18,8 @@ export default interface Wedding {
     // URL 값
     url: string;
 
+    name: string;
+
     // 아래 내용 위치
     position: Position[];
 
@@ -69,6 +71,7 @@ export default interface Wedding {
 
 export const dummyWedding: Wedding = {
     url: 'sample',
+    name: '',
     position: [
         2,
         3,

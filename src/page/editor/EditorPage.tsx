@@ -28,12 +28,12 @@ const EditorPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        updateWedding(draft => {
-            const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
-            if (weddingDesign) {
+        const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
+        if (weddingDesign) {
+            updateWedding(draft => {
                 draft.weddingDesign.weddingDesignName = weddingDesign.name;
-            }
-        });
+            });
+        }
     }, [numericDesignId, weddingDesigns]);
 
     return (

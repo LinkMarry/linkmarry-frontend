@@ -10,7 +10,7 @@ import {getDetails} from "@remote/value/WeddingSchedule";
 
 function NaturalGardenPreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo,
         weddingPlace,
         weddingSchedule
@@ -31,7 +31,7 @@ function NaturalGardenPreviewTemplate(
             <Column $alignItems={'stretch'} $gap={40} $ui={css`
                 padding: 0 32px;
             `}>
-                <View as={'img'} src={template.titleImgUrl} $ui={css`
+                <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                     height: 512px;
                     border-radius: 500px 500px 0 0;
                     object-fit: cover;

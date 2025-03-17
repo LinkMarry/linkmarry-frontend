@@ -12,7 +12,7 @@ import View from "@designsystem/core/View";
 function NatureBlissPreviewTemplate(
     {
         baseInfo,
-        template,
+        weddingDesign,
         weddingPlace,
         weddingSchedule,
     }: ComponentProps<typeof PreviewTemplate>
@@ -36,7 +36,7 @@ function NatureBlissPreviewTemplate(
                     >{weddingPlace.placeName}</Text>
                 </Column>
             </Column>
-            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

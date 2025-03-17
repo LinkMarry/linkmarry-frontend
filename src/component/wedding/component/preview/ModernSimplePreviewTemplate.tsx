@@ -10,7 +10,7 @@ import {getDetails} from "@remote/value/WeddingSchedule";
 
 function ModernSimplePreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo,
         weddingSchedule
     }: ComponentProps<typeof PreviewTemplate>
@@ -25,7 +25,7 @@ function ModernSimplePreviewTemplate(
             }
         `}>
             <Text size={44} weight={400}>Our Wedding Day</Text>
-            <View as={'img'} src={template.titleImgUrl} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 align-self: stretch;
                 max-height: 312px;
             `}/>

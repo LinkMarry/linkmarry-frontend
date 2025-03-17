@@ -11,7 +11,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 function DreamWeddingPreviewTemplate(
     {
         baseInfo,
-        template,
+        weddingDesign,
         weddingSchedule
     }: ComponentProps<typeof PreviewTemplate>
 ) {
@@ -22,7 +22,7 @@ function DreamWeddingPreviewTemplate(
             padding: 78px 28px 72px 28px;
             position: relative;
         `}>
-            <View as={'img'} src={template.titleImgUrl} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 object-fit: cover;
                 min-height: 517px;
                 * {

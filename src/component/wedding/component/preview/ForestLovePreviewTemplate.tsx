@@ -11,7 +11,7 @@ import View from "@designsystem/core/View";
 
 function ForestLovePreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo,
         weddingPlace,
         weddingSchedule
@@ -27,7 +27,7 @@ function ForestLovePreviewTemplate(
                 <Text size={28} weight={300}>{isValidDate && format(date, 'yyyy/MM/dd', {locale: ko})}</Text>
                 <Text size={18} weight={300}>{weddingPlace.placeName}({weddingPlace.floorHall})</Text>
             </Column>
-            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
                 display: flex;
                 padding: 0 32px;
                 object-fit: cover;

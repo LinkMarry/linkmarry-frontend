@@ -9,6 +9,7 @@ import View from "@designsystem/core/View";
 import AddRemoveButton from "@src/component/AddDismissButton";
 import {hideScrollBar} from "@util/css.util";
 import useUpload from "@hook/useUpload";
+import LoadingOverlay from "@src/component/LoadingOverlay";
 
 interface Props<V = string | string[]> {
     id: string;
@@ -70,6 +71,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             $alignItems={'center'}
             $justifyContent={'center'}
             $ui={css`
+                position: relative;
                 border-radius: 8px;
                 background: var(--g-50);
                 height: 172px;
@@ -77,6 +79,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                 ${isEmpty && css`
                     cursor: pointer;
                 `};
+                overflow: hidden;
             `}
         >
             <VoidInput
@@ -139,6 +142,9 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             <Text type={'caption1'} ui={css`
                 color: var(--g-400);
             `}>업로드한 사진은 대표 이미지로 등록됩니다.</Text>
+            {isFetching && (
+                <LoadingOverlay/>
+            )}
         </Column>
     );
 };

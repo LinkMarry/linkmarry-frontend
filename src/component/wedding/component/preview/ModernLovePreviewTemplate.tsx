@@ -9,7 +9,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 function ModernLovePreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo
     }: ComponentProps<typeof PreviewTemplate>
 ) {
@@ -19,7 +19,7 @@ function ModernLovePreviewTemplate(
             padding: 108px 32px 40px 32px;
             position: relative;
         `}>
-            <View as={'img'} src={template.titleImgUrl} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 min-height: 580px;
                 border-radius: 500px;
                 object-fit: cover;

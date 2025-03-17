@@ -12,7 +12,7 @@ import {backgroundStyle} from "@remote/value/WeddingDesign";
 function SoulmatePreviewTemplate(
     {
         baseInfo,
-        template,
+        weddingDesign,
         weddingSchedule,
     }: ComponentProps<typeof PreviewTemplate>
 ) {
@@ -21,7 +21,7 @@ function SoulmatePreviewTemplate(
 
     return (
         <Column $alignItems={'stretch'} $ui={css`
-            ${backgroundStyle(template.weddingDesignColor)};
+            ${backgroundStyle(weddingDesign.weddingDesignColor)};
         `}>
             <Column $gap={12} $alignItems={'center'} $ui={css`
                 margin: 40px 0;
@@ -37,7 +37,7 @@ function SoulmatePreviewTemplate(
                     </Row>
                 </Text>
             </Column>
-            <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
                 display: flex;
                 width: 100%;
                 object-fit: cover;

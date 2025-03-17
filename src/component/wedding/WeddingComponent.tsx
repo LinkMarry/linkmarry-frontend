@@ -73,7 +73,7 @@ function WeddingComponent(
                 <title>{wedding.linkShare.urlTitle}</title>
             </Helmet>
             <PreviewTemplate
-                template={wedding.weddingDesign}
+                weddingDesign={wedding.weddingDesign}
                 baseInfo={wedding.baseInfo}
                 weddingPlace={wedding.weddingPlace}
                 weddingSchedule={wedding.weddingSchedule}

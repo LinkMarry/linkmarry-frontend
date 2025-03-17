@@ -10,7 +10,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 function ClassicElegancePreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo,
         weddingSchedule,
         weddingPlace,
@@ -24,7 +24,7 @@ function ClassicElegancePreviewTemplate(
             <View $ui={css`
                 position: relative;
             `}>
-                <View as={'img'} src={template.titleImgUrl} $ui={css`
+                <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                     width: 100%;
                     object-fit: cover;
                     height: 100vh;

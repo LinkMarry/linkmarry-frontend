@@ -15,7 +15,7 @@ import {backgroundStyle} from "@remote/value/WeddingDesign";
 function WhiteMomentPreviewTemplate(
     {
         baseInfo,
-        template,
+        weddingDesign,
         weddingPlace,
         weddingSchedule,
     }: ComponentProps<typeof PreviewTemplate>
@@ -26,7 +26,7 @@ function WhiteMomentPreviewTemplate(
     return (
         <Column $alignItems={'stretch'} $ui={css`
             padding: 44px 30px;
-            ${backgroundStyle(template.weddingDesignColor)};
+            ${backgroundStyle(weddingDesign.weddingDesignColor)};
         `}>
             <Column $gap={36} $alignItems={'center'} $ui={css`
                 margin: 0 23px 44px 23px;
@@ -42,7 +42,7 @@ function WhiteMomentPreviewTemplate(
                 </Column>
             </Column>
             <Column $gap={44} $alignItems={'center'}>
-                <View as={'img'} src={template.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
+                <View as={'img'} src={weddingDesign.titleImgUrl ?? '/EmptyImage.png'} $ui={css`
                     display: flex;
                     width: 100%;
                     height: 512px;

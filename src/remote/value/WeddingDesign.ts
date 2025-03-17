@@ -96,7 +96,7 @@ export const weddingDesignFontSizeMap: Record<WeddingDesignFontSize, {
 };
 
 export const defaultWeddingDesign: WeddingDesign = {
-    weddingDesignName: '',
+    weddingDesignName: '클래식 엘레강스',
     weddingDesignColor: '#FFFFFF',
     weddingDesignFont: 'Pretendard',
     weddingDesignFontSize: 'basic',

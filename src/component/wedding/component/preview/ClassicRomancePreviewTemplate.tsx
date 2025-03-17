@@ -10,7 +10,7 @@ import {format} from "date-fns";
 
 function ClassicRomancePreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo,
         weddingSchedule
     }: ComponentProps<typeof PreviewTemplate>
@@ -26,7 +26,7 @@ function ClassicRomancePreviewTemplate(
                 color: #989796;
             }
         `}>
-            <View as={'img'} src={template.titleImgUrl} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 min-height: 516px;
                 object-fit: cover;
             `}/>

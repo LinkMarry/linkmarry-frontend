@@ -88,6 +88,7 @@ export function makeDefaultWedding(url: string, name: string): WeddingDto {
 export function toDomain(dto: WeddingDto, hasDummy: boolean): Wedding {
     return {
         url: dto.url,
+        name: dto.name,
         position: dto.position,
         weddingDesign: dto.weddingDesign,
         baseInfo: dto.baseInfo,
@@ -104,5 +105,26 @@ export function toDomain(dto: WeddingDto, hasDummy: boolean): Wedding {
         gallery: dto.gallery,
         waterMark: false,
         guestCommentList: hasDummy ? dummyComments : []
+    }
+}
+
+export function toDTO(domain: Wedding): WeddingDto {
+    return {
+        url: domain.url,
+        name: domain.name,
+        position: domain.position,
+        weddingDesign: domain.weddingDesign,
+        baseInfo: domain.baseInfo,
+        weddingSchedule: domain.weddingSchedule,
+        weddingPlace: domain.weddingPlace,
+        greeting: domain.greeting,
+        guestComment: domain.guestComment,
+        backgroundMusic: domain.backgroundMusic,
+        linkShare: domain.linkShare,
+        moneyInfo: domain.moneyInfo,
+        video: domain.video,
+        phone: domain.phone,
+        rsvp: domain.rsvp,
+        gallery: domain.gallery,
     }
 }

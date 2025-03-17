@@ -11,7 +11,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 
 function RomanticForestPreviewTemplate(
     {
-        template,
+        weddingDesign,
         baseInfo,
         weddingSchedule
     }: ComponentProps<typeof PreviewTemplate>
@@ -22,7 +22,7 @@ function RomanticForestPreviewTemplate(
         <Column $alignItems={'stretch'} $ui={css`
             position: relative;
         `}>
-            <View as={'img'} src={template.titleImgUrl} $ui={css`
+            <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 height: 100vh;
                 max-height: 810px;
                 object-fit: cover;
