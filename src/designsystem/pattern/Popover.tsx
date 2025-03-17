@@ -37,6 +37,7 @@ function Popover(
                 border-radius: 10px;
                 background: white;
                 box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);
+                z-index: 100;
                 ${ui};
                 ${fadeInAnimationStyle};
             `} {...props}>

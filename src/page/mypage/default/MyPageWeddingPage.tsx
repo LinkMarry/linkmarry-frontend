@@ -18,32 +18,81 @@ import WeddingStatistics from "@remote/value/WeddingStatistics";
 import Comment from "@remote/value/Comment";
 import DateUtil from "@util/date.util";
 import {useNavigate} from "react-router-dom";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
 
 function MyPageWeddingPage() {
     const [weddings, setWeddings] = useState<WeddingDashboard>();
+    const [selectedWedding, setSelectedWedding] = useState<WeddingInfo>();
+    const [showRemoveWeddingDialog, setShowRemoveWeddingDialog] = useState(false);
+
+    const clearData = () => {
+        setSelectedWedding(undefined);
+        setWeddings(undefined);
+        setShowRemoveWeddingDialog(false);
+    }
+
+    const fetchData = async () => {
+        clearData();
+
+        const {data} = await weddingApi.getMyWedding();
+        setWeddings(data);
+
+    }
 
     useEffect(() => {
-        (async () => {
-            const {data} = await weddingApi.getMyWedding();
-            setWeddings(data);
-        })();
+        fetchData();
     }, []);
+
+    const removeWedding = async () => {
+        if (!selectedWedding) {
+            return;
+        }
+
+        try {
+            await weddingApi.removeWedding(selectedWedding.url);
+            setShowRemoveWeddingDialog(false);
+            await fetchData();
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <Column $gap={24} $flex={1} $alignItems={'stretch'}>
+            {showRemoveWeddingDialog && (
+                <Dialog
+                    title={'정말 청첩장을\n삭제하시겠습니까?'}
+                    description={'모든 청첩장 정보가 삭제됩니다.'}
+                    dismiss={() => setShowRemoveWeddingDialog(false)}
+                    dismissButtonProps={{
+                        text: '취소'
+                    }}
+                    confirmButtonProps={{
+                        text: '삭제',
+                        onClick: removeWedding
+                    }}
+                />
+            )}
             <Text type={'h5'} bold={true}>모바일 청첩장</Text>
             <Column $alignItems={'stretch'} $gap={16}>
                 {weddings ? weddings.weddingInfo.map(wedding => (
-                    <WeddingCell key={wedding.url} weddingInfo={wedding}/>
+                    <WeddingCell key={wedding.url} weddingInfo={wedding} onRemoveWedding={() => {
+                        setSelectedWedding(wedding);
+                        setShowRemoveWeddingDialog(true);
+                    }}/>
                 )) : (
                     <Loading/>
                 )}
             </Column>
+            <Spacer h={32}/>
         </Column>
     );
 }
 
-function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
+function WeddingCell({weddingInfo, onRemoveWedding}: {
+    weddingInfo: WeddingInfo;
+    onRemoveWedding: () => void;
+}) {
     const [openDetailPopover, setOpenDetailPopover] = useState(false);
     const [statistics, setStatistics] = useState<WeddingStatistics>();
     const [comments, setComments] = useState<Comment[]>();
@@ -133,12 +182,14 @@ function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
                                                     icon: IconType.PenLine,
                                                     text: '청첩장 수정',
                                                     onClick: () => {
+                                                        navigate(`/editor/${weddingInfo.url}`);
                                                     }
                                                 },
                                                 {
                                                     icon: IconType.Envelope,
                                                     text: '방명록 보기',
                                                     onClick: () => {
+                                                        navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
                                                     }
                                                 }
                                             ] : []),
@@ -152,8 +203,7 @@ function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
                                                 icon: IconType.Trash,
                                                 text: '청첩장 삭제',
                                                 type: 'destructive',
-                                                onClick: () => {
-                                                }
+                                                onClick: onRemoveWedding
                                             }
                                         ]}
                                         dismiss={() => setOpenDetailPopover(false)}
@@ -193,10 +243,10 @@ function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
                                         `}>아직 방명록이 없어요</Text>
                                     ) : (
                                         comments.map((comment, index) => (
-                                            <CommentCell key={index} comment={comment}/>
+                                                <CommentCell key={index} comment={comment}/>
+                                            )
                                         )
-                                    )
-                                )) : (
+                                    )) : (
                                     <Loading/>
                                 )}
                             </Column>

@@ -5,10 +5,11 @@ import {css} from "styled-components";
 import Divider from "@designsystem/component/Divider";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import useAuth from "@hook/useAuth";
+import Loading from "@src/component/Loading";
 
 function MyPageInfoPage() {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
-    const {removeMember} = useAuth();
+    const {member, removeMember} = useAuth();
 
     return (
         <Column $gap={24} $alignItems={'stretch'} $ui={css`
@@ -29,10 +30,14 @@ function MyPageInfoPage() {
             )}
             <Text type={'h5'} bold={true}>회원정보</Text>
             <Column $gap={8} $alignItems={'stretch'}>
-                <Column $alignItems={'stretch'}>
-                    <Item title={'이름'} value={'name'}/>
-                    <Item title={'이메일'} value={'email'}/>
-                </Column>
+                {member ? (
+                    <Column $alignItems={'stretch'}>
+                        <Item title={'이름'} value={member.name}/>
+                        <Item title={'이메일'} value={member.email}/>
+                    </Column>
+                ) : (
+                    <Loading/>
+                )}
                 <Divider/>
                 <Text
                     type={'p3'}
