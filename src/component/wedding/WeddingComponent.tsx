@@ -22,6 +22,7 @@ import {css} from "styled-components";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
 import useAudio from "@hook/useAudio";
 import Position from "@remote/value/Position";
+import {useCookies} from "react-cookie";
 
 interface WeddingComponentProps {
     wedding: Wedding;
@@ -36,21 +37,21 @@ function WeddingComponent(
         onRefresh
     }: WeddingComponentProps
 ) {
-    const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview);
+    const cookieKey = `hide_RsvpDialog/${wedding.url}`;
+    const [cookies] = useCookies([cookieKey]);
+
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
-        if (isPreview) return false;
-        if (!wedding.rsvp.startPopupStatus) return false;
-        // todo: fix
-        // return Cookies.get(`hide_RsvpDialog_${wedding.url}`) === undefined
+        if (isPreview || !wedding.rsvp.startPopupStatus) return false;
+        return cookies[cookieKey] === undefined
     })());
+
+    const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview);
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
     const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.weddingDesign;
     const rootRef = useRef<HTMLDivElement>(null);
 
     const {addFontSize} = weddingDesignFontSizeMap[weddingDesignFontSize];
     increaseFontSize(rootRef, addFontSize);
-    // todo: fix
-    // Cookies.remove('hide_RsvpDialog')
 
     return (
         <Column ref={rootRef} $ui={css`
@@ -155,10 +156,9 @@ function WeddingComponent(
                     dismiss={() => setShowCreateRsvpDialog(false)}
                 />
             )}
-            {/*todo*/}
-            {/*{wedding.waterMark && !isPreview && (*/}
-            {/*    <WaterMarkSheet url={wedding.url}/>*/}
-            {/*)}*/}
+            {wedding.waterMark && !isPreview && (
+                <WaterMarkSheet url={wedding.url}/>
+            )}
         </Column>
     );
 }

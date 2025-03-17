@@ -10,6 +10,7 @@ import weddingApi from "@remote/api/WeddingApi";
 import GuestType from "@remote/enumeration/GuestType";
 import Rsvp from "@remote/value/Rsvp";
 import ConfirmCreateRsvpDialog from "@src/component/wedding/dialog/rsvp/ConfirmCreateRsvpDialog";
+import Dialog from "@designsystem/pattern/dialog/Dialog";
 
 interface CreateRsvpDialogProps {
     url: string;
@@ -171,9 +172,17 @@ function CreateRsvpDialog(
                 </Column>
             </Column>
             {showConfirmCreateRsvpDialog && (
-                <ConfirmCreateRsvpDialog
+                <Dialog
+                    title={'참석의사 전달'}
+                    description={'참석 의사 전달 시 수정이 불가능합니다.'}
                     dismiss={() => setShowConfirmCreateRsvpDialog(false)}
-                    onConfirm={createRsvp}
+                    dismissButtonProps={{
+                        text: '닫기'
+                    }}
+                    confirmButtonProps={{
+                        text: '확인',
+                        onClick: createRsvp
+                    }}
                 />
             )}
         </BaseDialog>

@@ -45,9 +45,9 @@ function WeddingStyleCell({weddingDesign}: Props) {
                         transform: translateX(-50%);
                     `}>
                         <Button text={'청첩장 만들기'} onClick={() => navigate(`/editor?designId=${weddingDesign.id}`)}/>
-                        <Button text={'미리보기'} buttonType={'tonal'} onClick={() => {
-                            // todo
-                        }}/>
+                        {/*<Button text={'미리보기'} buttonType={'tonal'} onClick={() => {*/}
+                        {/*    // todo*/}
+                        {/*}}/>*/}
                     </Column>
                 )}
             </View>

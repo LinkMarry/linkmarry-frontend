@@ -8,11 +8,14 @@ import {getDeviceType} from "@remote/enumeration/Device";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import View from "@designsystem/core/View";
+import {useCookies} from "react-cookie";
 
 function WeddingPage() {
     const {url} = useParams();
     const [wedding, setWedding] = useState<Wedding>();
     const [isError, setIsError] = useState(false);
+    const cookieKey = `firstVisitor_${url}`;
+    const [cookie, setCookie] = useCookies([cookieKey]);
 
     useEffect(() => {
         (async () => {
@@ -22,19 +25,21 @@ function WeddingPage() {
 
     const getWedding = async () => {
         if (!url) return;
-        const cookieKey = `firstVisitor_${url}`;
 
-        // todo: fix
-        // const isFirstVisitor = !Cookies.get(cookieKey);
+        const isFirstVisitor = !cookie[cookieKey];
 
-        // if (isFirstVisitor) {
-        //     Cookies.set(cookieKey, "false", {expires: 365}); // 1년 동안 유지
-        // }
-        //
+        if (isFirstVisitor) {
+            const date = new Date();
+            date.setDate(date.getDate() + 365);
+            setCookie(cookieKey, 'false', {
+                expires: date
+            });
+        }
+
         try {
             const {data} = await weddingApi.getWeddingInvitation(url, {
                 deviceType: getDeviceType(),
-                firstVisitor: false
+                firstVisitor: isFirstVisitor
             });
             setWedding(data);
         } catch (error) {

@@ -11,6 +11,7 @@ import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import Button from "@designsystem/component/Button";
 import Rsvp from "@remote/value/Rsvp";
+import {Cookies, useCookies} from "react-cookie";
 
 interface RsvpDialogProps {
     url: string;
@@ -33,6 +34,8 @@ function RsvpDialog(
         dismiss
     }: RsvpDialogProps
 ) {
+    const cookieKey = `hide_RsvpDialog_${url}`;
+    const [cookie, setCookie] = useCookies([cookieKey]);
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
     const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
     const isValidDate = !isNaN(date.getTime());
@@ -81,8 +84,12 @@ function RsvpDialog(
                             cursor: pointer;
                         `}
                         onClick={() => {
-                            // todo: fix
-                            // Cookies.set(`hide_RsvpDialog_${url}`, 'true', {expires: 1});
+                            const date = new Date();
+                            date.setDate(date.getDate() + 1);
+
+                            setCookie(cookieKey, 'true', {
+                                expires: date
+                            });
                             dismiss();
                         }}
                     >오늘 하루 보지 않기</Text>
