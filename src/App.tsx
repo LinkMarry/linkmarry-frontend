@@ -49,7 +49,7 @@ function App() {
                             <Route path={'info'} element={<MyPageInfoPage/>}/>
                         </Route>
                         <Route element={<MyPageDetailLayout/>}>
-                            <Route path={'wedding/:id/comments'} element={<ShowGuestCommentsPage/>}/>
+                            <Route path={'wedding/:url/comments'} element={<ShowGuestCommentsPage/>}/>
                         </Route>
                     </Route>
                     <Route path={'editor/:url?'} element={<EditorPage/>}/>

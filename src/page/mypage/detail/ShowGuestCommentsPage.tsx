@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {useParams} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
@@ -8,12 +8,35 @@ import Spacer from "@designsystem/component/Spacer";
 import Button from "@designsystem/component/Button";
 import {IconType} from "@designsystem/foundation/Icon";
 import useResponsive from "@hook/useResponsive";
+import WeddingStatistics from "@remote/value/WeddingStatistics";
+import Comment from "@remote/value/Comment";
+import weddingApi from "@remote/api/WeddingApi";
+import Loading from "@src/component/Loading";
 
 const ShowGuestCommentsPage = () => {
-    const {id} = useParams();
+    const {url} = useParams();
+    const navigate = useNavigate();
+    const [statistics, setStatistics] = useState<WeddingStatistics>();
+    const [comments, setComments] = useState<Comment[]>();
 
     useEffect(() => {
+        if (!url) {
+            navigate('/');
+            return;
+        }
 
+        (async () => {
+            try {
+                const {data} = await weddingApi.getStatistics(url);
+                setStatistics(data);
+            } catch (error) {
+                console.error(error);
+            }
+        })();
+
+        (async () => {
+
+        })();
     }, []);
 
     return (
@@ -28,7 +51,11 @@ const ShowGuestCommentsPage = () => {
                     <Text type={'caption1'} bold={true}>
                         통계
                     </Text>
-                    <Stats/>
+                    {statistics ? (
+                        <Stats statistics={statistics}/>
+                    ) : (
+                        <Loading/>
+                    )}
                 </Column>
                 <Column $gap={8} $alignItems={'stretch'}>
                     <Row $alignItems={'center'}>
@@ -46,34 +73,38 @@ const ShowGuestCommentsPage = () => {
     );
 };
 
-const Stats = () => {
+interface StatsProps {
+    statistics: WeddingStatistics;
+}
+
+const Stats = (props: StatsProps) => {
     const {deviceSize} = useResponsive();
 
     if (deviceSize === 'mobile') {
-        return <MobileStats/>;
+        return <MobileStats {...props}/>;
     }
 
-    return <DesktopStats/>
+    return <DesktopStats {...props}/>
 }
 
-const DesktopStats = () => {
+const DesktopStats = ({statistics}: StatsProps) => {
     return (
         <Row $gap={24} $alignItems={'stretch'}>
-            <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
+            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalVisitorCnt}명`}/>
             <Divider direction={'vertical'}/>
-            <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
+            <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
             <Divider direction={'vertical'}/>
-            <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
+            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalLinkShareCnt}회`}/>
         </Row>
     )
 }
 
-const MobileStats = () => {
+const MobileStats = ({statistics}: StatsProps) => {
     return (
         <Column $alignItems={'stretch'} $gap={8}>
-            <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
-            <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
-            <StatCell title={'총 참석 가능 인원'} value={'100명'}/>
+            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalVisitorCnt}명`}/>
+            <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
+            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalLinkShareCnt}회`}/>
         </Column>
     )
 };

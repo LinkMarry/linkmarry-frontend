@@ -17,6 +17,7 @@ import WeddingInfo from "@remote/value/WeddingInfo";
 import WeddingStatistics from "@remote/value/WeddingStatistics";
 import Comment from "@remote/value/Comment";
 import DateUtil from "@util/date.util";
+import {useNavigate} from "react-router-dom";
 
 function MyPageWeddingPage() {
     const [weddings, setWeddings] = useState<WeddingDashboard>();
@@ -47,6 +48,7 @@ function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
     const [statistics, setStatistics] = useState<WeddingStatistics>();
     const [comments, setComments] = useState<Comment[]>();
     const {deviceSize} = useResponsive();
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -75,13 +77,14 @@ function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
                 height: 144px;
             `};
         `}>
-            <View $ui={css`
+            <View as={'img'} src={weddingInfo.img} $ui={css`
                 width: calc(360px * 9 / 16);
                 ${deviceSize === "mobile" && css`
                     width: calc(144px * 9 / 16);
                 `};
                 background: var(--g-100);
                 border-radius: 12px;
+                object-fit: cover;
             `}/>
             <Column $gap={24} $alignItems={'stretch'} $flex={1}>
                 {/*header*/}
@@ -98,8 +101,12 @@ function WeddingCell({weddingInfo}: { weddingInfo: WeddingInfo }) {
                         <Row $gap={8} $alignItems={'center'}>
                             {deviceSize === 'desktop' && (
                                 <>
-                                    <Button text={'수정'} size={'medium'} buttonType={'outlined'}/>
-                                    <Button text={'방명록 확인'} size={'medium'}/>
+                                    <Button text={'수정'} size={'medium'} buttonType={'outlined'} onClick={() => {
+                                        navigate(`/editor/${weddingInfo.url}`);
+                                    }}/>
+                                    <Button text={'방명록 확인'} size={'medium'} onClick={() => {
+                                        navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
+                                    }}/>
                                 </>
                             )}
                             <View $ui={css`
