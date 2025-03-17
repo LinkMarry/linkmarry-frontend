@@ -13,6 +13,7 @@ import useResponsive from "@hook/useResponsive";
 import Logo from "@src/component/Logo";
 import useAuth from "@hook/useAuth";
 import {makeInteractionEffect} from "@util/css.util";
+import {NAVER_STORE_URL, NOTIFICATION_URL} from "@util/constant";
 
 function Header() {
     const {deviceSize} = useResponsive();
@@ -68,9 +69,10 @@ function MobileHeader() {
                             navigate('/editor');
                         }}/>
                         <MobileHeaderItem text={'공지사항'} onClick={() => {
+                            window.open(NOTIFICATION_URL);
                         }}/>
                         <MobileHeaderItem text={'네이버스토어'} onClick={() => {
-                            window.open('https://smartstore.naver.com/linkmarry');
+                            window.open(NAVER_STORE_URL);
                         }}/>
                     </Column>
                 </Column>
@@ -131,10 +133,10 @@ function DesktopHeader() {
                             navigate('/editor');
                         }}/>
                         <DesktopHeaderItem text={'공지사항'} onClick={() => {
-                            // todo: navigate to notion.
+                            window.open(NOTIFICATION_URL);
                         }}/>
                         <DesktopHeaderItem text={'네이버스토어'} onClick={() => {
-                            window.open('https://smartstore.naver.com/linkmarry');
+                            window.open(NAVER_STORE_URL);
                         }}/>
                     </Row>
                 </Row>
