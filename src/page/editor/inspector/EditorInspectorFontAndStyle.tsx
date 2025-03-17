@@ -6,6 +6,7 @@ import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import {
+    backgroundStyle,
     isPaperColor,
     WeddingDesignColor,
     weddingDesignDefaultColorList,
@@ -180,11 +181,7 @@ interface ColorItemProps extends ComponentPropsWithoutRef<'div'> {
 const ColorItem = ({color, selected, ...props}: ColorItemProps) => {
     return (
         <View $ui={css`
-            ${isPaperColor(color) ? css`
-                background: url("/paper/${color}.png");
-            ` : css`
-                background: ${color};
-            `};
+            ${backgroundStyle(color)};
             aspect-ratio: 1;
             border-radius: 8px;
             cursor: pointer;

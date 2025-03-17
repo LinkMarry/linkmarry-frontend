@@ -9,6 +9,7 @@ import ContactingCongratulationDialog from "@src/component/wedding/dialog/Contac
 import Phone from "@remote/value/Phone";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
+import {backgroundStyle} from "@remote/value/WeddingDesign";
 
 interface CongratulationsProps {
     baseInfo: BaseInfo;
@@ -32,7 +33,7 @@ function CongratulationsTemplate(
 
     return (
         <Column $alignItems={'stretch'} $ui={css`
-            background: ${weddingDesignColor};
+            ${backgroundStyle(weddingDesignColor)};
             padding: 92px 60px;
             align-items: stretch;
         `} ref={congratulationsRef}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import {WeddingDesignColor} from "@remote/value/WeddingDesign";
+import {backgroundStyle, WeddingDesignColor} from "@remote/value/WeddingDesign";
 import Button from "@designsystem/component/Button";
 import Divider from "@designsystem/component/Divider";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
@@ -37,7 +37,7 @@ function RsvpTemplate(
         <FadeIn>
             <Column $gap={40} $alignItems={'center'} $ui={css`
                 padding: 92px 60px;
-                background: ${weddingDesignColor};
+                ${backgroundStyle(weddingDesignColor)};
             `}>
                 <Column $alignItems={'center'}>
                     <FadeIn>

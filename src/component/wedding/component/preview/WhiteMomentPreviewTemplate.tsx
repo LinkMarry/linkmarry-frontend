@@ -10,6 +10,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import View from "@designsystem/core/View";
 import {getDetails} from "@remote/value/WeddingSchedule";
+import {backgroundStyle} from "@remote/value/WeddingDesign";
 
 function WhiteMomentPreviewTemplate(
     {
@@ -25,7 +26,7 @@ function WhiteMomentPreviewTemplate(
     return (
         <Column $alignItems={'stretch'} $ui={css`
             padding: 44px 30px;
-            background: ${template.weddingDesignColor};
+            ${backgroundStyle(template.weddingDesignColor)};
         `}>
             <Column $gap={36} $alignItems={'center'} $ui={css`
                 margin: 0 23px 44px 23px;

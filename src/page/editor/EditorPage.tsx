@@ -35,7 +35,7 @@ const EditorPage = () => {
             if (weddingDesign) {
                 draft.weddingDesign.weddingDesignName = weddingDesign.name;
             }
-        })
+        });
     }, [numericDesignId, weddingDesigns]);
 
     return (

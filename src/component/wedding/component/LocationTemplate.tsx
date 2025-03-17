@@ -7,6 +7,7 @@ import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import View from "@designsystem/core/View";
 import FadeIn from "@src/component/fadein/FadeIn";
+import {backgroundStyle} from "@remote/value/WeddingDesign";
 
 const {kakao} = window as any;
 
@@ -49,7 +50,7 @@ function LocationTemplate(
 
     return (
         <Column $alignItems={'stretch'} ref={weddingPlaceRef} $ui={css`
-            background: ${weddingDesignColor};
+            ${backgroundStyle(weddingDesignColor)};
             align-items: stretch;
         `}>
             <Spacer h={92}/>

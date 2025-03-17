@@ -1,5 +1,6 @@
 import {FontFamily} from "@designsystem/foundation/text/TextType";
 import Opening from "@remote/enumeration/Opening";
+import {css, RuleSet} from "styled-components";
 
 export default interface WeddingDesign {
     // 선택한 템플릿 이름
@@ -61,6 +62,16 @@ export const weddingDesignPaperColorList: WeddingDesignPaperColor[] = [
 
 export function isPaperColor(weddingDesignColor: WeddingDesignColor): boolean {
     return weddingDesignColor.startsWith('paper');
+}
+
+export function backgroundStyle(weddingDesignColor: WeddingDesignColor): RuleSet {
+    return css`
+        ${isPaperColor(weddingDesignColor) ? css`
+            background: url("/paper/${weddingDesignColor}.png");
+        ` : css`
+            background: ${weddingDesignColor};
+        `};
+    `
 }
 
 export type WeddingDesignFontSize = 'basic' | 'large' | 'extraLarge'
