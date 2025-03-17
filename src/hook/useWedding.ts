@@ -4,7 +4,7 @@ import WeddingDto, {makeDefaultWedding} from "@remote/value/WeddingDto";
 import weddingApi from "@remote/api/WeddingApi";
 
 function useWedding() {
-    const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding(''));
+    const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
 
     const saveWedding = useCallback(async () => {
         try {

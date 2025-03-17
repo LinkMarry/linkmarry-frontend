@@ -11,7 +11,6 @@ import {hideScrollBar} from "@util/css.util";
 import useWeddingDesigns from "@hook/useWeddingDesigns";
 import useBackgroundMusics from "@hook/useBackgroundMusics";
 import useWedding from "@hook/useWedding";
-import Dialog from "@designsystem/pattern/dialog/Dialog";
 import {toDomain} from "@remote/value/WeddingDto";
 import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
 import {useNavigate, useSearchParams} from "react-router-dom";
@@ -26,7 +25,6 @@ const EditorPage = () => {
     const {wedding, updateWedding, saveWedding} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
-    const [showSaveSuccessDialog, setShowSaveSuccessDialog] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,21 +45,9 @@ const EditorPage = () => {
             ${hideScrollBar};
         `}>
             <CreateWeddingDialog
-                wedding={wedding}
-                onChange={url => updateWedding(draft => {
-                    draft.url = url;
-                })}
+                value={wedding}
+                update={updateWedding}
             />
-            {showSaveSuccessDialog && (
-                <Dialog
-                    title={'청첩장이 완성되었어요! 🎉'}
-                    dismiss={() => setShowSaveSuccessDialog(false)}
-                    confirmButtonProps={{
-                        text: '닫기',
-                        buttonType: 'tonal'
-                    }}
-                />
-            )}
             <Column $alignItems={'stretch'} $flex={1} $ui={css`
                 overflow: hidden;
                 background: white;
@@ -75,10 +61,7 @@ const EditorPage = () => {
                     onShowPreview={() => {
                         navigate(`/wedding/${wedding.url}`);
                     }}
-                    onSave={async () => {
-                        await saveWedding();
-                        setShowSaveSuccessDialog(true);
-                    }}
+                    onSave={saveWedding}
                 />
                 <EditorNavigationBar
                     currentNavType={currentNavType}

@@ -19,6 +19,8 @@ export default interface WeddingDto {
     // URL 값
     url: string;
 
+    name: string;
+
      // 아래 내용 위치
     position: Position[];
 
@@ -62,9 +64,10 @@ export default interface WeddingDto {
     gallery: Gallery;
 }
 
-export function makeDefaultWedding(url: string): WeddingDto {
+export function makeDefaultWedding(url: string, name: string): WeddingDto {
     return {
         url,
+        name,
         position: positionList,
         weddingDesign: defaultWeddingDesign,
         baseInfo: defaultBaseInfo,
