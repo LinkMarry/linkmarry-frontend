@@ -3,7 +3,6 @@ import MainWrapper from "@designsystem/pattern/header/MainWrapper";
 import {Row} from "@designsystem/core/FlexLayout";
 import {Outlet} from "react-router-dom";
 import {css} from "styled-components";
-import MyPageDefaultSidebar from "@page/mypage/default/MyPageDefaultSidebar";
 import useResponsive from "@hook/useResponsive";
 
 function MyPageLayout() {
@@ -23,9 +22,9 @@ function MobileMyPageLayout() {
                 overflow-y: scroll;
                 padding: 24px 16px 0 16px;
             `}>
-                <Row $gap={32} $ui={css`
+                <Row $gap={32} $flex={1} $ui={css`
                     max-width: 1100px;
-                    flex: 1;
+                    min-width: 0;
                 `}>
                     <Outlet/>
                 </Row>

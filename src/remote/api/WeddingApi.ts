@@ -10,6 +10,7 @@ import DeleteCommentRequest from "@remote/value/request/DeleteCommentRequest";
 import WeddingStatistics from "@remote/value/WeddingStatistics";
 import WeddingDto from "@remote/value/WeddingDto";
 import Comment from "@remote/value/Comment";
+import RsvpInfo from "@remote/value/RsvpInfo";
 
 class WeddingApi {
     private static PATH = 'wedding';
@@ -154,6 +155,14 @@ class WeddingApi {
      */
     async removeWatermark(url: string): Promise<ResponseVoid> {
         const {data} = await api.post(`${WeddingApi.PATH}/watermark/${url}`);
+        return data;
+    }
+
+    /**
+     * 응답된 RSVP 조회하기
+     */
+    async getRsvp(rul: string): Promise<ResponseData<RsvpInfo[]>> {
+        const {data} = await api.get(`${WeddingApi.PATH}/rsvp/${rul}`);
         return data;
     }
 }

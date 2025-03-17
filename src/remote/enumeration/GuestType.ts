@@ -3,7 +3,7 @@ enum GuestType {
     GROOM = 'GROOM',
 }
 
-export const guestTypeRecord: Record<GuestType, {
+export const guestTypeMap: Record<GuestType, {
     korean: string;
 }> = {
     [GuestType.BRIDE]: {
