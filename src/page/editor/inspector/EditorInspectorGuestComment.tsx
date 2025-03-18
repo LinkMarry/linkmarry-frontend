@@ -30,9 +30,9 @@ const EditorInspectorGuestComment = (
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
                     items={guestCommentDesignList.map(i => guestCommentDesignMap[i].korean)}
-                    selectedTab={guestCommentDesignList.indexOf(guestComment.design)}
+                    selectedTab={guestCommentDesignList.indexOf(guestComment.guestCommentDesign)}
                     onChange={tab => update(draft => {
-                        draft.guestComment.design = guestCommentDesignList[tab];
+                        draft.guestComment.guestCommentDesign = guestCommentDesignList[tab];
                     })}
                 />
             </Column>

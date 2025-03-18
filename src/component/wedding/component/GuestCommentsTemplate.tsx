@@ -67,7 +67,7 @@ function GuestCommentsTemplate(
                             <Column $gap={12} $alignItems={'stretch'}>
                                 <GuestComments
                                     comments={guestComments}
-                                    design={guestComment.design}
+                                    design={guestComment.guestCommentDesign}
                                     privateDate={guestComment.privateDate}
                                     background={'white'}
                                     onRemove={comment => {

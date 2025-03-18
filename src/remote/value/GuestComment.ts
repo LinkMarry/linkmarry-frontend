@@ -8,7 +8,7 @@ export default interface GuestComment {
     content: string;
 
     // 방명록 디자인 (청첩장 표시용 O)
-    design: GuestCommentDesign;
+    guestCommentDesign: GuestCommentDesign;
 
     // 방명록 내용 표시여부
     privateContent: boolean;
@@ -20,7 +20,7 @@ export default interface GuestComment {
 export const defaultGuestComment: GuestComment = {
     title: "",
     content: "",
-    design: GuestCommentDesign.BASIC,
+    guestCommentDesign: GuestCommentDesign.BASIC,
     privateContent: true,
     privateDate: false,
 }
@@ -28,7 +28,7 @@ export const defaultGuestComment: GuestComment = {
 export const dummyGuestComment: GuestComment = {
     title: "방명록",
     content: "신랑 신부에게 글을 남겨주세요!",
-    design: GuestCommentDesign.BASIC,
+    guestCommentDesign: GuestCommentDesign.BASIC,
     privateContent: true,
     privateDate: true
 };
