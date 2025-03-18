@@ -21,9 +21,9 @@ const EditorInspectorVideo = (
 ) => {
     return (
         <EditorInspectorWrapper type={'video'} toggle={{
-            checked: video.videoActive,
+            checked: video.videoActivate,
             OnChange: checked => update(draft => {
-                draft.video.videoActive = checked;
+                draft.video.videoActivate = checked;
             })
         }}>
             <Column $alignItems={'stretch'} $gap={12}>

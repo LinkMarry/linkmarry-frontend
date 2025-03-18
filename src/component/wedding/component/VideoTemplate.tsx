@@ -21,6 +21,10 @@ function VideoTemplate(
 
     useScrollOnUpdate(videoRef, [video]);
 
+    if (!video.videoActivate) {
+        return null;
+    }
+
     return (
         <FadeIn>
             <Column $gap={40} $alignItems={'stretch'} ref={videoRef} $ui={css`

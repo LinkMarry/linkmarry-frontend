@@ -12,7 +12,7 @@ export default interface Video {
     videoName: string;
 
     // Video 활성화 여부
-    videoActive: boolean;
+    videoActivate: boolean;
 
     // true: 파일, false: url
     videoFileType: boolean;
@@ -33,7 +33,7 @@ export const defaultVideo: Video = {
     videoUrl: '',
     videoFileUrl: '',
     videoName: '',
-    videoActive: true,
+    videoActivate: true,
     videoFileType: true
 };
 
@@ -42,6 +42,6 @@ export const dummyVideo: Video = {
     videoUrl: "https://www.youtube.com/embed/D1lNjuUj2c8",
     videoFileUrl: '',
     videoName: '결혼.mp4',
-    videoActive: true,
+    videoActivate: true,
     videoFileType: false,
 };
