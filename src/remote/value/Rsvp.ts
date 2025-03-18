@@ -55,3 +55,4 @@ export const dummyRsvp: Rsvp = {
     startPopupStatus: true,
     rsvpActivate: true,
 };
+

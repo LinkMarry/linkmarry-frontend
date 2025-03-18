@@ -14,6 +14,8 @@ import Loading from "@src/component/Loading";
 import View from "@designsystem/core/View";
 import RsvpInfo, {getRsvpText} from "@remote/value/RsvpInfo";
 import makeText from "@designsystem/foundation/text/TextType";
+import {downloadExcel} from "@util/excel.util";
+import Wedding from "@remote/value/Wedding";
 
 const CellStyle = css`
     padding: 4px 6px;
@@ -25,6 +27,7 @@ const CellStyle = css`
 const ShowGuestCommentsPage = () => {
     const {url} = useParams();
     const navigate = useNavigate();
+    const [wedding, setWedding] = useState<Wedding>();
     const [statistics, setStatistics] = useState<WeddingStatistics>();
     const [rsvp, setRsvp] = useState<RsvpInfo[]>();
 
@@ -46,6 +49,11 @@ const ShowGuestCommentsPage = () => {
         (async () => {
             const {data} = await weddingApi.getRsvp(url);
             setRsvp(data);
+        })();
+
+        (async () => {
+            const {data} = await weddingApi.getWedding(url);
+            setWedding(data);
         })();
     }, []);
 
@@ -79,74 +87,113 @@ const ShowGuestCommentsPage = () => {
                             방명록
                         </Text>
                         <Spacer/>
-                        <Button text={'Excel 파일 다운받기'} trailingIcon={IconType.StopArrowDown} size={'small'}
-                                buttonType={'outlined'}/>
+                        {wedding?.rsvp.rsvpActivate && (
+                            <Button
+                                text={'Excel 파일 다운받기'} trailingIcon={IconType.StopArrowDown} size={'small'}
+                                buttonType={'outlined'}
+                                onClick={() => {
+                                    if (rsvp) {
+                                        downloadExcel(rsvp, '방명록');
+                                    }
+                                }}
+                            />
+                        )}
                     </Row>
-                    {/*{rsvp ? rsvp.map(rsvp => (*/}
-                    <Column $alignItems={'flex-start'} $ui={css`
-                        border-radius: 8px;
-                        border: 1px solid var(--g-100);
-                        overflow-x: scroll;
-                    `}>
-                        <View as={'table'} $ui={css`
-
-                            & td:not(:last-child) {
-                                border-right: 1px solid var(--g-100);
-                            }
-
-                            border-collapse: collapse;
-                            border-spacing: 0;
+                    {wedding?.rsvp.rsvpActivate ? (
+                        <Column $alignItems={'flex-start'} $ui={css`
+                            border-radius: 8px;
+                            border: 1px solid var(--g-100);
+                            overflow-x: scroll;
                         `}>
-                            <View as={'tr'} $ui={css`
+                            <View as={'table'} $ui={css`
+                                & td:not(:last-child) {
+                                    border-right: 1px solid var(--g-100);
+                                }
+
+                                border-collapse: collapse;
+                                border-spacing: 0;
                             `}>
-                                <View as={'td'} $ui={css`
-                                    ${CellStyle};
-                                    color: var(--g-500);
-                                `}>이름</View>
-                                <View as={'td'} $ui={css`
-                                    ${CellStyle};
-                                    color: var(--g-500);
-                                `}>참석측</View>
-                                <View as={'td'} $ui={css`
-                                    ${CellStyle};
-                                    color: var(--g-500);
-                                `}>식사 여부</View>
-                                <View as={'td'} $ui={css`
-                                    ${CellStyle};
-                                    color: var(--g-500);
-                                `}>전화번호</View>
-                                <View as={'td'} $ui={css`
-                                    ${CellStyle};
-                                    color: var(--g-500);
-                                `}>전달사항</View>
-                            </View>
-                            {rsvp ? rsvp.map(rsvp => (
-                                <View key={rsvp.id} as={'tr'} $ui={css`
-                                    border-top: 1px solid var(--g-100);
+                                <View as={'tr'} $ui={css`
                                 `}>
                                     <View as={'td'} $ui={css`
                                         ${CellStyle};
-                                    `}>{rsvp.guestName}</View>
+                                        color: var(--g-500);
+                                    `}>이름</View>
                                     <View as={'td'} $ui={css`
                                         ${CellStyle};
-                                    `}>{getRsvpText(rsvp)}</View>
+                                        color: var(--g-500);
+                                    `}>참석측</View>
                                     <View as={'td'} $ui={css`
                                         ${CellStyle};
-                                    `}>{rsvp.isMeal ? '식사함' : '식사 안 함'}</View>
+                                        color: var(--g-500);
+                                    `}>식사 여부</View>
                                     <View as={'td'} $ui={css`
                                         ${CellStyle};
-                                    `}>{rsvp.guestPhone}</View>
+                                        color: var(--g-500);
+                                    `}>참석 인원</View>
                                     <View as={'td'} $ui={css`
                                         ${CellStyle};
-                                    `}>{rsvp.guestComment}</View>
+                                        color: var(--g-500);
+                                    `}>전화번호</View>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                        color: var(--g-500);
+                                    `}>버스 탑승 여부</View>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                        color: var(--g-500);
+                                    `}>추가 전달사항</View>
                                 </View>
-                            )) : (
-                                <Loading ui={css`
-                                    margin-top: 40px;
-                                `}/>
-                            )}
-                        </View>
-                    </Column>
+                                {rsvp ? rsvp.map(rsvp => (
+                                    <View key={rsvp.id} as={'tr'} $ui={css`
+                                        border-top: 1px solid var(--g-100);
+                                    `}>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{rsvp.guestName}</View>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{getRsvpText(rsvp)}</View>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{wedding?.rsvp.attendMealStatus ? (rsvp.isMeal ? '식사함' : '식사 안 함') : '-'}</View>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{wedding?.rsvp.attendGuestCntStatus ? rsvp.guestCnt : '-'}</View>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{wedding?.rsvp.attendPhoneStatus ? rsvp.guestPhone : '-'}</View>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{wedding?.rsvp.attendBusStatus ? rsvp.bus : '-'}</View>
+                                        <View as={'td'} $ui={css`
+                                            ${CellStyle};
+                                        `}>{wedding?.rsvp.attendEtcStatus ? rsvp.guestComment : '-'}</View>
+                                    </View>
+                                )) : (
+                                    <Loading ui={css`
+                                        margin-top: 40px;
+                                    `}/>
+                                )}
+                            </View>
+                        </Column>
+                    ) : (
+                        <Column $gap={8} $alignItems={'center'} $ui={css`
+                            margin-top: 20px;
+                        `}>
+                            <Text type={'p1'}>RSVP 집계가 비활성화 되어있습니다</Text>
+                            <Text type={'p3'} ui={css`
+                                color: var(--g-500);
+                            `}><View as={'span'} onClick={() => {
+                                if (wedding) {
+                                    window.open(`/editor/${wedding.url}`);
+                                }
+                            }} $ui={css`
+                                cursor: pointer;
+                                text-decoration: underline;
+                            `}>에디터</View>에서 활성화 할 수 있습니다</Text>
+                        </Column>
+                    )}
                 </Column>
                 <Spacer h={64}/>
             </Column>
