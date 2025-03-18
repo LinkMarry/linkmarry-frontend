@@ -254,7 +254,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                         <Column $gap={8} $alignItems={'stretch'} $flex={1}>
                             <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-400);
-                            `}>방명록 미리보기</Text>
+                            `}>방명록</Text>
                             <Column $gap={8} $alignItems={'stretch'} $flex={1} $ui={css`
                                 min-height: 0;
                                 overflow-y: scroll;

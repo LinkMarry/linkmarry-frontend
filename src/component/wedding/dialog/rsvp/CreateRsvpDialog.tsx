@@ -14,6 +14,7 @@ import SegmentedButton from "@designsystem/component/SegmentedButton";
 import {makeInteractionEffect} from "@util/css.util";
 import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
+import FormatUtil from "@util/format.util";
 
 interface CreateRsvpDialogProps {
     url: string;
@@ -34,54 +35,25 @@ function CreateRsvpDialog(
     const [isBus, setIsBus] = useState(0);
     const [showConfirmCreateRsvpDialog, setShowConfirmCreateRsvpDialog] = useState(false);
 
-    const guestNameRef = useRef<HTMLInputElement>(null);
-    const guestPhoneRef = useRef<HTMLInputElement>(null);
-    const guestCntRef = useRef<HTMLInputElement>(null);
-    const guestCommentRef = useRef<HTMLInputElement>(null);
+    const [guestName, setGuestName] = useState('');
+    const [guestPhone, setGuestPhone] = useState('');
+    const [guestCnt, setGuestCnt] = useState(0);
+    const [guestComment, setGuestComment] = useState('');
 
     const createRsvp = async () => {
-        const guestName = guestNameRef.current!!;
-        const guestPhone = guestPhoneRef.current!!;
-        const guestCnt = guestCntRef.current!!;
-        const guestComment = guestCommentRef.current!!;
-
-        if (guestName.value === '') {
-            guestName.focus();
-            alert('참석자 성함을 입력해 주세요');
-            return;
-        }
-
-        if (rsvp.attendPhoneStatus && guestPhone.value === '') {
-            guestPhone.focus();
-            alert('연락처를 입력해 주세요');
-            return;
-        }
-
-        if (rsvp.attendGuestCntStatus && guestCnt.value === '') {
-            guestCnt.focus();
-            alert('동행 인원을 입력해 주세요');
-            return;
-        }
-
-        if (rsvp.attendEtcStatus && guestComment.value === '') {
-            guestComment.focus();
-            alert('추가로 전달할 내용을 입력해 주세요');
-            return;
-        }
-
         await weddingApi.createRsvp({
             url,
             guestType: guestType === 0 ? GuestType.GROOM : GuestType.BRIDE,
             isAttend: isAttend === 0,
             isMeal: isMeal === 0,
-            guestName: guestName?.value ?? '',
-            guestPhone: guestPhone?.value ?? '',
-            bus: false,
-            guestCnt: Number(guestCnt?.value) ?? '',
-            guestComment: guestComment?.value ?? '',
+            guestName: guestName,
+            guestPhone: guestPhone,
+            bus: isBus === 0,
+            guestCnt: guestCnt,
+            guestComment: guestComment,
         });
         dismiss();
-    };
+    }
 
     return (
         <BaseDialog dismiss={dismiss}>
@@ -164,24 +136,52 @@ function CreateRsvpDialog(
                         )}
                         <Column $gap={8} $alignItems={'stretch'}>
                             <Text type={'p3'}>참석자 성함</Text>
-                            <Input ref={guestNameRef} hasLabel={false}/>
+                            <Input
+                                value={guestName}
+                                onChange={event => setGuestName(event.target.value)}
+                                hasLabel={false}
+                            />
                         </Column>
                         {rsvp.attendPhoneStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>연락처</Text>
-                                <Input ref={guestPhoneRef} hasLabel={false}/>
+                                <Input
+                                    value={guestPhone}
+                                    onChange={event => {
+                                        const value = event.target.value;
+                                        const filteredValue = value.replace(/[^0-9-]/g, '');
+
+                                        const formatedPhone = FormatUtil.formatPhone(filteredValue);
+
+                                        if (formatedPhone) {
+                                            setGuestPhone(formatedPhone);
+                                        } else {
+                                            setGuestPhone(filteredValue);
+                                        }
+                                    }}
+                                    hasLabel={false}
+                                />
                             </Column>
                         )}
                         {rsvp.attendGuestCntStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>동행 인원</Text>
-                                <Input ref={guestCntRef} type={'number'} hasLabel={false}/>
+                                <Input
+                                    value={guestCnt}
+                                    onChange={event => setGuestCnt(Number(event.target.value))}
+                                    type={'number'}
+                                    hasLabel={false}
+                                />
                             </Column>
                         )}
                         {rsvp.attendEtcStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>추가로 전달할 내용을 입력해 주세요.</Text>
-                                <Input ref={guestCommentRef} hasLabel={false}/>
+                                <Input
+                                    value={guestComment}
+                                    onChange={event => setGuestComment(event.target.value)}
+                                    hasLabel={false}
+                                />
                             </Column>
                         )}
                     </Column>
