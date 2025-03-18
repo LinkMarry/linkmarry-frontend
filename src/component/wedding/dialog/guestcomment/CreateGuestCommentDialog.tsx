@@ -7,6 +7,7 @@ import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import Input from "@designsystem/component/Input";
 import Textarea from "@designsystem/component/Textarea";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 interface CreateGuestCommentDialogProps {
     url: string;
@@ -59,13 +60,21 @@ function CreateGuestCommentDialog(
     return (
         <BaseDialog dismiss={dismiss}>
             <Column $gap={48} $alignItems={'stretch'} $ui={css`
-                width: 80vw;
+                width: 90vw;
                 max-width: 436px;
                 padding: 44px 36px;
                 background: white;
                 border-radius: 12px;
+                position: relative;
                 ${applyBaseDialogContent()};
             `}>
+                <Icon size={20} iconType={IconType.CrossLine} onClick={dismiss} ui={css`
+                    fill: var(--g-300);
+                    position: absolute;
+                    top: 16px;
+                    right: 16px;
+                    cursor: pointer;
+                `}/>
                 <Column $gap={4} $alignItems={'center'}>
                     <Text type={'p1'} bold={true}>방명록 작성하기</Text>
                     <Text type={'caption1'} ui={css`

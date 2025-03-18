@@ -1,8 +1,7 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import styled, {css} from "styled-components";
-import FadeIn from "@src/component/fadein/FadeIn";
+import {css} from "styled-components";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<'div'> {
     background: string;
@@ -15,7 +14,9 @@ function FooterTemplate(
     }: FooterTemplateProps
 ) {
     return (
-        <Container $background={background} {...props}>
+        <Column $alignItems={'stretch'} $ui={css`
+            background: ${background};
+        `} {...props}>
             <Column
                 $gap={28}
                 style={{
@@ -39,14 +40,8 @@ function FooterTemplate(
                     `}>All rights reserved.</Text>
                 </Row>
             </Column>
-        </Container>
+        </Column>
     );
 }
-
-const Container = styled.div<{ $background: string }>`
-    display: flex;
-    flex-direction: column;
-    background: ${({$background}) => $background};
-`
 
 export default FooterTemplate;
