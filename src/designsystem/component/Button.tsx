@@ -42,6 +42,7 @@ function Button(
 
     return (
         <ButtonStyle
+            className={'override-font'}
             size={size}
             $buttonType={buttonType}
             ref={ref}

@@ -7,6 +7,7 @@ import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import Comment from "@remote/value/Comment";
 import {isAxiosError} from "axios";
+import Input from "@designsystem/component/Input";
 
 interface RemoveGuestCommentDialogProps {
     url: string;
@@ -52,32 +53,25 @@ function RemoveGuestCommentDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
+            <Column $gap={48} $alignItems={'stretch'} $ui={css`
+                width: 80vw;
+                max-width: 436px;
+                padding: 44px 36px;
+                background: white;
+                border-radius: 12px;
+                ${applyBaseDialogContent()};
+            `}>
                 <Column $gap={4} $alignItems={'center'}>
-                    {/*<Text type={'h6'}>글 삭제하기</Text>*/}
+                    <Text type={'p1'} bold={true}>글 삭제하기</Text>
                     <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>관리자와 글 작성자만 글을 삭제할 수 있습니다</Text>
                 </Column>
-                {/*<TextField ref={passwordRef} placeholder={'비밀번호 입력'}/>*/}
-                <Button text={'삭제'} buttonType={'outlined'} onClick={onClickRemove}/>
-            </S.container>
+                <Input ref={passwordRef} placeholder={'비밀번호 입력'}/>
+                <Button text={'삭제'} buttonType={'tonal'} onClick={onClickRemove}/>
+            </Column>
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        width: 80vw;
-        max-width: 560px;
-        flex-direction: column;
-        padding: 44px 36px;
-        gap: 48px;
-        background: white;
-        border-radius: 12px;
-        ${applyBaseDialogContent()};
-    `
 }
 
 export default RemoveGuestCommentDialog;

@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithRef} from 'react';
+import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
 import View from "@designsystem/core/View";
 import {css, RuleSet} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
@@ -9,14 +9,22 @@ interface Props extends ComponentPropsWithRef<'textarea'> {
     $ui?: RuleSet;
 }
 
-const Textarea = ({placeholder, hasLabel = true, $ui, ...props}: Props) => {
+const Textarea = forwardRef((
+    {
+        placeholder,
+        hasLabel = true,
+        $ui,
+        ...props
+    }: Props, ref: ForwardedRef<HTMLTextAreaElement>
+) => {
     return (
         <View $ui={css`
             display: flex;
             position: relative;
-            ${$ui};
+        ${$ui};
         `}>
             <View
+                ref={ref}
                 as={'textarea'}
                 $ui={css`
                     display: flex;
@@ -88,6 +96,6 @@ const Textarea = ({placeholder, hasLabel = true, $ui, ...props}: Props) => {
             </View>
         </View>
     );
-};
+});
 
 export default Textarea;

@@ -22,7 +22,7 @@ export default function BaseDialog(
     }, []);
 
     return (
-        <S.container ref={dialogRef}>
+        <S.container className={'override-font'} ref={dialogRef}>
             {children}
             <S.backdrop onClick={() => {
                 dismiss();
