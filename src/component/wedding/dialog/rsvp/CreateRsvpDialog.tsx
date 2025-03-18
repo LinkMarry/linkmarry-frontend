@@ -9,7 +9,6 @@ import Button from "@designsystem/component/Button";
 import weddingApi from "@remote/api/WeddingApi";
 import GuestType, {guestTypeList, guestTypeMap} from "@remote/enumeration/GuestType";
 import Rsvp from "@remote/value/Rsvp";
-import ConfirmCreateRsvpDialog from "@src/component/wedding/dialog/rsvp/ConfirmCreateRsvpDialog";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 
