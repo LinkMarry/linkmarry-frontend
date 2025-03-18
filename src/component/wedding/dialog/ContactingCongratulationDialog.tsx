@@ -34,17 +34,17 @@ function ContactingCongratulationDialog(
     const tels = ((): Tel[] => {
         const groomTels: Tel[] = [
             {
-                name: 'baseInfo.groomName',
+                name: baseInfo.groomFirstName + baseInfo.groomLastName,
                 familyName: '신랑',
                 tel: phone.groomTel
             },
             {
-                name: 'baseInfo.groomFatherName',
+                name: baseInfo.groomFatherFirstName + baseInfo.groomFatherLastName,
                 familyName: '아버지',
                 tel: phone.groomFatherTel
             },
             {
-                name: 'baseInfo.groomMotherName',
+                name: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
                 familyName: '어머니',
                 tel: phone.groomMotherTel
             }
@@ -52,17 +52,17 @@ function ContactingCongratulationDialog(
 
         const brideTels: Tel[] = [
             {
-                name: 'baseInfo.brideName',
+                name: baseInfo.brideFirstName + baseInfo.brideLastName,
                 familyName: '신부',
                 tel: phone.brideTel
             },
             {
-                name: 'baseInfo.brideFatherName',
+                name: baseInfo.brideFatherFirstName + baseInfo.brideFatherLastName,
                 familyName: '아버지',
                 tel: phone.brideFatherTel
             },
             {
-                name: 'baseInfo.brideMotherName',
+                name: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,
                 familyName: '어머니',
                 tel: phone.brideMotherTel
             }
@@ -87,7 +87,7 @@ function ContactingCongratulationDialog(
                 ${applyBaseDialogContent()};
             `}>
                 <Column $gap={4} $alignItems={'center'}>
-                    {/*<Text type={'h6'}>축하 연락하기</Text>*/}
+                    <Text type={'p1'} bold={true}>축하 연락하기</Text>
                     <Text type={'caption1'} ui={css`
                         color: var(--g-400);
                     `}>축하의 마음을 전하세요</Text>
@@ -107,9 +107,9 @@ function ContactingCongratulationDialog(
                             border-radius: 8px;
                         `}>
                             <Row $gap={12} $alignItems={'center'}>
-                                {/*<Text type={'p5'}>{tel.name}</Text>*/}
+                                <Text type={'p3'}>{tel.name}</Text>
                                 <Text type={'caption1'} ui={css`
-                                    color: var(--g-300);
+                                    color: var(--g-400);
                                 `}>{tel.familyName}</Text>
                             </Row>
                             <Spacer/>

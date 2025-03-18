@@ -164,12 +164,12 @@ function CreateRsvpDialog(
                         )}
                         <Column $gap={8} $alignItems={'stretch'}>
                             <Text type={'p3'}>참석자 성함</Text>
-                            <Input ref={guestNameRef} placeholder={'참석자 본인 성함'} hasLabel={false}/>
+                            <Input ref={guestNameRef} hasLabel={false}/>
                         </Column>
                         {rsvp.attendPhoneStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>연락처</Text>
-                                <Input ref={guestPhoneRef} placeholder={'- 없이 숫자만'}/>
+                                <Input ref={guestPhoneRef}/>
                             </Column>
                         )}
                         {rsvp.attendGuestCntStatus && (
