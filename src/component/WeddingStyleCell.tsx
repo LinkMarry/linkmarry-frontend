@@ -21,20 +21,27 @@ function WeddingStyleCell({weddingDesign}: Props) {
             $alignItems={'stretch'}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            $ui={css`
+                &:hover {
+                    transform: translateY(-8px);
+                }
+
+                transition: 0.2s transform;
+            `}
         >
             <View $ui={css`
                 border-radius: 8px;
                 overflow: hidden;
                 position: relative;
+                ${isHovered && css`
+                    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.08);
+                `};
+                transition: 0.2s box-shadow;
             `}>
                 <View $ui={css`
                     aspect-ratio: 9 / 16;
                     background: url("${weddingDesign.img}");
                     background-size: cover;
-                    ${isHovered && css`
-                        //filter: blur(4px);
-                    `};
-                    transition: 0.2s filter;
                 `}/>
                 {isHovered && (
                     <Column $alignItems={'stretch'} $gap={4} $ui={css`
@@ -44,7 +51,14 @@ function WeddingStyleCell({weddingDesign}: Props) {
                         left: 50%;
                         transform: translateX(-50%);
                     `}>
-                        <Button text={'청첩장 만들기'} onClick={() => navigate(`/editor?designId=${weddingDesign.id}`)}/>
+                        <Button
+                            buttonType={'tonal'}
+                            text={'청첩장 만들기'}
+                            onClick={() => navigate(`/editor?designId=${weddingDesign.id}`)}
+                            ui={css`
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
+                            `}
+                        />
                         {/*<Button text={'미리보기'} buttonType={'tonal'} onClick={() => {*/}
                         {/*    // todo*/}
                         {/*}}/>*/}
