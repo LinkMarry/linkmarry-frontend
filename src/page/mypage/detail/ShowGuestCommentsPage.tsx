@@ -60,7 +60,9 @@ const ShowGuestCommentsPage = () => {
             </Text>
             <Column $alignItems={'stretch'} $gap={48}>
                 <Column $gap={8} $alignItems={'stretch'}>
-                    <Text type={'caption1'} bold={true}>
+                    <Text type={'caption1'} bold={true} ui={css`
+                        color: var(--g-400);
+                    `}>
                         통계
                     </Text>
                     {statistics ? (
@@ -70,79 +72,81 @@ const ShowGuestCommentsPage = () => {
                     )}
                 </Column>
                 <Column $gap={8} $alignItems={'stretch'}>
-                    <Row $alignItems={'center'}>
-                        <Text type={'caption1'} bold={true}>
+                    <Row $alignItems={'flex-end'}>
+                        <Text type={'caption1'} bold={true} ui={css`
+                            color: var(--g-400);
+                        `}>
                             방명록
                         </Text>
                         <Spacer/>
                         <Button text={'Excel 파일 다운받기'} trailingIcon={IconType.StopArrowDown} size={'small'}
                                 buttonType={'outlined'}/>
                     </Row>
-                </Column>
-                {/*{rsvp ? rsvp.map(rsvp => (*/}
-                <Column $alignItems={'flex-start'} $ui={css`
-                    border-radius: 8px;
-                    border: 1px solid var(--g-100);
-                    overflow-x: scroll;
-                `}>
-                    <View as={'table'} $ui={css`
-
-                        & td:not(:last-child) {
-                            border-right: 1px solid var(--g-100);
-                        }
-
-                        border-collapse: collapse;
-                        border-spacing: 0;
+                    {/*{rsvp ? rsvp.map(rsvp => (*/}
+                    <Column $alignItems={'flex-start'} $ui={css`
+                        border-radius: 8px;
+                        border: 1px solid var(--g-100);
+                        overflow-x: scroll;
                     `}>
-                        <View as={'tr'} $ui={css`
+                        <View as={'table'} $ui={css`
+
+                            & td:not(:last-child) {
+                                border-right: 1px solid var(--g-100);
+                            }
+
+                            border-collapse: collapse;
+                            border-spacing: 0;
                         `}>
-                            <View as={'td'} $ui={css`
-                                ${CellStyle};
-                                color: var(--g-500);
-                            `}>이름</View>
-                            <View as={'td'} $ui={css`
-                                ${CellStyle};
-                                color: var(--g-500);
-                            `}>참석측</View>
-                            <View as={'td'} $ui={css`
-                                ${CellStyle};
-                                color: var(--g-500);
-                            `}>식사 여부</View>
-                            <View as={'td'} $ui={css`
-                                ${CellStyle};
-                                color: var(--g-500);
-                            `}>전화번호</View>
-                            <View as={'td'} $ui={css`
-                                ${CellStyle};
-                                color: var(--g-500);
-                            `}>전달사항</View>
-                        </View>
-                        {rsvp ? rsvp.map(rsvp => (
-                            <View key={rsvp.id} as={'tr'} $ui={css`
-                                border-top: 1px solid var(--g-100);
+                            <View as={'tr'} $ui={css`
                             `}>
                                 <View as={'td'} $ui={css`
                                     ${CellStyle};
-                                `}>{rsvp.guestName}</View>
+                                    color: var(--g-500);
+                                `}>이름</View>
                                 <View as={'td'} $ui={css`
                                     ${CellStyle};
-                                `}>{getRsvpText(rsvp)}</View>
+                                    color: var(--g-500);
+                                `}>참석측</View>
                                 <View as={'td'} $ui={css`
                                     ${CellStyle};
-                                `}>{rsvp.isMeal ? '식사함' : '식사 안 함'}</View>
+                                    color: var(--g-500);
+                                `}>식사 여부</View>
                                 <View as={'td'} $ui={css`
                                     ${CellStyle};
-                                `}>{rsvp.guestPhone}</View>
+                                    color: var(--g-500);
+                                `}>전화번호</View>
                                 <View as={'td'} $ui={css`
                                     ${CellStyle};
-                                `}>{rsvp.guestComment}</View>
+                                    color: var(--g-500);
+                                `}>전달사항</View>
                             </View>
-                        )) : (
-                            <Loading ui={css`
-                                margin-top: 40px;
-                            `}/>
-                        )}
-                    </View>
+                            {rsvp ? rsvp.map(rsvp => (
+                                <View key={rsvp.id} as={'tr'} $ui={css`
+                                    border-top: 1px solid var(--g-100);
+                                `}>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                    `}>{rsvp.guestName}</View>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                    `}>{getRsvpText(rsvp)}</View>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                    `}>{rsvp.isMeal ? '식사함' : '식사 안 함'}</View>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                    `}>{rsvp.guestPhone}</View>
+                                    <View as={'td'} $ui={css`
+                                        ${CellStyle};
+                                    `}>{rsvp.guestComment}</View>
+                                </View>
+                            )) : (
+                                <Loading ui={css`
+                                    margin-top: 40px;
+                                `}/>
+                            )}
+                        </View>
+                    </Column>
                 </Column>
                 <Spacer h={64}/>
             </Column>

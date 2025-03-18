@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithRef} from 'react';
+import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
 import View from "@designsystem/core/View";
 import {css, RuleSet} from "styled-components";
 import makeText from "@designsystem/foundation/text/TextType";
@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithRef<'input'> {
     ui?: RuleSet;
 }
 
-const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
+const Input = forwardRef(({placeholder, hasLabel = true, ui, ...props}: Props, ref: ForwardedRef<HTMLInputElement>) => {
     return (
         <View $ui={css`
             display: flex;
@@ -18,6 +18,7 @@ const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
         `}>
             <View
                 as={'input'}
+                ref={ref}
                 $ui={css`
                     display: flex;
                     height: 52px;
@@ -65,7 +66,7 @@ const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
                             display: none;
                         }
                     `};
-                    
+
                     &::-webkit-calendar-picker-indicator {
                         color: var(--g-600);
                         position: absolute;
@@ -93,6 +94,6 @@ const Input = ({placeholder, hasLabel = true, ui, ...props}: Props) => {
             </View>
         </View>
     );
-};
+});
 
 export default Input;

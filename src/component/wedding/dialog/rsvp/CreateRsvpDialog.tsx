@@ -169,19 +169,19 @@ function CreateRsvpDialog(
                         {rsvp.attendPhoneStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>연락처</Text>
-                                <Input ref={guestPhoneRef}/>
+                                <Input ref={guestPhoneRef} hasLabel={false}/>
                             </Column>
                         )}
                         {rsvp.attendGuestCntStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>동행 인원</Text>
-                                <Input ref={guestCntRef} placeholder={'본인 제외한 추가 참석 인원'} type={'number'}/>
+                                <Input ref={guestCntRef} type={'number'} hasLabel={false}/>
                             </Column>
                         )}
                         {rsvp.attendEtcStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>추가로 전달할 내용을 입력해 주세요.</Text>
-                                <Input ref={guestCommentRef} placeholder={'내용 입력'}/>
+                                <Input ref={guestCommentRef} hasLabel={false}/>
                             </Column>
                         )}
                     </Column>
