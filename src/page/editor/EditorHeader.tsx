@@ -6,12 +6,12 @@ import {useNavigate} from "react-router-dom";
 import Spacer from "@designsystem/component/Spacer";
 import Button from "@designsystem/component/Button";
 import useResponsive from "@hook/useResponsive";
-
-// TODO: 에디터에서 나가시겠습니까?
+import Text from "@designsystem/component/Text";
 
 interface Props {
     onShowPreview: () => void;
-    onSave: () => void;
+    onRemoveWatermark: () => void;
+    isSaving: boolean;
 }
 
 const EditorHeader = (props: Props) => {
@@ -23,7 +23,7 @@ const EditorHeader = (props: Props) => {
     return <DesktopEditorHeader {...props}/>;
 };
 
-const SmallEditorHeader = ({onShowPreview, onSave}: Props) => {
+const SmallEditorHeader = ({onShowPreview, onRemoveWatermark, isSaving}: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -38,15 +38,22 @@ const SmallEditorHeader = ({onShowPreview, onSave}: Props) => {
                 navigate('/');
             }}/>
             <Spacer/>
-            <Row $gap={8}>
-                <Button text={'미리보기'} size={'small'} buttonType={'tonal'} onClick={onShowPreview}/>
-                <Button text={'저장하기'} size={'small'} onClick={onSave}/>
+            <Row $gap={20} $alignItems={'center'}>
+                {isSaving && (
+                    <Text type={'p3'} bold={true} ui={css`
+                        color: var(--g-700);
+                    `}>저장 중...</Text>
+                )}
+                <Row $gap={8}>
+                    <Button text={'미리보기'} size={'small'} buttonType={'tonal'} onClick={onShowPreview}/>
+                    <Button text={'워터마크 제거'} size={'small'} onClick={onRemoveWatermark}/>
+                </Row>
             </Row>
         </Row>
     )
 }
 
-const DesktopEditorHeader = ({onSave}: Props) => {
+const DesktopEditorHeader = ({onRemoveWatermark, isSaving}: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -61,7 +68,14 @@ const DesktopEditorHeader = ({onSave}: Props) => {
                 navigate('/');
             }}/>
             <Spacer/>
-            <Button text={'저장하기'} size={'medium'} onClick={onSave}/>
+            <Row $gap={20} $alignItems={'center'}>
+                {isSaving && (
+                    <Text type={'p3'} bold={true} ui={css`
+                        color: var(--g-700);
+                    `}>저장 중...</Text>
+                )}
+                <Button text={'워터마크 제거'} size={'medium'} onClick={onRemoveWatermark}/>
+            </Row>
         </Row>
     )
 }

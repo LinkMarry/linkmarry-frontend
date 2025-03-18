@@ -14,6 +14,7 @@ import useWedding from "@hook/useWedding";
 import {toDomain} from "@remote/value/WeddingDto";
 import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import RemoveWatermarkDialog from "@src/component/dialog/RemoveWatermarkDialog";
 
 const EditorPage = () => {
     const [searchParams] = useSearchParams();
@@ -22,10 +23,11 @@ const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
-    const {wedding, updateWedding, saveWedding} = useWedding();
+    const {wedding, updateWedding, isSaveing} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
     const navigate = useNavigate();
+    const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
     useEffect(() => {
         const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
@@ -44,6 +46,12 @@ const EditorPage = () => {
             background: var(--g-100);
             ${hideScrollBar};
         `}>
+            {showRemoveWatermarkDialog && (
+                <RemoveWatermarkDialog
+                    url={wedding.url}
+                    dismiss={() => setShowRemoveWatermarkDialog(false)}
+                />
+            )}
             <CreateWeddingDialog
                 value={wedding}
                 update={updateWedding}
@@ -61,7 +69,10 @@ const EditorPage = () => {
                     onShowPreview={() => {
                         navigate(`/wedding/${wedding.url}`);
                     }}
-                    onSave={saveWedding}
+                    onRemoveWatermark={() => {
+                        setShowRemoveWatermarkDialog(true);
+                    }}
+                    isSaving={isSaveing}
                 />
                 <EditorNavigationBar
                     currentNavType={currentNavType}
