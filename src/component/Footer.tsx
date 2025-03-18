@@ -5,6 +5,7 @@ import Text from "@designsystem/component/Text";
 import useResponsive from "@hook/useResponsive";
 import View from "@designsystem/core/View";
 import Divider from "@designsystem/component/Divider";
+import {CUSTOMER_SERVICE_CENTER_URL, PRIVACY_POLICY_URL, TERMS_OR_USE_URL} from "@util/constant";
 
 const detail1 = ['산다(SANDA)', '대표 : 양예성', '주소 : 경상북도 포항시 북구 장량주택로 3번길 6, 301호 (양덕동)', '전화 : 010-5584-3914', '이메일 : official.linkmarry@gmail.com'];
 const detail2 = ['사업자등록번호 : 176-24-01729', '통신판매업 신고 : 2024-경북포항-0787호']
@@ -35,7 +36,7 @@ function Footer() {
                         <Column $gap={4}>
                             <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-600);
-                            `} onClick={() => window.open('https://pf.kakao.com/_BzqCn')}>고객센터</Text>
+                            `} onClick={() => window.open(CUSTOMER_SERVICE_CENTER_URL)}>고객센터</Text>
                             <Text type={'caption1'} ui={css`
                                 color: var(--g-500);
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
@@ -63,9 +64,9 @@ function Footer() {
                                 width: 180px;
                             `}>
                                 <Item text={'이용약관'}
-                                      onClick={() => window.open('https://0start.notion.site/18598205e3a3809e9543f6d52b4fc91b?pvs=4')}/>
+                                      onClick={() => window.open(TERMS_OR_USE_URL)}/>
                                 <Item text={'개인정보처리방침'}
-                                      onClick={() => window.open('https://0start.notion.site/212c52cf731445bb803be1e62c694ea5?pvs=4')}/>
+                                      onClick={() => window.open(PRIVACY_POLICY_URL)}/>
                                 <Item text={'사업자 정보 확인'}/>
                             </Column>
                         </View>
