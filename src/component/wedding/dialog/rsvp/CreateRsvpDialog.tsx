@@ -11,6 +11,9 @@ import GuestType, {guestTypeList, guestTypeMap} from "@remote/enumeration/GuestT
 import Rsvp from "@remote/value/Rsvp";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
+import {makeInteractionEffect} from "@util/css.util";
+import Divider from "@designsystem/component/Divider";
+import Input from "@designsystem/component/Input";
 
 interface CreateRsvpDialogProps {
     url: string;
@@ -28,6 +31,7 @@ function CreateRsvpDialog(
     const [guestType, setGuestType] = useState(0);
     const [isAttend, setIsAttend] = useState(0);
     const [isMeal, setIsMeal] = useState(0);
+    const [isBus, setIsBus] = useState(0);
     const [showConfirmCreateRsvpDialog, setShowConfirmCreateRsvpDialog] = useState(false);
 
     const guestNameRef = useRef<HTMLInputElement>(null);
@@ -42,21 +46,25 @@ function CreateRsvpDialog(
         const guestComment = guestCommentRef.current!!;
 
         if (guestName.value === '') {
+            guestName.focus();
             alert('참석자 성함을 입력해 주세요');
             return;
         }
 
         if (rsvp.attendPhoneStatus && guestPhone.value === '') {
+            guestPhone.focus();
             alert('연락처를 입력해 주세요');
             return;
         }
 
         if (rsvp.attendGuestCntStatus && guestCnt.value === '') {
+            guestCnt.focus();
             alert('동행 인원을 입력해 주세요');
             return;
         }
 
         if (rsvp.attendEtcStatus && guestComment.value === '') {
+            guestComment.focus();
             alert('추가로 전달할 내용을 입력해 주세요');
             return;
         }
@@ -83,8 +91,7 @@ function CreateRsvpDialog(
                 max-height: 100vh;
                 overflow-y: hidden;
                 background: white;
-                padding-bottom: 36px;
-                border-radius: 4px;
+                border-radius: 12px;
                 ${applyBaseDialogContent()};
             `}>
                 <Row $alignItems={'center'} $ui={css`
@@ -106,12 +113,13 @@ function CreateRsvpDialog(
                         onClick={dismiss}
                     />
                 </Row>
+                <Divider/>
                 <Column $gap={36} $alignItems={'stretch'} $ui={css`
-                    padding: 36px 40px 0 40px;
+                    padding: 36px 40px;
                 `}>
-                    <Column $gap={28} $alignItems={'stretch'}>
-                        <Column $gap={4} $alignItems={'stretch'}>
-                            {/*<Text type={'p5'}>어느 분의 하객인가요?</Text>*/}
+                    <Column $gap={24} $alignItems={'stretch'}>
+                        <Column $gap={8} $alignItems={'stretch'}>
+                            <Text type={'p3'}>어느 분의 하객인가요?</Text>
                             <SegmentedButton
                                 selectedTab={guestType}
                                 items={guestTypeList.map(i => guestTypeMap[i].korean)}
@@ -120,50 +128,60 @@ function CreateRsvpDialog(
                                 }}
                             />
                         </Column>
-                        <Column $gap={4} $alignItems={'stretch'}>
-                            {/*<Text type={'p5'}>참석 여부를 선택해 주세요.</Text>*/}
-                            {/*<OptionSegmentedButton*/}
-                            {/*    selectedIndex={isAttend}*/}
-                            {/*    items={['참석할게요', '참석이 어려워요']}*/}
-                            {/*    onClickItem={index => {*/}
-                            {/*        setIsAttend(index);*/}
-                            {/*    }}*/}
-                            {/*/>*/}
+                        <Column $gap={8} $alignItems={'stretch'}>
+                            <Text type={'p3'}>참석 여부를 선택해 주세요.</Text>
+                            <SegmentedButton
+                                selectedTab={isAttend}
+                                items={['참석할게요', '참석이 어려워요']}
+                                onChange={tab => {
+                                    setIsAttend(tab);
+                                }}
+                            />
                         </Column>
                         {rsvp.attendMealStatus && (
-                            <Column $gap={4} $alignItems={'stretch'}>
-                                {/*<Text type={'p5'}>식사 여부를 선택해 주세요.</Text>*/}
-                                {/*<OptionSegmentedButton*/}
-                                {/*    selectedIndex={isMeal} items={['식사함', '식사안함']}*/}
-                                {/*    onClickItem={index => {*/}
-                                {/*        setIsMeal(index);*/}
-                                {/*    }}*/}
-                                {/*/>*/}
+                            <Column $gap={8} $alignItems={'stretch'}>
+                                <Text type={'p3'}>식사 여부를 선택해 주세요.</Text>
+                                <SegmentedButton
+                                    selectedTab={isMeal}
+                                    items={['식사함', '식사안함']}
+                                    onChange={tab => {
+                                        setIsMeal(tab);
+                                    }}
+                                />
                             </Column>
                         )}
-                        <Row $gap={18} $alignItems={'center'}>
-                            {/*<Text type={'p5'} style={{width: 75}}>참석자 성함</Text>*/}
-                            {/*<OptionTextField ref={guestNameRef} placeholder={'참석자 본인 성함'} style={{flex: 1}}/>*/}
-                        </Row>
+                        {rsvp.attendBusStatus && (
+                            <Column $gap={8} $alignItems={'stretch'}>
+                                <Text type={'p3'}>버스 탑승 여부를 선택해 주세요.</Text>
+                                <SegmentedButton
+                                    selectedTab={isBus}
+                                    items={['탑승함', '탑승안함']}
+                                    onChange={tab => {
+                                        setIsBus(tab);
+                                    }}
+                                />
+                            </Column>
+                        )}
+                        <Column $gap={8} $alignItems={'stretch'}>
+                            <Text type={'p3'}>참석자 성함</Text>
+                            <Input ref={guestNameRef} placeholder={'참석자 본인 성함'} hasLabel={false}/>
+                        </Column>
                         {rsvp.attendPhoneStatus && (
-                            <Row $gap={18} $alignItems={'center'}>
-                                {/*<Text type={'p5'} style={{width: 75}}>연락처</Text>*/}
-                                {/*<OptionTextField ref={guestPhoneRef} placeholder={'- 없이 입력'} style={{flex: 1}}/>*/}
-                            </Row>
+                            <Column $gap={8} $alignItems={'stretch'}>
+                                <Text type={'p3'}>연락처</Text>
+                                <Input ref={guestPhoneRef} placeholder={'- 없이 숫자만'}/>
+                            </Column>
                         )}
                         {rsvp.attendGuestCntStatus && (
-                            <Row $gap={18} $alignItems={'center'}>
-                                {/*<Text type={'p5'} style={{width: 75}}>동행 인원</Text>*/}
-                                {/*<OptionTextField ref={guestCntRef} placeholder={'본인 제외한 추가 참석 인원'} fieldProps={{*/}
-                                {/*    defaultValue: 0,*/}
-                                {/*    type: 'number'*/}
-                                {/*}} style={{flex: 1}}/>*/}
-                            </Row>
+                            <Column $gap={8} $alignItems={'stretch'}>
+                                <Text type={'p3'}>동행 인원</Text>
+                                <Input ref={guestCntRef} placeholder={'본인 제외한 추가 참석 인원'} type={'number'}/>
+                            </Column>
                         )}
                         {rsvp.attendEtcStatus && (
-                            <Column $gap={4} $alignItems={'stretch'}>
+                            <Column $gap={8} $alignItems={'stretch'}>
                                 <Text type={'p3'}>추가로 전달할 내용을 입력해 주세요.</Text>
-                                {/*<OptionTextField ref={guestCommentRef} autoWidth={false} placeholder={'내용 입력'}/>*/}
+                                <Input ref={guestCommentRef} placeholder={'내용 입력'}/>
                             </Column>
                         )}
                     </Column>

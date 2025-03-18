@@ -1,6 +1,6 @@
 export default interface BackgroundMusic {
     // 음악 URL
-    backgroundMusic: string;
+    backgroundMusicUrl: string;
 
     backgroundMusicName: string;
 
@@ -12,14 +12,14 @@ export default interface BackgroundMusic {
 }
 
 export const defaultBackgroundMusic: BackgroundMusic = {
-    backgroundMusic: '',
+    backgroundMusicUrl: '',
     backgroundMusicName: '',
     effect: true,
     backgroundMusicActivate: true
 }
 
 export const dummyBackgroundMusic: BackgroundMusic = {
-    backgroundMusic: "https://linkmarry.s3.ap-northeast-2.amazonaws.com/music/As_Time_Goes_By.mp3",
+    backgroundMusicUrl: "https://linkmarry.s3.ap-northeast-2.amazonaws.com/music/As_Time_Goes_By.mp3",
     backgroundMusicName: 'As_Time_Goes_By.mp3',
     effect: true,
     backgroundMusicActivate: true,

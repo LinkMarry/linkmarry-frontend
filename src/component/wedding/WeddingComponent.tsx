@@ -37,7 +37,7 @@ function WeddingComponent(
         onRefresh
     }: WeddingComponentProps
 ) {
-    const cookieKey = `hide_RsvpDialog/${wedding.url}`;
+    const cookieKey = `hide_RsvpDialog_${wedding.url}`;
     const [cookies] = useCookies([cookieKey]);
 
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
@@ -45,7 +45,7 @@ function WeddingComponent(
         return cookies[cookieKey] === undefined
     })());
 
-    const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview);
+    const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview && wedding.backgroundMusic.backgroundMusicActivate);
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
     const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.weddingDesign;
     const rootRef = useRef<HTMLDivElement>(null);
@@ -65,7 +65,7 @@ function WeddingComponent(
                 })};
             }
         `}>
-            <audio ref={ref} src={wedding.backgroundMusic.backgroundMusic} loop={true}/>
+            <audio ref={ref} src={wedding.backgroundMusic.backgroundMusicUrl} loop={true}/>
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>

@@ -37,7 +37,7 @@ const EditorInspectorBackgroundMusic = (
     const inputRef = useRef<HTMLInputElement>(null);
 
     const audioRef = useRef<HTMLAudioElement>(null);
-    const [selectedPlayingMusicUrl, setSelectedPlayingMusicUrl] = useState<string>();
+    const [selectedPlayingMusicUrl, setSelectedPlayingMusicUrl] = useState<string | undefined>(backgroundMusic.backgroundMusicUrl);
 
     const handleInput = async (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -46,7 +46,7 @@ const EditorInspectorBackgroundMusic = (
         const data = await uploadFile(files[0]);
 
         update(draft => {
-            draft.backgroundMusic.backgroundMusic = data.url;
+            draft.backgroundMusic.backgroundMusicUrl = data.url;
             draft.backgroundMusic.backgroundMusicName = data.name;
         });
 
@@ -83,14 +83,14 @@ const EditorInspectorBackgroundMusic = (
                     <Item
                         key={index}
                         music={music}
-                        selected={music.musicUrl === backgroundMusic.backgroundMusic}
+                        selected={music.musicUrl === backgroundMusic.backgroundMusicUrl}
                         isPlaying={music.musicUrl === selectedPlayingMusicUrl}
                         onPlay={async () => {
                             await onClickPlayMusic(music);
                         }}
                         onClick={() => update(draft => {
                             draft.backgroundMusic.backgroundMusicName = music.name;
-                            draft.backgroundMusic.backgroundMusic = music.musicUrl;
+                            draft.backgroundMusic.backgroundMusicUrl = music.musicUrl;
                         })}
                     />
                 )) : (
@@ -100,7 +100,7 @@ const EditorInspectorBackgroundMusic = (
                 )}
             </Column>
             {backgroundMusics && (
-                (backgroundMusic.backgroundMusic === '' || backgroundMusics.map(i => i.musicUrl).includes(backgroundMusic.backgroundMusic)) ? (
+                (backgroundMusic.backgroundMusicUrl === '' || backgroundMusics.map(i => i.musicUrl).includes(backgroundMusic.backgroundMusicUrl)) ? (
                     <Column as={'label'} htmlFor={inputId} $alignItems={'stretch'} $ui={css`
                         cursor: pointer;
                     `}>
@@ -141,7 +141,7 @@ const EditorInspectorBackgroundMusic = (
                             border-radius: 6px;
                             ${makeInteractionEffect('strong')};
                         `} onClick={() => update(draft => {
-                            draft.backgroundMusic.backgroundMusic = '';
+                            draft.backgroundMusic.backgroundMusicUrl = '';
                             draft.backgroundMusic.backgroundMusicName = '';
                         })}>
                             <Icon iconType={IconType.Trash} width={24} height={24} ui={css`

@@ -7,10 +7,13 @@ export default function useAudio(autoPlay: boolean) {
         (async () => {
             const audio = ref.current;
 
-            if (autoPlay && audio) {
+            if (!autoPlay || !audio) return;
+            try {
                 await navigator.mediaDevices.getUserMedia({audio: true});
                 await audio.play();
                 audio.volume = 0.15;
+            } catch (error) {
+                console.error(error);
             }
         })()
     }, []);

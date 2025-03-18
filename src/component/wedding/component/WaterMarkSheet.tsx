@@ -17,18 +17,12 @@ function WaterMarkSheet(
     }: Props
 ) {
     const navigate = useNavigate();
-    const dialogRef = useRef<HTMLDialogElement>(null);
-
-    useEffect(() => {
-        dialogRef.current?.showModal();
-    }, []);
 
     return (
-        // <SheetStyle ref={dialogRef}>
         <SheetStyle>
             <Column $gap={28} $alignItems={'center'} $ui={css`
                 padding: 32px 24px;
-                background: var(--g-50);
+                background: white;
                 border-radius: 16px;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
                 max-width: 424px;

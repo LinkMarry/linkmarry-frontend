@@ -53,11 +53,10 @@ function RsvpDialog(
             `}>
                 <Column $gap={24} $alignItems={'stretch'}>
                     <Column $gap={4} $alignItems={'center'}>
-                        {/*todo*/}
-                        {/*<Text type={'h6'} customStyle={css`*/}
-                        {/*    word-break: break-all;*/}
-                        {/*    text-align: center;*/}
-                        {/*`}>{rsvp.rsvpTitle}</Text>*/}
+                        <Text type={'h1'} bold={true} ui={css`
+                            word-break: break-all;
+                            text-align: center;
+                        `}>{rsvp.rsvpTitle}</Text>
                         <Text type={'caption1'} ui={css`
                             word-break: break-all;
                             text-align: center;
