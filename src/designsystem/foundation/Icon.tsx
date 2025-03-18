@@ -80,6 +80,7 @@ import Edit from "@designsystem/foundation/icon/Edit";
 import StopArrowDown from "@designsystem/foundation/icon/StopArrowDown";
 import Play from "@designsystem/foundation/icon/Play";
 import Pause from "@designsystem/foundation/icon/Pause";
+import ExternalLink from "@designsystem/foundation/icon/ExternalLink";
 
 export enum IconType {
     AddEmoji,
@@ -119,6 +120,7 @@ export enum IconType {
     ExclamationFill,
     ExclamationLine,
     ExpandArrow,
+    ExternalLink,
     File,
     Hamburger,
     HeartFill,
@@ -254,6 +256,8 @@ function Icon(
                 return <ExclamationLine {...svgProps}/>;
             case IconType.ExpandArrow:
                 return <ExpandArrow {...svgProps}/>;
+            case IconType.ExternalLink:
+                return <ExternalLink {...svgProps}/>;
             case IconType.File:
                 return <File {...svgProps}/>;
             case IconType.Hamburger:

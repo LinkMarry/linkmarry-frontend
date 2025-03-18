@@ -19,6 +19,8 @@ import Comment from "@remote/value/Comment";
 import DateUtil from "@util/date.util";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
+import RemoveWatermarkDialog from "@src/component/dialog/RemoveWatermarkDialog";
+import {getWeddingUrl} from "@util/string.util";
 
 function MyPageWeddingPage() {
     const [weddings, setWeddings] = useState<WeddingDashboard>();
@@ -58,7 +60,9 @@ function MyPageWeddingPage() {
     }
 
     return (
-        <Column $gap={24} $flex={1} $alignItems={'stretch'}>
+        <Column $gap={24} $flex={1} $alignItems={'stretch'} $ui={css`
+            min-width: 0;
+        `}>
             {showRemoveWeddingDialog && (
                 <Dialog
                     title={'정말 청첩장을\n삭제하시겠습니까?'}
@@ -100,6 +104,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
     const [comments, setComments] = useState<Comment[]>();
     const {deviceSize} = useResponsive();
     const navigate = useNavigate();
+    const weddingUrl = getWeddingUrl(weddingInfo.url);
 
     useEffect(() => {
         (async () => {
@@ -128,6 +133,12 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                 height: 144px;
             `};
         `}>
+            {showRemoveWatermarkDialog && selectedRemoveWatermarkWedding && (
+                <RemoveWatermarkDialog
+                    url={selectedRemoveWatermarkWedding.url}
+                    dismiss={() => setShowRemoveWatermarkDialog(false)}
+                />
+            )}
             <View as={'img'} src={weddingInfo.img} $ui={css`
                 width: calc(360px * 9 / 16);
                 ${deviceSize === "mobile" && css`
@@ -137,17 +148,29 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                 border-radius: 12px;
                 object-fit: cover;
             `}/>
-            <Column $gap={24} $alignItems={'stretch'} $flex={1}>
+            <Column $gap={24} $alignItems={'stretch'} $flex={1} $ui={css`
+                min-width: 0;
+            `}>
                 {/*header*/}
                 <Column $gap={8} $alignItems={'stretch'}>
                     <Row $gap={8} $alignItems={'flex-end'}>
-                        <Column $flex={1}>
+                        <Column $alignItems={'stretch'} $flex={1} $ui={css`
+                            min-width: 0;
+                        `}>
                             <Text type={'p1'} bold={true} ui={css`
                                 color: var(--g-800);
-                            `}>Title</Text>
-                            <Text type={'caption2'} ui={css`
-                                color: var(--g-500);
-                            `}>https://linkmarry.com/wedding/{weddingInfo.url}</Text>
+                            `}>{weddingInfo.name}</Text>
+                            <Row $gap={4} $alignItems={'center'} onClick={() => window.open(weddingUrl)} $ui={css`
+                                cursor: pointer;
+                            `}>
+                                <Text type={'caption2'} ui={css`
+                                    color: var(--g-500);
+                                    word-break: break-all;
+                                `}>{weddingUrl}</Text>
+                                <Icon size={14} iconType={IconType.ExternalLink} ui={css`
+                                    fill: var(--g-500);
+                                `}/>
+                            </Row>
                         </Column>
                         <Row $gap={8} $alignItems={'center'}>
                             {deviceSize === 'desktop' && (
@@ -196,12 +219,12 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                                     navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
                                                 }
                                             },
-                                            {
-                                                icon: IconType.Link,
-                                                text: '링크 수정',
-                                                onClick: () => {
-                                                }
-                                            },
+                                            // {
+                                            //     icon: IconType.Link,
+                                            //     text: '링크 수정',
+                                            //     onClick: () => {
+                                            //     }
+                                            // },
                                             {
                                                 icon: IconType.Trash,
                                                 text: '청첩장 삭제',
@@ -246,9 +269,8 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                         `}>아직 방명록이 없어요</Text>
                                     ) : (
                                         comments.map((comment, index) => (
-                                                <CommentCell key={index} comment={comment}/>
-                                            )
-                                        )
+                                            <CommentCell key={index} comment={comment}/>
+                                        ))
                                     )) : (
                                     <Loading/>
                                 )}
