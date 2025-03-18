@@ -81,6 +81,7 @@ import StopArrowDown from "@designsystem/foundation/icon/StopArrowDown";
 import Play from "@designsystem/foundation/icon/Play";
 import Pause from "@designsystem/foundation/icon/Pause";
 import ExternalLink from "@designsystem/foundation/icon/ExternalLink";
+import Stat from "@designsystem/foundation/icon/Stat";
 
 export enum IconType {
     AddEmoji,
@@ -156,6 +157,7 @@ export enum IconType {
     ShareLine,
     Show,
     Star,
+    Stat,
     Statistics,
     StopArrow,
     StopArrowDown,
@@ -328,6 +330,8 @@ function Icon(
                 return <Show {...svgProps}/>;
             case IconType.Star:
                 return <Star {...svgProps}/>;
+            case IconType.Stat:
+                return <Stat {...svgProps}/>;
             case IconType.Statistics:
                 return <Statistics {...svgProps}/>;
             case IconType.StopArrow:

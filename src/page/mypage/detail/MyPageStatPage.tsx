@@ -24,7 +24,7 @@ const CellStyle = css`
     min-width: 108px;
 `;
 
-const ShowGuestCommentsPage = () => {
+const MyPageStatPage = () => {
     const {url} = useParams();
     const navigate = useNavigate();
     const [wedding, setWedding] = useState<Wedding>();
@@ -64,7 +64,7 @@ const ShowGuestCommentsPage = () => {
             <Text type={'h5'} bold={true} ui={css`
                 color: var(--g-800);
             `}>
-                방명록 확인
+                통계 확인
             </Text>
             <Column $alignItems={'stretch'} $gap={48}>
                 <Column $gap={8} $alignItems={'stretch'}>
@@ -84,7 +84,7 @@ const ShowGuestCommentsPage = () => {
                         <Text type={'caption1'} bold={true} ui={css`
                             color: var(--g-400);
                         `}>
-                            방명록
+                            RSVP
                         </Text>
                         <Spacer/>
                         {wedding?.rsvp.rsvpActivate && (
@@ -279,4 +279,4 @@ const MobileStatCell = ({title, value}: StatCellProps) => {
     )
 }
 
-export default ShowGuestCommentsPage;
+export default MyPageStatPage;

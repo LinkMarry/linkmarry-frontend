@@ -20,7 +20,7 @@ import {AuthProvider} from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
 import useAxios from "@hook/useAxios";
 import AdminRoute from "@page/admin/AdminRoute";
-import ShowGuestCommentsPage from "@page/mypage/detail/ShowGuestCommentsPage";
+import MyPageStatPage from "@page/mypage/detail/MyPageStatPage";
 import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
 import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
 import AiCustomPage from "@src/ai/AICustomPage";
@@ -50,7 +50,7 @@ function App() {
                             <Route path={'info'} element={<MyPageInfoPage/>}/>
                         </Route>
                         <Route element={<MyPageDetailLayout/>}>
-                            <Route path={'wedding/:url/comments'} element={<ShowGuestCommentsPage/>}/>
+                            <Route path={'wedding/:url'} element={<MyPageStatPage/>}/>
                         </Route>
                     </Route>
                     <Route path={'editor/:url?'} element={<EditorPage/>}/>

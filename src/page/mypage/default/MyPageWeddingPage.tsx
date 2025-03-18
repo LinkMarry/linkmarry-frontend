@@ -213,10 +213,10 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                                 }
                                             ] : []),
                                             {
-                                                icon: IconType.Envelope,
-                                                text: '방명록 보기',
+                                                icon: IconType.Stat,
+                                                text: '통계 보기',
                                                 onClick: () => {
-                                                    navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
+                                                    navigate(`/mypage/wedding/${weddingInfo.url}`);
                                                 }
                                             },
                                             // {
