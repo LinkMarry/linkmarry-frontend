@@ -27,38 +27,34 @@ function GuestCommentsDetailDialog(
 ) {
     return (
         <BaseDialog dismiss={dismiss}>
-            <S.container>
-                <Row
-                    style={{
-                        height: 81,
-                        position: 'relative',
-                    }}
-                    $alignItems={'center'}
-                >
+            <Column $alignItems={'stretch'} $ui={css`
+                max-width: 436px;
+                width: 100vw;
+                height: 100vh;
+                overflow-y: hidden;
+                background: white;
+                ${applyBaseDialogContent()};
+                animation: none;
+            `}>
+                <Row $alignItems={'center'} $ui={css`
+                    height: 81px;
+                    position: relative;
+                `}>
                     <Spacer/>
                     <Text type={'p2'}>글 전체 보기</Text>
                     <Spacer/>
-                    <Icon
-                        iconType={IconType.CrossLine}
-                        size={20}
-                        ui={css`
-                            cursor: pointer;
-                            right: 32px;
-                            position: absolute;
-                            fill: var(--g-600);
-                        `}
-                        onClick={dismiss}
-                    />
+                    <Icon iconType={IconType.CrossLine} size={20} onClick={dismiss} ui={css`
+                        cursor: pointer;
+                        right: 32px;
+                        position: absolute;
+                        fill: var(--g-600);
+                    `}/>
                 </Row>
                 <Divider/>
-                <Column
-                    $gap={12}
-                    style={{
-                        padding: '32px 30px',
-                        overflowY: 'scroll'
-                    }}
-                    $alignItems={'stretch'}
-                >
+                <Column $alignItems={'stretch'} $gap={12} $ui={css`
+                    padding: 32px 20px;
+                    overflow-y: scroll;
+                `}>
                     {comments.map((comment, index) => (
                         <BasicGuestComment
                             key={index}
@@ -74,23 +70,9 @@ function GuestCommentsDetailDialog(
                         />
                     ))}
                 </Column>
-            </S.container>
+            </Column>
         </BaseDialog>
     );
-}
-
-const S = {
-    container: styled.div`
-        display: flex;
-        flex-direction: column;
-        max-width: 436px;
-        width: 100vw;
-        max-height: 100vh;
-        overflow-y: hidden;
-        align-items: stretch;
-        background: white;
-        ${applyBaseDialogContent()};
-    `
 }
 
 export default GuestCommentsDetailDialog;
