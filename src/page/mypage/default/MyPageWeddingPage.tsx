@@ -95,6 +95,8 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
 }) {
     const [openDetailPopover, setOpenDetailPopover] = useState(false);
     const [statistics, setStatistics] = useState<WeddingStatistics>();
+    const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
+    const [selectedRemoveWatermarkWedding, setSelectedRemoveWatermarkWedding] = useState<WeddingInfo>();
     const [comments, setComments] = useState<Comment[]>();
     const {deviceSize} = useResponsive();
     const navigate = useNavigate();
@@ -153,8 +155,9 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                     <Button text={'수정'} size={'medium'} buttonType={'outlined'} onClick={() => {
                                         navigate(`/editor/${weddingInfo.url}`);
                                     }}/>
-                                    <Button text={'방명록 확인'} size={'medium'} onClick={() => {
-                                        navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
+                                    <Button text={'워터마크 제거'} size={'medium'} onClick={() => {
+                                        setSelectedRemoveWatermarkWedding(weddingInfo);
+                                        setShowRemoveWatermarkDialog(true);
                                     }}/>
                                 </>
                             )}
@@ -184,15 +187,15 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                                     onClick: () => {
                                                         navigate(`/editor/${weddingInfo.url}`);
                                                     }
-                                                },
-                                                {
-                                                    icon: IconType.Envelope,
-                                                    text: '방명록 보기',
-                                                    onClick: () => {
-                                                        navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
-                                                    }
                                                 }
                                             ] : []),
+                                            {
+                                                icon: IconType.Envelope,
+                                                text: '방명록 보기',
+                                                onClick: () => {
+                                                    navigate(`/mypage/wedding/${weddingInfo.url}/comments`);
+                                                }
+                                            },
                                             {
                                                 icon: IconType.Link,
                                                 text: '링크 수정',

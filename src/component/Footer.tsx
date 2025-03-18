@@ -5,13 +5,22 @@ import Text from "@designsystem/component/Text";
 import useResponsive from "@hook/useResponsive";
 import View from "@designsystem/core/View";
 import Divider from "@designsystem/component/Divider";
-import {CUSTOMER_SERVICE_CENTER_URL, PRIVACY_POLICY_URL, TERMS_OR_USE_URL} from "@util/constant";
+import {
+    BUSINESS_INFORMATION_URL,
+    CUSTOMER_SERVICE_CENTER_URL,
+    NAVER_STORE_URL,
+    NOTIFICATION_URL,
+    PRIVACY_POLICY_URL,
+    TERMS_OR_USE_URL
+} from "@util/constant";
+import {useNavigate} from "react-router-dom";
 
 const detail1 = ['산다(SANDA)', '대표 : 양예성', '주소 : 경상북도 포항시 북구 장량주택로 3번길 6, 301호 (양덕동)', '전화 : 010-5584-3914', '이메일 : official.linkmarry@gmail.com'];
 const detail2 = ['사업자등록번호 : 176-24-01729', '통신판매업 신고 : 2024-경북포항-0787호']
 
 function Footer() {
     const {deviceSize} = useResponsive();
+    const navigate = useNavigate();
 
     return (
         <Column as={'footer'} $alignItems={'center'} $ui={css`
@@ -51,23 +60,21 @@ function Footer() {
                             <Column $gap={4} $ui={css`
                                 width: 180px;
                             `}>
-                                <Item text={'모바일 청첩장'}/>
-                                <Item text={'회원정보'}/>
+                                <Item text={'모바일 청첩장'} onClick={() => navigate('/mypage/wedding')}/>
+                                <Item text={'회원정보'} onClick={() => navigate('/mypage/info')}/>
                             </Column>
                             <Column $gap={4} $ui={css`
                                 width: 180px;
                             `}>
-                                <Item text={'공지사항'}/>
-                                <Item text={'네이버스토어'}/>
+                                <Item text={'공지사항'} onClick={() => window.open(NOTIFICATION_URL)}/>
+                                <Item text={'네이버스토어'} onClick={() => window.open(NAVER_STORE_URL)}/>
                             </Column>
                             <Column $gap={4} $ui={css`
                                 width: 180px;
                             `}>
-                                <Item text={'이용약관'}
-                                      onClick={() => window.open(TERMS_OR_USE_URL)}/>
-                                <Item text={'개인정보처리방침'}
-                                      onClick={() => window.open(PRIVACY_POLICY_URL)}/>
-                                <Item text={'사업자 정보 확인'}/>
+                                <Item text={'이용약관'} onClick={() => window.open(TERMS_OR_USE_URL)}/>
+                                <Item text={'개인정보처리방침'} onClick={() => window.open(PRIVACY_POLICY_URL)}/>
+                                <Item text={'사업자 정보 확인'} onClick={() => window.open(BUSINESS_INFORMATION_URL)}/>
                             </Column>
                         </View>
                     </View>
@@ -111,6 +118,7 @@ function Item(props: {
     return (
         <Text type={'caption2'} bold={true} ui={css`
             color: var(--g-600);
+            cursor: pointer;
         `} {...props}>{props.text}</Text>
     );
 }

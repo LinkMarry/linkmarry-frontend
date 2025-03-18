@@ -40,7 +40,6 @@ function App() {
         <AuthProvider>
             <AutoFocusProvider>
                 <HelmetMetaTags/>
-                <RemoveWatermarkDialog url={''} dismiss={() => {}}/>
                 <Routes>
                     {/*service*/}
                     <Route path={''} element={<HomePage/>}/>
