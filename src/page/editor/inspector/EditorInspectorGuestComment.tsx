@@ -38,7 +38,7 @@ const EditorInspectorGuestComment = (
             </Column>
             <FormToggle checked={guestComment.privateContent} OnChange={checked => update(draft => {
                 draft.guestComment.privateContent = checked;
-            })} label={'내용 공개'}/>
+            })} label={'내용 비공개'}/>
         </EditorInspectorWrapper>
     );
 };

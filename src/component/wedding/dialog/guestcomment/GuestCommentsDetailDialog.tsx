@@ -59,7 +59,6 @@ function GuestCommentsDetailDialog(
                         <BasicGuestComment
                             key={index}
                             comment={comment}
-                            privateContent={guestComment.privateContent}
                             background={'white'}
                             onRemove={() => {
                                 onRemove(comment);

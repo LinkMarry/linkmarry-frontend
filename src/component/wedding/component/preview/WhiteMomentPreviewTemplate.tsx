@@ -11,6 +11,7 @@ import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTem
 import View from "@designsystem/core/View";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {backgroundStyle} from "@remote/value/WeddingDesign";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function WhiteMomentPreviewTemplate(
     {
@@ -24,9 +25,10 @@ function WhiteMomentPreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $alignItems={'stretch'} $ui={css`
             padding: 44px 30px;
             ${backgroundStyle(weddingDesign.weddingDesignColor)};
+            ${implementText({fontFamily: 'LINESeedKR'})};
         `}>
             <Column $gap={36} $alignItems={'center'} $ui={css`
                 margin: 0 23px 44px 23px;

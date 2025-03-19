@@ -55,11 +55,11 @@ function GuestCommentsTemplate(
                             `}>{guestComment.title}</Text>
                         </FadeIn>
                         <FadeIn delay={160}>
-                            <Text size={16} weight={300} ui={css`
-                                color: var(--g-600);
-                                word-break: break-all;
-                                text-align: center;
-                            `}>{guestComment.content}</Text>
+                            {/*<Text size={16} weight={300} ui={css`*/}
+                            {/*    color: var(--g-600);*/}
+                            {/*    word-break: break-all;*/}
+                            {/*    text-align: center;*/}
+                            {/*`}>{guestComment.content}</Text>*/}
                         </FadeIn>
                     </Column>
                     {guestComment.privateContent && (
@@ -67,26 +67,21 @@ function GuestCommentsTemplate(
                             <Column $gap={12} $alignItems={'stretch'}>
                                 <GuestComments
                                     comments={guestComments}
-                                    design={guestComment.guestCommentDesign}
-                                    privateDate={guestComment.privateDate}
                                     background={'white'}
+                                    design={guestComment.guestCommentDesign}
                                     onRemove={comment => {
                                         setSelectedRemoveGuestComment(comment);
                                         setShowRemoveGuestCommentDialog(true);
                                     }}
                                 />
-                                <Text
-                                    size={14} weight={300}
-                                    ui={css`
-                                        color: var(--g-600);
-                                        align-self: flex-end;
-                                        padding-right: 4px;
-                                        cursor: pointer;
-                                    `}
-                                    onClick={() => {
-                                        setShowGuestCommentsDetailDialog(true);
-                                    }}
-                                >전체보기</Text>
+                                <Text size={14} weight={300} ui={css`
+                                    color: var(--g-600);
+                                    align-self: flex-end;
+                                    padding-right: 4px;
+                                    cursor: pointer;
+                                `} onClick={() => {
+                                    setShowGuestCommentsDetailDialog(true);
+                                }}>전체보기</Text>
                             </Column>
                         </FadeIn>
                     )}
@@ -137,7 +132,6 @@ function GuestCommentsTemplate(
 interface GuestCommentsProps {
     comments: Comment[];
     design: GuestCommentDesign;
-    privateDate: boolean;
     background: CSSProperties['background'];
     onRemove: (comment: Comment) => void;
 }
@@ -146,7 +140,6 @@ function GuestComments(
     {
         comments,
         design,
-        privateDate,
         background,
         onRemove,
     }: GuestCommentsProps
@@ -160,7 +153,6 @@ function GuestComments(
                             key={index}
                             comment={comment}
                             background={background}
-                            privateContent={privateDate}
                             onRemove={() => onRemove(comment)}
                         />
                     ))}
@@ -174,7 +166,6 @@ function GuestComments(
                             key={index}
                             comment={comment}
                             background={background}
-                            privateContent={privateDate}
                             onRemove={() => onRemove(comment)}
                         />
                     ))}
@@ -214,7 +205,6 @@ const S = {
 
 interface GuestCommentProps extends ComponentPropsWithoutRef<'div'> {
     comment: Comment;
-    privateContent: boolean;
     background: CSSProperties['background'];
     onRemove: () => void;
 }
@@ -222,7 +212,6 @@ interface GuestCommentProps extends ComponentPropsWithoutRef<'div'> {
 export function BasicGuestComment(
     {
         comment,
-        privateContent,
         background,
         onRemove,
         ...props
@@ -236,13 +225,11 @@ export function BasicGuestComment(
                 `}>
                     From. {comment.name}
                 </Text>
-                {!privateContent && (
-                    <Text size={12} weight={300} ui={css`
-                        color: var(--g-300);
-                    `}>
-                        {trimString(comment.createdDate, 10)}
-                    </Text>
-                )}
+                <Text size={12} weight={300} ui={css`
+                    color: var(--g-300);
+                `}>
+                    {trimString(comment.createdDate, 10)}
+                </Text>
                 <Spacer/>
                 <Icon iconType={IconType.CrossLine} size={20} ui={css`
                     cursor: pointer;
@@ -261,7 +248,6 @@ export function BasicGuestComment(
 export function StickerGuestComment(
     {
         comment,
-        privateContent,
         background,
         onRemove
     }: GuestCommentProps
@@ -286,11 +272,9 @@ export function StickerGuestComment(
                     <Text size={16} weight={300} ui={css`
                         color: var(--g-600);
                     `}>from. {comment.name}</Text>
-                    {!privateContent && (
-                        <Text size={12} weight={300} ui={css`
-                            color: var(--g-300);
-                        `}>{trimString(comment.createdDate, 10)}</Text>
-                    )}
+                    <Text size={12} weight={300} ui={css`
+                        color: var(--g-300);
+                    `}>{trimString(comment.createdDate, 10)}</Text>
                 </Column>
             </Column>
         </S.stickerContainer>

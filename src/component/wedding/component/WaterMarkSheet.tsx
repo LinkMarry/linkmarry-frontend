@@ -18,7 +18,7 @@ function WaterMarkSheet(
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
     return (
-        <SheetStyle>
+        <SheetStyle className={'override-font'}>
             {showRemoveWatermarkDialog && (
                 <RemoveWatermarkDialog
                     url={url}

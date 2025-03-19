@@ -8,6 +8,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
 import View from "@designsystem/core/View";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function NatureBlissPreviewTemplate(
     {
@@ -20,8 +21,9 @@ function NatureBlissPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $alignItems={'stretch'} $ui={css`
             background: white;
+            ${implementText({fontFamily: 'SCoreDream'})};
         `}>
             <Column $gap={16} $alignItems={'center'} $ui={css`
                 padding: 52px 0;

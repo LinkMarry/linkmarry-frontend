@@ -8,6 +8,7 @@ import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import View from "@designsystem/core/View";
 import {backgroundStyle} from "@remote/value/WeddingDesign";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function SoulmatePreviewTemplate(
     {
@@ -20,13 +21,16 @@ function SoulmatePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $alignItems={'stretch'} $ui={css`
             ${backgroundStyle(weddingDesign.weddingDesignColor)};
+            ${implementText({fontFamily: 'Pretendard'})};
         `}>
             <Column $gap={12} $alignItems={'center'} $ui={css`
                 margin: 40px 0;
             `}>
-                <Text size={40} weight={100}>{isValidDate && format(date, 'MM / dd')}</Text>
+                <Text size={40} weight={100} ui={css`
+                    letter-spacing: 8px;
+                `}>{isValidDate && format(date, 'MM / dd')}</Text>
                 <Text size={20} weight={300} ui={css`
                     color: var(--g-600);
                 `}>

@@ -8,6 +8,7 @@ import previewTemplate from "@src/component/wedding/component/preview/PreviewTem
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import View from "@designsystem/core/View";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function ForestLovePreviewTemplate(
     {
@@ -20,8 +21,9 @@ function ForestLovePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $alignItems={'stretch'} $ui={css`
             background: white;
+            ${implementText({fontFamily: 'Aleo'})};
         `}>
             <Column $alignItems={'center'} $gap={8} style={{padding: '72px 0'}}>
                 <Text size={28} weight={300}>{isValidDate && format(date, 'yyyy/MM/dd', {locale: ko})}</Text>
