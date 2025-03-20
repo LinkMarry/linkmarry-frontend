@@ -28,16 +28,9 @@ const EditorPage = () => {
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
-
-    const {authorized} = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!authorized) {
-            navigate('/login');
-            return;
-        }
-
         const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
         if (weddingDesign) {
             updateWedding(draft => {
