@@ -18,6 +18,8 @@ function AddRemoveButton(
 ) {
     return (
         <View ref={ref} $ui={css`
+            display: flex;
+            flex-direction: column;
             position: relative;
         `} {...props}>
             <Icon

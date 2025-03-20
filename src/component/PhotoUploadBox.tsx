@@ -6,7 +6,7 @@ import {css} from "styled-components";
 import VoidInput from "@src/component/VoidInput";
 import fileApi from "@remote/api/FileApi";
 import View from "@designsystem/core/View";
-import AddRemoveButton from "@src/component/AddDismissButton";
+import AddRemoveButton from "@src/component/AddRemoveButton";
 import {hideScrollBar} from "@util/css.util";
 import useUpload from "@hook/useUpload";
 import LoadingOverlay from "@src/component/LoadingOverlay";
