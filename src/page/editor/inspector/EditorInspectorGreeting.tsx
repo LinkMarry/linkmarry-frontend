@@ -72,7 +72,7 @@ const EditorInspectorGreeting = ({value, update}: Props) => {
                 />
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
-                <Text type={'p3'} bold={true}>내용</Text>
+                <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
                     items={greetingDesignList.map(i => greetingDesignMap[i].korean)}
                     selectedTab={greetingDesignList.indexOf(value.greeting.greetingDesign)}

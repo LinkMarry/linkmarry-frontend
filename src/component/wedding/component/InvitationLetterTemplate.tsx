@@ -7,6 +7,7 @@ import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import {css} from "styled-components";
 import FadeIn from "@src/component/fadein/FadeIn";
+import GreetingDesign from "@remote/enumeration/GreetingDesign";
 
 interface InvitationLetterTemplateProps {
     baseInfo: BaseInfo;
@@ -29,14 +30,14 @@ function InvitationLetterTemplate(
                 padding: 72px 60px;
                 background: white;
             `}>
-                {greeting.greetingDesign === 'TEXT' && (
+                {greeting.greetingDesign === GreetingDesign.TEXT && (
                     <FadeIn>
                         <Text className={'override-font'} weight={300} size={12} font={'Aleo'} ui={css`
                             color: var(--g-300);
                         `}>Wedding Invitation</Text>
                     </FadeIn>
                 )}
-                {greeting.greetingDesign === 'FLOWER' && (
+                {greeting.greetingDesign === GreetingDesign.FLOWER && (
                     <FadeIn>
                         <img src={'/invitationLetterIcon.svg'} width={20} height={20} alt="" style={{
                             color: 'white'
