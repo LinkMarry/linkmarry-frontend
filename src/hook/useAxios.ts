@@ -3,6 +3,7 @@ import {AxiosError, InternalAxiosRequestConfig} from "axios";
 import memberApi from "@remote/api/MemberApi";
 import {useNavigate} from "react-router-dom";
 import useJwt from "@hook/useJwt";
+import {useEffect} from "react";
 
 const useAxios = () => {
     const navigate = useNavigate();
@@ -77,8 +78,11 @@ const useAxios = () => {
         }
     };
 
-    api.interceptors.request.use(requestHandler, res => res);
-    api.interceptors.response.use(response => response, errorResponseHandler);
+    useEffect(() => {
+        api.interceptors.request.use(requestHandler, res => res);
+        api.interceptors.response.use(response => response, errorResponseHandler);
+    }, [requestHandler, errorResponseHandler]);
+
 };
 
 export default useAxios;

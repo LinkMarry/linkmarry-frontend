@@ -16,7 +16,7 @@ import MyPageInfoPage from "@page/mypage/default/MyPageInfoPage";
 import HomePage from "@page/HomePage";
 import HelmetMetaTags from "@src/HelmetMetaTags";
 import EditorPage from "@page/editor/EditorPage";
-import useAuth, {AuthProvider} from "@hook/useAuth";
+import useAuth from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
 import useAxios from "@hook/useAxios";
 import AdminRoute from "@page/admin/AdminRoute";
@@ -28,7 +28,6 @@ import PrivateRoute from "@src/PrivateRoute";
 const {Kakao} = window as any;
 
 function App() {
-    const {authorized} = useAuth();
     useAxios();
     useEffect(() => {
         if (!Kakao?.isInitialized()) {

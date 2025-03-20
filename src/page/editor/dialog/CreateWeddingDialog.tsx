@@ -51,7 +51,7 @@ const CreateWeddingDialog = ({value, update}: Props) => {
                     }}
                     confirmButtonProps={{
                         text: '만들기',
-                        enabled: value.url.length > 0 || !isFetching,
+                        enabled: value.url.length > 0 && value.name.length > 0 && !isFetching,
                         onClick: async () => await createWedding()
                     }}
                 >
