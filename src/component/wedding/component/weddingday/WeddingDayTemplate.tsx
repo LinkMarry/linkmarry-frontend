@@ -30,7 +30,7 @@ function WeddingDayTemplate(
         return (
             <Column $gap={12} $alignItems={'center'} $justifyContent={'center'} $ui={css`
                 background: white;
-                height: 100vh;
+                height: 100dvh;
             `}>
                 <Text size={36} weight={300} ui={css`
                     color: var(--g-500);

@@ -42,7 +42,7 @@ const EditorPage = () => {
     return (
         <Column $alignItems={'stretch'} $ui={css`
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
             background: var(--g-100);
             ${hideScrollBar};

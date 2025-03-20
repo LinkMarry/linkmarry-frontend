@@ -25,7 +25,7 @@ function RomanticForestPreviewTemplate(
             ${implementText({fontFamily: 'GangwonEduAll'})};
         `}>
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
-                height: 100vh;
+                height: 100dvh;
                 max-height: 810px;
                 object-fit: cover;
             `}/>

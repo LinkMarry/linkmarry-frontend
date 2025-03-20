@@ -30,7 +30,7 @@ function GuestCommentsDetailDialog(
             <Column $alignItems={'stretch'} $ui={css`
                 max-width: 436px;
                 width: 100vw;
-                height: 100vh;
+                height: 100dvh;
                 overflow-y: hidden;
                 background: white;
                 ${applyBaseDialogContent()};
