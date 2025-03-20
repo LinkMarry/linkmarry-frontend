@@ -24,7 +24,6 @@ import MyPageStatPage from "@page/mypage/detail/MyPageStatPage";
 import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
 import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
 import AiCustomPage from "@src/ai/AICustomPage";
-import RemoveWatermarkDialog from "@src/component/dialog/RemoveWatermarkDialog";
 
 const {Kakao} = window as any;
 
