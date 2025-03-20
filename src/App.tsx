@@ -23,6 +23,7 @@ import AdminRoute from "@page/admin/AdminRoute";
 import MyPageStatPage from "@page/mypage/detail/MyPageStatPage";
 import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
 import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
+import PrivateRoute from "@src/PrivateRoute";
 
 const {Kakao} = window as any;
 
@@ -42,20 +43,18 @@ function App() {
                 {/*service*/}
                 <Route path={''} element={<HomePage/>}/>
                 <Route path={'login'} element={<LoginPage/>}/>
-                {authorized && (
-                    <>
-                        <Route path={'mypage'} element={<MyPageLayout/>}>
-                            <Route element={<MyPageDefaultLayout/>}>
-                                <Route path={'wedding'} element={<MyPageWeddingPage/>}/>
-                                <Route path={'info'} element={<MyPageInfoPage/>}/>
-                            </Route>
-                            <Route element={<MyPageDetailLayout/>}>
-                                <Route path={'wedding/:url'} element={<MyPageStatPage/>}/>
-                            </Route>
+                <Route element={<PrivateRoute/>}>
+                    <Route path={'mypage'} element={<MyPageLayout/>}>
+                        <Route element={<MyPageDefaultLayout/>}>
+                            <Route path={'wedding'} element={<MyPageWeddingPage/>}/>
+                            <Route path={'info'} element={<MyPageInfoPage/>}/>
                         </Route>
-                        <Route path={'editor/:url?'} element={<EditorPage/>}/>
-                    </>
-                )}
+                        <Route element={<MyPageDetailLayout/>}>
+                            <Route path={'wedding/:url'} element={<MyPageStatPage/>}/>
+                        </Route>
+                    </Route>
+                    <Route path={'editor/:url?'} element={<EditorPage/>}/>
+                </Route>
                 <Route path={'wedding/:url'} element={<WeddingPage/>}/>
                 <Route path={'sample'} element={(
                     <Row $justifyContent={'center'} $ui={css`
