@@ -30,7 +30,7 @@ function GalleryTemplate(
             <FadeIn>
                 <Text size={20} weight={300} ui={css`
                     color: var(--g-600);
-                `}>GALLERY</Text>
+                `}>{gallery.galleryTitle}</Text>
             </FadeIn>
             {gallery.galleryDesign === GalleryDesign.SLIDE ? (
                 <GallerySlide
