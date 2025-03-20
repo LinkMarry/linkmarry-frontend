@@ -7,6 +7,7 @@ import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import Text from "@designsystem/component/Text";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function DreamWeddingPreviewTemplate(
     {
@@ -18,9 +19,10 @@ function DreamWeddingPreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column $gap={64} $alignItems={'stretch'} $ui={css`
+        <Column $gap={64} className={'override-font'} $alignItems={'stretch'} $ui={css`
             padding: 78px 28px 72px 28px;
             position: relative;
+            ${implementText({fontFamily: 'GangwonEduAll'})};
         `}>
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 object-fit: cover;

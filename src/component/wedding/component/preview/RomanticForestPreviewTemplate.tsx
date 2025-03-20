@@ -8,6 +8,7 @@ import Text from "@designsystem/component/Text";
 import {format} from "date-fns";
 import Spacer from "@designsystem/component/Spacer";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function RomanticForestPreviewTemplate(
     {
@@ -19,8 +20,9 @@ function RomanticForestPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $alignItems={'stretch'} $ui={css`
             position: relative;
+            ${implementText({fontFamily: 'GangwonEduAll'})};
         `}>
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 height: 100vh;

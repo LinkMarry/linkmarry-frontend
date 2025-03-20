@@ -6,6 +6,7 @@ import View from "@designsystem/core/View";
 import Text from "@designsystem/component/Text";
 import Spacer from "@designsystem/component/Spacer";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function ModernLovePreviewTemplate(
     {
@@ -15,16 +16,17 @@ function ModernLovePreviewTemplate(
 ) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <Column $gap={36} $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $gap={36} $alignItems={'stretch'} $ui={css`
             padding: 108px 32px 40px 32px;
             position: relative;
+            ${implementText({fontFamily: 'UnrealScienceMedicine'})};
         `}>
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 min-height: 580px;
                 border-radius: 500px;
                 object-fit: cover;
             `}/>
-            <Text className={'override-font'} font={'UnrealScienceMedicine'} size={60} weight={400} ui={css`
+            <Text size={60} weight={400} ui={css`
                 position: absolute;
                 white-space: nowrap;
                 color: #556B2F;

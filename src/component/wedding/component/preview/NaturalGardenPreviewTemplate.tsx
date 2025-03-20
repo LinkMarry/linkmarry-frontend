@@ -7,6 +7,7 @@ import Text from "@designsystem/component/Text";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function NaturalGardenPreviewTemplate(
     {
@@ -20,9 +21,10 @@ function NaturalGardenPreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column $gap={44} $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $gap={44} $alignItems={'stretch'} $ui={css`
             padding: 64px 0;
 
+            ${implementText({fontFamily: 'KyoboHandwriting2020'})};
             * {
                 color: #5D4037;
             }

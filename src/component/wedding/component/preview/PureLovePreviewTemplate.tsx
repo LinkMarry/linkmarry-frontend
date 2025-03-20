@@ -7,6 +7,7 @@ import Text from "@designsystem/component/Text";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function PureLovePreviewTemplate(
     {
@@ -18,8 +19,9 @@ function PureLovePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $alignItems={'stretch'} $ui={css`
             position: relative;
+            ${implementText({fontFamily: 'KoPubWorldBatang'})};
         `}>
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 height: 100vh;

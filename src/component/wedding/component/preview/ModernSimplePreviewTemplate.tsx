@@ -7,6 +7,7 @@ import View from "@designsystem/core/View";
 import {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import {format} from "date-fns";
 import {getDetails} from "@remote/value/WeddingSchedule";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function ModernSimplePreviewTemplate(
     {
@@ -18,8 +19,9 @@ function ModernSimplePreviewTemplate(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
-        <Column $gap={60} $alignItems={'center'} $ui={css`
+        <Column $gap={60} className={'override-font'} $alignItems={'center'} $ui={css`
             padding: 92px 0;
+            ${implementText({fontFamily: 'TheFaceShopInklipquid'})};
             * {
                 color: #333333;
             }

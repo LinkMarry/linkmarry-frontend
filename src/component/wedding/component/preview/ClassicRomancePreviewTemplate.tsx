@@ -7,6 +7,7 @@ import View from "@designsystem/core/View";
 import Text from "@designsystem/component/Text";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {format} from "date-fns";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function ClassicRomancePreviewTemplate(
     {
@@ -19,8 +20,9 @@ function ClassicRomancePreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column $gap={28} $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $gap={28} $alignItems={'stretch'} $ui={css`
             padding: 96px 36px;
+            ${implementText({fontFamily: 'GyeonggiBatang'})};
 
             * {
                 color: #989796;
