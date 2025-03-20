@@ -33,7 +33,7 @@ function WhiteMomentPreviewTemplate(
             <Column $gap={36} $alignItems={'center'} $ui={css`
                 margin: 0 23px 44px 23px;
             `}>
-                <Text size={24} weight={100}>{first.name} & {second.name}</Text>
+                <Text size={24} weight={100}>{first.lastName} & {second.lastName}</Text>
                 <Divider ui={css`
                     background: black;
                 `}/>
@@ -54,11 +54,11 @@ function WhiteMomentPreviewTemplate(
                     outline: none;
                 `}/>
                 <Row $gap={8} $alignItems={'center'}>
-                    <Text size={16} weight={300}>{first.korean} {first.name}</Text>
+                    <Text size={16} weight={300}>{first.korean} {first.lastName}</Text>
                     <Icon iconType={IconType.HeartFill} size={16} ui={css`
                         fill: black;
                     `}/>
-                    <Text size={16} weight={300}>{second.korean} {second.name}</Text>
+                    <Text size={16} weight={300}>{second.korean} {second.lastName}</Text>
                 </Row>
             </Column>
         </Column>

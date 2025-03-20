@@ -149,15 +149,8 @@ function CreateRsvpDialog(
                                     value={guestPhone}
                                     onChange={event => {
                                         const value = event.target.value;
-                                        const filteredValue = value.replace(/[^0-9-]/g, '');
-
-                                        const formatedPhone = FormatUtil.formatPhone(filteredValue);
-
-                                        if (formatedPhone) {
-                                            setGuestPhone(formatedPhone);
-                                        } else {
-                                            setGuestPhone(filteredValue);
-                                        }
+                                        const formatedPhone = FormatUtil.formatPhone(value);
+                                        setGuestPhone(formatedPhone);
                                     }}
                                     hasLabel={false}
                                 />

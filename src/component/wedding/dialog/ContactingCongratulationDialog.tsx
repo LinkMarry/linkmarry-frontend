@@ -38,16 +38,18 @@ function ContactingCongratulationDialog(
                 familyName: '신랑',
                 tel: phone.groomTel
             },
-            {
-                name: baseInfo.groomFatherFirstName + baseInfo.groomFatherLastName,
-                familyName: '아버지',
-                tel: phone.groomFatherTel
-            },
-            {
-                name: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
-                familyName: '어머니',
-                tel: phone.groomMotherTel
-            }
+            ...(phone.parentTel ? [
+                {
+                    name: baseInfo.groomFatherFirstName + baseInfo.groomFatherLastName,
+                    familyName: '아버지',
+                    tel: phone.groomFatherTel
+                },
+                {
+                    name: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
+                    familyName: '어머니',
+                    tel: phone.groomMotherTel
+                }
+            ] : []),
         ];
 
         const brideTels: Tel[] = [
@@ -56,16 +58,18 @@ function ContactingCongratulationDialog(
                 familyName: '신부',
                 tel: phone.brideTel
             },
-            {
-                name: baseInfo.brideFatherFirstName + baseInfo.brideFatherLastName,
-                familyName: '아버지',
-                tel: phone.brideFatherTel
-            },
-            {
-                name: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,
-                familyName: '어머니',
-                tel: phone.brideMotherTel
-            }
+            ...(phone.parentTel ? [
+                {
+                    name: baseInfo.brideFatherFirstName + baseInfo.brideFatherLastName,
+                    familyName: '아버지',
+                    tel: phone.brideFatherTel
+                },
+                {
+                    name: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,
+                    familyName: '어머니',
+                    tel: phone.brideMotherTel
+                }
+            ] : [])
         ];
 
         const firstTels = baseInfo.brideMarkFirst ? brideTels : groomTels;

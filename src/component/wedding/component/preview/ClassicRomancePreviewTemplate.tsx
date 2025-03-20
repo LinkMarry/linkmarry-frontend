@@ -7,6 +7,7 @@ import View from "@designsystem/core/View";
 import Text from "@designsystem/component/Text";
 import {getDetails} from "@remote/value/WeddingSchedule";
 import {format} from "date-fns";
+import {implementText} from "@designsystem/foundation/text/TextProperties";
 
 function ClassicRomancePreviewTemplate(
     {
@@ -19,8 +20,9 @@ function ClassicRomancePreviewTemplate(
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <Column $gap={28} $alignItems={'stretch'} $ui={css`
+        <Column className={'override-font'} $gap={28} $alignItems={'stretch'} $ui={css`
             padding: 96px 36px;
+            ${implementText({fontFamily: 'GyeonggiBatang'})};
 
             * {
                 color: #989796;
@@ -33,9 +35,9 @@ function ClassicRomancePreviewTemplate(
             <Column $gap={12} $alignItems={'center'}>
                 <Text size={36} weight={400}>
                     <Row $gap={20} $alignItems={'center'}>
-                        <span>{first.name}</span>
+                        <span>{first.englishName}</span>
                         <span>&</span>
-                        <span>{second.name}</span>
+                        <span>{second.englishName}</span>
                     </Row>
                 </Text>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2" viewBox="0 0 364 2" fill="none">

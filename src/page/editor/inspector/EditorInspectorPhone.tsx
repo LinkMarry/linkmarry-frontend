@@ -6,6 +6,7 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
+import FormatUtil from "@util/format.util";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -21,10 +22,12 @@ const EditorInspectorPhone = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>신랑 신부 전화번호</Text>
                 <Input placeholder={'신랑'} value={phone.groomTel} onChange={event => update(draft => {
-                    draft.phone.groomTel = event.target.value;
+                    const value = event.target.value;
+                    draft.phone.groomTel = FormatUtil.formatPhone(value);
                 })}/>
                 <Input placeholder={'신부'} value={phone.brideTel} onChange={event => update(draft => {
-                    draft.phone.brideTel = event.target.value;
+                    const value = event.target.value;
+                    draft.phone.brideTel = FormatUtil.formatPhone(value);
                 })}/>
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
@@ -38,19 +41,23 @@ const EditorInspectorPhone = (
                     <Column $alignItems={'stretch'} $gap={12}>
                         <Text type={'p3'} bold={true}>신랑측 혼주</Text>
                         <Input placeholder={'신랑 아버지'} value={phone.groomFatherTel} onChange={event => update(draft => {
-                            draft.phone.groomFatherTel = event.target.value;
+                            const value = event.target.value;
+                            draft.phone.groomFatherTel = FormatUtil.formatPhone(value);
                         })}/>
                         <Input placeholder={'신부 어머니'} value={phone.groomMotherTel} onChange={event => update(draft => {
-                            draft.phone.groomMotherTel = event.target.value;
+                            const value = event.target.value;
+                            draft.phone.groomMotherTel = FormatUtil.formatPhone(value);
                         })}/>
                     </Column>
                     <Column $alignItems={'stretch'} $gap={12}>
                         <Text type={'p3'} bold={true}>신부측 혼주</Text>
                         <Input placeholder={'신부 아버지'} value={phone.brideFatherTel} onChange={event => update(draft => {
-                            draft.phone.brideFatherTel = event.target.value;
+                            const value = event.target.value;
+                            draft.phone.brideFatherTel = FormatUtil.formatPhone(value);
                         })}/>
                         <Input placeholder={'신부 어머니'} value={phone.brideMotherTel} onChange={event => update(draft => {
-                            draft.phone.brideMotherTel = event.target.value;
+                            const value = event.target.value;
+                            draft.phone.brideMotherTel = FormatUtil.formatPhone(value);
                         })}/>
                     </Column>
                 </>

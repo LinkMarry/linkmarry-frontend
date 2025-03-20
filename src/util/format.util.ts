@@ -2,7 +2,9 @@ class FormatUtil {
     private constructor() {
     }
 
-    static formatPhone(phone: string): string | null {
+    static formatPhone(phone: string): string {
+        phone = phone.replace(/[^0-9-]/g, '');
+
         switch (phone.length) {
             case 4:
                 return phone[3] === "-"
@@ -15,7 +17,7 @@ class FormatUtil {
             default:
                 return phone.length >= 14
                     ? phone.slice(0, 13) // 010-1234-56789
-                    : null;
+                    : phone;
         }
     }
 }

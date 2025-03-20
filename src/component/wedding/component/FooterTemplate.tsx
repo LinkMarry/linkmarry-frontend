@@ -2,6 +2,7 @@ import React, {ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
+import {backgroundStyle} from "@remote/value/WeddingDesign";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<'div'> {
     background: string;
@@ -15,7 +16,7 @@ function FooterTemplate(
 ) {
     return (
         <Column $alignItems={'stretch'} $ui={css`
-            background: ${background};
+            background: ${backgroundStyle(background)};
         `} {...props}>
             <Column
                 $gap={28}

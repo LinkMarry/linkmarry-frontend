@@ -20,7 +20,7 @@ function ClassicElegancePreviewTemplate(
     const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
-        <Column $alignItems={'stretch'}>
+        <Column className={'override-font'} $alignItems={'stretch'}>
             <View $ui={css`
                 position: relative;
             `}>
@@ -43,7 +43,7 @@ function ClassicElegancePreviewTemplate(
                     `}>
                         <Text size={18} weight={400}>D-{differenceInDays(date, new Date())}</Text>
                     </View>
-                    <Text className={'override-font'} size={44} font={'iceJaram'} weight={400} ui={css`
+                    <Text size={44} font={'iceJaram'} weight={400} ui={css`
                         color: white;
                     `}>
                         <Column $alignItems={'center'} $gap={8}>
@@ -53,7 +53,7 @@ function ClassicElegancePreviewTemplate(
                     </Text>
                 </Column>
             </View>
-            <Text size={20} weight={400}>
+            <Text size={20} font={'LINESeedKR'} weight={400}>
                 <Column $gap={8} $alignItems={'center'} $ui={css`
                     padding: 32px 8px;
                 `}>
