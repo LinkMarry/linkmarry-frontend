@@ -97,16 +97,8 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                             value={phone}
                             onChange={event => {
                                 const value = event.target.value;
-
-                                const filteredValue = value.replace(/[^0-9-]/g, '');
-
-                                const formatedPhone = FormatUtil.formatPhone(filteredValue);
-
-                                if (formatedPhone) {
-                                    setPhone(formatedPhone);
-                                } else {
-                                    setPhone(filteredValue);
-                                }
+                                const formatedPhone = FormatUtil.formatPhone(value);
+                                setPhone(formatedPhone);
                             }}
                             placeholder={'전화번호'}
                         />
