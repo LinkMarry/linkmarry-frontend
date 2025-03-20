@@ -11,7 +11,7 @@ function useWedding() {
     const [isSaveing, setIsSaveing] = useState(false);
 
     const throttledEditWedding = useCallback(debounce(async (updatedWedding: WeddingDto) => {
-        if (wedding.url === '' || wedding.name === '') return;
+        if (updatedWedding.url === '' || updatedWedding.name === '') return;
 
         setIsSaveing(false);
         try {
@@ -20,7 +20,7 @@ function useWedding() {
             console.error(error);
         } finally {
         }
-    }, 3000), [wedding]);
+    }, 3000), []);
 
     useEffect(() => {
         if (wedding) {

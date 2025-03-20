@@ -30,11 +30,14 @@ function MoneyInfoTemplate(
             background: white;
         `}>
             <Column $gap={40} $alignItems={'center'}>
-                <FadeIn>
+                <Column $gap={12} $alignItems={'center'}>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
                     `}>{moneyInfo.infoTitle}</Text>
-                </FadeIn>
+                    <Text size={16} weight={300} ui={css`
+                        color: var(--g-600);
+                    `}>{moneyInfo.infoContent}</Text>
+                </Column>
                 <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
             </Column>
         </Column>

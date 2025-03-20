@@ -21,6 +21,7 @@ const useAxios = () => {
     };
 
     const errorResponseHandler = async (error: AxiosError) => {
+        console.log('Error response handler');
         console.log(error);
 
         const shouldAuthorizeRequest = error.config?.shouldAuthorizeRequest ?? true;
@@ -78,11 +79,8 @@ const useAxios = () => {
         }
     };
 
-    useEffect(() => {
-        api.interceptors.request.use(requestHandler, res => res);
-        api.interceptors.response.use(response => response, errorResponseHandler);
-    }, [requestHandler, errorResponseHandler]);
-
+    api.interceptors.request.use(requestHandler, res => res);
+    api.interceptors.response.use(response => response, errorResponseHandler);
 };
 
 export default useAxios;

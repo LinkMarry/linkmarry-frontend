@@ -1,17 +1,20 @@
-import styled, {css} from "styled-components";
+import styled, {css, RuleSet} from "styled-components";
 import React, {useEffect, useRef} from "react";
 import fadeInAnimationStyle from "@designsystem/animation/fadeInAnimationStyle";
 import popupAnimationStyle from "@designsystem/animation/popupAnimationStyle";
 import {hideScrollBar} from "@util/css.util";
+import {Row} from "@designsystem/core/FlexLayout";
 
 interface BaseDialogProps {
     children?: React.ReactNode;
+    ui?: RuleSet;
     dismiss: () => void;
 }
 
 export default function BaseDialog(
     {
         children,
+        ui,
         dismiss
     }: BaseDialogProps
 ) {
@@ -22,29 +25,26 @@ export default function BaseDialog(
     }, []);
 
     return (
-        <S.container className={'override-font'} ref={dialogRef}>
+        <Row as={'dialog'} className={'override-font'} $justifyContent={'center'} $alignItems={'center'} ref={dialogRef} $ui={css`
+            width: 100vw;
+            min-width: 100vw;
+            height: 100dvh;
+            min-height: 100dvh;
+            border: none;
+            outline: none;
+            background: none;
+            ${fadeInAnimationStyle};
+            ${ui};
+        `}>
             {children}
             <S.backdrop onClick={() => {
                 dismiss();
             }}/>
-        </S.container>
+        </Row>
     );
 }
 
 const S = {
-    container: styled.dialog`
-        display: flex;
-        width: 100vw;
-        min-width: 100vw;
-        height: 100dvh;
-        min-height: 100dvh;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        outline: none;
-        background: none;
-        ${fadeInAnimationStyle};
-    `,
     backdrop: styled.div`
         top: 0;
         right: 0;
