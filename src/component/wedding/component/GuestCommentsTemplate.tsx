@@ -16,6 +16,7 @@ import CreateGuestCommentDialog from "@src/component/wedding/dialog/guestcomment
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
 import View from "@designsystem/core/View";
+import {backgroundStyle, WeddingDesignColor} from "@remote/value/WeddingDesign";
 
 interface GuestCommentsTemplateProps {
     weddingDesignColor: string;
@@ -44,7 +45,11 @@ function GuestCommentsTemplate(
 
     return (
         <FadeIn>
-            <S.root $background={weddingDesignColor} ref={guestCommentRef}>
+            <Column $gap={40} ref={guestCommentRef} $ui={css`
+                padding: 92px 30px;
+                background: ${backgroundStyle(weddingDesignColor)};
+                align-items: stretch;
+            `}>
                 <Column $gap={40} $alignItems={'stretch'}>
                     <Column $gap={12} $alignItems={'center'}>
                         <FadeIn>
@@ -62,29 +67,27 @@ function GuestCommentsTemplate(
                             `}>{guestComment.content}</Text>
                         </FadeIn>
                     </Column>
-                    {guestComment.privateContent && (
-                        <FadeIn delay={320}>
-                            <Column $gap={12} $alignItems={'stretch'}>
-                                <GuestComments
-                                    comments={guestComments}
-                                    background={'white'}
-                                    design={guestComment.guestCommentDesign}
-                                    onRemove={comment => {
-                                        setSelectedRemoveGuestComment(comment);
-                                        setShowRemoveGuestCommentDialog(true);
-                                    }}
-                                />
-                                <Text size={14} weight={300} ui={css`
-                                    color: var(--g-600);
-                                    align-self: flex-end;
-                                    padding-right: 4px;
-                                    cursor: pointer;
-                                `} onClick={() => {
-                                    setShowGuestCommentsDetailDialog(true);
-                                }}>전체보기</Text>
-                            </Column>
-                        </FadeIn>
-                    )}
+                    <FadeIn delay={320}>
+                        <Column $gap={12} $alignItems={'stretch'}>
+                            <GuestComments
+                                comments={guestComments}
+                                background={'white'}
+                                design={guestComment.guestCommentDesign}
+                                onRemove={comment => {
+                                    setSelectedRemoveGuestComment(comment);
+                                    setShowRemoveGuestCommentDialog(true);
+                                }}
+                            />
+                            <Text size={14} weight={300} ui={css`
+                                color: var(--g-600);
+                                align-self: flex-end;
+                                padding-right: 4px;
+                                cursor: pointer;
+                            `} onClick={() => {
+                                setShowGuestCommentsDetailDialog(true);
+                            }}>전체보기</Text>
+                        </Column>
+                    </FadeIn>
                 </Column>
                 <View $ui={css`
                     align-self: center;
@@ -124,7 +127,7 @@ function GuestCommentsTemplate(
                         onRefresh={onRefresh}
                     />
                 )}
-            </S.root>
+            </Column>
         </FadeIn>
     );
 }
@@ -132,7 +135,7 @@ function GuestCommentsTemplate(
 interface GuestCommentsProps {
     comments: Comment[];
     design: GuestCommentDesign;
-    background: CSSProperties['background'];
+    background: WeddingDesignColor;
     onRemove: (comment: Comment) => void;
 }
 
@@ -174,38 +177,9 @@ function GuestComments(
     }
 }
 
-
-const S = {
-    root: styled.div<{ $background: string }>`
-        display: flex;
-        flex-direction: column;
-        padding: 92px 30px;
-        gap: 40px;
-        background: ${({$background}) => $background};
-        align-items: stretch;
-    `,
-    basicContainer: styled.div<{ $background: CSSProperties['background'] }>`
-        display: flex;
-        flex-direction: column;
-        padding: 24px;
-        gap: 16px;
-        background: ${({$background}) => $background};
-        border-radius: 12px;
-    `,
-    stickerContainer: styled.div<{ $background: CSSProperties['background'] }>`
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        height: 228px;
-        flex: 1;
-        padding: 12px;
-        background: ${({$background}) => $background};
-    `
-}
-
 interface GuestCommentProps extends ComponentPropsWithoutRef<'div'> {
     comment: Comment;
-    background: CSSProperties['background'];
+    background: WeddingDesignColor;
     onRemove: () => void;
 }
 
@@ -218,7 +192,12 @@ export function BasicGuestComment(
     }: GuestCommentProps
 ) {
     return (
-        <S.basicContainer $background={background} {...props}>
+        <Column $gap={16} $ui={css`
+            padding: 24px;
+            background: ${backgroundStyle(background)};
+            border-radius: 12px;
+            align-items: stretch;
+        `} {...props}>
             <Row $gap={8} $alignItems={'center'}>
                 <Text size={18} weight={300} ui={css`
                     color: var(--g-600);
@@ -241,7 +220,7 @@ export function BasicGuestComment(
             `}>
                 {comment.comment}
             </Text>
-        </S.basicContainer>
+        </Column>
     );
 }
 
@@ -253,7 +232,12 @@ export function StickerGuestComment(
     }: GuestCommentProps
 ) {
     return (
-        <S.stickerContainer $background={background}>
+        <Column $gap={8} $ui={css`
+            height: 228px;
+            flex: 1;
+            padding: 12px;
+            background: ${backgroundStyle(background)};
+        `}>
             <Icon
                 iconType={IconType.CrossLine} size={20}
                 ui={css`
@@ -277,7 +261,7 @@ export function StickerGuestComment(
                     `}>{trimString(comment.createdDate, 10)}</Text>
                 </Column>
             </Column>
-        </S.stickerContainer>
+        </Column>
     );
 }
 

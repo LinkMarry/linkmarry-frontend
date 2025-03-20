@@ -15,7 +15,7 @@ export default interface GuestComment {
 
 export const defaultGuestComment: GuestComment = {
     title: "",
-    content: '',
+    content: '저희 둘에게 하고 싶은 말을 남겨주세요',
     guestCommentDesign: GuestCommentDesign.BASIC,
     privateContent: true,
 }
