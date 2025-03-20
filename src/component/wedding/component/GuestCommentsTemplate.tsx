@@ -55,11 +55,11 @@ function GuestCommentsTemplate(
                             `}>{guestComment.title}</Text>
                         </FadeIn>
                         <FadeIn delay={160}>
-                            {/*<Text size={16} weight={300} ui={css`*/}
-                            {/*    color: var(--g-600);*/}
-                            {/*    word-break: break-all;*/}
-                            {/*    text-align: center;*/}
-                            {/*`}>{guestComment.content}</Text>*/}
+                            <Text size={16} weight={300} ui={css`
+                                color: var(--g-600);
+                                word-break: break-all;
+                                text-align: center;
+                            `}>{guestComment.content}</Text>
                         </FadeIn>
                     </Column>
                     {guestComment.privateContent && (

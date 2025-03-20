@@ -27,6 +27,12 @@ const EditorInspectorGuestComment = (
                 })}/>
             </Column>
             <Column $alignItems={'stretch'} $gap={12}>
+                <Text type={'p3'} bold={true}>내용</Text>
+                <Input hasLabel={false} value={guestComment.content} onChange={event => update(draft => {
+                    draft.guestComment.content = event.target.value;
+                })}/>
+            </Column>
+            <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
                     items={guestCommentDesignList.map(i => guestCommentDesignMap[i].korean)}

@@ -56,7 +56,7 @@ function InvitationLetterTemplate(
                     `}>
                         <Row $alignItems={'center'} $gap={8}>
                             <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
-                        </Row>
+                        </Row>ㅂ
                     </Text>
                 </FadeIn>
             </Column>
