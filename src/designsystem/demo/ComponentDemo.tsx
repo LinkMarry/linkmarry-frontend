@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Button, {ButtonSize, ButtonType} from "@designsystem/component/Button";
 import Divider, {DividerSize} from "@designsystem/component/Divider";
 import Checkbox from "@designsystem/component/Checkbox";
-import Radio from "@designsystem/component/Radio";
 import Toggle from "@designsystem/component/Toggle";
 import {Column} from "@designsystem/core/FlexLayout";
 import {css} from "styled-components";
@@ -64,11 +63,6 @@ function ComponentDemo() {
                 label={'title'}
                 checked={checked}
                 OnChange={setChecked}
-            />
-            <Radio
-                label={'title'}
-                selected={selected}
-                onChange={setSelected}
             />
             <Toggle
                 checked={toggleChecked}
