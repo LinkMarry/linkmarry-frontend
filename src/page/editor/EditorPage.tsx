@@ -15,6 +15,7 @@ import {toDomain} from "@remote/value/WeddingDto";
 import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import RemoveWatermarkDialog from "@src/component/dialog/RemoveWatermarkDialog";
+import useAuth from "@hook/useAuth";
 
 const EditorPage = () => {
     const [searchParams] = useSearchParams();
@@ -26,10 +27,17 @@ const EditorPage = () => {
     const {wedding, updateWedding, isSaveing} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
-    const navigate = useNavigate();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
+    const {authorized} = useAuth();
+    const navigate = useNavigate();
+
     useEffect(() => {
+        if (!authorized) {
+            navigate('/login');
+            return;
+        }
+
         const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
         if (weddingDesign) {
             updateWedding(draft => {

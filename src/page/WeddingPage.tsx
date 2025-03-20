@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {Row} from "@designsystem/core/FlexLayout";
 import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
@@ -9,6 +9,7 @@ import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import View from "@designsystem/core/View";
 import {useCookies} from "react-cookie";
+import useAuth from "@hook/useAuth";
 
 function WeddingPage() {
     const {url} = useParams();
