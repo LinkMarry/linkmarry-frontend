@@ -1,19 +1,21 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import Video from "@remote/value/Video";
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import View from "@designsystem/core/View";
 import FadeIn from "@src/component/fadein/FadeIn";
 
 interface VideoTemplateProps {
     video: Video;
+    rootRef?: React.RefObject<HTMLDivElement>;
 }
 
 function VideoTemplate(
     {
-        video
+        video,
+        rootRef
     }: VideoTemplateProps
 ) {
     const isYoutubeUrl = video.videoUrl.startsWith('https://www.youtube.com');
@@ -26,6 +28,7 @@ function VideoTemplate(
     }
 
     const videoUrl = video.videoFileType ? video.videoFileUrl : video.videoUrl;
+    const width = rootRef?.current?.getBoundingClientRect().width;
 
     return (
         <FadeIn>
@@ -33,22 +36,26 @@ function VideoTemplate(
                 padding: 92px 0;
                 background: white;
             `}>
-                <Column $gap={12} $alignItems="center">
+                <Column $gap={12} $alignItems={'stretch'}>
                     <FadeIn>
                         <Text size={20} weight={300} ui={css`
                             color: var(--g-600);
+                            text-align: center;
                         `}>VIDEO</Text>
                     </FadeIn>
                     <FadeIn delay={160}>
                         <Text size={16} weight={300} ui={css`
                             color: var(--g-600);
+                            text-align: center;
+                            word-break: break-all;
+                            padding: 0 16px;
                         `}>{video.videoTitle}</Text>
                     </FadeIn>
                 </Column>
                 {isYoutubeUrl ? (
                     <View
                         as={'iframe'}
-                        height={250} title={video.videoTitle}
+                        height={width ? width / 16 * 9 : 250} title={video.videoTitle}
                         src={videoUrl}
                         $ui={css`
                             display: flex;

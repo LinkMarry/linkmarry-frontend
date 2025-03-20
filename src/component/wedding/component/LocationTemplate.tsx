@@ -93,7 +93,7 @@ function LocationTemplate(
                     padding: 0 24px;
                 `}>
                     <FadeIn>
-                        {weddingPlace.placeTransportation.length > 0 && (
+                        {weddingPlace.placeTransportation.length > 0 && weddingPlace.placeTransportation[0].length > 0 && (
                             <Column $gap={4} $alignItems={'stretch'} $ui={css`
                                 padding-bottom: 12px;
                             `}>
@@ -106,7 +106,7 @@ function LocationTemplate(
                         )}
                     </FadeIn>
                     <FadeIn>
-                        {weddingPlace.placeTransportation.length > 1 && (
+                        {weddingPlace.placeTransportation.length > 1 && weddingPlace.placeTransportation[1].length > 0 && (
                             <Column $gap={4} $alignItems={'stretch'} $ui={css`
                                 padding-bottom: 12px;
                             `}>
@@ -119,7 +119,7 @@ function LocationTemplate(
                         )}
                     </FadeIn>
                     <FadeIn>
-                        {weddingPlace.placeTransportation.length > 2 && (
+                        {weddingPlace.placeTransportation.length > 2 && weddingPlace.placeTransportation[2].length > 0 && (
                             <Column $gap={4} $alignItems={'stretch'} $ui={css`
                                 padding-bottom: 12px;
                             `}>
