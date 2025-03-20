@@ -118,20 +118,14 @@ li {
     /*
     Grayscale colors
      */
-    --g-black: #121212;
-    --g-600: #5A5A5A;
-    --g-500: #787878;
-    --g-400: #9E9E9E;
-    --g-300: #BFBFBF;
-    --g-200: #E3E3E3;
-    --g-100: #F2F4F6;
-    --g-white: #FFFFFF;
-
-    /*
-    Status
-     */
-    --status-positive: #54E827;
-    --status-error: #F33C2F;
-    --status-cautionary: #FFD918;
-    --status-info: #3095F1;
+    --g-900: #111827;
+    --g-800: #1F2937;
+    --g-700: #374151;
+    --g-600: #4B5563;
+    --g-500: #6B7280;
+    --g-400: #9CA3AF;
+    --g-300: #D1D5DB;
+    --g-200: #E5E7EB;
+    --g-100: #F3F4F6;
+    --g-50: #F9FAFB;
 }

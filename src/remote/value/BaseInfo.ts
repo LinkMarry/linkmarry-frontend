@@ -1,15 +1,28 @@
 export default interface BaseInfo {
+
+    // 신랑 이름 성
+    groomFirstName: string;
+
     // 신랑 이름
-    groomName: string;
+    groomLastName: string;
+
+    // 신랑 영어 이름
+    groomEnglishName: string;
+
+    // 신랑 아빠 이름 성
+    groomFatherFirstName: string;
 
     // 신랑 아빠 이름
-    groomFatherName: string;
+    groomFatherLastName: string;
 
     // 신랑 아빠 생존 상태
     groomFatherStatus: boolean;
 
+    // 신랑 엄마 이름 성
+    groomMotherFirstName: string;
+
     // 신랑 엄마 이름
-    groomMotherName: string;
+    groomMotherLastName: string;
 
     // 신랑 엄마 생존 상태
     groomMotherStatus: boolean;
@@ -17,23 +30,47 @@ export default interface BaseInfo {
     // 관계 (기본값 : 아들)
     groomFamilyName: string;
 
+    // 관계 (기본값 : 아버지)
+    groomFatherFamilyName: string;
+
+    // 관계 (기본값 : 어머니)
+    groomMotherFamilyName: string;
+
+    // 신부 이름 성
+    brideFirstName: string;
+
     // 신부 이름
-    brideName: string;
+    brideLastName: string;
+
+    // 신부 영어 이름
+    brideEnglishName: string;
+
+    // 신부 아빠 이름 성
+    brideFatherFirstName: string;
 
     // 신부 아빠 이름
-    brideFatherName: string;
+    brideFatherLastName: string;
 
     // 신부 아빠 생존 상태
     brideFatherStatus: boolean;
 
+    // 신부 엄마 이름 성
+    brideMotherFirstName: string;
+
     // 신부 엄마 이름
-    brideMotherName: string;
+    brideMotherLastName: string;
 
     // 신부 엄마 생존 상태
     brideMotherStatus: boolean;
 
     // 관계 (기본값 : 딸)
     brideFamilyName: string;
+
+    // 관계 (기본값 : 아버지)
+    brideFatherFamilyName: string;
+
+    // 관계 (기본값 : 어머니)
+    brideMotherFamilyName: string;
 
     // 국화로 표시 (기본값 : false)
     statusFlower: boolean;
@@ -43,38 +80,62 @@ export default interface BaseInfo {
 }
 
 export const defaultBaseInfo: BaseInfo = {
-    groomName: "",
-    groomFatherName: "",
+    groomFirstName: '',
+    groomLastName: '',
+    groomEnglishName: '',
+    groomFatherFirstName: '',
+    groomFatherLastName: "",
     groomFatherStatus: false,
-    groomMotherName: "",
+    groomMotherFirstName: "",
+    groomMotherLastName: '',
     groomMotherStatus: false,
     groomFamilyName: "아들",
-    brideName: "",
-    brideFatherName: "",
+    groomFatherFamilyName: '아버지',
+    groomMotherFamilyName: '어머니',
+    brideFirstName: "",
+    brideLastName: '',
+    brideEnglishName: '',
+    brideFatherFirstName: "",
+    brideFatherLastName: "",
     brideFatherStatus: false,
-    brideMotherName: "",
+    brideMotherFirstName: "",
+    brideMotherLastName: '',
     brideMotherStatus: false,
     brideFamilyName: "딸",
+    brideFatherFamilyName: '아버지',
+    brideMotherFamilyName: '어머니',
     statusFlower: false,
     brideMarkFirst: false,
 }
 
 export const dummyBaseInfo: BaseInfo = {
-    groomName: "김민수",
-    groomFatherName: "김수민",
+    groomFirstName: "김",
+    groomLastName: '민수',
+    groomEnglishName: 'MINSU',
+    groomFatherFirstName: "김",
+    groomFatherLastName: '수민',
     groomFatherStatus: false,
-    groomMotherName: "이수진",
+    groomMotherFirstName: "이",
+    groomMotherLastName: '수진',
     groomMotherStatus: false,
     groomFamilyName: "아들",
-    brideName: "김민지",
-    brideFatherName: "김강민",
+    groomFatherFamilyName: '',
+    groomMotherFamilyName: '',
+    brideFirstName: "김",
+    brideLastName: '민지',
+    brideEnglishName: 'MINJI',
+    brideFatherFirstName: "김",
+    brideFatherLastName: '강민',
     brideFatherStatus: false,
-    brideMotherName: "이지안",
+    brideMotherFirstName: "이",
+    brideMotherLastName: '지안',
     brideMotherStatus: false,
     brideFamilyName: "딸",
+    brideFatherFamilyName: '',
+    brideMotherFamilyName: '',
     statusFlower: false,
     brideMarkFirst: false
-}
+};
 
 type InfoByBrideMarkFirst = {
     name: string;
@@ -86,30 +147,31 @@ type InfoByBrideMarkFirst = {
     korean: string;
 }
 
+// firstname + lastname 임시
 export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
     first: InfoByBrideMarkFirst;
     second: InfoByBrideMarkFirst;
 } {
     const groomInfo: InfoByBrideMarkFirst = {
-        name: baseInfo.groomName,
-        fatherName: baseInfo.groomFatherName,
+        name: baseInfo.groomFirstName + baseInfo.groomLastName,
+        fatherName: baseInfo.groomFatherFirstName + baseInfo.groomFatherLastName,
         fatherStatus: baseInfo.groomFatherStatus,
-        motherName: baseInfo.groomMotherName,
+        motherName: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
         motherStatus: baseInfo.groomMotherStatus,
         familyName: baseInfo.groomFamilyName,
         korean: '신랑'
     };
 
     const brideInfo: InfoByBrideMarkFirst = {
-        name: baseInfo.brideName,
-        fatherName: baseInfo.brideFatherName,
+        name: baseInfo.brideFirstName + baseInfo.brideLastName,
+        fatherName: baseInfo.brideFatherFirstName + baseInfo.brideFatherLastName,
         fatherStatus: baseInfo.brideFatherStatus,
-        motherName: baseInfo.brideMotherName,
+        motherName: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,
         motherStatus: baseInfo.brideMotherStatus,
         familyName: baseInfo.brideFamilyName,
         korean: '신부'
     };
-    
+
     if (baseInfo.brideMarkFirst) {
         return {
             first: brideInfo,

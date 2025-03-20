@@ -1,5 +1,5 @@
 import {ResponseData, ResponseVoid} from "@remote/value/Response";
-import customApi from "@remote/api/foundation/customApi";
+import api from "@remote/api/foundation/api";
 import NotificationRequest from "@remote/value/request/NotificationRequest";
 import Notification from "@remote/value/Notification";
 
@@ -10,7 +10,7 @@ class NotificationApi {
      * 공지생성
      */
     async createNotification(req: NotificationRequest): Promise<ResponseVoid> {
-        const {data} = await customApi.post(NotificationApi.PATH, req);
+        const {data} = await api.post(NotificationApi.PATH, req);
         return data;
     }
 
@@ -18,7 +18,7 @@ class NotificationApi {
      * 모든 공지 불러오기
      */
     async getNotifications(): Promise<ResponseData<Notification[]>> {
-        const {data} = await customApi.get(NotificationApi.PATH, {
+        const {data} = await api.get(NotificationApi.PATH, {
             shouldAuthorizeRequest: false
         });
         return data;
@@ -28,7 +28,7 @@ class NotificationApi {
      * 공지 단건 조회하기
      */
     async getNotification(id: number): Promise<ResponseData<Notification>> {
-        const {data} = await customApi.get(`${NotificationApi.PATH}/${id}`, {
+        const {data} = await api.get(`${NotificationApi.PATH}/${id}`, {
             shouldAuthorizeRequest: false
         });
         return data;
@@ -38,7 +38,7 @@ class NotificationApi {
      * 공지 수정
      */
     async editNotification(id: number, req: NotificationRequest): Promise<ResponseVoid> {
-        const {data} = await customApi.patch(`${NotificationApi.PATH}/${id}`, req);
+        const {data} = await api.patch(`${NotificationApi.PATH}/${id}`, req);
         return data;
     }
 }

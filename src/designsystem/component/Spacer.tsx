@@ -1,26 +1,25 @@
-import {ComponentPropsWithoutRef, CSSProperties, HTMLAttributes} from "react";
+import {ComponentPropsWithoutRef} from "react";
+import View from "@designsystem/core/View";
+import {css} from "styled-components";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
     w?: number;
     h?: number;
-    style?: CSSProperties;
 }
 
-function Spacer(
-    {
-        w,
-        h,
-        style,
-        ...props
-    }: Props
-) {
+function Spacer({w, h, ...props}: Props) {
     return (
-        <div style={{
-            minWidth: w &&`${w}px`,
-            minHeight: h && `${h}px`,
-            flex: !w && !h ? 1 : undefined,
-            ...style
-        }} {...props}/>
+        <View $ui={css`
+            ${w && css`
+                min-width: ${w}px;
+            `};
+            ${h && css`
+                min-height: ${h}px;
+            `};
+            ${!w && !h && css`
+                flex: 1;
+            `};
+        `} {...props}/>
     );
 }
 

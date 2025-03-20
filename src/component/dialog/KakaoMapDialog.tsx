@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@designsystem/component/dialog/baseDialog";
-import {Column} from "@designsystem/component/FlexLayout";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
+import {Column} from "@designsystem/core/FlexLayout";
+import View from "@designsystem/core/View";
 import Button from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
 import WeddingPlace from "@remote/value/WeddingPlace";
@@ -80,7 +80,7 @@ function KakaoMapDialog(
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $alignItems={'stretch'} $customStyle={css`
+            <Column $alignItems={'stretch'} $ui={css`
                 width: 90vw;
                 max-width: 412px;
                 height: 75vh;
@@ -88,17 +88,16 @@ function KakaoMapDialog(
                 border-radius: 12px;
                 background: white;
             `}>
-                <CustomStyle ref={kakaoMap} $customStyle={css`
+                <View ref={kakaoMap} $ui={css`
                     display: flex;
                     flex: 1;
                     position: relative;
-                `}>
-                </CustomStyle>
+                `}/>
                 {/* 결과 출력 */}
-                <Column gap={10} $alignItems={'stretch'} $customStyle={css`
+                <Column $gap={10} $alignItems={'stretch'} $ui={css`
                     padding: 16px;
                 `}>
-                    <Column as={'ul'} gap={4} $alignItems={'stretch'} $customStyle={css`
+                    <Column as={'ul'} $gap={4} $alignItems={'stretch'} $ui={css`
                         height: 128px;
                         overflow-y: scroll;
                         padding: 4px;
@@ -108,7 +107,7 @@ function KakaoMapDialog(
                             return (
                                 <Column
                                     key={index} as={'li'}
-                                    $customStyle={css`
+                                    $ui={css`
                                         &:hover {
                                             background: var(--g-100);
                                         }
@@ -118,7 +117,7 @@ function KakaoMapDialog(
                                         transition: 0.1s background;
 
                                         ${selected && css`
-                                            border: 1px solid var(--p-800);
+                                            border: 1px solid var(--g-800);
                                         `};
                                     `}
                                     onClick={() => {
@@ -130,17 +129,13 @@ function KakaoMapDialog(
                                     }}
                                 >
                                     <Text type={'p2'}>{place.address_name}</Text>
-                                    <Text
-                                        type={'p5'}
-                                        customStyle={css`
-                                            text-decoration: underline;
-                                            color: var(--g-500);
-                                            cursor: pointer;
-                                        `}
-                                        onClick={() => {
-                                            window.open(place.place_url, '_blank');
-                                        }}
-                                    >{place.place_name}</Text>
+                                    <Text type={'p3'} ui={css`
+                                        text-decoration: underline;
+                                        color: var(--g-500);
+                                        cursor: pointer;
+                                    `} onClick={() => {
+                                        window.open(place.place_url, '_blank');
+                                    }}>{place.place_name}</Text>
                                 </Column>
                             );
                         })}

@@ -1,13 +1,13 @@
-import {RefObject, useContext, useEffect, useState} from "react";
-import AutoFocusContext from "@src/context/AutoFocusContext";
+import {RefObject, useEffect, useState} from "react";
+import useAutoFocus from "@hook/useAutoFocus";
 
 export default function useScrollOnUpdate<T extends HTMLElement>(
     ref: RefObject<T | null>,
     deps: any[]
 ) {
     const [isLoadedCount, setIsLoadedCount] = useState(0);
-    const {autoFocus} = useContext(AutoFocusContext);
-    
+    const {autoFocus} = useAutoFocus();
+
     useEffect(() => {
         if (!autoFocus) {
             return;
@@ -17,7 +17,7 @@ export default function useScrollOnUpdate<T extends HTMLElement>(
             setIsLoadedCount(i => i + 1);
             return;
         }
-        
+
         ref.current?.scrollIntoView({behavior: "smooth", block: "center"});
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps);

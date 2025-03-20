@@ -2,34 +2,40 @@ import React, {useEffect, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
 import {useParams} from "react-router-dom";
-import {Row} from "@designsystem/component/FlexLayout";
-import TemplateComponent from "@src/component/template/TemplateComponent";
+import {Row} from "@designsystem/core/FlexLayout";
+import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
-import Cookies from "js-cookie";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
+import View from "@designsystem/core/View";
+import {useCookies} from "react-cookie";
 
 function WeddingPage() {
     const {url} = useParams();
     const [wedding, setWedding] = useState<Wedding>();
     const [isError, setIsError] = useState(false);
+    const cookieKey = `firstVisitor_${url}`;
+    const [cookie, setCookie] = useCookies([cookieKey]);
 
     useEffect(() => {
         (async () => {
             await getWedding();
         })();
     }, []);
-    
+
     const getWedding = async () => {
         if (!url) return;
-        const cookieKey = `firstVisitor_${url}`;
 
-        const isFirstVisitor = !Cookies.get(cookieKey);
+        const isFirstVisitor = !cookie[cookieKey];
 
         if (isFirstVisitor) {
-            Cookies.set(cookieKey, "false", {expires: 365}); // 1년 동안 유지
+            const date = new Date();
+            date.setDate(date.getDate() + 365);
+            setCookie(cookieKey, 'false', {
+                expires: date
+            });
         }
-        
+
         try {
             const {data} = await weddingApi.getWeddingInvitation(url, {
                 deviceType: getDeviceType(),
@@ -43,18 +49,24 @@ function WeddingPage() {
     }
 
     return (
-        <Row $justifyContent={'center'} $customStyle={css`
-            background: ${wedding?.template.templateColor};
+        <Row $justifyContent={'center'} $ui={css`
+            background: ${wedding?.weddingDesign.weddingDesignColor};
             padding: 64px 0;
         `}>
             {wedding && (
-                <TemplateComponent
-                    wedding={wedding}
-                    onRefresh={getWedding}
-                />
+                <View $ui={css`
+                    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+                    border-radius: 16px;
+                    overflow: hidden;
+                `}>
+                    <WeddingComponent
+                        wedding={wedding}
+                        onRefresh={getWedding}
+                    />
+                </View>
             )}
             {isError && (
-                <Text type={'h5'} customStyle={css`
+                <Text type={'h5'} ui={css`
                     margin-top: 20px;
                 `}>청첩장을 찾을 수 없습니다</Text>
             )}

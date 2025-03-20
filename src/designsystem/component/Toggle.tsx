@@ -1,98 +1,74 @@
 import React, {
+    ComponentPropsWithRef,
     ForwardedRef,
-    forwardRef, useEffect,
-    useImperativeHandle,
-    useRef,
-    useState
+    forwardRef
 } from 'react';
 import {css, RuleSet} from "styled-components";
-import {Row} from "@designsystem/component/FlexLayout";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import {Row} from "@designsystem/core/FlexLayout";
+import View from "@designsystem/core/View";
 
-interface Props {
-    checked?: boolean;
-    onChange?: (checked: boolean) => void;
-    customStyle?: RuleSet;
+interface Props extends ComponentPropsWithRef<'div'> {
+    checked: boolean;
+    OnChange: (checked: boolean) => void;
+    ui?: RuleSet;
 }
 
-export interface ToggleRef {
-    value: boolean;
-    focus: () => void;
-    toggle: () => void;
-}
 
 function Toggle(
     {
         checked = false,
-        onChange,
-        customStyle
+        OnChange,
+        ui,
+        ...props
     }: Props,
-    ref: ForwardedRef<ToggleRef>
+    ref?: ForwardedRef<HTMLInputElement>
 ) {
-    const [localChecked, setLocalChecked] = useState(checked);
-    const checkboxRef = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        setLocalChecked(checked);
-    }, [checked]);
-
-    useImperativeHandle(ref, () => ({
-        value: localChecked,
-        focus: () => {
-            checkboxRef.current?.focus();
-        },
-        toggle: () => {
-            if (checkboxRef.current) {
-                checkboxRef.current.checked = !checkboxRef.current.checked;
-                onChange?.(checkboxRef.current.checked);
-            }
-        }
-    }));
-
     return (
-        <Row $customStyle={css`
+        <Row $ui={css`
             position: relative;
             width: fit-content;
-            ${customStyle};
-        `}>
+            ${ui};
+        `} {...props}>
             <Row
                 as={'input'}
-                ref={checkboxRef}
+                ref={ref}
                 type={'checkbox'}
-                checked={localChecked}
+                checked={checked}
                 onChange={(e) => {
-                    onChange?.(e.target.checked);
-                    setLocalChecked(e.target.checked);
+                    OnChange(e.target.checked);
                 }}
-                $customStyle={css`
+                $ui={css`
                     display: flex;
-                    width: 80px;
-                    height: 40px;
+                    width: 60px;
+                    height: 32px;
                     appearance: none;
                     cursor: pointer;
-                    ${localChecked ? css`
-                        background: var(--p-300);
+                    ${checked ? css`
+                        background: var(--g-900);
                     ` : css`
                         background: var(--g-200);
                     `};
                     border-radius: 100px;
+                    outline: none;
+                    transition: 0.2s background ease-out;
                 `}
             />
-            <CustomStyle as={'span'} $customStyle={css`
+            <View as={'span'} $ui={css`
                 position: absolute;
-                width: 32px;
-                height: 32px;
+                width: 26px;
+                height: 26px;
                 background-color: white;
                 border-radius: 100px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-                top: 4px;
-                ${localChecked ? css`
-                    right: 6px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+                top: 3px;
+                ${checked ? css`
+                    left: 30px;
                 ` : css`
-                    left: 6px;
+                    left: 3px;
                 `};
+                transition: 0.2s left ease-out;
                 pointer-events: none;
-            `}></CustomStyle>
+            `}/>
         </Row>
     );
 }

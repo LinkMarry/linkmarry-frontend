@@ -1,52 +1,42 @@
 import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
-import Icon, {IconType} from "@designsystem/foundation/icon";
-import styled, {css} from "styled-components";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
+import {css} from "styled-components";
+import View from "@designsystem/core/View";
 
-interface AddDismissButtonProps extends ComponentProps<'div'> {
+interface Props extends ComponentProps<'div'> {
     dismiss: () => void;
     children?: React.ReactNode;
 }
 
-function AddDismissButton(
+function AddRemoveButton(
     {
         dismiss,
         children,
         ...props
-    }: AddDismissButtonProps,
-    ref: ForwardedRef<HTMLDivElement>
+    }: Props,
+    ref?: ForwardedRef<HTMLDivElement>
 ) {
     return (
-        <S.wrapper ref={ref} {...props}>
-            <CustomStyle $customStyle={css`
-                display: flex;
-                position: absolute;
-                top: 0;
-                right: 0;
-                background: var(--g-100);
-                border-radius: 20px;
-                padding: 6px;
-                cursor: pointer;
-                opacity: 0.8;
-            `}>
-                <Icon
-                    iconType={IconType.CrossLine}
-                    size={16}
-                    customStyle={css`
-                        fill: var(--g-600);
-                    `}
-                    onClick={dismiss}
-                />
-            </CustomStyle>
+        <View ref={ref} $ui={css`
+            position: relative;
+        `} {...props}>
+            <Icon
+                iconType={IconType.CrossLine}
+                size={20}
+                ui={css`
+                    fill: white;
+                    display: flex;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background: rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                `}
+                onClick={dismiss}
+            />
             {children}
-        </S.wrapper>
+        </View>
     );
 }
 
-const S = {
-    wrapper: styled.div`
-        position: relative;
-    `
-}
-
-export default forwardRef(AddDismissButton);
+export default forwardRef(AddRemoveButton);

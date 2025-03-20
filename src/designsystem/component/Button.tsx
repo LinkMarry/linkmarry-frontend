@@ -1,146 +1,159 @@
 import styled, {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@designsystem/foundation/icon";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import makeText, {TextType} from "@designsystem/foundation/text/TextType";
 import {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from "react";
 
 export type ButtonSize = 'large' | 'medium' | 'small';
-export type ButtonRole = 'primary' | 'secondary' | 'assistive';
+export type ButtonType = 'filled' | 'outlined' | 'tonal';
+
+const iconSizeMap: Record<ButtonSize, number> = {
+    large: 18,
+    medium: 16,
+    small: 14
+};
 
 export interface Props extends ComponentPropsWithRef<'button'> {
     text: string;
     size?: ButtonSize;
-    role?: ButtonRole;
+    buttonType?: ButtonType;
     leadingIcon?: IconType;
     trailingIcon?: IconType;
     enabled?: boolean;
-    customStyle?: RuleSet;
+    ui?: RuleSet;
 }
 
 function Button(
     {
         text,
         size = 'large',
-        role = 'primary',
+        buttonType = 'filled',
         leadingIcon,
         trailingIcon,
         enabled = true,
-        customStyle,
+        ui,
         ...props
     }: Props,
     ref: ForwardedRef<HTMLButtonElement>
 ) {
-    let background: string, foreground: string;
-    switch (role) {
-        case 'primary':
-            background = 'var(--p-800)';
-            foreground = 'var(--p-100)';
-            break;
-        case 'secondary':
-            background = 'var(--p-100)';
-            foreground = 'var(--p-800)';
-            break;
-        case 'assistive':
-            background = 'var(--g-100)';
-            foreground = 'var(--g-600)';
-            break;
-    }
+    const iconColor = buttonTypeToStyleRecord[buttonType].color;
 
-    let borderRadius: number,
-        contentPadding: CSSProperties['padding'],
-        iconSize: number,
-        height: number,
-        textType: TextType,
-        gap: number;
 
-    switch (size) {
-        case 'large':
-            borderRadius = 12;
-            contentPadding = '10px 20px';
-            iconSize = 20;
-            height = 46;
-            textType = 'p4';
-            gap = 6;
-            break;
-        case 'medium':
-            borderRadius = 10;
-            contentPadding = '8px 16px';
-            iconSize = 18;
-            height = 37;
-            textType = 'btn1';
-            gap = 5;
-            break;
-        case 'small':
-            borderRadius = 8;
-            contentPadding = '6px 12px';
-            iconSize = 16;
-            height = 29;
-            textType = 'caption2';
-            gap = 4;
-            break;
-    }
+    const iconSize = iconSizeMap[size];
 
     return (
         <ButtonStyle
+            className={'override-font'}
+            size={size}
+            $buttonType={buttonType}
             ref={ref}
-            opacity={enabled ? 1 : 0.5}
-            background={background}
-            color={foreground}
-            $borderRadius={borderRadius}
-            padding={contentPadding}
-            height={height}
-            gap={gap}
             disabled={!enabled}
-            $textType={textType}
-            $customStyle={customStyle}
+            ui={ui}
             {...props}
         >
-            {leadingIcon ? (
-                <Icon iconType={leadingIcon} size={iconSize} customStyle={css`
-                    fill: ${foreground};
+            {leadingIcon && (
+                <Icon iconType={leadingIcon} size={iconSize} ui={css`
+                    fill: ${iconColor};
                 `}/>
-            ) : trailingIcon ? <div style={{width: iconSize}}></div> : <></>}
+            )}
             {text}
-            {trailingIcon ? (
-                <Icon iconType={trailingIcon} size={iconSize} customStyle={css`
-                    fill: ${foreground};
+            {trailingIcon && (
+                <Icon iconType={trailingIcon} size={iconSize} ui={css`
+                    fill: ${iconColor};
                 `}/>
-            ) : leadingIcon ? <div style={{width: iconSize}}></div> : <></>}
+            )}
         </ButtonStyle>
     )
 }
 
-const ButtonStyle = styled.button<{
-    $textType: TextType;
-    opacity: CSSProperties['opacity'];
+const buttonSizeToStyleRecord: Record<ButtonSize, {
+    borderRadius: number;
+    padding: CSSProperties['padding'];
+    gap: number;
+    textType: TextType;
+    height: number;
+}> = {
+    large: {
+        borderRadius: 10,
+        padding: '10px 24px',
+        gap: 6,
+        textType: 'p3',
+        height: 44
+    },
+    medium: {
+        borderRadius: 8,
+        padding: '8px 20px',
+        gap: 5,
+        textType: 'caption1',
+        height: 37
+    },
+    small: {
+        borderRadius: 6,
+        padding: '6px 16px',
+        gap: 4,
+        textType: 'caption2',
+        height: 30
+    }
+}
+
+const buttonTypeToStyleRecord: Record<ButtonType, {
     background: CSSProperties['background'];
     color: CSSProperties['color'];
-    $borderRadius: number;
-    padding: CSSProperties['padding'];
-    height: number;
-    gap: number;
-    $customStyle?: RuleSet;
+    outline?: CSSProperties['outline'];
+}> = {
+    filled: {
+        background: '#171717',
+        color: 'white'
+    },
+    outlined: {
+        background: 'transparent',
+        color: 'var(--g-500)',
+        outline: '1px solid var(--g-200)'
+    },
+    tonal: {
+        background: 'var(--g-100)',
+        color: 'var(--g-500)'
+    }
+}
+
+const ButtonStyle = styled.button<{
+    size: ButtonSize;
+    $buttonType: ButtonType;
+    ui?: RuleSet;
 }>`
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     border: none;
     word-break: keep-all;
     white-space: nowrap;
-    ${({$textType, opacity, background, color, $borderRadius, padding, height, gap, $customStyle}) => css`
-        ${makeText($textType)};
-        opacity: ${opacity};
-        background: ${background};
-        color: ${color};
-        border-radius: ${$borderRadius}px;
-        padding: ${padding};
-        height: ${height}px;
-        gap: ${gap}px;
-    ${$customStyle};
-    `};
+    transition: 0.1s scale ease-in-out, 0.1s opacity;
+    
+    ${({size}) => {
+        const style = buttonSizeToStyleRecord[size];
+        return css`
+            ${makeText(style.textType)};
+            border-radius: ${style.borderRadius}px;
+            padding: ${style.padding};
+            gap: ${style.gap}px;
+            height: ${style.height}px;
+        `;
+    }};
+    ${({$buttonType}) => {
+        const style = buttonTypeToStyleRecord[$buttonType];
+        return css`
+            color: ${style.color};
+            background: ${style.background};
+            ${style.outline && css`
+                outline: ${style.outline};
+            `};
+        `;
+    }}
+    
+    ${({ui}) => ui};
 
     &:disabled {
-        opacity: 0.4;
+        opacity: 0.65;
         cursor: not-allowed;
     }
 
@@ -156,7 +169,6 @@ const ButtonStyle = styled.button<{
         }
     }
 
-    transition: 0.1s scale ease-in-out;
 `;
 
 export default forwardRef(Button);

@@ -1,9 +1,13 @@
+import {allCasesOfEnum} from "@util/enum.util";
+
 enum GuestType {
     BRIDE = 'BRIDE',
     GROOM = 'GROOM',
 }
 
-export const guestTypeRecord: Record<GuestType, {
+export const guestTypeList = allCasesOfEnum(GuestType);
+
+export const guestTypeMap: Record<GuestType, {
     korean: string;
 }> = {
     [GuestType.BRIDE]: {

@@ -1,20 +1,20 @@
 import {ResponseData} from "@remote/value/Response";
 import Upload from "@remote/value/Upload";
-import customApi from "@remote/api/foundation/customApi";
+import api from "@remote/api/foundation/api";
 import Music from "@remote/value/Music";
 
 class FileApi {
     static PATH = 'file';
 
     async upload(file: File): Promise<ResponseData<Upload>> {
-        const {data} = await customApi.postForm(`${FileApi.PATH}/upload`, {
+        const {data} = await api.postForm(`${FileApi.PATH}/upload`, {
             file
         });
         return data;
     }
-    
+
     async getMusics(): Promise<ResponseData<Music[]>> {
-        const {data} = await customApi.get(`${FileApi.PATH}/music`);
+        const {data} = await api.get(`${FileApi.PATH}/music`);
         return data;
     }
 }

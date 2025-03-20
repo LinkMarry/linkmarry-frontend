@@ -1,4 +1,5 @@
 export default interface MoneyInfo {
+
     // 축의금 제목
     infoTitle: string;
 
@@ -18,7 +19,10 @@ export default interface MoneyInfo {
     groomBankNumber: string;
 
     // 카카오페이 URL
-    groomKakaoUrl?: string;
+    groomKakaoUrl: string;
+
+    // 토글여부
+    groomToggle: boolean;
 
     // 이름
     groomFatherNameMoneyInfo: string;
@@ -30,7 +34,10 @@ export default interface MoneyInfo {
     groomFatherBankNumber: string;
 
     // 카카오페이 URL
-    groomFatherKakaoUrl?: string;
+    groomFatherKakaoUrl: string;
+
+    // 토글여부
+    groomFatherToggle: boolean;
 
     // 이름
     groomMotherNameMoneyInfo: string;
@@ -42,7 +49,10 @@ export default interface MoneyInfo {
     groomMotherBankNumber: string;
 
     // 카카오페이 URL
-    groomMotherKakaoUrl?: string;
+    groomMotherKakaoUrl: string;
+
+    // 토글여부
+    groomMotherToggle: boolean;
 
     // 이름
     brideNameMoneyInfo: string;
@@ -54,7 +64,10 @@ export default interface MoneyInfo {
     brideBankNumber: string;
 
     // 카카오페이 URL
-    brideKakaoUrl?: string;
+    brideKakaoUrl: string;
+
+    // 토글여부
+    brideToggle: boolean;
 
     // 이름
     brideFatherNameMoneyInfo: string;
@@ -66,7 +79,10 @@ export default interface MoneyInfo {
     brideFatherBankNumber: string;
 
     // 카카오페이 URL
-    brideFatherKakaoUrl?: string;
+    brideFatherKakaoUrl: string;
+
+    // 토글여부
+    brideFatherToggle: boolean;
 
     // 이름
     brideMotherNameMoneyInfo: string;
@@ -78,37 +94,46 @@ export default interface MoneyInfo {
     brideMotherBankNumber: string;
 
     // 카카오페이 URL
-    brideMotherKakaoUrl?: string;
+    brideMotherKakaoUrl: string;
+
+    // 토글여부
+    brideMotherToggle: boolean;
 }
 
 export const defaultMoneyInfo: MoneyInfo = {
-    brideBankName: "",
-    brideBankNumber: "",
-    brideFatherBankName: "",
-    brideFatherBankNumber: "",
-    brideFatherKakaoUrl: "",
-    brideFatherNameMoneyInfo: "",
-    brideKakaoUrl: "",
-    brideMotherBankName: "",
-    brideMotherBankNumber: "",
-    brideMotherKakaoUrl: "",
-    brideMotherNameMoneyInfo: "",
-    brideNameMoneyInfo: "",
+    infoTitle: "",
+    infoContent: "",
+    kakaoStatus: false,
+    groomNameMoneyInfo: "",
     groomBankName: "",
     groomBankNumber: "",
+    groomKakaoUrl: "",
+    groomToggle: false,
+    groomFatherNameMoneyInfo: "",
     groomFatherBankName: "",
     groomFatherBankNumber: "",
     groomFatherKakaoUrl: "",
-    groomFatherNameMoneyInfo: "",
-    groomKakaoUrl: "",
+    groomFatherToggle: false,
+    groomMotherNameMoneyInfo: "",
     groomMotherBankName: "",
     groomMotherBankNumber: "",
     groomMotherKakaoUrl: "",
-    groomMotherNameMoneyInfo: "",
-    groomNameMoneyInfo: "",
-    infoContent: "",
-    infoTitle: "",
-    kakaoStatus: false
+    groomMotherToggle: false,
+    brideNameMoneyInfo: "",
+    brideBankName: "",
+    brideBankNumber: "",
+    brideKakaoUrl: "",
+    brideToggle: false,
+    brideFatherNameMoneyInfo: "",
+    brideFatherBankName: "",
+    brideFatherBankNumber: "",
+    brideFatherKakaoUrl: "",
+    brideFatherToggle: false,
+    brideMotherNameMoneyInfo: "",
+    brideMotherBankName: "",
+    brideMotherBankNumber: "",
+    brideMotherKakaoUrl: "",
+    brideMotherToggle: false
 }
 
 export const dummyMoneyInfo: MoneyInfo = {
@@ -119,26 +144,32 @@ export const dummyMoneyInfo: MoneyInfo = {
     groomBankName: "대구",
     groomBankNumber: "1928-1293-4192",
     groomKakaoUrl: "",
+    groomToggle: true,
     groomFatherNameMoneyInfo: "김수민",
     groomFatherBankName: "신한",
     groomFatherBankNumber: "9700-1293-4192",
     groomFatherKakaoUrl: "",
+    groomFatherToggle: true,
     groomMotherNameMoneyInfo: "이수진",
     groomMotherBankName: "국민",
     groomMotherBankNumber: "5192-1293-4192",
     groomMotherKakaoUrl: "",
+    groomMotherToggle: true,
     brideNameMoneyInfo: "김민지",
     brideBankName: "국민",
     brideBankNumber: "3271-1293-4192",
     brideKakaoUrl: "",
+    brideToggle: true,
     brideFatherNameMoneyInfo: "김강민",
     brideFatherBankName: "토스",
     brideFatherBankNumber: "5291-1293-4192",
     brideFatherKakaoUrl: "",
+    brideFatherToggle: true,
     brideMotherNameMoneyInfo: "이지안",
     brideMotherBankName: "SC 제일",
     brideMotherBankNumber: "3214-1293-4192",
-    brideMotherKakaoUrl: ""
+    brideMotherKakaoUrl: "",
+    brideMotherToggle: true,
 }
 
 type MoneyInfoByBrideMarkFirst = {
@@ -146,12 +177,12 @@ type MoneyInfoByBrideMarkFirst = {
     bankNumber: string;
     fatherBankName: string;
     fatherBankNumber: string;
-    fatherKakaoUrl?: string;
+    fatherKakaoUrl: string;
     fatherNameMoneyInfo: string;
-    kakaoUrl?: string;
+    kakaoUrl: string;
     motherBankName: string;
     motherBankNumber: string;
-    motherKakaoUrl?: string;
+    motherKakaoUrl: string;
     motherNameMoneyInfo: string;
     nameMoneyInfo: string;
 }
@@ -174,7 +205,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         motherNameMoneyInfo: moneyInfo.groomMotherNameMoneyInfo,
         nameMoneyInfo: moneyInfo.groomNameMoneyInfo,
     }
-    
+
     const brideMoneyInfo: MoneyInfoByBrideMarkFirst = {
         bankName: moneyInfo.brideBankName,
         bankNumber: moneyInfo.brideBankNumber,
@@ -189,7 +220,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         motherNameMoneyInfo: moneyInfo.brideMotherNameMoneyInfo,
         nameMoneyInfo: moneyInfo.brideNameMoneyInfo,
     }
-    
+
     if (brideMarkFirst) {
         return {
             first: brideMoneyInfo,

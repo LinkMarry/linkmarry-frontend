@@ -1,10 +1,10 @@
 
 import {CSSProperties} from "react";
-import {LinkMarryFont} from "@designsystem/foundation/text/TextType";
+import {FontFamily} from "@designsystem/foundation/text/TextType";
 import {css, RuleSet} from "styled-components";
 
 export default interface TextProperties {
-    fontFamily?: LinkMarryFont;
+    fontFamily?: FontFamily;
     fontWeight?: CSSProperties['fontWeight'];
     fontSize?: number;
     lineHeight?: CSSProperties['lineHeight'];

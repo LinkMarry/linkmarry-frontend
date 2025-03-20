@@ -1,5 +1,5 @@
 import React, {
-    CSSProperties,
+    ComponentPropsWithoutRef,
     ForwardedRef,
     forwardRef, useEffect,
     useImperativeHandle,
@@ -7,16 +7,16 @@ import React, {
     useState
 } from 'react';
 import styled, {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@designsystem/foundation/icon";
-import makeText from "@designsystem/foundation/text/TextType";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 import Text from "@designsystem/component/Text";
-import {Row} from "@designsystem/component/FlexLayout";
+import {Row} from "@designsystem/core/FlexLayout";
+import View from "@designsystem/core/View";
 
-interface Props {
-    checked?: boolean;
-    onChange?: (checked: boolean) => void;
+interface Props extends ComponentPropsWithoutRef<'div'> {
+    checked: boolean;
+    OnChange: (checked: boolean) => void;
     label?: string;
-    style?: CSSProperties;
+    ui?: RuleSet;
 }
 
 export interface CheckboxRef {
@@ -28,9 +28,10 @@ export interface CheckboxRef {
 function Checkbox(
     {
         checked = false,
-        onChange,
+        OnChange,
         label,
-        style
+        ui,
+        ...props
     }: Props,
     ref: ForwardedRef<CheckboxRef>
 ) {
@@ -49,36 +50,50 @@ function Checkbox(
         toggle: () => {
             if (checkboxRef.current) {
                 checkboxRef.current.checked = !checkboxRef.current.checked;
-                onChange?.(checkboxRef.current.checked);
+                OnChange?.(checkboxRef.current.checked);
             }
         }
     }));
 
     return (
-        <S.container style={style}>
-            <Row $justifyContent={'center'} $alignItems={'center'} $customStyle={css`
+        <Row $alignItems={'center'} $ui={css`
+            width: fit-content;
+            ${ui};
+        `} {...props}>
+            <Row $justifyContent={'center'} $alignItems={'center'} $ui={css`
                 position: relative;
+                width: 40px;
+                height: 40px;
             `}>
-                <S.Input
-                    ref={checkboxRef}
-                    type={'checkbox'}
-                    checked={localChecked}
-                    onChange={(e) => {
-                        onChange?.(e.target.checked);
-                        setLocalChecked(e.target.checked);
-                    }}
-                    $customStyle={localChecked ? css`
-                        background: var(--g-600);
+                <View $ui={css`
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    ${localChecked ? css`
+                        background: var(--g-900);
                         border: none;
                     ` : css`
                         background: transparent;
                         border: 1px solid var(--g-300);
-                    `}
+                    `};
+                `}/>
+                <CheckboxInputStyle
+                    ref={checkboxRef}
+                    type={'checkbox'}
+                    checked={localChecked}
+                    onChange={(e) => {
+                        OnChange(e.target.checked);
+                        setLocalChecked(e.target.checked);
+                    }}
                 />
                 {localChecked && <Icon
                     iconType={IconType.CheckLine}
                     size={18}
-                    customStyle={css`
+                    ui={css`
                         fill: white;
                         position: absolute;
                         pointer-events: none;
@@ -87,37 +102,27 @@ function Checkbox(
             </Row>
             {label && (
                 <Text
-                    type={'p4'}
-                    customStyle={css`
+                    type={'p3'}
+                    ui={css`
                         cursor: pointer;
                     `}
-                    onClick={() => onChange?.(!checked)}
+                    onClick={() => OnChange?.(!checked)}
                 >{label}</Text>
             )}
-        </S.container>
+        </Row>
     );
 }
 
-const S = {
-    container: styled.div`
-        display: inline-flex;
-        align-items: center;
-        width: fit-content;
-        gap: 8px;
-    `,
-    Input: styled.input<{
-        $customStyle?: RuleSet;
-    }>`
-        border-radius: 4px;
-        width: 20px;
-        height: 20px;
-        appearance: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        ${({$customStyle}) => $customStyle};
-    `
-}
+const CheckboxInputStyle = styled.input`
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+`;
 
 export default forwardRef(Checkbox);

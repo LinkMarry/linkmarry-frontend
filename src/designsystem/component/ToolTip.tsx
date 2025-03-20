@@ -1,10 +1,8 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import styled from "styled-components";
-import makeText from "@designsystem/foundation/text/TextType";
 
-interface Props {
+interface Props extends PropsWithChildren {
     content: React.ReactNode;
-    children?: React.ReactNode;
 }
 
 function ToolTip(
@@ -38,7 +36,6 @@ const ContentStyle = styled.span`
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
     word-break: keep-all;
     white-space: nowrap;
-    ${makeText('p5')};
 `;
 
 const ToolTipStyle = styled.div`

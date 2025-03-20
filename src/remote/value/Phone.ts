@@ -16,6 +16,9 @@ export default interface Phone {
 
     // 신부 엄마 전번
     brideMotherTel: string;
+
+    // 혼주 연락처 여부
+    parentTel: boolean;
 }
 
 export const defaultPhone: Phone = {
@@ -25,6 +28,7 @@ export const defaultPhone: Phone = {
     brideTel: "",
     brideFatherTel: "",
     brideMotherTel: "",
+    parentTel: false
 };
 
 export const dummyPhone: Phone = {
@@ -33,5 +37,7 @@ export const dummyPhone: Phone = {
     groomMotherTel: "010-1234-5678",
     brideTel: "010-1234-5678",
     brideFatherTel: "010-1234-5678",
-    brideMotherTel: "010-1234-5678"
+    brideMotherTel: "010-1234-5678",
+    parentTel: true
+
 };

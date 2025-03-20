@@ -1,17 +1,23 @@
-import React, {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from 'react';
+import React, {
+    ComponentPropsWithRef,
+    CSSProperties,
+    ForwardedRef,
+    forwardRef,
+    PropsWithChildren
+} from 'react';
 import {css, RuleSet} from "styled-components";
-import {LinkMarryFont, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
+import {FontFamily, TextType, textTypeMap} from "@designsystem/foundation/text/TextType";
 import {implementText} from "@designsystem/foundation/text/TextProperties";
-import CustomStyle from "@designsystem/component/CustomStyle";
+import View from "@designsystem/core/View";
 
-interface Props extends ComponentPropsWithRef<'span'> {
+interface Props extends PropsWithChildren<ComponentPropsWithRef<'span'>> {
     type?: TextType;
-    font?: LinkMarryFont;
+    font?: FontFamily;
     weight?: CSSProperties['fontWeight'];
     size?: number;
     lineHeight?: CSSProperties['lineHeight'];
-    customStyle?: RuleSet;
-    children?: React.ReactNode;
+    bold?: boolean;
+    ui?: RuleSet;
 }
 
 function Text(
@@ -20,29 +26,30 @@ function Text(
         font,
         weight,
         size,
-        customStyle,
+        ui,
         lineHeight,
+        bold = false,
         children,
         ...props
     }: Props,
     ref: ForwardedRef<HTMLSpanElement>
 ) {
-    const properties = type ? textTypeMap[type] : undefined;
+    const properties = type && textTypeMap[type];
     return (
-        <CustomStyle
+        <View
             ref={ref}
             as={'span'}
-            $customStyle={css`
+            $ui={css`
                 ${implementText({
                     fontFamily: font ?? properties?.fontFamily,
-                    fontWeight: weight ?? properties?.fontWeight,
+                    fontWeight: weight ?? (bold ? properties?.boldFontWeight : properties?.fontWeight),
                     fontSize: size ?? properties?.fontSize,
                     lineHeight: lineHeight ?? properties?.lineHeight,
                 })};
-                ${customStyle};
+                ${ui};
             `}
             {...props}
-        >{children}</CustomStyle>
+        >{children}</View>
     );
 }
 

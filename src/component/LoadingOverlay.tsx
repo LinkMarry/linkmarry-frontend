@@ -26,8 +26,7 @@ const LoadingOverlayStyle = styled.div`
     background-color: rgba(0, 0, 0, 0.15); /* Black color with 30% opacity */
     z-index: 10; /* Adjust this if you need to layer it properly */
     user-select: none;
-    pointer-events: none;
-`
+`;
 
 const DotsLoader = styled.div`
 
