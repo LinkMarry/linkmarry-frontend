@@ -70,6 +70,9 @@ function WeddingComponent(
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
                 <meta property={'og:image'} content={wedding.linkShare.urlImgUrl}/>
+                <meta property={'og:url'} content={wedding.url}/>
+                <meta property={'og:type'} content={'website'}/>
+
                 <title>{wedding.linkShare.urlTitle}</title>
             </Helmet>
             <PreviewTemplate
