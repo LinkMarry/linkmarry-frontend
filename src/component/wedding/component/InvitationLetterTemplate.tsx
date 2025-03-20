@@ -31,11 +31,20 @@ function InvitationLetterTemplate(
                 padding: 72px 60px;
                 background: white;
             `}>
-                {greeting.greetingDesign === GreetingDesign.TEXT && (
+                {greeting.greetingDesign === GreetingDesign.BASIC && (
                     <FadeIn>
                         <Text className={'override-font'} weight={300} size={12} font={'Aleo'} ui={css`
                             color: var(--g-300);
                         `}>Wedding Invitation</Text>
+                    </FadeIn>
+                )}
+                {greeting.greetingDesign === GreetingDesign.TEXT && (
+                    <FadeIn>
+                        <Text weight={300} size={12} ui={css`
+                            color: var(--g-600);
+                            word-break: break-all;
+                            text-align: center;
+                        `}>{greeting.greetingTitle}</Text>
                     </FadeIn>
                 )}
                 {greeting.greetingDesign === GreetingDesign.FLOWER && (
