@@ -40,8 +40,9 @@ function WeddingStyleCell({weddingDesign}: Props) {
             `}>
                 <View $ui={css`
                     aspect-ratio: 9 / 16;
-                    background: url("${weddingDesign.img}");
+                    background-image: url("${weddingDesign.img}");
                     background-size: cover;
+                    background-position: center;
                 `}/>
                 {isHovered && (
                     <Column $alignItems={'stretch'} $gap={4} $ui={css`
