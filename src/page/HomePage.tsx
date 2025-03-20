@@ -47,7 +47,7 @@ function HomePage() {
                             text-align: center;
                             word-break: break-word;
                             color: var(--g-500);
-                        `}>100가지가 넘는 다양한 스타일, 나만의 청첩장을 무료로 만들어볼 수 있습니다</Text>
+                        `}>다양한 스타일, 나만의 청첩장을 무료로 만들어볼 수 있습니다</Text> {/*100가지가 넘는*/}
                     </Column>
                     {/*content*/}
                     <Column $gap={16} $alignItems={'stretch'}>
