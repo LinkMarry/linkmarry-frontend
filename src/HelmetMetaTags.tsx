@@ -28,6 +28,8 @@ const HelmetMetaTags = () => {
             {/*검색 엔진 색인 관련*/}
             <meta name="robots" content="index, follow"/>
             <link rel="canonical" href="https://www.linkmarry.com"/>
+                
+            <meta name="naver-site-verification" content="bf351689cbaf88ee5be7544d236c9cd3e56b74c0"/>
         </Helmet>
     );
 };
