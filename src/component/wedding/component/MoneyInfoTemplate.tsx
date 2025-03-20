@@ -29,13 +29,17 @@ function MoneyInfoTemplate(
             padding: 92px 60px;
             background: white;
         `}>
-            <Column $gap={40} $alignItems={'center'}>
-                <Column $gap={12} $alignItems={'center'}>
+            <Column $gap={40} $alignItems={'stretch'}>
+                <Column $gap={12} $alignItems={'stretch'}>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
+                        text-align: center;
+                        word-break: break-all;
                     `}>{moneyInfo.infoTitle}</Text>
                     <Text size={16} weight={300} ui={css`
                         color: var(--g-600);
+                        word-break: break-all;
+                        text-align: center;
                     `}>{moneyInfo.infoContent}</Text>
                 </Column>
                 <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
