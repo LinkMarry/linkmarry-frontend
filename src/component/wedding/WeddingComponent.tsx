@@ -14,7 +14,7 @@ import VideoTemplate from "@src/component/wedding/component/VideoTemplate";
 import InvitationLetterTemplate from "@src/component/wedding/component/InvitationLetterTemplate";
 import RsvpDialog from "@src/component/wedding/dialog/rsvp/RsvpDialog";
 import CreateRsvpDialog from "@src/component/wedding/dialog/rsvp/CreateRsvpDialog";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import RsvpTemplate from "@src/component/wedding/component/RsvpTemplate";
 import WaterMarkSheet from "@src/component/wedding/component/WaterMarkSheet";
 import {Column} from "@designsystem/core/FlexLayout";
