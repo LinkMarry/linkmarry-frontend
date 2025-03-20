@@ -37,9 +37,9 @@ function ForestLovePreviewTemplate(
             <Row $gap={12} $alignItems={'center'} $justifyContent={'center'} $ui={css`
                 padding: 72px 0;
             `}>
-                <Text size={20} weight={300}>{first.name}</Text>
+                <Text size={20} weight={300}>{first.lastName}</Text>
                 <Text size={20} weight={300}>&</Text>
-                <Text size={20} weight={300}>{second.name}</Text>
+                <Text size={20} weight={300}>{second.lastName}</Text>
             </Row>
         </Column>
     );

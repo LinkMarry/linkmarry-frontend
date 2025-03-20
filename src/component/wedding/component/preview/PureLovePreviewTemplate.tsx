@@ -43,8 +43,8 @@ function PureLovePreviewTemplate(
                 transform: translateX(-50%);
             `}>
                 <Column $gap={12} $alignItems={'center'}>
-                    <span>{first.name}</span>
-                    <span>{second.name}</span>
+                    <span>{first.englishName}</span>
+                    <span>{second.englishName}</span>
                 </Column>
             </Text>
             <View $ui={css`

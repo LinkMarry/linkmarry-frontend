@@ -35,9 +35,9 @@ function SoulmatePreviewTemplate(
                     color: var(--g-600);
                 `}>
                     <Row $gap={24} $alignItems={'center'}>
-                        <span>{first.name}</span>
+                        <span>{first.lastName}</span>
                         <span>그리고</span>
-                        <span>{second.name}</span>
+                        <span>{second.lastName}</span>
                     </Row>
                 </Text>
             </Column>

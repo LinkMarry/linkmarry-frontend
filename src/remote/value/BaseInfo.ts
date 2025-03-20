@@ -139,6 +139,9 @@ export const dummyBaseInfo: BaseInfo = {
 
 type InfoByBrideMarkFirst = {
     name: string;
+    firstName: string;
+    lastName: string;
+    englishName: string;
     fatherName: string;
     fatherStatus: boolean;
     motherName: string;
@@ -154,6 +157,9 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
 } {
     const groomInfo: InfoByBrideMarkFirst = {
         name: baseInfo.groomFirstName + baseInfo.groomLastName,
+        firstName: baseInfo.groomFirstName,
+        lastName: baseInfo.groomLastName,
+        englishName: baseInfo.groomEnglishName,
         fatherName: baseInfo.groomFatherFirstName + baseInfo.groomFatherLastName,
         fatherStatus: baseInfo.groomFatherStatus,
         motherName: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
@@ -164,6 +170,9 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
 
     const brideInfo: InfoByBrideMarkFirst = {
         name: baseInfo.brideFirstName + baseInfo.brideLastName,
+        firstName: baseInfo.brideFirstName,
+        lastName: baseInfo.brideLastName,
+        englishName: baseInfo.brideEnglishName,
         fatherName: baseInfo.brideFatherFirstName + baseInfo.brideFatherLastName,
         fatherStatus: baseInfo.brideFatherStatus,
         motherName: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,

@@ -28,7 +28,7 @@ function NatureBlissPreviewTemplate(
             <Column $gap={16} $alignItems={'center'} $ui={css`
                 padding: 52px 0;
             `}>
-                <Text size={24} weight={100}>{first.name} & {second.name}</Text>
+                <Text size={24} weight={100}>{first.lastName} & {second.lastName}</Text>
                 <Column $gap={4} $alignItems={'center'}>
                     <Text size={14}
                           weight={300}>{isValidDate && format(date, 'yyyy.MM.dd a h시', {locale: ko})}</Text>

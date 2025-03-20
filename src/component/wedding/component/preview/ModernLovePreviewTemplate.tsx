@@ -40,9 +40,9 @@ function ModernLovePreviewTemplate(
             `}>
                 <Row $gap={36} $alignItems={'center'}>
                     <Spacer/>
-                    <span>{first.name}</span>
+                    <span>{first.englishName}</span>
                     <span>&</span>
-                    <span>{second.name}</span>
+                    <span>{second.englishName}</span>
                     <Spacer/>
                 </Row>
             </Text>
