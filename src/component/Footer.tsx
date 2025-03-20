@@ -45,6 +45,7 @@ function Footer() {
                         <Column $gap={4}>
                             <Text type={'caption2'} bold={true} ui={css`
                                 color: var(--g-600);
+                                cursor: pointer;
                             `} onClick={() => window.open(CUSTOMER_SERVICE_CENTER_URL)}>고객센터</Text>
                             <Text type={'caption1'} ui={css`
                                 color: var(--g-500);

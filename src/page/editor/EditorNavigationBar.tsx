@@ -55,6 +55,7 @@ const SmallEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorN
     return (
         <Row $gap={12} $ui={css`
             ${hideScrollBar};
+            overflow-y: hidden;
             padding: 8px 32px;
             border-top: 1px solid var(--g-100);
             min-height: 72px;
