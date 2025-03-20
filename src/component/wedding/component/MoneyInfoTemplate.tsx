@@ -33,7 +33,7 @@ function MoneyInfoTemplate(
                 <FadeIn>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
-                    `}>마음 전하실 곳</Text>
+                    `}>{moneyInfo.infoTitle}</Text>
                 </FadeIn>
                 <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
             </Column>
