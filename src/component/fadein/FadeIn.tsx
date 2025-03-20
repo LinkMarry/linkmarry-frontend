@@ -61,6 +61,7 @@ function FadeIn(
         return (
             <View ref={ref} $ui={css`
                 display: flex;
+                flex-direction: column;
                 ${style};
                 ${ui};
             `}>
