@@ -49,6 +49,8 @@ function GuestCommentsTemplate(
                 padding: 92px 30px;
                 background: ${backgroundStyle(weddingDesignColor)};
                 align-items: stretch;
+                min-height: 500px;
+                justify-content: center;
             `}>
                 <Column $gap={40} $alignItems={'stretch'}>
                     <Column $gap={12} $alignItems={'center'}>
@@ -67,27 +69,29 @@ function GuestCommentsTemplate(
                             `}>{guestComment.content}</Text>
                         </FadeIn>
                     </Column>
-                    <FadeIn delay={320}>
-                        <Column $gap={12} $alignItems={'stretch'}>
-                            <GuestComments
-                                comments={guestComments}
-                                background={'white'}
-                                design={guestComment.guestCommentDesign}
-                                onRemove={comment => {
-                                    setSelectedRemoveGuestComment(comment);
-                                    setShowRemoveGuestCommentDialog(true);
-                                }}
-                            />
-                            <Text size={14} weight={300} ui={css`
-                                color: var(--g-600);
-                                align-self: flex-end;
-                                padding-right: 4px;
-                                cursor: pointer;
-                            `} onClick={() => {
-                                setShowGuestCommentsDetailDialog(true);
-                            }}>전체보기</Text>
-                        </Column>
-                    </FadeIn>
+                    {!guestComment.privateContent && (
+                        <FadeIn delay={320}>
+                            <Column $gap={12} $alignItems={'stretch'}>
+                                <GuestComments
+                                    comments={guestComments}
+                                    background={'white'}
+                                    design={guestComment.guestCommentDesign}
+                                    onRemove={comment => {
+                                        setSelectedRemoveGuestComment(comment);
+                                        setShowRemoveGuestCommentDialog(true);
+                                    }}
+                                />
+                                <Text size={14} weight={300} ui={css`
+                                    color: var(--g-600);
+                                    align-self: flex-end;
+                                    padding-right: 4px;
+                                    cursor: pointer;
+                                `} onClick={() => {
+                                    setShowGuestCommentsDetailDialog(true);
+                                }}>전체보기</Text>
+                            </Column>
+                        </FadeIn>
+                    )}
                 </Column>
                 <View $ui={css`
                     align-self: center;
