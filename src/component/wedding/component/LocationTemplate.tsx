@@ -67,12 +67,17 @@ function LocationTemplate(
                     `}>LOCATION</Text>
                 </FadeIn>
                 <FadeIn>
-                    <Column $alignItems={'center'}>
+                    <Column $alignItems={'center'} $gap={12}>
+                        <Column $alignItems={'center'}>
+                            <Text size={16} weight={300}>
+                                {weddingPlace.placeName}
+                            </Text>
+                            <Text size={16} weight={300}>
+                                {weddingPlace.addressName} {weddingPlace.floorHall}
+                            </Text>
+                        </Column>
                         <Text size={16} weight={300}>
-                            {weddingPlace.placeName}
-                        </Text>
-                        <Text size={16} weight={300}>
-                            {weddingPlace.addressName} {weddingPlace.floorHall}
+                            {weddingPlace.placeTel}
                         </Text>
                     </Column>
                 </FadeIn>
