@@ -40,13 +40,16 @@ const EditorInspectorWeddingPlace = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Input placeholder={'예식장명'} value={weddingPlace.placeName} onChange={event => update(draft => {
                     draft.weddingPlace.placeName = event.target.value;
-                })}/>
+                })} ui={css`
+                    pointer-events: none;
+                `}/>
                 <Row $gap={12} $alignItems={'stretch'}>
                     <Input placeholder={'주소'} value={weddingPlace.addressName} onChange={event => update(draft => {
                         draft.weddingPlace.addressName = event.target.value;
                     })} ui={css`
                         flex: 1;
                         min-width: 0;
+                        pointer-events: none;
                     `}/>
                     <Button text={'검색'} buttonType={'tonal'} ui={css`
                         height: auto;

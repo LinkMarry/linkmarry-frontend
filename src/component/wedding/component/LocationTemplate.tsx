@@ -32,6 +32,7 @@ function LocationTemplate(
             return;
         }
 
+
         if (!weddingPlace.x || !weddingPlace.y) {
             return;
         }
@@ -46,6 +47,10 @@ function LocationTemplate(
             map: createdMap, // 지도 객체와 연결
         });
 
+        if (weddingPlace.placeLock) {
+            createdMap.setDraggable(false); // 드래그 비활성화
+            createdMap.setZoomable(false); // 줌 비활성화
+        }
     }, []);
 
     return (
