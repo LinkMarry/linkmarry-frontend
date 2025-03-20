@@ -8,6 +8,7 @@ import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import View from "@designsystem/core/View";
 import FadeIn from "@src/component/fadein/FadeIn";
 import {backgroundStyle} from "@remote/value/WeddingDesign";
+import Button from "@designsystem/component/Button";
 
 const {kakao} = window as any;
 
@@ -32,6 +33,7 @@ function LocationTemplate(
             return;
         }
 
+
         if (!weddingPlace.x || !weddingPlace.y) {
             return;
         }
@@ -46,14 +48,18 @@ function LocationTemplate(
             map: createdMap, // 지도 객체와 연결
         });
 
+        if (weddingPlace.placeLock) {
+            createdMap.setDraggable(false); // 드래그 비활성화
+            createdMap.setZoomable(false); // 줌 비활성화
+        }
     }, []);
 
     return (
         <Column $alignItems={'stretch'} ref={weddingPlaceRef} $ui={css`
             ${backgroundStyle(weddingDesignColor)};
             align-items: stretch;
+            padding: 72px 0;
         `}>
-            <Spacer h={92}/>
             <Column $gap={40} $alignItems={'center'}>
                 <FadeIn>
                     <Text size={20} weight={300} ui={css`
@@ -76,18 +82,67 @@ function LocationTemplate(
                     height: 307px;
                     ${!weddingPlace.placeStatus && css`
                         display: none;
-                    `}
+                    `};
                 `}></View>
-                <FadeIn>
-                    <Text size={16} weight={300} style={{
-                        marginLeft: 24,
-                        alignSelf: 'stretch',
-                        textAlign: 'start',
-                        whiteSpace: 'pre-line'
-                    }}>{weddingPlace.placeTransportation}</Text>
-                </FadeIn>
+                <Column $gap={12} $alignSelf={'stretch'} $alignItems={'stretch'} $ui={css`
+                    padding: 0 24px;
+                `}>
+                    <FadeIn>
+                        {weddingPlace.placeTransportation.length > 0 && (
+                            <Column $gap={4} $alignItems={'stretch'} $ui={css`
+                                padding-bottom: 12px;
+                            `}>
+                                <Text type={'p2'} bold={true}>버스</Text>
+                                <Text size={16} weight={300} ui={css`
+                                    text-align: start;
+                                    white-space: pre-line;
+                                `}>{weddingPlace.placeTransportation[0]}</Text>
+                            </Column>
+                        )}
+                    </FadeIn>
+                    <FadeIn>
+                        {weddingPlace.placeTransportation.length > 1 && (
+                            <Column $gap={4} $alignItems={'stretch'} $ui={css`
+                                padding-bottom: 12px;
+                            `}>
+                                <Text type={'p2'} bold={true}>지하철</Text>
+                                <Text size={16} weight={300} ui={css`
+                                    text-align: start;
+                                    white-space: pre-line;
+                                `}>{weddingPlace.placeTransportation[1]}</Text>
+                            </Column>
+                        )}
+                    </FadeIn>
+                    <FadeIn>
+                        {weddingPlace.placeTransportation.length > 2 && (
+                            <Column $gap={4} $alignItems={'stretch'} $ui={css`
+                                padding-bottom: 12px;
+                            `}>
+                                <Text type={'p2'} bold={true}>주차안내</Text>
+                                <Text size={16} weight={300} ui={css`
+                                    text-align: start;
+                                    white-space: pre-line;
+                                `}>{weddingPlace.placeTransportation[2]}</Text>
+                            </Column>
+                        )}
+                    </FadeIn>
+                    {weddingPlace.placeTransportation.length > 3 && weddingPlace.placeTransportation.slice(3).map((transportation, index) => (
+                        <FadeIn key={index}>
+                            <Text size={16} weight={300} ui={css`
+                                text-align: start;
+                                white-space: pre-line;
+                                padding-bottom: 12px;
+                            `}>{transportation}</Text>
+                        </FadeIn>
+                    ))}
+                </Column>
+                {weddingPlace.placeNav && (
+                    <Button text={'길 찾기'} onClick={() => window.open(weddingPlace.placeUrl)} ui={css`
+                        align-self: stretch;
+                        margin: 0 24px;
+                    `}/>
+                )}
             </Column>
-            <Spacer h={65}/>
         </Column>
     );
 }
