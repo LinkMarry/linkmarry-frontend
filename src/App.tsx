@@ -27,6 +27,11 @@ import PrivateRoute from "@src/PrivateRoute";
 
 const {Kakao} = window as any;
 
+if (config.env !== 'development') {
+    console.log = () => {
+    };
+}
+
 function App() {
     useAxios();
     useEffect(() => {
