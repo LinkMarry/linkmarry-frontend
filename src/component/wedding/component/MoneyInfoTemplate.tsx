@@ -87,14 +87,20 @@ function MoneyInfoComponent(
                     </Row>
                     {clickedGroom && (
                         <>
-                            <MoneyCell name={firstMoneyInfo.nameMoneyInfo} bankName={firstMoneyInfo.bankName}
-                                       bankNumber={firstMoneyInfo.bankNumber} isGroom={true}/>
-                            <MoneyCell name={firstMoneyInfo.fatherNameMoneyInfo}
-                                       bankName={firstMoneyInfo.fatherBankName}
-                                       bankNumber={firstMoneyInfo.fatherBankNumber} isGroom={true}/>
-                            <MoneyCell name={firstMoneyInfo.motherNameMoneyInfo}
-                                       bankName={firstMoneyInfo.motherBankName}
-                                       bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
+                            {firstMoneyInfo.toggle && (
+                                <MoneyCell name={firstMoneyInfo.nameMoneyInfo} bankName={firstMoneyInfo.bankName}
+                                           bankNumber={firstMoneyInfo.bankNumber} isGroom={true}/>
+                            )}
+                            {firstMoneyInfo.fatherToggle && (
+                                <MoneyCell name={firstMoneyInfo.fatherNameMoneyInfo}
+                                           bankName={firstMoneyInfo.fatherBankName}
+                                           bankNumber={firstMoneyInfo.fatherBankNumber} isGroom={true}/>
+                            )}
+                            {firstMoneyInfo.motherToggle && (
+                                <MoneyCell name={firstMoneyInfo.motherNameMoneyInfo}
+                                           bankName={firstMoneyInfo.motherBankName}
+                                           bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
+                            )}
                         </>
                     )}
                 </View>
@@ -123,15 +129,20 @@ function MoneyInfoComponent(
                     </Row>
                     {clickedBride && (
                         <>
-
-                            <MoneyCell name={secondMoneyInfo.nameMoneyInfo} bankName={secondMoneyInfo.bankName}
-                                       bankNumber={secondMoneyInfo.bankNumber} isGroom={false}/>
-                            <MoneyCell name={secondMoneyInfo.fatherNameMoneyInfo}
-                                       bankName={secondMoneyInfo.fatherBankName}
-                                       bankNumber={secondMoneyInfo.fatherBankNumber} isGroom={false}/>
-                            <MoneyCell name={secondMoneyInfo.motherNameMoneyInfo}
-                                       bankName={secondMoneyInfo.motherBankName}
-                                       bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
+                            {secondMoneyInfo.toggle && (
+                                <MoneyCell name={secondMoneyInfo.nameMoneyInfo} bankName={secondMoneyInfo.bankName}
+                                           bankNumber={secondMoneyInfo.bankNumber} isGroom={false}/>
+                            )}
+                            {secondMoneyInfo.fatherToggle && (
+                                <MoneyCell name={secondMoneyInfo.fatherNameMoneyInfo}
+                                           bankName={secondMoneyInfo.fatherBankName}
+                                           bankNumber={secondMoneyInfo.fatherBankNumber} isGroom={false}/>
+                            )}
+                            {secondMoneyInfo.motherToggle && (
+                                <MoneyCell name={secondMoneyInfo.motherNameMoneyInfo}
+                                           bankName={secondMoneyInfo.motherBankName}
+                                           bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
+                            )}
                         </>
                     )}
                 </View>

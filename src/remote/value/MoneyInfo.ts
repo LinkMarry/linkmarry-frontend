@@ -175,15 +175,18 @@ export const dummyMoneyInfo: MoneyInfo = {
 type MoneyInfoByBrideMarkFirst = {
     bankName: string;
     bankNumber: string;
+    toggle: boolean;
     fatherBankName: string;
     fatherBankNumber: string;
     fatherKakaoUrl: string;
     fatherNameMoneyInfo: string;
+    fatherToggle: boolean;
     kakaoUrl: string;
     motherBankName: string;
     motherBankNumber: string;
     motherKakaoUrl: string;
     motherNameMoneyInfo: string;
+    motherToggle: boolean;
     nameMoneyInfo: string;
 }
 
@@ -194,30 +197,36 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
     const groomMoneyInfo: MoneyInfoByBrideMarkFirst = {
         bankName: moneyInfo.groomBankName,
         bankNumber: moneyInfo.groomBankNumber,
+        toggle: moneyInfo.groomToggle,
         fatherBankName: moneyInfo.groomFatherBankName,
         fatherBankNumber: moneyInfo.groomFatherBankNumber,
         fatherKakaoUrl: moneyInfo.groomFatherKakaoUrl,
         fatherNameMoneyInfo: moneyInfo.groomFatherNameMoneyInfo,
+        fatherToggle: moneyInfo.groomFatherToggle,
         kakaoUrl: moneyInfo.groomKakaoUrl,
         motherBankName: moneyInfo.groomMotherBankName,
         motherBankNumber: moneyInfo.groomMotherBankNumber,
         motherKakaoUrl: moneyInfo.groomMotherKakaoUrl,
         motherNameMoneyInfo: moneyInfo.groomMotherNameMoneyInfo,
+        motherToggle: moneyInfo.groomMotherToggle,
         nameMoneyInfo: moneyInfo.groomNameMoneyInfo,
     }
 
     const brideMoneyInfo: MoneyInfoByBrideMarkFirst = {
         bankName: moneyInfo.brideBankName,
         bankNumber: moneyInfo.brideBankNumber,
+        toggle: moneyInfo.brideToggle,
         fatherBankName: moneyInfo.brideFatherBankName,
         fatherBankNumber: moneyInfo.brideFatherBankNumber,
         fatherKakaoUrl: moneyInfo.brideFatherKakaoUrl,
         fatherNameMoneyInfo: moneyInfo.brideFatherNameMoneyInfo,
+        fatherToggle: moneyInfo.brideFatherToggle,
         kakaoUrl: moneyInfo.brideKakaoUrl,
         motherBankName: moneyInfo.brideMotherBankName,
         motherBankNumber: moneyInfo.brideMotherBankNumber,
         motherKakaoUrl: moneyInfo.brideMotherKakaoUrl,
         motherNameMoneyInfo: moneyInfo.brideMotherNameMoneyInfo,
+        motherToggle: moneyInfo.brideMotherToggle,
         nameMoneyInfo: moneyInfo.brideNameMoneyInfo,
     }
 
