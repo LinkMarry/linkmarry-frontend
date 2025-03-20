@@ -84,7 +84,7 @@ function LocationTemplate(
                         display: none;
                     `};
                 `}></View>
-                <Column $gap={12} $alignItems={'stretch'} $ui={css`
+                <Column $gap={12} $alignSelf={'stretch'} $alignItems={'stretch'} $ui={css`
                     padding: 0 24px;
                 `}>
                     <FadeIn>
@@ -126,9 +126,21 @@ function LocationTemplate(
                             </Column>
                         )}
                     </FadeIn>
+                    {weddingPlace.placeTransportation.length > 3 && weddingPlace.placeTransportation.slice(3).map((transportation, index) => (
+                        <FadeIn key={index}>
+                            <Text size={16} weight={300} ui={css`
+                                text-align: start;
+                                white-space: pre-line;
+                                padding-bottom: 12px;
+                            `}>{transportation}</Text>
+                        </FadeIn>
+                    ))}
                 </Column>
                 {weddingPlace.placeNav && (
-                    <Button text={'길 찾기'} onClick={() => window.open(weddingPlace.placeUrl)}/>
+                    <Button text={'길 찾기'} onClick={() => window.open(weddingPlace.placeUrl)} ui={css`
+                        align-self: stretch;
+                        margin: 0 24px;
+                    `}/>
                 )}
             </Column>
         </Column>
