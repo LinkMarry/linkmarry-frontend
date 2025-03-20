@@ -25,6 +25,8 @@ function VideoTemplate(
         return null;
     }
 
+    const videoUrl = video.videoFileType ? video.videoFileUrl : video.videoUrl;
+
     return (
         <FadeIn>
             <Column $gap={40} $alignItems={'stretch'} ref={videoRef} $ui={css`
@@ -47,14 +49,14 @@ function VideoTemplate(
                     <View
                         as={'iframe'}
                         height={250} title={video.videoTitle}
-                        src={video.videoUrl}
+                        src={videoUrl}
                         $ui={css`
                             display: flex;
                             object-fit: cover;
                         `}
                     ></View>
                 ) : (
-                    <video src={video.videoUrl} controls={true}></video>
+                    <video src={videoUrl} controls={true}></video>
                 )}
             </Column>
         </FadeIn>
