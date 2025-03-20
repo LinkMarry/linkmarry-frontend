@@ -41,7 +41,7 @@ function GuestCommentsTemplate(
     const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
 
     const guestCommentRef = useRef<HTMLDivElement>(null);
-    useScrollOnUpdate(guestCommentRef, [guestComment])
+    useScrollOnUpdate(guestCommentRef, [guestComment]);
 
     return (
         <FadeIn>

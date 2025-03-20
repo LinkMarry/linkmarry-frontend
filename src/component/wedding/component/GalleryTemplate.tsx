@@ -4,7 +4,6 @@ import GalleryDesign from "@remote/enumeration/GalleryDesign";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@util/css.util";
 import {Column, Row} from "@designsystem/core/FlexLayout";
-import Icon, {IconType} from "@designsystem/foundation/Icon";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
 import Gallery from "@remote/value/Gallery";
@@ -20,8 +19,11 @@ function GalleryTemplate(
         gallery
     }: GalleryTemplateProps
 ) {
+    const galleryRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(galleryRef, [gallery]);
+
     return (
-        <Column $alignItems={'center'} $gap={40} $ui={css`
+        <Column ref={galleryRef} $alignItems={'center'} $gap={40} $ui={css`
             background: white;
             padding: 92px 0;
         `}>
