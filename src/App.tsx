@@ -16,7 +16,6 @@ import MyPageInfoPage from "@page/mypage/default/MyPageInfoPage";
 import HomePage from "@page/HomePage";
 import HelmetMetaTags from "@src/HelmetMetaTags";
 import EditorPage from "@page/editor/EditorPage";
-import useAuth from "@hook/useAuth";
 import {AutoFocusProvider} from "@hook/useAutoFocus";
 import useAxios from "@hook/useAxios";
 import AdminRoute from "@page/admin/AdminRoute";
@@ -24,6 +23,7 @@ import MyPageStatPage from "@page/mypage/detail/MyPageStatPage";
 import MyPageDefaultLayout from "@page/mypage/default/MyPageDefaultLayout";
 import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
 import PrivateRoute from "@src/PrivateRoute";
+import AiCustomPage from "@src/ai/AICustomPage";
 
 const {Kakao} = window as any;
 
@@ -68,7 +68,7 @@ function App() {
                         <WeddingComponent wedding={dummyWedding} isPreview={true}/>
                     </Row>
                 )}/>
-                {/*<Route path={'ai-custom'} element={<AiCustomPage/>}/>*/}
+                <Route path={'ai-custom'} element={<AiCustomPage/>}/>
 
                 {/*for system*/}
                 <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>

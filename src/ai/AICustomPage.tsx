@@ -91,7 +91,8 @@ const AiCustomPage = () => {
                     `}>
                         <Button text={'다음'} buttonType={'tonal'} enabled={answer} onClick={() => {
                             if (flow >= 4) {
-                                window.location.href = '/login'
+                                window.location.href = '/editor?designId=1';
+                                // window.location.href = '/login'
                                 return;
                             }
                             setAnswer(false);
