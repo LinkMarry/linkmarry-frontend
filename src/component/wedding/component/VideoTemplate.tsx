@@ -55,7 +55,8 @@ function VideoTemplate(
                 {isYoutubeUrl ? (
                     <View
                         as={'iframe'}
-                        height={width ? width / 16 * 9 : 250} title={video.videoTitle}
+                        height={width ? width / 16 * 9 : 250}
+                        title={video.videoTitle}
                         src={videoUrl}
                         $ui={css`
                             display: flex;
