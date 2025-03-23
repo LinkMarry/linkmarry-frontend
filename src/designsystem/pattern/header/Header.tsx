@@ -42,7 +42,7 @@ function MobileHeader() {
                     margin-top: 60px;
                     width: 100vw;
                     background: white;
-                    height: calc(100vh - 60px);
+                    height: calc(100dvh - 60px);
                     z-index: 100;
                 `}>
                     {authorized ? (

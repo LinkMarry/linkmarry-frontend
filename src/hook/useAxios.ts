@@ -3,6 +3,7 @@ import {AxiosError, InternalAxiosRequestConfig} from "axios";
 import memberApi from "@remote/api/MemberApi";
 import {useNavigate} from "react-router-dom";
 import useJwt from "@hook/useJwt";
+import {useEffect} from "react";
 
 const useAxios = () => {
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ const useAxios = () => {
     };
 
     const errorResponseHandler = async (error: AxiosError) => {
+        console.log('Error response handler');
         console.log(error);
 
         const shouldAuthorizeRequest = error.config?.shouldAuthorizeRequest ?? true;

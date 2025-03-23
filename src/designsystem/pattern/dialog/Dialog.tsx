@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
-import {css} from "styled-components";
+import {css, RuleSet} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Button, {Props} from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
@@ -11,6 +11,7 @@ interface DialogProps {
     dismiss: () => void;
     dismissButtonProps?: Props;
     confirmButtonProps: Props;
+    ui?: RuleSet;
     children?: ReactNode;
 }
 
@@ -21,11 +22,12 @@ function Dialog(
         dismiss,
         dismissButtonProps,
         confirmButtonProps,
+        ui,
         children
     }: DialogProps
 ) {
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog dismiss={dismiss} ui={ui}>
             <Column $gap={32} $alignItems={'stretch'} $ui={css`
                 width: 90vw;
                 max-width: 380px;

@@ -20,7 +20,7 @@ function MainWrapper(
     return (
         <Column $alignItems={'stretch'} $ui={css`
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
         `}>
             {hasHeader && <Header/>}

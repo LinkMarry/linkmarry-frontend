@@ -111,6 +111,7 @@ function WeddingComponent(
                     5: <VideoTemplate
                         key={index}
                         video={wedding.video}
+                        rootRef={rootRef}
                     />,
                     6: <CongratulationsTemplate
                         key={index}

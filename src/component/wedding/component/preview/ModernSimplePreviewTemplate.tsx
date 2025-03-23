@@ -30,6 +30,7 @@ function ModernSimplePreviewTemplate(
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                 align-self: stretch;
                 max-height: 312px;
+                object-fit: cover;
             `}/>
             <Column $alignItems={'center'} $gap={24}>
                 <Text size={40} weight={400}>

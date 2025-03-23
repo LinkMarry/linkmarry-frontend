@@ -8,8 +8,10 @@ import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import Binding from "@src/interface/Binding";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
-interface Props extends Binding<WeddingDto> {}
+interface Props extends Binding<WeddingDto> {
+}
 
 const CreateWeddingDialog = ({value, update}: Props) => {
     const {url} = useParams();
@@ -51,10 +53,20 @@ const CreateWeddingDialog = ({value, update}: Props) => {
                     }}
                     confirmButtonProps={{
                         text: '만들기',
-                        enabled: value.url.length > 0 || !isFetching,
+                        enabled: value.url.length > 0 && value.name.length > 0 && !isFetching,
                         onClick: async () => await createWedding()
                     }}
+                    ui={css`
+                        position: relative;
+                    `}
                 >
+                    <Icon size={20} iconType={IconType.CrossLine} onClick={() => navigate('/')} ui={css`
+                        fill: var(--g-600);
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        cursor: pointer;
+                    `}/>
                     <Column $alignItems={'stretch'} $gap={12}>
                         <Input
                             value={value.name}

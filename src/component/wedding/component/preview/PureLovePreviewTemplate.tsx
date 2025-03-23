@@ -24,7 +24,7 @@ function PureLovePreviewTemplate(
             ${implementText({fontFamily: 'KoPubWorldBatang'})};
         `}>
             <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
-                height: 100vh;
+                height: 100dvh;
                 max-height: 800px;
                 object-fit: cover;
             `}/>

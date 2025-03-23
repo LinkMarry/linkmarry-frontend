@@ -7,11 +7,12 @@ import {debounce} from 'lodash';
 
 function useWedding() {
     const {url} = useParams();
-    const navigate = useNavigate();
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
     const [isSaveing, setIsSaveing] = useState(false);
 
     const throttledEditWedding = useCallback(debounce(async (updatedWedding: WeddingDto) => {
+        if (updatedWedding.url === '' || updatedWedding.name === '') return;
+
         setIsSaveing(false);
         try {
             await weddingApi.editWedding(updatedWedding);

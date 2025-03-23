@@ -27,7 +27,7 @@ function ClassicElegancePreviewTemplate(
                 <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
                     width: 100%;
                     object-fit: cover;
-                    height: 100vh;
+                    height: 100dvh;
                     max-height: 810px;
                 `}/>
                 <Column $alignItems={'center'} $gap={20} $ui={css`

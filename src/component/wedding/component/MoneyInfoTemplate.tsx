@@ -29,12 +29,19 @@ function MoneyInfoTemplate(
             padding: 92px 60px;
             background: white;
         `}>
-            <Column $gap={40} $alignItems={'center'}>
-                <FadeIn>
+            <Column $gap={40} $alignItems={'stretch'}>
+                <Column $gap={12} $alignItems={'stretch'}>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
-                    `}>마음 전하실 곳</Text>
-                </FadeIn>
+                        text-align: center;
+                        word-break: break-all;
+                    `}>{moneyInfo.infoTitle}</Text>
+                    <Text size={16} weight={300} ui={css`
+                        color: var(--g-600);
+                        word-break: break-all;
+                        text-align: center;
+                    `}>{moneyInfo.infoContent}</Text>
+                </Column>
                 <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
             </Column>
         </Column>
@@ -87,14 +94,20 @@ function MoneyInfoComponent(
                     </Row>
                     {clickedGroom && (
                         <>
-                            <MoneyCell name={firstMoneyInfo.nameMoneyInfo} bankName={firstMoneyInfo.bankName}
-                                       bankNumber={firstMoneyInfo.bankNumber} isGroom={true}/>
-                            <MoneyCell name={firstMoneyInfo.fatherNameMoneyInfo}
-                                       bankName={firstMoneyInfo.fatherBankName}
-                                       bankNumber={firstMoneyInfo.fatherBankNumber} isGroom={true}/>
-                            <MoneyCell name={firstMoneyInfo.motherNameMoneyInfo}
-                                       bankName={firstMoneyInfo.motherBankName}
-                                       bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
+                            {firstMoneyInfo.toggle && (
+                                <MoneyCell name={firstMoneyInfo.nameMoneyInfo} bankName={firstMoneyInfo.bankName}
+                                           bankNumber={firstMoneyInfo.bankNumber} isGroom={true}/>
+                            )}
+                            {firstMoneyInfo.fatherToggle && (
+                                <MoneyCell name={firstMoneyInfo.fatherNameMoneyInfo}
+                                           bankName={firstMoneyInfo.fatherBankName}
+                                           bankNumber={firstMoneyInfo.fatherBankNumber} isGroom={true}/>
+                            )}
+                            {firstMoneyInfo.motherToggle && (
+                                <MoneyCell name={firstMoneyInfo.motherNameMoneyInfo}
+                                           bankName={firstMoneyInfo.motherBankName}
+                                           bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
+                            )}
                         </>
                     )}
                 </View>
@@ -123,15 +136,20 @@ function MoneyInfoComponent(
                     </Row>
                     {clickedBride && (
                         <>
-
-                            <MoneyCell name={secondMoneyInfo.nameMoneyInfo} bankName={secondMoneyInfo.bankName}
-                                       bankNumber={secondMoneyInfo.bankNumber} isGroom={false}/>
-                            <MoneyCell name={secondMoneyInfo.fatherNameMoneyInfo}
-                                       bankName={secondMoneyInfo.fatherBankName}
-                                       bankNumber={secondMoneyInfo.fatherBankNumber} isGroom={false}/>
-                            <MoneyCell name={secondMoneyInfo.motherNameMoneyInfo}
-                                       bankName={secondMoneyInfo.motherBankName}
-                                       bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
+                            {secondMoneyInfo.toggle && (
+                                <MoneyCell name={secondMoneyInfo.nameMoneyInfo} bankName={secondMoneyInfo.bankName}
+                                           bankNumber={secondMoneyInfo.bankNumber} isGroom={false}/>
+                            )}
+                            {secondMoneyInfo.fatherToggle && (
+                                <MoneyCell name={secondMoneyInfo.fatherNameMoneyInfo}
+                                           bankName={secondMoneyInfo.fatherBankName}
+                                           bankNumber={secondMoneyInfo.fatherBankNumber} isGroom={false}/>
+                            )}
+                            {secondMoneyInfo.motherToggle && (
+                                <MoneyCell name={secondMoneyInfo.motherNameMoneyInfo}
+                                           bankName={secondMoneyInfo.motherBankName}
+                                           bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
+                            )}
                         </>
                     )}
                 </View>

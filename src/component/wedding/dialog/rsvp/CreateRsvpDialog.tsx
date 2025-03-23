@@ -60,7 +60,7 @@ function CreateRsvpDialog(
             <Column $alignItems={'stretch'} $ui={css`
                 max-width: 436px;
                 width: 100vw;
-                max-height: 100vh;
+                max-height: 100dvh;
                 overflow-y: hidden;
                 background: white;
                 border-radius: 12px;

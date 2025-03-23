@@ -28,16 +28,9 @@ const EditorPage = () => {
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
-
-    const {authorized} = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!authorized) {
-            navigate('/login');
-            return;
-        }
-
         const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
         if (weddingDesign) {
             updateWedding(draft => {
@@ -49,7 +42,7 @@ const EditorPage = () => {
     return (
         <Column $alignItems={'stretch'} $ui={css`
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
             background: var(--g-100);
             ${hideScrollBar};
