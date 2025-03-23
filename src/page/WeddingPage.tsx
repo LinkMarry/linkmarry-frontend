@@ -10,6 +10,7 @@ import {css} from "styled-components";
 import View from "@designsystem/core/View";
 import {useCookies} from "react-cookie";
 import useAuth from "@hook/useAuth";
+import useResponsive from "@hook/useResponsive";
 
 function WeddingPage() {
     const {url} = useParams();
@@ -17,6 +18,7 @@ function WeddingPage() {
     const [isError, setIsError] = useState(false);
     const cookieKey = `firstVisitor_${url}`;
     const [cookie, setCookie] = useCookies([cookieKey]);
+    const {deviceSize} = useResponsive();
 
     useEffect(() => {
         (async () => {
@@ -53,12 +55,18 @@ function WeddingPage() {
         <Row $justifyContent={'center'} $ui={css`
             background: ${wedding?.weddingDesign.weddingDesignColor};
             padding: 64px 0;
+            ${deviceSize === 'mobile' && css`
+                padding: 0;
+            `};
         `}>
             {wedding && (
                 <View $ui={css`
                     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
                     border-radius: 16px;
                     overflow: hidden;
+                    ${deviceSize === 'mobile' && css`
+                        border-radius: 0;
+                    `};
                 `}>
                     <WeddingComponent
                         wedding={wedding}
