@@ -5,6 +5,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import useAuth from "@hook/useAuth";
 import View from "@designsystem/core/View";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 function LoginPage() {
     const {signInWithKakao} = useAuth();
@@ -34,7 +35,7 @@ function LoginPage() {
                     color: black;
                 `} onClick={signInWithKakao}>
                     <Row $gap={6} $alignItems={'center'}>
-                        <img src={'/kakao.svg'} alt="" width={24} height={24}/>
+                        <Icon iconType={IconType.Kakao} size={24}/>
                         <Text type={'p3'} bold={true}>카카오 로그인</Text>
                     </Row>
                 </Row>

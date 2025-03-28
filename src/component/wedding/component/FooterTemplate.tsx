@@ -3,6 +3,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import {backgroundStyle} from "@remote/value/WeddingDesign";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<'div'> {
     background: string;
@@ -27,7 +28,7 @@ function FooterTemplate(
                 $alignItems={'center'}
             >
                 <Row $gap={8} $alignItems={'center'}>
-                    <img src={'/kakao.svg'} alt={'kakao'} width={20} height={20}/>
+                    <Icon iconType={IconType.Kakao} size={20}/>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-600);
                     `}>카카오톡으로 청첩장 보내기</Text>
