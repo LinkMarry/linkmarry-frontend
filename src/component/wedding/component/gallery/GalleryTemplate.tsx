@@ -1,4 +1,4 @@
-import React, {RefObject, useEffect, useRef, useState} from 'react';
+import React, {RefObject, useCallback, useEffect, useRef, useState} from 'react';
 import Text from "@designsystem/component/Text";
 import GalleryDesign from "@remote/enumeration/GalleryDesign";
 import styled, {css} from "styled-components";
@@ -74,7 +74,7 @@ function GalleryTemplate(
     );
 }
 
-function GallerySlide(
+const GallerySlide = (
     {
         rootRef,
         gallery,
@@ -84,7 +84,7 @@ function GallerySlide(
         gallery: Gallery;
         onClickImage: (index: number) => void;
     }
-) {
+) => {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -97,7 +97,7 @@ function GallerySlide(
         return imageWidth;
     };
 
-    const getScrollPosition = (): number => {
+    const getScrollPosition = useCallback(() => {
         if (!scrollContainerRef.current) return 0;
         const scrollContainer = scrollContainerRef.current;
 
@@ -106,14 +106,14 @@ function GallerySlide(
             scrollPosition -= 34;
         }
         return scrollPosition;
-    };
+    }, [gallery.galleryDesign]);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         const imageWidth = getGridImgWidth();
         const scrollPosition = getScrollPosition();
         const index = Math.floor(scrollPosition / imageWidth);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
-    };
+    }, [getGridImgWidth, getScrollPosition]);
 
     useEffect(() => {
         const container = scrollContainerRef.current;
@@ -121,9 +121,14 @@ function GallerySlide(
 
         return () => {
             container?.removeEventListener('scroll', handleScroll);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        };
+    }, [handleScroll]);
+
+    useEffect(() => {
+        scrollContainerRef.current?.scrollTo({
+            left: 0,
+        });
+    }, [gallery.galleryDesign]);
 
     return (
         <Column $gap={20} $alignItems={'stretch'} $alignSelf={'stretch'} $ui={css`

@@ -51,13 +51,10 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         const container = scrollContainerRef.current;
         container?.addEventListener('scroll', handleScroll);
 
-        const imgWidth = getGridImgWidth();
-        const left = imgWidth * (currentImageIndex);
-        // console.log(left)
         scrollContainerRef.current?.scrollTo({
-            left
+            left: getGridImgWidth()
         });
-        setCurrentImageIndex(currentImageIndex);
+        setCurrentImageIndex(0);
 
         return () => {
             container?.removeEventListener('scroll', handleScroll);
