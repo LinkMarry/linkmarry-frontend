@@ -1,16 +1,16 @@
 import {useCallback, useEffect, useState} from "react";
-import {Updater, useImmer} from "use-immer";
+import {useImmer} from "use-immer";
 import WeddingDto, {makeDefaultWedding, toDTO} from "@remote/value/WeddingDto";
 import weddingApi from "@remote/api/WeddingApi";
-import {useNavigate, useParams} from "react-router-dom";
-import {debounce} from 'lodash';
+import {useParams} from "react-router-dom";
+import {throttle} from 'lodash';
 
 function useWedding() {
     const {url} = useParams();
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
     const [isSaveing, setIsSaveing] = useState(false);
 
-    const throttledEditWedding = useCallback(debounce(async (updatedWedding: WeddingDto) => {
+    const throttledEditWedding = useCallback(throttle(async (updatedWedding: WeddingDto) => {
         if (updatedWedding.url === '' || updatedWedding.name === '') return;
 
         setIsSaveing(false);
