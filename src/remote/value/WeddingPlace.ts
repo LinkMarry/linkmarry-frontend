@@ -48,8 +48,8 @@ export function getPlaceholder(index: number): string {
 }
 
 export const defaultWeddingPlace: WeddingPlace = {
-    x: -1,
-    y: -1,
+    x: 126.9971,
+    y: 37.5503,
     placeUrl: "",
     placeName: "",
     addressName: "",
@@ -62,8 +62,8 @@ export const defaultWeddingPlace: WeddingPlace = {
 }
 
 export const dummyWeddingPlace: WeddingPlace = {
-    x: -1.0,
-    y: -1.0,
+    x: 126.9971,
+    y: 37.5503,
     placeUrl: "",
     placeName: "서울가든",
     addressName: "",

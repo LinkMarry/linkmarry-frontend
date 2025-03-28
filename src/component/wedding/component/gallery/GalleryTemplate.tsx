@@ -88,24 +88,19 @@ const GallerySlide = (
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const getGridImgWidth = (): number => {
+    const getGridImgWidth = useCallback(() => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
         if (gallery.galleryDesign === GalleryDesign.SLIDE) {
             imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
         }
 
         return imageWidth;
-    };
+    }, [gallery.galleryDesign, rootRef]);
 
     const getScrollPosition = useCallback(() => {
         if (!scrollContainerRef.current) return 0;
         const scrollContainer = scrollContainerRef.current;
-
-        let scrollPosition = scrollContainer.scrollLeft
-        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
-            scrollPosition -= 34;
-        }
-        return scrollPosition;
+        return scrollContainer.scrollLeft;
     }, [gallery.galleryDesign]);
 
     const handleScroll = useCallback(() => {
@@ -128,7 +123,7 @@ const GallerySlide = (
         scrollContainerRef.current?.scrollTo({
             left: 0,
         });
-    }, [gallery.galleryDesign]);
+    }, [gallery.galleryDesign, getGridImgWidth]);
 
     return (
         <Column $gap={20} $alignItems={'stretch'} $alignSelf={'stretch'} $ui={css`
@@ -246,11 +241,11 @@ const S = {
             min-width: ${$rootWidth - 34 * 2}px;
 
             &:first-child {
-                margin-left: ${$rootWidth - 34}px;
+                margin-left: 34px;
             }
 
             &:last-child {
-                margin-right: ${$rootWidth - 34}px;
+                margin-right: 34px;
             }
 
             border-radius: 12px;
