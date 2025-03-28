@@ -203,12 +203,20 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                 {openDetailPopover && (
                                     <Popover
                                         items={[
-                                            ...(deviceSize === 'mobile' ? [
+                                            ...((deviceSize === 'mobile' || deviceSize === 'tablet') ? [
                                                 {
                                                     icon: IconType.PenLine,
                                                     text: '청첩장 수정',
                                                     onClick: () => {
                                                         navigate(`/editor/${weddingInfo.url}`);
+                                                    }
+                                                },
+                                                {
+                                                    icon: IconType.Star,
+                                                    text: '워터마크 제거',
+                                                    onClick: () => {
+                                                        setShowRemoveWatermarkDialog(true);
+                                                        setSelectedRemoveWatermarkWedding(weddingInfo);
                                                     }
                                                 }
                                             ] : []),
