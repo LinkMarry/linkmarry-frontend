@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Spacer from "@designsystem/component/Spacer";
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
@@ -26,17 +26,12 @@ function LocationTemplate(
     const kakaoMapRef = useRef<HTMLDivElement>(null);
     const weddingPlaceRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace]);
-
     useEffect(() => {
         if (!kakao || !kakao.maps || !kakaoMapRef.current) {
-            // alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
             return;
         }
 
-
-        if (!weddingPlace.x || !weddingPlace.y) {
-            return;
-        }
+        kakaoMapRef.current.innerHTML = '';
 
         const createdMap = new kakao.maps.Map(kakaoMapRef.current, {
             center: new kakao.maps.LatLng(weddingPlace.y, weddingPlace.x),
@@ -48,11 +43,11 @@ function LocationTemplate(
             map: createdMap, // 지도 객체와 연결
         });
 
-        if (weddingPlace.placeLock) {
-            createdMap.setDraggable(false); // 드래그 비활성화
-            createdMap.setZoomable(false); // 줌 비활성화
-        }
-    }, []);
+        createdMap.setDraggable(!weddingPlace.placeLock); // 드래그 비활성화
+        createdMap.setZoomable(!weddingPlace.placeLock); // 줌 비활성화
+
+        console.log('생성됨');
+    }, [weddingPlace]);
 
     return (
         <Column $alignItems={'stretch'} ref={weddingPlaceRef} $ui={css`
