@@ -61,20 +61,7 @@ const EditorInspectorVideo = (
                 <Column $alignItems={'stretch'} $gap={12}>
                     <Text type={'p3'} bold={true}>URL로 첨부</Text>
                     <Input hasLabel={false} value={video.videoUrl} onChange={event => update(draft => {
-                        const value = event.target.value;
-
-                        if (value === '') {
-                            draft.video.videoUrl = value;
-                            return;
-                        }
-
-                        const urlPattern = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-                        const match = value.match(urlPattern);
-
-                        if (match && match[1]) {
-                            const videoID = match[1];
-                            draft.video.videoUrl = `https://www.youtube.com/embed/${videoID}`
-                        }
+                        draft.video.videoUrl = event.target.value;
                     })}/>
                 </Column>
             )}
