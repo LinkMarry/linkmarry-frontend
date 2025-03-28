@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import WeddingSchedule from "@remote/value/WeddingSchedule";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import BaseInfo from "@remote/value/BaseInfo";
@@ -16,6 +16,9 @@ import PureLovePreviewTemplate from "@src/component/wedding/component/preview/Pu
 import ModernLovePreviewTemplate from "@src/component/wedding/component/preview/ModernLovePreviewTemplate";
 import ClassicRomancePreviewTemplate from "@src/component/wedding/component/preview/ClassicRomancePreviewTemplate";
 import FadeIn from "@src/component/fadein/FadeIn";
+import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import View from "@designsystem/core/View";
+import {Column} from "@designsystem/core/FlexLayout";
 
 export interface PreviewTemplateProps {
     weddingDesign: WeddingDesign;
@@ -27,6 +30,9 @@ export interface PreviewTemplateProps {
 function PreviewTemplate(
     props: PreviewTemplateProps
 ) {
+    const previewRef = useRef<HTMLDivElement>(null);
+    useScrollOnUpdate(previewRef, [props.weddingDesign.weddingDesignName]);
+
     const content = () => {
         switch (props.weddingDesign.weddingDesignName) {
             case '화이트 모먼트':
@@ -56,9 +62,9 @@ function PreviewTemplate(
         }
     };
     return (
-        <>
+        <Column $alignItems={'stretch'} ref={previewRef}>
             {content()}
-        </>
+        </Column>
     )
 }
 
