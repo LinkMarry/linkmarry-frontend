@@ -1,11 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
-import {Column} from "@designsystem/core/FlexLayout";
+import {Column, Row} from "@designsystem/core/FlexLayout";
 import View from "@designsystem/core/View";
 import Button from "@designsystem/component/Button";
 import Text from "@designsystem/component/Text";
 import WeddingPlace from "@remote/value/WeddingPlace";
+import makeText from "@designsystem/foundation/text/TextType";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 const {kakao} = window as any;
 
@@ -24,13 +26,13 @@ function KakaoMapDialog(
 ) {
     const geocoder = new kakao.maps.services.Geocoder();
     const kakaoMap = useRef<HTMLDivElement>(null);
-    const [map, setMap] = useState<any>();
     const [places, setPlaces] = useState<any[]>([]);
     const [selectedPlace, setSelectedPlace] = useState<any>();
+    const [searchText, setSearchText] = useState('');
+    const [map, setMap] = useState<any>();
 
     useEffect(() => {
         if (!kakao || !kakao.maps) {
-            // alert('지도 서비스가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
             return;
         }
 
@@ -64,18 +66,28 @@ function KakaoMapDialog(
         geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
             if (status !== kakao.maps.services.Status.OK) return;
 
-            const ps = new kakao.maps.services.Places();
-
-            ps.keywordSearch(result[0].address.address_name, (result: any, status: any) => {
-                if (status !== kakao.maps.services.Status.OK) return;
-
-                console.log(result);
-                setPlaces(result);
-            }, {
+            const keyword = result[0].address.address_name;
+            keywordSearch(keyword, {
                 location: coords,
                 radius: 50
             });
         });
+    };
+
+    const keywordSearch = (keyword: string, option?: any) => {
+        const ps = new kakao.maps.services.Places();
+
+        ps.keywordSearch(keyword, (result: any, status: any) => {
+            if (status !== kakao.maps.services.Status.OK) return;
+
+            console.log(result);
+            setPlaces(result);
+
+            const first = result[0];
+            if (first) {
+                map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
+            }
+        }, option);
     };
 
     return (
@@ -88,6 +100,35 @@ function KakaoMapDialog(
                 border-radius: 12px;
                 background: white;
             `}>
+                <Row $alignItems={'center'} $ui={css`
+                    padding-right: 20px;
+                `}>
+                    <View
+                        as={'input'}
+                        value={searchText}
+                        onChange={event => setSearchText(event.target.value)}
+                        onKeyDown={event => {
+                            if (event.key === 'Enter') {
+                                keywordSearch(searchText);
+                            }
+                        }}
+                        placeholder={'장소 검색'}
+                        $ui={css`
+                            padding: 20px;
+                            ${makeText('p1')};
+                            outline: none;
+                            border: none;
+                            flex: 1;
+                            min-width: 0;
+                        `}
+                    />
+                    <Icon iconType={IconType.Search} onClick={() => {
+                        keywordSearch(searchText);
+                    }} size={28} ui={css`
+                        fill: var(--g-500);
+                        cursor: pointer;
+                    `}/>
+                </Row>
                 <View ref={kakaoMap} $ui={css`
                     display: flex;
                     flex: 1;
@@ -97,6 +138,11 @@ function KakaoMapDialog(
                 <Column $gap={10} $alignItems={'stretch'} $ui={css`
                     padding: 16px;
                 `}>
+                    <Text type={'p2'} bold={true} ui={css`
+                        color: var(--g-500);
+                        margin-left: 14px;
+                        margin-top: 4px;
+                    `}>장소 선택</Text>
                     <Column as={'ul'} $gap={4} $alignItems={'stretch'} $ui={css`
                         height: 128px;
                         overflow-y: scroll;
