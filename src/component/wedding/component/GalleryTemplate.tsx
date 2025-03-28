@@ -7,6 +7,7 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
 import Gallery from "@remote/value/Gallery";
+import Icon, {IconType} from "@designsystem/foundation/Icon";
 
 interface GalleryTemplateProps {
     rootRef: RefObject<HTMLDivElement>;
@@ -32,7 +33,7 @@ function GalleryTemplate(
                     color: var(--g-600);
                 `}>{gallery.galleryTitle}</Text>
             </FadeIn>
-            {gallery.galleryDesign === GalleryDesign.SLIDE ? (
+            {(gallery.galleryDesign === GalleryDesign.SLIDE || gallery.galleryDesign === GalleryDesign.HIGHLIGHT) ? (
                 <GallerySlide
                     rootRef={rootRef}
                     gallery={gallery}
@@ -66,9 +67,9 @@ function GallerySlide(
 
     const getGridImgWidth = (): number => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
-        // if (gallery.galleryDesign === GalleryDesign.SLIDE) {
-        imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
-        // }
+        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
+            imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
+        }
 
         return imageWidth;
     };
@@ -78,9 +79,9 @@ function GallerySlide(
         const scrollContainer = scrollContainerRef.current;
 
         let scrollPosition = scrollContainer.scrollLeft
-        // if (slideStyle) {
+        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
             scrollPosition -= 34;
-        // }
+        }
         return scrollPosition;
     };
 
@@ -108,6 +109,7 @@ function GallerySlide(
                     <S.slideImg
                         key={index}
                         src={img}
+                        $galleryDesign={gallery.galleryDesign}
                         $rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
                     />
                 ))}
@@ -115,6 +117,7 @@ function GallerySlide(
             <GalleryStyleIndicator
                 imgListLength={gallery.imgList.length}
                 currentImageIndex={currentImageIndex}
+                galleryDesign={gallery.galleryDesign}
                 onClick={type => {
                     switch (type) {
                         case 'moveLeft':
@@ -150,46 +153,50 @@ function GalleryStyleIndicator(
     {
         imgListLength,
         currentImageIndex,
-        onClick
+        galleryDesign,
+        onClick,
     }: {
         imgListLength: number;
         currentImageIndex: number;
+        galleryDesign: GalleryDesign;
         onClick: (type: 'moveLeft' | 'moveRight') => void;
     }
 ) {
-    // switch (slideStyle) {
-    //     case 'style1':
-    //         return (
-    return <Row $gap={8} $alignSelf={'center'}>
-        {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
-            <S.indicator key={index} selected={i === currentImageIndex}/>
-        ))}
-    </Row>;
-    // case 'style2':
-    //     return (
-    //         <Row
-    //             $alignItems={'center'}
-    //             $justifyContent={'space-between'}
-    //             $ui={css`
-    //                 padding: 0 45px;
-    //             `}
-    //         >
-    //             <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
-    //                 fill: var(--g-500);
-    //                 cursor: pointer;
-    //             `} onClick={() => {
-    //                 onClick('moveLeft');
-    //             }}/>
-    //             <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-    //             <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
-    //                 rotate: 180deg;
-    //                 fill: var(--g-500);
-    //                 cursor: pointer;
-    //             `} onClick={() => {
-    //                 onClick('moveRight');
-    //             }}/>
-    //         </Row>
-    //     );
+    switch (galleryDesign) {
+        case GalleryDesign.SLIDE:
+            return <Row $gap={8} $alignSelf={'center'}>
+                {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
+                    <S.indicator key={index} selected={i === currentImageIndex}/>
+                ))}
+            </Row>;
+        case GalleryDesign.HIGHLIGHT:
+            return (
+                <Row
+                    $alignItems={'center'}
+                    $justifyContent={'space-between'}
+                    $ui={css`
+                        padding: 0 45px;
+                    `}
+                >
+                    <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
+                        fill: var(--g-500);
+                        cursor: pointer;
+                    `} onClick={() => {
+                        onClick('moveLeft');
+                    }}/>
+                    <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
+                    <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
+                        rotate: 180deg;
+                        fill: var(--g-500);
+                        cursor: pointer;
+                    `} onClick={() => {
+                        onClick('moveRight');
+                    }}/>
+                </Row>
+            );
+        case GalleryDesign.GRID:
+            return null;
+    }
 }
 
 const S = {
@@ -222,10 +229,10 @@ const S = {
     `,
     slideImg: styled.img<{
         $rootWidth: number,
-        // $slideStyle: GallerySlideStyle
+        $galleryDesign: GalleryDesign;
     }>`
         display: flex;
-        ${({$rootWidth/*, $slideStyle*/}) => /*$slideStyle === 'style1' ?*/ css`
+        ${({$rootWidth, $galleryDesign}) => $galleryDesign === GalleryDesign.SLIDE ? css`
             max-width: ${$rootWidth - 34 * 2}px;
             min-width: ${$rootWidth - 34 * 2}px;
 
@@ -238,10 +245,10 @@ const S = {
             }
 
             border-radius: 12px;
-        `/* : css`
+        ` : css`
             max-width: ${$rootWidth}px;
             min-width: ${$rootWidth}px;
-        `*/};
+        `};
         height: 517px;
         scroll-snap-align: center;
         object-fit: cover;
