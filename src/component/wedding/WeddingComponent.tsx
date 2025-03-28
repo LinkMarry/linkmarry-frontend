@@ -130,6 +130,7 @@ function WeddingComponent(
                     />,
                     8: <RsvpTemplate
                         key={index}
+                        rsvp={wedding.rsvp}
                         weddingDesignColor={weddingDesignColor}
                         baseInfo={wedding.baseInfo}
                         weddingSchedule={wedding.weddingSchedule}
