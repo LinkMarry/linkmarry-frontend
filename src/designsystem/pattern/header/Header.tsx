@@ -26,7 +26,7 @@ function Header() {
 }
 
 function MobileHeader() {
-    const {authorized} = useAuth();
+    const {authorized, signOut} = useAuth();
     const [openDetail, setOpenDetail] = useState(false);
     const navigate = useNavigate();
 
@@ -75,6 +75,14 @@ function MobileHeader() {
                             window.open(NAVER_STORE_URL);
                         }}/>
                     </Column>
+                    {authorized && (
+                        <>
+                            <Divider size={'large'}/>
+                            <MobileHeaderItem text={'로그아웃'} onClick={() => {
+                                signOut();
+                            }}/>
+                        </>
+                    )}
                 </Column>
             </Column>
         )
