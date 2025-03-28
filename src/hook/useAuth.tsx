@@ -38,7 +38,6 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
         } catch (error) {
             console.error(error);
         }
-
         navigate('/', {replace: true});
     }
 
@@ -70,7 +69,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
         (async () => {
             await fetchMember();
         })();
-    }, []);
+    }, [jwt.accessToken]);
 
     return (
         <AuthContext.Provider value={{
