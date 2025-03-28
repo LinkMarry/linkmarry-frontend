@@ -163,6 +163,7 @@ function CreateRsvpDialog(
                                     value={guestCnt}
                                     onChange={event => setGuestCnt(Number(event.target.value))}
                                     type={'number'}
+                                    min={0}
                                     hasLabel={false}
                                 />
                             </Column>
