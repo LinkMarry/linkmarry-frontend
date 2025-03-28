@@ -8,6 +8,9 @@ import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
 import Gallery from "@remote/value/Gallery";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
+import View from "@designsystem/core/View";
+import BaseDialog from "@designsystem/pattern/dialog/BaseDialog";
+import GalleryFullView from "@src/component/wedding/component/gallery/GalleryFullView";
 
 interface GalleryTemplateProps {
     rootRef: RefObject<HTMLDivElement>;
@@ -23,11 +26,22 @@ function GalleryTemplate(
     const galleryRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(galleryRef, [gallery]);
 
+    const [currentImageIdx, setCurrentImageIdx] = useState<number>();
+
     return (
         <Column ref={galleryRef} $alignItems={'center'} $gap={40} $ui={css`
             background: white;
             padding: 92px 0;
         `}>
+            {currentImageIdx !== undefined && (
+                <GalleryFullView
+                    dismiss={() => setCurrentImageIdx(undefined)}
+                    currentImageIndex={currentImageIdx}
+                    setCurrentImageIndex={setCurrentImageIdx}
+                    gallery={gallery}
+                    rootRef={rootRef}
+                />
+            )}
             <FadeIn>
                 <Text size={20} weight={300} ui={css`
                     color: var(--g-600);
@@ -37,13 +51,24 @@ function GalleryTemplate(
                 <GallerySlide
                     rootRef={rootRef}
                     gallery={gallery}
+                    onClickImage={index => setCurrentImageIdx(index)}
                 />
             ) : (
-                <S.gridWrapper>
+                <View $ui={css`
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
+                    margin: 0 18px;
+                    gap: 4px;
+                `}>
                     {gallery.imgList.map((img, index) => (
-                        <S.gridImg key={index} src={img}/>
+                        <View as={'img'} $ui={css`
+                            width: 100%;
+                            aspect-ratio: 1;
+                            object-fit: cover;
+                            border-radius: 4px;
+                        `} key={index} src={img} onClick={() => setCurrentImageIdx(index)}/>
                     ))}
-                </S.gridWrapper>
+                </View>
             )}
         </Column>
     );
@@ -52,18 +77,16 @@ function GalleryTemplate(
 function GallerySlide(
     {
         rootRef,
-        gallery
+        gallery,
+        onClickImage
     }: {
         rootRef: RefObject<HTMLDivElement>;
         gallery: Gallery;
+        onClickImage: (index: number) => void;
     }
 ) {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
-
-    const galleryRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-    useScrollOnUpdate(galleryRef, [gallery.imgList]);
 
     const getGridImgWidth = (): number => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
@@ -103,17 +126,25 @@ function GallerySlide(
     }, []);
 
     return (
-        <S.slideWrapper ref={galleryRef}>
-            <S.scroll ref={scrollContainerRef}>
+        <Column $gap={20} $alignItems={'stretch'} $alignSelf={'stretch'} $ui={css`
+            overflow-x: hidden;
+        `}>
+            <Row $gap={8} $ui={css`
+                scroll-snap-type: x mandatory;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                ${hideScrollBar};
+            `} ref={scrollContainerRef}>
                 {gallery.imgList.map((img, index) => (
                     <S.slideImg
                         key={index}
                         src={img}
                         $galleryDesign={gallery.galleryDesign}
                         $rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
+                        onClick={() => onClickImage(index)}
                     />
                 ))}
-            </S.scroll>
+            </Row>
             <GalleryStyleIndicator
                 imgListLength={gallery.imgList.length}
                 currentImageIndex={currentImageIndex}
@@ -145,7 +176,7 @@ function GallerySlide(
                     }
                 }}
             />
-        </S.slideWrapper>
+        </Column>
     );
 }
 
@@ -200,33 +231,6 @@ function GalleryStyleIndicator(
 }
 
 const S = {
-    gridWrapper: styled.div`
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
-        margin: 0 18px;
-        gap: 4px;
-    `,
-    slideWrapper: styled.div`
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        align-self: stretch;
-        overflow-x: hidden;
-    `,
-    scroll: styled.div/*<{ $slideStyle: GallerySlideStyle }>*/`
-        scroll-snap-type: x mandatory;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        display: flex;
-        gap: 8px;
-        ${hideScrollBar};
-    `,
-    gridImg: styled.img`
-        width: 100%;
-        aspect-ratio: 1;
-        object-fit: cover;
-        border-radius: 4px;
-    `,
     slideImg: styled.img<{
         $rootWidth: number,
         $galleryDesign: GalleryDesign;

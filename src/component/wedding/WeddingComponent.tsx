@@ -9,7 +9,7 @@ import CongratulationsTemplate from "@src/component/wedding/component/Congratula
 import WeddingDayTemplate from "@src/component/wedding/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "@src/component/wedding/component/LocationTemplate";
 import PreviewTemplate from "@src/component/wedding/component/preview/PreviewTemplate";
-import GalleryTemplate from "@src/component/wedding/component/GalleryTemplate";
+import GalleryTemplate from "@src/component/wedding/component/gallery/GalleryTemplate";
 import VideoTemplate from "@src/component/wedding/component/VideoTemplate";
 import InvitationLetterTemplate from "@src/component/wedding/component/InvitationLetterTemplate";
 import RsvpDialog from "@src/component/wedding/dialog/rsvp/RsvpDialog";
