@@ -11,9 +11,15 @@ const useAxios = () => {
 
     const requestHandler = (config: InternalAxiosRequestConfig) => {
         const shouldAuthorizeRequest = config.shouldAuthorizeRequest ?? true;
-        if (!shouldAuthorizeRequest) return config;
+        if (!shouldAuthorizeRequest) {
+            console.log('Should not authorize request');
+            return config;
+        }
 
-        if (config.headers.isRefreshing) return config;
+        if (config.headers.isRefreshing) {
+            console.log('Refreshing...');
+            return config;
+        }
 
         config.headers.Authorization = jwt.accessToken;
 
@@ -79,6 +85,8 @@ const useAxios = () => {
         }
     };
 
+    api.interceptors.request.clear();
+    api.interceptors.response.clear();
     api.interceptors.request.use(requestHandler, res => res);
     api.interceptors.response.use(response => response, errorResponseHandler);
 };

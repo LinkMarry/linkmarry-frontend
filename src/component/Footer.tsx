@@ -99,8 +99,8 @@ function Footer() {
                             </>
                         ) : (
                             <>
-                                {[...detail1, ...detail2].map(text => (
-                                    <Text type={'caption2'} ui={css`
+                                {[...detail1, ...detail2].map((text, index) => (
+                                    <Text key={index} type={'caption2'} ui={css`
                                         color: var(--g-500);
                                     `}>{text}</Text>
                                 ))}
