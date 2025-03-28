@@ -30,6 +30,18 @@ function VideoTemplate(
     const videoUrl = video.videoFileType ? video.videoFileUrl : video.videoUrl;
     const width = rootRef?.current?.getBoundingClientRect().width;
 
+    const youtubeUrlPattern = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = videoUrl.match(youtubeUrlPattern);
+
+    const clearedVideoUrl = (() => {
+        if (match && match[1]) {
+            const videoID = match[1];
+            return `https://www.youtube.com/embed/${videoID}`
+        } else {
+            return videoUrl;
+        }
+    })()
+
     return (
         <FadeIn>
             <Column $gap={40} $alignItems={'stretch'} ref={videoRef} $ui={css`
@@ -57,14 +69,14 @@ function VideoTemplate(
                         as={'iframe'}
                         height={width ? width / 16 * 9 : 250}
                         title={video.videoTitle}
-                        src={videoUrl}
+                        src={clearedVideoUrl}
                         $ui={css`
                             display: flex;
                             object-fit: cover;
                         `}
                     ></View>
                 ) : (
-                    <video src={videoUrl} controls={true}></video>
+                    <video src={clearedVideoUrl} controls={true}></video>
                 )}
             </Column>
         </FadeIn>

@@ -172,73 +172,97 @@ export const dummyMoneyInfo: MoneyInfo = {
     brideMotherToggle: true,
 }
 
-type MoneyInfoByBrideMarkFirst = {
+export type MoneyInfoByBrideMarkFirst = {
     bankName: string;
     bankNumber: string;
     toggle: boolean;
-    fatherBankName: string;
-    fatherBankNumber: string;
-    fatherKakaoUrl: string;
-    fatherNameMoneyInfo: string;
-    fatherToggle: boolean;
     kakaoUrl: string;
-    motherBankName: string;
-    motherBankNumber: string;
-    motherKakaoUrl: string;
-    motherNameMoneyInfo: string;
-    motherToggle: boolean;
     nameMoneyInfo: string;
+    korean: string;
 }
 
 export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirst: boolean): {
     first: MoneyInfoByBrideMarkFirst;
+    firstFather: MoneyInfoByBrideMarkFirst;
+    firstMother: MoneyInfoByBrideMarkFirst;
     second: MoneyInfoByBrideMarkFirst;
+    secondFather: MoneyInfoByBrideMarkFirst;
+    secondMother: MoneyInfoByBrideMarkFirst;
+    kakaoStatus: boolean;
 } {
     const groomMoneyInfo: MoneyInfoByBrideMarkFirst = {
         bankName: moneyInfo.groomBankName,
         bankNumber: moneyInfo.groomBankNumber,
         toggle: moneyInfo.groomToggle,
-        fatherBankName: moneyInfo.groomFatherBankName,
-        fatherBankNumber: moneyInfo.groomFatherBankNumber,
-        fatherKakaoUrl: moneyInfo.groomFatherKakaoUrl,
-        fatherNameMoneyInfo: moneyInfo.groomFatherNameMoneyInfo,
-        fatherToggle: moneyInfo.groomFatherToggle,
         kakaoUrl: moneyInfo.groomKakaoUrl,
-        motherBankName: moneyInfo.groomMotherBankName,
-        motherBankNumber: moneyInfo.groomMotherBankNumber,
-        motherKakaoUrl: moneyInfo.groomMotherKakaoUrl,
-        motherNameMoneyInfo: moneyInfo.groomMotherNameMoneyInfo,
-        motherToggle: moneyInfo.groomMotherToggle,
         nameMoneyInfo: moneyInfo.groomNameMoneyInfo,
-    }
+        korean: '신랑'
+    };
+
+    const groomFatherMoneyInfo: MoneyInfoByBrideMarkFirst = {
+        bankName: moneyInfo.groomFatherBankName,
+        bankNumber: moneyInfo.groomFatherBankNumber,
+        toggle: moneyInfo.groomFatherToggle,
+        kakaoUrl: moneyInfo.groomFatherKakaoUrl,
+        nameMoneyInfo: moneyInfo.groomFatherNameMoneyInfo,
+        korean: '아버지'
+    };
+
+    const groomMotherMoneyInfo: MoneyInfoByBrideMarkFirst = {
+        bankName: moneyInfo.groomMotherBankName,
+        bankNumber: moneyInfo.groomMotherBankNumber,
+        toggle: moneyInfo.groomMotherToggle,
+        kakaoUrl: moneyInfo.groomMotherKakaoUrl,
+        nameMoneyInfo: moneyInfo.groomMotherNameMoneyInfo,
+        korean: '어머니'
+    };
 
     const brideMoneyInfo: MoneyInfoByBrideMarkFirst = {
         bankName: moneyInfo.brideBankName,
         bankNumber: moneyInfo.brideBankNumber,
         toggle: moneyInfo.brideToggle,
-        fatherBankName: moneyInfo.brideFatherBankName,
-        fatherBankNumber: moneyInfo.brideFatherBankNumber,
-        fatherKakaoUrl: moneyInfo.brideFatherKakaoUrl,
-        fatherNameMoneyInfo: moneyInfo.brideFatherNameMoneyInfo,
-        fatherToggle: moneyInfo.brideFatherToggle,
         kakaoUrl: moneyInfo.brideKakaoUrl,
-        motherBankName: moneyInfo.brideMotherBankName,
-        motherBankNumber: moneyInfo.brideMotherBankNumber,
-        motherKakaoUrl: moneyInfo.brideMotherKakaoUrl,
-        motherNameMoneyInfo: moneyInfo.brideMotherNameMoneyInfo,
-        motherToggle: moneyInfo.brideMotherToggle,
         nameMoneyInfo: moneyInfo.brideNameMoneyInfo,
-    }
+        korean: '신부'
+    };
+
+    const brideFatherMoneyInfo: MoneyInfoByBrideMarkFirst = {
+        bankName: moneyInfo.brideFatherBankName,
+        bankNumber: moneyInfo.brideFatherBankNumber,
+        toggle: moneyInfo.brideFatherToggle,
+        kakaoUrl: moneyInfo.brideFatherKakaoUrl,
+        nameMoneyInfo: moneyInfo.brideFatherNameMoneyInfo,
+        korean: '아버지'
+    };
+
+    const brideMotherMoneyInfo: MoneyInfoByBrideMarkFirst = {
+        bankName: moneyInfo.brideMotherBankName,
+        bankNumber: moneyInfo.brideMotherBankNumber,
+        toggle: moneyInfo.brideMotherToggle,
+        kakaoUrl: moneyInfo.brideMotherKakaoUrl,
+        nameMoneyInfo: moneyInfo.brideMotherNameMoneyInfo,
+        korean: '어머니'
+    };
 
     if (brideMarkFirst) {
         return {
             first: brideMoneyInfo,
-            second: groomMoneyInfo
+            firstFather: brideFatherMoneyInfo,
+            firstMother: brideMotherMoneyInfo,
+            second: groomMoneyInfo,
+            secondFather: groomFatherMoneyInfo,
+            secondMother: groomMotherMoneyInfo,
+            kakaoStatus: moneyInfo.kakaoStatus
         }
     } else {
         return {
             first: groomMoneyInfo,
-            second: brideMoneyInfo
+            firstMother: groomMotherMoneyInfo,
+            firstFather: groomFatherMoneyInfo,
+            second: brideMoneyInfo,
+            secondFather: brideFatherMoneyInfo,
+            secondMother: brideMotherMoneyInfo,
+            kakaoStatus: moneyInfo.kakaoStatus
         }
     }
 }

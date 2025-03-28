@@ -82,6 +82,7 @@ import Play from "@designsystem/foundation/icon/Play";
 import Pause from "@designsystem/foundation/icon/Pause";
 import ExternalLink from "@designsystem/foundation/icon/ExternalLink";
 import Stat from "@designsystem/foundation/icon/Stat";
+import Kakao from "@designsystem/foundation/icon/Kakao";
 
 export enum IconType {
     AddEmoji,
@@ -128,6 +129,7 @@ export enum IconType {
     HeartLine,
     Hide,
     Home,
+    Kakao,
     Link,
     LocationPoint,
     Logout,
@@ -272,6 +274,8 @@ function Icon(
                 return <Hide {...svgProps}/>;
             case IconType.Home:
                 return <Home {...svgProps}/>;
+            case IconType.Kakao:
+                return <Kakao {...svgProps}/>;
             case IconType.Link:
                 return <Link {...svgProps}/>;
             case IconType.LocationPoint:

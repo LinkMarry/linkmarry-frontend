@@ -1,14 +1,15 @@
 import React, {useRef, useState} from 'react';
 import styled, {css} from "styled-components";
-import MoneyInfo, {getMoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
+import MoneyInfo, {getMoneyInfoByBrideMarkFirst, MoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
 import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
+import BaseInfo, {BaseInfoByBrideMarkFirst, getBaseInfoByBrideMarkFirst} from "@remote/value/BaseInfo";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import FadeIn from "@src/component/fadein/FadeIn";
 import View from "@designsystem/core/View";
+import Button from "@designsystem/component/Button";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -59,129 +60,112 @@ function MoneyInfoComponent(
         moneyInfo
     }: MoneyInfoProps
 ) {
-    const [clickedGroom, setClickedGroom] = useState(false);
-    const [clickedBride, setClickedBride] = useState(false);
-
     const {first: firstBaseInfo, second: secondBaseInfo} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {
-        first: firstMoneyInfo,
-        second: secondMoneyInfo
+        first,
+        firstFather,
+        firstMother,
+        second,
+        secondFather,
+        secondMother
     } = getMoneyInfoByBrideMarkFirst(moneyInfo, baseInfo.brideMarkFirst);
 
     return (
         <Column $gap={16} $alignItems={'stretch'} $alignSelf={'stretch'}>
             <FadeIn>
-                <View $ui={css`
-                    border-radius: 12px;
-                    background: var(--g-100);
-                `}>
-                    <Row $alignItems={'center'} $ui={css`
-                        padding: 10px 20px;
-                        cursor: pointer;
-                    `} onClick={() => setClickedGroom(i => !i)}>
-                        <Text type={'p3'} bold={true} ui={css`
-                            color: var(--g-600);
-                        `}>{firstBaseInfo.korean}측</Text>
-                        <Spacer/>
-                        <Icon iconType={IconType.ExpandArrow} ui={css`
-                            fill: var(--g-600);
-                            ${clickedGroom ? css`
-                                rotate: 90deg;
-                            ` : css`
-                                rotate: -90deg;
-                            `}
-                        `}/>
-                    </Row>
-                    {clickedGroom && (
-                        <>
-                            {firstMoneyInfo.toggle && (
-                                <MoneyCell name={firstMoneyInfo.nameMoneyInfo} bankName={firstMoneyInfo.bankName}
-                                           bankNumber={firstMoneyInfo.bankNumber} isGroom={true}/>
-                            )}
-                            {firstMoneyInfo.fatherToggle && (
-                                <MoneyCell name={firstMoneyInfo.fatherNameMoneyInfo}
-                                           bankName={firstMoneyInfo.fatherBankName}
-                                           bankNumber={firstMoneyInfo.fatherBankNumber} isGroom={true}/>
-                            )}
-                            {firstMoneyInfo.motherToggle && (
-                                <MoneyCell name={firstMoneyInfo.motherNameMoneyInfo}
-                                           bankName={firstMoneyInfo.motherBankName}
-                                           bankNumber={firstMoneyInfo.motherBankNumber} isGroom={true}/>
-                            )}
-                        </>
-                    )}
-                </View>
+                <MoneyInfoContainer
+                    baseInfo={firstBaseInfo}
+                    me={first}
+                    father={firstFather}
+                    mother={firstMother}
+                    kakaoStatus={moneyInfo.kakaoStatus}
+                />
             </FadeIn>
             <FadeIn>
-                <View $ui={css`
-                    border-radius: 12px;
-                    background: var(--p-100);
-                `}>
-                    <Row $alignItems={'center'} $ui={css`
-                        padding: 10px 20px;
-                        cursor: pointer;
-                    `} onClick={() => setClickedBride(i => !i)}>
-                        <Text type={'p3'} bold={true} ui={css`
-                            color: var(--p-800);
-                        `}>{secondBaseInfo.korean}측</Text>
-                        <Spacer/>
-                        <Icon iconType={IconType.ExpandArrow} ui={css`
-                            fill: var(--p-800);
-                            ${clickedBride ? css`
-                                rotate: 90deg;
-                            ` : css`
-                                rotate: -90deg;
-                            `}
-                        `}/>
-                    </Row>
-                    {clickedBride && (
-                        <>
-                            {secondMoneyInfo.toggle && (
-                                <MoneyCell name={secondMoneyInfo.nameMoneyInfo} bankName={secondMoneyInfo.bankName}
-                                           bankNumber={secondMoneyInfo.bankNumber} isGroom={false}/>
-                            )}
-                            {secondMoneyInfo.fatherToggle && (
-                                <MoneyCell name={secondMoneyInfo.fatherNameMoneyInfo}
-                                           bankName={secondMoneyInfo.fatherBankName}
-                                           bankNumber={secondMoneyInfo.fatherBankNumber} isGroom={false}/>
-                            )}
-                            {secondMoneyInfo.motherToggle && (
-                                <MoneyCell name={secondMoneyInfo.motherNameMoneyInfo}
-                                           bankName={secondMoneyInfo.motherBankName}
-                                           bankNumber={secondMoneyInfo.motherBankNumber} isGroom={false}/>
-                            )}
-                        </>
-                    )}
-                </View>
+                <MoneyInfoContainer
+                    baseInfo={secondBaseInfo}
+                    me={second}
+                    father={secondFather}
+                    mother={secondMother}
+                    kakaoStatus={moneyInfo.kakaoStatus}
+                />
             </FadeIn>
         </Column>
     );
 }
 
-function MoneyCell(props: {
-    name: string,
-    bankName: string,
-    bankNumber: string,
-    isGroom: boolean,
-}) {
-    const fullBankNumber = `${props.bankName} ${props.bankNumber}`;
+interface MoneyInfoContainerProps {
+    baseInfo: BaseInfoByBrideMarkFirst;
+    me: MoneyInfoByBrideMarkFirst;
+    father: MoneyInfoByBrideMarkFirst;
+    mother: MoneyInfoByBrideMarkFirst;
+    kakaoStatus: boolean;
+}
+
+const MoneyInfoContainer = ({baseInfo, me, father, mother, kakaoStatus}: MoneyInfoContainerProps) => {
+    const [toggle, setToggle] = useState(false);
+    return (
+        <View $ui={css`
+            border-radius: 12px;
+            background: var(--g-100);
+        `}>
+            <Row $alignItems={'center'} $ui={css`
+                padding: 10px 20px;
+                cursor: pointer;
+            `} onClick={() => setToggle(i => !i)}>
+                <Text type={'p3'} bold={true} ui={css`
+                    color: var(--g-600);
+                `}>{baseInfo.korean}측</Text>
+                <Spacer/>
+                <Icon iconType={IconType.ExpandArrow} ui={css`
+                    fill: var(--g-400);
+                    ${toggle ? css`
+                        rotate: 90deg;
+                    ` : css`
+                        rotate: -90deg;
+                    `}
+                `}/>
+            </Row>
+            {toggle && (
+                <>
+                    {me.toggle && (
+                        <MoneyCell moneyInfo={me} kakaoStatus={kakaoStatus}/>
+                    )}
+                    {father.toggle && (
+                        <MoneyCell moneyInfo={father} kakaoStatus={kakaoStatus}/>
+                    )}
+                    {mother.toggle && (
+                        <MoneyCell moneyInfo={mother} kakaoStatus={kakaoStatus}/>
+                    )}
+                </>
+            )}
+        </View>
+    );
+};
+
+interface MoneyCellProps {
+    moneyInfo: MoneyInfoByBrideMarkFirst;
+    kakaoStatus: boolean;
+}
+
+function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
+    const fullBankNumber = `${moneyInfo.bankName} ${moneyInfo.bankNumber}`;
     return (
         <Column
             $gap={8}
             $alignItems={'stretch'}
             $ui={css`
-                padding: 12px 20px;
-                ${props.isGroom ? css`
-                    border-top: 1px solid var(--g-200);
-                ` : css`
-                    border-top: 1px solid var(--p-400);
-                `};
+                padding: 16px 20px;
+                background: white;
+
+                border-top: 1px solid var(--g-100);
             `}
         >
-            <Text type={'p3'}>{props.name}</Text>
+            <Row $gap={4}>
+                <Text type={'p3'}>{moneyInfo.korean}</Text>
+                <Text type={'p3'}>{moneyInfo.nameMoneyInfo}</Text>
+            </Row>
             <Row $alignItems={'center'} $ui={css`
-                padding: 8px 16px;
-                background: white;
                 border-radius: 4px;
             `}>
                 <Text type={'p3'}>{fullBankNumber}</Text>
@@ -197,6 +181,15 @@ function MoneyCell(props: {
                     }
                 }}/>
             </Row>
+            {kakaoStatus && (
+                <Button
+                    text={'카카오페이 간편송금'}
+                    size={'medium'}
+                    buttonType={'tonal'}
+                    leadingIcon={IconType.Kakao}
+                    onClick={() => window.open(moneyInfo.kakaoUrl)}
+                />
+            )}
         </Column>
     );
 }

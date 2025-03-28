@@ -7,6 +7,7 @@ import FormToggle from "@designsystem/component/FormToggle";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
+import {formatDate} from "date-fns";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -20,7 +21,7 @@ const EditorInspectorWeddingSchedule = (
         <EditorInspectorWrapper type={'weddingSchedule'}>
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>예식일</Text>
-                <Input type={'date'} value={weddingSchedule.weddingDate} onChange={event => update(draft => {
+                <Input type={'date'} value={weddingSchedule.weddingDate} min={formatDate(new Date(), 'yyyy-MM-dd')} onChange={event => update(draft => {
                     draft.weddingSchedule.weddingDate = event.target.value;
                 })}/>
             </Column>

@@ -11,8 +11,10 @@ import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import {css} from "styled-components";
 import FadeIn from "@src/component/fadein/FadeIn";
+import Rsvp from "@remote/value/Rsvp";
 
 interface RsvpTemplateProps {
+    rsvp: Rsvp;
     weddingDesignColor: WeddingDesignColor;
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
@@ -21,6 +23,7 @@ interface RsvpTemplateProps {
 
 function RsvpTemplate(
     {
+        rsvp,
         weddingDesignColor,
         baseInfo,
         weddingSchedule,
@@ -32,6 +35,10 @@ function RsvpTemplate(
     const isValidDate = !isNaN(date.getTime());
 
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+
+    if (!rsvp.rsvpActivate) {
+        return null;
+    }
 
     return (
         <FadeIn>

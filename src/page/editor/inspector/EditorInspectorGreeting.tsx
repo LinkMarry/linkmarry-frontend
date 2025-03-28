@@ -9,7 +9,7 @@ import SegmentedButton from "@designsystem/component/SegmentedButton";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
-import {greetingDesignList, greetingDesignMap} from "@remote/enumeration/GreetingDesign";
+import GreetingDesign, {greetingDesignList, greetingDesignMap} from "@remote/enumeration/GreetingDesign";
 
 const greetingSampleList: {
     title: string;
@@ -47,12 +47,14 @@ interface Props extends Binding<WeddingDto> {
 const EditorInspectorGreeting = ({value, update}: Props) => {
     return (
         <EditorInspectorWrapper type={'greeting'}>
-            <Column $alignItems={'stretch'} $gap={12}>
-                <Text type={'p3'} bold={true}>제목</Text>
-                <Input hasLabel={false} value={value.greeting.greetingTitle} onChange={event => update(draft => {
-                    draft.greeting.greetingTitle = event.target.value;
-                })}/>
-            </Column>
+            {value.greeting.greetingDesign === GreetingDesign.TEXT && (
+                <Column $alignItems={'stretch'} $gap={12}>
+                    <Text type={'p3'} bold={true}>제목</Text>
+                    <Input hasLabel={false} value={value.greeting.greetingTitle} onChange={event => update(draft => {
+                        draft.greeting.greetingTitle = event.target.value;
+                    })}/>
+                </Column>
+            )}
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>내용</Text>
                 <Textarea hasLabel={false} value={value.greeting.greetingContent} onChange={event => update(draft => {

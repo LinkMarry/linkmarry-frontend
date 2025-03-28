@@ -137,7 +137,7 @@ export const dummyBaseInfo: BaseInfo = {
     brideMarkFirst: false
 };
 
-type InfoByBrideMarkFirst = {
+export type BaseInfoByBrideMarkFirst = {
     name: string;
     firstName: string;
     lastName: string;
@@ -152,10 +152,10 @@ type InfoByBrideMarkFirst = {
 
 // firstname + lastname 임시
 export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
-    first: InfoByBrideMarkFirst;
-    second: InfoByBrideMarkFirst;
+    first: BaseInfoByBrideMarkFirst;
+    second: BaseInfoByBrideMarkFirst;
 } {
-    const groomInfo: InfoByBrideMarkFirst = {
+    const groomInfo: BaseInfoByBrideMarkFirst = {
         name: baseInfo.groomFirstName + baseInfo.groomLastName,
         firstName: baseInfo.groomFirstName,
         lastName: baseInfo.groomLastName,
@@ -168,7 +168,7 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
         korean: '신랑'
     };
 
-    const brideInfo: InfoByBrideMarkFirst = {
+    const brideInfo: BaseInfoByBrideMarkFirst = {
         name: baseInfo.brideFirstName + baseInfo.brideLastName,
         firstName: baseInfo.brideFirstName,
         lastName: baseInfo.brideLastName,
