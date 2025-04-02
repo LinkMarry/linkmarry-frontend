@@ -56,7 +56,13 @@ function WeddingStyleCell({weddingDesign}: Props) {
                             buttonType={'tonal'}
                             text={'청첩장 만들기'}
                             // onClick={() => navigate(`/editor?designId=${weddingDesign.id}`)} // TODO: AI
-                            onClick={() => navigate('/ai-custom')}
+                            onClick={() => {
+                                if (process.env.NODE_ENV === 'development') {
+                                    navigate('/ai-custom');
+                                } else {
+                                    navigate(`/editor?designId=${weddingDesign.id}`);
+                                }
+                            }}
                             ui={css`
                                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
                             `}
