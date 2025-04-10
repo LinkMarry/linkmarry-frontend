@@ -23,7 +23,7 @@ const EditorPage = () => {
     const [currentNavType, setCurrentNavType] = useState<EditorNavType>('design');
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
-    const {wedding, updateWedding, isSaveing} = useWedding();
+    const {wedding, updateWedding, isSaving} = useWedding();
     const {weddingDesigns} = useWeddingDesigns();
     const {musics} = useBackgroundMusics();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
@@ -72,7 +72,7 @@ const EditorPage = () => {
                     onRemoveWatermark={() => {
                         setShowRemoveWatermarkDialog(true);
                     }}
-                    isSaving={isSaveing}
+                    isSaving={isSaving}
                 />
                 <EditorNavigationBar
                     currentNavType={currentNavType}

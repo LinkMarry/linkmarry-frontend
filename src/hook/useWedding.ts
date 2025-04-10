@@ -8,13 +8,13 @@ import {throttle} from 'lodash';
 function useWedding() {
     const {url} = useParams();
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
-    const [isSaveing, setIsSaveing] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
 
     // eslint-disable-next-line
     const throttledEditWedding = useCallback(throttle(async (updatedWedding: WeddingDto) => {
         if (updatedWedding.url === '' || updatedWedding.name === '') return;
 
-        setIsSaveing(false);
+        setIsSaving(false);
         try {
             await weddingApi.editWedding(updatedWedding);
         } catch (error) {
@@ -25,7 +25,7 @@ function useWedding() {
 
     useEffect(() => {
         if (wedding) {
-            setIsSaveing(true);
+            setIsSaving(true);
             throttledEditWedding(wedding).then(() => {});
         }
     }, [throttledEditWedding, wedding]);
@@ -42,7 +42,7 @@ function useWedding() {
     return {
         wedding,
         updateWedding,
-        isSaveing
+        isSaving
     }
 }
 
