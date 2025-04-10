@@ -38,7 +38,7 @@ const EditorInspectorDesign = (
 
     useEffect(() => {
         setSelectedCategory(groupedCategories?.[0]?.category);
-    }, [weddingDesigns]);
+    }, [groupedCategories]);
 
     return (
         <EditorInspectorWrapper type={'design'} hasDivider={false}>

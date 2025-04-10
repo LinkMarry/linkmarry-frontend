@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import {Column} from "@designsystem/core/FlexLayout";
 import Divider from "@designsystem/component/Divider";
 import Text from "@designsystem/component/Text";
@@ -11,7 +11,7 @@ import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import Button from "@designsystem/component/Button";
 import Rsvp from "@remote/value/Rsvp";
-import {Cookies, useCookies} from "react-cookie";
+import {useCookies} from "react-cookie";
 
 interface RsvpDialogProps {
     url: string;
@@ -35,7 +35,7 @@ function RsvpDialog(
     }: RsvpDialogProps
 ) {
     const cookieKey = `hide_RsvpDialog_${url}`;
-    const [cookie, setCookie] = useCookies([cookieKey]);
+    const [, setCookie] = useCookies([cookieKey]);
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
     const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
     const isValidDate = !isNaN(date.getTime());

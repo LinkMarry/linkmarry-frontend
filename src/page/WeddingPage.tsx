@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Wedding from "@remote/value/Wedding";
 import weddingApi from "@remote/api/WeddingApi";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {Row} from "@designsystem/core/FlexLayout";
 import WeddingComponent from "@src/component/wedding/WeddingComponent";
 import {getDeviceType} from "@remote/enumeration/Device";
@@ -9,7 +9,6 @@ import Text from "@designsystem/component/Text";
 import {css} from "styled-components";
 import View from "@designsystem/core/View";
 import {useCookies} from "react-cookie";
-import useAuth from "@hook/useAuth";
 import useResponsive from "@hook/useResponsive";
 
 function WeddingPage() {
@@ -20,13 +19,7 @@ function WeddingPage() {
     const [cookie, setCookie] = useCookies([cookieKey]);
     const {deviceSize} = useResponsive();
 
-    useEffect(() => {
-        (async () => {
-            await getWedding();
-        })();
-    }, []);
-
-    const getWedding = async () => {
+    const getWedding = useCallback(async () => {
         if (!url) return;
 
         const isFirstVisitor = !cookie[cookieKey];
@@ -49,7 +42,13 @@ function WeddingPage() {
             console.error(error);
             setIsError(true);
         }
-    }
+    }, [cookie, cookieKey, setCookie, url]);
+
+    useEffect(() => {
+        (async () => {
+            await getWedding();
+        })();
+    }, [getWedding]);
 
     return (
         <Row $justifyContent={'center'} $ui={css`

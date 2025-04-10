@@ -25,7 +25,6 @@ import MyPageDetailLayout from "@page/mypage/detail/MyPageDetailLayout";
 import PrivateRoute from "@src/PrivateRoute";
 import AiCustomPage from "@src/ai/AICustomPage";
 
-const {Kakao} = window as any;
 
 if (config.env !== 'development') {
     console.log = () => {
@@ -35,6 +34,7 @@ if (config.env !== 'development') {
 function App() {
     useAxios();
     useEffect(() => {
+        const {Kakao} = window as any;
         if (!Kakao?.isInitialized()) {
             Kakao?.init(config.kakao.javascriptKey);
         }
@@ -46,7 +46,10 @@ function App() {
             <Routes>
                 {/*service*/}
                 <Route path={''} element={<HomePage/>}/>
-                <Route path={'login'} element={<LoginPage/>}/>
+                <Route path={'login'}>
+                    <Route index={true} element={<LoginPage/>}/>
+                    <Route path={'oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
+                </Route>
                 <Route element={<PrivateRoute/>}>
                     <Route path={'mypage'} element={<MyPageLayout/>}>
                         <Route element={<MyPageDefaultLayout/>}>
@@ -70,10 +73,6 @@ function App() {
                 )}/>
                 <Route path={'ai-custom'} element={<AiCustomPage/>}/>
 
-                {/*for system*/}
-                <Route path={'login/oauth2/code/kakao'} element={<KakaoRedirectPage/>}/>
-                <Route path={'*'} element={<Navigate to={'/'}/>}/>
-
                 <Route path={'admin'} element={<AdminRoute/>}>
                     {/*<Route path={'/tem'}/>*/}
                 </Route>
@@ -84,6 +83,7 @@ function App() {
                         <Route path={'design-system/component'} element={<ComponentDemo/>}/>
                     </>
                 )}
+                <Route path={'*'} element={<Navigate to={'/'}/>}/>
             </Routes>
         </AutoFocusProvider>
     );

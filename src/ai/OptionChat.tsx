@@ -1,4 +1,4 @@
-import React, {ComponentProps, useState} from 'react';
+import React, {ComponentProps} from 'react';
 import BaseChat from "@src/ai/BaseChat";
 import {Column} from "@designsystem/core/FlexLayout";
 import Button from "@designsystem/component/Button";

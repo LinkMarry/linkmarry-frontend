@@ -7,7 +7,6 @@ import WeddingDto from "@remote/value/WeddingDto";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
 import {
     backgroundStyle,
-    isPaperColor,
     WeddingDesignColor,
     weddingDesignDefaultColorList,
     weddingDesignFontSizeList,

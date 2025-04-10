@@ -1,8 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
-import Spacer from "@designsystem/component/Spacer";
+import React, {useEffect, useRef} from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import WeddingPlace from "@remote/value/WeddingPlace";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
 import View from "@designsystem/core/View";

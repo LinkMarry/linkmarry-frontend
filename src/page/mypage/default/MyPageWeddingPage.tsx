@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
@@ -33,17 +33,16 @@ function MyPageWeddingPage() {
         setShowRemoveWeddingDialog(false);
     }
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         clearData();
 
         const {data} = await weddingApi.getMyWedding();
         setWeddings(data);
-
-    }
+    }, []);
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        fetchData().then(() => {});
+    }, [fetchData]);
 
     const removeWedding = async () => {
         if (!selectedWedding) {

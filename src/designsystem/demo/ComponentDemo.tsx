@@ -19,10 +19,7 @@ function ComponentDemo() {
 
     const dividerSizes: DividerSize[] = ['large', 'medium', 'small'];
 
-    const [textareaText, setTextareaText] = useState('');
-
     const [checked, setChecked] = useState(false);
-    const [selected, setSelected] = useState(false);
     const [toggleChecked, setToggleChecked] = useState(false);
 
     const [showDialog, setShowDialog] = useState(false);

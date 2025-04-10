@@ -19,7 +19,7 @@ interface Props {
 
 const FileUploadBox = ({id, value, label, onChange}: Props) => {
     const isEmpty = value.length === 0;
-    const [isFetching, setIsFetching] = useState(false);
+    const [, setIsFetching] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const {uploadFile} = useUpload();
     const handleInput = async (event: ChangeEvent<HTMLInputElement>) => {

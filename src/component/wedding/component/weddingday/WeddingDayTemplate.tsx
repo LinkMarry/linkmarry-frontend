@@ -183,9 +183,9 @@ function getCalendar(date: Date) {
     return calendar.map(week =>
         week.map(day => ({
             day,
-            isWeddingDay: day === date.getDate() &&
-                date.getMonth() === date.getMonth() &&
-                date.getFullYear() === date.getFullYear()
+            isWeddingDay: day === date.getDate()
+                // date.getMonth() === date.getMonth() &&
+                // date.getFullYear() === date.getFullYear()
         }))
     );
 }

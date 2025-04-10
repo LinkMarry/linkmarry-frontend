@@ -38,7 +38,7 @@ function FadeIn(
 
             return () => clearTimeout(timeout);
         }
-    }, [isVisible]);
+    }, [delay, isVisible]);
 
     const style = css`
         opacity: 0;

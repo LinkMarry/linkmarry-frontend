@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
 import {Column, Row} from "@designsystem/core/FlexLayout";
@@ -11,7 +11,6 @@ import GuestType, {guestTypeList, guestTypeMap} from "@remote/enumeration/GuestT
 import Rsvp from "@remote/value/Rsvp";
 import Dialog from "@designsystem/pattern/dialog/Dialog";
 import SegmentedButton from "@designsystem/component/SegmentedButton";
-import {makeInteractionEffect} from "@util/css.util";
 import Divider from "@designsystem/component/Divider";
 import Input from "@designsystem/component/Input";
 import FormatUtil from "@util/format.util";
@@ -158,7 +157,12 @@ function CreateRsvpDialog(
                         )}
                         {rsvp.attendGuestCntStatus && (
                             <Column $gap={8} $alignItems={'stretch'}>
-                                <Text type={'p3'}>동행 인원</Text>
+                                <Row $alignItems={'center'} $gap={8}>
+                                    <Text type={'p3'}>동행 인원</Text>
+                                    <Text type={'caption1'} ui={css`
+                                        color: var(--g-400);
+                                    `}>본인 제외 동행 인원</Text>
+                                </Row>
                                 <Input
                                     value={guestCnt}
                                     onChange={event => setGuestCnt(Number(event.target.value))}

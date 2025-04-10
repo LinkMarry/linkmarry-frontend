@@ -55,7 +55,7 @@ const MyPageStatPage = () => {
             const {data} = await weddingApi.getWedding(url);
             setWedding(data);
         })();
-    }, []);
+    }, [navigate, url]);
 
     return (
         <Column $alignItems={'stretch'} $gap={24} $flex={1} $ui={css`

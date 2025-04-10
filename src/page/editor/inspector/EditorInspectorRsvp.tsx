@@ -1,6 +1,6 @@
 import React from 'react';
-import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
+import {Column} from "@designsystem/core/FlexLayout";
 import Input from "@designsystem/component/Input";
 import Textarea from "@designsystem/component/Textarea";
 import {css} from "styled-components";

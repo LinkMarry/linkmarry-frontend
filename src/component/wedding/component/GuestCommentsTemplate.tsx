@@ -1,5 +1,5 @@
 import React, {ComponentPropsWithoutRef, useRef, useState} from 'react';
-import styled, {css, CSSProperties} from "styled-components";
+import {css} from "styled-components";
 import Comment from "@remote/value/Comment";
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";

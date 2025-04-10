@@ -55,7 +55,7 @@ const SharingLink = ({title, button, background, Style}: Props) => {
                 )}
                 <Row $gap={4} $alignItems={'center'}>
                     {button && (
-                        <img width={12} src={'/logo192.png'}/>
+                        <img width={12} src={'/logo192.png'} alt={'로고'}/>
                     )}
                     <Text type={'caption2'} ui={css`
                         color: var(--g-400);

@@ -3,10 +3,11 @@ import useAutoFocus from "@hook/useAutoFocus";
 
 export default function useScrollOnUpdate<T extends HTMLElement>(
     ref: RefObject<T | null>,
-    deps: any[]
+    triggerDeps: any[]
 ) {
     const [isLoadedCount, setIsLoadedCount] = useState(0);
     const {autoFocus} = useAutoFocus();
+
 
     useEffect(() => {
         if (!autoFocus) {
@@ -19,6 +20,6 @@ export default function useScrollOnUpdate<T extends HTMLElement>(
         }
 
         ref.current?.scrollIntoView({behavior: "smooth", block: "center"});
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, deps);
+        // eslint-disable-next-line
+    }, triggerDeps);
 }

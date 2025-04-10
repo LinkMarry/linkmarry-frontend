@@ -1,4 +1,4 @@
-import React, {Dispatch, RefObject, SetStateAction, useEffect, useRef} from 'react';
+import React, {Dispatch, RefObject, SetStateAction, useCallback, useEffect, useRef} from 'react';
 import Gallery from "@remote/value/Gallery";
 import GalleryDesign from "@remote/enumeration/GalleryDesign";
 import {Column, Row} from "@designsystem/core/FlexLayout";
@@ -20,16 +20,16 @@ interface Props {
 const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const getGridImgWidth = (): number => {
+    const getGridImgWidth = useCallback((): number => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
         if (gallery.galleryDesign === GalleryDesign.SLIDE) {
             imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
         }
 
         return imageWidth;
-    };
+    }, [gallery.galleryDesign, rootRef]);
 
-    const getScrollPosition = (): number => {
+    const getScrollPosition = useCallback((): number => {
         if (!scrollContainerRef.current) return 0;
         const scrollContainer = scrollContainerRef.current;
 
@@ -38,14 +38,14 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
             scrollPosition -= 34;
         }
         return scrollPosition;
-    };
+    }, [gallery.galleryDesign]);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         const imageWidth = getGridImgWidth();
         const scrollPosition = getScrollPosition();
         const index = Math.floor(scrollPosition / imageWidth);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
-    };
+    }, [getGridImgWidth, getScrollPosition, setCurrentImageIndex]);
 
     useEffect(() => {
         const container = scrollContainerRef.current;
@@ -59,8 +59,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         return () => {
             container?.removeEventListener('scroll', handleScroll);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [getGridImgWidth, handleScroll, setCurrentImageIndex]);
 
     return (
         <BaseDialog dismiss={dismiss}>

@@ -9,7 +9,6 @@ import FadeIn from "@src/component/fadein/FadeIn";
 import Gallery from "@remote/value/Gallery";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import View from "@designsystem/core/View";
-import BaseDialog from "@designsystem/pattern/dialog/BaseDialog";
 import GalleryFullView from "@src/component/wedding/component/gallery/GalleryFullView";
 
 interface GalleryTemplateProps {
@@ -101,7 +100,7 @@ const GallerySlide = (
         if (!scrollContainerRef.current) return 0;
         const scrollContainer = scrollContainerRef.current;
         return scrollContainer.scrollLeft;
-    }, [gallery.galleryDesign]);
+    }, []);
 
     const handleScroll = useCallback(() => {
         const imageWidth = getGridImgWidth();

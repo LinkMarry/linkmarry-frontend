@@ -13,8 +13,7 @@ function KakaoRedirectPage() {
         (async () => {
             await signIn(code);
         })();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [searchParams, signIn]);
 
     return (
         <div></div>

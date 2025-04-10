@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
 import BaseDialog, {applyBaseDialogContent} from "@designsystem/pattern/dialog/BaseDialog";
 import {Column, Row} from "@designsystem/core/FlexLayout";
@@ -24,12 +24,42 @@ function KakaoMapDialog(
         dismiss
     }: KakaoMapDialogProps
 ) {
-    const geocoder = new kakao.maps.services.Geocoder();
     const kakaoMap = useRef<HTMLDivElement>(null);
     const [places, setPlaces] = useState<any[]>([]);
     const [selectedPlace, setSelectedPlace] = useState<any>();
     const [searchText, setSearchText] = useState('');
     const [map, setMap] = useState<any>();
+
+    const keywordSearch = useCallback((keyword: string, option?: any) => {
+        const ps = new kakao.maps.services.Places();
+
+        ps.keywordSearch(keyword, (result: any, status: any) => {
+            if (status !== kakao.maps.services.Status.OK) return;
+
+            console.log(result);
+            setPlaces(result);
+
+            const first = result[0];
+            if (first) {
+                map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
+            }
+        }, option);
+    }, [map]);
+
+    // 주소 검색 함수
+    const searchAddress = useCallback((coords: any) => {
+        const geocoder = new kakao.maps.services.Geocoder();
+
+        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
+            if (status !== kakao.maps.services.Status.OK) return;
+
+            const keyword = result[0].address.address_name;
+            keywordSearch(keyword, {
+                location: coords,
+                radius: 50
+            });
+        });
+    }, [keywordSearch]);
 
     useEffect(() => {
         if (!kakao || !kakao.maps) {
@@ -59,36 +89,7 @@ function KakaoMapDialog(
             const center = createdMap.getCenter();
             searchAddress(center); // 주소 검색
         });
-    }, []);
-
-    // 주소 검색 함수
-    const searchAddress = (coords: any) => {
-        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
-
-            const keyword = result[0].address.address_name;
-            keywordSearch(keyword, {
-                location: coords,
-                radius: 50
-            });
-        });
-    };
-
-    const keywordSearch = (keyword: string, option?: any) => {
-        const ps = new kakao.maps.services.Places();
-
-        ps.keywordSearch(keyword, (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
-
-            console.log(result);
-            setPlaces(result);
-
-            const first = result[0];
-            if (first) {
-                map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
-            }
-        }, option);
-    };
+    }, [searchAddress]);
 
     return (
         <BaseDialog dismiss={dismiss}>

@@ -6,8 +6,6 @@ import {Column, Row} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Chat from "@src/ai/Chat";
 import OptionChat from "@src/ai/OptionChat";
-import useWeddingDesigns from "@hook/useWeddingDesigns";
-import {groupByCategory} from "@remote/value/GroupedCategory";
 import Button from "@designsystem/component/Button";
 import Spacer from "@designsystem/component/Spacer";
 

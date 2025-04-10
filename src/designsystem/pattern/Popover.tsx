@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef, useEffect, useRef} from 'react';
+import React, {ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@designsystem/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@designsystem/foundation/Icon";

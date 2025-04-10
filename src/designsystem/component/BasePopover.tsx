@@ -28,7 +28,7 @@ const BasePopover = (
         return () => {
             document.removeEventListener("mouseup", handleOutsideClick);
         }
-    }, []);
+    }, [dismiss]);
 
     return (
         <View ref={rootRef} $ui={css`

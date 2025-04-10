@@ -4,7 +4,6 @@ import Text from "@designsystem/component/Text";
 import Icon, {IconType} from "@designsystem/foundation/Icon";
 import {css} from "styled-components";
 import VoidInput from "@src/component/VoidInput";
-import fileApi from "@remote/api/FileApi";
 import View from "@designsystem/core/View";
 import AddRemoveButton from "@src/component/AddRemoveButton";
 import {hideScrollBar} from "@util/css.util";

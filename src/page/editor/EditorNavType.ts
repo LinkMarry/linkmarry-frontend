@@ -16,7 +16,8 @@ type EditorNavType = 'design' |
     'fontAndStyle' |
     'urlShare' |
     'kakaotalkInvitationLetter' |
-    'changeOrder';
+    'changeOrder' |
+    'ai';
 
 export const editorNavList: EditorNavType[] = [
     'design',
@@ -36,6 +37,7 @@ export const editorNavList: EditorNavType[] = [
     'urlShare',
     'kakaotalkInvitationLetter',
     'changeOrder',
+    'ai'
 ];
 export const editorNavTypeMap: Record<EditorNavType, {
     navigationBarText: string;
@@ -126,6 +128,11 @@ export const editorNavTypeMap: Record<EditorNavType, {
         icon: IconType.Envelope,
         navigationBarText: '순서 변경',
         inspectorText: '순서 변경'
+    },
+    ai: {
+        icon: IconType.Search,
+        navigationBarText: 'AI',
+        inspectorText: 'AI 이미지 변환'
     }
 };
 

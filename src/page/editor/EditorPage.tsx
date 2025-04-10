@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Column, Row} from "@designsystem/core/FlexLayout";
+import {Column} from "@designsystem/core/FlexLayout";
 import EditorHeader from "@page/editor/EditorHeader";
 import {css} from "styled-components";
 import EditorNavigationBar from "@page/editor/EditorNavigationBar";
@@ -15,7 +15,6 @@ import {toDomain} from "@remote/value/WeddingDto";
 import CreateWeddingDialog from "@page/editor/dialog/CreateWeddingDialog";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import RemoveWatermarkDialog from "@src/component/dialog/RemoveWatermarkDialog";
-import useAuth from "@hook/useAuth";
 
 const EditorPage = () => {
     const [searchParams] = useSearchParams();
@@ -37,7 +36,7 @@ const EditorPage = () => {
                 draft.weddingDesign.weddingDesignName = weddingDesign.name;
             });
         }
-    }, [numericDesignId, weddingDesigns]);
+    }, [numericDesignId, updateWedding, weddingDesigns]);
 
     return (
         <Column $alignItems={'stretch'} $ui={css`

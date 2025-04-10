@@ -63,7 +63,7 @@ function DDay(
         return () => {
             clearInterval(interval);
         };
-    }, [weddingDate]);
+    }, [date, weddingDate]);
 
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 

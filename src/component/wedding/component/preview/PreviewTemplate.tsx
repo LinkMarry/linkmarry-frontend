@@ -15,9 +15,7 @@ import DreamWeddingPreviewTemplate from "@src/component/wedding/component/previe
 import PureLovePreviewTemplate from "@src/component/wedding/component/preview/PureLovePreviewTemplate";
 import ModernLovePreviewTemplate from "@src/component/wedding/component/preview/ModernLovePreviewTemplate";
 import ClassicRomancePreviewTemplate from "@src/component/wedding/component/preview/ClassicRomancePreviewTemplate";
-import FadeIn from "@src/component/fadein/FadeIn";
 import useScrollOnUpdate from "@hook/useScrollOnUpdate";
-import View from "@designsystem/core/View";
 import {Column} from "@designsystem/core/FlexLayout";
 
 export interface PreviewTemplateProps {

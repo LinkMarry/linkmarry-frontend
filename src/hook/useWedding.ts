@@ -10,6 +10,7 @@ function useWedding() {
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
     const [isSaveing, setIsSaveing] = useState(false);
 
+    // eslint-disable-next-line
     const throttledEditWedding = useCallback(throttle(async (updatedWedding: WeddingDto) => {
         if (updatedWedding.url === '' || updatedWedding.name === '') return;
 
@@ -25,9 +26,9 @@ function useWedding() {
     useEffect(() => {
         if (wedding) {
             setIsSaveing(true);
-            throttledEditWedding(wedding);
+            throttledEditWedding(wedding).then(() => {});
         }
-    }, [wedding]);
+    }, [throttledEditWedding, wedding]);
 
     useEffect(() => {
         if (!url) return;
@@ -36,7 +37,7 @@ function useWedding() {
             const {data} = await weddingApi.getWedding(url);
             updateWedding(toDTO(data));
         })();
-    }, []);
+    }, [updateWedding, url]);
 
     return {
         wedding,

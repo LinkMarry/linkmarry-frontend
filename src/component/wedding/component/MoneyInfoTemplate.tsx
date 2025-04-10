@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import styled, {css} from "styled-components";
+import {css} from "styled-components";
 import MoneyInfo, {getMoneyInfoByBrideMarkFirst, MoneyInfoByBrideMarkFirst} from "@remote/value/MoneyInfo";
 import Spacer from "@designsystem/component/Spacer";
 import Icon, {IconType} from "@designsystem/foundation/Icon";

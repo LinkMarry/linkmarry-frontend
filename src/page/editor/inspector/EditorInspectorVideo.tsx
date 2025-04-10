@@ -2,7 +2,6 @@ import React from 'react';
 import {Column} from "@designsystem/core/FlexLayout";
 import Text from "@designsystem/component/Text";
 import Input from "@designsystem/component/Input";
-import PhotoUploadBox from "@src/component/PhotoUploadBox";
 import EditorInspectorWrapper from "@page/editor/inspector/EditorInspectorWrapper";
 import Binding from "@src/interface/Binding";
 import WeddingDto from "@remote/value/WeddingDto";
