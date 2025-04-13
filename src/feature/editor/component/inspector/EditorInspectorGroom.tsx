@@ -5,7 +5,7 @@ import Input from "@src/userinterface/component/Input";
 import Spacer from "@src/userinterface/component/Spacer";
 import {css} from "styled-components";
 import Checkbox from "@src/userinterface/component/Checkbox";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 

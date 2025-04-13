@@ -1,6 +1,6 @@
 import {IconType} from "@src/userinterface/foundation/Icon";
 
-type EditorNavType = 'design' |
+type EditorNavigationBarType = 'design' |
     'groom' |
     'bride' |
     'greeting' |
@@ -19,7 +19,7 @@ type EditorNavType = 'design' |
     'changeOrder' |
     'ai';
 
-export const editorNavList: EditorNavType[] = [
+export const editorNavigationBarTypeList: EditorNavigationBarType[] = [
     'design',
     'groom',
     'bride',
@@ -39,7 +39,7 @@ export const editorNavList: EditorNavType[] = [
     'changeOrder',
     'ai'
 ];
-export const editorNavTypeMap: Record<EditorNavType, {
+export const editorNavigationBarTypeMap: Record<EditorNavigationBarType, {
     navigationBarText: string;
     inspectorText: string;
     icon: IconType;
@@ -136,4 +136,4 @@ export const editorNavTypeMap: Record<EditorNavType, {
     }
 };
 
-export default EditorNavType;
+export default EditorNavigationBarType;

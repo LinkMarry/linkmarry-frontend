@@ -1,7 +1,7 @@
 import React, {ComponentPropsWithoutRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";

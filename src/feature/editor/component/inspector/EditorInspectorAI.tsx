@@ -1,5 +1,5 @@
 import React from 'react';
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";

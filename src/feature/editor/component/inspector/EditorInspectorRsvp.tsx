@@ -6,7 +6,7 @@ import Textarea from "@src/userinterface/component/Textarea";
 import {css} from "styled-components";
 import FormToggle from "@src/userinterface/component/FormToggle";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Divider from "@src/userinterface/component/Divider";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";

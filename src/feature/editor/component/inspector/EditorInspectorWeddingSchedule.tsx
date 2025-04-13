@@ -4,7 +4,7 @@ import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
 import FormToggle from "@src/userinterface/component/FormToggle";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import {formatDate} from "date-fns";

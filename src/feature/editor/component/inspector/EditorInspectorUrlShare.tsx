@@ -6,7 +6,7 @@ import Textarea from "@src/userinterface/component/Textarea";
 import {css} from "styled-components";
 import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
 import SharingLink from "@src/userinterface/specific/SharingLink";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 

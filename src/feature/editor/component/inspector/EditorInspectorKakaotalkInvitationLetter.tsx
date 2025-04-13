@@ -7,7 +7,7 @@ import {css} from "styled-components";
 import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
 import SharingLink from "@src/userinterface/specific/SharingLink";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import {getKoreanByKakaoStyle, kakaoStyleList} from "@src/infrastructure/network/value/LinkShare";

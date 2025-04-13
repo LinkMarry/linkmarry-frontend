@@ -4,11 +4,14 @@ import WeddingDto, {makeDefaultWedding, toDTO} from "@src/infrastructure/network
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import {useParams} from "react-router-dom";
 import {throttle} from 'lodash';
+import Music from "@src/infrastructure/network/value/Music";
+import musicApi from "@src/infrastructure/network/api/music-api";
 
-function useWedding() {
+function useEditor() {
     const {url} = useParams();
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
     const [isSaving, setIsSaving] = useState(false);
+    const [musics, setMusics] = useState<Music[]>();
 
     // eslint-disable-next-line
     const throttledEditWedding = useCallback(throttle(async (updatedWedding: WeddingDto) => {
@@ -39,11 +42,19 @@ function useWedding() {
         })();
     }, [updateWedding, url]);
 
+    useEffect(() => {
+        (async () => {
+            const {data} = await musicApi.getMusics();
+            setMusics(data);
+        })();
+    }, []);
+
     return {
         wedding,
         updateWedding,
-        isSaving
+        isSaving,
+        musics
     }
 }
 
-export default useWedding;
+export default useEditor;

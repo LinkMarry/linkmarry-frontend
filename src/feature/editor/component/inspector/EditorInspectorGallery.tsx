@@ -6,7 +6,7 @@ import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
 import FormToggle from "@src/userinterface/component/FormToggle";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import {galleryDesignList, galleryDesignMap} from "@src/infrastructure/network/enumeration/GalleryDesign";

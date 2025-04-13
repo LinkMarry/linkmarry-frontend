@@ -5,13 +5,13 @@ import Spacer from "@src/userinterface/component/Spacer";
 import Toggle from "@src/userinterface/component/Toggle";
 import useResponsive from "@src/hook/useResponsive";
 import {css} from "styled-components";
-import EditorNavType, {editorNavTypeMap} from "@src/feature/editor/EditorNavType";
+import EditorNavigationBarType, {editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import Divider from "@src/userinterface/component/Divider";
 import Icon from "@src/userinterface/foundation/Icon";
 import {hideScrollBar} from "@src/userinterface/css.util";
 
 interface Props {
-    type: EditorNavType;
+    type: EditorNavigationBarType;
     toggle?: ComponentProps<typeof Toggle>;
     hasDivider?: boolean;
     children?: ReactNode;
@@ -38,7 +38,7 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
             `};
         `}>
             <Row $alignItems={'center'}>
-                <Text type={'p1'} bold={true}>{editorNavTypeMap[type].inspectorText}</Text>
+                <Text type={'p1'} bold={true}>{editorNavigationBarTypeMap[type].inspectorText}</Text>
                 <Spacer/>
                 {toggle && (
                     <Toggle {...toggle}/>
@@ -53,11 +53,11 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
 };
 
 interface EmptyProps {
-    type: EditorNavType;
+    type: EditorNavigationBarType;
 }
 
 const Empty = ({type}: EmptyProps) => {
-    const {icon, inspectorText} = editorNavTypeMap[type];
+    const {icon, inspectorText} = editorNavigationBarTypeMap[type];
     return (
         <Column $gap={12} $alignItems={'stretch'} $justifyContent={'center'} $ui={css`
             height: 436px;

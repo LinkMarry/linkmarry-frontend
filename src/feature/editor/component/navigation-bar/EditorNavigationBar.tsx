@@ -3,7 +3,7 @@ import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
-import EditorNavType, {editorNavList, editorNavTypeMap} from "@src/feature/editor/EditorNavType";
+import EditorNavigationBarType, {editorNavigationBarTypeList, editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import Text from "@src/userinterface/component/Text";
 import useResponsive from "@src/hook/useResponsive";
 
@@ -35,8 +35,8 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
 };
 
 interface EditorNavigationBarImplProps {
-    currentNavType: EditorNavType;
-    onChangeNavType: (type: EditorNavType) => void;
+    currentNavType: EditorNavigationBarType;
+    onChangeNavType: (type: EditorNavigationBarType) => void;
     openInspector: boolean;
     onToggleInspector: () => void;
 }
@@ -61,7 +61,7 @@ const SmallEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorN
             min-height: 72px;
             height: 72px;
         `}>
-            {editorNavList.map((type, index) => (
+            {editorNavigationBarTypeList.map((type, index) => (
                 <Item key={index} type={type} selected={currentNavType === type} onClick={() => {
                     onChangeNavType(type);
                 }}/>
@@ -89,7 +89,7 @@ const DesktopEditorNavigationBarImpl = (
                 overflow-y: scroll;
                 ${hideScrollBar};
             `}>
-                {editorNavList.map((type, index) => (
+                {editorNavigationBarTypeList.map((type, index) => (
                     <Item key={index} type={type} selected={currentNavType === type} onClick={() => {
                         onChangeNavType(type);
                     }}/>
@@ -117,10 +117,10 @@ const DesktopEditorNavigationBarImpl = (
 }
 
 const Item = ({type, selected, ...props}: {
-    type: EditorNavType;
+    type: EditorNavigationBarType;
     selected: boolean;
 } & ComponentPropsWithoutRef<'div'>) => {
-    const {icon, navigationBarText} = editorNavTypeMap[type];
+    const {icon, navigationBarText} = editorNavigationBarTypeMap[type];
     return (
         <Column $gap={2} $alignItems={'center'} $justifyContent={'center'} $ui={css`
             min-width: 56px;

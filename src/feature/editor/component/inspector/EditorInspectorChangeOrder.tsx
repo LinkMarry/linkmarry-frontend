@@ -3,7 +3,7 @@ import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import View from "@src/userinterface/core/View";
 import {reorderedItems} from "@src/shared/dnd-util";

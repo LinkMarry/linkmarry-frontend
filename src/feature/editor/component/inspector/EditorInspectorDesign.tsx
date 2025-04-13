@@ -7,7 +7,7 @@ import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import {css} from "styled-components";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import View from "@src/userinterface/core/View";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import {OpeningText, openingTextList} from "@src/infrastructure/network/value/WeddingDesign";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";

@@ -5,7 +5,7 @@ import Divider from "@src/userinterface/component/Divider";
 import Input from "@src/userinterface/component/Input";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
 import FormToggle from "@src/userinterface/component/FormToggle";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import {getPlaceholder} from "@src/infrastructure/network/value/WeddingPlace";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";

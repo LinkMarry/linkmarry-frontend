@@ -6,7 +6,7 @@ import FormToggle from "@src/userinterface/component/FormToggle";
 import {css} from "styled-components";
 import Button from "@src/userinterface/component/Button";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import View from "@src/userinterface/core/View";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";

@@ -6,7 +6,7 @@ import Textarea from "@src/userinterface/component/Textarea";
 import {css} from "styled-components";
 import Select from "@src/userinterface/component/Select";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
-import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
+import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import GreetingDesign, {greetingDesignList, greetingDesignMap} from "@src/infrastructure/network/enumeration/GreetingDesign";
