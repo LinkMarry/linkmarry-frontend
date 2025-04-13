@@ -4,7 +4,7 @@ import {css} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Button from "@src/userinterface/component/Button";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Comment from "@src/infrastructure/network/value/Comment";
 import {isAxiosError} from "axios";
 import Input from "@src/userinterface/component/Input";

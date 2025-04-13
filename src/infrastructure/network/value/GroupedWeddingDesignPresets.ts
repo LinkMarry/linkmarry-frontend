@@ -1,11 +1,11 @@
 import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
-interface GroupedCategory {
+interface GroupedWeddingDesignPresets {
     category: string;
     items: WeddingDesignPreset[];
 }
 
-export function groupByCategory(presets: WeddingDesignPreset[]): GroupedCategory[] {
+export function groupedByCategory(presets: WeddingDesignPreset[]): GroupedWeddingDesignPresets[] {
     const grouped = presets.reduce((acc, preset) => {
         if (!acc[preset.category]) {
             acc[preset.category] = [];
@@ -20,4 +20,4 @@ export function groupByCategory(presets: WeddingDesignPreset[]): GroupedCategory
     }));
 }
 
-export default GroupedCategory;
+export default GroupedWeddingDesignPresets;

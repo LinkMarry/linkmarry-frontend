@@ -2,7 +2,7 @@ import React, {RefObject, useCallback, useEffect, useRef, useState} from 'react'
 import Text from "@src/userinterface/component/Text";
 import GalleryDesign from "@src/infrastructure/network/enumeration/GalleryDesign";
 import styled, {css} from "styled-components";
-import {hideScrollBar} from "@src/shared/css.util";
+import {hideScrollBar} from "@src/userinterface/css.util";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";

@@ -4,7 +4,7 @@ import {css} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Button from "@src/userinterface/component/Button";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Input from "@src/userinterface/component/Input";
 import Textarea from "@src/userinterface/component/Textarea";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";

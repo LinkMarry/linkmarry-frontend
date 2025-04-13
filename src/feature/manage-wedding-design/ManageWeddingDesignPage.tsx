@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import weddingDesignApi from "@src/infrastructure/network/api/WeddingDesignApi";
+import weddingDesignApi from "@src/infrastructure/network/api/wedding-design-api";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";

@@ -4,7 +4,7 @@ import {css} from "styled-components";
 import Spacer from "@src/userinterface/component/Spacer";
 import Text from "@src/userinterface/component/Text";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import {hideScrollBar, makeInteractionEffect} from "@src/shared/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";
 import Wedding from "@src/infrastructure/network/value/Wedding";
 import useAutoFocus from "@src/hook/useAutoFocus";

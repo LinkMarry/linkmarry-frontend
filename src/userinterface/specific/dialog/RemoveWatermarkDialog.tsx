@@ -4,16 +4,16 @@ import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@src/userinterface/component/Text";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import {makeInteractionEffect} from "@src/shared/css.util";
+import {makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
 import {CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_WEDDING_URL, TERMS_OR_USE_URL} from "@src/shared/constant";
 import Input from "@src/userinterface/component/Input";
-import FormatUtil from "@src/shared/format.util";
+import {formatPhone} from "@src/shared/format-util";
 import Button from "@src/userinterface/component/Button";
-import naverApi from "@src/infrastructure/network/api/NaverApi";
+import naverApi from "@src/infrastructure/network/api/naver-api";
 import {useNavigate} from "react-router-dom";
 import {isAxiosError} from "axios";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import View from "@src/userinterface/core/View";
 
 interface Props {
@@ -97,7 +97,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                             value={phone}
                             onChange={event => {
                                 const value = event.target.value;
-                                const formatedPhone = FormatUtil.formatPhone(value);
+                                const formatedPhone = formatPhone(value);
                                 setPhone(formatedPhone);
                             }}
                             placeholder={'전화번호'}

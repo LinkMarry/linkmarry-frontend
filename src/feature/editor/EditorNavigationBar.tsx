@@ -2,7 +2,7 @@ import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import {hideScrollBar, makeInteractionEffect} from "@src/shared/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import EditorNavType, {editorNavList, editorNavTypeMap} from "@src/feature/editor/EditorNavType";
 import Text from "@src/userinterface/component/Text";
 import useResponsive from "@src/hook/useResponsive";

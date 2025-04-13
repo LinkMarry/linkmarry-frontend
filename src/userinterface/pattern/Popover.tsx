@@ -4,7 +4,7 @@ import {css, RuleSet} from "styled-components";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import Text from "@src/userinterface/component/Text";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
-import {makeInteractionEffect} from "@src/shared/css.util";
+import {makeInteractionEffect} from "@src/userinterface/css.util";
 import BasePopover from "@src/userinterface/component/BasePopover";
 
 export interface PopoverItem {

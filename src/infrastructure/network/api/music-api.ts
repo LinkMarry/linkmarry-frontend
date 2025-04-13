@@ -2,15 +2,15 @@ import {ResponseData} from "@src/infrastructure/network/value/Response";
 import Music from "@src/infrastructure/network/value/Music";
 import api from "@src/infrastructure/network/api/foundation/api";
 
-class MusicApi {
-    static PATH = 'music';
+const PATH = 'music';
 
-    async getMusics(): Promise<ResponseData<Music[]>> {
-        const {data} = await api.get(`${MusicApi.PATH}`);
-        return data;
-    }
+async function getMusics(): Promise<ResponseData<Music[]>> {
+    const {data} = await api.get(`${PATH}`);
+    return data;
 }
 
-const musicApi = new MusicApi();
+const musicApi = {
+    getMusics
+};
 
 export default musicApi;

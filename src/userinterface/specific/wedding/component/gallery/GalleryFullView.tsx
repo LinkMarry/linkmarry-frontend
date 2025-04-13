@@ -3,7 +3,7 @@ import Gallery from "@src/infrastructure/network/value/Gallery";
 import GalleryDesign from "@src/infrastructure/network/enumeration/GalleryDesign";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import styled, {css} from "styled-components";
-import {hideScrollBar} from "@src/shared/css.util";
+import {hideScrollBar} from "@src/userinterface/css.util";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import Text from "@src/userinterface/component/Text";
 import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";

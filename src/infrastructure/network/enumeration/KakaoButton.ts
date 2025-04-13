@@ -1,4 +1,4 @@
-import {allCasesOfEnum} from "@src/shared/enum.util";
+import {allCasesOfEnum} from "@src/shared/enum-util";
 
 enum KakaoButton {
     NONE = 'NONE',

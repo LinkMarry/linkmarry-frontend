@@ -7,7 +7,7 @@ const PrivateRoute = () => {
     return authorized ? (
         <Outlet/>
     ) : (
-        <Navigate to={'/login'}/>
+        <Navigate to={'/sign-in'}/>
     )
 };
 

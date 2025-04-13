@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
 import useAuth from "@src/hook/useAuth";
 
@@ -15,9 +15,7 @@ function KakaoRedirectPage() {
         })();
     }, [searchParams, signIn]);
 
-    return (
-        <div></div>
-    );
+    return null;
 }
 
 export default KakaoRedirectPage;

@@ -6,7 +6,7 @@ import {css} from "styled-components";
 import VoidInput from "@src/userinterface/specific/VoidInput";
 import View from "@src/userinterface/core/View";
 import useUpload from "@src/hook/useUpload";
-import {makeInteractionEffect} from "@src/shared/css.util";
+import {makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
 import Upload from "@src/infrastructure/network/value/Upload";
 

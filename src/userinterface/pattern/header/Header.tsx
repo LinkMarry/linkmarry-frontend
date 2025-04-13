@@ -12,7 +12,7 @@ import View from "@src/userinterface/core/View";
 import useResponsive from "@src/hook/useResponsive";
 import Logo from "@src/userinterface/specific/Logo";
 import useAuth from "@src/hook/useAuth";
-import {makeInteractionEffect} from "@src/shared/css.util";
+import {makeInteractionEffect} from "@src/userinterface/css.util";
 import {NAVER_STORE_URL, NOTIFICATION_URL} from "@src/shared/constant";
 
 function Header() {
@@ -60,7 +60,7 @@ function MobileHeader() {
                         <Button text={'로그인'} buttonType={'outlined'} ui={css`
                             margin: 0 24px;
                         `} onClick={() => {
-                            navigate('/login');
+                            navigate('/sign-in');
                         }}/>
                     )}
                     <Divider size={'large'}/>
@@ -185,7 +185,7 @@ function DesktopHeader() {
                     </View>
                 ) : (
                     <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
-                        navigate('/login');
+                        navigate('/sign-in');
                     }}/>
                 )}
             </Row>

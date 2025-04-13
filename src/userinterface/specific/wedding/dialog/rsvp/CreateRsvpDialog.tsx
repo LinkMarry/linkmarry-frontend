@@ -6,14 +6,14 @@ import Spacer from "@src/userinterface/component/Spacer";
 import Text from "@src/userinterface/component/Text";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import Button from "@src/userinterface/component/Button";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import GuestType, {guestTypeList, guestTypeMap} from "@src/infrastructure/network/enumeration/GuestType";
 import Rsvp from "@src/infrastructure/network/value/Rsvp";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import Divider from "@src/userinterface/component/Divider";
 import Input from "@src/userinterface/component/Input";
-import FormatUtil from "@src/shared/format.util";
+import {formatPhone} from "@src/shared/format-util";
 
 interface CreateRsvpDialogProps {
     url: string;
@@ -148,7 +148,7 @@ function CreateRsvpDialog(
                                     value={guestPhone}
                                     onChange={event => {
                                         const value = event.target.value;
-                                        const formatedPhone = FormatUtil.formatPhone(value);
+                                        const formatedPhone = formatPhone(value);
                                         setGuestPhone(formatedPhone);
                                     }}
                                     hasLabel={false}

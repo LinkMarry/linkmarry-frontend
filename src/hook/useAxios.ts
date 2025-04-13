@@ -1,6 +1,6 @@
 import api from "@src/infrastructure/network/api/foundation/api";
 import {AxiosError, InternalAxiosRequestConfig} from "axios";
-import memberApi from "@src/infrastructure/network/api/MemberApi";
+import memberApi from "@src/infrastructure/network/api/member-api";
 import {useNavigate} from "react-router-dom";
 import useJwt from "@src/hook/useJwt";
 
@@ -76,7 +76,7 @@ const useAxios = () => {
             return api(config);
         } catch (refreshError) {
             clearToken();
-            navigate('/login');
+            navigate('/sign-in');
             alert('로그인해 주세요');
 
             console.log('Refresh token failure');

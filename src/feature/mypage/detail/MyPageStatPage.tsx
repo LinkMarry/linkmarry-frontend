@@ -9,12 +9,12 @@ import Button from "@src/userinterface/component/Button";
 import {IconType} from "@src/userinterface/foundation/Icon";
 import useResponsive from "@src/hook/useResponsive";
 import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Loading from "@src/userinterface/specific/Loading";
 import View from "@src/userinterface/core/View";
 import RsvpInfo, {getRsvpText} from "@src/infrastructure/network/value/RsvpInfo";
 import makeText from "@src/userinterface/foundation/text/TextType";
-import {downloadExcel} from "@src/shared/excel.util";
+import {downloadExcel} from "@src/shared/excel-util";
 import Wedding from "@src/infrastructure/network/value/Wedding";
 
 const CellStyle = css`

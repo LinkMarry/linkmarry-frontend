@@ -8,7 +8,7 @@ import {css} from "styled-components";
 import EditorNavType, {editorNavTypeMap} from "@src/feature/editor/EditorNavType";
 import Divider from "@src/userinterface/component/Divider";
 import Icon from "@src/userinterface/foundation/Icon";
-import {hideScrollBar} from "@src/shared/css.util";
+import {hideScrollBar} from "@src/userinterface/css.util";
 
 interface Props {
     type: EditorNavType;

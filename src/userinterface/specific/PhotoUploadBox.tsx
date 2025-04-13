@@ -6,7 +6,7 @@ import {css} from "styled-components";
 import VoidInput from "@src/userinterface/specific/VoidInput";
 import View from "@src/userinterface/core/View";
 import AddRemoveButton from "@src/userinterface/specific/AddRemoveButton";
-import {hideScrollBar} from "@src/shared/css.util";
+import {hideScrollBar} from "@src/userinterface/css.util";
 import useUpload from "@src/hook/useUpload";
 import LoadingOverlay from "@src/userinterface/specific/LoadingOverlay";
 

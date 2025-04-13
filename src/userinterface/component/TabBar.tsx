@@ -1,7 +1,7 @@
 import React, {ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
-import {hideScrollBar, makeInteractionEffect} from "@src/shared/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import Text from "@src/userinterface/component/Text";
 import View from "@src/userinterface/core/View";
 

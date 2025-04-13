@@ -14,7 +14,7 @@ import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 import {openingList, openingMap} from "@src/infrastructure/network/enumeration/Opening";
 import Select from "@src/userinterface/component/Select";
-import {groupByCategory} from "@src/infrastructure/network/value/GroupedCategory";
+import {groupedByCategory} from "@src/infrastructure/network/value/GroupedWeddingDesignPresets";
 import Loading from "@src/userinterface/specific/Loading";
 
 interface Props extends Binding<WeddingDto> {
@@ -31,7 +31,7 @@ const EditorInspectorDesign = (
         weddingDesigns
     }: Props & WeddingDesignProps
 ) => {
-    const groupedCategories = weddingDesigns ? groupByCategory(weddingDesigns) : undefined;
+    const groupedCategories = weddingDesigns ? groupedByCategory(weddingDesigns) : undefined;
     const [selectedCategory, setSelectedCategory] = useState<string>();
     const categories = groupedCategories?.map(i => i.category);
     const selectedWeddingDesigns = groupedCategories?.find(i => i.category === selectedCategory)?.items;

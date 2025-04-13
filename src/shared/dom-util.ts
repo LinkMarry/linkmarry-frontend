@@ -1,6 +1,6 @@
 import {RefObject} from "react";
 
-export const increaseFontSize = (ref: RefObject<HTMLElement>, increment: number) => {
+export function increaseFontSize(ref: RefObject<HTMLElement>, increment: number) {
     if (ref.current) {
         // containerRef 아래 모든 요소 가져오기
         const elements = ref.current.querySelectorAll("*");
@@ -17,14 +17,14 @@ export const increaseFontSize = (ref: RefObject<HTMLElement>, increment: number)
                 htmlElement.dataset.originalFontSize = `${currentFontSize}`; // 원래 크기 저장
             }
         });
-        
+
         elements.forEach((element) => {
             const htmlElement = element as HTMLElement;
             if (!htmlElement) return;
 
             const originalFontSize = htmlElement.dataset.originalFontSize;
             if (!originalFontSize) return;
-            
+
             const parsedOriginalFontSize = parseFloat(originalFontSize);
             if (!parsedOriginalFontSize) return;
 
@@ -32,4 +32,4 @@ export const increaseFontSize = (ref: RefObject<HTMLElement>, increment: number)
             htmlElement.style.fontSize = `${parsedOriginalFontSize + increment}px`;
         })
     }
-};
+}

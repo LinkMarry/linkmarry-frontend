@@ -15,7 +15,7 @@ import VoidInput from "@src/userinterface/specific/VoidInput";
 import useUpload from "@src/hook/useUpload";
 import Loading from "@src/userinterface/specific/Loading";
 import Spacer from "@src/userinterface/component/Spacer";
-import {makeInteractionEffect} from "@src/shared/css.util";
+import {makeInteractionEffect} from "@src/userinterface/css.util";
 
 interface Props extends Binding<WeddingDto> {
 }

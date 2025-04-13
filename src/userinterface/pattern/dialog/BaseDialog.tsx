@@ -2,7 +2,7 @@ import styled, {css, RuleSet} from "styled-components";
 import React, {useEffect, useRef} from "react";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
 import popupAnimationStyle from "@src/userinterface/animation/popupAnimationStyle";
-import {hideScrollBar} from "@src/shared/css.util";
+import {hideScrollBar} from "@src/userinterface/css.util";
 import {Row} from "@src/userinterface/core/FlexLayout";
 
 interface BaseDialogProps {

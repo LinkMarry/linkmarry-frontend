@@ -1,8 +1,8 @@
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
 import config from "@src/config";
-import kakaoApi from "@src/infrastructure/network/api/KakaoApi";
+import kakaoApi from "@src/infrastructure/network/api/kakao-api";
 import {useNavigate} from "react-router-dom";
-import memberApi from "@src/infrastructure/network/api/MemberApi";
+import memberApi from "@src/infrastructure/network/api/member-api";
 import InfoMember from "@src/infrastructure/network/value/InfoMember";
 import useJwt from "@src/hook/useJwt";
 

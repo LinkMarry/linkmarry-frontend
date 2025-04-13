@@ -14,7 +14,7 @@ import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
 import KakaoMapDialog from "@src/userinterface/specific/dialog/KakaoMapDialog";
-import FormatUtil from "@src/shared/format.util";
+import {formatPhone} from "@src/shared/format-util";
 
 interface Props extends Binding<WeddingDto> {
 }
@@ -61,7 +61,7 @@ const EditorInspectorWeddingPlace = (
                 })}/>
                 <Input placeholder={'연락처'} value={weddingPlace.placeTel} onChange={event => update(draft => {
                     const value = event.target.value;
-                    draft.weddingPlace.placeTel = FormatUtil.formatPhone(value);
+                    draft.weddingPlace.placeTel = formatPhone(value);
                 })}/>
             </Column>
             <Divider/>

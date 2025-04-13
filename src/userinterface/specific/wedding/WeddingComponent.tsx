@@ -4,7 +4,7 @@ import MoneyInfoTemplate from "@src/userinterface/specific/wedding/component/Mon
 import FooterTemplate from "@src/userinterface/specific/wedding/component/FooterTemplate";
 import {weddingDesignFontSizeMap} from "@src/infrastructure/network/value/WeddingDesign";
 import GuestCommentsTemplate from "@src/userinterface/specific/wedding/component/GuestCommentsTemplate";
-import {increaseFontSize} from "@src/shared/html.util";
+import {increaseFontSize} from "@src/shared/dom-util";
 import CongratulationsTemplate from "@src/userinterface/specific/wedding/component/CongratulationsTemplate";
 import WeddingDayTemplate from "@src/userinterface/specific/wedding/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "@src/userinterface/specific/wedding/component/LocationTemplate";

@@ -6,21 +6,21 @@ import View from "@src/userinterface/core/View";
 import Divider from "@src/userinterface/component/Divider";
 import Button from "@src/userinterface/component/Button";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import {hideScrollBar, makeInteractionEffect} from "@src/shared/css.util";
+import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
 import Popover from "@src/userinterface/pattern/Popover";
 import useResponsive from "@src/hook/useResponsive";
 import WeddingDashboard from "@src/infrastructure/network/value/WeddingDashboard";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Loading from "@src/userinterface/specific/Loading";
 import WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
 import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
 import Comment from "@src/infrastructure/network/value/Comment";
-import DateUtil from "@src/shared/date.util";
+import {getTimeAgo} from "@src/shared/date-util";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import RemoveWatermarkDialog from "@src/userinterface/specific/dialog/RemoveWatermarkDialog";
-import {getWeddingUrl} from "@src/shared/string.util";
+import {getWeddingUrl} from "@src/shared/string-util";
 
 function MyPageWeddingPage() {
     const [weddings, setWeddings] = useState<WeddingDashboard>();
@@ -321,7 +321,7 @@ function CommentCell({comment}: { comment: Comment }) {
                 `}>{comment.name}</Text>
                 <Text type={'caption1'} ui={css`
                     color: var(--g-400);
-                `}>{DateUtil.getTimeAgo(new Date(comment.createdDate))}</Text>
+                `}>{getTimeAgo(new Date(comment.createdDate))}</Text>
             </Row>
             <Text type={'p3'} ui={css`
                 color: var(--g-500);

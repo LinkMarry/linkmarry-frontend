@@ -7,14 +7,15 @@ import EditorNavType from "@src/feature/editor/EditorNavType";
 import EditorPreview from "@src/feature/editor/EditorPreview";
 import EditorInspector from "@src/feature/editor/inspector/EditorInspector";
 import useResponsive from "@src/hook/useResponsive";
-import {hideScrollBar} from "@src/shared/css.util";
-import useWeddingDesigns from "@src/hook/useWeddingDesigns";
+import {hideScrollBar} from "@src/userinterface/css.util";
 import useBackgroundMusics from "@src/hook/useBackgroundMusics";
 import useWedding from "@src/hook/useWedding";
 import {toDomain} from "@src/infrastructure/network/value/WeddingDto";
 import CreateWeddingDialog from "@src/feature/editor/dialog/CreateWeddingDialog";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import RemoveWatermarkDialog from "@src/userinterface/specific/dialog/RemoveWatermarkDialog";
+import weddingDesignApi from "@src/infrastructure/network/api/wedding-design-api";
+import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
 const EditorPage = () => {
     const [searchParams] = useSearchParams();
@@ -24,10 +25,17 @@ const EditorPage = () => {
     const {deviceSize} = useResponsive();
     const [openInspector, setOpenInspector] = useState(true);
     const {wedding, updateWedding, isSaving} = useWedding();
-    const {weddingDesigns} = useWeddingDesigns();
+    const [weddingDesigns, setWeddingDesigns] = useState<WeddingDesignPreset[]>();
     const {musics} = useBackgroundMusics();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        (async () => {
+            const {data} = await weddingDesignApi.getWeddingDesignPresets();
+            setWeddingDesigns(data);
+        })();
+    }, []);
 
     useEffect(() => {
         const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);

@@ -7,7 +7,7 @@ import useAuth from "@src/hook/useAuth";
 import View from "@src/userinterface/core/View";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 
-function LoginPage() {
+function SignInPage() {
     const {signInWithKakao} = useAuth();
 
     return (
@@ -44,4 +44,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default SignInPage;

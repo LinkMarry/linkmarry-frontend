@@ -1,4 +1,4 @@
-import fileApi from "@src/infrastructure/network/api/FileApi";
+import fileApi from "@src/infrastructure/network/api/file-api";
 import {useCallback} from "react";
 import Upload from "@src/infrastructure/network/value/Upload";
 

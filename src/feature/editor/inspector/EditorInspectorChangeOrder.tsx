@@ -6,7 +6,7 @@ import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import EditorInspectorWrapper from "@src/feature/editor/inspector/EditorInspectorWrapper";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import View from "@src/userinterface/core/View";
-import DndUtil from "@src/shared/dnd.util";
+import {reorderedItems} from "@src/shared/dnd-util";
 import Binding from "@src/shared/Binding";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import Position, {positionMap} from "@src/infrastructure/network/value/Position";
@@ -21,11 +21,11 @@ const EditorInspectorChangeOrder = (
     }: Props
 ) => {
     const onDragEnd = (result: DropResult) => {
-        const reorderedItems = DndUtil.reorderedItems(result, position);
+        const items = reorderedItems(result, position);
 
-        if (reorderedItems) {
+        if (items) {
             update(draft => {
-                draft.position = reorderedItems;
+                draft.position = items;
             });
         }
     };

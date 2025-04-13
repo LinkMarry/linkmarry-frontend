@@ -2,7 +2,7 @@ import React from 'react';
 import {fontFamilyList, textTypes} from "@src/userinterface/foundation/text/TextType";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
-import {allCasesOfEnum} from "@src/shared/enum.util";
+import {allCasesOfEnum} from "@src/shared/enum-util";
 import View from "@src/userinterface/core/View";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";

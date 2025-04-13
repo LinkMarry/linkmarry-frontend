@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import Wedding from "@src/infrastructure/network/value/Wedding";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import {useParams} from "react-router-dom";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";

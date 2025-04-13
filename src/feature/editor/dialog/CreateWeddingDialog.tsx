@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import Input from "@src/userinterface/component/Input";
 import {useNavigate, useParams} from "react-router-dom";
-import weddingApi from "@src/infrastructure/network/api/WeddingApi";
+import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
