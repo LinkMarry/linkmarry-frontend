@@ -1,9 +1,9 @@
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
-import config from "@config/config";
-import kakaoApi from "@remote/api/KakaoApi";
+import config from "@src/config";
+import kakaoApi from "@src/infrastructure/network/api/KakaoApi";
 import {useNavigate} from "react-router-dom";
-import memberApi from "@remote/api/MemberApi";
-import InfoMember from "@remote/value/InfoMember";
+import memberApi from "@src/infrastructure/network/api/MemberApi";
+import InfoMember from "@src/infrastructure/network/value/InfoMember";
 import useJwt from "@hook/useJwt";
 
 const {Kakao} = window as any;

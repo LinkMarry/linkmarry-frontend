@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import {useImmer} from "use-immer";
-import WeddingDto, {makeDefaultWedding, toDTO} from "@remote/value/WeddingDto";
-import weddingApi from "@remote/api/WeddingApi";
+import WeddingDto, {makeDefaultWedding, toDTO} from "@src/infrastructure/network/value/WeddingDto";
+import weddingApi from "@src/infrastructure/network/api/WeddingApi";
 import {useParams} from "react-router-dom";
 import {throttle} from 'lodash';
 

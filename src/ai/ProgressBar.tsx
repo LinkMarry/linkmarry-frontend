@@ -1,8 +1,8 @@
 import React from 'react';
-import {Row} from "@designsystem/core/FlexLayout";
+import {Row} from "@src/userinterface/core/FlexLayout";
 import {css, RuleSet} from "styled-components";
-import View from "@designsystem/core/View";
-import Text from "@designsystem/component/Text";
+import View from "@src/userinterface/core/View";
+import Text from "@src/userinterface/component/Text";
 
 interface Props {
     progress: number;

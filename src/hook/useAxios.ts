@@ -1,6 +1,6 @@
-import api from "@remote/api/foundation/api";
+import api from "@src/infrastructure/network/api/foundation/api";
 import {AxiosError, InternalAxiosRequestConfig} from "axios";
-import memberApi from "@remote/api/MemberApi";
+import memberApi from "@src/infrastructure/network/api/MemberApi";
 import {useNavigate} from "react-router-dom";
 import useJwt from "@hook/useJwt";
 

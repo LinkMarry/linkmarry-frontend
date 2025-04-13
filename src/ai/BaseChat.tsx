@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import View from "@designsystem/core/View";
+import View from "@src/userinterface/core/View";
 import {css, RuleSet} from "styled-components";
 
 interface Props {

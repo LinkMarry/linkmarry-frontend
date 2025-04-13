@@ -39,57 +39,57 @@
 
 @font-face {
     font-family: iceJaram;
-    src: url('/src/designsystem/foundation/text/fonts/iceJaram.ttf') format('truetype');
+    src: url('/src/userinterface/foundation/text/fonts/iceJaram.ttf') format('truetype');
 }
 
 @font-face {
     font-family: GyeonggiBatang;
-    src: url('/src/designsystem/foundation/text/fonts/GyeonggiBatang_Bold.ttf') format('truetype');
+    src: url('/src/userinterface/foundation/text/fonts/GyeonggiBatang_Bold.ttf') format('truetype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: GyeonggiBatang;
-    src: url('/src/designsystem/foundation/text/fonts/GyeonggiBatang_Regular.ttf') format('truetype');
+    src: url('/src/userinterface/foundation/text/fonts/GyeonggiBatang_Regular.ttf') format('truetype');
     font-weight: 400;
 }
 
 @font-face {
     font-family: UnrealScienceOrbit;
-    src: url('/src/designsystem/foundation/text/fonts/UnrealScienceOrbit.ttf') format('truetype');
+    src: url('/src/userinterface/foundation/text/fonts/UnrealScienceOrbit.ttf') format('truetype');
 }
 
 @font-face {
     font-family: UnrealScienceMedicine;
-    src: url('/src/designsystem/foundation/text/fonts/UnrealScienceMedicine.ttf') format('truetype');
+    src: url('/src/userinterface/foundation/text/fonts/UnrealScienceMedicine.ttf') format('truetype');
 }
 
 @font-face {
     font-family: KoPubWorldBatang;
-    src: url('/src/designsystem/foundation/text/fonts/KoPubWorld Batang_Pro Bold.otf') format('opentype');
+    src: url('/src/userinterface/foundation/text/fonts/KoPubWorld Batang_Pro Bold.otf') format('opentype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: KoPubWorldBatang;
-    src: url('/src/designsystem/foundation/text/fonts/KoPubWorld Batang_Pro Medium.otf') format('opentype');
+    src: url('/src/userinterface/foundation/text/fonts/KoPubWorld Batang_Pro Medium.otf') format('opentype');
     font-weight: 500;
 }
 
 @font-face {
     font-family: KoPubWorldBatang;
-    src: url('/src/designsystem/foundation/text/fonts/KoPubWorld Batang_Pro Light.otf') format('opentype');
+    src: url('/src/userinterface/foundation/text/fonts/KoPubWorld Batang_Pro Light.otf') format('opentype');
     font-weight: 300;
 }
 
 @font-face {
     font-family: TheFaceShopInklipquid;
-    src: url('/src/designsystem/foundation/text/fonts/THEFACESHOP INKLIPQUID.ttf') format('truetype');
+    src: url('/src/userinterface/foundation/text/fonts/THEFACESHOP INKLIPQUID.ttf') format('truetype');
 }
 
 @font-face {
     font-family: KyoboHandwriting2020;
-    src: url('/src/designsystem/foundation/text/fonts/KyoboHandwriting2020.otf') format('opentype');
+    src: url('/src/userinterface/foundation/text/fonts/KyoboHandwriting2020.otf') format('opentype');
 }
 
 * {

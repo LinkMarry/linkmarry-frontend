@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import Music from "@remote/value/Music";
-import musicApi from "@remote/api/MusicApi";
+import Music from "@src/infrastructure/network/value/Music";
+import musicApi from "@src/infrastructure/network/api/MusicApi";
 
 export default function useBackgroundMusics() {
     const [musics, setMusics] = useState<Music[]>();
