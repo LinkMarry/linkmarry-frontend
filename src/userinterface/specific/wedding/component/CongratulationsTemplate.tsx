@@ -7,7 +7,7 @@ import {css} from "styled-components";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/userinterface/specific/wedding/dialog/ContactingCongratulationDialog";
 import Phone from "@src/infrastructure/network/value/Phone";
-import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import {backgroundStyle} from "@src/infrastructure/network/value/WeddingDesign";
 

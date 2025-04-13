@@ -4,7 +4,7 @@ import GalleryDesign from "@src/infrastructure/network/enumeration/GalleryDesign
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@src/shared/css.util";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import Gallery from "@src/infrastructure/network/value/Gallery";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";

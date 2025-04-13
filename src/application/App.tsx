@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import config from "@src/config";
 import HelmetMetaTags from "@src/application/seo/HelmetMetaTags";
-import {AutoFocusProvider} from "@hook/useAutoFocus";
-import useAxios from "@hook/useAxios";
+import {AutoFocusProvider} from "@src/hook/useAutoFocus";
+import useAxios from "@src/hook/useAxios";
 import AppRoutes from "@src/application/route/AppRoutes";
-import {AuthProvider} from "@hook/useAuth";
+import {AuthProvider} from "@src/hook/useAuth";
 
 function App() {
     useAxios();

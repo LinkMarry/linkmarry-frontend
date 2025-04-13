@@ -4,7 +4,7 @@ import Divider from "@src/userinterface/component/Divider";
 import Text from "@src/userinterface/component/Text";
 import Greeting from "@src/infrastructure/network/value/Greeting";
 import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
-import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import {css} from "styled-components";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import GreetingDesign from "@src/infrastructure/network/enumeration/GreetingDesign";

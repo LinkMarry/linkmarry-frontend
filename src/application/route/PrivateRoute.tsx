@@ -1,4 +1,4 @@
-import useAuth from "@hook/useAuth";
+import useAuth from "@src/hook/useAuth";
 import {Navigate, Outlet} from "react-router-dom";
 
 const PrivateRoute = () => {

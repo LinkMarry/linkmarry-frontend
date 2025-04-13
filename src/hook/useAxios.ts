@@ -2,7 +2,7 @@ import api from "@src/infrastructure/network/api/foundation/api";
 import {AxiosError, InternalAxiosRequestConfig} from "axios";
 import memberApi from "@src/infrastructure/network/api/MemberApi";
 import {useNavigate} from "react-router-dom";
-import useJwt from "@hook/useJwt";
+import useJwt from "@src/hook/useJwt";
 
 const useAxios = () => {
     const navigate = useNavigate();

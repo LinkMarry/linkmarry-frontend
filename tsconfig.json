@@ -23,27 +23,6 @@
     "paths": {
       "@src/*": [
         "src/*"
-      ],
-      "@fonts/*": [
-        "src/fonts/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@designsystem/*": [
-        "src/designsystem/*"
-      ],
-      "@hook/*": [
-        "src/hook/*"
-      ],
-      "@page/*": [
-        "src/page/*"
-      ],
-      "@remote/*": [
-        "src/remote/*"
-      ],
-      "@util/*": [
-        "src/util/*"
       ]
     }
   },

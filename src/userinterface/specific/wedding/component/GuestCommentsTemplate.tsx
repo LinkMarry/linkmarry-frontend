@@ -13,7 +13,7 @@ import GuestComment from "@src/infrastructure/network/value/GuestComment";
 import RemoveGuestCommentDialog from "@src/userinterface/specific/wedding/dialog/guestcomment/RemoveGuestCommentDialog";
 import GuestCommentsDetailDialog from "@src/userinterface/specific/wedding/dialog/guestcomment/GuestCommentsDetailDialog";
 import CreateGuestCommentDialog from "@src/userinterface/specific/wedding/dialog/guestcomment/CreateGuestCommentDialog";
-import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import View from "@src/userinterface/core/View";
 import {backgroundStyle, WeddingDesignColor} from "@src/infrastructure/network/value/WeddingDesign";

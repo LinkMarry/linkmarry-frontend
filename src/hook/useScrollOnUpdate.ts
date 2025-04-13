@@ -1,5 +1,5 @@
 import {RefObject, useEffect, useState} from "react";
-import useAutoFocus from "@hook/useAutoFocus";
+import useAutoFocus from "@src/hook/useAutoFocus";
 
 export default function useScrollOnUpdate<T extends HTMLElement>(
     ref: RefObject<T | null>,

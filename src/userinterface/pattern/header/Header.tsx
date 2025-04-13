@@ -9,9 +9,9 @@ import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import Popover from "@src/userinterface/pattern/Popover";
 import Divider from "@src/userinterface/component/Divider";
 import View from "@src/userinterface/core/View";
-import useResponsive from "@hook/useResponsive";
+import useResponsive from "@src/hook/useResponsive";
 import Logo from "@src/userinterface/specific/Logo";
-import useAuth from "@hook/useAuth";
+import useAuth from "@src/hook/useAuth";
 import {makeInteractionEffect} from "@src/shared/css.util";
 import {NAVER_STORE_URL, NOTIFICATION_URL} from "@src/shared/constant";
 

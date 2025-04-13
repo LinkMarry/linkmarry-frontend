@@ -6,7 +6,7 @@ import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import BaseInfo, {BaseInfoByBrideMarkFirst, getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
-import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import View from "@src/userinterface/core/View";
 import Button from "@src/userinterface/component/Button";

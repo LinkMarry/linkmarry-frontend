@@ -3,7 +3,7 @@ import Video from "@src/infrastructure/network/value/Video";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
-import useScrollOnUpdate from "@hook/useScrollOnUpdate";
+import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import View from "@src/userinterface/core/View";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 

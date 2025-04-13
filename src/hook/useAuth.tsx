@@ -4,7 +4,7 @@ import kakaoApi from "@src/infrastructure/network/api/KakaoApi";
 import {useNavigate} from "react-router-dom";
 import memberApi from "@src/infrastructure/network/api/MemberApi";
 import InfoMember from "@src/infrastructure/network/value/InfoMember";
-import useJwt from "@hook/useJwt";
+import useJwt from "@src/hook/useJwt";
 
 const {Kakao} = window as any;
 

@@ -2,7 +2,7 @@ import React, {ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@src/userinterface/component/Text";
-import useResponsive from "@hook/useResponsive";
+import useResponsive from "@src/hook/useResponsive";
 import View from "@src/userinterface/core/View";
 import Divider from "@src/userinterface/component/Divider";
 import {

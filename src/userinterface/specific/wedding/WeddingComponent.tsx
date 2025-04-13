@@ -20,7 +20,7 @@ import WaterMarkSheet from "@src/userinterface/specific/wedding/component/WaterM
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import {implementText} from "@src/userinterface/foundation/text/TextProperties";
-import useAudio from "@hook/useAudio";
+import useAudio from "@src/hook/useAudio";
 import Position from "@src/infrastructure/network/value/Position";
 import {useCookies} from "react-cookie";
 

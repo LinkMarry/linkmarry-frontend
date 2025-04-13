@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navigate, Outlet} from "react-router-dom";
-import useAuth from "@hook/useAuth";
+import useAuth from "@src/hook/useAuth";
 
 const AdminRoute = () => {
     const {member} = useAuth();
