@@ -5,13 +5,13 @@ import SignInPage from "@src/feature/SignInPage";
 import KakaoRedirectPage from "@src/feature/KakaoRedirectPage";
 import PrivateRoute from "@src/application/route/PrivateRoute";
 import MyPageLayout from "@src/feature/mypage/MyPageLayout";
-import MyPageDefaultLayout from "@src/feature/mypage/default/MyPageDefaultLayout";
-import MyPageWeddingPage from "@src/feature/mypage/default/MyPageWeddingPage";
-import MyPageInfoPage from "@src/feature/mypage/default/MyPageInfoPage";
+import MyPageIndexLayout from "@src/feature/mypage/index/MyPageIndexLayout";
+import MyPageWeddingPage from "@src/feature/mypage/index/wedding/MyPageWeddingPage";
+import MyPageInfoPage from "@src/feature/mypage/index/info/MyPageInfoPage";
 import MyPageDetailLayout from "@src/feature/mypage/detail/MyPageDetailLayout";
-import MyPageStatPage from "@src/feature/mypage/detail/MyPageStatPage";
+import MyPageStatPage from "@src/feature/mypage/detail/stat/MyPageStatPage";
 import EditorPage from "@src/feature/editor/EditorPage";
-import WeddingPage from "@src/feature/WeddingPage";
+import WeddingPage from "@src/feature/wedding/WeddingPage";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import {dummyWedding} from "@src/infrastructure/network/value/Wedding";
@@ -64,7 +64,7 @@ const routes: RouteObject[] = [
                 element: <MyPageLayout/>,
                 children: [
                     {
-                        element: <MyPageDefaultLayout/>,
+                        element: <MyPageIndexLayout/>,
                         children: [
                             {
                                 path: 'wedding',

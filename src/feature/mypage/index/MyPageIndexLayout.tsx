@@ -1,9 +1,9 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
-import MyPageDefaultSidebar from "@src/feature/mypage/default/MyPageDefaultSidebar";
+import MyPageIndexSidebar from "@src/feature/mypage/index/component/MyPageIndexSidebar";
 import useResponsive from "@src/hook/useResponsive";
 
-function MyPageDefaultLayout() {
+function MyPageIndexLayout() {
     const {deviceSize} = useResponsive();
 
     if (deviceSize === 'mobile') {
@@ -20,10 +20,10 @@ function MobileMyPageLayout() {
 function DesktopMyPageLayout() {
     return (
         <>
-            <MyPageDefaultSidebar/>
+            <MyPageIndexSidebar/>
             <Outlet/>
         </>
     );
 }
 
-export default MyPageDefaultLayout;
+export default MyPageIndexLayout;

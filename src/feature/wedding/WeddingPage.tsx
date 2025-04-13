@@ -1,52 +1,15 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import Wedding from "@src/infrastructure/network/value/Wedding";
-import weddingApi from "@src/infrastructure/network/api/wedding-api";
-import {useParams} from "react-router-dom";
+import React from 'react';
 import {Row} from "@src/userinterface/core/FlexLayout";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
-import {useCookies} from "react-cookie";
 import useResponsive from "@src/hook/useResponsive";
+import useWedding from "@src/feature/wedding/useWedding";
 
 function WeddingPage() {
-    const {url} = useParams();
-    const [wedding, setWedding] = useState<Wedding>();
-    const [isError, setIsError] = useState(false);
-    const cookieKey = `firstVisitor_${url}`;
-    const [cookie, setCookie] = useCookies([cookieKey]);
     const {deviceSize} = useResponsive();
-
-    const getWedding = useCallback(async () => {
-        if (!url) return;
-
-        const isFirstVisitor = !cookie[cookieKey];
-
-        if (isFirstVisitor) {
-            const date = new Date();
-            date.setDate(date.getDate() + 365);
-            setCookie(cookieKey, 'false', {
-                expires: date
-            });
-        }
-
-        try {
-            const {data} = await weddingApi.getWeddingInvitation(url, {
-                firstVisitor: isFirstVisitor
-            });
-            setWedding(data);
-        } catch (error) {
-            console.error(error);
-            setIsError(true);
-        }
-    }, [cookie, cookieKey, setCookie, url]);
-
-    useEffect(() => {
-        (async () => {
-            await getWedding();
-        })();
-    }, [getWedding]);
+    const {wedding, getWedding, isError} = useWedding();
 
     return (
         <Row $justifyContent={'center'} $ui={css`

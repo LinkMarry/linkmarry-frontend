@@ -1,12 +1,12 @@
 import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
-import useMyPageDefault from "@src/feature/mypage/default/useMyPageDefault";
+import useMyPageDefault from "@src/feature/mypage/index/useMyPageDefault";
 import useAuth from "@src/hook/useAuth";
 import MyPageSidebarItem from "@src/feature/mypage/component/MyPageSidebarItem";
 import {IconType} from "@src/userinterface/foundation/Icon";
 
-function MyPageDefaultSidebar() {
+function MyPageIndexSidebar() {
     const {currentSidebar, navigate} = useMyPageDefault();
     const {signOut} = useAuth();
 
@@ -27,4 +27,4 @@ function MyPageDefaultSidebar() {
 }
 
 
-export default MyPageDefaultSidebar;
+export default MyPageIndexSidebar;

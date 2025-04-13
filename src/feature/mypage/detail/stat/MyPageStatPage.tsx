@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import React from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
@@ -9,13 +8,12 @@ import Button from "@src/userinterface/component/Button";
 import {IconType} from "@src/userinterface/foundation/Icon";
 import useResponsive from "@src/hook/useResponsive";
 import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
-import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Loading from "@src/userinterface/specific/Loading";
 import View from "@src/userinterface/core/View";
-import RsvpInfo, {getRsvpText} from "@src/infrastructure/network/value/RsvpInfo";
+import {getRsvpText} from "@src/infrastructure/network/value/RsvpInfo";
 import makeText from "@src/userinterface/foundation/text/TextType";
 import {downloadExcel} from "@src/shared/excel-util";
-import Wedding from "@src/infrastructure/network/value/Wedding";
+import useMyPageStat from "@src/feature/mypage/detail/stat/useMyPageStat";
 
 const CellStyle = css`
     padding: 4px 6px;
@@ -25,37 +23,7 @@ const CellStyle = css`
 `;
 
 const MyPageStatPage = () => {
-    const {url} = useParams();
-    const navigate = useNavigate();
-    const [wedding, setWedding] = useState<Wedding>();
-    const [statistics, setStatistics] = useState<WeddingStatistics>();
-    const [rsvp, setRsvp] = useState<RsvpInfo[]>();
-
-    useEffect(() => {
-        if (!url) {
-            navigate('/');
-            return;
-        }
-
-        (async () => {
-            try {
-                const {data} = await weddingApi.getStatistics(url);
-                setStatistics(data);
-            } catch (error) {
-                console.error(error);
-            }
-        })();
-
-        (async () => {
-            const {data} = await weddingApi.getRsvp(url);
-            setRsvp(data);
-        })();
-
-        (async () => {
-            const {data} = await weddingApi.getWedding(url);
-            setWedding(data);
-        })();
-    }, [navigate, url]);
+    const {statistics, wedding, rsvp} = useMyPageStat();
 
     return (
         <Column $alignItems={'stretch'} $gap={24} $flex={1} $ui={css`

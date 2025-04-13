@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
@@ -10,7 +10,6 @@ import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util"
 import Spacer from "@src/userinterface/component/Spacer";
 import Popover from "@src/userinterface/pattern/Popover";
 import useResponsive from "@src/hook/useResponsive";
-import WeddingDashboard from "@src/infrastructure/network/value/WeddingDashboard";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Loading from "@src/userinterface/specific/Loading";
 import WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
@@ -21,42 +20,16 @@ import {useNavigate} from "react-router-dom";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import RemoveWatermarkDialog from "@src/userinterface/specific/dialog/RemoveWatermarkDialog";
 import {getWeddingUrl} from "@src/shared/string-util";
+import useMyPageWedding from "@src/feature/mypage/index/wedding/useMyPageWedding";
 
 function MyPageWeddingPage() {
-    const [weddings, setWeddings] = useState<WeddingDashboard>();
-    const [selectedWedding, setSelectedWedding] = useState<WeddingInfo>();
-    const [showRemoveWeddingDialog, setShowRemoveWeddingDialog] = useState(false);
-
-    const clearData = () => {
-        setSelectedWedding(undefined);
-        setWeddings(undefined);
-        setShowRemoveWeddingDialog(false);
-    }
-
-    const fetchData = useCallback(async () => {
-        clearData();
-
-        const {data} = await weddingApi.getMyWedding();
-        setWeddings(data);
-    }, []);
-
-    useEffect(() => {
-        fetchData().then(() => {});
-    }, [fetchData]);
-
-    const removeWedding = async () => {
-        if (!selectedWedding) {
-            return;
-        }
-
-        try {
-            await weddingApi.removeWedding(selectedWedding.url);
-            setShowRemoveWeddingDialog(false);
-            await fetchData();
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    const {
+        showRemoveWeddingDialog,
+        setShowRemoveWeddingDialog,
+        weddings,
+        removeWedding,
+        setSelectedWedding
+    } = useMyPageWedding();
 
     return (
         <Column $gap={24} $flex={1} $alignItems={'stretch'} $ui={css`
