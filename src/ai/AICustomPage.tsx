@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import MainWrapper from "@designsystem/pattern/header/MainWrapper";
+import MainWrapper from "@src/userinterface/pattern/header/MainWrapper";
 import ProgressBar from "@src/ai/ProgressBar";
 import {css} from "styled-components";
-import {Column, Row} from "@designsystem/core/FlexLayout";
-import Text from "@designsystem/component/Text";
+import {Column, Row} from "@src/userinterface/core/FlexLayout";
+import Text from "@src/userinterface/component/Text";
 import Chat from "@src/ai/Chat";
 import OptionChat from "@src/ai/OptionChat";
-import useWeddingDesigns from "@hook/useWeddingDesigns";
-import {groupByCategory} from "@remote/value/GroupedCategory";
-import Button from "@designsystem/component/Button";
-import Spacer from "@designsystem/component/Spacer";
+import Button from "@src/userinterface/component/Button";
+import Spacer from "@src/userinterface/component/Spacer";
 
 const AiCustomPage = () => {
     const [flow, setFlow] = useState(1);
@@ -92,7 +90,7 @@ const AiCustomPage = () => {
                         <Button text={'다음'} buttonType={'tonal'} enabled={answer} onClick={() => {
                             if (flow >= 4) {
                                 window.location.href = '/editor?designId=1';
-                                // window.location.href = '/login'
+                                // window.location.href = '/sign-in'
                                 return;
                             }
                             setAnswer(false);

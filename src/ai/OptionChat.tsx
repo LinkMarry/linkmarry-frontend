@@ -1,10 +1,10 @@
-import React, {ComponentProps, useState} from 'react';
+import React, {ComponentProps} from 'react';
 import BaseChat from "@src/ai/BaseChat";
-import {Column} from "@designsystem/core/FlexLayout";
-import Button from "@designsystem/component/Button";
-import Loading from "@src/component/Loading";
+import {Column} from "@src/userinterface/core/FlexLayout";
+import Button from "@src/userinterface/component/Button";
+import Loading from "@src/userinterface/specific/Loading";
 import {css} from "styled-components";
-import Text from "@designsystem/component/Text";
+import Text from "@src/userinterface/component/Text";
 
 type Option = (string | undefined) | string[];
 

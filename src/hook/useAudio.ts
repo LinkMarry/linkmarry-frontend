@@ -16,7 +16,7 @@ export default function useAudio(autoPlay: boolean) {
                 console.error(error);
             }
         })()
-    }, []);
+    }, [autoPlay]);
 
     return {
         ref

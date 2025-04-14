@@ -1,7 +1,7 @@
 import {useCookies} from "react-cookie";
 import {useCallback} from "react";
-import Jwt from "@remote/value/Jwt";
-import api from "@remote/api/foundation/api";
+import Jwt from "@src/infrastructure/network/value/Jwt";
+import api from "@src/infrastructure/network/api/foundation/api";
 
 const useJwt = () => {
     const [cookie, setCookie, removeCookie] = useCookies(['accessToken', 'refreshToken']);

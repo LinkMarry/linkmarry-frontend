@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import BaseChat from "@src/ai/BaseChat";
-import Text from "@designsystem/component/Text";
+import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 
 interface Props extends ComponentProps<typeof BaseChat> {

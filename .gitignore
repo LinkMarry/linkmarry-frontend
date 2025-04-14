@@ -87,7 +87,7 @@ lerna-debug.log*
 .temp
 .tmp
 
-# Runtime remote
+# Runtime network
 pids
 *.pid
 *.seed
