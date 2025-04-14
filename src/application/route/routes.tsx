@@ -23,6 +23,7 @@ import ComponentDemo from "@src/userinterface/demo/ComponentDemo";
 import DevelopmentRoute from "@src/application/route/DevelopmentRoute";
 import {k as RouteObject} from "react-router/dist/development/route-data-CGHGzi13";
 import Providers from "@src/application/Providers";
+import View from "@src/userinterface/core/View";
 
 const routes: RouteObject[] = [
     {
@@ -48,7 +49,12 @@ const routes: RouteObject[] = [
                 background: ${dummyWedding.weddingDesign.weddingDesignColor};
                 padding: 64px 0;
             `}>
-                <WeddingComponent wedding={dummyWedding} isPreview={true}/>
+                <View $ui={css`
+                    border-radius: 12px;
+                    overflow: hidden;
+                `}>
+                    <WeddingComponent wedding={dummyWedding} isPreview={true}/>
+                </View>
             </Row>
         )
     },

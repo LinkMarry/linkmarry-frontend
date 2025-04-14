@@ -96,7 +96,7 @@ export const weddingDesignFontSizeMap: Record<WeddingDesignFontSize, {
 };
 
 export const defaultWeddingDesign: WeddingDesign = {
-    weddingDesignName: '클래식 엘레강스',
+    weddingDesignName: '',
     weddingDesignColor: '#FFFFFF',
     weddingDesignFont: 'Pretendard',
     weddingDesignFontSize: 'basic',
@@ -109,7 +109,7 @@ export type OpeningText = 'We\'re getting married!' | '저희 둘 결혼합니�
 export const openingTextList = ['We\'re getting married!', '저희 둘 결혼합니다', 'Welcome to Our Wedding', '새로운 시작을 함께해주세요'];
 
 export const dummyWeddingDesign: WeddingDesign = {
-    weddingDesignName: '',
+    weddingDesignName: '화이트 모먼트',
     weddingDesignColor: '#FFFEF5',
     weddingDesignFont: 'LINESeedKR',
     weddingDesignFontSize: 'basic',

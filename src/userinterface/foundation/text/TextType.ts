@@ -15,7 +15,11 @@ export type FontFamily =
     | 'UnrealScienceMedicine'
     | 'KoPubWorldBatang'
     | 'TheFaceShopInklipquid'
-    | 'KyoboHandwriting2020';
+    | 'KyoboHandwriting2020'
+    | 'BR'
+    | 'Eulyoo1945'
+    | 'tvN'
+    | 'Great Vibes';
 
 export const fontFamilyList: FontFamily[] = [
     'Pretendard',
@@ -30,7 +34,11 @@ export const fontFamilyList: FontFamily[] = [
     'UnrealScienceMedicine',
     'KoPubWorldBatang',
     'TheFaceShopInklipquid',
-    'KyoboHandwriting2020'
+    'KyoboHandwriting2020',
+    'BR',
+    'Eulyoo1945',
+    'tvN',
+    'Great Vibes'
 ];
 
 export type TextType =

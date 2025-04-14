@@ -1,6 +1,7 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css');
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Great+Vibes&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap');
 
 @font-face {
     font-family: LINESeedKR;
@@ -33,7 +34,7 @@
 @font-face {
     font-family: GangwonEduAll;
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff') format('woff');
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
 }
 
@@ -90,6 +91,48 @@
 @font-face {
     font-family: KyoboHandwriting2020;
     src: url('/src/userinterface/foundation/text/fonts/KyoboHandwriting2020.otf') format('opentype');
+}
+
+@font-face {
+    font-family: BR;
+    src: url('/src/userinterface/foundation/text/fonts/BR_R.otf') format('opentype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: BR;
+    src: url('/src/userinterface/foundation/text/fonts/BR_B.otf') format('opentype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Eulyoo1945;
+    src: url("/src/userinterface/foundation/text/fonts/Eulyoo1945-Regular.woff2") format('woff');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Eulyoo1945;
+    src: url("/src/userinterface/foundation/text/fonts/Eulyoo1945-SemiBold.woff2") format('woff');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: tvN;
+    src: url("/src/userinterface/foundation/text/fonts/tvNBold.otf") format('opentype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: tvN;
+    src: url("/src/userinterface/foundation/text/fonts/tvNMedium.otf") format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: tvN;
+    src: url("/src/userinterface/foundation/text/fonts/tvNLight.otf") format('opentype');
+    font-weight: 300;
 }
 
 * {
