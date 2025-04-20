@@ -7,11 +7,11 @@ import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import {IconType} from "@src/userinterface/foundation/Icon";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
-import Popover from "@src/userinterface/pattern/Popover";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import Input from "@src/userinterface/component/Input";
 import Select from "@src/userinterface/component/Select";
 import Textarea from "@src/userinterface/component/Textarea";
+import Popover from "@src/userinterface/pattern/Popover";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];

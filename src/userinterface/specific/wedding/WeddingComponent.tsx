@@ -1,4 +1,4 @@
-import React, {ReactNode, useRef, useState} from 'react';
+import React, {ReactNode, RefObject, useRef, useState} from 'react';
 import Wedding from "@src/infrastructure/network/value/Wedding";
 import MoneyInfoTemplate from "@src/userinterface/specific/wedding/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/userinterface/specific/wedding/component/FooterTemplate";
@@ -23,17 +23,22 @@ import {implementText} from "@src/userinterface/foundation/text/TextProperties";
 import useAudio from "@src/hook/useAudio";
 import Position from "@src/infrastructure/network/value/Position";
 import {useCookies} from "react-cookie";
+import SelectDesignSheet from "@src/userinterface/specific/wedding/component/selectdesignsheet/SelectDesignSheet";
+import {update} from "lodash";
+import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 
 interface WeddingComponentProps {
     wedding: Wedding;
-    isPreview?: boolean;
+    onChangeWedding?: (wedding: Wedding) => void;
+    mode?: 'default' | 'preview' | 'sample';
     onRefresh?: () => void;
 }
 
 function WeddingComponent(
     {
         wedding,
-        isPreview = false,
+        onChangeWedding,
+        mode = 'default',
         onRefresh
     }: WeddingComponentProps
 ) {
@@ -41,15 +46,15 @@ function WeddingComponent(
     const [cookies] = useCookies([cookieKey]);
 
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
-        if (isPreview || !wedding.rsvp.startPopupStatus) return false;
+        if (mode === 'preview' || !wedding.rsvp.startPopupStatus) return false;
         return cookies[cookieKey] === undefined
     })());
 
-    const {ref} = useAudio(wedding.backgroundMusic.effect && !isPreview && wedding.backgroundMusic.backgroundMusicActivate);
+    const {ref} = useAudio(wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate);
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
-    const {weddingDesignColor, weddingDesignFont, weddingDesignFontSize} = wedding.weddingDesign;
     const rootRef = useRef<HTMLDivElement>(null);
 
+    const {weddingDesignFontSize, weddingDesignFont} = wedding.weddingDesign;
     const {addFontSize} = weddingDesignFontSizeMap[weddingDesignFontSize];
     increaseFontSize(rootRef, addFontSize);
 
@@ -75,6 +80,49 @@ function WeddingComponent(
 
                 <title>{wedding.linkShare.urlTitle}</title>
             </Helmet>
+            <ContentBody
+                wedding={wedding}
+                onRefresh={onRefresh}
+                rootRef={rootRef}
+                onClickCreateRsvp={() => setShowRsvpDialog(true)}
+            />
+            {showRsvpDialog && (
+                <RsvpDialog
+                    url={wedding.url}
+                    baseInfo={wedding.baseInfo}
+                    weddingSchedule={wedding.weddingSchedule}
+                    weddingPlace={wedding.weddingPlace}
+                    rsvp={wedding.rsvp}
+                    onConfirm={() => {
+                        setShowRsvpDialog(false);
+                        setShowCreateRsvpDialog(true);
+                    }}
+                    dismiss={() => setShowRsvpDialog(false)}
+                />
+            )}
+            {showCreateRsvpDialog && (
+                <CreateRsvpDialog
+                    url={wedding.url}
+                    rsvp={wedding.rsvp}
+                    dismiss={() => setShowCreateRsvpDialog(false)}
+                />
+            )}
+            {wedding.waterMark && mode === 'default' && (
+                <WaterMarkSheet url={wedding.url}/>
+            )}
+        </Column>
+    );
+}
+
+const ContentBody = ({wedding, onRefresh, rootRef, onClickCreateRsvp}: {
+    wedding: Wedding;
+    onRefresh?: () => void;
+    rootRef: RefObject<HTMLDivElement>;
+    onClickCreateRsvp: () => void;
+}) => {
+    const {weddingDesignColor} = wedding.weddingDesign;
+    return (
+        <>
             <PreviewTemplate
                 weddingDesign={wedding.weddingDesign}
                 baseInfo={wedding.baseInfo}
@@ -134,39 +182,14 @@ function WeddingComponent(
                         weddingDesignColor={weddingDesignColor}
                         baseInfo={wedding.baseInfo}
                         weddingSchedule={wedding.weddingSchedule}
-                        onClickCreateRsvp={() => setShowRsvpDialog(true)}
+                        onClickCreateRsvp={onClickCreateRsvp}
                     />
                 };
                 return view[index as Position];
             })}
             <FooterTemplate background={weddingDesignColor}/>
-            {showRsvpDialog && (
-                <RsvpDialog
-                    url={wedding.url}
-                    baseInfo={wedding.baseInfo}
-                    weddingSchedule={wedding.weddingSchedule}
-                    weddingPlace={wedding.weddingPlace}
-                    rsvp={wedding.rsvp}
-                    onConfirm={() => {
-                        setShowRsvpDialog(false);
-                        setShowCreateRsvpDialog(true);
-                    }}
-                    dismiss={() => setShowRsvpDialog(false)}
-                />
-            )}
-            {showCreateRsvpDialog && (
-                <CreateRsvpDialog
-                    url={wedding.url}
-                    rsvp={wedding.rsvp}
-                    dismiss={() => setShowCreateRsvpDialog(false)}
-                />
-            )}
-            {wedding.waterMark && !isPreview && (
-                <WaterMarkSheet url={wedding.url}/>
-            )}
-        </Column>
+        </>
     );
-}
-
+};
 
 export default WeddingComponent;

@@ -4,7 +4,7 @@ import {css, RuleSet} from "styled-components";
 
 export default interface WeddingDesign {
     // 선택한 템플릿 이름
-    weddingDesignName: string;
+    weddingDesignName: WeddingDesignName;
 
     // 선택한 템플릿 색
     weddingDesignColor: WeddingDesignColor;
@@ -24,6 +24,8 @@ export default interface WeddingDesign {
     // 오프닝 애니메이션 텍스트
     openingText: OpeningText;
 }
+
+export type WeddingDesignName = string;
 
 export type WeddingDesignColor = WeddingDesignDefaultColor | WeddingDesignPaperColor | string;
 

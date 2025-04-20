@@ -24,6 +24,7 @@ import DevelopmentRoute from "@src/application/route/DevelopmentRoute";
 import {k as RouteObject} from "react-router/dist/development/route-data-CGHGzi13";
 import Providers from "@src/application/Providers";
 import View from "@src/userinterface/core/View";
+import SamplePage from "@src/feature/sample/SamplePage";
 
 const routes: RouteObject[] = [
     {
@@ -44,19 +45,7 @@ const routes: RouteObject[] = [
     },
     {
         path: 'sample',
-        element: (
-            <Row $justifyContent={'center'} $ui={css`
-                background: ${dummyWedding.weddingDesign.weddingDesignColor};
-                padding: 64px 0;
-            `}>
-                <View $ui={css`
-                    border-radius: 12px;
-                    overflow: hidden;
-                `}>
-                    <WeddingComponent wedding={dummyWedding} isPreview={true}/>
-                </View>
-            </Row>
-        )
+        element: <SamplePage/>,
     },
     {
         path: 'ai-custom',

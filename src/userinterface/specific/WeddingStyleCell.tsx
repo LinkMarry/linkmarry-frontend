@@ -53,9 +53,8 @@ function WeddingStyleCell({weddingDesign}: Props) {
                         transform: translateX(-50%);
                     `}>
                         <Button
-                            buttonType={'tonal'}
+                            buttonType={'filled'}
                             text={'청첩장 만들기'}
-                            // onClick={() => navigate(`/editor?designId=${weddingDesign.id}`)} // TODO: AI
                             onClick={() => {
                                 if (process.env.NODE_ENV === 'development') {
                                     navigate('/ai-custom');
@@ -67,9 +66,9 @@ function WeddingStyleCell({weddingDesign}: Props) {
                                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
                             `}
                         />
-                        {/*<Button text={'미리보기'} buttonType={'tonal'} onClick={() => {*/}
-                        {/*    // todo*/}
-                        {/*}}/>*/}
+                        <Button text={'미리보기'} buttonType={'tonal'} onClick={() => {
+                            navigate(`/sample?designName=${weddingDesign.name}`);
+                        }}/>
                     </Column>
                 )}
             </View>

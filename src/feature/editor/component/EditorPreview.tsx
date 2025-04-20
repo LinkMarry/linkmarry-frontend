@@ -29,7 +29,7 @@ const EditorPreview = ({wedding}: Props) => {
                 box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
                 ${hideScrollBar};
             `}>
-                <WeddingComponent wedding={wedding} isPreview={true}/>
+                <WeddingComponent wedding={wedding} mode={'preview'}/>
             </Column>
             <PreviewSetting/>
         </Column>
