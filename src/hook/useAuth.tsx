@@ -1,4 +1,4 @@
-import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
+import {createContext, PropsWithChildren, useCallback, useContext, useEffect, useState} from "react";
 import config from "@src/config";
 import kakaoApi from "@src/infrastructure/network/api/kakao-api";
 import {useNavigate} from "react-router-dom";
@@ -25,13 +25,13 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     const {jwt, setToken, clearToken} = useJwt();
     const authorized: boolean = jwt.accessToken && jwt.refreshToken;
 
-    const signInWithKakao = () => {
+    const signInWithKakao = useCallback(() => {
         Kakao?.Auth?.authorize({
             redirectUri: config.kakao.redirectUri
         });
-    };
+    }, []);
 
-    const signIn = async (code: string) => {
+    const signIn = useCallback(async (code: string) => {
         try {
             const {data} = await kakaoApi.authorize(code);
             setToken(data);
@@ -39,14 +39,14 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
             console.error(error);
         }
         navigate('/', {replace: true});
-    }
+    }, [navigate, setToken]);
 
-    const signOut = () => {
+    const signOut = useCallback(() => {
         clearToken();
         navigate('/', {replace: true});
-    };
+    }, [clearToken, navigate]);
 
-    const removeMember = async () => {
+    const removeMember = useCallback(async () => {
         try {
             await memberApi.removeMember();
             clearToken();
@@ -54,22 +54,22 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
         } catch (error) {
             console.error(error);
         }
-    };
+    }, [clearToken, navigate]);
 
-    const fetchMember = async () => {
+    const fetchMember = useCallback(async () => {
         try {
             const {data} = await memberApi.getMyProfile();
             setMember(data);
         } catch (error) {
             console.error(error);
         }
-    };
+    }, []);
 
     useEffect(() => {
         (async () => {
             await fetchMember();
         })();
-    }, [jwt.accessToken]);
+    }, [fetchMember, jwt.accessToken]);
 
     return (
         <AuthContext.Provider value={{
