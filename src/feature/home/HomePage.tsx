@@ -8,12 +8,12 @@ import View from "@src/userinterface/core/View";
 import WeddingDesignPresetCell from "@src/userinterface/specific/WeddingStyleCell";
 import TabBar from "@src/userinterface/component/TabBar";
 import Loading from "@src/userinterface/specific/Loading";
-import useHome from "@src/feature/home/useHome";
+import useWeddingDesigns from "@src/hook/useWeddingDesigns";
 import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
 function HomePage() {
     const {deviceSize} = useResponsive();
-    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useHome();
+    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
 
     return (
         <MainWrapper>
