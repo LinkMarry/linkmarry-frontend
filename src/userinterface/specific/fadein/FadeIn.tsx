@@ -17,6 +17,7 @@ type Provided = {
 interface Props {
     delay?: number;
     ui?: RuleSet;
+    as?: string;
     children: ((provided: Provided) => ReactNode) | ReactNode;
 }
 
@@ -24,6 +25,7 @@ function FadeIn(
     {
         delay,
         ui,
+        as,
         children
     }: Props
 ) {
@@ -59,7 +61,7 @@ function FadeIn(
         );
     } else if (isValidElement(children)) {
         return (
-            <View ref={ref} $ui={css`
+            <View as={as} ref={ref} $ui={css`
                 display: flex;
                 flex-direction: column;
                 ${style};
@@ -68,11 +70,9 @@ function FadeIn(
                 {children}
             </View>
         );
-    } else {
-        return (
-            <></>
-        )
     }
+
+    return null;
 }
 
 export default FadeIn;

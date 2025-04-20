@@ -4,10 +4,13 @@ export default function useAudio(autoPlay: boolean) {
     const ref = useRef<HTMLAudioElement>(null);
 
     useEffect(() => {
-        (async () => {
-            const audio = ref.current;
+        const audio = ref.current;
 
-            if (!autoPlay || !audio) return;
+        if (!autoPlay || !audio) {
+            console.log(`audio: ${audio}`);
+            return;
+        }
+        (async () => {
             try {
                 await navigator.mediaDevices.getUserMedia({audio: true});
                 await audio.play();
@@ -15,7 +18,7 @@ export default function useAudio(autoPlay: boolean) {
             } catch (error) {
                 console.error(error);
             }
-        })()
+        })();
     }, [autoPlay]);
 
     return {

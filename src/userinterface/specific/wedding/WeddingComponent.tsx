@@ -67,7 +67,12 @@ function WeddingComponent(
                 })};
             }
         `}>
-            <audio ref={ref} src={wedding.backgroundMusic.backgroundMusicUrl} loop={true}/>
+            <audio
+                ref={ref}
+                src={wedding.backgroundMusic.backgroundMusicUrl}
+                loop={true}
+                style={{display: 'none'}}
+            />
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
