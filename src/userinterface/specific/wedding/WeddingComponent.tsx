@@ -23,9 +23,6 @@ import {implementText} from "@src/userinterface/foundation/text/TextProperties";
 import useAudio from "@src/hook/useAudio";
 import Position from "@src/infrastructure/network/value/Position";
 import {useCookies} from "react-cookie";
-import SelectDesignSheet from "@src/userinterface/specific/wedding/component/selectdesignsheet/SelectDesignSheet";
-import {update} from "lodash";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 
 interface WeddingComponentProps {
     wedding: Wedding;
