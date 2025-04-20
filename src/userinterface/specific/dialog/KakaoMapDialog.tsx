@@ -46,22 +46,8 @@ function KakaoMapDialog(
         }, option);
     }, [map]);
 
-    // 주소 검색 함수
-    const searchAddress = useCallback((coords: any) => {
-        const geocoder = new kakao.maps.services.Geocoder();
-
-        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
-
-            const keyword = result[0].address.address_name;
-            keywordSearch(keyword, {
-                location: coords,
-                radius: 50
-            });
-        });
-    }, [keywordSearch]);
-
     useEffect(() => {
+
         if (!kakao || !kakao.maps) {
             return;
         }
@@ -72,6 +58,21 @@ function KakaoMapDialog(
         });
         setMap(createdMap);
 
+
+        // 주소 검색 함수
+        const searchAddress = (coords: any) => {
+            const geocoder = new kakao.maps.services.Geocoder();
+
+            geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
+                if (status !== kakao.maps.services.Status.OK) return;
+
+                const keyword = result[0].address.address_name;
+                keywordSearch(keyword, {
+                    location: coords,
+                    radius: 50
+                });
+            });
+        };
         // Marker 설정
         const marker = new kakao.maps.Marker({
             position: createdMap.getCenter(), // 초기 마커 위치 (지도의 중앙)
@@ -89,7 +90,7 @@ function KakaoMapDialog(
             const center = createdMap.getCenter();
             searchAddress(center); // 주소 검색
         });
-    }, [searchAddress]);
+    }, []);
 
     return (
         <BaseDialog dismiss={dismiss}>
