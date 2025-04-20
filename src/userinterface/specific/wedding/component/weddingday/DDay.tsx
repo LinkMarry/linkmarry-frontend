@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
@@ -34,7 +34,9 @@ function DDay(
     });
 
     const weddingDate = weddingSchedule.weddingDate;
-    const date = weddingDate ? parseDate(weddingDate) : null;  // 입력 날짜 파싱
+    const date = useMemo(() => {
+        return weddingDate ? parseDate(weddingDate) : null;
+    }, [weddingDate]);
 
     useEffect(() => {
         const calculateRemainingTime = () => {

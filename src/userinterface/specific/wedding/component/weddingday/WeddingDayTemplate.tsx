@@ -72,17 +72,15 @@ function WeddingDayTemplate(
                                     flex: 1;
                                 `}>
                                     {['일', '월', '화', '수', '목', '금', '토'].map((i, index) => (
-                                        <FadeIn delay={index * 10}>
-                                            <th key={index}>
-                                                <Text
-                                                    font={'Pretendard'}
-                                                    size={16}
-                                                    weight={300}
-                                                    ui={css`
-                                                        color: var(--g-500);
-                                                    `}
-                                                >{i}</Text>
-                                            </th>
+                                        <FadeIn as={'th'} delay={index * 10} key={index}>
+                                            <Text
+                                                font={'Pretendard'}
+                                                size={16}
+                                                weight={300}
+                                                ui={css`
+                                                    color: var(--g-500);
+                                                `}
+                                            >{i}</Text>
                                         </FadeIn>
                                     ))}
                                 </View>
@@ -91,7 +89,7 @@ function WeddingDayTemplate(
                                 {calendar && calendar.map((week, weekIndex) => (
                                     <Row as={'tr'} key={weekIndex}>
                                         {week.map((day, dayIndex) => (
-                                            <FadeIn delay={weekIndex * 160 + dayIndex * 160}>
+                                            <FadeIn key={dayIndex} delay={weekIndex * 160 + dayIndex * 160}>
                                                 {provided => (
                                                     <Row
                                                         key={dayIndex} as={'td'}
@@ -110,9 +108,9 @@ function WeddingDayTemplate(
                                                             font={'Pretendard'} size={16} weight={300}
                                                             ui={css`
                                                                 ${(dayIndex === 0 || dayIndex === 6) && (
-                                                                    css`
-                                                                        opacity: 0.4;
-                                                                    `
+                                                                        css`
+                                                                            opacity: 0.4;
+                                                                        `
                                                                 )}
                                                             `}
                                                         >
@@ -184,8 +182,8 @@ function getCalendar(date: Date) {
         week.map(day => ({
             day,
             isWeddingDay: day === date.getDate()
-                // date.getMonth() === date.getMonth() &&
-                // date.getFullYear() === date.getFullYear()
+            // date.getMonth() === date.getMonth() &&
+            // date.getFullYear() === date.getFullYear()
         }))
     );
 }
