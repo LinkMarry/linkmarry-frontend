@@ -1,4 +1,4 @@
-import React, {ComponentProps, Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import useWeddingDesigns from "@src/hook/useWeddingDesigns";
 import {css, RuleSet} from "styled-components";
