@@ -6,6 +6,11 @@ import HelmetMetaTags from "@src/application/seo/HelmetMetaTags";
 
 const router = createBrowserRouter(routes);
 
+if (config.env !== 'development') {
+    console.log = () => {
+    };
+}
+
 function App() {
     useEffect(() => {
         const {Kakao} = window as any;
