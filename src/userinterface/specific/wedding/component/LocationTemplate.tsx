@@ -86,53 +86,45 @@ function LocationTemplate(
                 <Column $gap={12} $alignSelf={'stretch'} $alignItems={'stretch'} $ui={css`
                     padding: 0 24px;
                 `}>
-                    <FadeIn>
-                        {weddingPlace.placeTransportation.length > 0 && weddingPlace.placeTransportation[0].length > 0 && (
-                            <Column $gap={4} $alignItems={'stretch'} $ui={css`
-                                padding-bottom: 12px;
-                            `}>
-                                <Text type={'p2'} bold={true}>버스</Text>
-                                <Text size={16} weight={300} ui={css`
-                                    text-align: start;
-                                    white-space: pre-line;
-                                `}>{weddingPlace.placeTransportation[0]}</Text>
-                            </Column>
-                        )}
-                    </FadeIn>
-                    <FadeIn>
-                        {weddingPlace.placeTransportation.length > 1 && weddingPlace.placeTransportation[1].length > 0 && (
-                            <Column $gap={4} $alignItems={'stretch'} $ui={css`
-                                padding-bottom: 12px;
-                            `}>
-                                <Text type={'p2'} bold={true}>지하철</Text>
-                                <Text size={16} weight={300} ui={css`
-                                    text-align: start;
-                                    white-space: pre-line;
-                                `}>{weddingPlace.placeTransportation[1]}</Text>
-                            </Column>
-                        )}
-                    </FadeIn>
-                    <FadeIn>
-                        {weddingPlace.placeTransportation.length > 2 && weddingPlace.placeTransportation[2].length > 0 && (
-                            <Column $gap={4} $alignItems={'stretch'} $ui={css`
-                                padding-bottom: 12px;
-                            `}>
-                                <Text type={'p2'} bold={true}>주차안내</Text>
-                                <Text size={16} weight={300} ui={css`
-                                    text-align: start;
-                                    white-space: pre-line;
-                                `}>{weddingPlace.placeTransportation[2]}</Text>
-                            </Column>
-                        )}
-                    </FadeIn>
-                    {weddingPlace.placeTransportation.length > 3 && weddingPlace.placeTransportation.slice(3).map((transportation, index) => (
-                        <FadeIn key={index}>
+                    {weddingPlace.placeTransportation.length > 0 && weddingPlace.placeTransportation[0].length > 0 && (
+                        <Column $gap={4} $alignItems={'stretch'} $ui={css`
+                            padding-bottom: 12px;
+                        `}>
+                            <Text type={'p2'} bold={true}>버스</Text>
                             <Text size={16} weight={300} ui={css`
                                 text-align: start;
                                 white-space: pre-line;
-                                padding-bottom: 12px;
-                            `}>{transportation}</Text>
-                        </FadeIn>
+                            `}>{weddingPlace.placeTransportation[0]}</Text>
+                        </Column>
+                    )}
+                    {weddingPlace.placeTransportation.length > 1 && weddingPlace.placeTransportation[1].length > 0 && (
+                        <Column $gap={4} $alignItems={'stretch'} $ui={css`
+                            padding-bottom: 12px;
+                        `}>
+                            <Text type={'p2'} bold={true}>지하철</Text>
+                            <Text size={16} weight={300} ui={css`
+                                text-align: start;
+                                white-space: pre-line;
+                            `}>{weddingPlace.placeTransportation[1]}</Text>
+                        </Column>
+                    )}
+                    {weddingPlace.placeTransportation.length > 2 && weddingPlace.placeTransportation[2].length > 0 && (
+                        <Column $gap={4} $alignItems={'stretch'} $ui={css`
+                            padding-bottom: 12px;
+                        `}>
+                            <Text type={'p2'} bold={true}>주차안내</Text>
+                            <Text size={16} weight={300} ui={css`
+                                text-align: start;
+                                white-space: pre-line;
+                            `}>{weddingPlace.placeTransportation[2]}</Text>
+                        </Column>
+                    )}
+                    {weddingPlace.placeTransportation.length > 3 && weddingPlace.placeTransportation.slice(3).map((transportation, index) => (
+                        <Text key={index} size={16} weight={300} ui={css`
+                            text-align: start;
+                            white-space: pre-line;
+                            padding-bottom: 12px;
+                        `}>{transportation}</Text>
                     ))}
                 </Column>
                 {weddingPlace.placeNav && (
