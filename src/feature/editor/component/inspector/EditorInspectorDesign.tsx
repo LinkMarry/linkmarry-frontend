@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef, useEffect, useState} from 'react';
+import React, {ComponentPropsWithoutRef, useEffect, useMemo, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import TabBar from "@src/userinterface/component/TabBar";
@@ -31,10 +31,16 @@ const EditorInspectorDesign = (
         weddingDesigns
     }: Props & WeddingDesignProps
 ) => {
-    const groupedCategories = weddingDesigns ? groupedByCategory(weddingDesigns) : undefined;
+    const groupedCategories = useMemo(() => {
+        return weddingDesigns ? groupedByCategory(weddingDesigns) : undefined;
+    }, [weddingDesigns]);
     const [selectedCategory, setSelectedCategory] = useState<string>();
-    const categories = groupedCategories?.map(i => i.category);
-    const selectedWeddingDesigns = groupedCategories?.find(i => i.category === selectedCategory)?.items;
+    const categories = useMemo(() => {
+        return groupedCategories?.map(i => i.category);
+    }, [groupedCategories]);
+    const selectedWeddingDesigns = useMemo(() => {
+        return groupedCategories?.find(i => i.category === selectedCategory)?.items;
+    }, [groupedCategories, selectedCategory]);
 
     useEffect(() => {
         setSelectedCategory(groupedCategories?.[0]?.category);
@@ -46,6 +52,7 @@ const EditorInspectorDesign = (
             <Column $alignItems={'stretch'} $gap={12}>
                 {categories ? (
                     <TabBar items={categories} selectedTab={categories.indexOf(selectedCategory!)} onChange={tab => {
+                        console.log(categories[tab], selectedCategory);
                         setSelectedCategory(categories[tab]);
                     }}/>
                 ) : (
