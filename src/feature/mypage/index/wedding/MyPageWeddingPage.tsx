@@ -57,7 +57,10 @@ function MyPageWeddingPage() {
                         setShowRemoveWeddingDialog(true);
                     }}/>
                 )) : (
-                    <Loading/>
+                    <Loading ui={css`
+                        margin-top: 24px;
+                        margin-bottom: 500px;
+                    `}/>
                 )}
             </Column>
             <Spacer h={32}/>
