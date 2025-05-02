@@ -38,10 +38,10 @@ export const defaultVideo: Video = {
 };
 
 export const dummyVideo: Video = {
-    videoTitle: "저희 결혼합니다.",
+    videoTitle: "저희의 결혼식을 위한 영상입니다.",
     videoUrl: "https://www.youtube.com/embed/D1lNjuUj2c8",
     videoFileUrl: '',
     videoName: '결혼.mp4',
     videoActivate: true,
-    videoFileType: false,
+    videoFileType: true,
 };

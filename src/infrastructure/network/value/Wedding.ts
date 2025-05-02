@@ -71,7 +71,7 @@ export default interface Wedding {
 
 export const dummyWedding: Wedding = {
     url: 'sample',
-    name: '',
+    name: 'sample',
     position: [
         0,
         1,
