@@ -43,5 +43,5 @@ export const dummyVideo: Video = {
     videoFileUrl: '',
     videoName: '결혼.mp4',
     videoActivate: true,
-    videoFileType: true,
+    videoFileType: false,
 };
