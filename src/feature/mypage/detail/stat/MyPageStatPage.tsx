@@ -186,11 +186,11 @@ const Stats = (props: StatsProps) => {
 const DesktopStats = ({statistics}: StatsProps) => {
     return (
         <Row $gap={24} $alignItems={'stretch'}>
-            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalVisitorCnt}명`}/>
+            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
             <Divider direction={'vertical'}/>
             <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
             <Divider direction={'vertical'}/>
-            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalLinkShareCnt}회`}/>
+            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
         </Row>
     )
 }
@@ -198,9 +198,9 @@ const DesktopStats = ({statistics}: StatsProps) => {
 const MobileStats = ({statistics}: StatsProps) => {
     return (
         <Column $alignItems={'stretch'} $gap={8}>
-            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalVisitorCnt}명`}/>
+            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
             <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
-            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalLinkShareCnt}회`}/>
+            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
         </Column>
     )
 };

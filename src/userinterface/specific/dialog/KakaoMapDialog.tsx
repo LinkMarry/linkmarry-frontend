@@ -53,7 +53,7 @@ function KakaoMapDialog(
         }
 
         const createdMap = new kakao.maps.Map(kakaoMap.current, {
-            center: new kakao.maps.LatLng(35.6632, 128.4141),
+            center: new kakao.maps.LatLng(37.5665851, 126.9782038),
             level: 5, // 확대 레벨
         });
         setMap(createdMap);

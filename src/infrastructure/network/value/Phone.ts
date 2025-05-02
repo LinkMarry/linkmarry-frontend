@@ -39,5 +39,4 @@ export const dummyPhone: Phone = {
     brideFatherTel: "010-1234-5678",
     brideMotherTel: "010-1234-5678",
     parentTel: true
-
 };

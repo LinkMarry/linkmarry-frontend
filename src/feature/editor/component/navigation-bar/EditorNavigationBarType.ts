@@ -16,8 +16,8 @@ type EditorNavigationBarType = 'design' |
     'fontAndStyle' |
     'urlShare' |
     'kakaotalkInvitationLetter' |
-    'changeOrder' |
-    'ai';
+    'changeOrder';
+    // 'ai';
 
 export const editorNavigationBarTypeList: EditorNavigationBarType[] = [
     'design',
@@ -36,8 +36,7 @@ export const editorNavigationBarTypeList: EditorNavigationBarType[] = [
     'fontAndStyle',
     'urlShare',
     'kakaotalkInvitationLetter',
-    'changeOrder',
-    'ai'
+    'changeOrder'
 ];
 export const editorNavigationBarTypeMap: Record<EditorNavigationBarType, {
     navigationBarText: string;
@@ -129,11 +128,11 @@ export const editorNavigationBarTypeMap: Record<EditorNavigationBarType, {
         navigationBarText: '순서 변경',
         inspectorText: '순서 변경'
     },
-    ai: {
-        icon: IconType.Search,
-        navigationBarText: 'AI',
-        inspectorText: 'AI 이미지 변환'
-    }
+    // ai: {
+    //     icon: IconType.Search,
+    //     navigationBarText: 'AI',
+    //     inspectorText: 'AI 이미지 변환'
+    // }
 };
 
 export default EditorNavigationBarType;

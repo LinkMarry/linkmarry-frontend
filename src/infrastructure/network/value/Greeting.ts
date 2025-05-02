@@ -19,7 +19,7 @@ export const defaultGreeting: Greeting = {
 }
 
 export const dummyGreeting: Greeting = {
-    greetingTitle: "저희의 결혼식에 여러분들을 초대합니다.",
-    greetingContent: "특별한 순간 여러분들의 필요합니다.\n귀한시간 저희 결혼식 오셔서 축하부탁드립니다.\n\n내 인생에 가장 잘한 일은 너를 만난거야\n\n- 영화 디즈니 대사중 -",
-    greetingDesign: GreetingDesign.BASIC
+    greetingTitle: "",
+    greetingContent: "새로운 시작을 알리는 날,\n소중한 분들과 함께하고 싶습니다.\n함께해 주셔서 사랑과 행복을 나눠주세요.",
+    greetingDesign: GreetingDesign.FLOWER
 };

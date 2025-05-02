@@ -44,15 +44,15 @@ export const defaultRsvp: Rsvp = {
 }
 
 export const dummyRsvp: Rsvp = {
-    rsvpTitle: "와주세여",
-    rsvpContent: "제발..................",
-    attendStatus: true,
+    rsvpTitle: "RSVP",
+    rsvpContent: "참석의사를 알려주세요!",
+    attendStatus: false,
     attendMealStatus: true,
     attendGuestCntStatus: true,
     attendPhoneStatus: true,
-    attendBusStatus: false,
+    attendBusStatus: true,
     attendEtcStatus: true,
     startPopupStatus: true,
-    rsvpActivate: true,
+    rsvpActivate: true
 };
 

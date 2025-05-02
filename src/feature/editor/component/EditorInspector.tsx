@@ -24,7 +24,6 @@ import EditorInspectorWeddingPlace from "@src/feature/editor/component/inspector
 import useResponsive from "@src/hook/useResponsive";
 import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
 import Binding from "@src/shared/Binding";
-import EditorInspectorAi from "@src/feature/editor/component/inspector/EditorInspectorAI";
 
 interface Props extends Binding<WeddingDto>, WeddingDesignProps, BackgroundMusicProps {
     currentNavType: EditorNavigationBarType;
@@ -68,7 +67,7 @@ const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns
                     urlShare: <EditorInspectorUrlShare value={wedding} update={update}/>,
                     kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter value={wedding} update={update}/>,
                     changeOrder: <EditorInspectorChangeOrder value={wedding} update={update}/>,
-                    ai: <EditorInspectorAi/>
+                    // ai: <EditorInspectorAi/>
                 }
                 return view[currentNavType];
             })()}

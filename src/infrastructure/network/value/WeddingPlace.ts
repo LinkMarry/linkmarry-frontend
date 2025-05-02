@@ -48,8 +48,8 @@ export function getPlaceholder(index: number): string {
 }
 
 export const defaultWeddingPlace: WeddingPlace = {
-    x: 126.9971,
-    y: 37.5503,
+    x: 126.9782038,
+    y: 37.5665851,
     placeUrl: "",
     placeName: "",
     addressName: "",
@@ -62,15 +62,19 @@ export const defaultWeddingPlace: WeddingPlace = {
 }
 
 export const dummyWeddingPlace: WeddingPlace = {
-    x: 126.9971,
-    y: 37.5503,
-    placeUrl: "",
-    placeName: "서울가든",
-    addressName: "",
-    placeTel: "010-0000-0000",
-    floorHall: "레드홀 4층",
-    placeTransportation: ['3호선 신림역 3번출구 도보 200m\n290번 버스 신림정류장 도보 200m', '', ''],
+    x: 126.97689786832184,
+    y: 37.577613288258206,
+    placeUrl: "http://place.map.kakao.com/18619553",
+    placeName: "경복궁",
+    addressName: "서울 종로구 세종로 1-1",
+    placeTel: "02-187-3021",
+    floorHall: "야외 웨딩홀",
+    placeTransportation: [
+        "경북궁 앞 버스정류장 101번",
+        "경북궁역 0호선",
+        "경북궁 공용주차장 (발렛가능)"
+    ],
     placeStatus: true,
     placeLock: true,
-    placeNav: true
+    placeNav: true,
 }

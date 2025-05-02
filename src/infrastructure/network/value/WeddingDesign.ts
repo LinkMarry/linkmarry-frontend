@@ -111,11 +111,11 @@ export type OpeningText = 'We\'re getting married!' | '저희 둘 결혼합니�
 export const openingTextList = ['We\'re getting married!', '저희 둘 결혼합니다', 'Welcome to Our Wedding', '새로운 시작을 함께해주세요'];
 
 export const dummyWeddingDesign: WeddingDesign = {
-    weddingDesignName: '화이트 모먼트',
-    weddingDesignColor: '#FFFEF5',
-    weddingDesignFont: 'LINESeedKR',
+    weddingDesignName: '모던 심플',
+    weddingDesignColor: '#FFFFFF',
+    weddingDesignFont: 'Pretendard',
     weddingDesignFontSize: 'basic',
-    titleImgUrl: 'https://linkmarry.s3.ap-northeast-2.amazonaws.com/27942cb0-58c9-4d44-95a7-c6134547377d-GettyImages-jv12578254.jpg.jpg',
-    opening: Opening.NONE,
+    titleImgUrl: 'https://linkmarry.s3.ap-northeast-2.amazonaws.com/a9d10a27-aed7-4de8-b6c5-51d4e01b32c5-GettyImages-jv12586038.jpg.jpg',
+    opening: Opening.LETTERING,
     openingText: "We're getting married!"
 };

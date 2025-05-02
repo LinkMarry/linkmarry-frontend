@@ -22,7 +22,7 @@ export const defaultGuestComment: GuestComment = {
 
 export const dummyGuestComment: GuestComment = {
     title: "방명록",
-    content: '',
+    content: "저희 둘에게 하고 싶은 말을 남겨주세요",
     guestCommentDesign: GuestCommentDesign.BASIC,
-    privateContent: true,
+    privateContent: true
 };

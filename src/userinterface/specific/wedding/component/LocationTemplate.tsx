@@ -54,19 +54,27 @@ function LocationTemplate(
             align-items: stretch;
             padding: 72px 0;
         `}>
-            <Column $gap={40} $alignItems={'center'}>
+            <Column $gap={40} $alignItems={'stretch'}>
                 <FadeIn>
                     <Text size={20} weight={300} ui={css`
                         color: var(--g-600);
+                        text-align: center;
                     `}>LOCATION</Text>
                 </FadeIn>
                 <FadeIn>
-                    <Column $alignItems={'center'} $gap={12}>
-                        <Column $alignItems={'center'}>
-                            <Text size={16} weight={300}>
+                    <Column $alignItems={'stretch'} $gap={12} $ui={css`
+                        padding: 0 24px;
+                    `}>
+                        <Column $alignItems={'stretch'}>
+                            <Text size={16} weight={300} ui={css`
+                                text-align: center;
+                            `}>
                                 {weddingPlace.placeName}
                             </Text>
-                            <Text size={16} weight={300}>
+                            <Text size={16} weight={300} ui={css`
+                                text-align: center;
+                                word-break: break-all;
+                            `}>
                                 {weddingPlace.addressName} {weddingPlace.floorHall}
                             </Text>
                         </Column>
@@ -94,6 +102,7 @@ function LocationTemplate(
                             <Text size={16} weight={300} ui={css`
                                 text-align: start;
                                 white-space: pre-line;
+                                word-break: break-all;
                             `}>{weddingPlace.placeTransportation[0]}</Text>
                         </Column>
                     )}
@@ -105,6 +114,7 @@ function LocationTemplate(
                             <Text size={16} weight={300} ui={css`
                                 text-align: start;
                                 white-space: pre-line;
+                                word-break: break-all;
                             `}>{weddingPlace.placeTransportation[1]}</Text>
                         </Column>
                     )}
@@ -116,6 +126,7 @@ function LocationTemplate(
                             <Text size={16} weight={300} ui={css`
                                 text-align: start;
                                 white-space: pre-line;
+                                word-break: break-all;
                             `}>{weddingPlace.placeTransportation[2]}</Text>
                         </Column>
                     )}

@@ -56,7 +56,7 @@ const Header = () => {
                 text-align: center;
                 word-break: break-word;
                 color: var(--g-500);
-            `}>다양한 스타일, 나만의 청첩장을 무료로 만들어볼 수 있습니다</Text>
+            `}>다양한 스타일, 나만의 청첩장을{deviceSize === 'mobile' ? <br/> : ' '}무료로 만들어볼 수 있습니다</Text>
         </Column>
     );
 };
@@ -87,32 +87,33 @@ const WeddingDesignPresetBody = ({selectedWeddingDesigns}: {
     selectedWeddingDesigns: WeddingDesignPreset[];
 }) => {
     const {deviceSize} = useResponsive();
-    if (selectedWeddingDesigns.length > 0) {
-        return (
-            <View $ui={css`
-                display: grid;
-                max-width: 960px;
-                align-self: center;
-                width: 100%;
-                grid-template-columns: repeat(4, 1fr);
-                ${deviceSize === 'mobile' && css`
-                    grid-template-columns: repeat(2, 1fr);
-                `};
-                grid-column-gap: 14px;
-                grid-row-gap: 32px;
-            `}>
-                {selectedWeddingDesigns.map(design => (
-                    <WeddingDesignPresetCell key={design.id} weddingDesign={design}/>
-                ))}
-            </View>
-        );
-    } else {
+    if (selectedWeddingDesigns.length === 0) {
         return (
             <Loading ui={css`
                 margin-top: 40px;
+                margin-bottom: 500px;
             `}/>
         );
     }
+
+    return (
+        <View $ui={css`
+            display: grid;
+            max-width: 960px;
+            align-self: center;
+            width: 100%;
+            grid-template-columns: repeat(4, 1fr);
+            ${deviceSize === 'mobile' && css`
+                grid-template-columns: repeat(2, 1fr);
+            `};
+            grid-column-gap: 14px;
+            grid-row-gap: 32px;
+        `}>
+            {selectedWeddingDesigns.map(design => (
+                <WeddingDesignPresetCell key={design.id} weddingDesign={design}/>
+            ))}
+        </View>
+    );
 };
 
 export default HomePage;

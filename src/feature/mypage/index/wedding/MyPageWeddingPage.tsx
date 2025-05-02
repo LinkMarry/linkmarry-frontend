@@ -57,7 +57,10 @@ function MyPageWeddingPage() {
                         setShowRemoveWeddingDialog(true);
                     }}/>
                 )) : (
-                    <Loading/>
+                    <Loading ui={css`
+                        margin-top: 24px;
+                        margin-bottom: 500px;
+                    `}/>
                 )}
             </Column>
             <Spacer h={32}/>
@@ -269,9 +272,9 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                             `}>
                                 {statistics ? (
                                     <>
-                                        <StatisticsCell title={'총 참석 가능 인원'} value={`${statistics.totalVisitorCnt}명`}/>
+                                        <StatisticsCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
                                         <StatisticsCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
-                                        <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalLinkShareCnt}회`}/>
+                                        <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
                                     </>
                                 ) : (
                                     <Loading/>
