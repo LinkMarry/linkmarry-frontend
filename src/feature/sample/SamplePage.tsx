@@ -80,6 +80,7 @@ const SamplePage = () => {
                     ui={css`
                         max-width: 436px;
                         overflow: hidden;
+                        width: 100vw;
                     `}
                 />
             )}
