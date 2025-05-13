@@ -4,7 +4,14 @@ import {Helmet} from "react-helmet-async";
 const HelmetMetaTags = () => {
     return (
         <>
-            <Helmet>
+            <Helmet
+                link={[
+                    {
+                        rel: "canonical",
+                        href: "https://www.linkmarry.com"
+                    }
+                ]}
+            >
                 {/* 검색 엔진 최적화(SEO) 관련 메타 태그 */}
                 <title> 모바일 청첩장 | 특별한 순간 특별한 초대, 링크메리와 함께 </title>
                 <meta name="description" content="모바일 청첩장 링크메리와 함께 결혼을 더욱 특별하게. 이제, 종이 청첩장 대신 스마트폰으로 간편하고 빠르게 초대장을 보내보세요. 모바일 청첩장 제작까지 단 5분 모바일 초대장 링크메리 모바일 청첩장, 모바일 초대장은 링크메리"/>
@@ -26,7 +33,6 @@ const HelmetMetaTags = () => {
 
                 {/* 검색 엔진 색인 관련 */}
                 <meta name="robots" content="index, follow"/>
-                <link rel="canonical" href="https://www.linkmarry.com"/>
                 <meta name="naver-site-verification" content="bf351689cbaf88ee5be7544d236c9cd3e56b74c0"/>
 
                 {/* 지역 기반 SEO */}
