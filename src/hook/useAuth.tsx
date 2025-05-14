@@ -6,7 +6,6 @@ import memberApi from "@src/infrastructure/network/api/member-api";
 import InfoMember from "@src/infrastructure/network/value/InfoMember";
 import useJwt from "@src/hook/useJwt";
 
-const {Kakao} = window as any;
 
 type AuthValue = {
     member?: InfoMember;
@@ -26,6 +25,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     const authorized: boolean = jwt.accessToken && jwt.refreshToken;
 
     const signInWithKakao = useCallback(() => {
+        const {Kakao} = window as any;
         console.info(`signInWithKakao ${Kakao.Auth}`);
         Kakao?.Auth?.authorize({
             redirectUri: config.kakao.redirectUri
