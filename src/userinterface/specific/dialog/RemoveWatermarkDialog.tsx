@@ -27,7 +27,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
 
     const removeWatermark = async () => {
         try {
-            const clearedPhone = phone.replace('-', '')
+            const clearedPhone = phone.replace(/[^0-9]/g, '');
             await naverApi.order(clearedPhone);
         } catch (error) {
             console.log(error);

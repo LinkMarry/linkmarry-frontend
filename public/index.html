@@ -1,50 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        if (window.location.hostname !== 'localhost') {
-            console.log('Init google tag manager');
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    'gtm.start':
-                        new Date().getTime(), event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-5THQMPTZ');
-        }
-    </script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
-    <script>
-        if (window.location.hostname !== 'localhost') {
-            console.log('Init Google tag');
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-            gtag('config', 'AW-16841271697');
-        }
-    </script>
-
-    <script>
-        if (window.location.hostname !== 'localhost') {
-            console.log('Init Event');
-            gtag('event', 'conversion', {
-                'send_to': 'AW-16841271697/ZVdECJWy7pUaEJHTxd4-',
-                'value': 1.0,
-                'currency': 'KRW'
-            });
-        }
-    </script>
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap" as="style">
+    
+    <!-- Async load non-critical CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" media="print" onload="this.media='all'">
 
     <title>링크메리 - 특별한 순간 특별한 초대, 링크메리와 함께</title>
     <meta name="description" content="링크메리와 함께 결혼을 더욱 특별하게. 이제, 종이 청첩장 대신 스마트폰으로 간편하고 빠르게 초대장을 보내보세요"/>
@@ -69,15 +39,29 @@
 
     <meta name="naver-site-verification" content="bf351689cbaf88ee5be7544d236c9cd3e56b74c0"/>
 
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
+    <!-- Async load non-critical scripts -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
+    <script async src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script async src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_KAKAO_JAVASCRIPT_KEY%&libraries=services,clusterer,drawing"></script>
 
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_KAKAO_JAVASCRIPT_KEY%&libraries=services,clusterer,drawing"></script>
+    <!-- Critical inline scripts -->
+    <script>
+        if (window.location.hostname !== 'localhost') {
+            // Google Tag Manager
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5THQMPTZ');
+            
+            // Google Analytics
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16841271697');
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16841271697/ZVdECJWy7pUaEJHTxd4-',
+                'value': 1.0,
+                'currency': 'KRW'
+            });
+        }
+    </script>
 </head>
 <body>
 <noscript>

@@ -10,6 +10,7 @@ import TabBar from "@src/userinterface/component/TabBar";
 import Loading from "@src/userinterface/specific/Loading";
 import useWeddingDesigns from "@src/hook/useWeddingDesigns";
 import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import HelmetMetaTags from "@src/application/seo/HelmetMetaTags";
 
 function HomePage() {
     const {deviceSize} = useResponsive();
@@ -17,6 +18,7 @@ function HomePage() {
 
     return (
         <MainWrapper>
+            <HelmetMetaTags />
             <Column $alignItems={'center'} $ui={css`
                 ${deviceSize === 'desktop' ? css`
                     padding: 72px 24px 40px 24px;
@@ -40,6 +42,10 @@ function HomePage() {
                     </Column>
                 </Column>
             </Column>
+            <div style={{ position: 'absolute', left: '-9999px' }}>
+                <h1>모바일 청첩장</h1>
+                <p>모바일 청첩장은 스마트폰으로 간편하게 결혼식 초대장을 보낼 수 있는 서비스입니다. 무료 모바일 청첩장, 디지털 청첩장, 카카오톡 청첩장, 모바일 청첩장 템플릿을 제공하여 결혼을 더욱 특별하게 만들어 드립니다.</p>
+            </div>
         </MainWrapper>
     )
 }
@@ -57,6 +63,12 @@ const Header = () => {
                 word-break: break-word;
                 color: var(--g-500);
             `}>다양한 스타일, 나만의 청첩장을{deviceSize === 'mobile' ? <br/> : ' '}무료로 만들어볼 수 있습니다</Text>
+            <Text type={'p3'} ui={css`
+                text-align: center;
+                word-break: break-word;
+                color: var(--g-500);
+                display: none;
+            `}>모바일 청첩장, 무료 모바일 청첩장, 디지털 청첩장, 카카오톡 청첩장, 모바일 청첩장 템플릿을 제공하는 링크메리와 함께 결혼을 더욱 특별하게.</Text>
         </Column>
     );
 };
