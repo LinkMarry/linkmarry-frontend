@@ -26,6 +26,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     const authorized: boolean = jwt.accessToken && jwt.refreshToken;
 
     const signInWithKakao = useCallback(() => {
+        console.info(`signInWithKakao ${Kakao.Auth}`);
         Kakao?.Auth?.authorize({
             redirectUri: config.kakao.redirectUri
         });
