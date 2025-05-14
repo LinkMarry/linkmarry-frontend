@@ -9,8 +9,6 @@ import WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
 import makeText from "@src/userinterface/foundation/text/TextType";
 import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 
-const {kakao} = window as any;
-
 interface KakaoMapDialogProps {
     weddingPlace: WeddingPlace;
     onChange: (weddingPlace: WeddingPlace) => void;
@@ -24,6 +22,7 @@ function KakaoMapDialog(
         dismiss
     }: KakaoMapDialogProps
 ) {
+    const {kakao} = window as any;
     const kakaoMap = useRef<HTMLDivElement>(null);
     const [places, setPlaces] = useState<any[]>([]);
     const [selectedPlace, setSelectedPlace] = useState<any>();

@@ -9,7 +9,6 @@ import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import {backgroundStyle} from "@src/infrastructure/network/value/WeddingDesign";
 import Button from "@src/userinterface/component/Button";
 
-const {kakao} = window as any;
 
 interface LocationProps {
     weddingDesignColor: string;
@@ -26,6 +25,7 @@ function LocationTemplate(
     const weddingPlaceRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace]);
     useEffect(() => {
+        const {kakao} = window as any;
         if (!kakao || !kakao.maps || !kakaoMapRef.current) {
             return;
         }
