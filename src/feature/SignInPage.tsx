@@ -24,7 +24,7 @@ function SignInPage() {
                         `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                     </Column>
                 </Column>
-                <Row as={'button'} $justifyContent={'center'} $alignItems={'center'} $ui={css`
+                <Row onClick={signInWithKakao} $justifyContent={'center'} $alignItems={'center'} $ui={css`
                     cursor: pointer;
                     width: 300px;
                     height: 45px;
@@ -33,7 +33,7 @@ function SignInPage() {
                     background-color: #FEE500;
                     border-radius: 6px;
                     color: black;
-                `} onClick={signInWithKakao}>
+                `}>
                     <Row $gap={6} $alignItems={'center'}>
                         <Icon iconType={IconType.Kakao} size={24}/>
                         <Text type={'p3'} bold={true}>카카오 로그인</Text>
