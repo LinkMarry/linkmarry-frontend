@@ -78,7 +78,10 @@ function LocationTemplate(
                                 {weddingPlace.addressName} {weddingPlace.floorHall}
                             </Text>
                         </Column>
-                        <Text size={16} weight={300}>
+                        <Text size={16} weight={300} ui={css`
+                            text-align: center;
+                            word-break: break-all;
+                        `}>
                             {weddingPlace.placeTel}
                         </Text>
                     </Column>
