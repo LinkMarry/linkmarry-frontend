@@ -189,7 +189,12 @@ const ContentBody = ({wedding, onRefresh, rootRef, onClickCreateRsvp}: {
                 };
                 return view[index as Position];
             })}
-            <FooterTemplate background={weddingDesignColor}/>
+            <FooterTemplate
+                url={wedding.url}
+                background={weddingDesignColor}
+                linkShare={wedding.linkShare}
+                weddingPlace={wedding.weddingPlace}
+            />
         </>
     );
 };
