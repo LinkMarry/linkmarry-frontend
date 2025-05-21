@@ -64,7 +64,7 @@ export const defaultWeddingPlace: WeddingPlace = {
 export const dummyWeddingPlace: WeddingPlace = {
     x: 126.97689786832184,
     y: 37.577613288258206,
-    placeUrl: "http://place.map.kakao.com/18619553",
+    placeUrl: "https://place.map.kakao.com/18619553",
     placeName: "경복궁",
     addressName: "서울 종로구 세종로 1-1",
     placeTel: "02-187-3021",

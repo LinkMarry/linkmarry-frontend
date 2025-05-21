@@ -28,6 +28,11 @@ function FooterTemplate(
     const shareToKakao = useCallback(() => {
         const {Kakao: {Link}} = window as any;
         const weddingUrl = getWeddingUrl(url);
+        const rsvpWeddingUrl = (() => {
+            const url = new URL(weddingUrl);
+            url.searchParams.set('rsvp', 'true');
+            return url.toString();
+        })();
 
         const buttonRecord: Record<KakaoButton, {
             title: string;
@@ -48,8 +53,8 @@ function FooterTemplate(
                 {
                     title: '위치보기',
                     link: {
-                        mobileWebUrl: weddingPlace.placeUrl,
-                        webUrl: weddingPlace.placeUrl
+                        mobileWebUrl: `${window.location.origin}/link?url=${weddingPlace.placeUrl}`,
+                        webUrl: `${window.location.origin}/link?url=${weddingPlace.placeUrl}`,
                     }
                 }
             ],
@@ -64,8 +69,8 @@ function FooterTemplate(
                 {
                     title: '참석의사 전달',
                     link: {
-                        mobileWebUrl: weddingUrl, // todo: add query
-                        webUrl: weddingUrl
+                        mobileWebUrl: rsvpWeddingUrl,
+                        webUrl: rsvpWeddingUrl
                     }
                 }
             ]

@@ -23,6 +23,7 @@ import {implementText} from "@src/userinterface/foundation/text/TextProperties";
 import useAudio from "@src/hook/useAudio";
 import Position from "@src/infrastructure/network/value/Position";
 import {useCookies} from "react-cookie";
+import {useSearchParams} from "react-router-dom";
 
 interface WeddingComponentProps {
     wedding: Wedding;
@@ -39,16 +40,18 @@ function WeddingComponent(
         onRefresh
     }: WeddingComponentProps
 ) {
+    const [searchParams] = useSearchParams();
+    const rsvp = searchParams.get('rsvp') === 'true';
     const cookieKey = `hide_RsvpDialog_${wedding.url}`;
     const [cookies] = useCookies([cookieKey]);
 
     const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
-        if (mode === 'preview' || !wedding.rsvp.startPopupStatus) return false;
+        if (mode === 'preview' || !wedding.rsvp.startPopupStatus || rsvp) return false;
         return cookies[cookieKey] === undefined
     })());
 
     const {ref} = useAudio(wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate);
-    const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(false);
+    const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(rsvp);
     const rootRef = useRef<HTMLDivElement>(null);
 
     const {weddingDesignFontSize, weddingDesignFont} = wedding.weddingDesign;
