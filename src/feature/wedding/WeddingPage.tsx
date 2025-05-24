@@ -6,10 +6,25 @@ import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
 import useResponsive from "@src/hook/useResponsive";
 import useWedding from "@src/feature/wedding/useWedding";
+import {Navigate, useParams, useSearchParams} from "react-router-dom";
 
 function WeddingPage() {
     const {deviceSize} = useResponsive();
     const {wedding, getWedding, isError} = useWedding();
+    const {url} = useParams();
+    const [searchParams] = useSearchParams();
+
+    if (url === 'sample') {
+        const url = new URL(`${window.location.origin}/sample`);
+
+        searchParams.forEach((value, key) => {
+            url.searchParams.set(key, value);
+        });
+
+        console.log(`url -  s${url.toString()}`);
+
+        return <Navigate to={url.toString()}/>;
+    }
 
     return (
         <Row $justifyContent={'center'} $ui={css`

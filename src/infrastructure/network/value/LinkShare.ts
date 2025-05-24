@@ -53,7 +53,7 @@ export const dummyLinkShare: LinkShare = {
     kakaoImgUrl: "https://linkmarry.s3.ap-northeast-2.amazonaws.com/0234d19a-3206-489b-bafb-c0fa32c850ac-GettyImages-jv11005081.jpg.jpg",
     kakaoTitle: "2월 15일, 저희 결혼합니다.",
     kakaoContent: "많이 와주세요~",
-    kakaoButton: KakaoButton.PLACE,
+    kakaoButton: KakaoButton.ATTEND,
     kakaoStyle: true,
     urlImgUrl: "https://linkmarry.s3.ap-northeast-2.amazonaws.com/0234d19a-3206-489b-bafb-c0fa32c850ac-GettyImages-jv11005081.jpg.jpg",
     urlTitle: "2월 15일, 저희 결혼합니다.",
