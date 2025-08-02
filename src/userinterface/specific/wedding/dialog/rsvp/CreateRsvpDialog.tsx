@@ -115,7 +115,7 @@ function CreateRsvpDialog(
                                 <Text type={'p3'}>식사 여부를 선택해 주세요.</Text>
                                 <SegmentedButton
                                     selectedTab={isMeal}
-                                    items={['식사함', '식사안함']}
+                                    items={['식사함', '식사 안 함']}
                                     onChange={tab => {
                                         setIsMeal(tab);
                                     }}

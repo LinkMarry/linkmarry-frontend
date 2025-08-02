@@ -10,7 +10,7 @@ const useMyPageStat = () => {
     const navigate = useNavigate();
     const [wedding, setWedding] = useState<Wedding>();
     const [statistics, setStatistics] = useState<WeddingStatistics>();
-    const [rsvp, setRsvp] = useState<RsvpInfo[]>();
+    const [rsvpInfoList, setRsvpInfoList] = useState<RsvpInfo[]>();
 
     useEffect(() => {
         if (!url) {
@@ -29,7 +29,7 @@ const useMyPageStat = () => {
 
         (async () => {
             const {data} = await weddingApi.getRsvp(url);
-            setRsvp(data);
+            setRsvpInfoList(data);
         })();
 
         (async () => {
@@ -41,7 +41,7 @@ const useMyPageStat = () => {
     return {
         statistics,
         wedding,
-        rsvp
+        rsvpInfoList
     }
 }
 

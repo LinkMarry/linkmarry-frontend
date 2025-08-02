@@ -12,7 +12,7 @@ import Loading from "@src/userinterface/specific/Loading";
 import View from "@src/userinterface/core/View";
 import {getRsvpText} from "@src/infrastructure/network/value/RsvpInfo";
 import makeText from "@src/userinterface/foundation/text/TextType";
-import {downloadExcel} from "@src/shared/excel-util";
+import {downloadExcelFromRsvpInfo} from "@src/shared/excel-util";
 import useMyPageStat from "@src/feature/mypage/detail/stat/useMyPageStat";
 
 const CellStyle = css`
@@ -23,7 +23,7 @@ const CellStyle = css`
 `;
 
 const MyPageStatPage = () => {
-    const {statistics, wedding, rsvp} = useMyPageStat();
+    const {statistics, wedding, rsvpInfoList} = useMyPageStat();
 
     return (
         <Column $alignItems={'stretch'} $gap={24} $flex={1} $ui={css`
@@ -60,8 +60,8 @@ const MyPageStatPage = () => {
                                 text={'Excel 파일 다운받기'} trailingIcon={IconType.StopArrowDown} size={'small'}
                                 buttonType={'outlined'}
                                 onClick={() => {
-                                    if (rsvp) {
-                                        downloadExcel(rsvp, '방명록');
+                                    if (rsvpInfoList && wedding) {
+                                        downloadExcelFromRsvpInfo(rsvpInfoList, wedding.rsvp, '방명록');
                                     }
                                 }}
                             />
@@ -112,7 +112,7 @@ const MyPageStatPage = () => {
                                         color: var(--g-500);
                                     `}>추가 전달사항</View>
                                 </View>
-                                {rsvp ? rsvp.map(rsvp => (
+                                {rsvpInfoList ? rsvpInfoList.map(rsvp => (
                                     <View key={rsvp.id} as={'tr'} $ui={css`
                                         border-top: 1px solid var(--g-100);
                                     `}>
@@ -133,7 +133,7 @@ const MyPageStatPage = () => {
                                         `}>{wedding?.rsvp.attendPhoneStatus ? rsvp.guestPhone : '-'}</View>
                                         <View as={'td'} $ui={css`
                                             ${CellStyle};
-                                        `}>{wedding?.rsvp.attendBusStatus ? rsvp.bus : '-'}</View>
+                                        `}>{wedding?.rsvp.attendBusStatus ? (rsvp.bus ? '탑승' : '미탑승') : '-'}</View>
                                         <View as={'td'} $ui={css`
                                             ${CellStyle};
                                         `}>{wedding?.rsvp.attendEtcStatus ? rsvp.guestComment : '-'}</View>
