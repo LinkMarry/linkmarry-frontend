@@ -82,8 +82,8 @@ function FooterTemplate(
                 description: linkShare.kakaoContent,
                 imageUrl: linkShare.kakaoImgUrl,
                 link: {
-                    mobileWebUrl: url,
-                    webUrl: url
+                    mobileWebUrl: weddingUrl,
+                    webUrl: weddingUrl
                 }
             },
             buttons: buttonRecord[linkShare.kakaoButton],
