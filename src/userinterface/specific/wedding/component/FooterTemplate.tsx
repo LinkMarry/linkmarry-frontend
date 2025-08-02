@@ -26,7 +26,7 @@ function FooterTemplate(
     }: FooterTemplateProps
 ) {
     const shareToKakao = useCallback(() => {
-        const {Kakao: {Link}} = window as any;
+        const {Kakao: {Share}} = window as any;
         const weddingUrl = getWeddingUrl(url);
         const rsvpWeddingUrl = (() => {
             const url = new URL(weddingUrl);
@@ -75,7 +75,7 @@ function FooterTemplate(
                 }
             ]
         }
-        Link.sendDefault({
+        Share.sendDefault({
             objectType: 'feed',
             content: {
                 title: linkShare.kakaoTitle,
