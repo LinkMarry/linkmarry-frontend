@@ -51,6 +51,7 @@ function CreateRsvpDialog(
             guestCnt: guestCnt,
             guestComment: guestComment,
         });
+        alert('참석 의사를 전달했습니다.');
         dismiss();
     }
 
