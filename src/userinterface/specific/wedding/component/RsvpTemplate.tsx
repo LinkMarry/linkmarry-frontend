@@ -96,7 +96,7 @@ function RsvpTemplate(
                                 `}>
                                     <Column $gap={12} $alignItems={'center'}>
                                         <span>{format(date, 'yyyy년 M월 d일')}</span>
-                                        <span>{format(date, 'EEEE a h시', {locale: ko})}</span>
+                                        <span>{format(date, 'EEEE a h시 m분', {locale: ko})}</span>
                                     </Column>
                                 </Text>
                             )}
