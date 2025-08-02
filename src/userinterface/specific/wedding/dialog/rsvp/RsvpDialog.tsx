@@ -68,7 +68,7 @@ function RsvpDialog(
                         <Column $alignItems={'center'}>
                             <span>{first.korean} {first.name} & {second.korean} {second.name}</span>
                             {isValidDate && (
-                                <span>{format(date, 'yyyy년 M월 d일 EEEE a h시', {locale: ko})}</span>
+                                <span>{format(date, 'yyyy년 M월 d일 EEEE a h시 m분', {locale: ko})}</span>
                             )}
                             <span>{weddingPlace.placeName} ({weddingPlace.floorHall})</span>
                         </Column>
