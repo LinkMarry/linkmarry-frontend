@@ -78,7 +78,7 @@ function FooterTemplate(
         Share.sendDefault({
             objectType: 'feed',
             content: {
-                title: linkShare.kakaoTitle,
+                title: linkShare.kakaoTitle ?? ' ', // empty string 기입 시 에러 발생하여 띄어쓰기 값을 넣어 처리함
                 description: linkShare.kakaoContent,
                 imageUrl: linkShare.kakaoImgUrl,
                 link: {
