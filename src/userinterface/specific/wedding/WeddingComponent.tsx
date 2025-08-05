@@ -52,18 +52,23 @@ function WeddingComponent(
     const autoplay = wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate;
     const audioRef = useRef<HTMLAudioElement>(null);
     const autoplayUnlockRef = useRef<HTMLDivElement>(null)
-    const [showAutoplayUnlockElement, setShowAutoplayUnlockElement] = useState(true);
+    const [showAutoplayUnlockElement, setShowAutoplayUnlockElement] = useState(mode !== 'preview');
     useEffect(() => {
         const autoplayUnlockElement = autoplayUnlockRef.current;
+
         if (!autoplayUnlockElement || !autoplay) return;
 
         const unlock = () => {
+
             const context = new window.AudioContext(); // 미리 생성하지 말고 제스처 이벤트 안에서 생성하는 것도 방법
             context.resume()
                 .then(() => {
+                    const audioElement = audioRef.current;
+
                     console.log('AudioContext resumed by user gesture');
                     setShowAutoplayUnlockElement(false);
-                    audioRef.current?.play();
+
+                    audioElement?.play().catch(console.error);
 
                     window.removeEventListener('click', unlock);
                     window.removeEventListener('keydown', unlock);
