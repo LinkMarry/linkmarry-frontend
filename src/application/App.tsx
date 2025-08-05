@@ -14,8 +14,10 @@ if (config.env !== 'development') {
 function App() {
     useEffect(() => {
         const {Kakao} = window as any;
-        if (!Kakao?.isInitialized()) {
-            Kakao?.init(config.kakao.javascriptKey);
+        if (Kakao && !Kakao.isInitialized()) {
+            Kakao.cleanup();
+            Kakao.Share.cleanup();
+            Kakao.init(config.kakao.javascriptKey);
         }
     }, []);
 
