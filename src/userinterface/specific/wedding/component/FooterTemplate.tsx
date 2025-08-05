@@ -82,8 +82,8 @@ function FooterTemplate(
                 description: linkShare.kakaoContent,
                 imageUrl: linkShare.kakaoImgUrl,
                 link: {
-                    mobileWebUrl: 'https://linkmarry-web-git-main-hhhello0507s-projects.vercel.app',
-                    webUrl: 'https://linkmarry-web-git-main-hhhello0507s-projects.vercel.app',
+                    mobileWebUrl: 'https://linkmarry-web.vercel.app',
+                    webUrl: 'https://linkmarry-web.vercel.app',
                     // mobileWebUrl: 'https://www.linkmarry.com/',
                     // webUrl: 'https://www.linkmarry.com/',
                     // mobileWebUrl: window.location.origin,
