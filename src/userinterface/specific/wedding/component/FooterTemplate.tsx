@@ -82,8 +82,8 @@ function FooterTemplate(
                 description: linkShare.kakaoContent,
                 imageUrl: linkShare.kakaoImgUrl,
                 link: {
-                    mobileWebUrl: 'https://www.linkmarry.com',
-                    webUrl: 'https://www.linkmarry.com',
+                    mobileWebUrl: 'https://www.linkmarry.com/',
+                    webUrl: 'https://www.linkmarry.com/',
                     // mobileWebUrl: window.location.origin,
                     // webUrl: window.location.origin
                 }
