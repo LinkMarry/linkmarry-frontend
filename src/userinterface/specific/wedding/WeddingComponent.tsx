@@ -1,4 +1,4 @@
-import React, {ReactNode, RefObject, useRef, useState} from 'react';
+import React, {ReactNode, RefObject, useEffect, useRef, useState} from 'react';
 import Wedding from "@src/infrastructure/network/value/Wedding";
 import MoneyInfoTemplate from "@src/userinterface/specific/wedding/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/userinterface/specific/wedding/component/FooterTemplate";
@@ -20,7 +20,6 @@ import WaterMarkSheet from "@src/userinterface/specific/wedding/component/WaterM
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import {implementText} from "@src/userinterface/foundation/text/TextProperties";
-import useAudio from "@src/hook/useAudio";
 import Position from "@src/infrastructure/network/value/Position";
 import {useCookies} from "react-cookie";
 import {useSearchParams} from "react-router-dom";
@@ -50,7 +49,47 @@ function WeddingComponent(
         return cookies[cookieKey] === undefined
     })());
 
-    const {ref} = useAudio(wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate);
+    const autoplay = wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate;
+    const audioRef = useRef<HTMLAudioElement>(null);
+    const autoplayUnlockRef = useRef<HTMLDivElement>(null)
+    const [showAutoplayUnlockElement, setShowAutoplayUnlockElement] = useState(true);
+    useEffect(() => {
+        const autoplayUnlockElement = autoplayUnlockRef.current;
+        if (!autoplayUnlockElement || !autoplay) return;
+
+        const unlock = () => {
+            const context = new window.AudioContext(); // 미리 생성하지 말고 제스처 이벤트 안에서 생성하는 것도 방법
+            context.resume()
+                .then(() => {
+                    console.log('AudioContext resumed by user gesture');
+                    setShowAutoplayUnlockElement(false);
+                    audioRef.current?.play();
+
+                    window.removeEventListener('click', unlock);
+                    window.removeEventListener('keydown', unlock);
+                    autoplayUnlockElement.removeEventListener('touchstart', unlock);
+                    autoplayUnlockElement.removeEventListener('touchend', unlock);
+                })
+                .catch((err) => {
+                    console.error('Failed to resume AudioContext:', err);
+                });
+        };
+
+        // 여러 제스처에 이벤트 등록
+        window.addEventListener('click', unlock);
+        window.addEventListener('keydown', unlock);
+        autoplayUnlockElement.addEventListener('touchstart', unlock);
+        autoplayUnlockElement.addEventListener('touchend', unlock);
+
+        // 클린업
+        return () => {
+            window.removeEventListener('click', unlock);
+            window.removeEventListener('keydown', unlock);
+            autoplayUnlockElement.removeEventListener('touchstart', unlock);
+            autoplayUnlockElement.removeEventListener('touchend', unlock);
+        };
+    }, [autoplay]);
+
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(rsvp);
     const rootRef = useRef<HTMLDivElement>(null);
 
@@ -70,8 +109,20 @@ function WeddingComponent(
                 })};
             }
         `}>
+            {showAutoplayUnlockElement && (
+                <div className={'override-font'} ref={autoplayUnlockRef} style={{
+                    position: 'fixed',
+                    background: 'transparent',
+                    width: '100vw',
+                    height: '100vh',
+                    left: 0,
+                    top: 0,
+                    zIndex: 9999,
+                }}></div>
+            )}
             <audio
-                ref={ref}
+                className={'override-font'}
+                ref={audioRef}
                 src={wedding.backgroundMusic.backgroundMusicUrl}
                 loop={true}
                 style={{display: 'none'}}

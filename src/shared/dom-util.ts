@@ -12,8 +12,7 @@ export function increaseFontSize(ref: RefObject<HTMLElement>, increment: number)
             const computedStyle = window.getComputedStyle(htmlElement);
             const currentFontSize = parseFloat(computedStyle.fontSize);
 
-            // 이미 증가한 요소인지 확인 (커스텀 데이터 속성 사용)
-            if (!htmlElement.dataset.originalFontSize) {
+            if (!htmlElement.dataset.originalFontSize && !htmlElement.classList.contains('override-font')) {
                 htmlElement.dataset.originalFontSize = `${currentFontSize}`; // 원래 크기 저장
             }
         });
