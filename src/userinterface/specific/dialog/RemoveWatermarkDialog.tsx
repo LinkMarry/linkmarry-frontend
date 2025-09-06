@@ -27,8 +27,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
 
     const removeWatermark = async () => {
         try {
-            const clearedPhone = phone.replace(/[^0-9]/g, '');
-            await naverApi.order(clearedPhone);
+            await naverApi.order(phone);
         } catch (error) {
             console.log(error);
             return;
@@ -105,7 +104,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                     </Column>
                 </Column>
                 <Column $alignItems={'stretch'} $gap={16}>
-                    <Button text={'워터마크 제거'} onClick={removeWatermark}/>
+                    <Button text={'워터마크 제거'} onClick={removeWatermark} enabled={phone.length === 13}/>
                     <Text type={'caption2'} ui={css`
                         color: var(--g-500);
                     `}>
