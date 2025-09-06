@@ -41,7 +41,15 @@ function FooterTemplate(
                 webUrl: string;
             };
         }[]> = {
-            [KakaoButton.NONE]: [],
+            [KakaoButton.NONE]: [
+                {
+                    title: '모바일청첩장',
+                    link: {
+                        mobileWebUrl: weddingUrl,
+                        webUrl: weddingUrl
+                    }
+                }
+            ],
             [KakaoButton.PLACE]: [
                 {
                     title: '모바일청첩장',
