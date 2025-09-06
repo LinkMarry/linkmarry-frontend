@@ -80,7 +80,7 @@ function FooterTemplate(
             content: {
                 title: linkShare.kakaoTitle || ' ', // empty string 기입 시 에러 발생하여 띄어쓰기 값을 넣어 처리함
                 description: linkShare.kakaoContent,
-                imageUrl: linkShare.kakaoImgUrl,
+                imageUrl: linkShare.kakaoImgUrl || `${window.location.origin}/ogimage.png`,
                 link: {
                     mobileWebUrl: window.location.href,
                     webUrl: window.location.href

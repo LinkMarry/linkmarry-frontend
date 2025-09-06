@@ -15,20 +15,20 @@ interface Props {
 const SharingLink = ({title, button, background, Style}: Props) => {
     return (
         <Column $alignItems={'stretch'} $justifyContent={'flex-end'} $ui={css`
+            display: flex;
+            flex-direction: column;
             border-radius: 8px;
+            overflow: hidden;
             width: 300px;
-            ${background ? css`
-                background: url(${background});
-            ` : css`
-                background: var(--g-100);
-            `};
-            background-size: cover;
+            background: var(--g-100);
+
             ${Style ? css`
                 min-height: 297px;
             ` : css`
                 min-height: 363px;
             `};
         `}>
+            <img src={background} alt={''} style={{flex: 1, objectFit: 'cover'}}/>
             <Column $gap={12} $alignItems={'stretch'} $ui={css`
                 padding: 12px 12px 16px 12px;
                 background: var(--g-50);

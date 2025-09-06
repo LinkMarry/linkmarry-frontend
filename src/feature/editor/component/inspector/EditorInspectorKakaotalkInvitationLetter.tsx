@@ -73,7 +73,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                 <SharingLink
                     title={linkShare.kakaoTitle}
                     button={linkShare.kakaoButton}
-                    background={linkShare.kakaoImgUrl}
+                    background={linkShare.kakaoImgUrl || `${window.location.origin}/ogimage.png`}
                     Style={linkShare.kakaoStyle}
                 />
             </Column>
