@@ -33,37 +33,37 @@ const EditorInspectorVideo = (
                     draft.video.videoTitle = event.target.value;
                 })}/>
             </Column>
-            <Column $alignItems={'stretch'} $gap={12}>
-                <Text type={'p3'} bold={true}>동영상 첨부</Text>
-                <SegmentedButton
-                    items={videoFileTypeList.map(i => getKoreanByVideoFileType(i))}
-                    selectedTab={videoFileTypeList.indexOf(video.videoFileType)}
-                    onChange={tab => update(draft => {
-                        draft.video.videoFileType = videoFileTypeList[tab];
-                    })}
-                />
-            </Column>
-            {video.videoFileType ? (
-                <Column $alignItems={'stretch'} $gap={12}>
-                    <Text type={'p3'} bold={true}>파일로 첨부</Text>
-                    <FileUploadBox
-                        id={'EditorInspectorVideo-videoUrl'}
-                        value={video.videoFileUrl}
-                        label={video.videoName}
-                        onChange={newValue => update(draft => {
-                            draft.video.videoFileUrl = newValue.url;
-                            draft.video.videoName = newValue.name;
-                        })}
-                    />
-                </Column>
-            ) : (
+            {/*<Column $alignItems={'stretch'} $gap={12}>*/}
+            {/*    <Text type={'p3'} bold={true}>동영상 첨부</Text>*/}
+            {/*    <SegmentedButton*/}
+            {/*        items={videoFileTypeList.map(i => getKoreanByVideoFileType(i))}*/}
+            {/*        selectedTab={videoFileTypeList.indexOf(video.videoFileType)}*/}
+            {/*        onChange={tab => update(draft => {*/}
+            {/*            draft.video.videoFileType = videoFileTypeList[tab];*/}
+            {/*        })}*/}
+            {/*    />*/}
+            {/*</Column>*/}
+            {/*{video.videoFileType ? (*/}
+            {/*    <Column $alignItems={'stretch'} $gap={12}>*/}
+            {/*        <Text type={'p3'} bold={true}>파일로 첨부</Text>*/}
+            {/*        <FileUploadBox*/}
+            {/*            id={'EditorInspectorVideo-videoUrl'}*/}
+            {/*            value={video.videoFileUrl}*/}
+            {/*            label={video.videoName}*/}
+            {/*            onChange={newValue => update(draft => {*/}
+            {/*                draft.video.videoFileUrl = newValue.url;*/}
+            {/*                draft.video.videoName = newValue.name;*/}
+            {/*            })}*/}
+            {/*        />*/}
+            {/*    </Column>*/}
+            {/*) : (*/}
                 <Column $alignItems={'stretch'} $gap={12}>
                     <Text type={'p3'} bold={true}>URL로 첨부</Text>
                     <Input hasLabel={false} value={video.videoUrl} onChange={event => update(draft => {
                         draft.video.videoUrl = event.target.value;
                     })}/>
                 </Column>
-            )}
+            {/*)}*/}
             <Divider/>
             <Text type={'p3'} ui={css`
                 color: var(--g-400);

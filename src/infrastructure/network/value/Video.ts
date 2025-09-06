@@ -34,7 +34,7 @@ export const defaultVideo: Video = {
     videoFileUrl: '',
     videoName: '',
     videoActivate: true,
-    videoFileType: true
+    videoFileType: false
 };
 
 export const dummyVideo: Video = {
