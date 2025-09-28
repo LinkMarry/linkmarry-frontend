@@ -53,17 +53,19 @@ function WeddingDayTemplate(
                     color: var(--g-600);
                 `}>WEDDING DAY</Text>
             </FadeIn>
-            {isValidDate && (
-                <Text size={16} ui={css`
-                    color: var(--g-900);
-                    white-space: pre-wrap;
-                    text-align: center;
-                `}>
-                    {format(date, "yyyy년 M월 d일 EEEE", {locale: ko})}
-                    {'\n'}
-                    {format(date, "a h시 m분", {locale: ko})}
-                </Text>
-            )}
+            <FadeIn>
+                {isValidDate && (
+                    <Text size={16} ui={css`
+                        color: var(--g-900);
+                        white-space: pre-wrap;
+                        text-align: center;
+                    `}>
+                        {format(date, "yyyy년 M월 d일 EEEE", {locale: ko})}
+                        {'\n'}
+                        {format(date, "a h시 m분", {locale: ko})}
+                    </Text>
+                )}
+            </FadeIn>
             {weddingSchedule.calendar && (
                 <Column $gap={25} $alignSelf={'stretch'} $alignItems={'stretch'}>
                     <FadeIn>
