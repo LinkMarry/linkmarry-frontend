@@ -90,8 +90,8 @@ function FooterTemplate(
                 description: linkShare.kakaoContent,
                 imageUrl: linkShare.kakaoImgUrl || `${window.location.origin}/ogimage.png`,
                 link: {
-                    mobileWebUrl: window.location.href,
-                    webUrl: window.location.href
+                    mobileWebUrl: weddingUrl,
+                    webUrl: weddingUrl
                 }
             },
             buttons: buttonRecord[linkShare.kakaoButton],
