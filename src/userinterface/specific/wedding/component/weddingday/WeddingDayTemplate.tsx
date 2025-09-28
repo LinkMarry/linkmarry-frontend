@@ -3,10 +3,10 @@ import Text from "@src/userinterface/component/Text";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Divider from "@src/userinterface/component/Divider";
 import {css} from "styled-components";
-import WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import WeddingSchedule, {getDetails} from "@src/infrastructure/network/value/WeddingSchedule";
 import BaseInfo from "@src/infrastructure/network/value/BaseInfo";
 import DDay from "@src/userinterface/specific/wedding/component/weddingday/DDay";
-import {format, parse} from "date-fns";
+import {format} from "date-fns";
 import View from "@src/userinterface/core/View";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import {ko} from "date-fns/locale";
@@ -22,9 +22,7 @@ function WeddingDayTemplate(
         weddingSchedule,
     }: Props
 ) {
-    const weddingDate = weddingSchedule.weddingDate;
-    const date = parse(weddingDate, 'yyyy-MM-dd', new Date());
-    const isValidDate = !isNaN(date.getTime());
+    const {date, isValidDate} = getDetails(weddingSchedule);
     const calendar = isValidDate ? getCalendar(date) : null;
 
     if (!weddingSchedule.calendar && !weddingSchedule.dday) {
