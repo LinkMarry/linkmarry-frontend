@@ -22,14 +22,15 @@ function WeddingStyleCell({weddingDesign}: Props) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             $ui={css`
+                min-width: 0;
+                transition: 0.2s transform;
+                
                 &:hover {
                     transform: translateY(-8px);
                 }
-
-                transition: 0.2s transform;
             `}
         >
-            <View $ui={css`
+            <Column $alignItems={'stretch'} $flex={1} $ui={css`
                 border-radius: 8px;
                 overflow: hidden;
                 position: relative;
@@ -38,11 +39,11 @@ function WeddingStyleCell({weddingDesign}: Props) {
                 `};
                 transition: 0.2s box-shadow;
             `}>
-                <View $ui={css`
+                <View as={'img'} src={weddingDesign.img} $ui={css`
                     aspect-ratio: 9 / 16;
-                    background-image: url("${weddingDesign.img}");
-                    background-size: cover;
-                    background-position: center;
+                    object-fit: cover;
+                    //background-size: cover;
+                    //background-position: center;
                 `}/>
                 {isHovered && (
                     <Column $alignItems={'stretch'} $gap={4} $ui={css`
@@ -71,7 +72,7 @@ function WeddingStyleCell({weddingDesign}: Props) {
                         }}/>
                     </Column>
                 )}
-            </View>
+            </Column>
             <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-900);
             `}>{weddingDesign.name}</Text>
