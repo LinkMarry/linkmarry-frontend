@@ -22,7 +22,6 @@ function KakaoMapDialog(
         dismiss
     }: KakaoMapDialogProps
 ) {
-    const {kakao} = window as any;
     const kakaoMap = useRef<HTMLDivElement>(null);
     const [places, setPlaces] = useState<any[]>([]);
     const [selectedPlace, setSelectedPlace] = useState<any>();
@@ -30,6 +29,8 @@ function KakaoMapDialog(
     const [map, setMap] = useState<any>();
 
     const keywordSearch = useCallback((keyword: string, option?: any) => {
+        const {kakao} = window as any;
+
         const ps = new kakao.maps.services.Places();
 
         ps.keywordSearch(keyword, (result: any, status: any) => {
@@ -45,50 +46,55 @@ function KakaoMapDialog(
         }, option);
     }, [map]);
 
-    useEffect(() => {
+    const searchAddress = useCallback((coords: any) => {
+        const {kakao} = window as any;
+        if (!kakao || !kakao.maps) return;
 
-        if (!kakao || !kakao.maps) {
-            return;
-        }
+        const geocoder = new kakao.maps.services.Geocoder();
 
-        const createdMap = new kakao.maps.Map(kakaoMap.current, {
-            center: new kakao.maps.LatLng(37.5665851, 126.9782038),
-            level: 5, // 확대 레벨
-        });
-        setMap(createdMap);
+        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
+            if (status !== kakao.maps.services.Status.OK) return;
 
-
-        // 주소 검색 함수
-        const searchAddress = (coords: any) => {
-            const geocoder = new kakao.maps.services.Geocoder();
-
-            geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
-                if (status !== kakao.maps.services.Status.OK) return;
-
-                const keyword = result[0].address.address_name;
-                keywordSearch(keyword, {
-                    location: coords,
-                    radius: 50
-                });
+            const keyword = result[0].address.address_name;
+            keywordSearch(keyword, {
+                location: coords,
+                radius: 50
             });
-        };
+        });
+    }, [keywordSearch]);
+
+    useEffect(() => {
+        const {kakao} = window as any;
+        if (!kakao || !kakao.maps || !map) return;
+
         // Marker 설정
         const marker = new kakao.maps.Marker({
-            position: createdMap.getCenter(), // 초기 마커 위치 (지도의 중앙)
-            map: createdMap, // 지도 객체와 연결
+            position: map.getCenter(), // 초기 마커 위치 (지도의 중앙)
+            map, // 지도 객체와 연결
         });
 
         // 지도가 움직일 때 마커의 위치를 중앙으로 유지
-        kakao.maps.event.addListener(createdMap, 'center_changed', () => {
-            const center = createdMap.getCenter(); // 지도 중심 좌표 가져오기
+        kakao.maps.event.addListener(map, 'center_changed', () => {
+            const center = map.getCenter(); // 지도 중심 좌표 가져오기
             marker.setPosition(center); // 마커 위치를 지도 중심으로 업데이트
         });
 
         // 움직임 멈췄을 때 중심 좌표로 주소 및 장소 검색
-        kakao.maps.event.addListener(createdMap, 'dragend', () => {
-            const center = createdMap.getCenter();
+        kakao.maps.event.addListener(map, 'dragend', () => {
+            const center = map.getCenter();
             searchAddress(center); // 주소 검색
         });
+    }, [map, searchAddress]);
+
+    useEffect(() => {
+        const {kakao} = window as any;
+        if (!kakao || !kakao.maps) return;
+
+        const map = new kakao.maps.Map(kakaoMap.current, {
+            center: new kakao.maps.LatLng(37.5665851, 126.9782038),
+            level: 5, // 확대 레벨
+        });
+        setMap(map);
     }, []);
 
     return (
