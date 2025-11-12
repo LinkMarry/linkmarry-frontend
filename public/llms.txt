@@ -1,0 +1,27 @@
+# LinkMarry llms.txt
+**Purpose:** Guide LLMs to understand key content of the mobile wedding card platform.
+
+## Site
+**Name:** LinkMarry
+**URL:** https://www.linkmarry.com/
+**Description:** Mobile wedding invitation platform, enabling couples to create and share wedding invitations digitally.
+
+## Pages
+### Home
+**URL:** https://www.linkmarry.com/
+**Description:** Landing page with featured templates and services.
+**Content Type:** main
+
+### Sample
+**URL:** https://www.linkmarry.com/sample
+**Description:** Available wedding invitation sample for customization.
+**Content Type:** sample
+
+### Create Invitation
+**URL:** https://www.linkmarry.com/editor
+**Description:** Tool for creating and customizing a mobile wedding invitation.
+**Content Type:** interactive
+
+## Policies
+- Training: not allowed
+- Usage: LLMs may access for search and recommendation purposes only
