@@ -1,24 +1,18 @@
-import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-// import FileUploadBox from "@src/userinterface/specific/FileUploadBox";
-// import SegmentedButton from "@src/userinterface/component/SegmentedButton";
-// import {getKoreanByVideoFileType, videoFileTypeList} from "@src/infrastructure/network/value/Video";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import Divider from "@src/userinterface/component/Divider";
 import {css} from "styled-components";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorVideo = (
     {
         value: {video},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'video'} toggle={{

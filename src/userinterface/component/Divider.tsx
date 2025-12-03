@@ -1,5 +1,5 @@
-import React, {ComponentPropsWithoutRef} from 'react';
-import {css, RuleSet} from "styled-components";
+import {type ComponentPropsWithoutRef} from 'react';
+import {css, type RuleSet} from "styled-components";
 import View from "@src/userinterface/core/View";
 
 export type DividerSize = 'large' | 'medium' | 'small';

@@ -1,6 +1,6 @@
 import fileApi from "@src/infrastructure/network/api/file-api";
 import {useCallback} from "react";
-import Upload from "@src/infrastructure/network/value/Upload";
+import type Upload from "@src/infrastructure/network/value/Upload";
 
 export default function useUpload() {
     const uploadFile = useCallback(async (file: File): Promise<Upload> => {

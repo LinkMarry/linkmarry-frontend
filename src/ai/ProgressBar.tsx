@@ -1,6 +1,5 @@
-import React from 'react';
 import {Row} from "@src/userinterface/core/FlexLayout";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import View from "@src/userinterface/core/View";
 import Text from "@src/userinterface/component/Text";
 

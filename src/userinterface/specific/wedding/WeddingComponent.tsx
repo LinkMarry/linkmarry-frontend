@@ -1,5 +1,5 @@
-import React, {ReactNode, RefObject, useEffect, useRef, useState} from 'react';
-import Wedding from "@src/infrastructure/network/value/Wedding";
+import {type ReactNode, type RefObject, useEffect, useRef, useState} from 'react';
+import type Wedding from "@src/infrastructure/network/value/Wedding";
 import MoneyInfoTemplate from "@src/userinterface/specific/wedding/component/MoneyInfoTemplate";
 import FooterTemplate from "@src/userinterface/specific/wedding/component/FooterTemplate";
 import {weddingDesignFontSizeMap} from "@src/infrastructure/network/value/WeddingDesign";
@@ -20,7 +20,7 @@ import WaterMarkSheet from "@src/userinterface/specific/wedding/component/WaterM
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import {implementText} from "@src/userinterface/foundation/text/TextProperties";
-import Position from "@src/infrastructure/network/value/Position";
+import {type Position} from "@src/infrastructure/network/value/Position";
 import {useCookies} from "react-cookie";
 import {useSearchParams} from "react-router-dom";
 
@@ -34,7 +34,6 @@ interface WeddingComponentProps {
 function WeddingComponent(
     {
         wedding,
-        onChangeWedding,
         mode = 'default',
         onRefresh
     }: WeddingComponentProps
@@ -178,7 +177,7 @@ function WeddingComponent(
 const ContentBody = ({wedding, onRefresh, rootRef, onClickCreateRsvp}: {
     wedding: Wedding;
     onRefresh?: () => void;
-    rootRef: RefObject<HTMLDivElement>;
+    rootRef: RefObject<HTMLDivElement | null>;
     onClickCreateRsvp: () => void;
 }) => {
     const {weddingDesignColor} = wedding.weddingDesign;

@@ -1,5 +1,5 @@
-import {ResponseData} from "@src/infrastructure/network/value/Response";
-import Music from "@src/infrastructure/network/value/Music";
+import {type ResponseData} from "@src/infrastructure/network/value/Response";
+import type Music from "@src/infrastructure/network/value/Music";
 import api from "@src/infrastructure/network/api/foundation/api";
 
 const PATH = 'music';

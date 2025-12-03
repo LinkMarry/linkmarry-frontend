@@ -1,4 +1,4 @@
-type MyPageIndexSidebarType =
+export type MyPageIndexSidebarType =
     'wedding' |
     'info' |
     'logout';
@@ -8,5 +8,3 @@ export const myPageIndexSidebarTypeList: MyPageIndexSidebarType[] = [
     'info',
     'logout'
 ];
-
-export default MyPageIndexSidebarType;

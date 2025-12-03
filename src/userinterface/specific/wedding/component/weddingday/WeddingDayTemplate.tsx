@@ -1,10 +1,10 @@
-import React from 'react';
 import Text from "@src/userinterface/component/Text";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Divider from "@src/userinterface/component/Divider";
 import {css} from "styled-components";
-import WeddingSchedule, {getDetails} from "@src/infrastructure/network/value/WeddingSchedule";
-import BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import {getDetails} from "@src/infrastructure/network/value/WeddingSchedule";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
 import DDay from "@src/userinterface/specific/wedding/component/weddingday/DDay";
 import {format} from "date-fns";
 import View from "@src/userinterface/core/View";

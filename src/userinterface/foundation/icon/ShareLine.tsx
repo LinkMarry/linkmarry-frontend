@@ -1,4 +1,4 @@
-import {SVGProps} from "react";
+import {type SVGProps} from "react";
 
 export default function ShareLine(props: SVGProps<SVGSVGElement>) {
     return (

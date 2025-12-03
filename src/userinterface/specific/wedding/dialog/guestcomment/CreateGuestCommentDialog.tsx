@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import {useRef} from 'react';
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
@@ -7,7 +7,8 @@ import Button from "@src/userinterface/component/Button";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Input from "@src/userinterface/component/Input";
 import Textarea from "@src/userinterface/component/Textarea";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface CreateGuestCommentDialogProps {
     url: string;
@@ -52,7 +53,7 @@ function CreateGuestCommentDialog(
             alert('방명록 작성 완료');
             onRefresh();
             dismiss();
-        } catch (error) {
+        } catch {
             alert('방명록 작성 실패');
         }
     };
@@ -66,9 +67,9 @@ function CreateGuestCommentDialog(
                 background: white;
                 border-radius: 12px;
                 position: relative;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
             `}>
-                <Icon size={20} iconType={IconType.CrossLine} onClick={dismiss} ui={css`
+                <Icon size={20} iconType={'CrossLine'} onClick={dismiss} ui={css`
                     fill: var(--g-300);
                     position: absolute;
                     top: 16px;

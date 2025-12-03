@@ -1,7 +1,7 @@
-import {ResponseData, ResponseVoid} from "@src/infrastructure/network/value/Response";
+import {type ResponseData, type ResponseVoid} from "@src/infrastructure/network/value/Response";
 import api from "@src/infrastructure/network/api/foundation/api";
-import NotificationRequest from "@src/infrastructure/network/value/request/NotificationRequest";
-import Notification from "@src/infrastructure/network/value/Notification";
+import type NotificationRequest from "@src/infrastructure/network/value/request/NotificationRequest";
+import type Notification from "@src/infrastructure/network/value/Notification";
 
 const PATH = 'notification';
 

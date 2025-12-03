@@ -1,7 +1,7 @@
-import React, {ComponentPropsWithoutRef} from "react";
+import {type ComponentPropsWithoutRef} from "react";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
 import Text from "@src/userinterface/component/Text";
 
 function MyPageSidebarItem({icon, text, selected = false, ...props}: {

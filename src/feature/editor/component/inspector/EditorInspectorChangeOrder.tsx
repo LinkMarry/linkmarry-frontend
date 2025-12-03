@@ -1,24 +1,23 @@
-import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
+import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
+import {DragDropContext, Draggable, Droppable, type DropResult} from "react-beautiful-dnd";
 import View from "@src/userinterface/core/View";
 import {reorderedItems} from "@src/shared/dnd-util";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import Position, {positionMap} from "@src/infrastructure/network/value/Position";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import {positionMap} from "@src/infrastructure/network/value/Position";
+import {type Position} from "@src/infrastructure/network/value/Position";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorChangeOrder = (
     {
         value: {position},
         update,
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     const onDragEnd = (result: DropResult) => {
         const items = reorderedItems(result, position);
@@ -79,7 +78,7 @@ const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDiv
             <View $ui={css`
                 display: flex;
             `}>
-                <Icon iconType={IconType.Hamburger} width={24} height={24} ui={css`
+                <Icon iconType={'Hamburger'} width={24} height={24} ui={css`
                     fill: var(--g-600);
                 `}/>
             </View>

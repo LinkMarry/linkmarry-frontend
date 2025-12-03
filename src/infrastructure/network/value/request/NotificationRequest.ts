@@ -1,4 +1,4 @@
-import Tag from "@src/infrastructure/network/enumeration/Tag";
+import {type Tag} from "@src/infrastructure/network/enumeration/Tag";
 
 export default interface NotificationRequest {
     // 공지 태그

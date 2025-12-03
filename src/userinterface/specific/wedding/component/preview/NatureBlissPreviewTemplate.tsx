@@ -1,4 +1,4 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import {css} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";

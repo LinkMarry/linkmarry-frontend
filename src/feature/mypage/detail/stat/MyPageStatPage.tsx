@@ -1,13 +1,11 @@
-import React from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import Divider from "@src/userinterface/component/Divider";
 import Spacer from "@src/userinterface/component/Spacer";
 import Button from "@src/userinterface/component/Button";
-import {IconType} from "@src/userinterface/foundation/Icon";
 import useResponsive from "@src/hook/useResponsive";
-import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
+import type WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
 import Loading from "@src/userinterface/specific/Loading";
 import View from "@src/userinterface/core/View";
 import {getRsvpText} from "@src/infrastructure/network/value/RsvpInfo";
@@ -57,7 +55,7 @@ const MyPageStatPage = () => {
                         <Spacer/>
                         {wedding?.rsvp.rsvpActivate && (
                             <Button
-                                text={'Excel 파일 다운받기'} trailingIcon={IconType.StopArrowDown} size={'small'}
+                                text={'Excel 파일 다운받기'} trailingIcon={'StopArrowDown'} size={'small'}
                                 buttonType={'outlined'}
                                 onClick={() => {
                                     if (rsvpInfoList && wedding) {

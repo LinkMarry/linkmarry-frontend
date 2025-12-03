@@ -1,4 +1,3 @@
-import React from 'react';
 import MainWrapper from "@src/userinterface/pattern/header/MainWrapper";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
@@ -9,7 +8,7 @@ import WeddingDesignPresetCell from "@src/userinterface/specific/WeddingStyleCel
 import TabBar from "@src/userinterface/component/TabBar";
 import Loading from "@src/userinterface/specific/Loading";
 import useWeddingDesigns from "@src/hook/useWeddingDesigns";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
 function HomePage() {
     const {deviceSize} = useResponsive();

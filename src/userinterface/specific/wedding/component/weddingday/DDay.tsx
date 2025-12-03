@@ -1,13 +1,13 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import styled, {css} from "styled-components";
-import WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 
-export type DDayStyle = 'style1' | 'style2';
 type RemainTime = {
     days: number;
     hours: number;
@@ -78,7 +78,7 @@ function DDay(
                 <Row $gap={4}>
                     <Text size={14} weight={300}>{first.name}</Text>
                     <Icon
-                        iconType={IconType.HeartFill}
+                        iconType={'HeartFill'}
                         size={16}
                         ui={css`
                             fill: black;

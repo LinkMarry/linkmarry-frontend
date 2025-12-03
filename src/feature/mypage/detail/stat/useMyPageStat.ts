@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import Wedding from "@src/infrastructure/network/value/Wedding";
-import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
-import RsvpInfo from "@src/infrastructure/network/value/RsvpInfo";
+import type Wedding from "@src/infrastructure/network/value/Wedding";
+import type WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
+import type RsvpInfo from "@src/infrastructure/network/value/RsvpInfo";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import {useNavigate, useParams} from "react-router-dom";
 

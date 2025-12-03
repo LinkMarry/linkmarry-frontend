@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {groupedByCategory} from "@src/infrastructure/network/value/GroupedWeddingDesignPresets";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 import weddingDesignApi from "@src/infrastructure/network/api/wedding-design-api";
 
 const useWeddingDesigns = () => {

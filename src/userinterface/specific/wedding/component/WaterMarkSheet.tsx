@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import styled, {css} from "styled-components";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";

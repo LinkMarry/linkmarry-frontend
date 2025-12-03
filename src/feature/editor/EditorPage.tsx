@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import EditorHeader from "@src/feature/editor/component/EditorHeader";
 import {css} from "styled-components";
 import EditorNavigationBar from "@src/feature/editor/component/navigation-bar/EditorNavigationBar";
-import EditorNavigationBarType from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import EditorPreview from "@src/feature/editor/component/EditorPreview";
 import EditorInspector from "@src/feature/editor/component/EditorInspector";
 import useResponsive from "@src/hook/useResponsive";
@@ -14,7 +14,7 @@ import CreateWeddingDialog from "@src/feature/editor/component/dialog/CreateWedd
 import {useNavigate, useSearchParams} from "react-router-dom";
 import RemoveWatermarkDialog from "@src/userinterface/specific/dialog/RemoveWatermarkDialog";
 import weddingDesignApi from "@src/infrastructure/network/api/wedding-design-api";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
 const EditorPage = () => {
     const [searchParams] = useSearchParams();

@@ -1,13 +1,13 @@
-import React, {
-    ComponentPropsWithoutRef,
-    ForwardedRef,
+import {
+    type ComponentPropsWithoutRef,
+    type ForwardedRef,
     forwardRef, useEffect,
     useImperativeHandle,
     useRef,
     useState
 } from 'react';
-import styled, {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import styled, {css, type RuleSet} from "styled-components";
+import Icon from "@src/userinterface/foundation/Icon";
 import Text from "@src/userinterface/component/Text";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import View from "@src/userinterface/core/View";
@@ -91,7 +91,7 @@ function Checkbox(
                     }}
                 />
                 {localChecked && <Icon
-                    iconType={IconType.CheckLine}
+                    iconType={'CheckLine'}
                     size={18}
                     ui={css`
                         fill: white;

@@ -1,4 +1,4 @@
-import WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
+import type WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
 
 export default interface WeddingDashboard {
     // 본인이 생성한 모청

@@ -1,4 +1,3 @@
-import React from 'react';
 import {Outlet} from "react-router-dom";
 import MyPageIndexSidebar from "@src/feature/mypage/index/component/MyPageIndexSidebar";
 import useResponsive from "@src/hook/useResponsive";

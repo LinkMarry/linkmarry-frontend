@@ -1,7 +1,7 @@
 
-import {CSSProperties} from "react";
-import {FontFamily} from "@src/userinterface/foundation/text/TextType";
-import {css, RuleSet} from "styled-components";
+import {type CSSProperties} from "react";
+import {type FontFamily} from "@src/userinterface/foundation/text/TextType";
+import {css, type RuleSet} from "styled-components";
 
 export default interface TextProperties {
     fontFamily?: FontFamily;

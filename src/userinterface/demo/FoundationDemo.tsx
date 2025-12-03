@@ -1,8 +1,5 @@
-import React from 'react';
 import {fontFamilyList, textTypes} from "@src/userinterface/foundation/text/TextType";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
-import {allCasesOfEnum} from "@src/shared/enum-util";
 import View from "@src/userinterface/core/View";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
@@ -42,12 +39,13 @@ function FoundationDemo() {
                 flex-wrap: wrap;
                 width: 256px;
             `}>
-                {allCasesOfEnum(IconType)
-                    .map((icon) => (
-                        <Icon iconType={icon} size={32} ui={css`
-                            fill: gray;
-                        `}/>
-                    ))}
+                {/*TODO*/}
+                {/*{allCasesOfEnum(IconType)*/}
+                {/*    .map((icon) => (*/}
+                {/*        <Icon iconType={icon} size={32} ui={css`*/}
+                {/*            fill: gray;*/}
+                {/*        `}/>*/}
+                {/*    ))}*/}
             </View>
         </Column>
     );

@@ -1,22 +1,19 @@
-import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import FormToggle from "@src/userinterface/component/FormToggle";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import {guestCommentDesignList, guestCommentDesignMap} from "@src/infrastructure/network/enumeration/GuestCommentDesign";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import {GuestCommentDesignList, guestCommentDesignMap} from "@src/infrastructure/network/enumeration/GuestCommentDesign";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorGuestComment = (
     {
         value: {guestComment},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'guestComment'}>
@@ -35,10 +32,10 @@ const EditorInspectorGuestComment = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
-                    items={guestCommentDesignList.map(i => guestCommentDesignMap[i].korean)}
-                    selectedTab={guestCommentDesignList.indexOf(guestComment.guestCommentDesign)}
+                    items={GuestCommentDesignList.map(i => guestCommentDesignMap[i].korean)}
+                    selectedTab={GuestCommentDesignList.indexOf(guestComment.guestCommentDesign)}
                     onChange={tab => update(draft => {
-                        draft.guestComment.guestCommentDesign = guestCommentDesignList[tab];
+                        draft.guestComment.guestCommentDesign = GuestCommentDesignList[tab];
                     })}
                 />
             </Column>

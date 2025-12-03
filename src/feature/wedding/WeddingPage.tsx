@@ -1,4 +1,3 @@
-import React from 'react';
 import {Row} from "@src/userinterface/core/FlexLayout";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";
 import Text from "@src/userinterface/component/Text";

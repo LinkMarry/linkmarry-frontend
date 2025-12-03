@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
-import WeddingDashboard from "@src/infrastructure/network/value/WeddingDashboard";
-import WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
+import type WeddingDashboard from "@src/infrastructure/network/value/WeddingDashboard";
+import type WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 
 const useMyPageWedding = () => {
@@ -22,7 +22,9 @@ const useMyPageWedding = () => {
     }, [clearData]);
 
     useEffect(() => {
-        fetchData().then(() => {});
+        (async () => {
+            await fetchData();
+        })()
     }, [fetchData]);
 
     const removeWedding = useCallback(async () => {

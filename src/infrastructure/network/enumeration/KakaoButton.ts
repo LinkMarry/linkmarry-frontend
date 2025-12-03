@@ -1,24 +1,23 @@
 import {allCasesOfEnum} from "@src/shared/enum-util";
 
-enum KakaoButton {
-    NONE = 'NONE',
-    PLACE = 'PLACE',
-    ATTEND = 'ATTEND',
+const KakaoButtonValues = {
+    NONE: 'NONE',
+    PLACE: 'PLACE',
+    ATTEND: 'ATTEND',
 }
 
-export const kakaoButtonList = allCasesOfEnum(KakaoButton);
+export type KakaoButton = typeof KakaoButtonValues[keyof typeof KakaoButtonValues];
+export const kakaoButtonList = allCasesOfEnum(KakaoButtonValues);
 export const kakaoButtonMap: Record<KakaoButton, {
     korean: string;
 }> = {
-    [KakaoButton.NONE]: {
+    NONE: {
         korean: '설정 안 함'
     },
-    [KakaoButton.PLACE]: {
+    PLACE: {
         korean: '위치 보기'
     },
-    [KakaoButton.ATTEND]: {
+    ATTEND: {
         korean: '참석의사'
     }
 }
-
-export default KakaoButton;

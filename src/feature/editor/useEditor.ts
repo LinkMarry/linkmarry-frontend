@@ -1,10 +1,10 @@
 import {useCallback, useEffect, useState} from "react";
 import {useImmer} from "use-immer";
-import WeddingDto, {makeDefaultWedding, toDTO} from "@src/infrastructure/network/value/WeddingDto";
+import {makeDefaultWedding, toDTO, type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import {useParams} from "react-router-dom";
 import {throttle} from 'lodash';
-import Music from "@src/infrastructure/network/value/Music";
+import type Music from "@src/infrastructure/network/value/Music";
 import musicApi from "@src/infrastructure/network/api/music-api";
 
 function useEditor() {
@@ -22,7 +22,6 @@ function useEditor() {
             await weddingApi.editWedding(updatedWedding);
         } catch (error) {
             console.error(error);
-        } finally {
         }
     }, 3000), []);
 

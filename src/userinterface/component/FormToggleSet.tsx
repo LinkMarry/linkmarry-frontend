@@ -1,5 +1,5 @@
-import React, {Children, isValidElement, ReactElement, ReactNode} from "react";
-import {css, RuleSet} from "styled-components";
+import {Children, isValidElement, type ReactElement, type ReactNode} from "react";
+import {css, type RuleSet} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import FormToggle from "@src/userinterface/component/FormToggle";
 

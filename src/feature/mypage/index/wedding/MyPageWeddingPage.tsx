@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import View from "@src/userinterface/core/View";
 import Divider from "@src/userinterface/component/Divider";
 import Button from "@src/userinterface/component/Button";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
 import Popover from "@src/userinterface/pattern/Popover";
 import useResponsive from "@src/hook/useResponsive";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Loading from "@src/userinterface/specific/Loading";
-import WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
-import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
-import Comment from "@src/infrastructure/network/value/Comment";
+import type WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
+import type WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
+import type Comment from "@src/infrastructure/network/value/Comment";
 import {getTimeAgo} from "@src/shared/date-util";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
@@ -142,7 +142,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                     color: var(--g-500);
                                     word-break: break-all;
                                 `}>{weddingUrl}</Text>
-                                <Icon size={14} iconType={IconType.ExternalLink} ui={css`
+                                <Icon size={14} iconType={'ExternalLink'} ui={css`
                                     fill: var(--g-500);
                                 `}/>
                             </Row>
@@ -171,7 +171,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                     `}
                                     onClick={() => setOpenDetailPopover(true)}
                                 >
-                                    <Icon iconType={IconType.Detail} width={24} height={24} ui={css`
+                                    <Icon iconType={'Detail'} width={24} height={24} ui={css`
                                         fill: var(--g-500);
                                     `}/>
                                 </Column>
@@ -180,14 +180,14 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                         items={[
                                             ...((deviceSize === 'mobile' || deviceSize === 'tablet') ? [
                                                 {
-                                                    icon: IconType.PenLine,
+                                                    icon: 'PenLine' as IconType,
                                                     text: '청첩장 수정',
                                                     onClick: () => {
                                                         navigate(`/editor/${weddingInfo.url}`);
                                                     }
                                                 },
                                                 {
-                                                    icon: IconType.Star,
+                                                    icon: 'Star' as IconType,
                                                     text: '워터마크 제거',
                                                     onClick: () => {
                                                         setShowRemoveWatermarkDialog(true);
@@ -196,20 +196,20 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                                 }
                                             ] : []),
                                             {
-                                                icon: IconType.Stat,
+                                                icon: 'Stat',
                                                 text: '통계 보기',
                                                 onClick: () => {
                                                     navigate(`/mypage/wedding/${weddingInfo.url}`);
                                                 }
                                             },
                                             // {
-                                            //     icon: IconType.Link,
+                                            //     icon: Link,
                                             //     text: '링크 수정',
                                             //     onClick: () => {
                                             //     }
                                             // },
                                             {
-                                                icon: IconType.Trash,
+                                                icon: 'Trash',
                                                 text: '청첩장 삭제',
                                                 type: 'destructive',
                                                 onClick: onRemoveWedding

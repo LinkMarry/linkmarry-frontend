@@ -1,13 +1,13 @@
-import React, {ComponentPropsWithoutRef, useState} from 'react';
+import {type ComponentPropsWithoutRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import {
     backgroundStyle,
-    WeddingDesignColor,
+    type WeddingDesignColor,
     weddingDesignDefaultColorList,
     weddingDesignFontSizeList,
     weddingDesignFontSizeMap, weddingDesignPaperColorList
@@ -15,19 +15,17 @@ import {
 import View from "@src/userinterface/core/View";
 import {css} from "styled-components";
 import Spacer from "@src/userinterface/component/Spacer";
-import {FontFamily, fontFamilyList} from "@src/userinterface/foundation/text/TextType";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import {type FontFamily, fontFamilyList} from "@src/userinterface/foundation/text/TextType";
+import Icon from "@src/userinterface/foundation/Icon";
 import BasePopover from "@src/userinterface/component/BasePopover";
 import {HexColorPicker} from "react-colorful";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorFontAndStyle = (
     {
         value: {weddingDesign},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -192,7 +190,7 @@ const ColorItem = ({color, selected, ...props}: ColorItemProps) => {
             position: relative;
         `} {...props}>
             {selected && (
-                <Icon iconType={IconType.CheckLine} width={20} height={20} ui={css`
+                <Icon iconType={'CheckLine'} width={20} height={20} ui={css`
                     position: absolute;
                     top: 8px;
                     right: 8px;

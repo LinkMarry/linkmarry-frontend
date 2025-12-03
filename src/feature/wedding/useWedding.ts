@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useCallback, useEffect, useState} from "react";
-import Wedding from "@src/infrastructure/network/value/Wedding";
+import type Wedding from "@src/infrastructure/network/value/Wedding";
 import {useCookies} from "react-cookie";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 

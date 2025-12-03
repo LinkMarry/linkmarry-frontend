@@ -1,6 +1,6 @@
-import {FontFamily} from "@src/userinterface/foundation/text/TextType";
-import Opening from "@src/infrastructure/network/enumeration/Opening";
-import {css, RuleSet} from "styled-components";
+import {type FontFamily} from "@src/userinterface/foundation/text/TextType";
+import {type Opening} from "@src/infrastructure/network/enumeration/Opening";
+import {css, type RuleSet} from "styled-components";
 
 export default interface WeddingDesign {
     // 선택한 템플릿 이름
@@ -103,7 +103,7 @@ export const defaultWeddingDesign: WeddingDesign = {
     weddingDesignFont: 'Pretendard',
     weddingDesignFontSize: 'basic',
     titleImgUrl: '',
-    opening: Opening.NONE,
+    opening: 'NONE',
     openingText: "We're getting married!"
 }
 
@@ -116,6 +116,6 @@ export const dummyWeddingDesign: WeddingDesign = {
     weddingDesignFont: 'Pretendard',
     weddingDesignFontSize: 'basic',
     titleImgUrl: 'https://linkmarry.s3.ap-northeast-2.amazonaws.com/a9d10a27-aed7-4de8-b6c5-51d4e01b32c5-GettyImages-jv12586038.jpg.jpg',
-    opening: Opening.LETTERING,
+    opening: 'LETTERING',
     openingText: "We're getting married!"
 };

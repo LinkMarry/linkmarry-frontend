@@ -1,18 +1,18 @@
-import React, {RefObject, useCallback, useEffect, useRef, useState} from 'react';
+import {type RefObject, useCallback, useEffect, useRef, useState} from 'react';
 import Text from "@src/userinterface/component/Text";
-import GalleryDesign from "@src/infrastructure/network/enumeration/GalleryDesign";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@src/userinterface/css.util";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
-import Gallery from "@src/infrastructure/network/value/Gallery";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import type Gallery from "@src/infrastructure/network/value/Gallery";
+import Icon from "@src/userinterface/foundation/Icon";
 import View from "@src/userinterface/core/View";
 import GalleryFullView from "@src/userinterface/specific/wedding/component/gallery/GalleryFullView";
+import type {GalleryDesign} from "@src/infrastructure/network/enumeration/GalleryDesign.ts";
 
 interface GalleryTemplateProps {
-    rootRef: RefObject<HTMLDivElement>;
+    rootRef: RefObject<HTMLDivElement | null>;
     gallery: Gallery;
 }
 
@@ -46,7 +46,7 @@ function GalleryTemplate(
                     color: var(--g-600);
                 `}>{gallery.galleryTitle}</Text>
             </FadeIn>
-            {(gallery.galleryDesign === GalleryDesign.SLIDE || gallery.galleryDesign === GalleryDesign.HIGHLIGHT) ? (
+            {(gallery.galleryDesign === 'SLIDE' || gallery.galleryDesign === 'HIGHLIGHT') ? (
                 <GallerySlide
                     rootRef={rootRef}
                     gallery={gallery}
@@ -79,7 +79,7 @@ const GallerySlide = (
         gallery,
         onClickImage
     }: {
-        rootRef: RefObject<HTMLDivElement>;
+        rootRef: RefObject<HTMLDivElement | null>;
         gallery: Gallery;
         onClickImage: (index: number) => void;
     }
@@ -89,7 +89,7 @@ const GallerySlide = (
 
     const getGridImgWidth = useCallback(() => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
-        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
+        if (gallery.galleryDesign === 'SLIDE') {
             imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
         }
 
@@ -193,13 +193,13 @@ function GalleryStyleIndicator(
     }
 ) {
     switch (galleryDesign) {
-        case GalleryDesign.SLIDE:
+        case 'SLIDE':
             return <Row $gap={8} $alignSelf={'center'}>
                 {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
                     <S.indicator key={index} selected={i === currentImageIndex}/>
                 ))}
             </Row>;
-        case GalleryDesign.HIGHLIGHT:
+        case 'HIGHLIGHT':
             return (
                 <Row
                     $alignItems={'center'}
@@ -208,14 +208,14 @@ function GalleryStyleIndicator(
                         padding: 0 45px;
                     `}
                 >
-                    <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
+                    <Icon iconType={'ExpandArrow'} size={24} ui={css`
                         fill: var(--g-500);
                         cursor: pointer;
                     `} onClick={() => {
                         onClick('moveLeft');
                     }}/>
                     <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-                    <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
+                    <Icon iconType={'ExpandArrow'} size={24} ui={css`
                         rotate: 180deg;
                         fill: var(--g-500);
                         cursor: pointer;
@@ -224,7 +224,7 @@ function GalleryStyleIndicator(
                     }}/>
                 </Row>
             );
-        case GalleryDesign.GRID:
+        case 'GRID':
             return null;
     }
 }
@@ -235,7 +235,7 @@ const S = {
         $galleryDesign: GalleryDesign;
     }>`
         display: flex;
-        ${({$rootWidth, $galleryDesign}) => $galleryDesign === GalleryDesign.SLIDE ? css`
+        ${({$rootWidth, $galleryDesign}) => $galleryDesign === 'SLIDE' ? css`
             max-width: ${$rootWidth - 34 * 2}px;
             min-width: ${$rootWidth - 34 * 2}px;
 

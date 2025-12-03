@@ -1,8 +1,8 @@
-import React, {useRef} from 'react';
-import WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
-import WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
-import BaseInfo from "@src/infrastructure/network/value/BaseInfo";
-import WeddingDesign from "@src/infrastructure/network/value/WeddingDesign";
+import {useRef} from 'react';
+import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import type WeddingDesign from "@src/infrastructure/network/value/WeddingDesign";
 import WhiteMomentPreviewTemplate
     from "@src/userinterface/specific/wedding/component/preview/WhiteMomentPreviewTemplate";
 import ForestLovePreviewTemplate from "@src/userinterface/specific/wedding/component/preview/ForestLovePreviewTemplate";

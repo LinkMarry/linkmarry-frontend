@@ -1,4 +1,3 @@
-import React from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
@@ -6,17 +5,15 @@ import Spacer from "@src/userinterface/component/Spacer";
 import {css} from "styled-components";
 import Checkbox from "@src/userinterface/component/Checkbox";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorGroom = (
     {
         value: {baseInfo},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'groom'}>

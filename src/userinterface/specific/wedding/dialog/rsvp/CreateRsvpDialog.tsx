@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import {useState} from 'react';
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Spacer from "@src/userinterface/component/Spacer";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import Button from "@src/userinterface/component/Button";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
-import GuestType, {guestTypeList, guestTypeMap} from "@src/infrastructure/network/enumeration/GuestType";
-import Rsvp from "@src/infrastructure/network/value/Rsvp";
+import {GuestTypeList, guestTypeMap} from "@src/infrastructure/network/enumeration/GuestType";
+import type Rsvp from "@src/infrastructure/network/value/Rsvp";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import Divider from "@src/userinterface/component/Divider";
 import Input from "@src/userinterface/component/Input";
 import {formatPhone} from "@src/shared/format-util";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface CreateRsvpDialogProps {
     url: string;
@@ -42,7 +43,7 @@ function CreateRsvpDialog(
     const createRsvp = async () => {
         await weddingApi.createRsvp({
             url,
-            guestType: guestType === 0 ? GuestType.BRIDE : GuestType.GROOM,
+            guestType: guestType === 0 ? 'BRIDE' : 'GROOM',
             isAttend: isAttend === 0,
             isMeal: isMeal === 0,
             guestName: guestName,
@@ -64,7 +65,7 @@ function CreateRsvpDialog(
                 overflow-y: hidden;
                 background: white;
                 border-radius: 12px;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
             `}>
                 <Row $alignItems={'center'} $ui={css`
                     position: relative;
@@ -74,7 +75,7 @@ function CreateRsvpDialog(
                     <Text type={'p2'}>참석 의사 전달</Text>
                     <Spacer/>
                     <Icon
-                        iconType={IconType.CrossLine}
+                        iconType={'CrossLine'}
                         size={20}
                         ui={css`
                             fill: var(--g-600);
@@ -94,7 +95,7 @@ function CreateRsvpDialog(
                             <Text type={'p3'}>어느 분의 하객인가요?</Text>
                             <SegmentedButton
                                 selectedTab={guestType}
-                                items={guestTypeList.map(i => guestTypeMap[i].korean)}
+                                items={GuestTypeList.map(i => guestTypeMap[i].korean)}
                                 onChange={tab => {
                                     setGuestType(tab);
                                 }}

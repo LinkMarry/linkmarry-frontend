@@ -1,7 +1,7 @@
-import styled, {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import makeText, {TextType} from "@src/userinterface/foundation/text/TextType";
-import {ComponentPropsWithRef, CSSProperties, ForwardedRef, forwardRef} from "react";
+import styled, {css, type RuleSet} from "styled-components";
+import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
+import makeText, {type TextType} from "@src/userinterface/foundation/text/TextType";
+import {type ComponentPropsWithRef, type CSSProperties, type ForwardedRef, forwardRef} from "react";
 
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonType = 'filled' | 'outlined' | 'tonal';
@@ -12,7 +12,7 @@ const iconSizeMap: Record<ButtonSize, number> = {
     small: 14
 };
 
-export interface Props extends ComponentPropsWithRef<'button'> {
+interface Props extends ComponentPropsWithRef<'button'> {
     text: string;
     size?: ButtonSize;
     buttonType?: ButtonType;
@@ -128,7 +128,7 @@ const ButtonStyle = styled.button<{
     word-break: keep-all;
     white-space: nowrap;
     transition: 0.1s scale ease-in-out, 0.1s opacity;
-    
+
     ${({size}) => {
         const style = buttonSizeToStyleRecord[size];
         return css`
@@ -149,7 +149,7 @@ const ButtonStyle = styled.button<{
             `};
         `;
     }}
-    
+
     ${({ui}) => ui};
 
     &:disabled {

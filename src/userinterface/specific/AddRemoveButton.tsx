@@ -1,5 +1,5 @@
-import React, {ComponentProps, ForwardedRef, forwardRef} from 'react';
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import React, {type ComponentProps, type ForwardedRef, forwardRef} from 'react';
+import Icon from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
 
@@ -23,7 +23,7 @@ function AddRemoveButton(
             position: relative;
         `} {...props}>
             <Icon
-                iconType={IconType.CrossLine}
+                iconType={'CrossLine'}
                 size={20}
                 ui={css`
                     fill: white;

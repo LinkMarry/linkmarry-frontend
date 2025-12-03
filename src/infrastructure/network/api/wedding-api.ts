@@ -1,16 +1,16 @@
-import Wedding from "@src/infrastructure/network/value/Wedding";
+import type Wedding from "@src/infrastructure/network/value/Wedding";
 import api from "@src/infrastructure/network/api/foundation/api";
-import {ResponseData, ResponseVoid} from "@src/infrastructure/network/value/Response";
-import WeddingDashboard from "@src/infrastructure/network/value/WeddingDashboard";
-import WeddingRequest from "@src/infrastructure/network/value/request/WeddingRequest";
-import RsvpRequest from "@src/infrastructure/network/value/request/RsvpRequest";
-import GuestCommentRequest from "@src/infrastructure/network/value/request/GuestCommentRequest";
-import EditCommentRequest from "@src/infrastructure/network/value/request/EditCommentRequest";
-import DeleteCommentRequest from "@src/infrastructure/network/value/request/DeleteCommentRequest";
-import WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import Comment from "@src/infrastructure/network/value/Comment";
-import RsvpInfo from "@src/infrastructure/network/value/RsvpInfo";
+import {type ResponseData, type ResponseVoid} from "@src/infrastructure/network/value/Response";
+import type WeddingDashboard from "@src/infrastructure/network/value/WeddingDashboard";
+import type WeddingRequest from "@src/infrastructure/network/value/request/WeddingRequest";
+import type RsvpRequest from "@src/infrastructure/network/value/request/RsvpRequest";
+import type GuestCommentRequest from "@src/infrastructure/network/value/request/GuestCommentRequest";
+import type EditCommentRequest from "@src/infrastructure/network/value/request/EditCommentRequest";
+import type DeleteCommentRequest from "@src/infrastructure/network/value/request/DeleteCommentRequest";
+import type WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import type Comment from "@src/infrastructure/network/value/Comment";
+import type RsvpInfo from "@src/infrastructure/network/value/RsvpInfo";
 
 const PATH = 'wedding';
 

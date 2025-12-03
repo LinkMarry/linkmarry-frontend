@@ -1,8 +1,8 @@
-import CreateWeddingDesignRequest from "@src/infrastructure/network/value/request/admin/CreateWeddingDesignRequest";
-import {ResponseData, ResponseVoid} from "@src/infrastructure/network/value/Response";
+import type CreateWeddingDesignRequest from "@src/infrastructure/network/value/request/admin/CreateWeddingDesignRequest";
+import {type ResponseData, type ResponseVoid} from "@src/infrastructure/network/value/Response";
 import api from "@src/infrastructure/network/api/foundation/api";
-import PatchWeddingDesignRequest from "@src/infrastructure/network/value/request/admin/PatchWeddingDesignRequest";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type PatchWeddingDesignRequest from "@src/infrastructure/network/value/request/admin/PatchWeddingDesignRequest";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
 const PATH = 'wedding-design-preset';
 

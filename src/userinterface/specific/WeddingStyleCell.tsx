@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 import Button from "@src/userinterface/component/Button";
 import {useNavigate} from "react-router-dom";
+import config from "@src/config.ts";
 
 interface Props {
     weddingDesign: WeddingDesignPreset;
@@ -57,7 +58,7 @@ function WeddingStyleCell({weddingDesign}: Props) {
                             buttonType={'filled'}
                             text={'청첩장 만들기'}
                             onClick={() => {
-                                if (process.env.NODE_ENV === 'development') {
+                                if (config.dev) {
                                     navigate('/ai-custom');
                                 } else {
                                     navigate(`/editor?designId=${weddingDesign.id}`);

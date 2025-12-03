@@ -1,4 +1,4 @@
-import styled, {CSSProperties, css, RuleSet} from "styled-components";
+import styled, {type CSSProperties, css, type RuleSet} from "styled-components";
 
 export interface BaseFlexProps {
     $gap?: number;

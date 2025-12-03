@@ -1,13 +1,16 @@
-enum Tag {
-    NOTIFICATION = 'NOTIFICATION',
-    UPDATE = 'UPDATE',
-    ETC = 'ETC',
-}
+import {allCasesOfEnum} from "@src/shared/enum-util.ts";
+
+const TagValues = {
+    NOTIFICATION: 'NOTIFICATION',
+    UPDATE: 'UPDATE',
+    ETC: 'ETC',
+} as const;
+
+export type Tag = typeof TagValues[keyof typeof TagValues];
+export const TagList = allCasesOfEnum(TagValues);
 
 export const tagToKoreanRecord: Record<Tag, string> = {
-    [Tag.NOTIFICATION]: '공지사항',
-    [Tag.UPDATE]: '업데이트',
-    [Tag.ETC]: '기타'
-}
-
-export default Tag;
+    NOTIFICATION: '공지사항',
+    UPDATE: '업데이트',
+    ETC: '기타'
+};

@@ -1,11 +1,11 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Divider from "@src/userinterface/component/Divider";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import PreviewTemplate from "@src/userinterface/specific/wedding/component/preview/PreviewTemplate";
 import View from "@src/userinterface/core/View";
@@ -55,7 +55,7 @@ function WhiteMomentPreviewTemplate(
                 `}/>
                 <Row $gap={8} $alignItems={'center'}>
                     <Text size={16} weight={300}>{first.korean} {first.lastName}</Text>
-                    <Icon iconType={IconType.HeartFill} size={16} ui={css`
+                    <Icon iconType={'HeartFill'} size={16} ui={css`
                         fill: black;
                     `}/>
                     <Text size={16} weight={300}>{second.korean} {second.lastName}</Text>

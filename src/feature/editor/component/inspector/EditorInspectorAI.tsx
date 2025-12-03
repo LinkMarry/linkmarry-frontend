@@ -1,10 +1,9 @@
-import React from 'react';
-import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import {Column} from "@src/userinterface/core/FlexLayout";
-import Text from "@src/userinterface/component/Text";
-import Input from "@src/userinterface/component/Input";
-import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
-import {css} from "styled-components";
+// import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
+// import {Column} from "@src/userinterface/core/FlexLayout";
+// import Text from "@src/userinterface/component/Text";
+// import Input from "@src/userinterface/component/Input";
+// import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
+// import {css} from "styled-components";
 
 const EditorInspectorAi = () => {
     // return (

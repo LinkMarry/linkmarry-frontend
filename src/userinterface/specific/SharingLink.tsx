@@ -1,9 +1,8 @@
-import React from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@src/userinterface/component/Text";
 import Button from "@src/userinterface/component/Button";
-import KakaoButton from "@src/infrastructure/network/enumeration/KakaoButton";
+import {type KakaoButton} from "@src/infrastructure/network/enumeration/KakaoButton";
 
 interface Props {
     title: string;
@@ -41,12 +40,12 @@ const SharingLink = ({title, button, background, Style}: Props) => {
                         <Button text={'모바일 청첩장'} buttonType={'tonal'} ui={css`
                             flex: 1;
                         `}/>
-                        {button === KakaoButton.ATTEND && (
+                        {button === 'ATTEND' && (
                             <Button text={'참석의사 전달'} buttonType={'tonal'} ui={css`
                                 flex: 1;
                             `}/>
                         )}
-                        {button === KakaoButton.PLACE && (
+                        {button === 'PLACE' && (
                             <Button text={'위치 보기'} buttonType={'tonal'} ui={css`
                                 flex: 1;
                             `}/>

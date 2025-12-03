@@ -1,4 +1,3 @@
-import React from 'react';
 import MainWrapper from "@src/userinterface/pattern/header/MainWrapper";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import {Outlet} from "react-router-dom";

@@ -1,27 +1,42 @@
-import BaseInfo, {defaultBaseInfo} from "@src/infrastructure/network/value/BaseInfo";
-import WeddingSchedule, {defaultWeddingSchedule} from "@src/infrastructure/network/value/WeddingSchedule";
-import WeddingPlace, {defaultWeddingPlace} from "@src/infrastructure/network/value/WeddingPlace";
-import Greeting, {defaultGreeting} from "@src/infrastructure/network/value/Greeting";
-import BackgroundMusic, {defaultBackgroundMusic} from "@src/infrastructure/network/value/BackgroundMusic";
-import LinkShare, {defaultLinkShare} from "@src/infrastructure/network/value/LinkShare";
-import MoneyInfo, {defaultMoneyInfo} from "@src/infrastructure/network/value/MoneyInfo";
-import Video, {defaultVideo} from "@src/infrastructure/network/value/Video";
-import Phone, {defaultPhone} from "@src/infrastructure/network/value/Phone";
-import Rsvp, {defaultRsvp} from "@src/infrastructure/network/value/Rsvp";
-import GuestComment, {defaultGuestComment} from "@src/infrastructure/network/value/GuestComment";
-import WeddingDesign, {defaultWeddingDesign} from "@src/infrastructure/network/value/WeddingDesign";
-import Gallery, {defaultGallery} from "@src/infrastructure/network/value/Gallery";
-import Position, {positionList} from "@src/infrastructure/network/value/Position";
-import Wedding from "@src/infrastructure/network/value/Wedding";
+import {defaultBaseInfo} from "@src/infrastructure/network/value/BaseInfo";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {defaultWeddingSchedule} from "@src/infrastructure/network/value/WeddingSchedule";
+import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import {defaultWeddingPlace} from "@src/infrastructure/network/value/WeddingPlace";
+import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
+import {defaultGreeting} from "@src/infrastructure/network/value/Greeting";
+import type Greeting from "@src/infrastructure/network/value/Greeting";
+import {defaultBackgroundMusic} from "@src/infrastructure/network/value/BackgroundMusic";
+import type BackgroundMusic from "@src/infrastructure/network/value/BackgroundMusic";
+import {defaultLinkShare} from "@src/infrastructure/network/value/LinkShare";
+import type LinkShare from "@src/infrastructure/network/value/LinkShare";
+import {defaultMoneyInfo} from "@src/infrastructure/network/value/MoneyInfo";
+import type MoneyInfo from "@src/infrastructure/network/value/MoneyInfo";
+import {defaultVideo} from "@src/infrastructure/network/value/Video";
+import type Video from "@src/infrastructure/network/value/Video";
+import {defaultPhone} from "@src/infrastructure/network/value/Phone";
+import type Phone from "@src/infrastructure/network/value/Phone";
+import {defaultRsvp} from "@src/infrastructure/network/value/Rsvp";
+import type Rsvp from "@src/infrastructure/network/value/Rsvp";
+import {defaultGuestComment} from "@src/infrastructure/network/value/GuestComment";
+import type GuestComment from "@src/infrastructure/network/value/GuestComment";
+import {defaultWeddingDesign} from "@src/infrastructure/network/value/WeddingDesign";
+import type WeddingDesign from "@src/infrastructure/network/value/WeddingDesign";
+import {defaultGallery} from "@src/infrastructure/network/value/Gallery";
+import type Gallery from "@src/infrastructure/network/value/Gallery";
+import {positionList} from "@src/infrastructure/network/value/Position";
+import {type Position} from "@src/infrastructure/network/value/Position";
+import type Wedding from "@src/infrastructure/network/value/Wedding";
 import {dummyComments} from "@src/infrastructure/network/value/Comment";
 
-export default interface WeddingDto {
+
+export interface WeddingDto {
     // URL 값
     url: string;
 
     name: string;
 
-     // 아래 내용 위치
+    // 아래 내용 위치
     position: Position[];
 
     // 템플릿 정보
@@ -60,7 +75,7 @@ export default interface WeddingDto {
     // 참석의사
     rsvp: Rsvp;
 
-     // 갤러리
+    // 갤러리
     gallery: Gallery;
 }
 

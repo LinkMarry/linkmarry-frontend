@@ -1,9 +1,10 @@
-import React, {ComponentPropsWithoutRef, ReactNode} from 'react';
+import {type ComponentPropsWithoutRef, type ReactNode} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
-import EditorNavigationBarType, {editorNavigationBarTypeList, editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {editorNavigationBarTypeList, editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import Text from "@src/userinterface/component/Text";
 import useResponsive from "@src/hook/useResponsive";
 
@@ -105,7 +106,7 @@ const DesktopEditorNavigationBarImpl = (
             `} onClick={() => {
                 onToggleInspector();
             }}>
-                <Icon iconType={IconType.DoubleArrowLeft} width={24} height={24} ui={css`
+                <Icon iconType={'DoubleArrowLeft'} width={24} height={24} ui={css`
                     padding: 12px;
                     fill: var(--g-500);
                     border-radius: 12px;

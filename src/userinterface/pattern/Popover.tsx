@@ -1,7 +1,7 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import {css, RuleSet} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import {css, type RuleSet} from "styled-components";
+import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
 import Text from "@src/userinterface/component/Text";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
 import {makeInteractionEffect} from "@src/userinterface/css.util";

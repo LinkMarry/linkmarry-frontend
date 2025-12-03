@@ -1,12 +1,13 @@
-import React, {useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Divider from "@src/userinterface/component/Divider";
 import Button from "@src/userinterface/component/Button";
 import {css} from "styled-components";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
 import ContactingCongratulationDialog from "@src/userinterface/specific/wedding/dialog/ContactingCongratulationDialog";
-import Phone from "@src/infrastructure/network/value/Phone";
+import type Phone from "@src/infrastructure/network/value/Phone";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import {backgroundStyle} from "@src/infrastructure/network/value/WeddingDesign";

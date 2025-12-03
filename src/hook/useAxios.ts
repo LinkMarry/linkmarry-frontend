@@ -1,14 +1,15 @@
 import api from "@src/infrastructure/network/api/foundation/api";
-import {AxiosError, InternalAxiosRequestConfig} from "axios";
+import {AxiosError, type InternalAxiosRequestConfig} from "axios";
 import memberApi from "@src/infrastructure/network/api/member-api";
 import {useNavigate} from "react-router-dom";
 import useJwt from "@src/hook/useJwt";
+import {useCallback} from "react";
 
 const useAxios = () => {
     const navigate = useNavigate();
     const {jwt, clearToken, refresh} = useJwt();
 
-    const requestHandler = (config: InternalAxiosRequestConfig) => {
+    const requestHandler = useCallback((config: InternalAxiosRequestConfig) => {
         const shouldAuthorizeRequest = config.shouldAuthorizeRequest ?? true;
         if (!shouldAuthorizeRequest) {
             console.log('Should not authorize request');
@@ -23,9 +24,9 @@ const useAxios = () => {
         config.headers.Authorization = jwt.accessToken;
 
         return config;
-    };
+    }, [jwt.accessToken]);
 
-    const errorResponseHandler = async (error: AxiosError) => {
+    const errorResponseHandler = useCallback(async (error: AxiosError) => {
         console.log('Error response handler');
         console.log(error);
 
@@ -82,7 +83,7 @@ const useAxios = () => {
             console.log('Refresh token failure');
             return Promise.reject(refreshError);
         }
-    };
+    }, [clearToken, jwt.refreshToken, navigate, refresh]);
 
     api.interceptors.request.clear();
     api.interceptors.response.clear();

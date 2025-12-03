@@ -1,16 +1,17 @@
-import React, {ReactNode} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
-import {css, RuleSet} from "styled-components";
+import {type ComponentProps, type ReactNode} from 'react';
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
+import {css, type RuleSet} from "styled-components";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import Button, {Props} from "@src/userinterface/component/Button";
+import Button from "@src/userinterface/component/Button";
 import Text from "@src/userinterface/component/Text";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface DialogProps {
     title: string;
     description?: string;
     dismiss: () => void;
-    dismissButtonProps?: Props;
-    confirmButtonProps: Props;
+    dismissButtonProps?: ComponentProps<typeof Button>;
+    confirmButtonProps: ComponentProps<typeof Button>;
     ui?: RuleSet;
     children?: ReactNode;
 }
@@ -35,7 +36,7 @@ function Dialog(
                 border-radius: 28px;
                 box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.03);
                 background: white;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
             `}>
                 <Column $gap={4} $alignItems={'stretch'}>
                     <Text type={'h5'} bold={true} ui={css`

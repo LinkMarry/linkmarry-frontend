@@ -1,4 +1,3 @@
-import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
@@ -7,9 +6,9 @@ import {css} from "styled-components";
 import Select from "@src/userinterface/component/Select";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import GreetingDesign, {greetingDesignList, greetingDesignMap} from "@src/infrastructure/network/enumeration/GreetingDesign";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import {GreetingDesignList, greetingDesignMap} from "@src/infrastructure/network/enumeration/GreetingDesign";
 
 const greetingSampleList: {
     title: string;
@@ -41,13 +40,11 @@ const greetingSampleList: {
     }
 ];
 
-interface Props extends Binding<WeddingDto> {
-}
 
-const EditorInspectorGreeting = ({value, update}: Props) => {
+const EditorInspectorGreeting = ({value, update}: Binding<WeddingDto>) => {
     return (
         <EditorInspectorWrapper type={'greeting'}>
-            {value.greeting.greetingDesign === GreetingDesign.TEXT && (
+            {value.greeting.greetingDesign === 'TEXT' && (
                 <Column $alignItems={'stretch'} $gap={12}>
                     <Text type={'p3'} bold={true}>제목</Text>
                     <Input hasLabel={false} value={value.greeting.greetingTitle} onChange={event => update(draft => {
@@ -76,11 +73,11 @@ const EditorInspectorGreeting = ({value, update}: Props) => {
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
-                    items={greetingDesignList.map(i => greetingDesignMap[i].korean)}
-                    selectedTab={greetingDesignList.indexOf(value.greeting.greetingDesign)}
+                    items={GreetingDesignList.map(i => greetingDesignMap[i].korean)}
+                    selectedTab={GreetingDesignList.indexOf(value.greeting.greetingDesign)}
                     onChange={tab => {
                         update(draft => {
-                            draft.greeting.greetingDesign = greetingDesignList[tab];
+                            draft.greeting.greetingDesign = GreetingDesignList[tab];
                         })
                     }}
                 />

@@ -1,4 +1,3 @@
-import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
@@ -8,19 +7,17 @@ import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
 import SharingLink from "@src/userinterface/specific/SharingLink";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import {getKoreanByKakaoStyle, kakaoStyleList} from "@src/infrastructure/network/value/LinkShare";
 import {kakaoButtonList, kakaoButtonMap} from "@src/infrastructure/network/enumeration/KakaoButton";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorKakaotalkInvitationLetter = (
     {
         value: {linkShare},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'kakaotalkInvitationLetter'}>

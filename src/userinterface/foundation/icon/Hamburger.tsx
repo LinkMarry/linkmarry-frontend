@@ -1,4 +1,4 @@
-import React, {SVGProps} from 'react';
+import {type SVGProps} from 'react';
 
 function Hamburger(props: SVGProps<SVGSVGElement>) {
     return (

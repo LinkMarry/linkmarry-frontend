@@ -1,4 +1,4 @@
-import Tag from "@src/infrastructure/network/enumeration/Tag";
+import {type Tag} from "@src/infrastructure/network/enumeration/Tag";
 
 export default interface Notification {
     // 공지 ID (PK)
@@ -42,7 +42,7 @@ export const dummyNotifications: Notification[] = [
 
 감사합니다.`,
         date: '2024.12.26',
-        tag: Tag.NOTIFICATION
+        tag: 'NOTIFICATION'
     },
     {
         id: 1,
@@ -50,6 +50,6 @@ export const dummyNotifications: Notification[] = [
         title: '1.1 버전 업데이트 안내',
         content: '업데이트 됐수다',
         date: '2025.1.1',
-        tag: Tag.UPDATE
+        tag: 'UPDATE'
     }
 ]

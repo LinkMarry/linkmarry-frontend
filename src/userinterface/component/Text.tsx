@@ -1,12 +1,12 @@
-import React, {
-    ComponentPropsWithRef,
-    CSSProperties,
-    ForwardedRef,
+import {
+    type ComponentPropsWithRef,
+    type CSSProperties,
+    type ForwardedRef,
     forwardRef,
-    PropsWithChildren
+    type PropsWithChildren
 } from 'react';
-import {css, RuleSet} from "styled-components";
-import {FontFamily, TextType, textTypeMap} from "@src/userinterface/foundation/text/TextType";
+import {css, type RuleSet} from "styled-components";
+import {type FontFamily, type TextType, textTypeMap} from "@src/userinterface/foundation/text/TextType";
 import {implementText} from "@src/userinterface/foundation/text/TextProperties";
 import View from "@src/userinterface/core/View";
 

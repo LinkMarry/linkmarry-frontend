@@ -1,4 +1,4 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import BaseChat from "@src/ai/BaseChat";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Button from "@src/userinterface/component/Button";

@@ -1,4 +1,4 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import BaseChat from "@src/ai/BaseChat";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";

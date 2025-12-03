@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import weddingDesignApi from "@src/infrastructure/network/api/wedding-design-api";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
 // todo: refactor
 const ManageWeddingDesignPage = () => {
@@ -26,7 +26,7 @@ const ManageWeddingDesignPage = () => {
                 grid-column-gap: 44px;
             `}>
                 {presets && presets.map((item, index) => (
-                    <Item text={item.name}/>
+                    <Item key={index} text={item.name}/>
                 ))}
             </View>
         </Column>
@@ -48,8 +48,8 @@ const Item = ({text}: ItemProps) => {
                 <Text type={'p3'}>{text}</Text>
             </Row>
         </Column>
-    )
-}
+    );
+};
 
 export default ManageWeddingDesignPage;
 

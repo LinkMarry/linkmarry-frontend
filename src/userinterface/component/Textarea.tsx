@@ -1,6 +1,6 @@
-import React, {ComponentPropsWithRef, ForwardedRef, forwardRef} from 'react';
+import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from 'react';
 import View from "@src/userinterface/core/View";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import makeText from "@src/userinterface/foundation/text/TextType";
 
 interface Props extends ComponentPropsWithRef<'textarea'> {

@@ -1,18 +1,23 @@
 {
   "name": "linkmarry",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "tsc -b && vite build",
+    "prebuild": "react-snap",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@craco/craco": "^7.1.0",
-    "@types/lodash": "^4.17.16",
     "axios": "^1.7.9",
-    "customize-cra": "^1.0.0",
     "lodash": "^4.17.21",
-    "react": "^18.3.1",
+    "react": "^19.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-colorful": "^5.6.1",
     "react-cookie": "^7.2.2",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.2.0",
     "react-helmet-async": "^2.0.5",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^7.0.2",
@@ -21,42 +26,36 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.112",
-    "@types/react": "^18.3.11",
+    "@eslint/js": "^9.39.1",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
     "@types/react-beautiful-dnd": "^13.1.8",
-    "@types/react-dom": "^18.3.0",
-    "craco-alias": "^3.0.1",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
     "date-fns": "^4.1.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "react-snap": "^1.23.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^7.2.4"
   },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+  "reactSnap": {
+    "inlineCss": true,
+    "skipThirdPartyRequests": true,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "source": "build",
+    "include": [
+      "/",
+      "/sign-in",
+      "/sample"
+    ],
+    "skipPrettier": true
   }
 }

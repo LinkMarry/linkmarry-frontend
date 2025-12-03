@@ -1,5 +1,4 @@
-import React from 'react';
-import {Navigate} from "react-router-dom";
+import {Navigate, type RouteObject} from "react-router-dom";
 import HomePage from "@src/feature/home/HomePage";
 import SignInPage from "@src/feature/SignInPage";
 import KakaoRedirectPage from "@src/feature/KakaoRedirectPage";
@@ -17,7 +16,6 @@ import AdminRoute from "@src/application/route/AdminRoute";
 import FoundationDemo from "@src/userinterface/demo/FoundationDemo";
 import ComponentDemo from "@src/userinterface/demo/ComponentDemo";
 import DevelopmentRoute from "@src/application/route/DevelopmentRoute";
-import {k as RouteObject} from "react-router/dist/development/route-data-CGHGzi13";
 import Providers from "@src/application/Providers";
 import SamplePage from "@src/feature/sample/SamplePage";
 import LinkPage from "@src/feature/LinkPage";

@@ -1,5 +1,6 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import MyPageIndexSidebarType, {myPageIndexSidebarTypeList} from "@src/feature/mypage/index/component/MyPageIndexSidebarType";
+import {type MyPageIndexSidebarType} from "@src/feature/mypage/index/component/MyPageIndexSidebarType";
+import {myPageIndexSidebarTypeList} from "@src/feature/mypage/index/component/MyPageIndexSidebarType";
 import {useCallback} from "react";
 
 function useMyPageDefault() {

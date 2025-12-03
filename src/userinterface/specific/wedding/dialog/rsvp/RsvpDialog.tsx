@@ -1,17 +1,18 @@
-import React from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Divider from "@src/userinterface/component/Divider";
 import Text from "@src/userinterface/component/Text";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
-import WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
-import WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import Button from "@src/userinterface/component/Button";
-import Rsvp from "@src/infrastructure/network/value/Rsvp";
+import type Rsvp from "@src/infrastructure/network/value/Rsvp";
 import {useCookies} from "react-cookie";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface RsvpDialogProps {
     url: string;
@@ -44,7 +45,7 @@ function RsvpDialog(
     return (
         <BaseDialog dismiss={dismiss}>
             <Column $gap={48} $alignItems={'stretch'} $ui={css`
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
                 max-width: 436px;
                 width: 90vw;
                 border-radius: 12px;

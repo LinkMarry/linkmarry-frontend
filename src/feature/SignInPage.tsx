@@ -1,11 +1,10 @@
-import React from 'react';
 import {css} from "styled-components";
 import MainWrapper from "@src/userinterface/pattern/header/MainWrapper";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import useAuth from "@src/hook/useAuth";
+import {useAuth} from "@src/hook/useAuth";
 import View from "@src/userinterface/core/View";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 
 function SignInPage() {
     const {signInWithKakao} = useAuth();
@@ -35,7 +34,7 @@ function SignInPage() {
                     color: black;
                 `}>
                     <Row $gap={6} $alignItems={'center'}>
-                        <Icon iconType={IconType.Kakao} size={24}/>
+                        <Icon iconType={'Kakao'} size={24}/>
                         <Text type={'p3'} bold={true}>카카오 로그인</Text>
                     </Row>
                 </Row>

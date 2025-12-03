@@ -1,21 +1,19 @@
 import {allCasesOfEnum} from "@src/shared/enum-util";
 
-enum GuestType {
-    BRIDE = 'BRIDE',
-    GROOM = 'GROOM',
-}
-
-export const guestTypeList = allCasesOfEnum(GuestType);
+const GuestTypeValues = {
+    BRIDE: 'BRIDE',
+    GROOM: 'GROOM',
+} as const;
+export type GuestType = typeof GuestTypeValues[keyof typeof GuestTypeValues];
+export const GuestTypeList = allCasesOfEnum(GuestTypeValues);
 
 export const guestTypeMap: Record<GuestType, {
     korean: string;
 }> = {
-    [GuestType.BRIDE]: {
+    BRIDE: {
         korean: '신부'
     },
-    [GuestType.GROOM]: {
+    GROOM: {
         korean: '신랑'
     }
 };
-
-export default GuestType;

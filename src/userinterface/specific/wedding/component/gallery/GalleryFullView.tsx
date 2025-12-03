@@ -1,20 +1,20 @@
-import React, {Dispatch, RefObject, SetStateAction, useCallback, useEffect, useRef} from 'react';
-import Gallery from "@src/infrastructure/network/value/Gallery";
-import GalleryDesign from "@src/infrastructure/network/enumeration/GalleryDesign";
+import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef} from 'react';
+import type Gallery from "@src/infrastructure/network/value/Gallery";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@src/userinterface/css.util";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import Text from "@src/userinterface/component/Text";
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import Spacer from "@src/userinterface/component/Spacer";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface Props {
     dismiss: () => void;
     currentImageIndex: number;
     setCurrentImageIndex: Dispatch<SetStateAction<number | undefined>>;
     gallery: Gallery;
-    rootRef: RefObject<HTMLDivElement>;
+    rootRef: RefObject<HTMLDivElement | null>;
 }
 
 const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
@@ -22,7 +22,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
 
     const getGridImgWidth = useCallback((): number => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
-        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
+        if (gallery.galleryDesign === 'SLIDE') {
             imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
         }
 
@@ -34,7 +34,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         const scrollContainer = scrollContainerRef.current;
 
         let scrollPosition = scrollContainer.scrollLeft
-        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
+        if (gallery.galleryDesign === 'SLIDE') {
             scrollPosition -= 34;
         }
         return scrollPosition;
@@ -69,13 +69,13 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                 max-width: ${rootRef.current?.getBoundingClientRect().width ?? 0}px;
                 background: white;
                 height: 100dvh;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
             `}>
                 <Row $ui={css`
                     padding: 28px;
                 `}>
                     <Spacer/>
-                    <Icon iconType={IconType.CrossLine} size={24} ui={css`
+                    <Icon iconType={'CrossLine'} size={24} ui={css`
                         fill: var(--g-500);
                         cursor: pointer;
                     `} onClick={dismiss}/>
@@ -151,14 +151,14 @@ function Indicator(
                 padding: 28px 45px;
             `}
         >
-            <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
+            <Icon iconType={'ExpandArrow'} size={24} ui={css`
                 fill: var(--g-500);
                 cursor: pointer;
             `} onClick={() => {
                 onClick('moveLeft');
             }}/>
             <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-            <Icon iconType={IconType.ExpandArrow} size={24} ui={css`
+            <Icon iconType={'ExpandArrow'} size={24} ui={css`
                 rotate: 180deg;
                 fill: var(--g-500);
                 cursor: pointer;

@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {type ReactNode} from "react";
 import {css} from "styled-components";
 import Header from "@src/userinterface/pattern/header/Header";
 import {Column} from "@src/userinterface/core/FlexLayout";

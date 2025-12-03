@@ -1,4 +1,4 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import {css} from "styled-components";
 import {format} from "date-fns";
 import PreviewTemplate from "@src/userinterface/specific/wedding/component/preview/PreviewTemplate";

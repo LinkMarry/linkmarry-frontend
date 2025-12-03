@@ -1,9 +1,9 @@
-import React, {
-    ComponentPropsWithRef,
-    ForwardedRef,
+import {
+    type ComponentPropsWithRef,
+    type ForwardedRef,
     forwardRef
 } from 'react';
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import View from "@src/userinterface/core/View";
 

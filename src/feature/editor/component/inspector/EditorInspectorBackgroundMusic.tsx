@@ -1,26 +1,24 @@
-import React, {ChangeEvent, ComponentPropsWithoutRef, useRef, useState} from 'react';
+import {type ChangeEvent, type ComponentPropsWithoutRef, useRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Divider from "@src/userinterface/component/Divider";
 import FormToggle from "@src/userinterface/component/FormToggle";
 import {css} from "styled-components";
 import Button from "@src/userinterface/component/Button";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import View from "@src/userinterface/core/View";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import Music from "@src/infrastructure/network/value/Music";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import type Music from "@src/infrastructure/network/value/Music";
 import VoidInput from "@src/userinterface/specific/VoidInput";
 import useUpload from "@src/hook/useUpload";
 import Loading from "@src/userinterface/specific/Loading";
 import Spacer from "@src/userinterface/component/Spacer";
 import {makeInteractionEffect} from "@src/userinterface/css.util";
 
-interface Props extends Binding<WeddingDto> {
-}
 
-export interface BackgroundMusicProps {
+export interface BackgroundMusicProps extends Binding<WeddingDto> {
     backgroundMusics?: Music[];
 }
 
@@ -31,7 +29,7 @@ const EditorInspectorBackgroundMusic = (
         value: {backgroundMusic},
         update,
         backgroundMusics
-    }: Props & BackgroundMusicProps
+    }: BackgroundMusicProps
 ) => {
     const {uploadFile} = useUpload();
     const inputRef = useRef<HTMLInputElement>(null);
@@ -111,7 +109,7 @@ const EditorInspectorBackgroundMusic = (
                             accept={'audio/*'}
                             onChange={handleInput}
                         />
-                        <Button text={'직접 등록'} leadingIcon={IconType.AddLine} buttonType={'outlined'} ui={css`
+                        <Button text={'직접 등록'} leadingIcon={'AddLine'} buttonType={'outlined'} ui={css`
                             pointer-events: none;
                         `}/>
                     </Column>
@@ -144,7 +142,7 @@ const EditorInspectorBackgroundMusic = (
                             draft.backgroundMusic.backgroundMusicUrl = '';
                             draft.backgroundMusic.backgroundMusicName = '';
                         })}>
-                            <Icon iconType={IconType.Trash} width={24} height={24} ui={css`
+                            <Icon iconType={'Trash'} width={24} height={24} ui={css`
                                 fill: var(--g-600);
                             `}/>
                         </View>
@@ -211,7 +209,7 @@ const Item = ({music, selected, isPlaying, onPlay, ...props}: ItemProps & Compon
 
                 }}/>
                 {(isHovering || isPlaying) && (
-                    <Icon iconType={isPlaying ? IconType.Pause : IconType.Play} ui={css`
+                    <Icon iconType={isPlaying ? 'Pause' : 'Play'} ui={css`
                         fill: white;
                         position: absolute;
                         top: 50%;

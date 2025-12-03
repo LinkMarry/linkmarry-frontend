@@ -1,6 +1,6 @@
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 
-interface GroupedWeddingDesignPresets {
+export default interface GroupedWeddingDesignPresets {
     category: string;
     items: WeddingDesignPreset[];
 }
@@ -19,5 +19,3 @@ export function groupedByCategory(presets: WeddingDesignPreset[]): GroupedWeddin
         items: grouped[category]
     }));
 }
-
-export default GroupedWeddingDesignPresets;

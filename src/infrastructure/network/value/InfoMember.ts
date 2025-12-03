@@ -1,4 +1,4 @@
-import UserRole from "@src/infrastructure/network/enumeration/UserRole";
+import {type UserRole} from "@src/infrastructure/network/enumeration/UserRole";
 
 export default interface InfoMember {
     // 프사

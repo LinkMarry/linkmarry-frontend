@@ -1,19 +1,17 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import Input from "@src/userinterface/component/Input";
 import {useNavigate, useParams} from "react-router-dom";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
-import Binding from "@src/shared/Binding";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import type Binding from "@src/shared/Binding";
+import Icon from "@src/userinterface/foundation/Icon";
 
-interface Props extends Binding<WeddingDto> {
-}
 
-const CreateWeddingDialog = ({value, update}: Props) => {
+const CreateWeddingDialog = ({value, update}: Binding<WeddingDto>) => {
     const {url} = useParams();
     const [showCreateWeddingDialog, setShowCreateWeddingDialog] = useState(url === undefined);
     const navigate = useNavigate();
@@ -60,7 +58,7 @@ const CreateWeddingDialog = ({value, update}: Props) => {
                         position: relative;
                     `}
                 >
-                    <Icon size={20} iconType={IconType.CrossLine} onClick={() => navigate('/')} ui={css`
+                    <Icon size={20} iconType={'CrossLine'} onClick={() => navigate('/')} ui={css`
                         fill: var(--g-600);
                         position: absolute;
                         top: 20px;

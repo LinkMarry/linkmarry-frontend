@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import {useState} from 'react';
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
 import {CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_WEDDING_URL, TERMS_OR_USE_URL} from "@src/shared/constant";
@@ -15,6 +15,7 @@ import {useNavigate} from "react-router-dom";
 import {isAxiosError} from "axios";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import View from "@src/userinterface/core/View";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface Props {
     url: string;
@@ -53,14 +54,14 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                 padding: 36px;
                 border-radius: 28px;
                 background: white;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
                 max-width: 420px;
                 width: 90vw;
             `}>
                 <Row $alignItems={'center'}>
                     <Text type={'h5'} bold={true}>워터마크 제거</Text>
                     <Spacer/>
-                    <Icon iconType={IconType.CrossLine} ui={css`
+                    <Icon iconType={'CrossLine'} ui={css`
                         padding: 8px;
                         fill: var(--g-400);
                         border-radius: 8px;

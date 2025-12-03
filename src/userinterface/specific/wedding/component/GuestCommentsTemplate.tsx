@@ -1,22 +1,22 @@
-import React, {ComponentPropsWithoutRef, useRef, useState} from 'react';
+import {type ComponentPropsWithoutRef, useRef, useState} from 'react';
 import {css} from "styled-components";
-import Comment from "@src/infrastructure/network/value/Comment";
+import type Comment from "@src/infrastructure/network/value/Comment";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Spacer from "@src/userinterface/component/Spacer";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import GuestCommentDesign from "@src/infrastructure/network/enumeration/GuestCommentDesign";
+import Icon from "@src/userinterface/foundation/Icon";
+import {type GuestCommentDesign} from "@src/infrastructure/network/enumeration/GuestCommentDesign";
 import {trimArray} from "@src/shared/array-util";
 import {trimString} from "@src/shared/string-util";
 import Button from "@src/userinterface/component/Button";
-import GuestComment from "@src/infrastructure/network/value/GuestComment";
+import type GuestComment from "@src/infrastructure/network/value/GuestComment";
 import RemoveGuestCommentDialog from "@src/userinterface/specific/wedding/dialog/guestcomment/RemoveGuestCommentDialog";
 import GuestCommentsDetailDialog from "@src/userinterface/specific/wedding/dialog/guestcomment/GuestCommentsDetailDialog";
 import CreateGuestCommentDialog from "@src/userinterface/specific/wedding/dialog/guestcomment/CreateGuestCommentDialog";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import View from "@src/userinterface/core/View";
-import {backgroundStyle, WeddingDesignColor} from "@src/infrastructure/network/value/WeddingDesign";
+import {backgroundStyle, type WeddingDesignColor} from "@src/infrastructure/network/value/WeddingDesign";
 
 interface GuestCommentsTemplateProps {
     weddingDesignColor: string;
@@ -152,7 +152,7 @@ function GuestComments(
     }: GuestCommentsProps
 ) {
     switch (design) {
-        case GuestCommentDesign.BASIC:
+        case 'BASIC':
             return (
                 <Column $gap={12} $alignItems={'stretch'}>
                     {trimArray(comments, 3).map((comment, index) => (
@@ -165,7 +165,7 @@ function GuestComments(
                     ))}
                 </Column>
             );
-        case GuestCommentDesign.STICKER:
+        case 'STICKER':
             return (
                 <Row $gap={20} $alignItems={'stretch'}>
                     {trimArray(comments, 2).map((comment, index) => (
@@ -214,7 +214,7 @@ export function BasicGuestComment(
                     {trimString(comment.createdDate, 10)}
                 </Text>
                 <Spacer/>
-                <Icon iconType={IconType.CrossLine} size={20} ui={css`
+                <Icon iconType={'CrossLine'} size={20} ui={css`
                     cursor: pointer;
                     fill: var(--g-300);
                 `} onClick={onRemove}/>
@@ -243,7 +243,7 @@ export function StickerGuestComment(
             background: ${backgroundStyle(background)};
         `}>
             <Icon
-                iconType={IconType.CrossLine} size={20}
+                iconType={'CrossLine'} size={20}
                 ui={css`
                     align-self: flex-end;
                     cursor: pointer;

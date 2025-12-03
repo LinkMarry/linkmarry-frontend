@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import MainWrapper from "@src/userinterface/pattern/header/MainWrapper";
 import ProgressBar from "@src/ai/ProgressBar";
 import {css} from "styled-components";

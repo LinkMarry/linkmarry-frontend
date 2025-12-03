@@ -1,7 +1,7 @@
-import {ResponseData, ResponseVoid} from "@src/infrastructure/network/value/Response";
+import {type ResponseData, type ResponseVoid} from "@src/infrastructure/network/value/Response";
 import api from "@src/infrastructure/network/api/foundation/api";
-import InfoMember from "@src/infrastructure/network/value/InfoMember";
-import EditMemberRequest from "@src/infrastructure/network/value/request/EditMemberRequest";
+import type InfoMember from "@src/infrastructure/network/value/InfoMember";
+import type EditMemberRequest from "@src/infrastructure/network/value/request/EditMemberRequest";
 
 const PATH = 'member';
 

@@ -1,4 +1,4 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import PreviewTemplate from "@src/userinterface/specific/wedding/component/preview/PreviewTemplate";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";

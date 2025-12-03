@@ -1,6 +1,6 @@
-import {RefObject} from "react";
+import {type RefObject} from "react";
 
-export function increaseFontSize(ref: RefObject<HTMLElement>, increment: number) {
+export function increaseFontSize(ref: RefObject<HTMLElement | null>, increment: number) {
     if (ref.current) {
         // containerRef 아래 모든 요소 가져오기
         const elements = ref.current.querySelectorAll("*");

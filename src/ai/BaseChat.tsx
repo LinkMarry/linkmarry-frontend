@@ -1,6 +1,6 @@
-import React, {ReactNode} from 'react';
+import {type ReactNode} from 'react';
 import View from "@src/userinterface/core/View";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 
 interface Props {
     type: 'user' | 'ai';

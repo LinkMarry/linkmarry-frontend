@@ -1,8 +1,8 @@
-import React, {ComponentPropsWithoutRef, useEffect, useRef, useState} from 'react';
+import {type ComponentPropsWithoutRef, useEffect, useRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import View from "@src/userinterface/core/View";
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
@@ -54,7 +54,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                         color: var(--g-800);
                     `}
                 `}>{selected !== undefined ? items[selected] : placeholder}</Text>
-                <Icon iconType={IconType.ExpandArrow} width={20} height={20} ui={css`
+                <Icon iconType={'ExpandArrow'} width={20} height={20} ui={css`
                     fill: var(--g-400);
                     rotate: -90deg;
                 `}/>
@@ -91,7 +91,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                                 overflow: hidden;
                             `}>{item}</Text>
                             {selected === index && (
-                                <Icon iconType={IconType.CheckLine} width={20} height={20} ui={css`
+                                <Icon iconType={'CheckLine'} width={20} height={20} ui={css`
                                     fill: var(--g-700);
                                 `}/>
                             )}

@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import styled, {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import makeText from "@src/userinterface/foundation/text/TextType";
-import Phone from "@src/infrastructure/network/value/Phone";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type Phone from "@src/infrastructure/network/value/Phone";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import Spacer from "@src/userinterface/component/Spacer";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface ContactTemplateDialogProps {
     baseInfo: BaseInfo;
@@ -88,7 +90,7 @@ function ContactingCongratulationDialog(
                 align-items: stretch;
                 background: white;
                 border-radius: 12px;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
             `}>
                 <Column $gap={4} $alignItems={'center'}>
                     <Text type={'p1'} bold={true}>축하 연락하기</Text>
@@ -121,14 +123,14 @@ function ContactingCongratulationDialog(
                                 <S.iconWrapper onClick={() => {
                                     window.open(`sms:${tel.tel}`)
                                 }}>
-                                    <Icon iconType={IconType.Chat} size={20} ui={css`
+                                    <Icon iconType={'Chat'} size={20} ui={css`
                                         fill: var(--g-600);
                                     `}/>
                                 </S.iconWrapper>
                                 <S.iconWrapper onClick={() => {
                                     window.open(`tel:${tel.tel}`);
                                 }}>
-                                    <Icon iconType={IconType.Call} size={20} ui={css`
+                                    <Icon iconType={'Call'} size={20} ui={css`
                                         fill: var(--g-600);
                                     `}/>
                                 </S.iconWrapper>

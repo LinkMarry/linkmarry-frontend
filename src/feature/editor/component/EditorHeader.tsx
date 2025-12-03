@@ -1,4 +1,3 @@
-import React from 'react';
 import {Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Logo from "@src/userinterface/specific/Logo";

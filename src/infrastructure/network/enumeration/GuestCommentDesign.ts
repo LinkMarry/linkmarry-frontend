@@ -1,20 +1,19 @@
 import {allCasesOfEnum} from "@src/shared/enum-util";
 
-enum GuestCommentDesign {
-    BASIC = 'BASIC',
-    STICKER = 'STICKER',
-}
+const GuestCommentDesignValues = {
+    BASIC: 'BASIC',
+    STICKER: 'STICKER',
+} as const;
 
-export const guestCommentDesignList = allCasesOfEnum(GuestCommentDesign);
+export type GuestCommentDesign = typeof GuestCommentDesignValues[keyof typeof GuestCommentDesignValues];
+export const GuestCommentDesignList = allCasesOfEnum(GuestCommentDesignValues);
 export const guestCommentDesignMap: Record<GuestCommentDesign, {
     korean: string
 }> = {
-    [GuestCommentDesign.BASIC]: {
+    BASIC: {
         korean: '기본형'
     },
-    [GuestCommentDesign.STICKER]: {
+    STICKER: {
         korean: '스티커'
     }
 };
-
-export default GuestCommentDesign;

@@ -1,14 +1,14 @@
-import React from 'react';
 import {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
-import Comment from "@src/infrastructure/network/value/Comment";
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
+import type Comment from "@src/infrastructure/network/value/Comment";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {BasicGuestComment} from "@src/userinterface/specific/wedding/component/GuestCommentsTemplate";
 import Text from "@src/userinterface/component/Text";
 import Spacer from "@src/userinterface/component/Spacer";
 import Divider from "@src/userinterface/component/Divider";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import GuestComment from "@src/infrastructure/network/value/GuestComment";
+import Icon from "@src/userinterface/foundation/Icon";
+import type GuestComment from "@src/infrastructure/network/value/GuestComment";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface GuestCommentsDetailDialogProps {
     comments: Comment[];
@@ -20,7 +20,6 @@ interface GuestCommentsDetailDialogProps {
 function GuestCommentsDetailDialog(
     {
         comments,
-        guestComment,
         onRemove,
         dismiss
     }: GuestCommentsDetailDialogProps
@@ -33,7 +32,7 @@ function GuestCommentsDetailDialog(
                 height: 100dvh;
                 overflow-y: hidden;
                 background: white;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
                 animation: none;
             `}>
                 <Row $alignItems={'center'} $ui={css`
@@ -43,7 +42,7 @@ function GuestCommentsDetailDialog(
                     <Spacer/>
                     <Text type={'p2'}>글 전체 보기</Text>
                     <Spacer/>
-                    <Icon iconType={IconType.CrossLine} size={20} onClick={dismiss} ui={css`
+                    <Icon iconType={'CrossLine'} size={20} onClick={dismiss} ui={css`
                         cursor: pointer;
                         right: 32px;
                         position: absolute;

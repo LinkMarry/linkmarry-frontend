@@ -1,4 +1,4 @@
-import GuestType from "@src/infrastructure/network/enumeration/GuestType";
+import {type GuestType} from "@src/infrastructure/network/enumeration/GuestType";
 
 export default interface RsvpRequest {
     // 청첩장 URL

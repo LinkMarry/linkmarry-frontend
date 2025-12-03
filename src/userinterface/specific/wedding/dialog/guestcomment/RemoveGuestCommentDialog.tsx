@@ -1,13 +1,14 @@
-import React, {useRef} from 'react';
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import {useRef} from 'react';
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {css} from "styled-components";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Button from "@src/userinterface/component/Button";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
-import Comment from "@src/infrastructure/network/value/Comment";
+import type Comment from "@src/infrastructure/network/value/Comment";
 import {isAxiosError} from "axios";
 import Input from "@src/userinterface/component/Input";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface RemoveGuestCommentDialogProps {
     url: string;
@@ -59,7 +60,7 @@ function RemoveGuestCommentDialog(
                 padding: 44px 36px;
                 background: white;
                 border-radius: 12px;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
             `}>
                 <Column $gap={4} $alignItems={'center'}>
                     <Text type={'p1'} bold={true}>글 삭제하기</Text>

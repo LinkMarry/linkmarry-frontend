@@ -1,6 +1,6 @@
 import api from "@src/infrastructure/network/api/foundation/api";
-import Jwt from "@src/infrastructure/network/value/Jwt";
-import {ResponseData} from "@src/infrastructure/network/value/Response";
+import type Jwt from "@src/infrastructure/network/value/Jwt";
+import {type ResponseData} from "@src/infrastructure/network/value/Response";
 
 const PATH = 'kakao';
 

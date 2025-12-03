@@ -1,13 +1,14 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {css} from "styled-components";
-import BaseDialog, {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/BaseDialog";
+import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import View from "@src/userinterface/core/View";
 import Button from "@src/userinterface/component/Button";
 import Text from "@src/userinterface/component/Text";
-import WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
+import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
 import makeText from "@src/userinterface/foundation/text/TextType";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
+import {applyBaseDialogContent} from "@src/userinterface/pattern/dialog/applyBaseDialogContent.ts";
 
 interface KakaoMapDialogProps {
     weddingPlace: WeddingPlace;
@@ -103,7 +104,7 @@ function KakaoMapDialog(
                 width: 90vw;
                 max-width: 412px;
                 height: 75vh;
-                ${applyBaseDialogContent()};
+                ${applyBaseDialogContent};
                 border-radius: 12px;
                 background: white;
             `}>
@@ -129,7 +130,7 @@ function KakaoMapDialog(
                             min-width: 0;
                         `}
                     />
-                    <Icon iconType={IconType.Search} onClick={() => {
+                    <Icon iconType={'Search'} onClick={() => {
                         keywordSearch(searchText);
                     }} size={28} ui={css`
                         fill: var(--g-500);

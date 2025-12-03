@@ -1,11 +1,11 @@
-import React, {ReactElement} from 'react';
-import EditorNavigationBarType from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {type ReactElement} from 'react';
+import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
-import EditorInspectorDesign, {WeddingDesignProps} from "@src/feature/editor/component/inspector/EditorInspectorDesign";
+import EditorInspectorDesign, {type WeddingDesignProps} from "@src/feature/editor/component/inspector/EditorInspectorDesign";
 import EditorInspectorBride from "@src/feature/editor/component/inspector/EditorInspectorBride";
 import EditorInspectorBackgroundMusic, {
-    BackgroundMusicProps
+    type BackgroundMusicProps
 } from "@src/feature/editor/component/inspector/EditorInspectorBackgroundMusic";
 import EditorInspectorChangeOrder from "@src/feature/editor/component/inspector/EditorInspectorChangeOrder";
 import EditorInspectorFontAndStyle from "@src/feature/editor/component/inspector/EditorInspectorFontAndStyle";
@@ -22,8 +22,8 @@ import EditorInspectorUrlShare from "@src/feature/editor/component/inspector/Edi
 import EditorInspectorWeddingSchedule from "@src/feature/editor/component/inspector/EditorInspectorWeddingSchedule";
 import EditorInspectorWeddingPlace from "@src/feature/editor/component/inspector/EditorInspectorWeddingPlace";
 import useResponsive from "@src/hook/useResponsive";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
 
 interface Props extends Binding<WeddingDto>, WeddingDesignProps, BackgroundMusicProps {
     currentNavType: EditorNavigationBarType;

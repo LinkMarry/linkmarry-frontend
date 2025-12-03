@@ -1,7 +1,7 @@
-import React, {ChangeEvent, useRef, useState} from 'react';
+import {type ChangeEvent, useRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
 import VoidInput from "@src/userinterface/specific/VoidInput";
 import View from "@src/userinterface/core/View";
@@ -91,7 +91,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
             />
             {isEmpty ? (
                 <Row $gap={8} $alignItems={'center'}>
-                    <Icon iconType={IconType.AddPhoto}/>
+                    <Icon iconType={'AddPhoto'}/>
                     <Text type={'p2'} ui={css`
                         color: var(--g-900);
                     `}>사진을 첨부해 주세요</Text>
@@ -124,7 +124,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
                                     background: var(--g-100);
                                     cursor: pointer;
                                 `}>
-                                <Icon iconType={IconType.AddPhoto} width={24} height={24} ui={css`
+                                <Icon iconType={'AddPhoto'} width={24} height={24} ui={css`
                                     fill: var(--g-500);
                                 `}/>
                                 <Text type={'caption2'} ui={css`

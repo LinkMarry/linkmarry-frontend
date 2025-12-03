@@ -1,4 +1,3 @@
-import React from 'react';
 import Text from "@src/userinterface/component/Text";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Input from "@src/userinterface/component/Input";
@@ -8,17 +7,15 @@ import FormToggle from "@src/userinterface/component/FormToggle";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
 import Divider from "@src/userinterface/component/Divider";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorRsvp = (
     {
         value: {rsvp},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'rsvp'} toggle={{

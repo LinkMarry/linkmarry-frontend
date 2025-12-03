@@ -1,26 +1,24 @@
-import React, {ComponentPropsWithoutRef, useEffect, useMemo, useState} from 'react';
+import {type ComponentPropsWithoutRef, useMemo, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import TabBar from "@src/userinterface/component/TabBar";
 import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import {css} from "styled-components";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import View from "@src/userinterface/core/View";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import {OpeningText, openingTextList} from "@src/infrastructure/network/value/WeddingDesign";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
+import {type OpeningText, openingTextList} from "@src/infrastructure/network/value/WeddingDesign";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import type WeddingDesignPreset from "@src/infrastructure/network/value/WeddingDesignPreset";
 import {openingList, openingMap} from "@src/infrastructure/network/enumeration/Opening";
 import Select from "@src/userinterface/component/Select";
 import {groupedByCategory} from "@src/infrastructure/network/value/GroupedWeddingDesignPresets";
 import Loading from "@src/userinterface/specific/Loading";
 
-interface Props extends Binding<WeddingDto> {
-}
 
-export interface WeddingDesignProps {
+export interface WeddingDesignProps extends Binding<WeddingDto> {
     weddingDesigns?: WeddingDesignPreset[];
 }
 
@@ -29,12 +27,12 @@ const EditorInspectorDesign = (
         value: {weddingDesign},
         update,
         weddingDesigns
-    }: Props & WeddingDesignProps
+    }: WeddingDesignProps
 ) => {
     const groupedCategories = useMemo(() => {
         return weddingDesigns ? groupedByCategory(weddingDesigns) : undefined;
     }, [weddingDesigns]);
-    const [selectedCategory, setSelectedCategory] = useState<string>();
+    const [selectedCategory, setSelectedCategory] = useState(groupedCategories?.[0]?.category);
     const categories = useMemo(() => {
         return groupedCategories?.map(i => i.category);
     }, [groupedCategories]);
@@ -42,9 +40,6 @@ const EditorInspectorDesign = (
         return groupedCategories?.find(i => i.category === selectedCategory)?.items;
     }, [groupedCategories, selectedCategory]);
 
-    useEffect(() => {
-        setSelectedCategory(groupedCategories?.[0]?.category);
-    }, [groupedCategories]);
 
     return (
         <EditorInspectorWrapper type={'design'} hasDivider={false}>
@@ -67,9 +62,10 @@ const EditorInspectorDesign = (
                     grid-column-gap: 12px;
                 `}>
                     {selectedWeddingDesigns && selectedWeddingDesigns.map((design, index) => (
-                        <Item key={index} design={design} selected={design.name === weddingDesign.weddingDesignName} onClick={() => update(draft => {
-                            draft.weddingDesign.weddingDesignName = design.name;
-                        })}/>
+                        <Item key={index} design={design} selected={design.name === weddingDesign.weddingDesignName}
+                              onClick={() => update(draft => {
+                                  draft.weddingDesign.weddingDesignName = design.name;
+                              })}/>
                     ))}
                 </View>
             </Column>
@@ -148,7 +144,7 @@ const Item = ({design, selected, ...props}: ItemProps) => {
                     `};
                 `}>{design.name}</Text>
                 {selected && (
-                    <Icon iconType={IconType.CheckLine} width={18} height={18} ui={css`
+                    <Icon iconType={'CheckLine'} width={18} height={18} ui={css`
                         fill: #22A2FC;
                     `}/>
                 )}

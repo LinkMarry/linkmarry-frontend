@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Spacer from "@src/userinterface/component/Spacer";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";
-import Wedding from "@src/infrastructure/network/value/Wedding";
-import useAutoFocus from "@src/hook/useAutoFocus";
+import type Wedding from "@src/infrastructure/network/value/Wedding";
+import {useAutoFocus} from "@src/hook/useAutoFocus.ts";
 import Toggle from "@src/userinterface/component/Toggle";
 
 interface Props {
@@ -68,7 +68,7 @@ const PreviewSetting = () => {
                     color: var(--g-800);
                 `}>미리보기 설정</Text>
                 <Spacer/>
-                <Icon iconType={IconType.ExpandArrow} width={18} height={18} ui={css`
+                <Icon iconType={'ExpandArrow'} width={18} height={18} ui={css`
                     fill: var(--g-400);
                     transition: 0.2s rotate ease-out;
                     ${openSetting ? css`

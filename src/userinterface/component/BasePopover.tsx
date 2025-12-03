@@ -1,7 +1,7 @@
-import React, {ReactNode, useEffect, useRef} from 'react';
+import {type ReactNode, useEffect, useRef} from 'react';
 import View from "@src/userinterface/core/View";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 
 interface Props {
     ui?: RuleSet;

@@ -1,17 +1,17 @@
-import React, {ComponentPropsWithoutRef, Dispatch, SetStateAction, useState} from 'react';
+import {type ComponentPropsWithoutRef, type Dispatch, type SetStateAction, useState} from 'react';
 import {css} from "styled-components";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Spacer from "@src/userinterface/component/Spacer";
 import Button from "@src/userinterface/component/Button";
 import {useNavigate} from "react-router-dom";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
 import Popover from "@src/userinterface/pattern/Popover";
 import Divider from "@src/userinterface/component/Divider";
 import View from "@src/userinterface/core/View";
 import useResponsive from "@src/hook/useResponsive";
 import Logo from "@src/userinterface/specific/Logo";
-import useAuth from "@src/hook/useAuth";
+import {useAuth} from "@src/hook/useAuth";
 import {makeInteractionEffect} from "@src/userinterface/css.util";
 import {NAVER_STORE_URL, NOTIFICATION_URL} from "@src/shared/constant";
 
@@ -47,11 +47,11 @@ function MobileHeader() {
                 `}>
                     {authorized ? (
                         <Column $gap={8} $alignItems={'stretch'}>
-                            <MobileHeaderItem text={'내 모바일 청첩장'} icon={IconType.Envelope} onClick={() => {
+                            <MobileHeaderItem text={'내 모바일 청첩장'} icon={'Envelope'} onClick={() => {
                                 navigate('/mypage/wedding');
                                 setOpenDetail(false);
                             }}/>
-                            <MobileHeaderItem text={'회원정보'} icon={IconType.PersonLine} onClick={() => {
+                            <MobileHeaderItem text={'회원정보'} icon={'PersonLine'} onClick={() => {
                                 navigate('/mypage/info');
                                 setOpenDetail(false);
                             }}/>
@@ -105,7 +105,7 @@ function MobileHeaderContent(props: {
         `}>
             <LogoInHeader/>
             <Spacer/>
-            <Icon iconType={props.openDetail ? IconType.CrossLine : IconType.Hamburger} width={24} height={24}
+            <Icon iconType={props.openDetail ? 'CrossLine' : 'Hamburger'} width={24} height={24}
                   ui={css`
                       fill: var(--g-900);
                       padding: 4px;
@@ -160,14 +160,14 @@ function DesktopHeader() {
                             <Popover
                                 items={[
                                     {
-                                        icon: IconType.Envelope,
+                                        icon: 'Envelope',
                                         text: '내 모바일 청첩장',
                                         onClick: () => {
                                             navigate('/mypage/wedding');
                                         }
                                     },
                                     {
-                                        icon: IconType.PersonLine,
+                                        icon: 'PersonLine',
                                         text: '회원정보',
                                         onClick: () => {
                                             navigate('/mypage/info');
@@ -228,7 +228,7 @@ function DesktopHeaderItem({text, hasPopover = false, ...props}: {
                 white-space: nowrap;
             `}>{text}</Text>
             {hasPopover && (
-                <Icon iconType={IconType.ExpandArrow} width={20} height={20} ui={css`
+                <Icon iconType={'ExpandArrow'} width={20} height={20} ui={css`
                     rotate: -90deg;
                     fill: var(--g-400);
                 `}/>

@@ -1,17 +1,10 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import Text from "@src/userinterface/component/Text";
 import View from "@src/userinterface/core/View";
 
-export const dummyTabBarItems = [
-    '모던',
-    '빈티지',
-    '레트로',
-    '로맨틱',
-    '클래식'
-]
 
 const TabBar = ({items, selectedTab, onChange, ui}: {
     items: string[];

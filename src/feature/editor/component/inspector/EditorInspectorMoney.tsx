@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
@@ -7,19 +7,17 @@ import {css} from "styled-components";
 import FormToggle from "@src/userinterface/component/FormToggle";
 import Checkbox from "@src/userinterface/component/Checkbox";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import View from "@src/userinterface/core/View";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorMoney = (
     {
         value: {moneyInfo},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     const [showHelperDialog, setShowHelperDialog] = useState(false);
 

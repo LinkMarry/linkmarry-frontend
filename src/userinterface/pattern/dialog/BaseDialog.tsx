@@ -1,8 +1,6 @@
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import React, {useEffect, useRef} from "react";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
-import popupAnimationStyle from "@src/userinterface/animation/popupAnimationStyle";
-import {hideScrollBar} from "@src/userinterface/css.util";
 import {Row} from "@src/userinterface/core/FlexLayout";
 import View from "@src/userinterface/core/View";
 
@@ -48,12 +46,3 @@ export default function BaseDialog({ui, dismiss, children}: BaseDialogProps) {
         </Row>
     );
 }
-
-export const applyBaseDialogContent = () => css`
-    display: flex;
-    position: fixed;
-    z-index: 3;
-    ${popupAnimationStyle};
-    overflow: auto;
-    ${hideScrollBar};
-`;

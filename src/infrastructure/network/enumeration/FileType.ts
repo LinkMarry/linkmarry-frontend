@@ -1,7 +1,10 @@
-enum FileType {
-    IMG = 'IMG',
-    FILE = 'FILE',
-    EMOJI = 'EMOJI'
-}
+import {allCasesOfEnum} from "@src/shared/enum-util.ts";
 
-export default FileType;
+const FileTypeValues = {
+    IMG: 'IMG',
+    FILE: 'FILE',
+    EMOJI: 'EMOJI'
+} as const;
+
+export type FileType = typeof FileTypeValues[keyof typeof FileTypeValues];
+export const FileTypeList = allCasesOfEnum(FileTypeValues);

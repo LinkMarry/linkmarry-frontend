@@ -1,4 +1,4 @@
-import GreetingDesign from "@src/infrastructure/network/enumeration/GreetingDesign";
+import {type GreetingDesign} from "@src/infrastructure/network/enumeration/GreetingDesign";
 
 
 export default interface Greeting {
@@ -15,11 +15,11 @@ export default interface Greeting {
 export const defaultGreeting: Greeting = {
     greetingTitle: '',
     greetingContent: '',
-    greetingDesign: GreetingDesign.BASIC
+    greetingDesign: 'BASIC'
 }
 
 export const dummyGreeting: Greeting = {
     greetingTitle: "",
     greetingContent: "새로운 시작을 알리는 날,\n소중한 분들과 함께하고 싶습니다.\n함께해 주셔서 사랑과 행복을 나눠주세요.",
-    greetingDesign: GreetingDesign.FLOWER
+    greetingDesign: 'FLOWER'
 };

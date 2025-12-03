@@ -1,17 +1,17 @@
-import React from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import {backgroundStyle, WeddingDesignColor} from "@src/infrastructure/network/value/WeddingDesign";
+import {backgroundStyle, type WeddingDesignColor} from "@src/infrastructure/network/value/WeddingDesign";
 import Button from "@src/userinterface/component/Button";
 import Divider from "@src/userinterface/component/Divider";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
-import WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
+import Icon from "@src/userinterface/foundation/Icon";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import {css} from "styled-components";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
-import Rsvp from "@src/infrastructure/network/value/Rsvp";
+import type Rsvp from "@src/infrastructure/network/value/Rsvp";
 
 interface RsvpTemplateProps {
     rsvp: Rsvp;
@@ -80,7 +80,7 @@ function RsvpTemplate(
                                             text-align: center;
                                         `}
                                     >{first.korean} {first.name}</Text>
-                                    <Icon iconType={IconType.HeartFill} size={16} ui={css`
+                                    <Icon iconType={'HeartFill'} size={16} ui={css`
                                         fill: var(--g-600);
                                     `}/>
                                     <Text size={16} weight={300} ui={css`

@@ -1,8 +1,6 @@
-import {Updater} from "use-immer";
+import {type Updater} from "use-immer";
 
-interface Binding<V> {
+export default interface Binding<V> {
     value: V;
     update: Updater<V>;
 }
-
-export default Binding;

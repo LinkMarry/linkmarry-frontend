@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import Divider from "@src/userinterface/component/Divider";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
-import useAuth from "@src/hook/useAuth";
+import {useAuth} from "@src/hook/useAuth";
 import Loading from "@src/userinterface/specific/Loading";
 
 function MyPageInfoPage() {

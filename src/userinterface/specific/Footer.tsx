@@ -1,4 +1,4 @@
-import React, {ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@src/userinterface/component/Text";

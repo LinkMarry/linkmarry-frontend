@@ -1,4 +1,4 @@
-import React, {ComponentProps} from 'react';
+import {type ComponentProps} from 'react';
 import {css} from "styled-components";
 import PreviewTemplate from "@src/userinterface/specific/wedding/component/preview/PreviewTemplate";
 import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";

@@ -1,13 +1,13 @@
-import React, {ComponentPropsWithoutRef, useCallback} from 'react';
+import {type ComponentPropsWithoutRef, useCallback} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import {backgroundStyle} from "@src/infrastructure/network/value/WeddingDesign";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
-import LinkShare from "@src/infrastructure/network/value/LinkShare";
+import Icon from "@src/userinterface/foundation/Icon";
+import type LinkShare from "@src/infrastructure/network/value/LinkShare";
 import {getWeddingUrl} from "@src/shared/string-util";
-import KakaoButton from "@src/infrastructure/network/enumeration/KakaoButton";
-import WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
+import {type KakaoButton} from "@src/infrastructure/network/enumeration/KakaoButton";
+import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<'div'> {
     url: string;
@@ -41,7 +41,7 @@ function FooterTemplate(
                 webUrl: string;
             };
         }[]> = {
-            [KakaoButton.NONE]: [
+            NONE: [
                 {
                     title: '모바일청첩장',
                     link: {
@@ -50,7 +50,7 @@ function FooterTemplate(
                     }
                 }
             ],
-            [KakaoButton.PLACE]: [
+            PLACE: [
                 {
                     title: '모바일청첩장',
                     link: {
@@ -66,7 +66,7 @@ function FooterTemplate(
                     }
                 }
             ],
-            [KakaoButton.ATTEND]: [
+            ATTEND: [
                 {
                     title: '모바일청첩장',
                     link: {
@@ -114,7 +114,7 @@ function FooterTemplate(
                 <Row $gap={8} $alignItems={'center'} $ui={css`
                     cursor: pointer;
                 `} onClick={shareToKakao}>
-                    <Icon iconType={IconType.Kakao} size={20}/>
+                    <Icon iconType={'Kakao'} size={20}/>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-600);
                     `}>카카오톡으로 청첩장 보내기</Text>

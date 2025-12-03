@@ -1,6 +1,6 @@
-import {RuleSet} from "styled-components";
+import {type RuleSet} from "styled-components";
 import {implementText} from "@src/userinterface/foundation/text/TextProperties";
-import {CSSProperties} from "react";
+import {type CSSProperties} from "react";
 
 export type FontFamily =
     'Pretendard'

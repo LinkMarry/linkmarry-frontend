@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Divider from "@src/userinterface/component/Divider";
@@ -6,24 +6,22 @@ import Input from "@src/userinterface/component/Input";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
 import FormToggle from "@src/userinterface/component/FormToggle";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
+import type Binding from "@src/shared/Binding";
 import {getPlaceholder} from "@src/infrastructure/network/value/WeddingPlace";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import Button from "@src/userinterface/component/Button";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
 import KakaoMapDialog from "@src/userinterface/specific/dialog/KakaoMapDialog";
 import {formatPhone} from "@src/shared/format-util";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorWeddingPlace = (
     {
         value: {weddingPlace},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     const [showKakaoMapDialog, setShowKakaoMapDialog] = useState(false);
 
@@ -96,7 +94,7 @@ const EditorInspectorWeddingPlace = (
                                         draft.weddingPlace.placeTransportation = copiedPlaceTransportation;
                                     });
                                 }}>
-                                    <Icon iconType={IconType.Trash} width={24} height={24} ui={css`
+                                    <Icon iconType={'Trash'} width={24} height={24} ui={css`
                                         padding: 8px;
                                         cursor: pointer;
                                     `}/>
@@ -105,7 +103,7 @@ const EditorInspectorWeddingPlace = (
                         );
                     }
                 })}
-                <Button text={'교통편 추가'} leadingIcon={IconType.AddLine} buttonType={'tonal'} onClick={() => {
+                <Button text={'교통편 추가'} leadingIcon={'AddLine'} buttonType={'tonal'} onClick={() => {
                     update(draft => {
                         draft.weddingPlace.placeTransportation.push('');
                     })

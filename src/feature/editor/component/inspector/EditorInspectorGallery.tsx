@@ -1,4 +1,3 @@
-import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
@@ -7,18 +6,16 @@ import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import FormToggleSet from "@src/userinterface/component/FormToggleSet";
 import FormToggle from "@src/userinterface/component/FormToggle";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
-import {galleryDesignList, galleryDesignMap} from "@src/infrastructure/network/enumeration/GalleryDesign";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
+import {GalleryDesignList, galleryDesignMap} from "@src/infrastructure/network/enumeration/GalleryDesign";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorGallery = (
     {
         value: {gallery},
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'gallery'}>
@@ -41,10 +38,10 @@ const EditorInspectorGallery = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
-                    items={galleryDesignList.map(i => galleryDesignMap[i].korean)}
-                    selectedTab={galleryDesignList.indexOf(gallery.galleryDesign)}
+                    items={GalleryDesignList.map(i => galleryDesignMap[i].korean)}
+                    selectedTab={GalleryDesignList.indexOf(gallery.galleryDesign)}
                     onChange={tab => update(draft => {
-                        draft.gallery.galleryDesign = galleryDesignList[tab];
+                        draft.gallery.galleryDesign = GalleryDesignList[tab];
                     })}
                 />
             </Column>

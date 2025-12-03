@@ -1,4 +1,3 @@
-import React from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import Input from "@src/userinterface/component/Input";
@@ -7,11 +6,9 @@ import {css} from "styled-components";
 import PhotoUploadBox from "@src/userinterface/specific/PhotoUploadBox";
 import SharingLink from "@src/userinterface/specific/SharingLink";
 import EditorInspectorWrapper from "@src/feature/editor/component/inspector/EditorInspectorWrapper";
-import Binding from "@src/shared/Binding";
-import WeddingDto from "@src/infrastructure/network/value/WeddingDto";
+import type Binding from "@src/shared/Binding";
+import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 
-interface Props extends Binding<WeddingDto> {
-}
 
 const EditorInspectorUrlShare = (
     {
@@ -19,7 +16,7 @@ const EditorInspectorUrlShare = (
             linkShare
         },
         update
-    }: Props
+    }: Binding<WeddingDto>
 ) => {
     return (
         <EditorInspectorWrapper type={'urlShare'}>

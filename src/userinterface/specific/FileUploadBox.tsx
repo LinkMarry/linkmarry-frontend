@@ -1,14 +1,14 @@
-import React, {ChangeEvent, useRef, useState} from 'react';
+import {type ChangeEvent, useRef, useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {css} from "styled-components";
 import VoidInput from "@src/userinterface/specific/VoidInput";
 import View from "@src/userinterface/core/View";
 import useUpload from "@src/hook/useUpload";
 import {makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
-import Upload from "@src/infrastructure/network/value/Upload";
+import type Upload from "@src/infrastructure/network/value/Upload";
 
 interface Props {
     id: string;
@@ -98,7 +98,7 @@ const FileUploadBox = ({id, value, label, onChange}: Props) => {
                         url: '',
                         byte: 0
                     })}>
-                        <Icon iconType={IconType.Trash} width={24} height={24} ui={css`
+                        <Icon iconType={'Trash'} width={24} height={24} ui={css`
                             fill: var(--g-600);
                         `}/>
                     </View>

@@ -1,7 +1,7 @@
-import {ResponseData} from "@src/infrastructure/network/value/Response";
-import Upload from "@src/infrastructure/network/value/Upload";
+import {type ResponseData} from "@src/infrastructure/network/value/Response";
+import type Upload from "@src/infrastructure/network/value/Upload";
 import api from "@src/infrastructure/network/api/foundation/api";
-import Music from "@src/infrastructure/network/value/Music";
+import type Music from "@src/infrastructure/network/value/Music";
 
 const PATH = 'file';
 

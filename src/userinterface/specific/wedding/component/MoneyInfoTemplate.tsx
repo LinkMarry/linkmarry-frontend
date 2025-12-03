@@ -1,11 +1,13 @@
-import React, {useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 import {css} from "styled-components";
-import MoneyInfo, {getMoneyInfoByBrideMarkFirst, MoneyInfoByBrideMarkFirst} from "@src/infrastructure/network/value/MoneyInfo";
+import type MoneyInfo from "@src/infrastructure/network/value/MoneyInfo";
+import {getMoneyInfoByBrideMarkFirst, type MoneyInfoByBrideMarkFirst} from "@src/infrastructure/network/value/MoneyInfo";
 import Spacer from "@src/userinterface/component/Spacer";
-import Icon, {IconType} from "@src/userinterface/foundation/Icon";
+import Icon from "@src/userinterface/foundation/Icon";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
-import BaseInfo, {BaseInfoByBrideMarkFirst, getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst, type BaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
 import View from "@src/userinterface/core/View";
@@ -117,7 +119,7 @@ const MoneyInfoContainer = ({baseInfo, me, father, mother, kakaoStatus}: MoneyIn
                     color: var(--g-600);
                 `}>{baseInfo.korean}측</Text>
                 <Spacer/>
-                <Icon iconType={IconType.ExpandArrow} ui={css`
+                <Icon iconType={'ExpandArrow'} ui={css`
                     fill: var(--g-400);
                     ${toggle ? css`
                         rotate: 90deg;
@@ -170,7 +172,7 @@ function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
             `}>
                 <Text type={'p3'}>{fullBankNumber}</Text>
                 <Spacer/>
-                <Icon iconType={IconType.Copy} size={20} ui={css`
+                <Icon iconType={'Copy'} size={20} ui={css`
                     fill: var(--g-400);
                 `} onClick={async () => {
                     try {
@@ -186,7 +188,7 @@ function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
                     text={'카카오페이 간편송금'}
                     size={'medium'}
                     buttonType={'tonal'}
-                    leadingIcon={IconType.Kakao}
+                    leadingIcon={'Kakao'}
                     onClick={() => window.open(moneyInfo.kakaoUrl)}
                 />
             )}

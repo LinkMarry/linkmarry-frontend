@@ -1,17 +1,17 @@
-import React, {
+import {
     isValidElement,
-    ReactNode,
-    RefObject,
+    type ReactNode,
+    type RefObject,
     useEffect,
     useState
 } from 'react';
 import View from "@src/userinterface/core/View";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import useFadeIn from "@src/userinterface/specific/fadein/useFadeIn";
 
-type Provided = {
+type Provided<T = any> = {
     style: RuleSet;
-    ref: RefObject<any>;
+    ref: RefObject<T>;
 }
 
 interface Props {
@@ -61,12 +61,16 @@ function FadeIn(
         );
     } else if (isValidElement(children)) {
         return (
-            <View as={as} ref={ref} $ui={css`
-                display: flex;
-                flex-direction: column;
-                ${style};
-                ${ui};
-            `}>
+            <View
+                as={as}
+                ref={ref} // Ref 타입 단언
+                $ui={css`
+                    display: flex;
+                    flex-direction: column;
+                    ${style};
+                    ${ui};
+                `}
+            >
                 {children}
             </View>
         );

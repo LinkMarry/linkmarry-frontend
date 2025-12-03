@@ -1,5 +1,5 @@
 import api from "@src/infrastructure/network/api/foundation/api";
-import {ResponseVoid} from "@src/infrastructure/network/value/Response";
+import {type ResponseVoid} from "@src/infrastructure/network/value/Response";
 
 const PATH = 'naver';
 

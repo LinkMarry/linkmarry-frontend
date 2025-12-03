@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import Button, {ButtonSize, ButtonType} from "@src/userinterface/component/Button";
-import Divider, {DividerSize} from "@src/userinterface/component/Divider";
+import {useState} from 'react';
+import Button, {type ButtonSize, type ButtonType} from "@src/userinterface/component/Button";
+import Divider, {type DividerSize} from "@src/userinterface/component/Divider";
 import Checkbox from "@src/userinterface/component/Checkbox";
 import Toggle from "@src/userinterface/component/Toggle";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
-import {IconType} from "@src/userinterface/foundation/Icon";
 import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import SegmentedButton from "@src/userinterface/component/SegmentedButton";
 import Input from "@src/userinterface/component/Input";
@@ -41,9 +40,9 @@ function ComponentDemo() {
                             display: 'flex',
                             gap: 8
                         }}>
-                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine}
+                            <Button text={'로그인'} leadingIcon={'AddLine'} trailingIcon={'AddLine'}
                                     buttonType={role} size={size}/>
-                            <Button text={'로그인'} leadingIcon={IconType.AddLine} trailingIcon={IconType.AddLine}
+                            <Button text={'로그인'} leadingIcon={'AddLine'} trailingIcon={'AddLine'}
                                     buttonType={role} size={size} enabled={false}/>
                         </div>
                     )}
@@ -82,14 +81,14 @@ function ComponentDemo() {
             <Popover
                 items={[
                     {
-                        icon: IconType.Book,
+                        icon: 'Book',
                         text: 'title',
                         onClick: () => {
 
                         },
                     },
                     {
-                        icon: IconType.Book,
+                        icon: 'Book',
                         text: 'title',
                         type: 'destructive',
                         onClick: () => {

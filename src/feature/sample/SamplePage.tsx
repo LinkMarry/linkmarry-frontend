@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {css} from "styled-components";
 import {dummyWedding} from "@src/infrastructure/network/value/Wedding";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";

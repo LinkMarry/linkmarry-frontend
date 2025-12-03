@@ -1,11 +1,12 @@
-import React, {ComponentProps, ReactNode} from 'react';
+import {type ComponentProps, type ReactNode} from 'react';
 import Text from "@src/userinterface/component/Text";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Spacer from "@src/userinterface/component/Spacer";
 import Toggle from "@src/userinterface/component/Toggle";
 import useResponsive from "@src/hook/useResponsive";
 import {css} from "styled-components";
-import EditorNavigationBarType, {editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import Divider from "@src/userinterface/component/Divider";
 import Icon from "@src/userinterface/foundation/Icon";
 import {hideScrollBar} from "@src/userinterface/css.util";

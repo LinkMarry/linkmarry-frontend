@@ -1,9 +1,9 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import {type Dispatch, type SetStateAction} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import useWeddingDesigns from "@src/hook/useWeddingDesigns";
-import {css, RuleSet} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import TabBar from "@src/userinterface/component/TabBar";
-import {WeddingDesignName} from "@src/infrastructure/network/value/WeddingDesign";
+import {type WeddingDesignName} from "@src/infrastructure/network/value/WeddingDesign";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
 import useResponsive from "@src/hook/useResponsive";
 import View from "@src/userinterface/core/View";
@@ -28,7 +28,7 @@ const SelectDesignSheet = (props: SelectDesignSheetProps) => {
     return <DesktopSelectDesignSheet {...props}/>;
 };
 
-const MobileSelectDesignSheet = ({designName, onChangeDesignName, ui, dismiss}: SelectDesignSheetProps) => {
+const MobileSelectDesignSheet = ({onChangeDesignName, ui, dismiss}: SelectDesignSheetProps) => {
     const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
     return (
         <BaseDialog dismiss={dismiss}>
@@ -89,7 +89,7 @@ const MobileSelectDesignSheet = ({designName, onChangeDesignName, ui, dismiss}: 
     );
 };
 
-const DesktopSelectDesignSheet = ({designName, onChangeDesignName, ui, dismiss}: SelectDesignSheetProps) => {
+const DesktopSelectDesignSheet = ({onChangeDesignName}: SelectDesignSheetProps) => {
     const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
     return (
         <Column $alignItems={'stretch'} $gap={12} $ui={css`

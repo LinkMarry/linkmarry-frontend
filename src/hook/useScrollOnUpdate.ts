@@ -1,9 +1,11 @@
-import {RefObject, useEffect, useState} from "react";
-import useAutoFocus from "@src/hook/useAutoFocus";
+import {type RefObject, useEffect, useState} from "react";
+import {useAutoFocus} from "@src/hook/useAutoFocus.ts";
+
+type DependencyList = readonly unknown[];
 
 export default function useScrollOnUpdate<T extends HTMLElement>(
     ref: RefObject<T | null>,
-    triggerDeps: any[]
+    triggerDeps: DependencyList
 ) {
     const [isLoadedCount, setIsLoadedCount] = useState(0);
     const {autoFocus} = useAutoFocus();
@@ -15,6 +17,7 @@ export default function useScrollOnUpdate<T extends HTMLElement>(
         }
 
         if (isLoadedCount < 2) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsLoadedCount(i => i + 1);
             return;
         }

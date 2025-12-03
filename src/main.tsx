@@ -1,13 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
 import App from '@src/application/App';
 import {HelmetProvider} from "react-helmet-async";
-import '@src/index.css'
-import {CookiesProvider} from "react-cookie";
+import '@src/index.css';
+import {CookiesProvider} from 'react-cookie';
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
+const rootElement = document.getElementById('root');
+
+const root = createRoot(rootElement!);
 root.render(
     <CookiesProvider defaultSetOptions={{path: '/'}}>
         <HelmetProvider>

@@ -1,13 +1,13 @@
-import React, {useRef} from 'react';
+import {useRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Divider from "@src/userinterface/component/Divider";
 import Text from "@src/userinterface/component/Text";
-import Greeting from "@src/infrastructure/network/value/Greeting";
-import BaseInfo, {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
+import type Greeting from "@src/infrastructure/network/value/Greeting";
+import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
+import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import {css} from "styled-components";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
-import GreetingDesign from "@src/infrastructure/network/enumeration/GreetingDesign";
 import View from "@src/userinterface/core/View";
 
 interface InvitationLetterTemplateProps {
@@ -31,14 +31,14 @@ function InvitationLetterTemplate(
                 padding: 72px 60px;
                 background: white;
             `}>
-                {greeting.greetingDesign === GreetingDesign.BASIC && (
+                {greeting.greetingDesign === 'BASIC' && (
                     <FadeIn>
                         <Text className={'override-font'} weight={300} size={12} font={'Aleo'} ui={css`
                             color: var(--g-300);
                         `}>Wedding Invitation</Text>
                     </FadeIn>
                 )}
-                {greeting.greetingDesign === GreetingDesign.TEXT && (
+                {greeting.greetingDesign === 'TEXT' && (
                     <FadeIn>
                         <Text weight={300} size={12} ui={css`
                             color: var(--g-600);
@@ -47,7 +47,7 @@ function InvitationLetterTemplate(
                         `}>{greeting.greetingTitle}</Text>
                     </FadeIn>
                 )}
-                {greeting.greetingDesign === GreetingDesign.FLOWER && (
+                {greeting.greetingDesign === 'FLOWER' && (
                     <FadeIn>
                         <View as={'svg'} width="20" height="20" viewBox="0 0 21 21" fill="current" xmlns="http://www.w3.org/2000/svg" $ui={css`
                             fill: var(--g-500);

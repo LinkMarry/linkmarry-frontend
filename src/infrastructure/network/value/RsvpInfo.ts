@@ -1,4 +1,4 @@
-import GuestType from "@src/infrastructure/network/enumeration/GuestType";
+import {type GuestType} from "@src/infrastructure/network/enumeration/GuestType";
 
 export default interface RsvpInfo {
     // Rsvp ID (PK)
@@ -38,9 +38,9 @@ export function getRsvpText(rsvp: RsvpInfo): string {
     }
 
     switch (rsvp.guestType) {
-        case GuestType.GROOM:
+        case 'GROOM':
             return '신랑측';
-        case GuestType.BRIDE:
+        case 'BRIDE':
             return '신부측';
     }
 }

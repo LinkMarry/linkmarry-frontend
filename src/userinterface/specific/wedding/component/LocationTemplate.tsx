@@ -1,8 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
-import WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
+import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
 import useScrollOnUpdate from "@src/hook/useScrollOnUpdate";
 import View from "@src/userinterface/core/View";
 import FadeIn from "@src/userinterface/specific/fadein/FadeIn";
@@ -44,8 +44,6 @@ function LocationTemplate(
 
         createdMap.setDraggable(!weddingPlace.placeLock); // 드래그 비활성화
         createdMap.setZoomable(!weddingPlace.placeLock); // 줌 비활성화
-
-        console.log('생성됨');
     }, [weddingPlace]);
 
     return (
