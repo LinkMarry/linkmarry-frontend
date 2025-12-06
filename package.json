@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node dev.js",
-    "build": "npm run build:client && npm run build:server && npm run copy-client",
-    "build:dev": "npm run build:client && npm run build:server",
+    "build": "pnpm run build:client && pnpm run build:server && pnpm run copy-client",
+    "build:dev": "pnpm run build:client && pnpm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "copy-client": "rm -rf public && mkdir -p public && cp -R dist/client/* public/",
