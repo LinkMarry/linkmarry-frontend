@@ -6,9 +6,12 @@
       "use": "@vercel/node@2.0.0",
       "config": {
         "includeFiles": [
+          "index.js",
           "package.json",
           "node_modules/**",
-          "src/**/*"
+          "dist/**/*",
+          "src/**/*",
+          "public/**/*"
         ]
       }
     }
