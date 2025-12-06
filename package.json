@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server",
-    "build": "npm run build:client && npm run build:server",
+    "dev": "node dev.js",
+    "build": "npm run build:client && npm run build:server && npm run copy-client",
+    "build:dev": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "preview": "cross-env NODE_ENV=production node server"
+    "copy-client": "rm -rf public && mkdir -p public && cp -R dist/client/* public/",
+    "preview": "cross-env NODE_ENV=development node dev.js"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -23,10 +25,10 @@
     "react-helmet-async": "^2.0.5",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^7.0.2",
+    "sirv": "^3.0.2",
     "styled-components": "^6.1.13",
     "use-immer": "^0.11.0",
-    "xlsx": "^0.18.5",
-    "sirv": "^3.0.2"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -36,6 +38,7 @@
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "babel-plugin-styled-components": "^2.1.4",
     "cross-env": "^10.0.0",
     "date-fns": "^4.1.0",
     "eslint": "^9.39.1",
@@ -44,7 +47,6 @@
     "globals": "^16.5.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "babel-plugin-styled-components": "^2.1.4",
     "vite": "^7.2.4"
   }
 }
