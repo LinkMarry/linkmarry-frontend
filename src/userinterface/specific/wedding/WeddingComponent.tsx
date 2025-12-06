@@ -43,22 +43,27 @@ function WeddingComponent(
     const cookieKey = `hide_RsvpDialog_${wedding.url}`;
     const [cookies] = useCookies([cookieKey]);
 
-    const [showRsvpDialog, setShowRsvpDialog] = useState((() => {
-        if (mode === 'preview' || !wedding.rsvp.startPopupStatus || rsvp) return false;
-        return cookies[cookieKey] === undefined
-    })());
+    const [showRsvpDialog, setShowRsvpDialog] = useState(false);
 
     const autoplay = wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate;
     const audioRef = useRef<HTMLAudioElement>(null);
     const autoplayUnlockRef = useRef<HTMLDivElement>(null)
     const [showAutoplayUnlockElement, setShowAutoplayUnlockElement] = useState(mode !== 'preview');
+
+    useEffect(() => {
+        if (mode === 'preview' || !wedding.rsvp.startPopupStatus || rsvp) {
+            setShowRsvpDialog(false);
+            return;
+        }
+        setShowRsvpDialog(cookies[cookieKey] === undefined);
+    }, [cookieKey, cookies, mode, rsvp, wedding.rsvp.startPopupStatus]);
+
     useEffect(() => {
         const autoplayUnlockElement = autoplayUnlockRef.current;
 
         if (!autoplayUnlockElement || !autoplay) return;
 
         const unlock = () => {
-
             const context = new window.AudioContext(); // 미리 생성하지 말고 제스처 이벤트 안에서 생성하는 것도 방법
             context.resume()
                 .then(() => {

@@ -7,7 +7,7 @@ import type BaseInfo from "@src/infrastructure/network/value/BaseInfo";
 import {getBaseInfoByBrideMarkFirst} from "@src/infrastructure/network/value/BaseInfo";
 import type WeddingSchedule from "@src/infrastructure/network/value/WeddingSchedule";
 import type WeddingPlace from "@src/infrastructure/network/value/WeddingPlace";
-import {format, parse} from "date-fns";
+import {addDays, format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import Button from "@src/userinterface/component/Button";
 import type Rsvp from "@src/infrastructure/network/value/Rsvp";
@@ -84,8 +84,8 @@ function RsvpDialog(
                             cursor: pointer;
                         `}
                         onClick={() => {
-                            const date = new Date();
-                            date.setDate(date.getDate() + 1);
+                            // Tomorrow
+                            const date = addDays(new Date(), 1);
 
                             setCookie(cookieKey, 'true', {
                                 expires: date

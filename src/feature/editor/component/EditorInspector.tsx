@@ -1,8 +1,10 @@
 import {type ReactElement} from 'react';
 import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import {Column} from "@src/userinterface/core/FlexLayout";
-import {css} from "styled-components";
-import EditorInspectorDesign, {type WeddingDesignProps} from "@src/feature/editor/component/inspector/EditorInspectorDesign";
+import {css, type RuleSet} from "styled-components";
+import EditorInspectorDesign, {
+    type WeddingDesignProps
+} from "@src/feature/editor/component/inspector/EditorInspectorDesign";
 import EditorInspectorBride from "@src/feature/editor/component/inspector/EditorInspectorBride";
 import EditorInspectorBackgroundMusic, {
     type BackgroundMusicProps
@@ -13,7 +15,8 @@ import EditorInspectorGallery from "@src/feature/editor/component/inspector/Edit
 import EditorInspectorGreeting from "@src/feature/editor/component/inspector/EditorInspectorGreeting";
 import EditorInspectorGuestComment from "@src/feature/editor/component/inspector/EditorInspectorGuestComment";
 import EditorInspectorGroom from "@src/feature/editor/component/inspector/EditorInspectorGroom";
-import EditorInspectorKakaotalkInvitationLetter from "@src/feature/editor/component/inspector/EditorInspectorKakaotalkInvitationLetter";
+import EditorInspectorKakaotalkInvitationLetter
+    from "@src/feature/editor/component/inspector/EditorInspectorKakaotalkInvitationLetter";
 import EditorInspectorMoney from "@src/feature/editor/component/inspector/EditorInspectorMoney";
 import EditorInspectorPhone from "@src/feature/editor/component/inspector/EditorInspectorPhone";
 import EditorInspectorRsvp from "@src/feature/editor/component/inspector/EditorInspectorRsvp";
@@ -21,28 +24,37 @@ import EditorInspectorVideo from "@src/feature/editor/component/inspector/Editor
 import EditorInspectorUrlShare from "@src/feature/editor/component/inspector/EditorInspectorUrlShare";
 import EditorInspectorWeddingSchedule from "@src/feature/editor/component/inspector/EditorInspectorWeddingSchedule";
 import EditorInspectorWeddingPlace from "@src/feature/editor/component/inspector/EditorInspectorWeddingPlace";
-import useResponsive from "@src/hook/useResponsive";
+import {responsive} from "@src/hook/ResponsiveSwitch.tsx";
 import {type WeddingDto} from "@src/infrastructure/network/value/WeddingDto";
 import type Binding from "@src/shared/Binding";
 
 interface Props extends Binding<WeddingDto>, WeddingDesignProps, BackgroundMusicProps {
     currentNavType: EditorNavigationBarType;
+    ui?: RuleSet;
 }
 
-const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns, backgroundMusics}: Props) => {
-    const {deviceSize} = useResponsive();
-
+const EditorInspector = (
+    {
+        value: wedding,
+        update,
+        currentNavType,
+        weddingDesigns,
+        backgroundMusics,
+        ui
+    }: Props
+) => {
     return (
         <Column $alignItems={'stretch'} $ui={css`
             min-width: 412px;
             width: 412px;
 
-            ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`
+            ${responsive.desktop(css`
                 min-width: 0;
                 width: auto;
                 flex: 1;
                 min-height: 0;
-            `};
+            `)};
+            ${ui};
         `}>
             {(() => {
                 const view: Record<EditorNavigationBarType, ReactElement> = {
@@ -65,7 +77,8 @@ const EditorInspector = ({value: wedding, update, currentNavType, weddingDesigns
                     guestComment: <EditorInspectorGuestComment value={wedding} update={update}/>,
                     fontAndStyle: <EditorInspectorFontAndStyle value={wedding} update={update}/>,
                     urlShare: <EditorInspectorUrlShare value={wedding} update={update}/>,
-                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter value={wedding} update={update}/>,
+                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter value={wedding}
+                                                                                         update={update}/>,
                     changeOrder: <EditorInspectorChangeOrder value={wedding} update={update}/>,
                     // ai: <EditorInspectorAi/>
                 }

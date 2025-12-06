@@ -9,20 +9,19 @@ import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
 import Popover from "@src/userinterface/pattern/Popover";
 import Divider from "@src/userinterface/component/Divider";
 import View from "@src/userinterface/core/View";
-import useResponsive from "@src/hook/useResponsive";
 import Logo from "@src/userinterface/specific/Logo";
 import {useAuth} from "@src/hook/useAuth";
 import {makeInteractionEffect} from "@src/userinterface/css.util";
 import {NAVER_STORE_URL, NOTIFICATION_URL} from "@src/shared/constant";
+import {mobileStyle, notMobileStyle} from "@src/hook/ResponsiveSwitch.tsx";
 
 function Header() {
-    const {deviceSize} = useResponsive();
-
-    if (deviceSize === 'mobile') {
-        return <MobileHeader/>;
-    }
-
-    return <DesktopHeader/>;
+    return (
+        <>
+            <MobileHeader/>
+            <NotMobileHeader/>
+        </>
+    )
 }
 
 function MobileHeader() {
@@ -34,6 +33,7 @@ function MobileHeader() {
         return (
             <Column as={'header'} $alignItems={'stretch'} $ui={css`
                 position: relative;
+                ${mobileStyle};
             `}>
                 <MobileHeaderContent openDetail={openDetail} setOpenDetail={setOpenDetail}/>
                 <Column $gap={16} $alignItems={'stretch'} $ui={css`
@@ -102,6 +102,7 @@ function MobileHeaderContent(props: {
             background: white;
             border-bottom: 1px solid var(--g-200);
             padding: 0 16px;
+            ${mobileStyle};
         `}>
             <LogoInHeader/>
             <Spacer/>
@@ -117,7 +118,7 @@ function MobileHeaderContent(props: {
     )
 }
 
-function DesktopHeader() {
+function NotMobileHeader() {
     const {authorized} = useAuth();
     const navigate = useNavigate();
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
@@ -129,6 +130,7 @@ function DesktopHeader() {
             background: white;
             border-bottom: 1px solid var(--g-200);
             padding: 0 24px;
+            ${notMobileStyle};
         `}>
             <Row $alignItems={'center'} $ui={css`
                 max-width: 1100px;

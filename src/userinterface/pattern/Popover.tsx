@@ -12,6 +12,7 @@ export interface PopoverItem {
     text: string;
     type?: 'normal' | 'destructive';
     onClick: () => void;
+    ui?: RuleSet;
 }
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
@@ -46,6 +47,7 @@ function Popover(
                         padding: 8px 12px;
                         border-radius: 6px;
                         ${makeInteractionEffect('strong')};
+                        ${item.ui};
                     `} onClick={() => {
                         item.onClick();
                         dismiss();

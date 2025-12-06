@@ -3,7 +3,7 @@ import Text from "@src/userinterface/component/Text";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import Spacer from "@src/userinterface/component/Spacer";
 import Toggle from "@src/userinterface/component/Toggle";
-import useResponsive from "@src/hook/useResponsive";
+import {responsive} from "@src/hook/ResponsiveSwitch.tsx";
 import {css} from "styled-components";
 import {editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
@@ -19,8 +19,6 @@ interface Props {
 }
 
 const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Props) => {
-    const {deviceSize} = useResponsive();
-
     const content = (() => {
         if (!toggle || toggle.checked) {
             return children;
@@ -30,13 +28,18 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
     });
 
     return (
-        <Column $alignItems={'stretch'} $gap={deviceSize === 'desktop' ? 32 : 24} $ui={css`
+        <Column $alignItems={'stretch'} $ui={css`
             overflow-y: scroll;
             ${hideScrollBar};
             padding: 32px 24px 100px 24px;
-            ${(deviceSize === 'mobile' || deviceSize === 'tablet') && css`
+            
+            ${responsive.desktop(css`
+                gap: 32px;
+            `)};
+            ${responsive.notDesktop(css`
                 padding: 24px 16px 40px 16px;
-            `};
+                gap: 24px;
+            `)};
         `}>
             <Row $alignItems={'center'}>
                 <Text type={'p1'} bold={true}>{editorNavigationBarTypeMap[type].inspectorText}</Text>

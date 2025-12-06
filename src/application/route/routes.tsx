@@ -19,6 +19,7 @@ import DevelopmentRoute from "@src/application/route/DevelopmentRoute";
 import Providers from "@src/application/Providers";
 import SamplePage from "@src/feature/sample/SamplePage";
 import LinkPage from "@src/feature/LinkPage";
+import App from "@src/application/App.tsx";
 
 const routes: RouteObject[] = [
     {
@@ -113,11 +114,16 @@ const routes: RouteObject[] = [
     }
 ];
 
-const routesWithProviders: RouteObject[] = [
+const rootRoutes: RouteObject[] = [
     {
-        element: <Providers/>,
-        children: routes
+        element: <App/>,
+        children: [
+            {
+                element: <Providers/>,
+                children: routes
+            }
+        ]
     }
 ];
 
-export default routesWithProviders;
+export default rootRoutes;

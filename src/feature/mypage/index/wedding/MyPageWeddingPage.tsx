@@ -9,7 +9,6 @@ import Icon, {type IconType} from "@src/userinterface/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import Spacer from "@src/userinterface/component/Spacer";
 import Popover from "@src/userinterface/pattern/Popover";
-import useResponsive from "@src/hook/useResponsive";
 import weddingApi from "@src/infrastructure/network/api/wedding-api";
 import Loading from "@src/userinterface/specific/Loading";
 import type WeddingInfo from "@src/infrastructure/network/value/WeddingInfo";
@@ -21,6 +20,7 @@ import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import RemoveWatermarkDialog from "@src/userinterface/specific/dialog/RemoveWatermarkDialog";
 import {getWeddingUrl} from "@src/shared/string-util";
 import useMyPageWedding from "@src/feature/mypage/index/wedding/useMyPageWedding";
+import {desktopStyle, responsive} from "@src/hook/ResponsiveSwitch.tsx";
 
 function MyPageWeddingPage() {
     const {
@@ -77,7 +77,6 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
     const [selectedRemoveWatermarkWedding, setSelectedRemoveWatermarkWedding] = useState<WeddingInfo>();
     const [comments, setComments] = useState<Comment[]>();
-    const {deviceSize} = useResponsive();
     const navigate = useNavigate();
     const weddingUrl = getWeddingUrl(weddingInfo.url);
 
@@ -104,9 +103,9 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
     return (
         <Row $gap={16} $alignItems={'stretch'} $ui={css`
             height: 360px;
-            ${deviceSize === "mobile" && css`
+            ${responsive.mobile(css`
                 height: 144px;
-            `};
+            `)};
         `}>
             {showRemoveWatermarkDialog && selectedRemoveWatermarkWedding && (
                 <RemoveWatermarkDialog
@@ -116,9 +115,9 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
             )}
             <View as={'img'} src={weddingInfo.img} $ui={css`
                 width: calc(360px * 9 / 16);
-                ${deviceSize === "mobile" && css`
+                ${responsive.mobile(css`
                     width: calc(144px * 9 / 16);
-                `};
+                `)};
                 background: var(--g-100);
                 border-radius: 12px;
                 object-fit: cover;
@@ -148,17 +147,17 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                             </Row>
                         </Column>
                         <Row $gap={8} $alignItems={'center'}>
-                            {deviceSize === 'desktop' && (
-                                <>
-                                    <Button text={'수정'} size={'medium'} buttonType={'outlined'} onClick={() => {
-                                        navigate(`/editor/${weddingInfo.url}`);
-                                    }}/>
-                                    <Button text={'워터마크 제거'} size={'medium'} onClick={() => {
-                                        setSelectedRemoveWatermarkWedding(weddingInfo);
-                                        setShowRemoveWatermarkDialog(true);
-                                    }}/>
-                                </>
-                            )}
+                            <Button text={'수정'} size={'medium'} buttonType={'outlined'} onClick={() => {
+                                navigate(`/editor/${weddingInfo.url}`);
+                            }} ui={css`
+                                ${desktopStyle};
+                            `}/>
+                            <Button text={'워터마크 제거'} size={'medium'} onClick={() => {
+                                setSelectedRemoveWatermarkWedding(weddingInfo);
+                                setShowRemoveWatermarkDialog(true);
+                            }} ui={css`
+                                ${desktopStyle};
+                            `}/>
                             <View $ui={css`
                                 position: relative;
                             `}>
@@ -176,116 +175,144 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                     `}/>
                                 </Column>
                                 {openDetailPopover && (
-                                    <Popover
-                                        items={[
-                                            ...((deviceSize === 'mobile' || deviceSize === 'tablet') ? [
-                                                {
-                                                    icon: 'PenLine' as IconType,
-                                                    text: '청첩장 수정',
-                                                    onClick: () => {
-                                                        navigate(`/editor/${weddingInfo.url}`);
-                                                    }
-                                                },
-                                                {
-                                                    icon: 'Star' as IconType,
-                                                    text: '워터마크 제거',
-                                                    onClick: () => {
-                                                        setShowRemoveWatermarkDialog(true);
-                                                        setSelectedRemoveWatermarkWedding(weddingInfo);
-                                                    }
-                                                }
-                                            ] : []),
-                                            {
-                                                icon: 'Stat',
-                                                text: '통계 보기',
-                                                onClick: () => {
-                                                    navigate(`/mypage/wedding/${weddingInfo.url}`);
-                                                }
-                                            },
-                                            // {
-                                            //     icon: Link,
-                                            //     text: '링크 수정',
-                                            //     onClick: () => {
-                                            //     }
-                                            // },
-                                            {
-                                                icon: 'Trash',
-                                                text: '청첩장 삭제',
-                                                type: 'destructive',
-                                                onClick: onRemoveWedding
-                                            }
-                                        ]}
+                                    <WeddingCellPopover
                                         dismiss={() => setOpenDetailPopover(false)}
-                                        ui={css`
-                                            right: 0;
-                                        `}
+                                        onViewStat={() => {
+                                            navigate(`/mypage/wedding/${weddingInfo.url}`);
+                                        }}
+                                        onRemoveWedding={onRemoveWedding}
+                                        onEditWedding={() => {
+                                            navigate(`/editor/${weddingInfo.url}`);
+                                        }}
+                                        onRemoveWatermark={() => {
+                                            setShowRemoveWatermarkDialog(true);
+                                            setSelectedRemoveWatermarkWedding(weddingInfo);
+                                        }}
                                     />
                                 )}
                             </View>
                         </Row>
                     </Row>
-                    {deviceSize === 'desktop' && (
-                        <Divider/>
-                    )}
+                    <Divider ui={css`
+                        ${desktopStyle};
+                    `}/>
                 </Column>
                 {/*content*/}
-                {deviceSize === 'desktop' && (
-                    <Row $gap={16} $flex={1} $alignItems={'stretch'} $ui={css`
-                        min-height: 0;
-                    `}>
-                        {/*방명록 미리보기*/}
-                        <Column $gap={8} $alignItems={'stretch'} $flex={1}>
-                            <Text type={'caption2'} bold={true} ui={css`
-                                color: var(--g-400);
-                            `}>방명록</Text>
-                            <Column $gap={8} $alignItems={'stretch'} $flex={1} $ui={css`
-                                min-height: 0;
-                                overflow-y: scroll;
-                                ${hideScrollBar};
-                            `}>
-                                {comments ? (
-                                    comments.length === 0 ? (
-                                        <Text type={'p3'} ui={css`
-                                            align-self: center;
-                                            margin-top: 24px;
-                                            color: var(--g-500);
-                                        `}>아직 방명록이 없어요</Text>
-                                    ) : (
-                                        comments.map((comment, index) => (
-                                            <CommentCell key={index} comment={comment}/>
-                                        ))
-                                    )) : (
-                                    <Loading/>
-                                )}
-                            </Column>
-                        </Column>
-
-                        {/*통계*/}
-                        <Column $gap={8} $alignItems={'stretch'} $flex={1}>
-                            <Text type={'caption2'} bold={true} ui={css`
-                                color: var(--g-400);
-                            `}>통계</Text>
-                            <Column $gap={8} $alignItems={'stretch'} $flex={1} $ui={css`
-                                min-height: 0;
-                                overflow-y: scroll;
-                                ${hideScrollBar};
-                            `}>
-                                {statistics ? (
-                                    <>
-                                        <StatisticsCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
-                                        <StatisticsCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
-                                        <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
-                                    </>
+                <Row $gap={16} $flex={1} $alignItems={'stretch'} $ui={css`
+                    min-height: 0;
+                    ${desktopStyle};
+                `}>
+                    {/*방명록 미리보기*/}
+                    <Column $gap={8} $alignItems={'stretch'} $flex={1}>
+                        <Text type={'caption2'} bold={true} ui={css`
+                            color: var(--g-400);
+                        `}>방명록</Text>
+                        <Column $gap={8} $alignItems={'stretch'} $flex={1} $ui={css`
+                            min-height: 0;
+                            overflow-y: scroll;
+                            ${hideScrollBar};
+                        `}>
+                            {comments ? (
+                                comments.length === 0 ? (
+                                    <Text type={'p3'} ui={css`
+                                        align-self: center;
+                                        margin-top: 24px;
+                                        color: var(--g-500);
+                                    `}>아직 방명록이 없어요</Text>
                                 ) : (
-                                    <Loading/>
-                                )}
-                            </Column>
+                                    comments.map((comment, index) => (
+                                        <CommentCell key={index} comment={comment}/>
+                                    ))
+                                )) : (
+                                <Loading/>
+                            )}
                         </Column>
-                    </Row>
-                )}
+                    </Column>
+
+                    {/*통계*/}
+                    <Column $gap={8} $alignItems={'stretch'} $flex={1}>
+                        <Text type={'caption2'} bold={true} ui={css`
+                            color: var(--g-400);
+                        `}>통계</Text>
+                        <Column $gap={8} $alignItems={'stretch'} $flex={1} $ui={css`
+                            min-height: 0;
+                            overflow-y: scroll;
+                            ${hideScrollBar};
+                        `}>
+                            {statistics ? (
+                                <>
+                                    <StatisticsCell title={'총 참석 가능 인원'}
+                                                    value={`${statistics.totalRsvpVisitorCnt}명`}/>
+                                    <StatisticsCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
+                                    <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
+                                </>
+                            ) : (
+                                <Loading/>
+                            )}
+                        </Column>
+                    </Column>
+                </Row>
             </Column>
         </Row>
-    )
+    );
+}
+
+interface WeddingCellPopoverProps {
+    dismiss: () => void;
+    onViewStat: () => void;
+    onRemoveWedding: () => void;
+    onEditWedding: () => void;
+    onRemoveWatermark: () => void;
+}
+
+function WeddingCellPopover(
+    {
+        dismiss,
+        onViewStat,
+        onRemoveWedding,
+        onEditWedding,
+        onRemoveWatermark
+    }: WeddingCellPopoverProps
+) {
+    return (
+        <>
+            <Popover
+                items={[
+                    {
+                        icon: 'PenLine' as IconType,
+                        text: '청첩장 수정',
+                        onClick: onEditWedding,
+                        ui: css`
+                            ${desktopStyle};
+                        `
+                    },
+                    {
+                        icon: 'Star' as IconType,
+                        text: '워터마크 제거',
+                        onClick: onRemoveWatermark,
+                        ui: css`
+                            ${desktopStyle};
+                        `
+                    },
+                    {
+                        icon: 'Stat',
+                        text: '통계 보기',
+                        onClick: onViewStat
+                    },
+                    {
+                        icon: 'Trash',
+                        text: '청첩장 삭제',
+                        type: 'destructive',
+                        onClick: onRemoveWedding
+                    }
+                ]}
+                dismiss={dismiss}
+                ui={css`
+                    right: 0;
+                `}
+            />
+        </>
+    );
 }
 
 function CommentCell({comment}: { comment: Comment }) {

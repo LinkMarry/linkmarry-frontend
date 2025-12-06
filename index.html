@@ -8,13 +8,22 @@
     <link rel="apple-touch-icon" href="/logo192.png"/>
 
     <!-- Preload critical fonts -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap" as="style">
+    <link rel="preload"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+          as="style">
+    <link rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
+          as="style">
 
     <!-- Async load non-critical CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+          media="print" onload="this.media='all'">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
+          media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css"
+          media="print" onload="this.media='all'">
 
     <title>링크메리 - 특별한 순간 특별한 초대, 링크메리와 함께</title>
     <meta name="description" content="링크메리와 함께 결혼을 더욱 특별하게. 이제, 종이 청첩장 대신 스마트폰으로 간편하고 빠르게 초대장을 보내보세요"/>
@@ -41,19 +50,31 @@
 
     <!-- Async load non-critical scripts -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
-        <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"
-                integrity="sha384-dok87au0gKqJdxs7msEdBPNnKSRT+/mhTVzq+qOhcL464zXwvcrpjeWvyj1kCdq6" crossorigin="anonymous"></script>
-        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%VITE_KAKAO_JAVASCRIPT_KEY%&libraries=services,clusterer,drawing"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"
+            integrity="sha384-dok87au0gKqJdxs7msEdBPNnKSRT+/mhTVzq+qOhcL464zXwvcrpjeWvyj1kCdq6"
+            crossorigin="anonymous"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%VITE_KAKAO_JAVASCRIPT_KEY%&libraries=services,clusterer,drawing"></script>
 
     <!-- Critical inline scripts -->
     <script>
         if (window.location.hostname !== 'localhost') {
             // Google Tag Manager
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5THQMPTZ');
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+                var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-5THQMPTZ');
 
             // Google Analytics
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
             gtag('js', new Date());
             gtag('config', 'AW-16841271697');
             gtag('event', 'conversion', {
@@ -63,6 +84,54 @@
             });
         }
     </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "링크메리",
+            "url": "https://www.linkmarry.com",
+            "description": "모바일 청첩장 링크메리와 함께 결혼을 더욱 특별하게. 간편한 에디터로 5분만에 빠르게 모바일 초대장을 만들어보세요.",
+            "inLanguage": "ko",
+            "publisher": {
+                "@type": "Organization",
+                "name": "링크메리",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.linkmarry.com/favicon.ico"
+                }
+            },
+            "sameAs": [
+                "https://www.instagram.com/official_linkmarry",
+                "https://www.linkmarry.com/sample"
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "모바일 청첩장이란 무엇인가요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "모바일 청첩장은 스마트폰으로 간편하게 결혼식 초대장을 보낼 수 있는 서비스입니다. 종이 청첩장 대신 디지털 방식으로 초대장을 제작하고 공유할 수 있습니다."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "모바일 청첩장을 어떻게 만들 수 있나요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "링크메리에서 제공하는 간편한 에디터를 사용하여 5분 만에 모바일 청첩장을 만들 수 있습니다. 다양한 템플릿과 디자인 옵션을 제공합니다."
+                    }
+                }
+            ]
+        }
+    </script>
+    <!--app-head-->
 </head>
 <body>
 <noscript>
@@ -70,7 +139,16 @@
             height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <noscript>You need to enable JavaScript to run this app.</noscript>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
+<div id="root"><!--app-html--></div>
+
+<div style="position: absolute; left: -9999px;">
+    <h1>모바일 청첩장 | 특별한 순간 특별한 초대, 링크메리와 함께</h1>
+    <p>
+        모바일 청첩장은 스마트폰으로 손쉽게 결혼식 초대장을 제작하고 공유할 수 있는 디지털 청첩장 서비스입니다.
+        링크메리에서는 다양한 템플릿과 무료 기능을 통해 특별한 청첩장을 만들어 드립니다.
+        무료 모바일 청첩장, 카카오톡 청첩장, 셀프 청첩장, 디지털 청첩장을 링크메리에서 경험하세요.
+    </p>
+</div>
+<script type="module" src="/src/entry-client.tsx"></script>
 </body>
 </html>

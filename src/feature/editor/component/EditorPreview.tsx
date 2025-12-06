@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import {css} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import Spacer from "@src/userinterface/component/Spacer";
 import Text from "@src/userinterface/component/Text";
 import Icon from "@src/userinterface/foundation/Icon";
@@ -12,13 +12,15 @@ import Toggle from "@src/userinterface/component/Toggle";
 
 interface Props {
     wedding: Wedding;
+    ui?: RuleSet;
 }
 
-const EditorPreview = ({wedding}: Props) => {
+const EditorPreview = ({wedding, ui}: Props) => {
     return (
         <Column $flex={1} $alignItems={'center'} $justifyContent={'center'} $ui={css`
             background: var(--g-100);
             position: relative;
+            ${ui};
         `}>
             <Column $alignItems={'stretch'} $ui={css`
                 max-height: 733px;

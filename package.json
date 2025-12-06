@@ -4,13 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
     "axios": "^1.7.9",
+    "compression": "^1.8.1",
+    "express": "^5.1.0",
     "lodash": "^4.17.21",
     "react": "^19.2.0",
     "react-beautiful-dnd": "^13.1.1",
@@ -22,7 +25,8 @@
     "react-router-dom": "^7.0.2",
     "styled-components": "^6.1.13",
     "use-immer": "^0.11.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "sirv": "^3.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -32,6 +36,7 @@
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "cross-env": "^10.0.0",
     "date-fns": "^4.1.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
@@ -39,6 +44,7 @@
     "globals": "^16.5.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
+    "babel-plugin-styled-components": "^2.1.4",
     "vite": "^7.2.4"
   }
 }

@@ -1,5 +1,5 @@
 import {type ReactNode} from "react";
-import {css} from "styled-components";
+import {css, type RuleSet} from "styled-components";
 import Header from "@src/userinterface/pattern/header/Header";
 import {Column} from "@src/userinterface/core/FlexLayout";
 import Footer from "@src/userinterface/specific/Footer";
@@ -7,6 +7,7 @@ import Footer from "@src/userinterface/specific/Footer";
 interface Props {
     hasHeader?: boolean;
     hasFooter?: boolean;
+    ui?: RuleSet;
     children?: ReactNode;
 }
 
@@ -14,6 +15,7 @@ function MainWrapper(
     {
         hasHeader = true,
         hasFooter = true,
+        ui,
         children
     }: Props
 ) {
@@ -22,6 +24,7 @@ function MainWrapper(
             width: 100vw;
             height: 100dvh;
             overflow: hidden;
+            ${ui};
         `}>
             {hasHeader && <Header/>}
             <Column $alignItems={'stretch'} $flex={1} $ui={css`

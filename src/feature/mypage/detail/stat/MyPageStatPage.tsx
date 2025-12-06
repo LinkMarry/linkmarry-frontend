@@ -4,7 +4,7 @@ import {css} from "styled-components";
 import Divider from "@src/userinterface/component/Divider";
 import Spacer from "@src/userinterface/component/Spacer";
 import Button from "@src/userinterface/component/Button";
-import useResponsive from "@src/hook/useResponsive";
+import {mobileStyle, notMobileStyle} from "@src/hook/ResponsiveSwitch.tsx";
 import type WeddingStatistics from "@src/infrastructure/network/value/WeddingStatistics";
 import Loading from "@src/userinterface/specific/Loading";
 import View from "@src/userinterface/core/View";
@@ -172,18 +172,19 @@ interface StatsProps {
 }
 
 const Stats = (props: StatsProps) => {
-    const {deviceSize} = useResponsive();
-
-    if (deviceSize === 'mobile') {
-        return <MobileStats {...props}/>;
-    }
-
-    return <DesktopStats {...props}/>
+    return (
+        <>
+            <MobileStats {...props}/>
+            <NotMobileStats {...props}/>
+        </>
+    );
 }
 
-const DesktopStats = ({statistics}: StatsProps) => {
+const NotMobileStats = ({statistics}: StatsProps) => {
     return (
-        <Row $gap={24} $alignItems={'stretch'}>
+        <Row $gap={24} $alignItems={'stretch'} $ui={css`
+            ${notMobileStyle};
+        `}>
             <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
             <Divider direction={'vertical'}/>
             <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
@@ -195,7 +196,9 @@ const DesktopStats = ({statistics}: StatsProps) => {
 
 const MobileStats = ({statistics}: StatsProps) => {
     return (
-        <Column $alignItems={'stretch'} $gap={8}>
+        <Column $alignItems={'stretch'} $gap={8} $ui={css`
+            ${mobileStyle};
+        `}>
             <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
             <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
             <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
@@ -209,18 +212,19 @@ interface StatCellProps {
 }
 
 const StatCell = (props: StatCellProps) => {
-    const {deviceSize} = useResponsive();
-
-    if (deviceSize === 'mobile') {
-        return <MobileStatCell {...props}/>;
-    }
-
-    return <DesktopStatCell {...props}/>;
+    return (
+        <>
+            <MobileStatCell {...props}/>
+            <NotMobileStatCell {...props}/>
+        </>
+    );
 }
 
-const DesktopStatCell = ({title, value}: StatCellProps) => {
+const NotMobileStatCell = ({title, value}: StatCellProps) => {
     return (
-        <Column $alignItems={'stretch'} $flex={1}>
+        <Column $alignItems={'stretch'} $flex={1} $ui={css`
+            ${notMobileStyle};
+        `}>
             <Text type={'p2'} ui={css`
                 color: var(--g-500);
             `}>{title}</Text>
@@ -233,7 +237,9 @@ const DesktopStatCell = ({title, value}: StatCellProps) => {
 
 const MobileStatCell = ({title, value}: StatCellProps) => {
     return (
-        <Row>
+        <Row $ui={css`
+            ${mobileStyle};
+        `}>
             <Text type={'p3'} ui={css`
                 color: var(--g-500);
             `}>{title}</Text>

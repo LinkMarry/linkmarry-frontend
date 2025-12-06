@@ -5,7 +5,7 @@ import {css, type RuleSet} from "styled-components";
 import TabBar from "@src/userinterface/component/TabBar";
 import {type WeddingDesignName} from "@src/infrastructure/network/value/WeddingDesign";
 import fadeInAnimationStyle from "@src/userinterface/animation/fadeInAnimationStyle";
-import useResponsive from "@src/hook/useResponsive";
+import {mobileStyle, notMobileStyle} from "@src/hook/ResponsiveSwitch.tsx";
 import View from "@src/userinterface/core/View";
 import Text from "@src/userinterface/component/Text";
 import BaseDialog from "@src/userinterface/pattern/dialog/BaseDialog";
@@ -19,19 +19,20 @@ interface SelectDesignSheetProps {
 }
 
 const SelectDesignSheet = (props: SelectDesignSheetProps) => {
-    const {deviceSize} = useResponsive();
-
-    if (deviceSize === 'mobile') {
-        return <MobileSelectDesignSheet {...props}/>;
-    }
-
-    return <DesktopSelectDesignSheet {...props}/>;
+    return (
+        <>
+            <MobileSelectDesignSheet {...props}/>
+            <NotMobileSelectDesignSheet {...props}/>
+        </>
+    );
 };
 
 const MobileSelectDesignSheet = ({onChangeDesignName, ui, dismiss}: SelectDesignSheetProps) => {
     const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog dismiss={dismiss} ui={css`
+            ${mobileStyle};
+        `}>
             <Column $alignItems={'stretch'} $justifyContent={'flex-end'} $ui={css`
                 position: fixed;
                 bottom: 0;
@@ -89,7 +90,7 @@ const MobileSelectDesignSheet = ({onChangeDesignName, ui, dismiss}: SelectDesign
     );
 };
 
-const DesktopSelectDesignSheet = ({onChangeDesignName}: SelectDesignSheetProps) => {
+const NotMobileSelectDesignSheet = ({onChangeDesignName}: SelectDesignSheetProps) => {
     const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
     return (
         <Column $alignItems={'stretch'} $gap={12} $ui={css`
@@ -101,6 +102,7 @@ const DesktopSelectDesignSheet = ({onChangeDesignName}: SelectDesignSheetProps) 
             background: white;
             border-radius: 10px;
             box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);
+            ${notMobileStyle};
         `}>
             <DesignTabBar
                 categories={categories}

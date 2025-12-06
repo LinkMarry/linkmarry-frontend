@@ -3,12 +3,11 @@ import WeddingComponent from "@src/userinterface/specific/wedding/WeddingCompone
 import Text from "@src/userinterface/component/Text";
 import {css} from "styled-components";
 import View from "@src/userinterface/core/View";
-import useResponsive from "@src/hook/useResponsive";
+import {responsive} from "@src/hook/ResponsiveSwitch.tsx";
 import useWedding from "@src/feature/wedding/useWedding";
 import {Navigate, useParams, useSearchParams} from "react-router-dom";
 
 function WeddingPage() {
-    const {deviceSize} = useResponsive();
     const {wedding, getWedding, isError} = useWedding();
     const {url} = useParams();
     const [searchParams] = useSearchParams();
@@ -29,18 +28,18 @@ function WeddingPage() {
         <Row $justifyContent={'center'} $ui={css`
             background: ${wedding?.weddingDesign.weddingDesignColor};
             padding: 64px 0;
-            ${deviceSize === 'mobile' && css`
+            ${responsive.mobile(css`
                 padding: 0;
-            `};
+            `)};
         `}>
             {wedding && (
                 <View $ui={css`
                     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
                     border-radius: 16px;
                     overflow: hidden;
-                    ${deviceSize === 'mobile' && css`
+                    ${responsive.mobile(css`
                         border-radius: 0;
-                    `};
+                    `)};
                 `}>
                     <WeddingComponent
                         wedding={wedding}

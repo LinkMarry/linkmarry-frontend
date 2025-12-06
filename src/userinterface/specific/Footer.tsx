@@ -2,7 +2,6 @@ import {type ComponentPropsWithoutRef} from 'react';
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import {css} from "styled-components";
 import Text from "@src/userinterface/component/Text";
-import useResponsive from "@src/hook/useResponsive";
 import View from "@src/userinterface/core/View";
 import Divider from "@src/userinterface/component/Divider";
 import {
@@ -14,12 +13,12 @@ import {
     TERMS_OR_USE_URL
 } from "@src/shared/constant";
 import {useNavigate} from "react-router-dom";
+import {desktopStyle, notDesktopStyle, responsive} from "@src/hook/ResponsiveSwitch.tsx";
 
 const detail1 = ['산다(SANDA)', '대표 : 양예성', '주소 : 경상북도 포항시 북구 장량주택로 3번길 6, 301호 (양덕동)', '전화 : 010-5584-3914', '이메일 : official.linkmarry@gmail.com'];
 const detail2 = ['사업자등록번호 : 176-24-01729', '통신판매업 신고 : 2024-경북포항-0787호']
 
 function Footer() {
-    const {deviceSize} = useResponsive();
     const navigate = useNavigate();
 
     return (
@@ -37,10 +36,10 @@ function Footer() {
                     <View $ui={css`
                         display: flex;
                         justify-content: space-between;
-                        ${deviceSize === 'mobile' && css`
+                        ${responsive.mobile(css`
                             flex-direction: column;
                             gap: 24px;
-                        `};
+                        `)};
                     `}>
                         <Column $gap={4}>
                             <Text type={'caption2'} bold={true} ui={css`
@@ -53,10 +52,10 @@ function Footer() {
                         </Column>
                         <View $ui={css`
                             display: flex;
-                            ${deviceSize === 'mobile' && css`
+                            ${responsive.mobile(css`
                                 flex-direction: column;
                                 gap: 16px;
-                            `};
+                            `)};
                         `}>
                             <Column $gap={4} $ui={css`
                                 width: 180px;
@@ -80,32 +79,30 @@ function Footer() {
                         </View>
                     </View>
                     <Column $gap={4}>
-                        {deviceSize === 'desktop' ? (
-                            <>
-                                <Row $gap={16}>
-                                    {detail1.map((text, index) => (
-                                        <Text key={index} type={'caption2'} ui={css`
-                                            color: var(--g-500);
-                                        `}>{text}</Text>
-                                    ))}
-                                </Row>
-                                <Row $gap={16}>
-                                    {detail2.map((text, index) => (
-                                        <Text key={index} type={'caption2'} ui={css`
-                                            color: var(--g-500);
-                                        `}>{text}</Text>
-                                    ))}
-                                </Row>
-                            </>
-                        ) : (
-                            <>
-                                {[...detail1, ...detail2].map((text, index) => (
-                                    <Text key={index} type={'caption2'} ui={css`
-                                        color: var(--g-500);
-                                    `}>{text}</Text>
-                                ))}
-                            </>
-                        )}
+                        <Row $gap={16} $ui={css`
+                            ${desktopStyle};
+                        `}>
+                            {detail1.map((text, index) => (
+                                <Text key={index} type={'caption2'} ui={css`
+                                    color: var(--g-500);
+                                `}>{text}</Text>
+                            ))}
+                        </Row>
+                        <Row $gap={16} $ui={css`
+                            ${desktopStyle};
+                        `}>
+                            {detail2.map((text, index) => (
+                                <Text key={index} type={'caption2'} ui={css`
+                                    color: var(--g-500);
+                                `}>{text}</Text>
+                            ))}
+                        </Row>
+                        {[...detail1, ...detail2].map((text, index) => (
+                            <Text key={index} type={'caption2'} ui={css`
+                                color: var(--g-500);
+                                ${notDesktopStyle};
+                            `}>{text}</Text>
+                        ))}
                     </Column>
                 </Column>
             </Column>
@@ -113,14 +110,16 @@ function Footer() {
     );
 }
 
-function Item(props: {
+interface ItemProps extends ComponentPropsWithoutRef<'div'> {
     text: string;
-} & ComponentPropsWithoutRef<'div'>) {
+}
+
+function Item({text, ...props}: ItemProps) {
     return (
         <Text type={'caption2'} bold={true} ui={css`
             color: var(--g-600);
             cursor: pointer;
-        `} {...props}>{props.text}</Text>
+        `} {...props}>{text}</Text>
     );
 }
 

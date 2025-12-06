@@ -4,35 +4,36 @@ import {css} from "styled-components";
 import Icon from "@src/userinterface/foundation/Icon";
 import {hideScrollBar, makeInteractionEffect} from "@src/userinterface/css.util";
 import {type EditorNavigationBarType} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
-import {editorNavigationBarTypeList, editorNavigationBarTypeMap} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
+import {
+    editorNavigationBarTypeList,
+    editorNavigationBarTypeMap
+} from "@src/feature/editor/component/navigation-bar/EditorNavigationBarType";
 import Text from "@src/userinterface/component/Text";
-import useResponsive from "@src/hook/useResponsive";
+import {desktopStyle, notDesktopStyle} from "@src/hook/ResponsiveSwitch.tsx";
 
 interface Props extends EditorNavigationBarImplProps {
     children?: ReactNode;
 }
 
 const EditorNavigationBar = ({children, ...props}: Props) => {
-    const {deviceSize} = useResponsive();
-    if (deviceSize === 'mobile' || deviceSize === 'tablet') {
-        return (
+    return (
+        <>
             <Column $alignItems={'stretch'} $flex={1} $ui={css`
                 min-height: 0;
+                ${notDesktopStyle};
             `}>
                 {children}
                 <EditorNavigationBarImpl {...props}/>
             </Column>
-        );
-    }
-
-    return (
-        <Row $alignItems={'stretch'} $flex={1} $ui={css`
-            min-height: 0;
-        `}>
-            <EditorNavigationBarImpl {...props}/>
-            {children}
-        </Row>
-    )
+            <Row $alignItems={'stretch'} $flex={1} $ui={css`
+                min-height: 0;
+                ${desktopStyle};
+            `}>
+                <EditorNavigationBarImpl {...props}/>
+                {children}
+            </Row>
+        </>
+    );
 };
 
 interface EditorNavigationBarImplProps {
@@ -43,19 +44,19 @@ interface EditorNavigationBarImplProps {
 }
 
 const EditorNavigationBarImpl = (props: EditorNavigationBarImplProps) => {
-    const {deviceSize} = useResponsive();
-
-    if (deviceSize === 'mobile' || deviceSize === 'tablet') {
-        return <SmallEditorNavigationBarImpl {...props}/>
-    }
-
-    return <DesktopEditorNavigationBarImpl {...props}/>;
+    return (
+        <>
+            <NotDesktopEditorNavigationBarImpl {...props}/>
+            <DesktopEditorNavigationBarImpl {...props}/>
+        </>
+    );
 }
 
-const SmallEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorNavigationBarImplProps) => {
+const NotDesktopEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: EditorNavigationBarImplProps) => {
     return (
         <Row $gap={12} $ui={css`
             ${hideScrollBar};
+            ${notDesktopStyle};
             overflow-y: hidden;
             padding: 8px 32px;
             border-top: 1px solid var(--g-100);
@@ -84,6 +85,7 @@ const DesktopEditorNavigationBarImpl = (
         <Column $ui={css`
             border-right: 1px solid var(--g-100);
             width: 72px;
+            ${desktopStyle};
         `}>
             <Column $gap={10} $flex={1} $ui={css`
                 padding: 8px;

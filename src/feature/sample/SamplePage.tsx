@@ -3,14 +3,13 @@ import {css} from "styled-components";
 import {dummyWedding} from "@src/infrastructure/network/value/Wedding";
 import WeddingComponent from "@src/userinterface/specific/wedding/WeddingComponent";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
-import useResponsive from "@src/hook/useResponsive";
 import View from "@src/userinterface/core/View";
 import Text from "@src/userinterface/component/Text";
 import SelectDesignSheet from "@src/userinterface/specific/wedding/component/selectdesignsheet/SelectDesignSheet";
 import {useSearchParams} from "react-router-dom";
+import {responsive} from "@src/hook/ResponsiveSwitch.tsx";
 
 const SamplePage = () => {
-    const {deviceSize} = useResponsive();
     const [wedding, setWedding] = useState(dummyWedding);
     const [showSelectDesignSheet, setShowSelectDesignSheet] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -34,17 +33,17 @@ const SamplePage = () => {
             padding: 64px 0;
             position: relative;
 
-            ${deviceSize === 'mobile' && css`
+            ${responsive.mobile(css`
                 padding: 0;
-            `};
+            `)};
         `}>
             <View $ui={css`
                 box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
                 border-radius: 16px;
                 overflow: hidden;
-                ${deviceSize === 'mobile' && css`
+                ${responsive.mobile(css`
                     border-radius: 0;
-                `};
+                `)};
             `}>
                 <WeddingComponent
                     wedding={wedding}
