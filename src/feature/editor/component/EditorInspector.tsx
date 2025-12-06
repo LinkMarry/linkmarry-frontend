@@ -48,7 +48,7 @@ const EditorInspector = (
             min-width: 412px;
             width: 412px;
 
-            ${responsive.desktop(css`
+            ${responsive.notDesktop(css`
                 min-width: 0;
                 width: auto;
                 flex: 1;

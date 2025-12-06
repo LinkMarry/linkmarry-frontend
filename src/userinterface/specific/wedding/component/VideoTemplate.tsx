@@ -95,9 +95,9 @@ function VideoTemplate(
                             object-fit: cover;
                         `}
                     ></View>
-                ) : (
+                ) : clearedVideoUrl ? (
                     <video src={clearedVideoUrl} controls={true}></video>
-                )}
+                ) : null}
             </Column>
         </FadeIn>
     );

@@ -20,6 +20,7 @@ import Providers from "@src/application/Providers";
 import SamplePage from "@src/feature/sample/SamplePage";
 import LinkPage from "@src/feature/LinkPage";
 import App from "@src/application/App.tsx";
+import ClientRendering from "@src/ClientRendering.tsx";
 
 const routes: RouteObject[] = [
     {
@@ -110,7 +111,9 @@ const routes: RouteObject[] = [
     },
     {
         path: '*',
-        element: <Navigate to={'/'}/>,
+        element: <ClientRendering>
+            <Navigate to={'/'}/>
+        </ClientRendering>
     }
 ];
 

@@ -6,6 +6,7 @@ import View from "@src/userinterface/core/View";
 import {responsive} from "@src/hook/ResponsiveSwitch.tsx";
 import useWedding from "@src/feature/wedding/useWedding";
 import {Navigate, useParams, useSearchParams} from "react-router-dom";
+import ClientRendering from "@src/ClientRendering.tsx";
 
 function WeddingPage() {
     const {wedding, getWedding, isError} = useWedding();
@@ -21,7 +22,9 @@ function WeddingPage() {
 
         console.log(`url -  s${url.toString()}`);
 
-        return <Navigate to={url.toString()}/>;
+        return <ClientRendering>
+            <Navigate to={url.toString()}/>
+        </ClientRendering>
     }
 
     return (

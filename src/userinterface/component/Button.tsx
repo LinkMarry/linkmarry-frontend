@@ -36,8 +36,6 @@ function Button(
     ref: ForwardedRef<HTMLButtonElement>
 ) {
     const iconColor = buttonTypeToStyleRecord[buttonType].color;
-
-
     const iconSize = iconSizeMap[size];
 
     return (

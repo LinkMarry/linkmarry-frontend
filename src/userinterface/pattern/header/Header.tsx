@@ -14,6 +14,7 @@ import {useAuth} from "@src/hook/useAuth";
 import {makeInteractionEffect} from "@src/userinterface/css.util";
 import {NAVER_STORE_URL, NOTIFICATION_URL} from "@src/shared/constant";
 import {mobileStyle, notMobileStyle} from "@src/hook/ResponsiveSwitch.tsx";
+import ClientRendering from "@src/ClientRendering.tsx";
 
 function Header() {
     return (
@@ -151,45 +152,47 @@ function NotMobileHeader() {
                     </Row>
                 </Row>
                 <Spacer/>
-                {authorized ? (
-                    <View $ui={css`
-                        position: relative;
-                    `}>
-                        <DesktopHeaderItem text={'내 정보'} hasPopover={true} onClick={() => {
-                            setOpenMyInfoPopover(i => !i);
+                <ClientRendering>
+                    {authorized ? (
+                        <View $ui={css`
+                            position: relative;
+                        `}>
+                            <DesktopHeaderItem text={'내 정보'} hasPopover={true} onClick={() => {
+                                setOpenMyInfoPopover(i => !i);
+                            }}/>
+                            {openMyInfoPopover && (
+                                <Popover
+                                    items={[
+                                        {
+                                            icon: 'Envelope',
+                                            text: '내 모바일 청첩장',
+                                            onClick: () => {
+                                                navigate('/mypage/wedding');
+                                            }
+                                        },
+                                        {
+                                            icon: 'PersonLine',
+                                            text: '회원정보',
+                                            onClick: () => {
+                                                navigate('/mypage/info');
+                                            }
+                                        }
+                                    ]}
+                                    dismiss={() => {
+                                        setOpenMyInfoPopover(false);
+                                    }}
+                                    ui={css`
+                                        right: 0;
+                                    `}
+                                />
+                            )}
+                        </View>
+                    ) : (
+                        <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
+                            navigate('/sign-in');
                         }}/>
-                        {openMyInfoPopover && (
-                            <Popover
-                                items={[
-                                    {
-                                        icon: 'Envelope',
-                                        text: '내 모바일 청첩장',
-                                        onClick: () => {
-                                            navigate('/mypage/wedding');
-                                        }
-                                    },
-                                    {
-                                        icon: 'PersonLine',
-                                        text: '회원정보',
-                                        onClick: () => {
-                                            navigate('/mypage/info');
-                                        }
-                                    }
-                                ]}
-                                dismiss={() => {
-                                    setOpenMyInfoPopover(false);
-                                }}
-                                ui={css`
-                                    right: 0;
-                                `}
-                            />
-                        )}
-                    </View>
-                ) : (
-                    <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
-                        navigate('/sign-in');
-                    }}/>
-                )}
+                    )}
+                </ClientRendering>
             </Row>
         </Row>
     );

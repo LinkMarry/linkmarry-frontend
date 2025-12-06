@@ -20,7 +20,7 @@ import Dialog from "@src/userinterface/pattern/dialog/Dialog";
 import RemoveWatermarkDialog from "@src/userinterface/specific/dialog/RemoveWatermarkDialog";
 import {getWeddingUrl} from "@src/shared/string-util";
 import useMyPageWedding from "@src/feature/mypage/index/wedding/useMyPageWedding";
-import {desktopStyle, responsive} from "@src/hook/ResponsiveSwitch.tsx";
+import {desktopStyle, notDesktopStyle, responsive} from "@src/hook/ResponsiveSwitch.tsx";
 
 function MyPageWeddingPage() {
     const {
@@ -283,7 +283,7 @@ function WeddingCellPopover(
                         text: '청첩장 수정',
                         onClick: onEditWedding,
                         ui: css`
-                            ${desktopStyle};
+                            ${notDesktopStyle};
                         `
                     },
                     {
@@ -291,7 +291,7 @@ function WeddingCellPopover(
                         text: '워터마크 제거',
                         onClick: onRemoveWatermark,
                         ui: css`
-                            ${desktopStyle};
+                            ${notDesktopStyle};
                         `
                     },
                     {

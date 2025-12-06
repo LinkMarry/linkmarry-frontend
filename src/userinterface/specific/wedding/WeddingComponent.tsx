@@ -129,13 +129,15 @@ function WeddingComponent(
                     zIndex: 9999,
                 }}></div>
             )}
-            <audio
-                className={'override-font'}
-                ref={audioRef}
-                src={wedding.backgroundMusic.backgroundMusicUrl}
-                loop={true}
-                style={{display: 'none'}}
-            />
+            {wedding.backgroundMusic.backgroundMusicUrl && (
+                <audio
+                    className={'override-font'}
+                    ref={audioRef}
+                    src={wedding.backgroundMusic.backgroundMusicUrl}
+                    loop={true}
+                    style={{display: 'none'}}
+                />
+            )}
             <Helmet>
                 <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
                 <meta property={'og:description'} content={wedding.linkShare.urlContent}/>

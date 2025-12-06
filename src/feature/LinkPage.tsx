@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import {Navigate, useSearchParams} from "react-router-dom";
+import ClientRendering from "@src/ClientRendering.tsx";
 
 const LinkPage = () => {
     const [searchParams] = useSearchParams();
@@ -12,7 +13,9 @@ const LinkPage = () => {
     }, [url]);
 
     if (!url) {
-        return <Navigate to={'/'}/>;
+        return <ClientRendering>
+            <Navigate to={'/'}/>
+        </ClientRendering>
     }
 
     return null;
