@@ -15,9 +15,7 @@ interface Props extends Binding<WeddingDto> {
 
 const EditorInspectorUrlShare = (
     {
-        value: {
-            linkShare
-        },
+        value: {url, linkShare},
         update
     }: Props
 ) => {
@@ -40,7 +38,9 @@ const EditorInspectorUrlShare = (
             <Column $alignItems={'stretch'} $gap={12}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
-                    id={'EditorInspectorUrlShare-urlImgUrl'} value={linkShare.urlImgUrl}
+                    id={'EditorInspectorUrlShare-urlImgUrl'}
+                    value={linkShare.urlImgUrl}
+                    weddingUrl={url}
                     onChange={images => update(draft => {
                         draft.linkShare.urlImgUrl = images;
                     })}

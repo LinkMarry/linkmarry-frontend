@@ -18,7 +18,7 @@ interface Props extends Binding<WeddingDto> {
 
 const EditorInspectorKakaotalkInvitationLetter = (
     {
-        value: {linkShare},
+        value: {url, linkShare},
         update
     }: Props
 ) => {
@@ -43,6 +43,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                 <PhotoUploadBox
                     id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'}
                     value={linkShare.kakaoImgUrl}
+                    weddingUrl={url}
                     onChange={newValue => update(draft => {
                         draft.linkShare.kakaoImgUrl = newValue;
                     })}

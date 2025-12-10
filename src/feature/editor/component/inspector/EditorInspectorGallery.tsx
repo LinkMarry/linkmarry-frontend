@@ -16,7 +16,7 @@ interface Props extends Binding<WeddingDto> {
 
 const EditorInspectorGallery = (
     {
-        value: {gallery},
+        value: {url, gallery},
         update
     }: Props
 ) => {
@@ -33,6 +33,7 @@ const EditorInspectorGallery = (
                 <PhotoUploadBox
                     id={'EditorInspectorGallery-imgList'}
                     value={gallery.imgList}
+                    weddingUrl={url}
                     onChange={images => update(draft => {
                         draft.gallery.imgList = images;
                     })}
