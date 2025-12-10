@@ -6,9 +6,16 @@ import Music from "@src/infrastructure/network/value/Music";
 const PATH = 'file';
 
 async function upload(file: File, url: string): Promise<ResponseData<Upload>> {
-    const {data} = await api.postForm(`${PATH}/upload?url=${url}`, {
-        file,
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("url", url);
+
+    const {data} = await api.post(`${PATH}/upload`, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
     });
+
     return data;
 }
 
