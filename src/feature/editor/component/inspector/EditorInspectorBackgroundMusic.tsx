@@ -28,7 +28,7 @@ const inputId = 'EditorInspectorBackgroundMusic-backgroundMusic';
 
 const EditorInspectorBackgroundMusic = (
     {
-        value: {backgroundMusic},
+        value: {url, backgroundMusic},
         update,
         backgroundMusics
     }: Props & BackgroundMusicProps
@@ -43,7 +43,7 @@ const EditorInspectorBackgroundMusic = (
         const files = event.target.files;
         if (!files || !files.length || !inputRef.current) return;
 
-        const data = await uploadFile(files[0]);
+        const data = await uploadFile(files[0], url);
 
         update(draft => {
             draft.backgroundMusic.backgroundMusicUrl = data.url;
