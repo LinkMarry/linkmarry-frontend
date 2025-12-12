@@ -28,13 +28,13 @@ const VintageMomentPreviewTemplate = (
                 color: #989796;
                 align-self: center;
             `}>A new beginning</Text>
-            <Column $ui={css`
+            <Column $alignItems={'stretch'} $ui={css`
                 padding: 20px 20px 80px 20px;
                 background: white;
                 box-shadow: -4px 4px 20px 0 rgba(0, 0, 0, 0.08);
             `}>
                 <View as={'img'} src={weddingDesign.titleImgUrl} $ui={css`
-                    width: 320px;
+                    width: 100%;
                     object-fit: cover;
                     aspect-ratio: 1;
                 `}/>
