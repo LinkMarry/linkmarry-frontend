@@ -56,7 +56,7 @@ function PreviewTemplate(
                 return <ForestLovePreviewTemplate {...props}/>;
             case '네이처 블리스':
                 return <NatureBlissPreviewTemplate {...props}/>;
-            case '소울 메이트':
+            case '소울메이트':
                 return <SoulmatePreviewTemplate {...props}/>;
             case '클래식 엘레강스':
                 return <ClassicElegancePreviewTemplate {...props}/>;
