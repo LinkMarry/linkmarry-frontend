@@ -55,12 +55,13 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
 
     return (
         <BaseDialog dismiss={dismiss}>
-            <Column $gap={20} $alignItems={'stretch'} $alignSelf={'stretch'} $ui={css`
+            <Column $alignItems={'stretch'} $alignSelf={'stretch'} $ui={css`
                 overflow-x: hidden;
                 min-width: ${rootRef.current?.getBoundingClientRect().width ?? 0}px;
                 max-width: ${rootRef.current?.getBoundingClientRect().width ?? 0}px;
                 background: white;
                 height: 100dvh;
+                justify-content: space-between;
                 ${applyBaseDialogContent()};
             `}>
                 <Row $ui={css`
@@ -72,12 +73,11 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                         cursor: pointer;
                     `} onClick={dismiss}/>
                 </Row>
-                <Spacer/>
                 <Row $alignItems={'center'} $ui={css`
                     scroll-snap-type: x mandatory;
                     overflow-x: scroll;
-                    overflow-y: hidden;
                     ${hideScrollBar};
+                    overflow-y: hidden;
                 `} ref={scrollContainerRef}>
                     {gallery.imgList.map((img, index) => (
                         <SlideImg
@@ -87,7 +87,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                         />
                     ))}
                 </Row>
-                <Spacer/>
                 <Indicator
                     imgListLength={gallery.imgList.length}
                     currentImageIndex={currentImageIndex}
