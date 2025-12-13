@@ -78,6 +78,8 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                     overflow-x: scroll;
                     ${hideScrollBar};
                     overflow-y: hidden;
+                    overscroll-behavior: contain;
+                    touch-action: pan-x;
                 `} ref={scrollContainerRef}>
                     {gallery.imgList.map((img, index) => (
                         <SlideImg
