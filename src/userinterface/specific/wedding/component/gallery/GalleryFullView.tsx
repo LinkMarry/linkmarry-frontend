@@ -1,6 +1,5 @@
-import React, {Dispatch, RefObject, SetStateAction, useCallback, useEffect, useRef} from 'react';
+import React, {Dispatch, RefObject, SetStateAction, useCallback, useEffect, useRef, useState} from 'react';
 import Gallery from "@src/infrastructure/network/value/Gallery";
-import GalleryDesign from "@src/infrastructure/network/enumeration/GalleryDesign";
 import {Column, Row} from "@src/userinterface/core/FlexLayout";
 import styled, {css} from "styled-components";
 import {hideScrollBar} from "@src/userinterface/css.util";
@@ -18,48 +17,44 @@ interface Props {
 }
 
 const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
+    const [initialCurrentImageIndex] = useState(currentImageIndex);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
-
     const getGridImgWidth = useCallback((): number => {
-        let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
-        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
-            imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
-        }
+        return rootRef.current?.getBoundingClientRect().width ?? 0;
+    }, [rootRef]);
 
-        return imageWidth;
-    }, [gallery.galleryDesign, rootRef]);
-
-    const getScrollPosition = useCallback((): number => {
-        if (!scrollContainerRef.current) return 0;
-        const scrollContainer = scrollContainerRef.current;
-
-        let scrollPosition = scrollContainer.scrollLeft
-        if (gallery.galleryDesign === GalleryDesign.SLIDE) {
-            scrollPosition -= 34;
-        }
-        return scrollPosition;
-    }, [gallery.galleryDesign]);
+    console.log(currentImageIndex);
 
     const handleScroll = useCallback(() => {
+        const getScrollPosition = () => {
+            if (!scrollContainerRef.current) return null;
+            const scrollContainer = scrollContainerRef.current;
+
+            return scrollContainer.scrollLeft
+        };
+
         const imageWidth = getGridImgWidth();
         const scrollPosition = getScrollPosition();
+
+        if (!scrollPosition) return;
+
         const index = Math.floor(scrollPosition / imageWidth);
+        console.log(index, scrollPosition, imageWidth);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
-    }, [getGridImgWidth, getScrollPosition, setCurrentImageIndex]);
+    }, [getGridImgWidth, setCurrentImageIndex]);
 
     useEffect(() => {
         const container = scrollContainerRef.current;
         container?.addEventListener('scroll', handleScroll);
 
         scrollContainerRef.current?.scrollTo({
-            left: getGridImgWidth()
+            left: getGridImgWidth() * initialCurrentImageIndex
         });
-        setCurrentImageIndex(0);
 
         return () => {
             container?.removeEventListener('scroll', handleScroll);
         }
-    }, [getGridImgWidth, handleScroll, setCurrentImageIndex]);
+    }, [initialCurrentImageIndex, getGridImgWidth, handleScroll]);
 
     return (
         <BaseDialog dismiss={dismiss}>
@@ -81,7 +76,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                     `} onClick={dismiss}/>
                 </Row>
                 <Spacer/>
-                <Row $gap={8} $alignItems={'center'} $ui={css`
+                <Row $alignItems={'center'} $ui={css`
                     scroll-snap-type: x mandatory;
                     overflow-x: scroll;
                     overflow-y: hidden;
