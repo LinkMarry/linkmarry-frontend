@@ -177,7 +177,6 @@ const SlideImg = styled.img<{
         max-width: ${$rootWidth}px;
         min-width: ${$rootWidth}px;
     `};
-    max-height: 517px;
     scroll-snap-align: center;
     object-fit: cover;
 `;
