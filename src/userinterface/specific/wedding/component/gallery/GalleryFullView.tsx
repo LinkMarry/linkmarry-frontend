@@ -23,8 +23,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         return rootRef.current?.getBoundingClientRect().width ?? 0;
     }, [rootRef]);
 
-    console.log(currentImageIndex);
-
     const handleScroll = useCallback(() => {
         const getScrollPosition = () => {
             if (!scrollContainerRef.current) return null;
@@ -39,7 +37,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         if (!scrollPosition) return;
 
         const index = Math.floor(scrollPosition / imageWidth);
-        console.log(index, scrollPosition, imageWidth);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
     }, [getGridImgWidth, setCurrentImageIndex]);
 
@@ -100,7 +97,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                                 if (currentImageIndex > 0) {
                                     const imgWidth = getGridImgWidth();
                                     const left = imgWidth * (currentImageIndex - 1);
-                                    // console.log(left)
                                     scrollContainerRef.current?.scrollTo({
                                         left
                                     });
@@ -111,7 +107,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                                 if (currentImageIndex < gallery.imgList.length - 1) {
                                     const imgWidth = getGridImgWidth();
                                     const left = imgWidth * (currentImageIndex + 1);
-                                    // console.log(left)
                                     scrollContainerRef.current?.scrollTo({
                                         left
                                     });
