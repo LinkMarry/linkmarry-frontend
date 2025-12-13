@@ -64,6 +64,7 @@ function GalleryTemplate(
                             width: 100%;
                             aspect-ratio: 1;
                             object-fit: cover;
+                            object-position: top;
                             border-radius: 4px;
                         `} key={index} src={img} onClick={() => setCurrentImageIdx(index)}/>
                     ))}
