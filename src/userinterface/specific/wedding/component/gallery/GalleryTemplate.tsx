@@ -256,6 +256,7 @@ const S = {
         height: 517px;
         scroll-snap-align: center;
         object-fit: cover;
+        object-position: top;
     `,
     indicator: styled.span<{ selected: boolean }>`
         display: flex;
