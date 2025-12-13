@@ -61,7 +61,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                 max-width: ${rootRef.current?.getBoundingClientRect().width ?? 0}px;
                 background: white;
                 height: 100dvh;
-                justify-content: space-between;
                 ${applyBaseDialogContent()};
             `}>
                 <Row $ui={css`
@@ -73,7 +72,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                         cursor: pointer;
                     `} onClick={dismiss}/>
                 </Row>
-                <Row $alignItems={'center'} $ui={css`
+                <Row $alignItems={'center'} $flex={1} $ui={css`
                     scroll-snap-type: x mandatory;
                     overflow-x: scroll;
                     ${hideScrollBar};
@@ -82,10 +81,10 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                     touch-action: pan-x;
                 `} ref={scrollContainerRef}>
                     {gallery.imgList.map((img, index) => (
-                        <SlideImg
+                        <Slide
                             key={index}
                             src={img}
-                            $rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
+                            rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
                         />
                     ))}
                 </Row>
@@ -160,15 +159,57 @@ function Indicator(
     );
 }
 
-const SlideImg = styled.img<{
-    $rootWidth: number,
+const Slide = ({
+                   src,
+                   rootWidth,
+               }: {
+    src: string;
+    rootWidth: number;
+}) => {
+    const imgRef = useRef<HTMLImageElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const [alignTop, setAlignTop] = useState(false);
+
+    useEffect(() => {
+        if (!imgRef.current || !wrapperRef.current) return;
+
+        const imgHeight = imgRef.current.naturalHeight;
+        const imgWidth = imgRef.current.naturalWidth;
+        const wrapperHeight = wrapperRef.current.getBoundingClientRect().height;
+
+        const renderedHeight = (imgHeight / imgWidth) * rootWidth;
+
+        setAlignTop(renderedHeight > wrapperHeight);
+    }, [rootWidth]);
+
+    return (
+        <SlideWrapper
+            ref={wrapperRef}
+            $rootWidth={rootWidth}
+            $alignTop={alignTop}
+        >
+            <SlideImg ref={imgRef} src={src} />
+        </SlideWrapper>
+    );
+};
+
+
+const SlideWrapper = styled.div<{
+    $rootWidth: number;
+    $alignTop: boolean;
 }>`
+    min-width: ${({ $rootWidth }) => $rootWidth}px;
+    max-width: ${({ $rootWidth }) => $rootWidth}px;
+    height: 100%;
     display: flex;
-    ${({$rootWidth}) => css`
-        max-width: ${$rootWidth}px;
-        min-width: ${$rootWidth}px;
-    `};
+    justify-content: center;
+    align-items: ${({ $alignTop }) => ($alignTop ? 'flex-start' : 'center')};
     scroll-snap-align: center;
+`;
+
+const SlideImg = styled.img`
+    width: 100%;
+    height: auto;
     object-fit: cover;
 `;
 
