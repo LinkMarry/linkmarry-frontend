@@ -3,7 +3,6 @@ import {css, type LinariaClassName} from "@linaria/core";
 export const hideScrollBarStyle = css`
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll;
 
     &::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */
