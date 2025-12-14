@@ -69,6 +69,7 @@ function GalleryTemplate(
                             width: 100%;
                             aspect-ratio: 1;
                             object-fit: cover;
+                            object-position: top;
                             border-radius: 4px;
                         `} key={index} src={img} onClick={() => setCurrentImageIdx(index)}/>
                     ))}
@@ -157,6 +158,7 @@ const GallerySlide = (
                                 height: 517px;
                                 scroll-snap-align: center;
                                 object-fit: cover;
+                                object-position: top;
                             `,
                             gallery.galleryDesign === 'SLIDE' ? css`
                                 &:first-child {
