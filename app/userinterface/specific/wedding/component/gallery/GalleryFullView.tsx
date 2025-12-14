@@ -61,11 +61,11 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         <BaseDialog dismiss={dismiss}>
             <View ui={cx(
                 css`
-                    gap: 20px;
                     align-self: stretch;
                     overflow-x: hidden;
                     background: white;
                     height: 100dvh;
+                    justify-content: space-between;
                 `,
                 baseDialogContentStyle
             )} style={{
@@ -82,14 +82,13 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                         cursor: pointer;
                     `} onClick={dismiss}/>
                 </View>
-                <Spacer/>
                 <View ui={cx(
                     css`
                         flex-direction: row;
                         align-items: center;
                         scroll-snap-type: x mandatory;
                         overflow-x: scroll;
-                        overflow-y: hidden;
+                        overflow-y: hidden !important;
                     `,
                     hideScrollBarStyle
                 )} ref={scrollContainerRef}>
@@ -101,7 +100,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                         />
                     ))}
                 </View>
-                <Spacer/>
                 <Indicator
                     imgListLength={gallery.imgList.length}
                     currentImageIndex={currentImageIndex}
