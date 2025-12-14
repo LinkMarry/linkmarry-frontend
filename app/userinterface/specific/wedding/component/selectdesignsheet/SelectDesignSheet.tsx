@@ -9,25 +9,29 @@ import Text from "~/userinterface/component/Text";
 import BaseDialog from "~/userinterface/pattern/dialog/BaseDialog";
 import {hideScrollBarStyle} from "~/userinterface/css.util";
 import {css, cx, type LinariaClassName} from "@linaria/core";
+import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
+import useResponsive from "~/hook/useResponsive.ts";
 
 interface SelectDesignSheetProps {
     designName: WeddingDesignName;
     onChangeDesignName: (designName: WeddingDesignName) => void;
-    ui?: LinariaClassName;
     dismiss: () => void;
+    weddingDesigns: WeddingDesignPreset[];
+    ui?: LinariaClassName;
 }
 
 const SelectDesignSheet = (props: SelectDesignSheetProps) => {
-    return (
-        <>
-            <MobileSelectDesignSheet {...props}/>
-            <NotMobileSelectDesignSheet {...props}/>
-        </>
-    );
+    const {deviceSize} = useResponsive();
+
+    if (deviceSize === 'mobile') {
+        return <MobileSelectDesignSheet {...props}/>;
+    }
+
+    return <NotMobileSelectDesignSheet {...props}/>;
 };
 
-const MobileSelectDesignSheet = ({onChangeDesignName, ui, dismiss}: SelectDesignSheetProps) => {
-    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
+const MobileSelectDesignSheet = ({onChangeDesignName, dismiss, weddingDesigns, ui}: SelectDesignSheetProps) => {
+    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns(weddingDesigns);
     return (
         <BaseDialog dismiss={dismiss} ui={mobileStyle}>
             <View ui={cx(
@@ -98,8 +102,8 @@ const MobileSelectDesignSheet = ({onChangeDesignName, ui, dismiss}: SelectDesign
     );
 };
 
-const NotMobileSelectDesignSheet = ({onChangeDesignName}: SelectDesignSheetProps) => {
-    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
+const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: SelectDesignSheetProps) => {
+    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns(weddingDesigns);
     return (
         <View ui={cx(
             css`

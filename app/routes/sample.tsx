@@ -8,8 +8,20 @@ import SelectDesignSheet from "~/userinterface/specific/wedding/component/select
 import {useSearchParams} from "react-router";
 import {responsive} from "~/hook/ResponsiveSwitch.tsx";
 import ClientRendering from "~/ClientRendering.tsx";
+import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
+import {type Route} from "../../.react-router/types/app/routes/+types/sample.ts";
 
-const Sample = () => {
+
+export async function loader() {
+    const {data} = await weddingDesignApi.getWeddingDesignPresets();
+    return data;
+}
+
+const Sample = (
+    {
+        loaderData
+    }: Route.ComponentProps
+) => {
     const [wedding, setWedding] = useState(dummyWedding);
     const [showSelectDesignSheet, setShowSelectDesignSheet] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -82,6 +94,7 @@ const Sample = () => {
                             });
                         }}
                         dismiss={() => setShowSelectDesignSheet(false)}
+                        weddingDesigns={loaderData}
                         ui={css`
                             max-width: 436px;
                             overflow: hidden;
