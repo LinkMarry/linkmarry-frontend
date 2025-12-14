@@ -95,15 +95,23 @@ const GallerySlide = (
 
     const getGridImgWidth = useCallback(() => {
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
-        if (gallery.galleryDesign === 'SLIDE') {
-            imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
+
+        switch (gallery.galleryDesign) {
+            case 'SLIDE':
+                imageWidth += -34 * 2 + 8; // image width - container horizontal padding + gap
+                break;
+            case 'HIGHLIGHT':
+                imageWidth += 8; // image width + gap
+                break;
+            default:
+                break;
         }
 
         return imageWidth;
     }, [gallery.galleryDesign, rootRef]);
 
     const getScrollPosition = useCallback(() => {
-        if (!scrollContainerRef.current) return 0;
+        if (!scrollContainerRef.current) return null;
         const scrollContainer = scrollContainerRef.current;
         return scrollContainer.scrollLeft;
     }, []);
@@ -111,6 +119,9 @@ const GallerySlide = (
     const handleScroll = useCallback(() => {
         const imageWidth = getGridImgWidth();
         const scrollPosition = getScrollPosition();
+
+        if (!scrollPosition) return;
+
         const index = Math.floor(scrollPosition / imageWidth);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
     }, [getGridImgWidth, getScrollPosition]);
@@ -194,7 +205,6 @@ const GallerySlide = (
                             if (currentImageIndex > 0) {
                                 const imgWidth = getGridImgWidth();
                                 const left = imgWidth * (currentImageIndex - 1);
-                                // console.log(left)
                                 scrollContainerRef.current?.scrollTo({
                                     left
                                 });

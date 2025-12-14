@@ -1,4 +1,4 @@
-import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef} from 'react';
+import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef, useState} from 'react';
 import type Gallery from "~/infrastructure/network/value/Gallery";
 import {hideScrollBarStyle} from "~/userinterface/css.util";
 import Icon from "~/userinterface/foundation/Icon";
@@ -19,48 +19,43 @@ interface Props {
 }
 
 const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
+    const [initialCurrentImageIndex] = useState(currentImageIndex);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     const getGridImgWidth = useCallback((): number => {
-        let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
-        if (gallery.galleryDesign === 'SLIDE') {
-            imageWidth += -34 * 2 + 8; // 이미지 너비 - 간격
-        }
+        return rootRef.current?.getBoundingClientRect().width ?? 0;
+    }, [rootRef]);
 
-        return imageWidth;
-    }, [gallery.galleryDesign, rootRef]);
-
-    const getScrollPosition = useCallback((): number => {
-        if (!scrollContainerRef.current) return 0;
-        const scrollContainer = scrollContainerRef.current;
-
-        let scrollPosition = scrollContainer.scrollLeft
-        if (gallery.galleryDesign === 'SLIDE') {
-            scrollPosition -= 34;
-        }
-        return scrollPosition;
-    }, [gallery.galleryDesign]);
 
     const handleScroll = useCallback(() => {
+        const getScrollPosition = () => {
+            if (!scrollContainerRef.current) return null;
+            const scrollContainer = scrollContainerRef.current;
+
+            return scrollContainer.scrollLeft;
+        };
+
         const imageWidth = getGridImgWidth();
         const scrollPosition = getScrollPosition();
+
+        if (!scrollPosition) return;
+
         const index = Math.floor(scrollPosition / imageWidth);
         setCurrentImageIndex(index); // 현재 스크롤된 이미지 인덱스를 상태에 저장
-    }, [getGridImgWidth, getScrollPosition, setCurrentImageIndex]);
+    }, [getGridImgWidth, setCurrentImageIndex]);
 
     useEffect(() => {
         const container = scrollContainerRef.current;
         container?.addEventListener('scroll', handleScroll);
 
         scrollContainerRef.current?.scrollTo({
-            left: getGridImgWidth()
+            left: getGridImgWidth() * initialCurrentImageIndex
         });
-        setCurrentImageIndex(0);
 
         return () => {
             container?.removeEventListener('scroll', handleScroll);
         }
-    }, [getGridImgWidth, handleScroll, setCurrentImageIndex]);
+    }, [currentImageIndex, getGridImgWidth, handleScroll]);
 
     return (
         <BaseDialog dismiss={dismiss}>
@@ -91,7 +86,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                 <View ui={cx(
                     css`
                         flex-direction: row;
-                        gap: 8px;
                         align-items: center;
                         scroll-snap-type: x mandatory;
                         overflow-x: scroll;
