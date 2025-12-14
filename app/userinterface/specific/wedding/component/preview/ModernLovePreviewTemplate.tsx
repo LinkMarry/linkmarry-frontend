@@ -28,6 +28,7 @@ function ModernLovePreviewTemplate(
                 min-height: 580px;
                 border-radius: 500px;
                 object-fit: cover;
+                box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.08) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.08) inset;
             `}/>
             <Text size={60} weight={400} ui={css`
                 position: absolute;

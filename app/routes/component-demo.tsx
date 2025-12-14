@@ -1,15 +1,15 @@
 import {useState} from 'react';
-import Button, {type ButtonSize, type ButtonType} from "~/userinterface/component/Button";
-import Divider, {type DividerSize} from "~/userinterface/component/Divider";
-import Checkbox from "~/userinterface/component/Checkbox";
-import Toggle from "~/userinterface/component/Toggle";
+import Button, {type ButtonSize, type ButtonType} from "~/userinterface/component/Button.tsx";
+import Divider, {type DividerSize} from "~/userinterface/component/Divider.tsx";
+import Checkbox from "~/userinterface/component/Checkbox.tsx";
+import Toggle from "~/userinterface/component/Toggle.tsx";
 import {css} from "@linaria/core";
-import Dialog from "~/userinterface/pattern/dialog/Dialog";
-import SegmentedButton from "~/userinterface/component/SegmentedButton";
-import Input from "~/userinterface/component/Input";
-import Select from "~/userinterface/component/Select";
-import Textarea from "~/userinterface/component/Textarea";
-import Popover from "~/userinterface/pattern/Popover";
+import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
+import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
+import Input from "~/userinterface/component/Input.tsx";
+import Select from "~/userinterface/component/Select.tsx";
+import Textarea from "~/userinterface/component/Textarea.tsx";
+import Popover from "~/userinterface/pattern/Popover.tsx";
 import View from "~/userinterface/core/View.tsx";
 
 function ComponentDemo() {

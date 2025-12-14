@@ -1,6 +1,6 @@
 import {type RouteConfig, index, route, layout, prefix} from "@react-router/dev/routes";
 
-export default [
+const routes = [
     layout("routes/providers.tsx", [
         index("routes/home.tsx"),
         route("sign-in", "routes/sign-in.tsx"),
@@ -21,11 +21,17 @@ export default [
             route("editor/:url?", "routes/editor.tsx"),
         ]),
         // layout("routes/admin-route.tsx", []),
-        // layout("routes/development-route.tsx", [
-        //     ...prefix("design-system", [
-        //         route("foundation", "routes/foundation-demo.tsx"),
-        //         route("component", "routes/component-demo.tsx")
-        //     ]),
-        // ])
+
     ])
 ] satisfies RouteConfig;
+
+if (import.meta.env.DEV) {
+    routes.push(
+        ...prefix("development", [
+            route("foundation", "routes/foundation-demo.tsx"),
+            route("component", "routes/component-demo.tsx")
+        ]),
+    );
+}
+
+export default routes;

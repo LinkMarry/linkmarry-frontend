@@ -17,7 +17,10 @@ export type FontFamily =
     | 'BR'
     | 'Eulyoo1945'
     | 'tvN'
-    | 'Great Vibes';
+    | 'Great Vibes'
+    | 'Cafe24LovingU'
+    | 'MuseumCulturalFoundationClassic'
+    | 'aBRS';
 
 export const fontFamilyList: FontFamily[] = [
     'Pretendard',
@@ -36,7 +39,10 @@ export const fontFamilyList: FontFamily[] = [
     'BR',
     'Eulyoo1945',
     'tvN',
-    'Great Vibes'
+    'Great Vibes',
+    'Cafe24LovingU',
+    'MuseumCulturalFoundationClassic',
+    'aBRS'
 ];
 
 export const fontFamilyStyle: Record<FontFamily, LinariaClassName> = {
@@ -91,6 +97,15 @@ export const fontFamilyStyle: Record<FontFamily, LinariaClassName> = {
     "Great Vibes": css`
         font-family: "Great Vibes", serif;
     `,
+    Cafe24LovingU: css`
+        font-family: Cafe24LovingU, serif;
+    `,
+    MuseumCulturalFoundationClassic: css`
+        font-family: MuseumCulturalFoundationClassic, serif;
+    `,
+    aBRS: css`
+        font-family: aBRS, serif;
+    `
 }
 
 export type TextType =

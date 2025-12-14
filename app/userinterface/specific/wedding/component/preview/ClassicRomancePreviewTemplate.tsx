@@ -24,7 +24,7 @@ function ClassicRomancePreviewTemplate(
             'override-font',
             css`
                 gap: 28px;
-                padding: 96px 36px;
+                padding: 90px 36px;
 
                 * {
                     color: #989796;
@@ -34,6 +34,7 @@ function ClassicRomancePreviewTemplate(
             <View as={'img'} src={weddingDesign.titleImgUrl} ui={css`
                 min-height: 516px;
                 object-fit: cover;
+                box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.04) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.04) inset;
             `}/>
             <View ui={css`
                 gap: 12px;

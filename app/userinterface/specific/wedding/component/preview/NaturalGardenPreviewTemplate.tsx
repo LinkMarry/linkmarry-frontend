@@ -25,7 +25,8 @@ function NaturalGardenPreviewTemplate(
             fontFamilyStyle.KyoboHandwriting2020,
             css`
                 gap: 44px;
-                padding: 64px 0;
+                padding-top: 40px;
+                padding-bottom: 52px;
 
                 * {
                     color: #5D4037;
@@ -41,6 +42,7 @@ function NaturalGardenPreviewTemplate(
                     height: 512px;
                     border-radius: 500px 500px 0 0;
                     object-fit: cover;
+                    box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.04) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.08) inset;
                 `}/>
                 <View ui={css`
                     gap: 20px;
@@ -57,7 +59,7 @@ function NaturalGardenPreviewTemplate(
                             <span>{second.name}</span>
                         </View>
                     </Text>
-                    <Text size={20} weight={300}>
+                    <Text size={18} weight={300}>
                         <View ui={css`
                             gap: 6px;
                             align-items: center;

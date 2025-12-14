@@ -31,7 +31,12 @@ const SelectDesignSheet = (props: SelectDesignSheetProps) => {
 };
 
 const MobileSelectDesignSheet = ({onChangeDesignName, dismiss, weddingDesigns, ui}: SelectDesignSheetProps) => {
-    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns(weddingDesigns);
+    const {
+        selectedCategory,
+        setSelectedCategory,
+        categories,
+        selectedWeddingDesigns
+    } = useWeddingDesigns(weddingDesigns);
     return (
         <BaseDialog dismiss={dismiss} ui={mobileStyle}>
             <View ui={cx(
@@ -103,7 +108,12 @@ const MobileSelectDesignSheet = ({onChangeDesignName, dismiss, weddingDesigns, u
 };
 
 const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: SelectDesignSheetProps) => {
-    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns(weddingDesigns);
+    const {
+        selectedCategory,
+        setSelectedCategory,
+        categories,
+        selectedWeddingDesigns
+    } = useWeddingDesigns(weddingDesigns);
     return (
         <View ui={cx(
             css`
@@ -124,17 +134,21 @@ const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: Select
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
             />
-            <View ui={css`
-                flex-direction: row !important;
-                gap: 14px;
-                max-height: 152px;
-                overflow-x: scroll;
-            `}>
+            <View ui={cx(
+                css`
+                    flex-direction: row !important;
+                    gap: 14px;
+                    max-height: 152px;
+                    overflow-x: scroll;
+                `,
+                hideScrollBarStyle
+            )}>
                 {selectedWeddingDesigns.map(design => (
                     <View key={design.id} ui={cx(
                         css`
                             min-width: 64px;
                             gap: 8px;
+                            overflow: hidden !important;
                         `,
                         hideScrollBarStyle
                     )}>

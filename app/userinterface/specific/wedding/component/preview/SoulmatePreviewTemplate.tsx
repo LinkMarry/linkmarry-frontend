@@ -22,37 +22,54 @@ function SoulmatePreviewTemplate(
     return (
         <View ui={cx(
             'override-font',
-            fontFamilyStyle.Pretendard,
-        )} style={{
-            background: backgroundStyle(weddingDesign.weddingDesignColor)
-        }}>
-            <View ui={css`
-                align-items: center;
-                gap: 12px;
-                margin: 40px 0;
-            `}>
-                <Text size={40} weight={100} ui={css`
-                    letter-spacing: 8px;
-                `}>{isValidDate && format(date, 'MM / dd')}</Text>
-                <Text size={20} weight={300} ui={css`
-                    color: var(--g-600);
-                `}>
-                    <View ui={css`
-                        flex-direction: row !important;
-                        gap: 24px;
-                        align-items: center;
-                    `}>
-                        <span>{first.lastName}</span>
-                        <span>그리고</span>
-                        <span>{second.lastName}</span>
-                    </View>
-                </Text>
-            </View>
+            css`
+                position: relative;
+            `
+        )}>
             <View as={'img'} src={weddingDesign.titleImgUrl ?? '/EmptyImage.png'} ui={css`
-                display: flex;
-                width: 100%;
+                height: 100dvh;
+                max-height: 810px;
                 object-fit: cover;
             `}/>
+            <View ui={css`
+                background: linear-gradient(0, rgba(61, 61, 61, 0.80) 0%, rgba(61, 61, 61, 0.00) 100%);
+                height: 400px;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            `}/>
+            <View ui={css`
+                position: absolute;
+                bottom: 16px;
+                left: 28px;
+                right: 28px;
+                align-items: center;
+                justify-content: space-between;
+                color: #D9C4B0;
+                flex-direction: row !important;
+            `}>
+                <Text font={'MuseumCulturalFoundationClassic'} size={20} weight={200}>
+                    {first.korean}
+                </Text>
+                <Text font={'MuseumCulturalFoundationClassic'} size={20} weight={200}>
+                    {isValidDate && format(date, 'yy.MM.dd')}
+                </Text>
+                <Text font={'MuseumCulturalFoundationClassic'} size={20} weight={200}>
+                    {second.korean}
+                </Text>
+            </View>
+            <Text font={'Cafe24LovingU'} size={140} weight={400} lineHeight={'130%'} ui={css`
+                position: absolute;
+                left: 27px;
+                bottom: 109px;
+                color: white;
+            `}>Getting</Text>
+            <Text font={'Cafe24LovingU'} size={140} weight={400} lineHeight={'130%'} ui={css`
+                position: absolute;
+                right: 27px;
+                bottom: 16px;
+                color: white;
+            `}>married!</Text>
         </View>
     );
 }

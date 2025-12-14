@@ -1,8 +1,10 @@
-import {fontFamilyList, textTypes} from "~/userinterface/foundation/text/TextType";
+import {fontFamilyList, textTypes} from "~/userinterface/foundation/text/TextType.ts";
 import {css} from "@linaria/core";
 import View from "~/userinterface/core/View.tsx";
-import Text from "~/userinterface/component/Text";
-import Divider from "~/userinterface/component/Divider";
+import Text from "~/userinterface/component/Text.tsx";
+import Divider from "~/userinterface/component/Divider.tsx";
+
+const text = '가나다라마바사ABCDEFG12345'
 
 function FoundationDemo() {
     return (
@@ -16,8 +18,8 @@ function FoundationDemo() {
             `}>
                 {textTypes.map((type) => (
                     <>
-                        <Text type={type}>가나다라마바사ABCDEFG</Text>
-                        <Text type={type} bold={true}>가나다라마바사ABCDEFG</Text>
+                        <Text type={type}>{text}</Text>
+                        <Text type={type} bold={true}>{text}</Text>
                     </>
                 ))}
             </View>
@@ -37,9 +39,9 @@ function FoundationDemo() {
                         <View ui={css`
                             align-items: flex-start;
                         `}>
-                            <Text type={'h3'} weight={100} font={font}>가나다라마바사ABCDEFG</Text>
-                            <Text type={'h3'} weight={500} font={font}>가나다라마바사ABCDEFG</Text>
-                            <Text type={'h3'} weight={700} font={font}>가나다라마바사ABCDEFG</Text>
+                            <Text type={'h3'} weight={100} font={font}>{text}</Text>
+                            <Text type={'h3'} weight={500} font={font}>{text}</Text>
+                            <Text type={'h3'} weight={700} font={font}>{text}</Text>
                         </View>
                     </View>
                 ))}

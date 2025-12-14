@@ -32,8 +32,8 @@ function RomanticForestPreviewTemplate(
                 object-fit: cover;
             `}/>
             <View ui={css`
-                background: linear-gradient(180deg, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
-                height: 140px;
+                background: linear-gradient(180deg, rgba(61, 61, 61, 0.80) 0%, rgba(61, 61, 61, 0.00) 100%);
+                height: 200px;
                 position: absolute;
                 top: 0;
                 width: 100%;
@@ -49,8 +49,8 @@ function RomanticForestPreviewTemplate(
                 `}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
             )}
             <View ui={css`
-                background: linear-gradient(0, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
-                height: 140px;
+                background: linear-gradient(0, rgba(61, 61, 61, 0.80) 0%, rgba(61, 61, 61, 0.00) 100%);
+                height: 200px;
                 position: absolute;
                 bottom: 0;
                 width: 100%;

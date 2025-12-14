@@ -19,7 +19,7 @@ const VintageMomentPreviewTemplate = (
             'override-font',
             css`
                 gap: 60px;
-                padding: 40px 38px;
+                padding: 80px 38px;
                 background: url("/paper/paper3.png");
             `
         )}>
@@ -44,7 +44,7 @@ const VintageMomentPreviewTemplate = (
             <View ui={cx(
                 fontFamilyStyle.Eulyoo1945,
                 css`
-                    gap: 16px;
+                    gap: 8px;
                     align-items: center;
                     font-weight: 400;
                     color: #1C232B;

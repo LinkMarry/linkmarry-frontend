@@ -24,7 +24,7 @@ const LovelyHighTeenPreviewTemplate = (
             fontFamilyStyle.BR,
             css`
                 padding: 44px 24px;
-                gap: 44px;
+                gap: 60px;
                 justify-content: space-between;
                 background: #FBF2F2;
             `
@@ -33,6 +33,7 @@ const LovelyHighTeenPreviewTemplate = (
             <View as={'img'} src={weddingDesign.titleImgUrl} ui={css`
                 object-fit: cover;
                 min-height: 320px;
+                aspect-ratio: 1;
             `}/>
             <View ui={css`
                 align-items: center;

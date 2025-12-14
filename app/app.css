@@ -135,6 +135,52 @@
     font-weight: 300;
 }
 
+@font-face {
+    font-family: 'Cafe24LovingU';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Lovingu.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MuseumCulturalFoundationClassic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식L.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MuseumCulturalFoundationClassic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식M.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MuseumCulturalFoundationClassic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: aBRS;
+    src: url("/app/userinterface/foundation/text/fonts/aBRSB.ttf") format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: aBRS;
+    src: url("/app/userinterface/foundation/text/fonts/aBRSM.ttf") format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: aBRS;
+    src: url("/app/userinterface/foundation/text/fonts/aBRSL.ttf") format('truetype');
+    font-weight: 300;
+}
+
 * {
     margin: 0;
     padding: 0;
