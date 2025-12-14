@@ -1,6 +1,5 @@
 #!/bin/sh
-cd ../ || exit 1
+cd ../
 mkdir output
-
-cp -R ./linkmarry-frontend/. ./output/
-cp -R ./output/. ./linkmarry-frontend/
+cp -R ./linkmarry-frontend/* ./output
+cp -R ./output ./linkmarry-frontend/
