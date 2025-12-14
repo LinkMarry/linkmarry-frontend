@@ -9,7 +9,7 @@ import {useSearchParams} from "react-router";
 import {responsive} from "~/hook/ResponsiveSwitch.tsx";
 import ClientRendering from "~/ClientRendering.tsx";
 import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
-import {type Route} from "./+types/sample";
+import type {Route} from "./+types/sample";
 
 
 export async function loader() {
