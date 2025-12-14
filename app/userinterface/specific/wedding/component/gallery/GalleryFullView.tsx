@@ -55,7 +55,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
         return () => {
             container?.removeEventListener('scroll', handleScroll);
         }
-    }, [currentImageIndex, getGridImgWidth, handleScroll]);
+    }, [initialCurrentImageIndex, getGridImgWidth, handleScroll]);
 
     return (
         <BaseDialog dismiss={dismiss}>
@@ -65,7 +65,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                     overflow-x: hidden;
                     background: white;
                     height: 100dvh;
-                    justify-content: space-between;
                 `,
                 baseDialogContentStyle
             )} style={{
@@ -84,16 +83,19 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                 </View>
                 <View ui={cx(
                     css`
+                        flex: 1;
                         flex-direction: row;
                         align-items: center;
                         scroll-snap-type: x mandatory;
                         overflow-x: scroll;
                         overflow-y: hidden !important;
+                        overscroll-behavior: contain;
+                        touch-action: pan-x;
                     `,
                     hideScrollBarStyle
                 )} ref={scrollContainerRef}>
                     {gallery.imgList.map((img, index) => (
-                        <SlideImg
+                        <Slide
                             key={index}
                             src={img}
                             rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
@@ -109,7 +111,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                                 if (currentImageIndex > 0) {
                                     const imgWidth = getGridImgWidth();
                                     const left = imgWidth * (currentImageIndex - 1);
-                                    // console.log(left)
                                     scrollContainerRef.current?.scrollTo({
                                         left
                                     });
@@ -120,7 +121,6 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                                 if (currentImageIndex < gallery.imgList.length - 1) {
                                     const imgWidth = getGridImgWidth();
                                     const left = imgWidth * (currentImageIndex + 1);
-                                    // console.log(left)
                                     scrollContainerRef.current?.scrollTo({
                                         left
                                     });
@@ -172,13 +172,55 @@ function Indicator(
     );
 }
 
-const SlideImg = styled.img<{
-    rootWidth: number,
-}>`
+const Slide = (
+    {
+        src,
+        rootWidth,
+    }: {
+        src: string;
+        rootWidth: number;
+    }
+) => {
+    const imgRef = useRef<HTMLImageElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const [alignTop, setAlignTop] = useState(false);
+
+    useEffect(() => {
+        if (!imgRef.current || !wrapperRef.current) return;
+
+        const imgHeight = imgRef.current.naturalHeight;
+        const imgWidth = imgRef.current.naturalWidth;
+        const wrapperHeight = wrapperRef.current.getBoundingClientRect().height;
+
+        const renderedHeight = (imgHeight / imgWidth) * rootWidth;
+
+        setAlignTop(renderedHeight > wrapperHeight);
+    }, [rootWidth]);
+
+    return (
+        <SlideWrapper
+            ref={wrapperRef}
+            style={{
+                minWidth: rootWidth,
+                maxWidth: rootWidth,
+                alignItems: alignTop ? 'flex-start' : 'center',
+            }}
+        >
+            <SlideImg ref={imgRef} src={src}/>
+        </SlideWrapper>
+    );
+};
+
+const SlideWrapper = styled.div`
+    height: 100%;
     display: flex;
-    max-width: ${({rootWidth}) => rootWidth}px;
-    min-width: ${({rootWidth}) => rootWidth}px;
+    justify-content: center;
     scroll-snap-align: center;
+`;
+
+const SlideImg = styled.img`
+    width: 100%;
+    height: auto;
     object-fit: cover;
 `;
 

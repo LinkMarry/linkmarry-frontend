@@ -9,7 +9,6 @@ import View from "~/userinterface/core/View.tsx";
 import GalleryFullView from "~/userinterface/specific/wedding/component/gallery/GalleryFullView";
 import type {GalleryDesign} from "~/infrastructure/network/enumeration/GalleryDesign.ts";
 import {css, cx} from "@linaria/core";
-import {styled} from "@linaria/react";
 import type {WeddingMode} from "~/userinterface/specific/wedding/WeddingMode.ts";
 
 interface GalleryTemplateProps {
