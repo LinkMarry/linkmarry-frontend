@@ -1,0 +1,175 @@
+import {type Dispatch, type SetStateAction} from 'react';
+import useWeddingDesigns from "~/hook/useWeddingDesigns.ts";
+import TabBar from "~/userinterface/component/TabBar";
+import {type WeddingDesignName} from "~/infrastructure/network/value/WeddingDesign";
+import fadeInAnimationStyle from "~/userinterface/animation/fadeInAnimationStyle";
+import {mobileStyle, notMobileStyle} from "~/hook/ResponsiveSwitch.tsx";
+import View from "~/userinterface/core/View.tsx";
+import Text from "~/userinterface/component/Text";
+import BaseDialog from "~/userinterface/pattern/dialog/BaseDialog";
+import {hideScrollBarStyle} from "~/userinterface/css.util";
+import {css, cx, type LinariaClassName} from "@linaria/core";
+
+interface SelectDesignSheetProps {
+    designName: WeddingDesignName;
+    onChangeDesignName: (designName: WeddingDesignName) => void;
+    ui?: LinariaClassName;
+    dismiss: () => void;
+}
+
+const SelectDesignSheet = (props: SelectDesignSheetProps) => {
+    return (
+        <>
+            <MobileSelectDesignSheet {...props}/>
+            <NotMobileSelectDesignSheet {...props}/>
+        </>
+    );
+};
+
+const MobileSelectDesignSheet = ({onChangeDesignName, ui, dismiss}: SelectDesignSheetProps) => {
+    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
+    return (
+        <BaseDialog dismiss={dismiss} ui={mobileStyle}>
+            <View ui={cx(
+                css`
+                    justify-content: flex-end;
+                    position: fixed;
+                    bottom: 0;
+                    z-index: 100;
+                    background: rgba(0, 0, 0, 0.04);
+                `,
+                ui
+            )}>
+                <View ui={cx(
+                    css`
+                        height: 80dvh;
+                        box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);
+                    `,
+                    fadeInAnimationStyle
+                )}>
+                    <View ui={css`
+                        flex: 1;
+                        gap: 16px;
+                        padding: 8px 16px 0 16px;
+                        background: white;
+                        border-radius: 12px 12px 0 0;
+                        min-height: 0;
+                    `}>
+                        <DesignTabBar
+                            categories={categories}
+                            selectedCategory={selectedCategory}
+                            setSelectedCategory={setSelectedCategory}
+                        />
+                        <View ui={css`
+                            flex: 1;
+                            overflow-y: scroll;
+                            min-height: 0;
+                        `}>
+                            <View ui={css`
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                grid-column-gap: 14px;
+                                grid-row-gap: 32px;
+                            `}>
+                                {selectedWeddingDesigns.map(design => (
+                                    <View key={design.id} ui={css`
+                                        gap: 8px;
+                                    `}>
+                                        <View onClick={() => {
+                                            onChangeDesignName(design.name);
+                                        }} ui={css`
+                                            border-radius: 8px;
+                                            object-fit: cover;
+                                            aspect-ratio: 9 / 16;
+                                            background-size: cover;
+                                            cursor: pointer;
+                                        `} style={{
+                                            backgroundImage: `url("${design.img}")`
+                                        }}/>
+                                        <Text type={'p3'} bold={true}>{design.name}</Text>
+                                    </View>
+                                ))}
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </BaseDialog>
+    );
+};
+
+const NotMobileSelectDesignSheet = ({onChangeDesignName}: SelectDesignSheetProps) => {
+    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns();
+    return (
+        <View ui={cx(
+            css`
+                gap: 12px;
+                padding: 8px;
+                position: fixed;
+                bottom: 104px;
+                max-width: 316px;
+                overflow: hidden;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 10px 32px -4px rgba(24, 39, 75, 0.10);
+            `,
+            notMobileStyle
+        )}>
+            <DesignTabBar
+                categories={categories}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+            />
+            <View ui={css`
+                flex-direction: row;
+                gap: 14px;
+                max-height: 152px;
+                overflow-x: scroll;
+            `}>
+                {selectedWeddingDesigns.map(design => (
+                    <View key={design.id} ui={cx(
+                        css`
+                            min-width: 64px;
+                            gap: 8px;
+                        `,
+                        hideScrollBarStyle
+                    )}>
+                        <View onClick={() => {
+                            onChangeDesignName(design.name);
+                        }} ui={css`
+                            border-radius: 8px;
+                            object-fit: cover;
+                            aspect-ratio: 9 / 16;
+                            background-size: cover;
+                            cursor: pointer;
+                        `} style={{
+                            backgroundImage: `url("${design.img}")`
+                        }}/>
+                        <Text type={'caption2'} bold={true}>{design.name}</Text>
+                    </View>
+                ))}
+            </View>
+        </View>
+    );
+};
+
+const DesignTabBar = ({categories, selectedCategory, setSelectedCategory}: {
+    categories: string[];
+    selectedCategory: string;
+    setSelectedCategory: Dispatch<SetStateAction<string>>;
+}) => {
+    return (
+        <TabBar
+            items={categories}
+            selectedTab={categories.indexOf(selectedCategory!)}
+            onChange={tab => {
+                setSelectedCategory(categories[tab]);
+            }}
+            ui={css`
+                flex-shrink: 0;
+            `}
+        />
+    );
+};
+
+export default SelectDesignSheet;

@@ -1,62 +1,48 @@
 {
-  "name": "linkmarry",
-  "version": "0.1.0",
+  "name": "my-react-router-app",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev --port 3000",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc"
+  },
   "dependencies": {
-    "@craco/craco": "^7.1.0",
-    "@types/lodash": "^4.17.16",
+    "@linaria/core": "^6.3.0",
+    "@linaria/react": "^6.3.0",
+    "@react-router/node": "7.10.1",
+    "@react-router/serve": "7.10.1",
+    "@wyw-in-js/babel-preset": "^0.8.0",
     "axios": "^1.7.9",
-    "customize-cra": "^1.0.0",
+    "isbot": "^5.1.31",
     "lodash": "^4.17.21",
-    "react": "^18.3.1",
+    "react": "^19.2.1",
     "react-beautiful-dnd": "^13.1.1",
     "react-colorful": "^5.6.1",
     "react-cookie": "^7.2.2",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.2.1",
     "react-helmet-async": "^2.0.5",
     "react-responsive": "^10.0.0",
-    "react-router-dom": "^7.0.2",
-    "styled-components": "^6.1.13",
+    "react-router": "7.10.1",
     "use-immer": "^0.11.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.112",
-    "@types/react": "^18.3.11",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@react-router/dev": "7.10.1",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^22",
+    "@types/react": "^19.2.7",
     "@types/react-beautiful-dnd": "^13.1.8",
-    "@types/react-dom": "^18.3.0",
-    "craco-alias": "^3.0.1",
+    "@types/react-dom": "^19.2.3",
+    "@wyw-in-js/vite": "^0.8.0",
+    "cross-env": "^10.0.0",
     "date-fns": "^4.1.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }
