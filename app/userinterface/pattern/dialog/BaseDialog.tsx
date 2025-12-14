@@ -20,7 +20,7 @@ export default function BaseDialog({ui, dismiss, children}: BaseDialogProps) {
         <View as={'dialog'} ref={dialogRef}
               ui={cx(
                   css`
-                      flex-direction: row;
+                      flex-direction: row !important;
                       align-items: center;
                       justify-content: center;
                       width: 100vw;

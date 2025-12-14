@@ -36,7 +36,7 @@ function Footer() {
                     padding-bottom: 72px;
                 `}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         justify-content: space-between;
 
                         ${responsive.mobile} {
@@ -57,7 +57,7 @@ function Footer() {
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
                         </View>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             ${responsive.mobile} {
                                 flex-direction: column;
                                 gap: 16px;
@@ -97,7 +97,7 @@ function Footer() {
                         <View ui={cx(
                             css`
                                 gap: 16px;
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 align-items: flex-start;
                             `,
                             desktopStyle
@@ -111,7 +111,7 @@ function Footer() {
                         <View ui={cx(
                             css`
                                 gap: 16px;
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 align-items: flex-start;
                             `,
                             desktopStyle

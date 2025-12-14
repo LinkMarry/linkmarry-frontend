@@ -26,7 +26,7 @@ function Toggle(
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 position: relative;
                 width: fit-content;
             `,
@@ -42,7 +42,7 @@ function Toggle(
                 }}
                 ui={cx(
                     css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         width: 60px;
                         height: 32px;
                         appearance: none;

@@ -181,7 +181,7 @@ function GuestComments(
         case 'STICKER':
             return (
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 20px;
                 `}>
                     {trimArray(comments, 2).map((comment, index) => (
@@ -220,7 +220,7 @@ export function BasicGuestComment(
             background: backgroundStyle(background)
         }} {...props}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 8px;
                 align-items: center;
             `}>

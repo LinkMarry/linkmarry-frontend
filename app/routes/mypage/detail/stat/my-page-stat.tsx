@@ -56,7 +56,7 @@ const MyPageStat = () => {
                     gap: 8px;
                 `}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         align-items: flex-end;
                     `}>
                         <Text type={'caption1'} bold={true} ui={css`
@@ -202,7 +202,7 @@ const NotMobileStats = ({statistics}: StatsProps) => {
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 24px;
             `,
             notMobileStyle
@@ -267,7 +267,7 @@ const MobileStatCell = ({title, value}: StatCellProps) => {
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
             `,
             mobileStyle
         )}>

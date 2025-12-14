@@ -125,7 +125,7 @@ const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: Select
                 setSelectedCategory={setSelectedCategory}
             />
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 14px;
                 max-height: 152px;
                 overflow-x: scroll;

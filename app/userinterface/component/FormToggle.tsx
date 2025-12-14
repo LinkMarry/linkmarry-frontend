@@ -13,7 +13,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 const FormToggle = ({checked, OnChange, label}: Props) => {
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             gap: 4px;
             align-items: center;
             padding: 0 16px;

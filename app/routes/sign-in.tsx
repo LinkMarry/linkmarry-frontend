@@ -34,7 +34,7 @@ function SignIn() {
                     </View>
                 </View>
                 <View onClick={signInWithKakao} ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
@@ -47,7 +47,7 @@ function SignIn() {
                     color: black;
                 `}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 6px;
                         align-items: center;
                     `}>

@@ -145,7 +145,7 @@ const Item = ({design, selected, ...props}: ItemProps) => {
                 `}
             />
             <View ui={css`display: flex;
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;`}>
                 <Text type={'p3'}
                       ui={cx(itemTextStyle, selected ? itemTextSelectedStyle : itemTextUnselectedStyle)}>{design.name}</Text>

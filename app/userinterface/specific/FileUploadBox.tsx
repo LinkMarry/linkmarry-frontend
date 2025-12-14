@@ -75,12 +75,12 @@ const FileUploadBox = ({id, value, label, weddingUrl, onChange}: Props) => {
             </View>
             {!isEmpty && (
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 6px;
                     height: 40px;
                 `}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         align-items: center;
                         padding: 0 12px;
                         background: var(--g-100);

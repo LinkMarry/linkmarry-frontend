@@ -15,7 +15,7 @@ const TabBar = ({items, selectedTab, onChange, ui}: {
         <View ui={cx(
             hideScrollBarStyle,
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 8px;
                 overflow-x: scroll;
             `,

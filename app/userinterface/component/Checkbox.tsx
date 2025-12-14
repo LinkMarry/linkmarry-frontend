@@ -58,14 +58,14 @@ function Checkbox(
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
                 width: fit-content;
             `,
             ui
         )} {...props}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
                 justify-content: center;
                 position: relative;

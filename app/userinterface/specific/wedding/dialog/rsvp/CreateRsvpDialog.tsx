@@ -71,7 +71,7 @@ function CreateRsvpDialog(
             )}>
                 <View ui={css`
                     align-items: center;
-                    flex-direction: row;
+                    flex-direction: row !important;
                     position: relative;
                     padding: 24px 0;
                 `}>
@@ -181,7 +181,7 @@ function CreateRsvpDialog(
                                 gap: 8px;
                             `}>
                                 <View ui={css`
-                                    flex-direction: row;
+                                    flex-direction: row !important;
                                     align-items: center;
                                     gap: 8px;
                                 `}>

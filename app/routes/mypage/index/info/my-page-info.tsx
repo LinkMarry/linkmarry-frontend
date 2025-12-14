@@ -68,7 +68,7 @@ function Item(props: {
 }) {
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             align-items: center;
             height: 52px;
         `}>

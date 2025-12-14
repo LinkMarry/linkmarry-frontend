@@ -106,7 +106,7 @@ function MobileHeaderContent(props: {
         <View ui={cx(
             css`
                 align-items: center;
-                flex-direction: row;
+                flex-direction: row !important;
                 width: 100vw;
                 height: 60px;
                 background: white;
@@ -137,7 +137,7 @@ function NotMobileHeader() {
     return (
         <View as={'header'} ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
                 justify-content: center;
                 width: 100vw;
@@ -150,18 +150,18 @@ function NotMobileHeader() {
         )}>
             <View ui={css`
                 align-items: center;
-                flex-direction: row;
+                flex-direction: row !important;
                 max-width: 1100px;
                 flex: 1;
             `}>
                 <View ui={css`
                     gap: 40px;
                     align-items: center;
-                    flex-direction: row;
+                    flex-direction: row !important;
                 `}>
                     <LogoInHeader/>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 12px;
                         align-items: center;
                     `}>
@@ -230,7 +230,7 @@ function MobileHeaderItem(props: {
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 8px;
                 padding: 12px 16px;
             `,
@@ -255,7 +255,7 @@ function DesktopHeaderItem({text, hasPopover = false, ...props}: {
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 8px;
                 align-items: center;
                 padding: 8px 16px;

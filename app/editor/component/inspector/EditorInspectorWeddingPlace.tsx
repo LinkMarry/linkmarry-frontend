@@ -44,7 +44,7 @@ const EditorInspectorWeddingPlace = (
                     pointer-events: none;
                 `}/>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 12px;
                 `}>
                     <Input placeholder={'주소'} value={weddingPlace.addressName} onChange={event => update(draft => {
@@ -88,7 +88,7 @@ const EditorInspectorWeddingPlace = (
                     } else {
                         return (
                             <View ui={css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 gap: 12px;
                                 align-items: center;
                             `} key={index}>

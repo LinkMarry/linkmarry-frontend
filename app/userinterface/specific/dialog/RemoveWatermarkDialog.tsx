@@ -62,7 +62,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
             )}>
                 <View ui={css`
                     align-items: center;
-                    flex-direction: row;
+                    flex-direction: row !important;
                 `}>
                     <Text type={'h5'} bold={true}>워터마크 제거</Text>
                     <Spacer/>
@@ -84,7 +84,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                         <Text type={'caption1'}>1. 네이버 스토어에서 청첩장 구매</Text>
                         <View onClick={() => window.open(NAVER_STORE_WEDDING_URL)} ui={css`
                             gap: 15px;
-                            flex-direction: row;
+                            flex-direction: row !important;
                             background-color: #3FC911;
                             height: 44px;
                             border-radius: 8px;

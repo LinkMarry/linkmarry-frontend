@@ -93,7 +93,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
             />
             {isEmpty ? (
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     align-items: center;
                 `}>
@@ -105,7 +105,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
             ) : (
                 <View ui={cx(
                     css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 6px;
                         align-self: stretch;
                         overflow-x: scroll;

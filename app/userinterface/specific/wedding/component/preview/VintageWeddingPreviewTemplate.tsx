@@ -53,7 +53,7 @@ const VintageWeddingPreviewTemplate = (
                         padding: 40px 0;
                     `}>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             gap: 20px;
                             font-size: 32px;
                             font-weight: 500;

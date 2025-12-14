@@ -39,7 +39,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
             <View ui={css`
                 align-items: center;
                 gap: 4px;
-                flex-direction: row;
+                flex-direction: row !important;
                 padding: 12px 16px;
                 width: 100%;
                 border: 1px solid var(--g-300);
@@ -80,7 +80,7 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                     {items.map((item, index) => (
                         <View key={index} ui={css`
                             align-items: center;
-                            flex-direction: row;
+                            flex-direction: row !important;
                             padding: 12px 16px;
                             cursor: pointer;
 

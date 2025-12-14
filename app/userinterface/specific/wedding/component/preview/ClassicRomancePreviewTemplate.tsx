@@ -41,7 +41,7 @@ function ClassicRomancePreviewTemplate(
             `}>
                 <Text size={36} weight={400}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 20px;
                         align-items: center;
                     `}>

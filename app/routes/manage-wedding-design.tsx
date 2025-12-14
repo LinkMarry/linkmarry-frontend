@@ -46,7 +46,7 @@ const Item = ({text}: ItemProps) => {
                 background: 'gray'
             }}></div>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
             `}>
                 <Text type={'p3'}>{text}</Text>

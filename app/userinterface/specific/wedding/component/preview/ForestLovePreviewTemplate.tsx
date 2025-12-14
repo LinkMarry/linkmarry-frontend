@@ -41,7 +41,7 @@ function ForestLovePreviewTemplate(
                 object-fit: cover;
             `}/>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 12px;
                 align-items: center;
                 justify-content: center;

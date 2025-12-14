@@ -21,7 +21,7 @@ function WaterMarkSheet(
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 position: fixed;
                 bottom: 0;
                 left: 50%;

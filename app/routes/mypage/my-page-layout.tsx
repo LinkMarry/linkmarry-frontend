@@ -15,14 +15,14 @@ function MobileMyPageLayout() {
     return (
         <MainWrapper ui={mobileStyle}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 flex: 1;
                 justify-content: center;
                 overflow-y: scroll;
                 padding: 24px 16px 0 16px;
             `}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 32px;
                     flex: 1;
                     align-items: flex-start;
@@ -40,7 +40,7 @@ function NotMobileMyPageLayout() {
     return (
         <MainWrapper ui={notMobileStyle}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: flex-start;
                 justify-content: center;
                 flex: 1;
@@ -48,7 +48,7 @@ function NotMobileMyPageLayout() {
                 overflow-y: scroll;
             `}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: flex-start;
                     flex: 1;
                     gap: 32px;

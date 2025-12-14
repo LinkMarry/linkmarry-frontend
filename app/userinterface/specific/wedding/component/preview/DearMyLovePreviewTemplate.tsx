@@ -74,7 +74,7 @@ const DearMyLovePreviewTemplate = (
                 </View>
                 <View ui={cx(
                     css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 48px;
                         font-size: 20px;
                         font-weight: 400;

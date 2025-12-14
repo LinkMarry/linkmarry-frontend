@@ -121,7 +121,7 @@ const MoneyInfoContainer = ({baseInfo, me, father, mother, kakaoStatus}: MoneyIn
             background: var(--g-100);
         `}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
                 padding: 10px 20px;
                 cursor: pointer;
@@ -173,14 +173,14 @@ function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
             border-top: 1px solid var(--g-100);
         `}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 4px;
             `}>
                 <Text type={'p3'}>{moneyInfo.korean}</Text>
                 <Text type={'p3'}>{moneyInfo.nameMoneyInfo}</Text>
             </View>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
                 border-radius: 4px;
             `}>

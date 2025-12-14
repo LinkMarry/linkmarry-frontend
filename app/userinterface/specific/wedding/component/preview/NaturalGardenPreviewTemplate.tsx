@@ -47,7 +47,7 @@ function NaturalGardenPreviewTemplate(
                 `}>
                     <Text weight={400} size={28}>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             align-items: center;
                             justify-content: center;
                             gap: 32px;

@@ -117,13 +117,13 @@ const EditorInspectorBackgroundMusic = (
                 ) : (
                     // todo: specific 로 분리
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 6px;
                         height: 40px;
                     `}>
                         <View ui={css`
                             align-items: center;
-                            flex-direction: row;
+                            flex-direction: row !important;
                             padding: 0 12px;
                             background: var(--g-100);
                             flex: 1;
@@ -183,7 +183,7 @@ const Item = ({music, selected, isPlaying, onPlay, ...props}: ItemProps & Compon
             onMouseOut={() => setIsHovering(false)}
             ui={cx(
                 css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     gap: 16px;
                     padding: 12px;

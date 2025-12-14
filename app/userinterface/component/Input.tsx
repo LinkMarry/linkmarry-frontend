@@ -15,7 +15,7 @@ const Input = forwardRef(({placeholder, hasLabel = true, ui, ...props}: Props, r
             css`
                 display: flex;
                 position: relative;
-                flex-direction: row;
+                flex-direction: row !important;
             `,
             ui
         )}>
@@ -25,7 +25,7 @@ const Input = forwardRef(({placeholder, hasLabel = true, ui, ...props}: Props, r
                 ui={cx(
                     textStyles.p2.normal,
                     css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         height: 52px;
                         border: none;
                         flex: 1;

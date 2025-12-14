@@ -53,7 +53,7 @@ const PreviewSetting = () => {
         <View ui={cx(previewSettingStyle, openSetting ? previewSettingOpenStyle : previewSettingClosedStyle)}>
             <View ui={cx(
                 css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     padding: 6px;
                     border-radius: 6px;
@@ -70,7 +70,7 @@ const PreviewSetting = () => {
                       ui={cx(iconBaseStyle, openSetting ? iconOpenStyle : iconClosedStyle)}/>
             </View>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: center;
                 padding: 6px;
             `}>

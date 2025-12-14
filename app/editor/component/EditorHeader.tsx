@@ -26,7 +26,7 @@ const EditorHeader = (
     return (
         <View as={'header'} ui={css`
             align-items: center;
-            flex-direction: row;
+            flex-direction: row !important;
             min-height: 72px;
             padding: 0 24px;
             border-bottom: 1px solid var(--g-100);
@@ -43,7 +43,7 @@ const EditorHeader = (
             }}/>
             <Spacer/>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 20px;
                 align-items: center;
             `}>
@@ -54,7 +54,7 @@ const EditorHeader = (
                 )}
                 <View ui={cx(
                     css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         align-items: flex-start;
                         gap: 8px;
                     `,

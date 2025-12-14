@@ -49,7 +49,7 @@ function DreamWeddingPreviewTemplate(
                 align-items: center;
             `}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 24px;
                     align-items: flex-end;
                 `}>

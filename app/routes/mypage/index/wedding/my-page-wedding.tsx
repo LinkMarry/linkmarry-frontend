@@ -120,7 +120,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
     return (
         <View ui={css`
             gap: 16px;
-            flex-direction: row;
+            flex-direction: row !important;
             height: 360px;
 
             ${responsive.mobile} {
@@ -155,7 +155,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                     gap: 8px;
                 `}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         align-items: flex-end;
                         gap: 8px;
                     `}>
@@ -167,7 +167,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                                 color: var(--g-800);
                             `}>{weddingInfo.name}</Text>
                             <View onClick={() => window.open(weddingUrl)} ui={css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 gap: 4px;
                                 align-items: center;
                                 cursor: pointer;
@@ -182,7 +182,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                             </View>
                         </View>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             align-items: center;
                             gap: 8px;
                         `}>
@@ -232,7 +232,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: {
                 {/*content*/}
                 <View ui={cx(
                     css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 16px;
                         flex: 1;
                         min-height: 0;
@@ -366,7 +366,7 @@ function CommentCell({comment}: { comment: Comment }) {
     return (
         <View>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 4px;
                 align-items: flex-end;
             `}>
@@ -391,7 +391,7 @@ function StatisticsCell({title, value}: {
 }) {
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             align-items: flex-start;
         `}>
             <Text type={'p3'} ui={css`

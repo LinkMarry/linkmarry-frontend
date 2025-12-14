@@ -14,7 +14,7 @@ function MyPageSidebarItem({icon, text, selected = false, ...props}: {
             css`
                 align-items: center;
                 gap: 8px;
-                flex-direction: row;
+                flex-direction: row !important;
                 padding: 16px;
                 cursor: pointer;
                 transition: 0.1s background;

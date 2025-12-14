@@ -74,7 +74,7 @@ function Popover(
                         css`
                             gap: 8px;
                             align-items: center;
-                            flex-direction: row;
+                            flex-direction: row !important;
                             padding: 8px 12px;
                             border-radius: 6px;
                         `,

@@ -72,7 +72,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                 maxWidth: rootRef.current?.getBoundingClientRect().width
             }}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     padding: 28px;
                 `}>
                     <Spacer/>
@@ -84,7 +84,7 @@ const GalleryFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gall
                 <View ui={cx(
                     css`
                         flex: 1;
-                        flex-direction: row;
+                        flex-direction: row !important;
                         align-items: center;
                         scroll-snap-type: x mandatory;
                         overflow-x: scroll;
@@ -149,7 +149,7 @@ function Indicator(
 ) {
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             align-items: center;
             justify-content: space-between;
             padding: 28px 45px;

@@ -80,7 +80,7 @@ function DDay(
             />
             <FadeIn>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 4px;
                 `}>
                     <Text size={14} weight={300}>{first.name}</Text>
@@ -114,7 +114,7 @@ function RemainTimeComponent(
     //         return (
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             gap: 12px;
             align-items: center;
             padding: 0 50px;

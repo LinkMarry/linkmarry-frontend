@@ -12,7 +12,7 @@ const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 background: var(--g-100);
                 border-radius: 12px;
                 height: 48px;
@@ -47,7 +47,7 @@ const Item = ({selected, text, ...props}: {
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             flex: 1;
             justify-content: center;
             align-items: center;

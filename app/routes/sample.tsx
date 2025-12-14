@@ -42,7 +42,7 @@ const Sample = (
     return (
         <ClientRendering>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 justify-content: center;
                 padding: 64px 0;
                 position: relative;

@@ -42,7 +42,7 @@ function ModernLovePreviewTemplate(
                 color: #556B2F;
             `}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     gap: 36px;
                 `}>

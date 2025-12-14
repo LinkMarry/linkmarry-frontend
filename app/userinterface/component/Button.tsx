@@ -105,7 +105,7 @@ function Button(
             className={cx(
                 css`
                     display: flex;
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     justify-content: center;
                     outline: none;

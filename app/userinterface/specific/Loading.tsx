@@ -15,7 +15,7 @@ function Loading(
     return (
         <View ui={cx(
             css`
-                flex-direction: row;
+                flex-direction: row !important;
                 justify-content: center;
                 gap: 8px;
             `,

@@ -25,7 +25,7 @@ const EditorInspectorGroom = (
                     gap: 8px;
                 `}>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 8px;
                     `}>
                         <Input placeholder={'성'} value={baseInfo.groomFirstName} onChange={event => update(draft => {
@@ -39,7 +39,7 @@ const EditorInspectorGroom = (
                         })}/>
                     </View>
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 8px;
                     `}>
                         <Input placeholder={'영문 이름'} value={baseInfo.groomEnglishName}
@@ -58,7 +58,7 @@ const EditorInspectorGroom = (
             `}>
                 <Text type={'p3'} bold={true}>신랑 아버지</Text>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     align-items: center;
                 `}>
@@ -80,7 +80,7 @@ const EditorInspectorGroom = (
                     `}/>
                 </View>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     align-items: flex-start;
                 `}>
@@ -98,7 +98,7 @@ const EditorInspectorGroom = (
             `}>
                 <Text type={'p3'} bold={true}>신랑 어머니</Text>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     align-items: center;
                 `}>
@@ -120,7 +120,7 @@ const EditorInspectorGroom = (
                     `}/>
                 </View>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     align-items: flex-start;
                 `}>

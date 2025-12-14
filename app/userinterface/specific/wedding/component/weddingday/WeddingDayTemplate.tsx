@@ -83,12 +83,12 @@ function WeddingDayTemplate(
                         `}>
                             <View as={'thead'} className={css`
                                 display: flex;
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 padding: 12px 14px;
                             `}>
                                 <View as={'tr'} className={css`
                                     display: flex;
-                                    flex-direction: row;
+                                    flex-direction: row !important;
                                     justify-content: space-between;
                                     color: var(--g-500);
                                     flex: 1;
@@ -114,7 +114,7 @@ function WeddingDayTemplate(
                                 {calendar && calendar.map((week, weekIndex) => (
                                     <View as={'tr'} key={weekIndex} className={css`
                                         display: flex;
-                                        flex-direction: row;
+                                        flex-direction: row !important;
                                         align-items: flex-start;
                                     `}>
                                         {week.map((day, dayIndex) => (
@@ -127,7 +127,7 @@ function WeddingDayTemplate(
                                                         className={cx(
                                                             css`
                                                                 display: flex;
-                                                                flex-direction: row;
+                                                                flex-direction: row !important;
                                                                 align-items: center;
                                                                 justify-content: center;
                                                                 flex: 1;

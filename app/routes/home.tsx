@@ -111,7 +111,7 @@ const TabBarSection = ({categories, selectedCategory, setSelectedCategory}: {
 
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             justify-content: center;
             align-items: center;
         `}>

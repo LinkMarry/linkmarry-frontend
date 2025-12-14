@@ -116,7 +116,7 @@ function FooterTemplate(
                     cursor: pointer;
                     align-items: center;
                     gap: 8px;
-                    flex-direction: row;
+                    flex-direction: row !important;
                 `} onClick={shareToKakao}>
                     <Icon iconType={'Kakao'} size={20}/>
                     <Text size={14} weight={300} ui={css`
@@ -124,7 +124,7 @@ function FooterTemplate(
                     `}>카카오톡으로 청첩장 보내기</Text>
                 </View>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 4px;
                     align-items: center;
                 `}>

@@ -40,7 +40,7 @@ const LovelyHighTeenPreviewTemplate = (
                 color: #5D4037;
             `}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 20px;
                     align-items: center;
                 `}>

@@ -104,7 +104,7 @@ function ContactingCongratulationDialog(
                     `}>축하의 마음을 전하세요</Text>
                 </View>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                 `}>
                     <View
                         ui={cx(
@@ -136,14 +136,14 @@ function ContactingCongratulationDialog(
                 `}>
                     {tels.map(tel => (
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             padding: 20px 16px;
                             align-items: center;
                             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
                             border-radius: 8px;
                         `}>
                             <View ui={css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 gap: 12px;
                                 align-items: center;
                             `}>

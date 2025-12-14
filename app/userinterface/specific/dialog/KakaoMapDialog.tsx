@@ -109,7 +109,7 @@ function KakaoMapDialog(
                 baseDialogContentStyle
             )}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     padding-right: 20px;
                 `}>

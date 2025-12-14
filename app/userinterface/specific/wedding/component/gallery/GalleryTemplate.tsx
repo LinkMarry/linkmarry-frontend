@@ -150,7 +150,7 @@ const GallerySlide = (
         `}>
             <View ui={cx(
                 css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     scroll-snap-type: x mandatory;
                     overflow-x: scroll;
@@ -164,7 +164,7 @@ const GallerySlide = (
                         key={index}
                         ui={cx(
                             css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 height: 517px;
                                 scroll-snap-align: center;
                                 object-fit: cover;
@@ -243,14 +243,14 @@ function GalleryStyleIndicator(
     switch (galleryDesign) {
         case 'SLIDE':
             return <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 gap: 8px;
                 align-self: center;
             `}>
                 {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
                     <View key={index} ui={cx(
                         css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             width: 8px;
                             height: 8px;
                             border-radius: 4px;
@@ -266,7 +266,7 @@ function GalleryStyleIndicator(
         case 'HIGHLIGHT':
             return (
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     justify-content: space-between;
                     padding: 0 45px;

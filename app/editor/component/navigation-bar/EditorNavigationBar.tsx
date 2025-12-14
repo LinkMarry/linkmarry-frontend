@@ -32,7 +32,7 @@ const EditorNavigationBar = ({children, ...props}: Props) => {
 
     return (
         <View ui={css`
-            flex-direction: row;
+            flex-direction: row !important;
             flex: 1;
             min-height: 0;
         `}>
@@ -63,7 +63,7 @@ const NotDesktopEditorNavigationBarImpl = ({currentNavType, onChangeNavType}: Ed
         <View ui={cx(
             css`
                 gap: 12px;
-                flex-direction: row;
+                flex-direction: row !important;
                 align-items: flex-start;
                 overflow-y: hidden;
                 padding: 8px 32px;

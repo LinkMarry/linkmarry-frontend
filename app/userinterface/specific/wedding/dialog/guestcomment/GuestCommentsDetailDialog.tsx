@@ -41,7 +41,7 @@ function GuestCommentsDetailDialog(
                 `
             )}>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     align-items: center;
                     height: 81px;
                     position: relative;

@@ -168,7 +168,7 @@ const FontItem = ({fontFamily, selected, ...props}: FontItemProps) => {
             ` : undefined
         )} {...props}>
             <View ui={css`
-                flex-direction: row;
+                flex-direction: row !important;
                 padding: 2px 0 4px 6px;
                 border-bottom: 1px solid var(--g-100);
             `}>

@@ -55,7 +55,7 @@ function Dialog(
                 </View>
                 {children}
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 12px;
                     & > * {
                         flex: 1;

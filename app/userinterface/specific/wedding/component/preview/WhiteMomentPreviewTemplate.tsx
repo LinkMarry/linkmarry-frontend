@@ -65,7 +65,7 @@ function WhiteMomentPreviewTemplate(
                     outline: none;
                 `}/>
                 <View ui={css`
-                    flex-direction: row;
+                    flex-direction: row !important;
                     gap: 8px;
                     align-items: center;
                 `}>

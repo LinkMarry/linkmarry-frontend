@@ -60,7 +60,7 @@ function CongratulationsTemplate(
                                 word-break: break-all;
                             `}>
                                 <View ui={css`
-                                    flex-direction: row;
+                                    flex-direction: row !important;
                                     align-items: center;
                                     justify-content: center;
                                     gap: 4px;
@@ -76,7 +76,7 @@ function CongratulationsTemplate(
                                 </View>
                             </Text>
                             <View ui={css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 gap: 8px;
                                 align-items: center;
                             `}>
@@ -107,7 +107,7 @@ function CongratulationsTemplate(
                                 word-break: break-all;
                             `}>
                                 <View ui={css`
-                                    flex-direction: row;
+                                    flex-direction: row !important;
                                     align-items: center;
                                     justify-content: center;
                                     gap: 4px;
@@ -123,7 +123,7 @@ function CongratulationsTemplate(
                                 </View>
                             </Text>
                             <View ui={css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 gap: 8px;
                                 align-items: center;
                             `}>

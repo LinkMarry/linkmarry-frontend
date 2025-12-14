@@ -28,7 +28,7 @@ function FoundationDemo() {
             `}>
                 {fontFamilyList.map(font => (
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         align-items: flex-start;
                     `}>
                         <Text type={'p3'} ui={css`

@@ -32,7 +32,7 @@ const EditorInspectorMoney = (
                     }}
                 >
                     <View ui={css`
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 16px;
                         align-items: flex-start;
                     `}>
@@ -105,7 +105,7 @@ const EditorInspectorMoney = (
                 {moneyInfo.groomToggle && (
                     <>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             gap: 12px;
                             align-items: flex-start;
                         `}>
@@ -144,7 +144,7 @@ const EditorInspectorMoney = (
                 {moneyInfo.brideToggle && (
                     <>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             gap: 12px;
                         `}>
                             <Input placeholder={'예금주'} value={moneyInfo.brideNameMoneyInfo}
@@ -184,7 +184,7 @@ const EditorInspectorMoney = (
                         <View ui={css`
                             gap: 12px;
                             align-items: flex-start;
-                            flex-direction: row;
+                            flex-direction: row !important;
                         `}>
                             <Input placeholder={'예금주'} value={moneyInfo.groomFatherNameMoneyInfo}
                                    onChange={event => update(draft => {
@@ -221,7 +221,7 @@ const EditorInspectorMoney = (
                 {moneyInfo.groomMotherToggle && (
                     <>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             align-items: flex-start;
                             gap: 12px;
                         `}>
@@ -260,7 +260,7 @@ const EditorInspectorMoney = (
                 {moneyInfo.brideFatherToggle && (
                     <>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             gap: 12px;
                         `}>
                             <Input placeholder={'예금주'} value={moneyInfo.brideFatherNameMoneyInfo}
@@ -298,7 +298,7 @@ const EditorInspectorMoney = (
                 {moneyInfo.brideMotherToggle && (
                     <>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             gap: 12px;
                             align-items: flex-start;
                         `}>

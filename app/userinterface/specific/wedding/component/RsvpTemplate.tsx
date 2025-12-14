@@ -82,7 +82,7 @@ function RsvpTemplate(
                                 gap: 20px;
                             `}>
                                 <View ui={css`
-                                    flex-direction: row;
+                                    flex-direction: row !important;
                                     gap: 6px;
                                     align-items: center;
                                     padding: 5px 0;

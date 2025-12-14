@@ -77,7 +77,7 @@ function InvitationLetterTemplate(
                         color: var(--g-600);
                     `}>
                         <View ui={css`
-                            flex-direction: row;
+                            flex-direction: row !important;
                             align-items: center;
                             gap: 8px;
                         `}>
