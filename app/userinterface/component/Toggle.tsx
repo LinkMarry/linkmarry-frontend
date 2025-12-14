@@ -1,4 +1,5 @@
 import {
+    type ChangeEvent,
     type ComponentPropsWithRef,
     type ForwardedRef,
     forwardRef
@@ -36,8 +37,8 @@ function Toggle(
                 ref={ref}
                 type={'checkbox'}
                 checked={checked}
-                onChange={e => {
-                    OnChange(e.target.checked);
+                onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                    OnChange(event.target.checked);
                 }}
                 ui={cx(
                     css`

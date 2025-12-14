@@ -13,7 +13,7 @@ import useResponsive from "~/hook/useResponsive.ts";
 
 
 interface Props extends EditorNavigationBarImplProps {
-    children?: ReaFctNode;
+    children?: ReactNode;
 }
 
 const EditorNavigationBar = ({children, ...props}: Props) => {

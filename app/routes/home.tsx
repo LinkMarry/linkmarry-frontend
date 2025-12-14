@@ -9,8 +9,7 @@ import useWeddingDesigns from "~/hook/useWeddingDesigns.ts";
 import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset";
 import {desktopStyle, mobileStyle, notDesktopStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch";
 import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
-import {type Route} from "../../.react-router/types/app/routes/+types/home.ts";
-
+import {type Route} from "./+types/home";
 
 export async function loader() {
     const {data} = await weddingDesignApi.getWeddingDesignPresets();

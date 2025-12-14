@@ -13,10 +13,11 @@ interface Props {
     id: string;
     value: string;
     label: string;
+    weddingUrl: string;
     onChange: (newValue: Upload) => void;
 }
 
-const FileUploadBox = ({id, value, label, onChange}: Props) => {
+const FileUploadBox = ({id, value, label, weddingUrl, onChange}: Props) => {
     const isEmpty = value.length === 0;
     const [, setIsFetching] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -28,7 +29,7 @@ const FileUploadBox = ({id, value, label, onChange}: Props) => {
 
         setIsFetching(true);
 
-        const data = await uploadFile(files[0]);
+        const data = await uploadFile(files[0], weddingUrl);
         onChange(data);
 
         setIsFetching(false);

@@ -29,14 +29,14 @@ export function Layout(
                   href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
                   as="style"/>
 
-            <link rel="stylesheet"
-                  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-                  media="print" onload="this.media='all'"/>
-            <link rel="stylesheet"
-                  href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
-                  media="print" onload="this.media='all'"/>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css"
-                  media="print" onload="this.media='all'"/>
+            {/*@ts-ignore*/}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'"/>
+
+            {/*@ts-ignore*/}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap" media="print" onload="this.media='all'"/>
+
+            {/*@ts-ignore*/}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" media="print" onload="this.media='all'"/>
 
             <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
             <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"
