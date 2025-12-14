@@ -12,9 +12,7 @@ import View from "~/userinterface/core/View.tsx";
 
 const EditorInspectorUrlShare = (
     {
-        value: {
-            linkShare
-        },
+        value: {url, linkShare},
         update
     }: Binding<WeddingDto>
 ) => {
@@ -43,7 +41,9 @@ const EditorInspectorUrlShare = (
             `}>
                 <Text type={'p3'} bold={true}>사진 첨부</Text>
                 <PhotoUploadBox
-                    id={'EditorInspectorUrlShare-urlImgUrl'} value={linkShare.urlImgUrl}
+                    id={'EditorInspectorUrlShare-urlImgUrl'}
+                    value={linkShare.urlImgUrl}
+                    weddingUrl={url}
                     onChange={images => update(draft => {
                         draft.linkShare.urlImgUrl = images;
                     })}

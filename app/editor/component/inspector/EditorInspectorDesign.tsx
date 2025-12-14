@@ -23,7 +23,7 @@ export interface WeddingDesignProps extends Binding<WeddingDto> {
 
 const EditorInspectorDesign = (
     {
-        value: {weddingDesign},
+        value: {url, weddingDesign},
         update,
         weddingDesigns
     }: WeddingDesignProps
@@ -79,6 +79,7 @@ const EditorInspectorDesign = (
                 <PhotoUploadBox
                     id={'EditorInspectorDesign-titleImgUrl'}
                     value={weddingDesign.titleImgUrl}
+                    weddingUrl={url}
                     onChange={value => update(draft => {
                         draft.weddingDesign.titleImgUrl = value;
                     })}

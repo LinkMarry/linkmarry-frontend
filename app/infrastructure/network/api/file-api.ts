@@ -5,9 +5,10 @@ import type Music from "~/infrastructure/network/value/Music";
 
 const PATH = 'file';
 
-async function upload(file: File): Promise<ResponseData<Upload>> {
+async function upload(file: File, url: string): Promise<ResponseData<Upload>> {
     const {data} = await api.postForm(`${PATH}/upload`, {
-        file
+        file,
+        url
     });
     return data;
 }

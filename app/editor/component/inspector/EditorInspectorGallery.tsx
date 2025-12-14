@@ -14,7 +14,7 @@ import {css} from "@linaria/core";
 
 const EditorInspectorGallery = (
     {
-        value: {gallery},
+        value: {url, gallery},
         update
     }: Binding<WeddingDto>
 ) => {
@@ -35,6 +35,7 @@ const EditorInspectorGallery = (
                 <PhotoUploadBox
                     id={'EditorInspectorGallery-imgList'}
                     value={gallery.imgList}
+                    weddingUrl={url}
                     onChange={images => update(draft => {
                         draft.gallery.imgList = images;
                     })}

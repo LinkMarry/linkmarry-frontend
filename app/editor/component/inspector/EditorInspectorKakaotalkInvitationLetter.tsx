@@ -15,7 +15,7 @@ import View from "~/userinterface/core/View.tsx";
 
 const EditorInspectorKakaotalkInvitationLetter = (
     {
-        value: {linkShare},
+        value: {url, linkShare},
         update
     }: Binding<WeddingDto>
 ) => {
@@ -46,6 +46,7 @@ const EditorInspectorKakaotalkInvitationLetter = (
                 <PhotoUploadBox
                     id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'}
                     value={linkShare.kakaoImgUrl}
+                    weddingUrl={url}
                     onChange={newValue => update(draft => {
                         draft.linkShare.kakaoImgUrl = newValue;
                     })}

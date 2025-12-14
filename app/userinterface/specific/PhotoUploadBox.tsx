@@ -12,10 +12,11 @@ import LoadingOverlay from "~/userinterface/specific/LoadingOverlay";
 interface Props<V = string | string[]> {
     id: string;
     value: V;
+    weddingUrl: string;
     onChange: (newValue: V) => void;
 }
 
-const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) => {
+const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}: Props<V>) => {
     const isEmpty = (() => {
         if (typeof value === 'string') {
             return value.length === 0;
@@ -37,10 +38,10 @@ const PhotoUploadBox = <V = string | string[]>({id, value, onChange}: Props<V>) 
         try {
             if (typeof value === 'string') {
                 if (files.length !== 1) return;
-                const {url} = await uploadFile(files[0]);
+                const {url} = await uploadFile(files[0], weddingUrl);
                 onChange(url as V);
             } else if (Array.isArray(value)) {
-                const uploads = await uploadFiles(files);
+                const uploads = await uploadFiles(files, weddingUrl);
                 onChange([...value, ...uploads.map(i => i.url)] as V);
             }
         } catch (error) {
