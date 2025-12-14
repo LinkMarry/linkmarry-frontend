@@ -19,7 +19,7 @@ export const defaultBackgroundMusic: BackgroundMusic = {
 }
 
 export const dummyBackgroundMusic: BackgroundMusic = {
-    backgroundMusicUrl: "https://linkmarry.s3.ap-northeast-2.amazonaws.com/music/As_Time_Goes_By.mp3",
+    backgroundMusicUrl: "https://axqjyyk4dfhw.compat.objectstorage.ap-chuncheon-1.oraclecloud.com/linkmarry/sample/music/As_Time_Goes_By.mp3",
     backgroundMusicName: "As_Time_Goes_By.mp3",
     effect: true,
     backgroundMusicActivate: true
