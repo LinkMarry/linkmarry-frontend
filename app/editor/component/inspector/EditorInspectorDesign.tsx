@@ -55,7 +55,7 @@ const EditorInspectorDesign = (
                     `}/>
                 )}
                 <View ui={css`
-                    display: grid;
+                    display: grid !important;
                     grid-template-columns: repeat(3, 1fr);
                     grid-row-gap: 32px;
                     grid-column-gap: 12px;

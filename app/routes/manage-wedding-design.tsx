@@ -20,7 +20,7 @@ const ManageWeddingDesign = () => {
         <View>
             Manage
             <View ui={css`
-                display: grid;
+                display: grid !important;
                 grid-row-gap: 10px;
                 grid-column-gap: 44px;
             `}>

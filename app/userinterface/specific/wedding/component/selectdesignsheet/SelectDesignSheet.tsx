@@ -70,7 +70,7 @@ const MobileSelectDesignSheet = ({onChangeDesignName, dismiss, weddingDesigns, u
                             min-height: 0;
                         `}>
                             <View ui={css`
-                                display: grid;
+                                display: grid !important;
                                 grid-template-columns: repeat(2, 1fr);
                                 grid-column-gap: 14px;
                                 grid-row-gap: 32px;

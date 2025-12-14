@@ -58,7 +58,7 @@ function GalleryTemplate(
                 />
             ) : (
                 <View ui={css`
-                    display: grid;
+                    display: grid !important;
                     grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
                     margin: 0 18px;
                     gap: 4px;

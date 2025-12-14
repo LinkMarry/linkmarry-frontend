@@ -37,7 +37,7 @@ const EditorInspectorFontAndStyle = (
     return (
         <EditorInspectorWrapper type={'fontAndStyle'} hasDivider={false}>
             <View ui={css`
-                display: grid;
+                display: grid !important;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             `}>
@@ -78,7 +78,7 @@ const EditorInspectorFontAndStyle = (
                             color: var(--g-500);
                         `}>단색</Text>
                         <View ui={css`
-                            display: grid;
+                            display: grid !important;
                             grid-template-columns: repeat(4, 1fr);
                             gap: 8px;
                         `}>
@@ -129,7 +129,7 @@ const EditorInspectorFontAndStyle = (
                             color: var(--g-500);
                         `}>페이퍼</Text>
                         <View ui={css`
-                            display: grid;
+                            display: grid !important;
                             grid-template-columns: repeat(4, 1fr);
                             gap: 8px;
                         `}>
