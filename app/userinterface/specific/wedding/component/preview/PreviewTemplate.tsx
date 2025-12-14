@@ -34,19 +34,21 @@ import PureNaturalPreviewTemplate
 import VintageWeddingPreviewTemplate
     from "~/userinterface/specific/wedding/component/preview/VintageWeddingPreviewTemplate";
 import DearMyLovePreviewTemplate from "~/userinterface/specific/wedding/component/preview/DearMyLovePreviewTemplate";
+import type {WeddingMode} from "~/userinterface/specific/wedding/WeddingMode.ts";
 
 export interface PreviewTemplateProps {
     weddingDesign: WeddingDesign;
     baseInfo: BaseInfo;
     weddingPlace: WeddingPlace;
     weddingSchedule: WeddingSchedule;
+    mode: WeddingMode;
 }
 
 function PreviewTemplate(
     props: PreviewTemplateProps
 ) {
     const previewRef = useRef<HTMLDivElement>(null);
-    useScrollOnUpdate(previewRef, [props.weddingDesign.weddingDesignName]);
+    useScrollOnUpdate(previewRef, [props.weddingDesign.weddingDesignName], props.mode === 'preview');
 
     const content = () => {
         switch (props.weddingDesign.weddingDesignName) {

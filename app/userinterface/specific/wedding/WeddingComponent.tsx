@@ -210,6 +210,7 @@ const ContentBody = (
                 baseInfo={wedding.baseInfo}
                 weddingPlace={wedding.weddingPlace}
                 weddingSchedule={wedding.weddingSchedule}
+                mode={mode}
             />
             {wedding.position.map(index => {
                 const view: Record<Position, ReactNode> = {
