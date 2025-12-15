@@ -6,6 +6,7 @@ import './app.css'
 import {HelmetProvider} from "react-helmet-async";
 import HelmetMetaTags from "~/application/seo/HelmetMetaTags.tsx";
 
+// @ts-nocheck
 export function Layout(
     {
         children,
@@ -30,13 +31,18 @@ export function Layout(
                   as="style"/>
 
             {/*@ts-ignore*/}
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'"/>
+            <link rel="stylesheet"
+                  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+                  media="print" onload="this.media='all'"/>
 
             {/*@ts-ignore*/}
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap" media="print" onload="this.media='all'"/>
+            <link rel="stylesheet"
+                  href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
+                  media="print" onload="this.media='all'"/>
 
             {/*@ts-ignore*/}
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" media="print" onload="this.media='all'"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css"
+                  media="print" onload="this.media='all'"/>
 
             <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
             <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"
@@ -44,10 +50,44 @@ export function Layout(
                     crossOrigin="anonymous"></script>
             <script
                 src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.kakao.javascriptKey}&libraries=services,clusterer,drawing`}></script>
+
+
+            {/*@ts-nocheck*/}
+            <script dangerouslySetInnerHTML={{
+                __html: `
+        if (window.location.hostname !== 'localhost') {
+            // Google Tag Manager
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5THQMPTZ');
+
+            // Google Analytics
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16841271697');
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16841271697/ZVdECJWy7pUaEJHTxd4-',
+                'value': 1.0,
+                'currency': 'KRW'
+            });
+        }
+                `
+            }}>
+            </script>
             <Meta/>
             <Links/>
         </head>
         <body>
+        <div dangerouslySetInnerHTML={{
+            __html: `
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5THQMPTZ" height="0" width="0"
+                    style="display:none;visibility:hidden">
+            </iframe>
+        </noscript>
+        `
+        }}>
+        </div>
+
         {children}
         <ScrollRestoration/>
         <Scripts/>

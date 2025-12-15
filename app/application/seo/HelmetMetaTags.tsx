@@ -41,7 +41,7 @@ const HelmetMetaTags = () => {
             <meta name="geo.placename" content="Seoul"/>
 
             {/* Schema.org 구조화 데이터 */}
-
+            <meta name="naver-site-verification" content="bf351689cbaf88ee5be7544d236c9cd3e56b74c0"/>
         </Helmet>
     );
 };
