@@ -76,7 +76,7 @@ function MobileHeader() {
                             navigate('/editor');
                         }}/>
                         <MobileHeaderItem text={'공지사항'} onClick={() => {
-                            window.open(NOTIFICATION_URL);
+                            navigate('/notification');
                         }}/>
                         <MobileHeaderItem text={'네이버스토어'} onClick={() => {
                             window.open(NAVER_STORE_URL);
@@ -169,7 +169,10 @@ function NotMobileHeader() {
                             navigate('/editor');
                         }}/>
                         <DesktopHeaderItem text={'공지사항'} onClick={() => {
-                            window.open(NOTIFICATION_URL);
+                            navigate('/notification');
+                        }}/>
+                        <DesktopHeaderItem text={'자주 묻는 질문'} onClick={() => {
+                            navigate('/question');
                         }}/>
                         <DesktopHeaderItem text={'네이버스토어'} onClick={() => {
                             window.open(NAVER_STORE_URL);

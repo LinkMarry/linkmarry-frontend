@@ -40,7 +40,7 @@ function Footer() {
                         justify-content: space-between;
 
                         ${responsive.mobile} {
-                            flex-direction: column;
+                            flex-direction: column !important;
                             gap: 24px;
                         }
                     `}>
@@ -76,7 +76,7 @@ function Footer() {
                                 align-items: flex-start;
                                 width: 180px;
                             `}>
-                                <Item text={'공지사항'} onClick={() => window.open(NOTIFICATION_URL)}/>
+                                <Item text={'공지사항'} onClick={() => navigate('/notification')}/>
                                 <Item text={'네이버스토어'} onClick={() => window.open(NAVER_STORE_URL)}/>
                             </View>
                             <View ui={css`
