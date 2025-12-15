@@ -20,7 +20,7 @@ export type FontFamily =
     | 'Great Vibes'
     | 'Cafe24LovingU'
     | 'MuseumCulturalFoundationClassic'
-    | 'aBRS';
+    | 'BlackHanSans';
 
 export const fontFamilyList: FontFamily[] = [
     'Pretendard',
@@ -42,7 +42,7 @@ export const fontFamilyList: FontFamily[] = [
     'Great Vibes',
     'Cafe24LovingU',
     'MuseumCulturalFoundationClassic',
-    'aBRS'
+    'BlackHanSans'
 ];
 
 export const fontFamilyStyle: Record<FontFamily, LinariaClassName> = {
@@ -103,8 +103,8 @@ export const fontFamilyStyle: Record<FontFamily, LinariaClassName> = {
     MuseumCulturalFoundationClassic: css`
         font-family: MuseumCulturalFoundationClassic, serif;
     `,
-    aBRS: css`
-        font-family: aBRS, serif;
+    BlackHanSans: css`
+        font-family: BlackHanSans, serif;
     `
 }
 

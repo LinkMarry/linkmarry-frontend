@@ -164,21 +164,9 @@
 }
 
 @font-face {
-    font-family: aBRS;
-    src: url("/app/userinterface/foundation/text/fonts/aBRSB.ttf") format('truetype');
+    font-family: BlackHanSans;
+    src: url("/app/userinterface/foundation/text/fonts/BlackHanSans.ttf") format('truetype');
     font-weight: 700;
-}
-
-@font-face {
-    font-family: aBRS;
-    src: url("/app/userinterface/foundation/text/fonts/aBRSM.ttf") format('truetype');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: aBRS;
-    src: url("/app/userinterface/foundation/text/fonts/aBRSL.ttf") format('truetype');
-    font-weight: 300;
 }
 
 * {
