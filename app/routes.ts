@@ -8,6 +8,8 @@ const routes = [
         route("wedding/:url", "routes/wedding.tsx"),
         route("sample", "routes/sample.tsx"),
         route("link", "routes/link.tsx"),
+        route("notification", "routes/notification.tsx"),
+        route("question", "routes/question.tsx"),
         layout("routes/private-route.tsx", [
             layout("routes/mypage/my-page-layout.tsx", prefix("mypage", [
                 layout("routes/mypage/index/my-page-index-layout.tsx", [
