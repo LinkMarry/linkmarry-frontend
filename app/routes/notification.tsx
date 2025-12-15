@@ -10,6 +10,7 @@ import type Notification from "~/infrastructure/network/value/Notification.ts";
 import {type Tag, tagToKoreanRecord, type TagWithAll} from "~/infrastructure/network/enumeration/Tag.ts";
 import {format} from "date-fns";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
+import {useNavigate} from "react-router";
 
 
 export async function loader() {
@@ -23,25 +24,18 @@ export async function loader() {
 function Notification(
     {
         loaderData: {
-            // notifications
+            notifications
         }
     }: Route.ComponentProps
 ) {
-    const [queryTag, setQueryTag] = useState<TagWithAll>('ALL');
-    const notifications = [
-        {
-            title: 'test',
-            date: new Date(),
-            id: 0,
-            tag: 'UPDATE'
-        }
-    ];
-    const tags = [
-        'ALL',
-        'NOTIFICATION',
-        'UPDATE',
-        'ETC'
-    ]
+    // const [queryTag, setQueryTag] = useState<TagWithAll>('ALL');
+    const navigate = useNavigate();
+    // const tags = [
+    //     'ALL',
+    //     'NOTIFICATION',
+    //     'UPDATE',
+    //     'ETC'
+    // ];
     return (
         <MainWrapper>
             <View ui={css`
@@ -67,14 +61,14 @@ function Notification(
                         `,
                         hideScrollBarStyle
                     )}>
-                        {tags.map(tag => (
-                            <TagCell
-                                key={tag}
-                                tag={tag}
-                                selected={queryTag === tag}
-                                onClick={() => setQueryTag(tag)}
-                            />
-                        ))}
+                        {/*{tags.map(tag => (*/}
+                        {/*    <TagCell*/}
+                        {/*        key={tag}*/}
+                        {/*        tag={tag}*/}
+                        {/*        selected={queryTag === tag}*/}
+                        {/*        onClick={() => setQueryTag(tag)}*/}
+                        {/*    />*/}
+                        {/*))}*/}
                     </View>
                     <View ui={css`
                         border-top: 1px solid var(--g-200);
@@ -83,6 +77,9 @@ function Notification(
                             <NotificationCell
                                 key={notification.id}
                                 notification={notification}
+                                onClick={() => {
+                                    navigate(`/notification/${notification.id}`);
+                                }}
                             />
                         )) : (
                             <Text>
@@ -109,7 +106,7 @@ function TagCell(
     }: TagCellProps
 ) {
     return (
-        <Text type={'p3'} lineHeight={'auto'} ui={cx(
+        <Text type={'p3'} lineHeight={'normal'} ui={cx(
             css`
                 padding: 8px 14px;
                 border-radius: 36px;
@@ -127,23 +124,25 @@ function TagCell(
     )
 }
 
-interface NotificationCellProps {
+interface NotificationCellProps extends ComponentPropsWithoutRef<'div'> {
     notification: Notification;
 }
 
 function NotificationCell(
     {
-        notification
+        notification,
+        ...props
     }: NotificationCellProps
 ) {
     return (
-        <View ui={css`
+        <View {...props} ui={css`
             ${responsive.desktop} {
                 flex-direction: row !important;
                 padding: 12px 20px;
             }
 
             padding: 12px 0;
+            cursor: pointer;
         `}>
             <Text type={'caption1'} bold={true} ui={css`
                 color: var(--g-800);
