@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import NotificationDetailComp from "~/userinterface/NotificationDetailComp.tsx";
 import notificationApi from "~/infrastructure/network/api/notification-api.ts";
 import {compareDesc} from "date-fns";
@@ -29,10 +29,15 @@ function Terms(
         }
     }: Route.ComponentProps
 ) {
+    const scrollRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const selectedNotification = date
         ? notifications.find(i => i.date === date)
         : notifications[0];
+
+    useEffect(() => {
+        scrollRef.current?.scrollTo(0, 0);
+    }, [date]);
 
     if (!selectedNotification) {
         return (
@@ -41,8 +46,8 @@ function Terms(
     }
 
     return (
-        <MainWrapper>
-            <NotificationDetailComp notification={notifications[0]}/>
+        <MainWrapper scrollRef={scrollRef}>
+            <NotificationDetailComp notification={selectedNotification}/>
 
             <View ui={css`
                 align-items: center;

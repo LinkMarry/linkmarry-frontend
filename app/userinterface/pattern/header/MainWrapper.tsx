@@ -1,4 +1,4 @@
-import {type ReactNode} from "react";
+import {type ReactNode, type RefObject} from "react";
 import Header from "~/userinterface/pattern/header/Header";
 import Footer from "~/userinterface/specific/Footer";
 import {css, cx, type LinariaClassName} from "@linaria/core";
@@ -8,6 +8,7 @@ interface Props {
     hasHeader?: boolean;
     hasFooter?: boolean;
     ui?: LinariaClassName;
+    scrollRef?: RefObject<HTMLDivElement | null>;
     children?: ReactNode;
 }
 
@@ -16,6 +17,7 @@ function MainWrapper(
         hasHeader = true,
         hasFooter = true,
         ui,
+        scrollRef,
         children
     }: Props
 ) {
@@ -29,7 +31,7 @@ function MainWrapper(
             ui
         )}>
             {hasHeader && <Header/>}
-            <View ui={css`
+            <View ref={scrollRef} ui={css`
                 overflow-y: scroll;
                 flex: 1;
             `}>
