@@ -12,6 +12,8 @@ const routes = [
             index("routes/notification.tsx"),
             route(":id", "routes/notification-detail.tsx")
         ]),
+        route("privacy-policy/:date?", "routes/privacy-policy.tsx"),
+        route("terms/:date?", "routes/terms.tsx"),
         // route("question", "routes/question.tsx"),
         layout("routes/private-route.tsx", [
             layout("routes/mypage/my-page-layout.tsx", prefix("mypage", [

@@ -1,4 +1,4 @@
-import React, {type ComponentPropsWithoutRef, useState} from 'react';
+import React, {type ComponentPropsWithoutRef, useMemo, useState} from 'react';
 import type {Route} from './+types/notification'
 import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
 import {css, cx} from "@linaria/core";
@@ -7,8 +7,8 @@ import View from "~/userinterface/core/View.tsx";
 import Text from "~/userinterface/component/Text.tsx";
 import notificationApi from "~/infrastructure/network/api/notification-api.ts";
 import type Notification from "~/infrastructure/network/value/Notification.ts";
-import {type Tag, tagToKoreanRecord, type TagWithAll} from "~/infrastructure/network/enumeration/Tag.ts";
-import {format} from "date-fns";
+import {tagToKoreanRecord, TagWithAll} from "~/infrastructure/network/enumeration/Tag.ts";
+import {compareDesc, format} from "date-fns";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
 import {useNavigate} from "react-router";
 
@@ -16,7 +16,7 @@ import {useNavigate} from "react-router";
 export async function loader() {
     const {data} = await notificationApi.getNotifications();
     return {
-        notifications: data
+        notifications: data.sort((a, b) => compareDesc(a.date, b.date))
     };
 }
 
@@ -28,14 +28,15 @@ function Notification(
         }
     }: Route.ComponentProps
 ) {
-    // const [queryTag, setQueryTag] = useState<TagWithAll>('ALL');
+    const [queryTag, setQueryTag] = useState<TagWithAll>('ALL');
     const navigate = useNavigate();
-    // const tags = [
-    //     'ALL',
-    //     'NOTIFICATION',
-    //     'UPDATE',
-    //     'ETC'
-    // ];
+    const filteredNotifications = useMemo(() => {
+        if (queryTag === 'ALL') {
+            return notifications;
+        }
+        return notifications.filter(i => i.tag === queryTag);
+    }, [queryTag]);
+
     return (
         <MainWrapper>
             <View ui={css`
@@ -61,19 +62,19 @@ function Notification(
                         `,
                         hideScrollBarStyle
                     )}>
-                        {/*{tags.map(tag => (*/}
-                        {/*    <TagCell*/}
-                        {/*        key={tag}*/}
-                        {/*        tag={tag}*/}
-                        {/*        selected={queryTag === tag}*/}
-                        {/*        onClick={() => setQueryTag(tag)}*/}
-                        {/*    />*/}
-                        {/*))}*/}
+                        {TagWithAll.map(tag => (
+                            <TagCell
+                                key={tag}
+                                tag={tag}
+                                selected={queryTag === tag}
+                                onClick={() => setQueryTag(tag)}
+                            />
+                        ))}
                     </View>
                     <View ui={css`
                         border-top: 1px solid var(--g-200);
                     `}>
-                        {notifications.length !== 0 ? notifications.map(notification => (
+                        {filteredNotifications.length !== 0 ? filteredNotifications.map(notification => (
                             <NotificationCell
                                 key={notification.id}
                                 notification={notification}
@@ -82,8 +83,12 @@ function Notification(
                                 }}
                             />
                         )) : (
-                            <Text>
-                                공지가 없어요
+                            <Text ui={css`
+                                text-align: center;
+                                margin-top: 32px;
+                                color: var(--g-600);
+                            `}>
+                                공지가 없습니다
                             </Text>
                         )}
                     </View>
@@ -94,7 +99,7 @@ function Notification(
 }
 
 interface TagCellProps extends ComponentPropsWithoutRef<'div'> {
-    tag: Tag;
+    tag: TagWithAll;
     selected: boolean;
 }
 
@@ -146,7 +151,7 @@ function NotificationCell(
         `}>
             <Text type={'caption1'} bold={true} ui={css`
                 color: var(--g-800);
-                width: 80px;
+                width: 128px;
             `}>
                 {tagToKoreanRecord[notification.tag]}
             </Text>

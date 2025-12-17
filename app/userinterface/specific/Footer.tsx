@@ -84,8 +84,10 @@ function Footer() {
                                 align-items: flex-start;
                                 width: 180px;
                             `}>
-                                <Item text={'이용약관'} onClick={() => window.open(TERMS_OR_USE_URL)}/>
-                                <Item text={'개인정보처리방침'} onClick={() => window.open(PRIVACY_POLICY_URL)}/>
+                                <Item text={'이용약관'} onClick={() => navigate('/terms')}/>
+                                <Item text={'개인정보처리방침'} onClick={() => navigate('/privacy-policy')}/>
+                                {/*<Item text={'이용약관'} onClick={() => window.open(TERMS_OR_USE_URL)}/>*/}
+                                {/*<Item text={'개인정보처리방침'} onClick={() => window.open(PRIVACY_POLICY_URL)}/>*/}
                                 <Item text={'사업자 정보 확인'} onClick={() => window.open(BUSINESS_INFORMATION_URL)}/>
                             </View>
                         </View>

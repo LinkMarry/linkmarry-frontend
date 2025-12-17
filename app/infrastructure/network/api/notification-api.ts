@@ -29,11 +29,23 @@ async function editNotification(id: number, req: NotificationRequest): Promise<R
     return data;
 }
 
+async function getPrivacyPolicyNotifications(): Promise<ResponseData<Notification[]>> {
+    const {data} = await api.get(`${PATH}/privacy`);
+    return data;
+}
+
+async function getTermsNotifications(): Promise<ResponseData<Notification[]>> {
+    const {data} = await api.get(`${PATH}/terms`);
+    return data;
+}
+
 const notificationApi = {
     createNotification,
     getNotifications,
     getNotification,
-    editNotification
+    editNotification,
+    getPrivacyPolicyNotifications,
+    getTermsNotifications
 };
 
 export default notificationApi;

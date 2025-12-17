@@ -30,7 +30,7 @@ function MainWrapper(
         )}>
             {hasHeader && <Header/>}
             <View ui={css`
-                overflow: scroll;
+                overflow-y: scroll;
                 flex: 1;
             `}>
                 <View as={'main'} ui={css`
