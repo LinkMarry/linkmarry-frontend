@@ -36,12 +36,11 @@ function Footer() {
                     padding-bottom: 72px;
                 `}>
                     <View ui={css`
-                        flex-direction: row !important;
-                        justify-content: space-between;
+                        gap: 24px;
 
-                        ${responsive.mobile} {
-                            flex-direction: column !important;
-                            gap: 24px;
+                        ${responsive.notMobile} {
+                            flex-direction: row !important;
+                            justify-content: space-between;
                         }
                     `}>
                         <View ui={css`
@@ -59,7 +58,7 @@ function Footer() {
                         <View ui={css`
                             flex-direction: row !important;
                             ${responsive.mobile} {
-                                flex-direction: column;
+                                flex-direction: column !important;
                                 gap: 16px;
                             }
                         `}>
