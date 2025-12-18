@@ -138,7 +138,6 @@ const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: Select
                 css`
                     flex-direction: row !important;
                     gap: 14px;
-                    max-height: 152px;
                     overflow-x: scroll;
                 `,
                 hideScrollBarStyle
@@ -146,7 +145,7 @@ const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: Select
                 {selectedWeddingDesigns.map(design => (
                     <View key={design.id} ui={cx(
                         css`
-                            min-width: 64px;
+                            min-width: 80px;
                             gap: 8px;
                             overflow: hidden !important;
                         `,
