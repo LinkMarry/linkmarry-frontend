@@ -67,7 +67,7 @@ function PrivacyPolicy(
                             <View key={notification.id} onClick={() => {
                                 navigate(`/privacy-policy/${notification.date}`);
                             }} ui={css`
-                                flex-direction: row;
+                                flex-direction: row !important;
                                 gap: 16px;
                                 padding: 16px 0;
                                 cursor: pointer;
