@@ -2,14 +2,7 @@ import MainWrapper from "~/userinterface/pattern/header/MainWrapper";
 import {css, cx} from "@linaria/core";
 import Text from "~/userinterface/component/Text";
 import View from "~/userinterface/core/View.tsx";
-import WeddingDesignPresetCell from "~/userinterface/specific/WeddingStyleCell";
-import TabBar from "~/userinterface/component/TabBar";
-import Loading from "~/userinterface/specific/Loading";
-import useWeddingDesigns from "~/hook/useWeddingDesigns.ts";
-import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset";
-import {desktopStyle, mobileStyle, notDesktopStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch";
-import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
-import type {Route} from "./+types/home";
+import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch";
 import Button from "~/userinterface/component/Button.tsx";
 import Divider from "~/userinterface/component/Divider.tsx";
 import Icon from "~/userinterface/foundation/Icon.tsx";
@@ -18,17 +11,8 @@ import {type ComponentPropsWithoutRef, useState} from "react";
 import {NAVER_STORE_URL} from "~/shared/constant.ts";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
 
-export async function loader() {
-    const {data} = await weddingDesignApi.getWeddingDesignPresets();
-    return data;
-}
 
-function Home(
-    {
-        loaderData
-    }: Route.ComponentProps
-) {
-    const {selectedCategory, setSelectedCategory, categories, selectedWeddingDesigns} = useWeddingDesigns(loaderData);
+function Home() {
     const navigate = useNavigate();
 
     const handleViewSample = () => {
