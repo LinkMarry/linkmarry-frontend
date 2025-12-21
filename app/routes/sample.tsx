@@ -12,7 +12,7 @@ import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts
 import type {Route} from "./+types/sample";
 
 
-export async function loader() {
+export async function clientLoader() {
     const {data} = await weddingDesignApi.getWeddingDesignPresets();
     return data;
 }

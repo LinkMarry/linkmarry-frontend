@@ -16,5 +16,9 @@ export default defineConfig({
     ],
     ssr: {
         noExternal: ["react-helmet-async"]
+    },
+    build: {
+        outDir: 'build/web',
+        emptyOutDir: true
     }
 });

@@ -5,10 +5,15 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev --port 3000",
+    "build:ait": "granite build",
+    "dev:ait": "granite dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "deploy": "ait deploy",
+    "move-build": "node -e \"const fs = require('fs'); if (fs.existsSync('build/client')) { fs.renameSync('build/client', 'build/web'); console.log('Build moved to build/web'); }\""
   },
   "dependencies": {
+    "@apps-in-toss/web-framework": "^1.6.2",
     "@linaria/core": "^6.3.0",
     "@linaria/react": "^6.3.0",
     "@react-router/node": "7.10.1",

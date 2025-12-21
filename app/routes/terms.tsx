@@ -12,7 +12,7 @@ import Spacer from "~/userinterface/component/Spacer.tsx";
 import Divider from "~/userinterface/component/Divider.tsx";
 
 
-export async function loader() {
+export async function clientLoader() {
     const {data} = await notificationApi.getTermsNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date))

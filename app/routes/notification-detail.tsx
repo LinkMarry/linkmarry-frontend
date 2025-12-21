@@ -5,7 +5,7 @@ import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
 import NotificationDetailComp from "~/userinterface/NotificationDetailComp.tsx";
 
 
-export async function loader({params}: Route.LoaderArgs) {
+export async function clientLoader({params}: Route.LoaderArgs) {
     const {data} = await notificationApi.getNotification(Number(params.id));
     console.log(data);
     return data;

@@ -12,7 +12,7 @@ import Spacer from "~/userinterface/component/Spacer.tsx";
 import {Navigate, useNavigate} from "react-router";
 
 
-export async function loader() {
+export async function clientLoader() {
     const {data} = await notificationApi.getPrivacyPolicyNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date))
