@@ -1,22 +1,18 @@
-import {allCasesOfEnum} from "~/shared/enum-util.ts";
+export const TagList = [
+    'NOTIFICATION',
+    'UPDATE',
+    'ETC',
+    'PRIVACY',
+    'TERMS',
+] as const;
 
-const TagValues = {
-    NOTIFICATION: 'NOTIFICATION',
-    UPDATE: 'UPDATE',
-    ETC: 'ETC',
-    PRIVACY: 'PRIVACY',
-    TERMS: 'TERMS',
-} as const;
+export const TagWithAllList = [
+    ...TagList,
+    'ALL'
+] as const;
 
-const TagWithAllValues = {
-    ALL: 'ALL',
-    ...TagValues,
-} as const;
-
-export type Tag = typeof TagValues[keyof typeof TagValues];
-export type TagWithAll = typeof TagWithAllValues[keyof typeof TagWithAllValues];
-export const TagList = allCasesOfEnum(TagValues);
-export const TagWithAll = allCasesOfEnum(TagWithAllValues);
+export type Tag = typeof TagList[number];
+export type TagWithAll = typeof TagWithAllList[number];
 
 export const tagToKoreanRecord: Record<TagWithAll, string> = {
     ALL: '전체',

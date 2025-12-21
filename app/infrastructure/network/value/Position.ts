@@ -1,5 +1,3 @@
-export type Position = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-
 export const positionMap: Record<Position, {
     korean: string;
 }> = {
@@ -14,4 +12,5 @@ export const positionMap: Record<Position, {
     8: {korean: '참석의사 RSVP'},
 };
 
-export const positionList: Position[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+export const positionList = [0, 1, 2, 3, 4, 5, 6, 7, 8] as const;
+export type Position = typeof positionList[number];

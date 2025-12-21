@@ -1,13 +1,10 @@
-import {allCasesOfEnum} from "~/shared/enum-util";
+export const kakaoButtonList = [
+    'NONE',
+    'PLACE',
+    'ATTEND',
+] as const;
+export type KakaoButton = typeof kakaoButtonList[number];
 
-const KakaoButtonValues = {
-    NONE: 'NONE',
-    PLACE: 'PLACE',
-    ATTEND: 'ATTEND',
-}
-
-export type KakaoButton = typeof KakaoButtonValues[keyof typeof KakaoButtonValues];
-export const kakaoButtonList = allCasesOfEnum(KakaoButtonValues);
 export const kakaoButtonMap: Record<KakaoButton, {
     korean: string;
 }> = {

@@ -1,10 +1,6 @@
-import {allCasesOfEnum} from "~/shared/enum-util.ts";
+export const UserRoleList = [
+    'ROLE_ADMIN',
+    'ROLE_USER',
+] as const;
 
-const UserRoleValues = {
-    ROLE_ADMIN: 'ROLE_ADMIN',
-    ROLE_USER: 'ROLE_USER',
-} as const;
-
-
-export type UserRole = typeof UserRoleValues[keyof typeof UserRoleValues];
-export const UserRoleList = allCasesOfEnum(UserRoleValues);
+export type UserRole = typeof UserRoleList[number];

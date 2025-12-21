@@ -44,9 +44,9 @@ function Text(
     }
 
     return (
-        <View
+        <span
             ref={ref}
-            ui={cx(
+            className={cx(
                 textStyle,
                 ui
             )}
@@ -59,7 +59,7 @@ function Text(
             {...props}
         >
             {children}
-        </View>
+        </span>
     );
 }
 

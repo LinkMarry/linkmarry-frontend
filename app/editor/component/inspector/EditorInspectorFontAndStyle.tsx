@@ -162,18 +162,20 @@ const FontItem = ({fontFamily, selected, ...props}: FontItemProps) => {
             css`
                 border-radius: 6px;
                 cursor: pointer;
+                min-width: 0;
             `,
             selected ? css`
                 outline: 1px solid black;
             ` : undefined
         )} {...props}>
             <View ui={css`
-                flex-direction: row !important;
                 padding: 2px 0 4px 6px;
                 border-bottom: 1px solid var(--g-100);
             `}>
-                <Text type={'caption2'} font={fontFamily} bold={true}>{fontFamily}</Text>
-                <Spacer/>
+                <Text type={'caption2'} font={fontFamily} bold={true} ui={css`
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                `}>{fontFamily}</Text>
             </View>
             <Text type={'p3'} font={fontFamily} ui={css`
                 padding: 6px 6px 2px 6px;

@@ -1,13 +1,9 @@
-import {allCasesOfEnum} from "~/shared/enum-util";
-
-const GalleryDesignValues = {
-    SLIDE: 'SLIDE',
-    HIGHLIGHT: 'HIGHLIGHT',
-    GRID: 'GRID',
-} as const;
-
-export type GalleryDesign = typeof GalleryDesignValues[keyof typeof GalleryDesignValues];
-export const GalleryDesignList = allCasesOfEnum(GalleryDesignValues);
+export const GalleryDesignList = [
+    'SLIDE',
+    'HIGHLIGHT',
+    'GRID',
+] as const;
+export type GalleryDesign = typeof GalleryDesignList[number];
 
 export const galleryDesignMap: Record<GalleryDesign, {
     korean: string,

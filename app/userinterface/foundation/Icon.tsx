@@ -85,90 +85,98 @@ import Kakao from "~/userinterface/foundation/icon/Kakao";
 import type {LinariaClassName} from "@linaria/core";
 import {styled} from "@linaria/react";
 
-export type IconType =
-    | 'AddEmoji'
-    | 'AddFill'
-    | 'AddLine'
-    | 'AddPhoto'
-    | 'AddRing'
-    | 'Alarm'
-    | 'AlarmDisabled'
-    | 'ArcticonsSpotistats'
-    | 'Book'
-    | 'BookmarkFill'
-    | 'BookmarkLine'
-    | 'Brush'
-    | 'Calendar'
-    | 'CalendarLine'
-    | 'Call'
-    | 'Camera'
-    | 'Chat'
-    | 'CheckFill'
-    | 'CheckLine'
-    | 'CheckRing'
-    | 'CirclePlay'
-    | 'Clipboard'
-    | 'Clock'
-    | 'Copy'
-    | 'CrossFill'
-    | 'CrossLine'
-    | 'CrossRing'
-    | 'Crown'
-    | 'CurveArrow'
-    | 'Detail'
-    | 'DoubleArrowLeft'
-    | 'Edit'
-    | 'EmailOpen'
-    | 'Envelope'
-    | 'ExclamationFill'
-    | 'ExclamationLine'
-    | 'ExpandArrow'
-    | 'ExternalLink'
-    | 'File'
-    | 'Hamburger'
-    | 'HeartFill'
-    | 'HeartLine'
-    | 'Hide'
-    | 'Home'
-    | 'Kakao'
-    | 'Link'
-    | 'LocationPoint'
-    | 'Logout'
-    | 'LoudSpeaker'
-    | 'Manage'
-    | 'Money'
-    | 'Moon'
-    | 'NormalArrow'
-    | 'Note'
-    | 'Pause'
-    | 'PenFill'
-    | 'PenLine'
-    | 'PersonFill'
-    | 'PersonLine'
-    | 'Phone'
-    | 'Photo'
-    | 'Photo2'
-    | 'Ping'
-    | 'Play'
-    | 'RadioFill'
-    | 'RadioLine'
-    | 'Search'
-    | 'Send'
-    | 'SendLine'
-    | 'Setting'
-    | 'Share'
-    | 'ShareLine'
-    | 'Show'
-    | 'Star'
-    | 'Stat'
-    | 'Statistics'
-    | 'StopArrow'
-    | 'StopArrowDown'
-    | 'Substack'
-    | 'Trash'
-    | 'Utensils'
-    | 'Video'
-    | 'Write';
+export const ICON_TYPES = [
+    'AddEmoji',
+    'AddFill',
+    'AddLine',
+    'AddPhoto',
+    'AddRing',
+    'Alarm',
+    'AlarmDisabled',
+    'ArcticonsSpotistats',
+    'Book',
+    'BookmarkFill',
+    'BookmarkLine',
+    'Brush',
+    'Calendar',
+    'CalendarLine',
+    'Call',
+    'Camera',
+    'Chat',
+    'CheckFill',
+    'CheckLine',
+    'CheckRing',
+    'CirclePlay',
+    'Clipboard',
+    'Clock',
+    'Copy',
+    'CrossFill',
+    'CrossLine',
+    'CrossRing',
+    'Crown',
+    'CurveArrow',
+    'Detail',
+    'DoubleArrowLeft',
+    'Edit',
+    'EmailOpen',
+    'Envelope',
+    'ExclamationFill',
+    'ExclamationLine',
+    'ExpandArrow',
+    'ExternalLink',
+    'File',
+    'Hamburger',
+    'HeartFill',
+    'HeartLine',
+    'Hide',
+    'Home',
+    'Kakao',
+    'Link',
+    'LocationPoint',
+    'Logout',
+    'LoudSpeaker',
+    'Manage',
+    'Money',
+    'Moon',
+    'NormalArrow',
+    'Note',
+    'Pause',
+    'PenFill',
+    'PenLine',
+    'PersonFill',
+    'PersonLine',
+    'Phone',
+    'Photo',
+    'Photo2',
+    'Ping',
+    'Play',
+    'RadioFill',
+    'RadioLine',
+    'Search',
+    'Send',
+    'SendLine',
+    'Setting',
+    'Share',
+    'ShareLine',
+    'Show',
+    'Star',
+    'Stat',
+    'Statistics',
+    'StopArrow',
+    'StopArrowDown',
+    'Substack',
+    'Trash',
+    'Utensils',
+    'Video',
+    'Write'
+] as const;
+
+export type IconType = typeof ICON_TYPES[number];
+
+export function isIconType(value: unknown): value is IconType {
+    return typeof value === 'string' && ICON_TYPES.includes(value as IconType);
+}
+
 
 interface Props extends SVGProps<SVGSVGElement> {
     iconType: IconType;

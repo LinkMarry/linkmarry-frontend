@@ -1,13 +1,9 @@
-import {allCasesOfEnum} from "~/shared/enum-util";
-
-const GreetingDesignValues = {
-    BASIC: 'BASIC',
-    TEXT: 'TEXT',
-    FLOWER: 'FLOWER',
-} as const;
-
-export type GreetingDesign = typeof GreetingDesignValues[keyof typeof GreetingDesignValues];
-export const GreetingDesignList = allCasesOfEnum(GreetingDesignValues);
+export const GreetingDesignList = [
+    'BASIC',
+    'TEXT',
+    'FLOWER',
+] as const;
+export type GreetingDesign = typeof GreetingDesignList[number];
 
 export const greetingDesignMap: Record<GreetingDesign, {
     korean: string;

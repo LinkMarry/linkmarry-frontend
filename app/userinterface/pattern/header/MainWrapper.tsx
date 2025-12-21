@@ -3,6 +3,7 @@ import Header from "~/userinterface/pattern/header/Header";
 import Footer from "~/userinterface/specific/Footer";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import View from "~/userinterface/core/View.tsx";
+import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
 
 interface Props {
     hasHeader?: boolean;
@@ -31,10 +32,13 @@ function MainWrapper(
             ui
         )}>
             {hasHeader && <Header/>}
-            <View ref={scrollRef} ui={css`
-                overflow-y: scroll;
-                flex: 1;
-            `}>
+            <View ref={scrollRef} ui={cx(
+                css`
+                    overflow-y: scroll;
+                    flex: 1;
+                `,
+                hideScrollBarStyle
+            )}>
                 <View as={'main'} ui={css`
                     flex: 1;
                 `}>

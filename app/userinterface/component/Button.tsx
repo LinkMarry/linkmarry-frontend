@@ -1,5 +1,5 @@
-import Icon, {type IconType} from "~/userinterface/foundation/Icon";
-import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
+import Icon, {type IconType, isIconType} from "~/userinterface/foundation/Icon";
+import {type ComponentPropsWithRef, type ForwardedRef, forwardRef, isValidElement, type ReactNode} from "react";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {styled} from "@linaria/react";
 import {textStyles} from "~/userinterface/foundation/text/TextType.ts";
@@ -77,8 +77,8 @@ interface Props extends ComponentPropsWithRef<'button'> {
     text: string;
     size?: ButtonSize;
     buttonType?: ButtonType;
-    leadingIcon?: IconType;
-    trailingIcon?: IconType;
+    leadingIcon?: IconType | ReactNode;
+    trailingIcon?: IconType | ReactNode;
     enabled?: boolean;
     ui?: LinariaClassName;
 }
@@ -113,6 +113,7 @@ function Button(
                     word-break: keep-all;
                     white-space: nowrap;
                     transition: 0.1s scale ease-in-out, 0.1s opacity;
+
                     &:disabled {
                         opacity: 0.65;
                         cursor: not-allowed;
@@ -140,12 +141,20 @@ function Button(
             {...props}
         >
             {leadingIcon && (
-                <Icon iconType={leadingIcon} size={iconSize} ui={iconColor}/>
+                isIconType(leadingIcon) ? (
+                    <Icon iconType={leadingIcon} size={iconSize} ui={iconColor}/>
+                ) : (
+                    leadingIcon
+                )
             )}
-                {text}
-                {trailingIcon && (
+            {text}
+            {trailingIcon && (
+                isIconType(trailingIcon) ? (
                     <Icon iconType={trailingIcon} size={iconSize} ui={iconColor}/>
-                )}
+                ) : (
+                    trailingIcon
+                )
+            )}
         </View>
     )
 }

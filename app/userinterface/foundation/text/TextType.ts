@@ -1,28 +1,6 @@
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
-export type FontFamily =
-    'Pretendard'
-    | 'Aleo'
-    | 'Rufina'
-    | 'SCoreDream'
-    | 'LINESeedKR'
-    | 'GangwonEduAll'
-    | 'iceJaram'
-    | 'GyeonggiBatang'
-    | 'UnrealScienceOrbit'
-    | 'UnrealScienceMedicine'
-    | 'KoPubWorldBatang'
-    | 'TheFaceShopInklipquid'
-    | 'KyoboHandwriting2020'
-    | 'BR'
-    | 'Eulyoo1945'
-    | 'tvN'
-    | 'Great Vibes'
-    | 'Cafe24LovingU'
-    | 'MuseumCulturalFoundationClassic'
-    | 'BlackHanSans';
-
-export const fontFamilyList: FontFamily[] = [
+export const fontFamilyList = [
     'Pretendard',
     'Aleo',
     'Rufina',
@@ -42,8 +20,11 @@ export const fontFamilyList: FontFamily[] = [
     'Great Vibes',
     'Cafe24LovingU',
     'MuseumCulturalFoundationClassic',
-    'BlackHanSans'
-];
+    'BlackHanSans',
+    'Abhaya Libre'
+] as const;
+
+export type FontFamily = typeof fontFamilyList[number];
 
 export const fontFamilyStyle: Record<FontFamily, LinariaClassName> = {
     Pretendard: css`
@@ -105,22 +86,13 @@ export const fontFamilyStyle: Record<FontFamily, LinariaClassName> = {
     `,
     BlackHanSans: css`
         font-family: BlackHanSans, serif;
-    `
+    `,
+    "Abhaya Libre": css`
+        font-family: "Arial Black", serif;
+    `,
 }
 
-export type TextType =
-    'h1' |
-    'h2' |
-    'h3' |
-    'h4' |
-    'h5' |
-    'p1' |
-    'p2' |
-    'p3' |
-    'caption1' |
-    'caption2';
-
-export const textTypes: TextType[] = [
+export const textTypes = [
     'h1',
     'h2',
     'h3',
@@ -131,7 +103,9 @@ export const textTypes: TextType[] = [
     'p3',
     'caption1',
     'caption2'
-];
+] as const;
+
+export type TextType = typeof textTypes[number];
 
 const h1Style = cx(
     fontFamilyStyle.Pretendard,

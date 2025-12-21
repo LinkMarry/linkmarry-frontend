@@ -29,17 +29,8 @@ export type WeddingDesignName = string;
 
 export type WeddingDesignColor = WeddingDesignDefaultColor | WeddingDesignPaperColor | string;
 
-export type WeddingDesignDefaultColor =
-    '#FFFFFF'
-    | '#F7F7F2'
-    | '#F6F2F2'
-    | '#FBF2F2'
-    | '#FFFEF5'
-    | '#EDF8F8'
-    | '#ECECEC';
 
-
-export const weddingDesignDefaultColorList: WeddingDesignColor[] = [
+export const weddingDesignDefaultColorList = [
     '#FFFFFF',
     '#F7F7F2',
     '#F6F2F2',
@@ -47,20 +38,18 @@ export const weddingDesignDefaultColorList: WeddingDesignColor[] = [
     '#FFFEF5',
     '#EDF8F8',
     '#ECECEC',
-];
+] as const;
 
-export type WeddingDesignPaperColor =
-    'paper1' |
-    'paper2' |
-    'paper3' |
-    'paper4';
+export type WeddingDesignDefaultColor = typeof weddingDesignDefaultColorList[number];
 
-export const weddingDesignPaperColorList: WeddingDesignPaperColor[] = [
+export const weddingDesignPaperColorList = [
     'paper1',
     'paper2',
     'paper3',
     'paper4'
-];
+] as const;
+
+export type WeddingDesignPaperColor = typeof weddingDesignPaperColorList[number];
 
 export function isPaperColor(weddingDesignColor: WeddingDesignColor): boolean {
     return weddingDesignColor.startsWith('paper');
@@ -74,8 +63,8 @@ export function backgroundStyle(weddingDesignColor: WeddingDesignColor): CSSProp
     }
 }
 
-export type WeddingDesignFontSize = 'basic' | 'large' | 'extraLarge'
-export const weddingDesignFontSizeList: WeddingDesignFontSize[] = ['basic', 'large', 'extraLarge'];
+export const weddingDesignFontSizeList = ['basic', 'large', 'extraLarge'] as const;
+export type WeddingDesignFontSize = typeof weddingDesignFontSizeList[number];
 
 export const weddingDesignFontSizeMap: Record<WeddingDesignFontSize, {
     korean: string,
@@ -105,8 +94,12 @@ export const defaultWeddingDesign: WeddingDesign = {
     openingText: "We're getting married!"
 }
 
-export type OpeningText = 'We\'re getting married!' | '저희 둘 결혼합니다' | 'Welcome to Our Wedding' | '새로운 시작을 함께해주세요';
-export const openingTextList = ['We\'re getting married!', '저희 둘 결혼합니다', 'Welcome to Our Wedding', '새로운 시작을 함께해주세요'];
+export const openingTextList = [
+    'We\'re getting married!', '저희 둘 결혼합니다',
+    'Welcome to Our Wedding',
+    '새로운 시작을 함께해주세요'
+] as const;
+export type OpeningText = typeof openingTextList[number];
 
 export const dummyWeddingDesign: WeddingDesign = {
     weddingDesignName: '모던 심플',

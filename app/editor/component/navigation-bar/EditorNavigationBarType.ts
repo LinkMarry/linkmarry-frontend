@@ -1,25 +1,7 @@
 import type {IconType} from "~/userinterface/foundation/Icon.tsx";
 
-export type EditorNavigationBarType = 'design' |
-    'groom' |
-    'bride' |
-    'greeting' |
-    'weddingSchedule' |
-    'weddingPlace' |
-    'gallery' |
-    'backgroundMusic' |
-    'money' |
-    'video' |
-    'rsvp' |
-    'phone' |
-    'guestComment' |
-    'fontAndStyle' |
-    'urlShare' |
-    'kakaotalkInvitationLetter' |
-    'changeOrder';
-    // 'ai';
 
-export const editorNavigationBarTypeList: EditorNavigationBarType[] = [
+export const editorNavigationBarTypeList = [
     'design',
     'groom',
     'bride',
@@ -37,7 +19,10 @@ export const editorNavigationBarTypeList: EditorNavigationBarType[] = [
     'urlShare',
     'kakaotalkInvitationLetter',
     'changeOrder'
-];
+] as const;
+
+export type EditorNavigationBarType = typeof editorNavigationBarTypeList[number];
+
 export const editorNavigationBarTypeMap: Record<EditorNavigationBarType, {
     navigationBarText: string;
     inspectorText: string;

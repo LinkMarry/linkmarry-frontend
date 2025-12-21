@@ -9,7 +9,7 @@ const PrivateRoute = () => {
         {authorized ? (
             <Outlet/>
         ) : (
-            <Navigate to={'/sign-in'}/>
+            <Navigate to={'/sign-in'} replace={true}/>
         )}
     </ClientRendering>
 };
