@@ -646,7 +646,7 @@ function Section4({onViewSample}: Section4Props) {
                 )}>
                     <View ui={css`
                         display: flex;
-                        flex-direction: row;
+                        flex-direction: row !important;
                         gap: 44px;
                         width: fit-content;
                         margin: 0 auto;
