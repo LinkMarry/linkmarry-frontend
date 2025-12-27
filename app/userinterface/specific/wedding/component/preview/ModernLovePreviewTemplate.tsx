@@ -47,11 +47,9 @@ function ModernLovePreviewTemplate(
                     align-items: center;
                     gap: 36px;
                 `}>
-                    <Spacer/>
-                    <span>{first.englishName}</span>
+                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName}</span>
                     <span>&</span>
-                    <span>{second.englishName}</span>
-                    <Spacer/>
+                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName}</span>
                 </View>
             </Text>
         </View>
