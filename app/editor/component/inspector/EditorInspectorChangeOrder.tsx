@@ -3,7 +3,7 @@ import Text from "~/userinterface/component/Text.tsx";
 import {css} from "@linaria/core";
 import Icon from "~/userinterface/foundation/Icon.tsx";
 import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
-import {DragDropContext, Draggable, Droppable, type DropResult} from "react-beautiful-dnd";
+import {DragDropContext, Draggable, Droppable, type DropResult} from "@hello-pangea/dnd";
 import View from "~/userinterface/core/View.tsx";
 import {reorderedItems} from "~/shared/dnd-util.ts";
 import type Binding from "~/shared/Binding.ts";

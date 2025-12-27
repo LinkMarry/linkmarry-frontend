@@ -1,4 +1,4 @@
-import {type DropResult} from "react-beautiful-dnd";
+import {type DropResult} from "@hello-pangea/dnd";
 
 export function reorderedItems<T>(result: DropResult, arr: T[]): T[] | null {
     if (!result.destination) return null;
