@@ -42,15 +42,15 @@ function PureLovePreviewTemplate(
                 color: #002147;
                 position: absolute;
                 top: 92px;
-                left: 50%;
-                transform: translateX(-50%);
+                left: 20px;
+                right: 20px;
             `}>
                 <View ui={css`
                     gap: 12px;
-                    align-items: center;
+                    text-align: center;
                 `}>
-                    <span>{first.englishName}</span>
-                    <span>{second.englishName}</span>
+                    <span style={{whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName}</span>
+                    <span style={{whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName}</span>
                 </View>
             </Text>
             <View ui={css`
