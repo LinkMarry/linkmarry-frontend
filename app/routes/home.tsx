@@ -550,13 +550,13 @@ const section4Data = [
     },
     {
         src: '/home/section4-classic-elegance.png',
-        title: 'Romantic Forest',
+        title: 'Classic Elegance',
         category: 'Romantic',
         isHot: true
     },
     {
         src: '/home/section4-romantic-forest.png',
-        title: 'Natural Garden',
+        title: 'Romantic Forest',
         category: 'Modern',
         isHot: false
     },
@@ -570,7 +570,7 @@ const section4Data = [
         src: '/home/section4-dear-my-love.png',
         title: 'Dear My Love',
         category: 'Romantic',
-        isHot: false
+        isHot: true
     }
 ]
 
