@@ -23,7 +23,7 @@ function NatureBlissPreviewTemplate(
     return (
         <View ui={cx(
             'override-font',
-            fontFamilyStyle.SCoreDream,
+            fontFamilyStyle.KyoboHandwriting2020,
             css`
                 background: white;
             `
@@ -37,6 +37,7 @@ function NatureBlissPreviewTemplate(
                 <View ui={css`
                     gap: 4px;
                     align-items: center;
+                    color: #969889;
                 `}>
                     <Text size={14}
                           weight={300}>{isValidDate && format(date, 'yyyy.MM.dd a h시', {locale: ko})}</Text>

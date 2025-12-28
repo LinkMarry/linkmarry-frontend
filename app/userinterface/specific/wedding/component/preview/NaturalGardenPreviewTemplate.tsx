@@ -27,6 +27,7 @@ function NaturalGardenPreviewTemplate(
                 gap: 44px;
                 padding-top: 40px;
                 padding-bottom: 52px;
+                background-color: #F7F7F2;
 
                 * {
                     color: #5D4037;

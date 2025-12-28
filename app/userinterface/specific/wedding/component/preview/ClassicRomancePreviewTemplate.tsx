@@ -25,6 +25,7 @@ function ClassicRomancePreviewTemplate(
             css`
                 gap: 28px;
                 padding: 90px 36px;
+                background-color: #F7F7F2;
 
                 * {
                     color: #989796;
@@ -40,15 +41,19 @@ function ClassicRomancePreviewTemplate(
                 gap: 12px;
                 align-items: center;
             `}>
-                <Text size={36} weight={400}>
+                <Text size={36} weight={400} ui={css`
+                    display: flex;
+                    align-self: stretch;
+                `}>
                     <View ui={css`
                         flex-direction: row !important;
                         gap: 20px;
                         align-items: center;
+                        flex: 1;
                     `}>
-                        <span>{first.englishName}</span>
+                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName.toUpperCase()}</span>
                         <span>&</span>
-                        <span>{second.englishName}</span>
+                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName.toUpperCase()}</span>
                     </View>
                 </Text>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2" viewBox="0 0 364 2" fill="none">
