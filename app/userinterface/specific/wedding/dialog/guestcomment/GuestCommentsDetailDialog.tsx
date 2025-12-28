@@ -9,6 +9,7 @@ import Icon from "~/userinterface/foundation/Icon";
 import type GuestComment from "~/infrastructure/network/value/GuestComment";
 import {baseDialogContentStyle} from "~/userinterface/pattern/dialog/baseDialogContentStyle.ts";
 import View from "~/userinterface/core/View.tsx";
+import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
 
 interface GuestCommentsDetailDialogProps {
     comments: Comment[];
@@ -28,7 +29,6 @@ function GuestCommentsDetailDialog(
         <BaseDialog dismiss={dismiss}>
             <View ui={cx(
                 css`
-                    align-items: flex-start;
                     max-width: 436px;
                     width: 100vw;
                     height: 100dvh;
@@ -57,11 +57,17 @@ function GuestCommentsDetailDialog(
                     `}/>
                 </View>
                 <Divider/>
-                <View ui={css`
-                    gap: 12px;
-                    padding: 32px 20px;
-                    overflow-y: scroll;
-                `}>
+                <View ui={cx(
+                    css`
+                        gap: 12px;
+                        padding: 32px 20px;
+                        overflow-y: scroll;
+                        flex: 1;
+                        overscroll-behavior: contain;
+                        touch-action: pan-y;
+                    `,
+                    hideScrollBarStyle
+                )}>
                     {comments.map((comment, index) => (
                         <BasicGuestComment
                             key={index}
