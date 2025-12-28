@@ -158,6 +158,7 @@ const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: Select
                             object-fit: cover;
                             aspect-ratio: 9 / 16;
                             background-size: cover;
+                            background-position: center;
                             cursor: pointer;
                         `} style={{
                             backgroundImage: `url("${design.img}")`
