@@ -35,8 +35,15 @@ const DearMyLovePreviewTemplate = (
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                padding: 36px 16px;
             `}>
+                <View ui={css`
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 200px;
+                    background: linear-gradient(0deg, rgba(61, 61, 61, 0.80) 0%, rgba(61, 61, 61, 0.32) 44%, rgba(61, 61, 61, 0.00) 100%);
+                `}/>
                 <Text size={80} weight={700} font={'tvN'} ui={css`
                     color: white;
                     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.36);
@@ -46,6 +53,7 @@ const DearMyLovePreviewTemplate = (
                     align-items: flex-start;
                     flex: 1;
                     position: relative;
+                    margin: 36px 16px;
                 `}>
                     <View as={'img'} src={'/dearmylovepreviewtemplate/image1.png'} ui={css`
                         left: 32px;
@@ -81,6 +89,8 @@ const DearMyLovePreviewTemplate = (
                         color: white;
                         text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
                         align-self: center;
+                        position: absolute;
+                        bottom: 36px;
                     `,
                     fontFamilyStyle.Eulyoo1945
                 )}>
