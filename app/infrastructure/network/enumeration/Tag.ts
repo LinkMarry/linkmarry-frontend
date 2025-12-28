@@ -7,8 +7,8 @@ export const TagList = [
 ] as const;
 
 export const TagWithAllList = [
+    'ALL',
     ...TagList,
-    'ALL'
 ] as const;
 
 export type Tag = typeof TagList[number];

@@ -122,6 +122,8 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                     `}>
                         <View as={'ul'} ui={css`
                             gap: 4px;
+                            display: flex;
+                            flex-direction: column;
                         `}>
                             <span>· 워터마크 제거 시 링크메리 <View as={'span'} ui={cx(
                                 css`
