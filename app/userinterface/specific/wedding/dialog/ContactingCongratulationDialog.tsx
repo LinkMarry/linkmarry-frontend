@@ -122,7 +122,7 @@ function ContactingCongratulationDialog(
                         ui={cx(
                             SelectorStyle,
                             textStyles.caption1.normal,
-                            selectedIndex === 0 ? css`
+                            selectedIndex === 1 ? css`
                                 border-bottom: 1px solid var(--p-800);
                             ` : css`
                                 border-bottom: 1px solid var(--g-100);

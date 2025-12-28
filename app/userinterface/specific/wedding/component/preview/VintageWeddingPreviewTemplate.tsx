@@ -41,7 +41,6 @@ const VintageWeddingPreviewTemplate = (
             `}>
                 <Text size={24} weight={500}>Our Wedding Day</Text>
                 <View ui={css`
-                    align-items: flex-start;
                     padding: 6px;
                     border: 1px solid #5D4037;
                     align-self: stretch;
