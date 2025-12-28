@@ -59,6 +59,9 @@ importers:
       react-router:
         specifier: 7.10.1
         version: 7.10.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react-snowfall:
+        specifier: ^2.4.0
+        version: 2.4.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       use-immer:
         specifier: ^0.11.0
         version: 0.11.0(immer@11.0.1)(react@19.2.1)
@@ -1581,6 +1584,12 @@ packages:
     peerDependenciesMeta:
       react-dom:
         optional: true
+
+  react-snowfall@2.4.0:
+    resolution: {integrity: sha512-KAPMiGnxt11PEgC2pTVrTQsvk5jt1kLUtG+ZamiKLphTZ7GiYT1Aa5kX6jp4jKWq1kqJHchnGT9CDm4g86A5Gg==}
+    peerDependencies:
+      react: "^16.8 ||\_17.x || 18.x || 19.x"
+      react-dom: ^16.8 || 17.x || 18.x || 19.x
 
   react@19.2.1:
     resolution: {integrity: sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==}
@@ -3553,6 +3562,12 @@ snapshots:
       set-cookie-parser: 2.7.2
     optionalDependencies:
       react-dom: 19.2.1(react@19.2.1)
+
+  react-snowfall@2.4.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
+    dependencies:
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      react-fast-compare: 3.2.2
 
   react@19.2.1: {}
 

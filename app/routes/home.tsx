@@ -10,6 +10,8 @@ import {useNavigate} from "react-router";
 import {type ComponentPropsWithoutRef, useState} from "react";
 import {NAVER_STORE_URL} from "~/shared/constant.ts";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
+import {Snowfall} from "react-snowfall";
+import ClientRendering from "~/ClientRendering.tsx";
 
 
 function Home() {
@@ -29,6 +31,11 @@ function Home() {
 
     return (
         <MainWrapper>
+            <ClientRendering>
+                <Snowfall
+                    radius={[1.5, 4.0]}
+                />
+            </ClientRendering>
             <View>
                 <Section1
                     onViewSample={handleViewSample}
