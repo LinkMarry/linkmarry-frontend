@@ -30,45 +30,32 @@ function ClassicElegancePreviewTemplate(
                     max-height: 810px;
                 `}/>
                 <View ui={css`
-                    align-items: center;
-                    gap: 20px;
                     position: absolute;
-                    top: 72px;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    height: 248px;
+                    background: linear-gradient(180deg, rgba(61, 61, 61, 0.60) 0%, rgba(61, 61, 61, 0.00) 100%);
+                `}/>
+                <View ui={css`
+                    position: absolute;
+                    top: 44px;
                     left: 50%;
                     transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                 `}>
-                    <View ui={css`
-                        padding: 0 12px;
-                        background: white;
-                        border-radius: 100px;
-                    `}>
-                        <Text size={18} weight={400}>D-{differenceInDays(date, new Date())}</Text>
-                    </View>
-                    <Text size={44} font={'iceJaram'} weight={400} ui={css`
+                    <Text font={'BlackHanSans'} size={61} ui={css`
                         color: white;
                     `}>
-                        <View ui={css`
-                            align-items: center;
-                            gap: 8px;
-                        `}>
-                            <span>{first.name}</span>
-                            <span>{second.name}</span>
-                        </View>
+                        Forever,
                     </Text>
+                    <img src={'/classicelegancepreviewtemplate/ourlove.svg'} alt={'our love'} className={css`
+                        margin-top: -24px;
+                    `}/>
                 </View>
             </View>
-            <Text size={20} font={'LINESeedKR'} weight={400}>
-                <View ui={css`
-                    align-items: center;
-                    gap: 8px;
-                    padding: 32px 8px;
-                `}>
-                    {isValidDate && (
-                        <span>{format(date, 'yyyy. MM. dd E HH:mm')}</span>
-                    )}
-                    <span>{weddingPlace.placeName} ({weddingPlace.floorHall})</span>
-                </View>
-            </Text>
         </View>
     );
 }
