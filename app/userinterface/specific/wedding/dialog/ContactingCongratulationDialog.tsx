@@ -134,8 +134,8 @@ function ContactingCongratulationDialog(
                 <View ui={css`
                     gap: 16px;
                 `}>
-                    {tels.map(tel => (
-                        <View ui={css`
+                    {tels.map((tel, index) => (
+                        <View key={index} ui={css`
                             flex-direction: row !important;
                             padding: 20px 16px;
                             align-items: center;

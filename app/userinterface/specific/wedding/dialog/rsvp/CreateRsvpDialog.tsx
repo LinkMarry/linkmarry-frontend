@@ -94,6 +94,8 @@ function CreateRsvpDialog(
                 <View ui={css`
                     gap: 36px;
                     padding: 36px 40px;
+                    flex: 1;
+                    overflow-y: scroll;
                 `}>
                     <View ui={css`
                         gap: 24px;
