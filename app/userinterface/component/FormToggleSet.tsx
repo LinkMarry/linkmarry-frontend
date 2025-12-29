@@ -9,7 +9,7 @@ interface Props {
 }
 
 const FormToggleSet = ({ui, children}: Props) => {
-    const filteredChildren = Children.toArray(children).filter((child) =>
+    const filteredChildren = Children.toArray(children).filter(child =>
         isValidElement(child) && child.type === FormToggle
     ) as ReactElement<typeof FormToggle>[];
     return (

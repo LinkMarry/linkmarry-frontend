@@ -111,10 +111,11 @@ const EditorInspectorDesign = (
                 <View ui={css`display: flex;
                     flex-direction: column;
                     gap: 12px;
-                    align-items: stretch;`}>
+                    align-items: stretch;
+                `}>
                     <Text type={'p3'} bold={true}>문구</Text>
                     <Select
-                        selected={openingTextList.indexOf(weddingDesign.openingText)} items={openingTextList}
+                        selected={openingTextList.indexOf(weddingDesign.openingText)} items={[...openingTextList]}
                         OnChange={index => {
                             update(draft => {
                                 draft.weddingDesign.openingText = openingTextList[index] as OpeningText;

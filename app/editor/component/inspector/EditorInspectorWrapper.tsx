@@ -40,6 +40,7 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
                 ${responsive.notDesktop} {
                     padding: 24px 16px 40px 16px;
                     gap: 24px;
+                    flex: 1;
                 }
             `,
             hideScrollBarStyle
