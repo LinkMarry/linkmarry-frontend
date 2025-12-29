@@ -31,11 +31,6 @@ function Home() {
 
     return (
         <MainWrapper>
-            <ClientRendering>
-                <Snowfall
-                    radius={[1.5, 4.0]}
-                />
-            </ClientRendering>
             <View>
                 <Section1
                     onViewSample={handleViewSample}
@@ -61,8 +56,14 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
         <View ui={css`
             background: #FCFBF9;
             align-items: center;
+            position: relative;
             padding: 100px 0;
         `}>
+            <ClientRendering>
+                <Snowfall
+                    radius={[1.5, 4.0]}
+                />
+            </ClientRendering>
             <View ui={css`
                 max-width: 1100px;
                 width: 100%;
