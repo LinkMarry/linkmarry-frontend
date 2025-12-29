@@ -385,28 +385,34 @@ function Section2Item({title, description, iconSrc}: Section2ItemProps) {
 interface Review {
     content: string;
     username: string;
+    createdAt: string;
 }
 
 const reviewData: Review[] = [
     {
         content: '다른 모바일 청첩장과는 달리 레트로나 빈티지 같은 독특한 스타일로 청첩장을 만들 수 있어서 좋네요. 아내가 아주 좋아합니다!',
         username: 'gn****',
+        createdAt: '2025.9.2',
     },
     {
         content: '완전 똥손인데도 쉽고 빠르게 만들수있어서 좋아요. 특히 하객들 참석 및 식사유무 데이터화 할수있어서 편해요ㅎㅎ',
         username: 'ster****',
+        createdAt: '2025.10.9',
     },
     {
         content: '실시간 대응해주시고, 버그도 실시간으로 수정해주셔서 만족합니다 ㅎㅎ 고물가시대에 가성비짱!',
-        username: 'dao_****'
+        username: 'dao_****',
+        createdAt: '2025.5.20',
     },
     {
         content: '친구들, 양가 부모님들께서 다 좋아하셔서 만족했습니다 ㅎㅎ',
-        username: 'lovelyej****'
+        username: 'lovelyej****',
+        createdAt: '2025.10.31',
     },
     {
         content: '친구 결혼할 때 청첩장 보고 너무 예뻐서 따라 구매했습니다 ㅎㅎ 여기가 다양하고 예뻐요!!',
-        username: 'okus****'
+        username: 'okus****',
+        createdAt: '2025.12.21',
     }
 ];
 
@@ -465,11 +471,11 @@ function Section3() {
                             color: #595651;
                         `}>4.8/5.0</Text>
                     </View>
-                    <Text type={'caption2'} ui={css`
-                        color: #9CA3AF;
-                    `}>
-                        2953개의 리뷰
-                    </Text>
+                    {/*<Text type={'caption2'} ui={css`*/}
+                    {/*    color: #9CA3AF;*/}
+                    {/*`}>*/}
+                    {/*    2953개의 리뷰*/}
+                    {/*</Text>*/}
                 </View>
                 <View ui={css`
                     width: 100%;
@@ -576,10 +582,10 @@ function Section3ReviewItem(
                 <View>
                     <Text type={'caption2'} ui={css`
                         color: var(--g-800);
-                    `}>okus****</Text>
+                    `}>{review.username}</Text>
                     <Text type={'caption2'} ui={css`
                         color: var(--g-400);
-                    `}>2024.09.16</Text>
+                    `}>{review.createdAt}</Text>
                 </View>
             </View>
         </View>
