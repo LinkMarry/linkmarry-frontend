@@ -469,7 +469,7 @@ function Section3() {
                         </View>
                         <Text type={'p2'} bold={true} ui={css`
                             color: #595651;
-                        `}>4.8/5.0</Text>
+                        `}>4.9/5.0</Text>
                     </View>
                     {/*<Text type={'caption2'} ui={css`*/}
                     {/*    color: #9CA3AF;*/}
@@ -574,11 +574,17 @@ function Section3ReviewItem(
                 align-items: center;
             `}>
                 <View ui={css`
+                    align-items: center;
+                    justify-content: center;
                     width: 32px;
                     height: 32px;
                     background: var(--g-100);
                     border-radius: 50%;
-                `}/>
+                `}>
+                    <Icon iconType={'PersonFill'} size={24} ui={css`
+                        fill: var(--g-400);
+                    `}/>
+                </View>
                 <View>
                     <Text type={'caption2'} ui={css`
                         color: var(--g-800);
