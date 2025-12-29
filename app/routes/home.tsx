@@ -12,6 +12,7 @@ import {NAVER_STORE_URL} from "~/shared/constant.ts";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
 import {Snowfall} from "react-snowfall";
 import ClientRendering from "~/ClientRendering.tsx";
+import useResponsive from "~/hook/useResponsive.ts";
 
 
 function Home() {
@@ -60,9 +61,7 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
             padding: 100px 0;
         `}>
             <ClientRendering>
-                <Snowfall
-                    radius={[1.5, 4.0]}
-                />
+                <SnowfallEffect/>
             </ClientRendering>
             <View ui={css`
                 max-width: 1100px;
@@ -172,6 +171,16 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                 </View>
             </View>
         </View>
+    );
+}
+
+function SnowfallEffect() {
+    const {deviceSize} = useResponsive();
+    return (
+        <Snowfall
+            radius={deviceSize === 'desktop' ? [1.5, 3.0] : [0.5, 3.0]}
+            snowflakeCount={deviceSize === 'desktop' ? 100 : 50}
+        />
     );
 }
 
