@@ -1,6 +1,5 @@
 import {useEffect} from 'react';
 import {Navigate, useSearchParams} from "react-router";
-import ClientRendering from "~/ClientRendering.tsx";
 
 const Link = () => {
     const [searchParams] = useSearchParams();

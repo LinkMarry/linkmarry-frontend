@@ -12,7 +12,7 @@ export const responsive = {
     notMobile: `@media (min-width: ${breakpoints.mobile + 1}px)`,
     notTablet: `@media (max-width: ${breakpoints.mobile}px) and (min-width: ${breakpoints.tablet + 1}px)`,
     notDesktop: `@media (max-width: ${breakpoints.tablet}px)`
-}
+};
 
 
 export const mobileStyle = css`

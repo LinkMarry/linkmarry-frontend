@@ -85,10 +85,12 @@ function MyPageWedding() {
     );
 }
 
-function WeddingCell({weddingInfo, onRemoveWedding}: {
+interface WeddingCellProps {
     weddingInfo: WeddingInfo;
     onRemoveWedding: () => void;
-}) {
+}
+
+function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
     const [openDetailPopover, setOpenDetailPopover] = useState(false);
     const [statistics, setStatistics] = useState<WeddingStatistics>();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);

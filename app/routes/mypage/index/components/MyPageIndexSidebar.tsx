@@ -1,12 +1,12 @@
 import {css, cx} from "@linaria/core";
-import useMyPageDefault from "~/routes/mypage/index/useMyPageDefault.ts";
+import useMyPageIndex from "~/routes/mypage/index/useMyPageIndex.ts";
 import {useAuth} from "~/hook/useAuth.tsx";
-import MyPageSidebarItem from "~/routes/mypage/component/MyPageSidebarItem.tsx";
+import MyPageSidebarItem from "~/routes/mypage/components/MyPageSidebarItem.tsx";
 import {notMobileStyle} from "~/hook/ResponsiveSwitch.tsx";
 import View from "~/userinterface/core/View.tsx";
 
 function MyPageIndexSidebar() {
-    const {currentSidebar, navigate} = useMyPageDefault();
+    const {currentSidebar, navigate} = useMyPageIndex();
     const {signOut} = useAuth();
 
     return (

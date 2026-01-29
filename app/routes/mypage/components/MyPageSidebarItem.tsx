@@ -4,11 +4,14 @@ import View from "~/userinterface/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/userinterface/component/Text.tsx";
 
-function MyPageSidebarItem({icon, text, selected = false, ...props}: {
+
+interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<'div'> {
     icon: IconType;
     text: string;
     selected?: boolean;
-} & ComponentPropsWithoutRef<'div'>) {
+}
+
+function MyPageSidebarItem({icon, text, selected = false, ...props}: MyPageSidebarItemProps) {
     return (
         <View ui={cx(
             css`

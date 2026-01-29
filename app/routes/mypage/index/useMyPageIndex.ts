@@ -1,18 +1,18 @@
 import {useLocation, useNavigate} from "react-router";
-import {type MyPageIndexSidebarType} from "~/routes/mypage/index/component/MyPageIndexSidebarType.ts";
-import {myPageIndexSidebarTypeList} from "~/routes/mypage/index/component/MyPageIndexSidebarType.ts";
-import {useCallback} from "react";
+import {type MyPageIndexSidebarType} from "~/routes/mypage/index/components/MyPageIndexSidebarType.ts";
+import {myPageIndexSidebarTypeList} from "~/routes/mypage/index/components/MyPageIndexSidebarType.ts";
+import {useCallback, useMemo} from "react";
 
-function useMyPageDefault() {
+function useMyPageIndex() {
     const {pathname} = useLocation();
     const localNavigate = useNavigate();
 
-    const currentSidebar = ((): MyPageIndexSidebarType | undefined => {
+    const currentSidebar = useMemo(() => {
         if (!pathname.startsWith('/mypage')) return;
         const path = pathname.split('/')[2];
 
         return myPageIndexSidebarTypeList.find(type => type === path);
-    })();
+    }, [pathname]);
 
     const navigate = useCallback((pathname: MyPageIndexSidebarType) => {
         localNavigate(`/mypage/${pathname}`);
@@ -24,4 +24,4 @@ function useMyPageDefault() {
     };
 }
 
-export default useMyPageDefault;
+export default useMyPageIndex;

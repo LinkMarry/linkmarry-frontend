@@ -28,9 +28,7 @@ const useMyPageWedding = () => {
     }, [fetchData]);
 
     const removeWedding = useCallback(async () => {
-        if (!selectedWedding) {
-            return;
-        }
+        if (!selectedWedding) return;
 
         try {
             await weddingApi.removeWedding(selectedWedding.url);

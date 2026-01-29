@@ -42,9 +42,9 @@ const Editor = () => {
     }, []);
 
     useEffect(() => {
-        if (designId === null) return;
+        if (designId === null || !weddingDesigns) return;
 
-        const weddingDesign = weddingDesigns?.find(i => i.id === designId);
+        const weddingDesign = weddingDesigns.find(i => i.id === designId);
         if (weddingDesign) {
             updateWedding(draft => {
                 draft.weddingDesign.weddingDesignName = weddingDesign.name;

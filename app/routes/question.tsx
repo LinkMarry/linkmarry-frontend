@@ -2,7 +2,7 @@
 // import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
 // import {css} from "@linaria/core";
 // import {responsive} from "~/hook/ResponsiveSwitch.tsx";
-// import Text from "~/userinterface/component/Text.tsx";
+// import Text from "~/userinterface/components/Text.tsx";
 // import View from "~/userinterface/core/View.tsx";
 // import type {Route} from "./+types/question";
 // import Icon from "~/userinterface/foundation/Icon.tsx";

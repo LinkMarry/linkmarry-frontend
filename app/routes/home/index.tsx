@@ -1,8 +1,8 @@
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper";
+import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
 import {css, cx} from "@linaria/core";
-import Text from "~/userinterface/component/Text";
+import Text from "~/userinterface/component/Text.tsx";
 import View from "~/userinterface/core/View.tsx";
-import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch";
+import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
 import Button from "~/userinterface/component/Button.tsx";
 import Divider from "~/userinterface/component/Divider.tsx";
 import Icon from "~/userinterface/foundation/Icon.tsx";
@@ -757,11 +757,7 @@ function Section4({onViewSample}: Section4Props) {
     )
 }
 
-interface Section5Props {
-
-}
-
-function Section5({}: Section5Props) {
+function Section5() {
     const [selectedCard, setSelectedCard] = useState(0);
 
     const phoneSrc = {

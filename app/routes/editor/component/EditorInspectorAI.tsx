@@ -1,7 +1,7 @@
-// import EditorInspectorWrapper from "~/feature/editor/component/inspector/EditorInspectorWrapper";
+// import EditorInspectorWrapper from "~/feature/editor/components/inspector/EditorInspectorWrapper";
 // import {Column} from "~/userinterface/core/FlexLayout";
-// import Text from "~/userinterface/component/Text";
-// import Input from "~/userinterface/component/Input";
+// import Text from "~/userinterface/components/Text";
+// import Input from "~/userinterface/components/Input";
 // import PhotoUploadBox from "~/userinterface/specific/PhotoUploadBox";
 // import {css} from "@linaria/core";
 

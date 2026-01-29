@@ -1,6 +1,5 @@
 import {Navigate, Outlet} from "react-router";
 import {useAuth} from "~/hook/useAuth.tsx";
-import ClientRendering from "~/ClientRendering.tsx";
 
 const AdminRoute = () => {
     const {member} = useAuth();

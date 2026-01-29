@@ -10,9 +10,8 @@ function KakaoRedirect() {
         const code = searchParams.get('code');
 
         if (code === null) return;
-        (async () => {
-            await signIn(code);
-        })();
+
+        signIn(code).then();
     }, [searchParams, signIn]);
 
     return null;

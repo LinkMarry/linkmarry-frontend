@@ -1,5 +1,5 @@
 import {Outlet} from "react-router";
-import MyPageDetailSidebar from "~/routes/mypage/detail/component/MyPageDetailSidebar.tsx";
+import MyPageDetailSidebar from "~/routes/mypage/detail/components/MyPageDetailSidebar.tsx";
 
 function MyPageDetailLayout() {
     return <>

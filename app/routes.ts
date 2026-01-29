@@ -2,7 +2,7 @@ import {type RouteConfig, index, route, layout, prefix} from "@react-router/dev/
 
 const routes = [
     layout("routes/providers.tsx", [
-        index("routes/home.tsx"),
+        index("routes/home/index.tsx"),
         route("sign-in", "routes/sign-in.tsx"),
         route("login/oauth2/code/kakao", "routes/kakao-redirect.tsx"),
         route("wedding/:url", "routes/wedding.tsx"),
@@ -14,15 +14,14 @@ const routes = [
         ]),
         route("privacy-policy/:date?", "routes/privacy-policy.tsx"),
         route("terms/:date?", "routes/terms.tsx"),
-        // route("question", "routes/question.tsx"),
         layout("routes/private-route.tsx", [
-            layout("routes/mypage/my-page-layout.tsx", prefix("mypage", [
-                layout("routes/mypage/index/my-page-index-layout.tsx", [
-                    route("wedding", "routes/mypage/index/wedding/my-page-wedding.tsx"),
-                    route("info", "routes/mypage/index/info/my-page-info.tsx"),
+            layout("routes/mypage/layout.tsx", prefix("mypage", [
+                layout("routes/mypage/index/layout.tsx", [
+                    route("wedding", "routes/mypage/index/wedding/index.tsx"),
+                    route("info", "routes/mypage/index/info/index.tsx"),
                 ]),
-                layout("routes/mypage/detail/my-page-detail-layout.tsx", [
-                    route("wedding/:url", "routes/mypage/detail/stat/my-page-stat.tsx")
+                layout("routes/mypage/detail/layout.tsx", [
+                    route("wedding/:url", "routes/mypage/detail/stat/index.tsx")
                 ])
             ])),
             route("editor/:url?", "routes/editor/index.tsx"),
