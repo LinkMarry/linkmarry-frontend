@@ -5,7 +5,7 @@ import Textarea from "~/userinterface/component/Textarea.tsx";
 import {css} from "@linaria/core";
 import FormToggle from "~/userinterface/component/FormToggle.tsx";
 import Checkbox from "~/userinterface/component/Checkbox.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";

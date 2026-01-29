@@ -4,7 +4,7 @@ import Textarea from "~/userinterface/component/Textarea.tsx";
 import {css} from "@linaria/core";
 import FormToggle from "~/userinterface/component/FormToggle.tsx";
 import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import Divider from "~/userinterface/component/Divider.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";

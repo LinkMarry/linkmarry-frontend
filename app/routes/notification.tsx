@@ -7,7 +7,7 @@ import View from "~/userinterface/core/View.tsx";
 import Text from "~/userinterface/component/Text.tsx";
 import notificationApi from "~/infrastructure/network/api/notification-api.ts";
 import type Notification from "~/infrastructure/network/value/Notification.ts";
-import {tagToKoreanRecord, TagWithAllList} from "~/infrastructure/network/enumeration/Tag.ts";
+import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/infrastructure/network/enumeration/Tag.ts";
 import {compareDesc, format} from "date-fns";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
 import {useNavigate} from "react-router";
@@ -28,7 +28,7 @@ function Notification(
         }
     }: Route.ComponentProps
 ) {
-    const [queryTag, setQueryTag] = useState<TagWithAllList>('ALL');
+    const [queryTag, setQueryTag] = useState<TagWithAll>('ALL');
     const navigate = useNavigate();
     const filteredNotifications = useMemo(() => {
         if (queryTag === 'ALL') {
@@ -99,7 +99,7 @@ function Notification(
 }
 
 interface TagCellProps extends ComponentPropsWithoutRef<'div'> {
-    tag: TagWithAllList;
+    tag: TagWithAll;
     selected: boolean;
 }
 

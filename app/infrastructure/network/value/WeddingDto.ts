@@ -83,7 +83,7 @@ export function makeDefaultWedding(url: string, name: string): WeddingDto {
     return {
         url,
         name,
-        position: positionList,
+        position: [...positionList],
         weddingDesign: defaultWeddingDesign,
         baseInfo: defaultBaseInfo,
         weddingSchedule: defaultWeddingSchedule,

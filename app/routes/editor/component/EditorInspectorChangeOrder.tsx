@@ -2,7 +2,7 @@ import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from 'react';
 import Text from "~/userinterface/component/Text.tsx";
 import {css} from "@linaria/core";
 import Icon from "~/userinterface/foundation/Icon.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import {DragDropContext, Draggable, Droppable, type DropResult} from "@hello-pangea/dnd";
 import View from "~/userinterface/core/View.tsx";
 import {reorderedItems} from "~/shared/dnd-util.ts";

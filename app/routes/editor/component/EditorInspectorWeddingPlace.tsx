@@ -4,7 +4,7 @@ import Divider from "~/userinterface/component/Divider.tsx";
 import Input from "~/userinterface/component/Input.tsx";
 import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
 import FormToggle from "~/userinterface/component/FormToggle.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {getPlaceholder} from "~/infrastructure/network/value/WeddingPlace.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";

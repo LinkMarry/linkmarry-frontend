@@ -25,7 +25,7 @@ const routes = [
                     route("wedding/:url", "routes/mypage/detail/stat/my-page-stat.tsx")
                 ])
             ])),
-            route("editor/:url?", "routes/editor.tsx"),
+            route("editor/:url?", "routes/editor/index.tsx"),
         ]),
         // layout("routes/admin-route.tsx", []),
 

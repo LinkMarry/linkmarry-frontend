@@ -1,6 +1,6 @@
 import {type ComponentPropsWithoutRef, useState} from 'react';
 import Text from "~/userinterface/component/Text.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";

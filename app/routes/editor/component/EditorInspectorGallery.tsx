@@ -4,7 +4,7 @@ import PhotoUploadBox from "~/userinterface/specific/PhotoUploadBox.tsx";
 import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
 import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
 import FormToggle from "~/userinterface/component/FormToggle.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import {GalleryDesignList, galleryDesignMap} from "~/infrastructure/network/enumeration/GalleryDesign.ts";

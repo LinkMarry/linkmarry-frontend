@@ -2,7 +2,7 @@ import React, {type ComponentPropsWithoutRef, type ReactNode} from 'react';
 import {
     type EditorNavigationBarType,
     editorNavigationBarTypeList, editorNavigationBarTypeMap
-} from "~/editor/component/navigation-bar/EditorNavigationBarType.ts";
+} from "~/routes/editor/component/EditorNavigationBarType.ts";
 import View from "~/userinterface/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import {hideScrollBarStyle, interactionEffectStyles} from "~/userinterface/css.util.ts";

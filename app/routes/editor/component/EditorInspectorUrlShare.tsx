@@ -4,7 +4,7 @@ import Textarea from "~/userinterface/component/Textarea.tsx";
 import {css} from "@linaria/core";
 import PhotoUploadBox from "~/userinterface/specific/PhotoUploadBox.tsx";
 import SharingLink from "~/userinterface/specific/SharingLink.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import View from "~/userinterface/core/View.tsx";

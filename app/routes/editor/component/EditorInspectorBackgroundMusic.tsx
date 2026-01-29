@@ -5,7 +5,7 @@ import FormToggle from "~/userinterface/component/FormToggle.tsx";
 import {css, cx} from "@linaria/core";
 import Button from "~/userinterface/component/Button.tsx";
 import Icon from "~/userinterface/foundation/Icon.tsx";
-import EditorInspectorWrapper from "~/editor/component/inspector/EditorInspectorWrapper.tsx";
+import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import View from "~/userinterface/core/View.tsx";
 import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";

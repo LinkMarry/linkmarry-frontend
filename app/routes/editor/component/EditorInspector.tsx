@@ -1,29 +1,29 @@
 import {type ReactElement} from 'react';
-import {type EditorNavigationBarType} from "~/editor/component/navigation-bar/EditorNavigationBarType.ts";
+import {type EditorNavigationBarType} from "~/routes/editor/component/EditorNavigationBarType.ts";
 import View from "~/userinterface/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import EditorInspectorDesign, {
     type WeddingDesignProps
-} from "~/editor/component/inspector/EditorInspectorDesign.tsx";
-import EditorInspectorBride from "~/editor/component/inspector/EditorInspectorBride.tsx";
+} from "~/routes/editor/component/EditorInspectorDesign.tsx";
+import EditorInspectorBride from "~/routes/editor/component/EditorInspectorBride.tsx";
 import EditorInspectorBackgroundMusic, {
     type BackgroundMusicProps
-} from "~/editor/component/inspector/EditorInspectorBackgroundMusic.tsx";
-import EditorInspectorChangeOrder from "~/editor/component/inspector/EditorInspectorChangeOrder.tsx";
-import EditorInspectorFontAndStyle from "~/editor/component/inspector/EditorInspectorFontAndStyle.tsx";
-import EditorInspectorGallery from "~/editor/component/inspector/EditorInspectorGallery.tsx";
-import EditorInspectorGreeting from "~/editor/component/inspector/EditorInspectorGreeting.tsx";
-import EditorInspectorGuestComment from "~/editor/component/inspector/EditorInspectorGuestComment.tsx";
-import EditorInspectorGroom from "~/editor/component/inspector/EditorInspectorGroom.tsx";
+} from "~/routes/editor/component/EditorInspectorBackgroundMusic.tsx";
+import EditorInspectorChangeOrder from "~/routes/editor/component/EditorInspectorChangeOrder.tsx";
+import EditorInspectorFontAndStyle from "~/routes/editor/component/EditorInspectorFontAndStyle.tsx";
+import EditorInspectorGallery from "~/routes/editor/component/EditorInspectorGallery.tsx";
+import EditorInspectorGreeting from "~/routes/editor/component/EditorInspectorGreeting.tsx";
+import EditorInspectorGuestComment from "~/routes/editor/component/EditorInspectorGuestComment.tsx";
+import EditorInspectorGroom from "~/routes/editor/component/EditorInspectorGroom.tsx";
 import EditorInspectorKakaotalkInvitationLetter
-    from "~/editor/component/inspector/EditorInspectorKakaotalkInvitationLetter.tsx";
-import EditorInspectorMoney from "~/editor/component/inspector/EditorInspectorMoney.tsx";
-import EditorInspectorPhone from "~/editor/component/inspector/EditorInspectorPhone.tsx";
-import EditorInspectorRsvp from "~/editor/component/inspector/EditorInspectorRsvp.tsx";
-import EditorInspectorVideo from "~/editor/component/inspector/EditorInspectorVideo.tsx";
-import EditorInspectorUrlShare from "~/editor/component/inspector/EditorInspectorUrlShare.tsx";
-import EditorInspectorWeddingSchedule from "~/editor/component/inspector/EditorInspectorWeddingSchedule.tsx";
-import EditorInspectorWeddingPlace from "~/editor/component/inspector/EditorInspectorWeddingPlace.tsx";
+    from "~/routes/editor/component/EditorInspectorKakaotalkInvitationLetter.tsx";
+import EditorInspectorMoney from "~/routes/editor/component/EditorInspectorMoney.tsx";
+import EditorInspectorPhone from "~/routes/editor/component/EditorInspectorPhone.tsx";
+import EditorInspectorRsvp from "~/routes/editor/component/EditorInspectorRsvp.tsx";
+import EditorInspectorVideo from "~/routes/editor/component/EditorInspectorVideo.tsx";
+import EditorInspectorUrlShare from "~/routes/editor/component/EditorInspectorUrlShare.tsx";
+import EditorInspectorWeddingSchedule from "~/routes/editor/component/EditorInspectorWeddingSchedule.tsx";
+import EditorInspectorWeddingPlace from "~/routes/editor/component/EditorInspectorWeddingPlace.tsx";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import type Binding from "~/shared/Binding.ts";
 import {responsive} from "~/hook/ResponsiveSwitch.tsx";

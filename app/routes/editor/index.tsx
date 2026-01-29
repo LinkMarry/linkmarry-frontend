@@ -1,47 +1,56 @@
 import {useEffect, useState} from 'react';
-import EditorHeader from "~/editor/component/EditorHeader.tsx";
+import EditorHeader from "~/routes/editor/component/EditorHeader.tsx";
 import {css, cx} from "@linaria/core";
-import EditorNavigationBar from "~/editor/component/navigation-bar/EditorNavigationBar.tsx";
-import {type EditorNavigationBarType} from "~/editor/component/navigation-bar/EditorNavigationBarType.ts";
+import EditorNavigationBar from "~/routes/editor/component/EditorNavigationBar.tsx";
+import {type EditorNavigationBarType} from "~/routes/editor/component/EditorNavigationBarType.ts";
 import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
-import useEditor from "~/editor/useEditor.ts";
-import CreateWeddingDialog from "~/editor/component/dialog/CreateWeddingDialog.tsx";
+import useEditor from "~/routes/editor/useEditor.ts";
+import CreateWeddingDialog from "~/routes/editor/component/CreateWeddingDialog.tsx";
 import {useNavigate, useSearchParams} from "react-router";
 import RemoveWatermarkDialog from "~/userinterface/specific/dialog/RemoveWatermarkDialog.tsx";
 import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
 import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
 import {desktopStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
-import EditorPreview from "~/editor/component/EditorPreview.tsx";
+import EditorPreview from "~/routes/editor/component/EditorPreview.tsx";
 import {toDomain} from "~/infrastructure/network/value/WeddingDto.ts";
-import EditorInspector from "~/editor/component/EditorInspector.tsx";
+import EditorInspector from "~/routes/editor/component/EditorInspector.tsx";
 import View from "~/userinterface/core/View.tsx";
 
-const Editor = () => {
+function useDesignId() {
     const [searchParams] = useSearchParams();
     const designId = searchParams.get('designId');
-    const numericDesignId = designId ? parseInt(designId) : null;
-    const [currentNavType, setCurrentNavType] = useState<EditorNavigationBarType>('design');
+
+    return designId ? Number(designId) : null;
+}
+
+const Editor = () => {
+    const designId = useDesignId();
+    const [selectedNav, setSelectedNav] = useState<EditorNavigationBarType>('design');
     const [openInspector, setOpenInspector] = useState(true);
     const {wedding, updateWedding, isSaving, musics} = useEditor();
     const [weddingDesigns, setWeddingDesigns] = useState<WeddingDesignPreset[]>();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
     const navigate = useNavigate();
 
+    const onAppear = async () => {
+        const {data} = await weddingDesignApi.getWeddingDesignPresets();
+        setWeddingDesigns(data);
+    };
+
     useEffect(() => {
-        (async () => {
-            const {data} = await weddingDesignApi.getWeddingDesignPresets();
-            setWeddingDesigns(data);
-        })();
+        onAppear().then();
     }, []);
 
     useEffect(() => {
-        const weddingDesign = weddingDesigns?.find(i => i.id === numericDesignId);
+        if (designId === null) return;
+
+        const weddingDesign = weddingDesigns?.find(i => i.id === designId);
         if (weddingDesign) {
             updateWedding(draft => {
                 draft.weddingDesign.weddingDesignName = weddingDesign.name;
             });
         }
-    }, [numericDesignId, updateWedding, weddingDesigns]);
+    }, [designId, updateWedding, weddingDesigns]);
 
     return (
         <View ui={cx(
@@ -84,8 +93,8 @@ const Editor = () => {
                     isSaving={isSaving}
                 />
                 <EditorNavigationBar
-                    currentNavType={currentNavType}
-                    onChangeNavType={type => setCurrentNavType(type)}
+                    currentNavType={selectedNav}
+                    onChangeNavType={type => setSelectedNav(type)}
                     openInspector={openInspector}
                     onToggleInspector={() => {
                         setOpenInspector(i => !i);
@@ -95,7 +104,7 @@ const Editor = () => {
                         <EditorInspector
                             value={wedding}
                             update={updateWedding}
-                            currentNavType={currentNavType}
+                            currentNavType={selectedNav}
                             weddingDesigns={weddingDesigns}
                             backgroundMusics={musics}
                         />
