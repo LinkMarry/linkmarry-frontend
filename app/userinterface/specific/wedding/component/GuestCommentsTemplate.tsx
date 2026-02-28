@@ -75,6 +75,7 @@ function GuestCommentsTemplate(
                                 color: var(--g-600);
                                 word-break: break-all;
                                 text-align: center;
+                                white-space: pre-line;
                             `}>{guestComment.content}</Text>
                         </FadeIn>
                     </View>

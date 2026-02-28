@@ -11,6 +11,7 @@ import {
 } from "~/infrastructure/network/enumeration/GuestCommentDesign.ts";
 import View from "~/userinterface/core/View.tsx";
 import {css} from "@linaria/core";
+import Textarea from "~/userinterface/component/Textarea.tsx";
 
 
 const EditorInspectorGuestComment = (
@@ -33,9 +34,11 @@ const EditorInspectorGuestComment = (
                 gap: 12px;
             `}>
                 <Text type={'p3'} bold={true}>내용</Text>
-                <Input hasLabel={false} value={guestComment.content} onChange={event => update(draft => {
+                <Textarea hasLabel={false} value={guestComment.content} onChange={event => update(draft => {
                     draft.guestComment.content = event.target.value;
-                })}/>
+                })} ui={css`
+                    height: 194px;
+                `}/>
             </View>
             <View ui={css`
                 gap: 12px;
