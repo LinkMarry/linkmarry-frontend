@@ -27,6 +27,15 @@ const Sample = (
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        const original = viewport?.getAttribute('content') ?? 'width=device-width, initial-scale=1';
+        viewport?.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+        return () => {
+            viewport?.setAttribute('content', original);
+        };
+    }, []);
+
+    useEffect(() => {
         const designName = searchParams.get('designName');
         if (designName) {
             setWedding(wedding => ({

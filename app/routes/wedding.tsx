@@ -6,11 +6,21 @@ import {responsive} from "~/hook/ResponsiveSwitch.tsx";
 import useWedding from "~/hook/useWedding.ts";
 import {Navigate, useParams, useSearchParams} from "react-router";
 import ClientRendering from "~/ClientRendering.tsx";
+import {useEffect} from "react";
 
 function Wedding() {
     const {wedding, getWedding, isError} = useWedding();
     const {url} = useParams();
     const [searchParams] = useSearchParams();
+
+    useEffect(() => {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        const original = viewport?.getAttribute('content') ?? 'width=device-width, initial-scale=1';
+        viewport?.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+        return () => {
+            viewport?.setAttribute('content', original);
+        };
+    }, []);
 
     if (url === 'sample') {
         const url = new URL(`${window.location.origin}/sample`);
