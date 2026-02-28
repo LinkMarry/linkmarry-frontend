@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import BaseDialog from "~/userinterface/pattern/dialog/BaseDialog";
 import {css, cx} from "@linaria/core";
 import Spacer from "~/userinterface/component/Spacer";
@@ -55,6 +55,18 @@ function CreateRsvpDialog(
         alert('참석 의사를 전달했습니다.');
         dismiss();
     }
+
+    // TODO: Refactoring
+    // 참석의사 팝업이 떠있을 때 외부 내용 스크롤이 안 되도록 함
+    useEffect(() => {
+        // 팝업이 마운트될 때 스크롤을 막음
+        document.body.style.overflow = 'hidden';
+
+        // 팝업이 언마운트(닫힘)될 때 스크롤을 다시 허용
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, []);
 
     return (
         <BaseDialog dismiss={dismiss}>

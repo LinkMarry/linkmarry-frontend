@@ -13,6 +13,7 @@ import type Rsvp from "~/infrastructure/network/value/Rsvp";
 import {useCookies} from "react-cookie";
 import {baseDialogContentStyle} from "~/userinterface/pattern/dialog/baseDialogContentStyle.ts";
 import View from "~/userinterface/core/View.tsx";
+import {useEffect} from "react";
 
 interface RsvpDialogProps {
     url: string;
@@ -41,6 +42,18 @@ function RsvpDialog(
     const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
     const isValidDate = !isNaN(date.getTime());
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+
+    // TODO: Refactoring
+    // 참석의사 팝업이 떠있을 때 외부 내용 스크롤이 안 되도록 함
+    useEffect(() => {
+        // 팝업이 마운트될 때 스크롤을 막음
+        document.body.style.overflow = 'hidden';
+
+        // 팝업이 언마운트(닫힘)될 때 스크롤을 다시 허용
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, []);
 
     return (
         <BaseDialog dismiss={dismiss}>
