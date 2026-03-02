@@ -115,8 +115,7 @@ async function editComment(req: EditCommentRequest): Promise<ResponseVoid> {
  */
 async function removeComment(req: DeleteCommentRequest): Promise<ResponseVoid> {
     const {data} = await api.delete(`${PATH}/comment`, {
-        data: req,
-        shouldAuthorizeRequest: false
+        data: req
     });
     return data;
 }
