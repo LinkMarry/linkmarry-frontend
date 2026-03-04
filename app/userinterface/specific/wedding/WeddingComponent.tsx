@@ -105,21 +105,22 @@ function WeddingComponent(
 
     const {weddingDesignFontSize, weddingDesignFont} = wedding.weddingDesign;
     const {addFontSize} = weddingDesignFontSizeMap[weddingDesignFontSize];
+    // eslint-disable-next-line react-hooks/refs
     increaseFontSize(rootRef, addFontSize);
 
     return (
         <RootStyle ref={rootRef} fontFamily={weddingDesignFont}>
-            {/*{showAutoplayUnlockElement && (*/}
-            {/*    <div className={'override-font'} ref={autoplayUnlockRef} style={{*/}
-            {/*        position: 'fixed',*/}
-            {/*        background: 'transparent',*/}
-            {/*        width: '100vw',*/}
-            {/*        height: '100vh',*/}
-            {/*        left: 0,*/}
-            {/*        top: 0,*/}
-            {/*        zIndex: 9999,*/}
-            {/*    }}></div>*/}
-            {/*)}*/}
+            {showAutoplayUnlockElement && (
+                <div className={'override-font'} ref={autoplayUnlockRef} style={{
+                    position: 'fixed',
+                    background: 'transparent',
+                    width: '100vw',
+                    height: '100vh',
+                    left: 0,
+                    top: 0,
+                    zIndex: 9999,
+                }}></div>
+            )}
             {wedding.backgroundMusic.backgroundMusicUrl && (
                 <audio
                     className={'override-font'}
