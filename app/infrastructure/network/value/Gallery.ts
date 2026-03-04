@@ -1,4 +1,4 @@
-import {type GalleryDesign} from "~/infrastructure/network/enumeration/GalleryDesign";
+import { type GalleryDesign } from "~/infrastructure/network/enumeration/GalleryDesign";
 
 export default interface Gallery {
     galleryTitle: string;
@@ -11,8 +11,8 @@ export default interface Gallery {
 export const defaultGallery: Gallery = {
     galleryTitle: '',
     galleryDesign: 'SLIDE',
-    galleryZoom: false,
-    galleryFullScreen: false,
+    galleryZoom: true,
+    galleryFullScreen: true,
     imgList: []
 };
 

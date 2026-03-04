@@ -1,15 +1,15 @@
-import {type RefObject, useCallback, useEffect, useRef, useState} from 'react';
+import { type RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import Text from "~/userinterface/component/Text";
-import {hideScrollBarStyle} from "~/userinterface/css.util";
+import { hideScrollBarStyle } from "~/userinterface/css.util";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate";
 import FadeIn from "~/userinterface/specific/fadein/FadeIn";
 import type Gallery from "~/infrastructure/network/value/Gallery";
 import Icon from "~/userinterface/foundation/Icon";
 import View from "~/userinterface/core/View.tsx";
 import GalleryFullView from "~/userinterface/specific/wedding/component/gallery/GalleryFullView";
-import type {GalleryDesign} from "~/infrastructure/network/enumeration/GalleryDesign.ts";
-import {css, cx} from "@linaria/core";
-import type {WeddingMode} from "~/userinterface/specific/wedding/WeddingMode.ts";
+import type { GalleryDesign } from "~/infrastructure/network/enumeration/GalleryDesign.ts";
+import { css, cx } from "@linaria/core";
+import type { WeddingMode } from "~/userinterface/specific/wedding/WeddingMode.ts";
 
 interface GalleryTemplateProps {
     rootRef: RefObject<HTMLDivElement | null>;
@@ -36,7 +36,7 @@ function GalleryTemplate(
             background: white;
             padding: 92px 0;
         `}>
-            {currentImageIdx !== undefined && (
+            {currentImageIdx !== undefined && gallery.galleryFullScreen && (
                 <GalleryFullView
                     dismiss={() => setCurrentImageIdx(undefined)}
                     currentImageIndex={currentImageIdx}
@@ -70,7 +70,7 @@ function GalleryTemplate(
                             object-fit: cover;
                             object-position: top;
                             border-radius: 4px;
-                        `} key={index} src={img} onClick={() => setCurrentImageIdx(index)}/>
+                        `} key={index} src={img} onClick={() => setCurrentImageIdx(index)} />
                     ))}
                 </View>
             )}
@@ -247,7 +247,7 @@ function GalleryStyleIndicator(
                 gap: 8px;
                 align-self: center;
             `}>
-                {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
+                {Array.from({ length: imgListLength }, (_, index) => index).map((i, index) => (
                     <View key={index} ui={cx(
                         css`
                             flex-direction: row !important;
@@ -260,7 +260,7 @@ function GalleryStyleIndicator(
                         ` : css`
                             background: var(--g-200);
                         `
-                    )}/>
+                    )} />
                 ))}
             </View>;
         case 'HIGHLIGHT':
@@ -275,16 +275,16 @@ function GalleryStyleIndicator(
                         fill: var(--g-500);
                         cursor: pointer;
                     `} onClick={() => {
-                        onClick('moveLeft');
-                    }}/>
+                            onClick('moveLeft');
+                        }} />
                     <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
                     <Icon iconType={'ExpandArrow'} size={24} ui={css`
                         rotate: 180deg;
                         fill: var(--g-500);
                         cursor: pointer;
                     `} onClick={() => {
-                        onClick('moveRight');
-                    }}/>
+                            onClick('moveRight');
+                        }} />
                 </View>
             );
         case 'GRID':

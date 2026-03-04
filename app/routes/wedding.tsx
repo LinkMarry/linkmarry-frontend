@@ -1,26 +1,19 @@
 import WeddingComponent from "~/userinterface/specific/wedding/WeddingComponent.tsx";
 import Text from "~/userinterface/component/Text.tsx";
-import {css} from "@linaria/core";
+import { css } from "@linaria/core";
 import View from "~/userinterface/core/View.tsx";
-import {responsive} from "~/hook/ResponsiveSwitch.tsx";
+import { responsive } from "~/hook/ResponsiveSwitch.tsx";
 import useWedding from "~/hook/useWedding.ts";
-import {Navigate, useParams, useSearchParams} from "react-router";
+import { Navigate, useParams, useSearchParams } from "react-router";
 import ClientRendering from "~/ClientRendering.tsx";
-import {useEffect} from "react";
+import usePreventZoom from "~/hook/usePreventZoom.ts";
 
 function Wedding() {
-    const {wedding, getWedding, isError} = useWedding();
-    const {url} = useParams();
+    const { wedding, getWedding, isError } = useWedding();
+    const { url } = useParams();
     const [searchParams] = useSearchParams();
 
-    useEffect(() => {
-        const viewport = document.querySelector('meta[name="viewport"]');
-        const original = viewport?.getAttribute('content') ?? 'width=device-width, initial-scale=1';
-        viewport?.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
-        return () => {
-            viewport?.setAttribute('content', original);
-        };
-    }, []);
+    usePreventZoom(wedding?.gallery.galleryZoom ?? false);
 
     if (url === 'sample') {
         const url = new URL(`${window.location.origin}/sample`);
@@ -31,7 +24,7 @@ function Wedding() {
 
         console.log(`url -  s${url.toString()}`);
 
-        return <Navigate to={url.toString()}/>
+        return <Navigate to={url.toString()} />
     }
 
     return (
@@ -45,8 +38,8 @@ function Wedding() {
                     padding: 0;
                 }
             `} style={{
-                background: wedding?.weddingDesign.weddingDesignColor
-            }}>
+                    background: wedding?.weddingDesign.weddingDesignColor
+                }}>
                 {wedding && (
                     <View ui={css`
                         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
