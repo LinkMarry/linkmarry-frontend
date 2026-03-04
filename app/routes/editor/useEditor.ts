@@ -1,11 +1,12 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useEffectEvent, useState} from "react";
 import {useImmer} from "use-immer";
 import {makeDefaultWedding, toDTO, type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import lodash from 'lodash';
 import type Music from "~/infrastructure/network/value/Music.ts";
 import musicApi from "~/infrastructure/network/api/music-api.ts";
+import {isAxiosError} from "axios";
 
 
 const {throttle} = lodash;
@@ -15,6 +16,7 @@ function useEditor() {
     const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
     const [isSaving, setIsSaving] = useState(false);
     const [musics, setMusics] = useState<Music[]>();
+    const navigate = useNavigate();
 
     // eslint-disable-next-line
     const throttledEditWedding = useCallback(throttle(async (updatedWedding: WeddingDto) => {
@@ -35,20 +37,31 @@ function useEditor() {
         }
     }, [throttledEditWedding, wedding]);
 
-    useEffect(() => {
+    const fetchWedding = useEffectEvent(async () => {
         if (!url) return;
 
-        (async () => {
+        try {
             const {data} = await weddingApi.getWedding(url);
             updateWedding(toDTO(data));
-        })();
-    }, [updateWedding, url]);
+        } catch (error) {
+            if (isAxiosError(error) && error.status === 404) {
+                console.error(error);
+                navigate('/');
+            }
+        }
+    });
+
+    const fetchMusics = useEffectEvent(async () => {
+        const {data} = await musicApi.getMusics();
+        setMusics(data);
+    });
 
     useEffect(() => {
-        (async () => {
-            const {data} = await musicApi.getMusics();
-            setMusics(data);
-        })();
+        fetchWedding().then();
+    }, [url]);
+
+    useEffect(() => {
+        fetchMusics().then();
     }, []);
 
     return {
