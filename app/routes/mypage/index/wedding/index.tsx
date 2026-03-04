@@ -1,11 +1,11 @@
-import {useEffect, useState} from 'react';
-import {css, cx} from "@linaria/core";
+import { useEffect, useState } from 'react';
+import { css, cx } from "@linaria/core";
 import Text from "~/userinterface/component/Text.tsx";
 import View from "~/userinterface/core/View.tsx";
 import Divider from "~/userinterface/component/Divider.tsx";
 import Button from "~/userinterface/component/Button.tsx";
-import Icon, {type IconType} from "~/userinterface/foundation/Icon.tsx";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/userinterface/css.util.ts";
+import Icon, { type IconType } from "~/userinterface/foundation/Icon.tsx";
+import { hideScrollBarStyle, interactionEffectStyles } from "~/userinterface/css.util.ts";
 import Spacer from "~/userinterface/component/Spacer.tsx";
 import Popover from "~/userinterface/pattern/Popover.tsx";
 import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
@@ -13,13 +13,13 @@ import Loading from "~/userinterface/specific/Loading.tsx";
 import type WeddingInfo from "~/infrastructure/network/value/WeddingInfo.ts";
 import type WeddingStatistics from "~/infrastructure/network/value/WeddingStatistics.ts";
 import type Comment from "~/infrastructure/network/value/Comment.ts";
-import {getTimeAgo} from "~/shared/date-util.ts";
-import {useNavigate} from "react-router";
+import { getTimeAgo } from "~/shared/date-util.ts";
+import { useNavigate } from "react-router";
 import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
 import RemoveWatermarkDialog from "~/userinterface/specific/dialog/RemoveWatermarkDialog.tsx";
-import {getWeddingUrl} from "~/shared/string-util.ts";
+import { getWeddingUrl } from "~/shared/string-util.ts";
 import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts";
-import {desktopStyle, notDesktopStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
+import { desktopStyle, notDesktopStyle, responsive } from "~/hook/ResponsiveSwitch.tsx";
 
 function MyPageWedding() {
     const {
@@ -72,15 +72,15 @@ function MyPageWedding() {
                     <WeddingCell key={wedding.url} weddingInfo={wedding} onRemoveWedding={() => {
                         setSelectedWedding(wedding);
                         setShowRemoveWeddingDialog(true);
-                    }}/>
+                    }} />
                 )) : (
                     <Loading ui={css`
                         margin-top: 24px;
                         margin-bottom: 500px;
-                    `}/>
+                    `} />
                 )}
             </View>
-            <Spacer h={32}/>
+            <Spacer h={32} />
         </View>
     );
 }
@@ -90,7 +90,7 @@ interface WeddingCellProps {
     onRemoveWedding: () => void;
 }
 
-function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
+function WeddingCell({ weddingInfo, onRemoveWedding }: WeddingCellProps) {
     const [openDetailPopover, setOpenDetailPopover] = useState(false);
     const [statistics, setStatistics] = useState<WeddingStatistics>();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
@@ -102,22 +102,41 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
     useEffect(() => {
         (async () => {
             try {
-                const {data} = await weddingApi.getStatistics(weddingInfo.url);
+                const { data } = await weddingApi.getStatistics(weddingInfo.url);
                 setStatistics(data);
             } catch (error) {
                 console.error(error);
             }
         })();
 
-        (async () => {
+        const fetchComments = async () => {
             try {
-                const {data} = await weddingApi.getComments(weddingInfo.url);
+                const { data } = await weddingApi.getComments(weddingInfo.url);
                 setComments(data);
             } catch (error) {
                 console.error(error);
             }
-        })();
+        };
+
+        fetchComments();
     }, [weddingInfo]);
+
+    const handleRemoveComment = async (comment: Comment) => {
+        if (window.confirm('정말 삭제하시겠습니까?')) {
+            try {
+                await weddingApi.removeComment({
+                    url: weddingInfo.url,
+                    id: comment.id,
+                    password: undefined
+                });
+                const { data } = await weddingApi.getComments(weddingInfo.url);
+                setComments(data);
+            } catch (error) {
+                console.error('방명록 삭제 실패', error);
+                alert('방명록 삭제에 실패했습니다.');
+            }
+        }
+    };
 
     return (
         <View ui={css`
@@ -146,7 +165,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                 background: var(--g-100);
                 border-radius: 12px;
                 object-fit: cover;
-            `}/>
+            `} />
             <View ui={css`
                 gap: 24px;
                 flex: 1;
@@ -180,7 +199,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                                 `}>{weddingUrl}</Text>
                                 <Icon size={14} iconType={'ExternalLink'} ui={css`
                                     fill: var(--g-500);
-                                `}/>
+                                `} />
                             </View>
                         </View>
                         <View ui={css`
@@ -190,11 +209,11 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                         `}>
                             <Button text={'수정'} size={'medium'} buttonType={'outlined'} onClick={() => {
                                 navigate(`/editor/${weddingInfo.url}`);
-                            }} ui={desktopStyle}/>
+                            }} ui={desktopStyle} />
                             <Button text={'워터마크 제거'} size={'medium'} onClick={() => {
                                 setSelectedRemoveWatermarkWedding(weddingInfo);
                                 setShowRemoveWatermarkDialog(true);
-                            }} ui={desktopStyle}/>
+                            }} ui={desktopStyle} />
                             <View ui={css`
                                 position: relative;
                             `}>
@@ -208,7 +227,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                                 )} onClick={() => setOpenDetailPopover(true)}>
                                     <Icon iconType={'Detail'} width={24} height={24} ui={css`
                                         fill: var(--g-500);
-                                    `}/>
+                                    `} />
                                 </View>
                                 {openDetailPopover && (
                                     <WeddingCellPopover
@@ -229,7 +248,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                             </View>
                         </View>
                     </View>
-                    <Divider ui={desktopStyle}/>
+                    <Divider ui={desktopStyle} />
                 </View>
                 {/*content*/}
                 <View ui={cx(
@@ -267,10 +286,14 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                                     `}>아직 방명록이 없어요</Text>
                                 ) : (
                                     comments.map((comment, index) => (
-                                        <CommentCell key={index} comment={comment}/>
+                                        <CommentCell
+                                            key={index}
+                                            comment={comment}
+                                            onRemove={() => handleRemoveComment(comment)}
+                                        />
                                     ))
                                 )) : (
-                                <Loading/>
+                                <Loading />
                             )}
                         </View>
                     </View>
@@ -295,12 +318,12 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
                             {statistics ? (
                                 <>
                                     <StatisticsCell title={'총 참석 가능 인원'}
-                                                    value={`${statistics.totalRsvpVisitorCnt}명`}/>
-                                    <StatisticsCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
-                                    <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
+                                        value={`${statistics.totalRsvpVisitorCnt}명`} />
+                                    <StatisticsCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`} />
+                                    <StatisticsCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`} />
                                 </>
                             ) : (
-                                <Loading/>
+                                <Loading />
                             )}
                         </View>
                     </View>
@@ -364,7 +387,7 @@ function WeddingCellPopover(
     );
 }
 
-function CommentCell({comment}: { comment: Comment }) {
+function CommentCell({ comment, onRemove }: { comment: Comment, onRemove: () => void }) {
     return (
         <View>
             <View ui={css`
@@ -378,6 +401,16 @@ function CommentCell({comment}: { comment: Comment }) {
                 <Text type={'caption1'} ui={css`
                     color: var(--g-400);
                 `}>{getTimeAgo(new Date(comment.createdDate))}</Text>
+                <Spacer />
+                <Icon
+                    iconType={'CrossLine'}
+                    size={16}
+                    ui={css`
+                        cursor: pointer;
+                        fill: var(--g-300);
+                    `}
+                    onClick={onRemove}
+                />
             </View>
             <Text type={'p3'} ui={css`
                 color: var(--g-500);
@@ -387,7 +420,7 @@ function CommentCell({comment}: { comment: Comment }) {
     );
 }
 
-function StatisticsCell({title, value}: {
+function StatisticsCell({ title, value }: {
     title: string;
     value: string;
 }) {
@@ -399,7 +432,7 @@ function StatisticsCell({title, value}: {
             <Text type={'p3'} ui={css`
                 color: var(--g-500);
             `}>{title}</Text>
-            <Spacer/>
+            <Spacer />
             <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-600);
             `}>{value}</Text>

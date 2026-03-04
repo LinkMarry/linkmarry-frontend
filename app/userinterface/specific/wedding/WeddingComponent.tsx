@@ -1,10 +1,10 @@
-import {type ReactNode, type RefObject, useEffect, useRef, useState} from 'react';
+import { type ReactNode, type RefObject, useEffect, useRef, useState } from 'react';
 import type Wedding from "~/infrastructure/network/value/Wedding";
 import MoneyInfoTemplate from "~/userinterface/specific/wedding/component/MoneyInfoTemplate";
 import FooterTemplate from "~/userinterface/specific/wedding/component/FooterTemplate";
-import {weddingDesignFontSizeMap} from "~/infrastructure/network/value/WeddingDesign";
+import { weddingDesignFontSizeMap } from "~/infrastructure/network/value/WeddingDesign";
 import GuestCommentsTemplate from "~/userinterface/specific/wedding/component/GuestCommentsTemplate";
-import {increaseFontSize} from "~/shared/dom-util";
+import { increaseFontSize } from "~/shared/dom-util";
 import CongratulationsTemplate from "~/userinterface/specific/wedding/component/CongratulationsTemplate";
 import WeddingDayTemplate from "~/userinterface/specific/wedding/component/weddingday/WeddingDayTemplate";
 import LocationTemplate from "~/userinterface/specific/wedding/component/LocationTemplate";
@@ -12,17 +12,19 @@ import PreviewTemplate from "~/userinterface/specific/wedding/component/preview/
 import GalleryTemplate from "~/userinterface/specific/wedding/component/gallery/GalleryTemplate";
 import VideoTemplate from "~/userinterface/specific/wedding/component/VideoTemplate";
 import InvitationLetterTemplate from "~/userinterface/specific/wedding/component/InvitationLetterTemplate";
+import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
+import type Comment from "~/infrastructure/network/value/Comment.ts";
 import CreateRsvpDialog from "~/userinterface/specific/wedding/dialog/rsvp/CreateRsvpDialog";
-import {Helmet} from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import RsvpTemplate from "~/userinterface/specific/wedding/component/RsvpTemplate";
 import WaterMarkSheet from "~/userinterface/specific/wedding/component/WaterMarkSheet";
-import {type Position} from "~/infrastructure/network/value/Position";
-import {useCookies} from "react-cookie";
-import {useSearchParams} from "react-router";
+import { type Position } from "~/infrastructure/network/value/Position";
+import { useCookies } from "react-cookie";
+import { useSearchParams } from "react-router";
 import RsvpDialog from "~/userinterface/specific/wedding/dialog/rsvp/RsvpDialog.tsx";
-import {styled} from "@linaria/react";
-import type {FontFamily} from "~/userinterface/foundation/text/TextType.ts";
-import type {WeddingMode} from "~/userinterface/specific/wedding/WeddingMode.ts";
+import { styled } from "@linaria/react";
+import type { FontFamily } from "~/userinterface/foundation/text/TextType.ts";
+import type { WeddingMode } from "~/userinterface/specific/wedding/WeddingMode.ts";
 
 
 interface WeddingComponentProps {
@@ -103,8 +105,8 @@ function WeddingComponent(
     const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(rsvp);
     const rootRef = useRef<HTMLDivElement>(null);
 
-    const {weddingDesignFontSize, weddingDesignFont} = wedding.weddingDesign;
-    const {addFontSize} = weddingDesignFontSizeMap[weddingDesignFontSize];
+    const { weddingDesignFontSize, weddingDesignFont } = wedding.weddingDesign;
+    const { addFontSize } = weddingDesignFontSizeMap[weddingDesignFontSize];
     // eslint-disable-next-line react-hooks/refs
     increaseFontSize(rootRef, addFontSize);
 
@@ -127,15 +129,15 @@ function WeddingComponent(
                     ref={audioRef}
                     src={wedding.backgroundMusic.backgroundMusicUrl}
                     loop={true}
-                    style={{display: 'none'}}
+                    style={{ display: 'none' }}
                 />
             )}
             <Helmet>
-                <meta property={'og:title'} content={wedding.linkShare.urlTitle}/>
-                <meta property={'og:description'} content={wedding.linkShare.urlContent}/>
-                <meta property={'og:image'} content={wedding.linkShare.urlImgUrl}/>
-                <meta property={'og:url'} content={wedding.url}/>
-                <meta property={'og:type'} content={'website'}/>
+                <meta property={'og:title'} content={wedding.linkShare.urlTitle} />
+                <meta property={'og:description'} content={wedding.linkShare.urlContent} />
+                <meta property={'og:image'} content={wedding.linkShare.urlImgUrl} />
+                <meta property={'og:url'} content={wedding.url} />
+                <meta property={'og:type'} content={'website'} />
 
                 <title>{wedding.linkShare.urlTitle}</title>
             </Helmet>
@@ -168,7 +170,7 @@ function WeddingComponent(
                 />
             )}
             {wedding.waterMark && mode === 'default' && (
-                <WaterMarkSheet url={wedding.url}/>
+                <WaterMarkSheet url={wedding.url} />
             )}
         </RootStyle>
     );
@@ -203,7 +205,27 @@ const ContentBody = (
         mode: WeddingMode;
     }
 ) => {
-    const {weddingDesignColor} = wedding.weddingDesign;
+    const { weddingDesignColor } = wedding.weddingDesign;
+    const [localComments, setLocalComments] = useState<Comment[]>(wedding.guestCommentList);
+
+    // Update local state if the prop changes
+    useEffect(() => {
+        setLocalComments(wedding.guestCommentList);
+    }, [wedding.guestCommentList]);
+
+    const handleRefresh = async () => {
+        if (onRefresh) {
+            onRefresh();
+        } else {
+            try {
+                const { data } = await weddingApi.getComments(wedding.url);
+                setLocalComments(data);
+            } catch (error) {
+                console.error("Failed to refresh comments:", error);
+            }
+        }
+    };
+
     return (
         <>
             <PreviewTemplate
@@ -261,11 +283,10 @@ const ContentBody = (
                         key={index}
                         weddingDesignColor={weddingDesignColor}
                         url={wedding.url}
-                        guestComments={wedding.guestCommentList}
+                        guestComments={localComments}
                         guestComment={wedding.guestComment}
                         mode={mode}
-                        onRefresh={onRefresh ?? (() => {
-                        })}
+                        onRefresh={handleRefresh}
                     />,
                     8: <RsvpTemplate
                         key={index}
