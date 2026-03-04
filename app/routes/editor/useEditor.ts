@@ -42,7 +42,7 @@ function useEditor() {
 
         try {
             const {data} = await weddingApi.getWedding(url);
-            updateWedding(toDTO(data));
+            updateWedding(data);
         } catch (error) {
             if (isAxiosError(error) && error.status === 404) {
                 console.error(error);
