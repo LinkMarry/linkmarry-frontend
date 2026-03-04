@@ -7,16 +7,16 @@ import {DragDropContext, Draggable, Droppable, type DropResult} from "@hello-pan
 import View from "~/userinterface/core/View.tsx";
 import {reorderedItems} from "~/shared/dnd-util.ts";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import {positionMap} from "~/infrastructure/network/value/Position.ts";
 import {type Position} from "~/infrastructure/network/value/Position.ts";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorChangeOrder = (
     {
         value: {position},
         update,
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     const onDragEnd = (result: DropResult) => {
         const items = reorderedItems(result, position);

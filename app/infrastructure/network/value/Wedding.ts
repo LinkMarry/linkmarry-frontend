@@ -10,16 +10,13 @@ import {dummyPhone} from "~/infrastructure/network/value/Phone";
 import {dummyRsvp} from "~/infrastructure/network/value/Rsvp";
 import {dummyGuestComment} from "~/infrastructure/network/value/GuestComment";
 import {dummyWeddingDesign} from "~/infrastructure/network/value/WeddingDesign";
-import {dummyComments} from "~/infrastructure/network/value/Comment";
 import type Comment from "~/infrastructure/network/value/Comment";
+import {dummyComments} from "~/infrastructure/network/value/Comment";
 import {dummyGallery} from "~/infrastructure/network/value/Gallery";
 import type {WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 
 export default interface Wedding extends WeddingDto {
-    // 방명록 리스트
     guestCommentList: Comment[];
-
-    // 워터마크 제거 여부
     waterMark: boolean;
 }
 
@@ -51,5 +48,5 @@ export const dummyWedding: Wedding = {
     phone: dummyPhone,
     rsvp: dummyRsvp,
     gallery: dummyGallery,
-    waterMark: true
+    waterMark: false,
 }

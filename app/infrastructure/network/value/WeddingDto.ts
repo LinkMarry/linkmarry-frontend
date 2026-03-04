@@ -27,7 +27,7 @@ import type Gallery from "~/infrastructure/network/value/Gallery";
 import {positionList} from "~/infrastructure/network/value/Position";
 import {type Position} from "~/infrastructure/network/value/Position";
 import type Wedding from "~/infrastructure/network/value/Wedding";
-import {dummyComments} from "~/infrastructure/network/value/Comment";
+import {dummyComments} from "~/infrastructure/network/value/Comment.ts";
 
 
 export interface WeddingDto {
@@ -79,7 +79,7 @@ export interface WeddingDto {
     gallery: Gallery;
 }
 
-export function makeDefaultWedding(url: string, name: string): WeddingDto {
+export function makeDefaultWedding(url: string, name: string): Wedding {
     return {
         url,
         name,
@@ -90,56 +90,14 @@ export function makeDefaultWedding(url: string, name: string): WeddingDto {
         weddingPlace: defaultWeddingPlace,
         greeting: defaultGreeting,
         guestComment: defaultGuestComment,
+        guestCommentList: dummyComments,
         backgroundMusic: defaultBackgroundMusic,
         linkShare: defaultLinkShare,
         moneyInfo: defaultMoneyInfo,
         video: defaultVideo,
         phone: defaultPhone,
         rsvp: defaultRsvp,
-        gallery: defaultGallery
-    };
-}
-
-export function toDomain(dto: WeddingDto, hasDummy: boolean): Wedding {
-    return {
-        url: dto.url,
-        name: dto.name,
-        position: dto.position,
-        weddingDesign: dto.weddingDesign,
-        baseInfo: dto.baseInfo,
-        weddingSchedule: dto.weddingSchedule,
-        weddingPlace: dto.weddingPlace,
-        greeting: dto.greeting,
-        guestComment: dto.guestComment,
-        backgroundMusic: dto.backgroundMusic,
-        linkShare: dto.linkShare,
-        moneyInfo: dto.moneyInfo,
-        video: dto.video,
-        phone: dto.phone,
-        rsvp: dto.rsvp,
-        gallery: dto.gallery,
+        gallery: defaultGallery,
         waterMark: false,
-        guestCommentList: hasDummy ? dummyComments : []
-    }
-}
-
-export function toDTO(domain: Wedding): WeddingDto {
-    return {
-        url: domain.url,
-        name: domain.name,
-        position: domain.position,
-        weddingDesign: domain.weddingDesign,
-        baseInfo: domain.baseInfo,
-        weddingSchedule: domain.weddingSchedule,
-        weddingPlace: domain.weddingPlace,
-        greeting: domain.greeting,
-        guestComment: domain.guestComment,
-        backgroundMusic: domain.backgroundMusic,
-        linkShare: domain.linkShare,
-        moneyInfo: domain.moneyInfo,
-        video: domain.video,
-        phone: domain.phone,
-        rsvp: domain.rsvp,
-        gallery: domain.gallery,
-    }
+    };
 }

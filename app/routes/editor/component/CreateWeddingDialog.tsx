@@ -3,15 +3,15 @@ import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
 import Input from "~/userinterface/component/Input.tsx";
 import {useNavigate, useParams} from "react-router";
 import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import Text from "~/userinterface/component/Text.tsx";
 import {css} from "@linaria/core";
 import type Binding from "~/shared/Binding.ts";
 import Icon from "~/userinterface/foundation/Icon.tsx";
 import View from "~/userinterface/core/View.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
-const CreateWeddingDialog = ({value, update}: Binding<WeddingDto>) => {
+const CreateWeddingDialog = ({value, update}: Binding<Wedding>) => {
     const {url} = useParams();
     const [showCreateWeddingDialog, setShowCreateWeddingDialog] = useState(url === undefined);
     const navigate = useNavigate();

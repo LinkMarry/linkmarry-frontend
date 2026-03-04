@@ -24,11 +24,11 @@ import EditorInspectorVideo from "~/routes/editor/component/EditorInspectorVideo
 import EditorInspectorUrlShare from "~/routes/editor/component/EditorInspectorUrlShare.tsx";
 import EditorInspectorWeddingSchedule from "~/routes/editor/component/EditorInspectorWeddingSchedule.tsx";
 import EditorInspectorWeddingPlace from "~/routes/editor/component/EditorInspectorWeddingPlace.tsx";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import type Binding from "~/shared/Binding.ts";
 import {responsive} from "~/hook/ResponsiveSwitch.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
-interface Props extends Binding<WeddingDto>, WeddingDesignProps, BackgroundMusicProps {
+interface Props extends Binding<Wedding>, WeddingDesignProps, BackgroundMusicProps {
     currentNavType: EditorNavigationBarType;
     ui?: ReturnType<typeof css>;
 }
@@ -79,8 +79,10 @@ const EditorInspector = (
                     guestComment: <EditorInspectorGuestComment value={wedding} update={update}/>,
                     fontAndStyle: <EditorInspectorFontAndStyle value={wedding} update={update}/>,
                     urlShare: <EditorInspectorUrlShare value={wedding} update={update}/>,
-                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter value={wedding}
-                                                                                         update={update}/>,
+                    kakaotalkInvitationLetter: <EditorInspectorKakaotalkInvitationLetter
+                        value={wedding}
+                        update={update}
+                    />,
                     changeOrder: <EditorInspectorChangeOrder value={wedding} update={update}/>,
                     // ai: <EditorInspectorAi/>
                 }

@@ -3,17 +3,17 @@ import Input from "~/userinterface/component/Input.tsx";
 import FormToggle from "~/userinterface/component/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import {formatPhone} from "~/shared/format-util.ts";
 import View from "~/userinterface/core/View.tsx";
 import {css} from "@linaria/core";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorPhone = (
     {
         value: {phone},
         update
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     return (
         <EditorInspectorWrapper type={'phone'}>

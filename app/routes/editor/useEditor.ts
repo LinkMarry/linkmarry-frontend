@@ -1,19 +1,20 @@
 import {useCallback, useEffect, useEffectEvent, useState} from "react";
 import {useImmer} from "use-immer";
-import {makeDefaultWedding, toDTO, type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
+import {makeDefaultWedding, type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
 import {useNavigate, useParams} from "react-router";
 import lodash from 'lodash';
 import type Music from "~/infrastructure/network/value/Music.ts";
 import musicApi from "~/infrastructure/network/api/music-api.ts";
 import {isAxiosError} from "axios";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const {throttle} = lodash;
 
 function useEditor() {
     const {url} = useParams();
-    const [wedding, updateWedding] = useImmer<WeddingDto>(makeDefaultWedding('', ''));
+    const [wedding, updateWedding] = useImmer<Wedding>(makeDefaultWedding('', ''));
     const [isSaving, setIsSaving] = useState(false);
     const [musics, setMusics] = useState<Music[]>();
     const navigate = useNavigate();

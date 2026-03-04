@@ -8,16 +8,16 @@ import Icon from "~/userinterface/foundation/Icon.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import View from "~/userinterface/core/View.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import type Music from "~/infrastructure/network/value/Music.ts";
 import VoidInput from "~/userinterface/specific/VoidInput.ts";
 import useUpload from "~/hook/useUpload.ts";
 import Loading from "~/userinterface/specific/Loading.tsx";
 import Spacer from "~/userinterface/component/Spacer.tsx";
 import {interactionEffectStyles} from "~/userinterface/css.util.ts";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
-export interface BackgroundMusicProps extends Binding<WeddingDto> {
+export interface BackgroundMusicProps extends Binding<Wedding> {
     backgroundMusics?: Music[];
 }
 

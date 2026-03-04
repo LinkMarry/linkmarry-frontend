@@ -4,7 +4,6 @@ import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
 import FormToggle from "~/userinterface/component/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import {
     GuestCommentDesignList,
     guestCommentDesignMap
@@ -12,13 +11,14 @@ import {
 import View from "~/userinterface/core/View.tsx";
 import {css} from "@linaria/core";
 import Textarea from "~/userinterface/component/Textarea.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorGuestComment = (
     {
         value: {guestComment},
         update
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     return (
         <EditorInspectorWrapper type={'guestComment'}>

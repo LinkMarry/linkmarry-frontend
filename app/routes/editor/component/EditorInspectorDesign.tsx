@@ -7,7 +7,6 @@ import Icon from "~/userinterface/foundation/Icon.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import {type OpeningText, openingTextList} from "~/infrastructure/network/value/WeddingDesign.ts";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
 import {openingList, openingMap} from "~/infrastructure/network/enumeration/Opening.ts";
 import Select from "~/userinterface/component/Select.tsx";
@@ -15,9 +14,10 @@ import {groupedByCategory} from "~/infrastructure/network/value/GroupedWeddingDe
 import Loading from "~/userinterface/specific/Loading.tsx";
 import View from "~/userinterface/core/View.tsx";
 import {css, cx} from "@linaria/core";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
-export interface WeddingDesignProps extends Binding<WeddingDto> {
+export interface WeddingDesignProps extends Binding<Wedding> {
     weddingDesigns?: WeddingDesignPreset[];
 }
 

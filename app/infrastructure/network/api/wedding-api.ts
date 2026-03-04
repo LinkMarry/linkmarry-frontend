@@ -33,7 +33,7 @@ async function getMyWedding(): Promise<ResponseData<WeddingDashboard>> {
 /**
  * 청첩장 URL 로 불러오기  (수정을 위한)
  */
-async function getWedding(url: string): Promise<ResponseData<WeddingDto>> {
+async function getWedding(url: string): Promise<ResponseData<Wedding>> {
     const {data} = await api.get(`${PATH}/${url}`);
     return data;
 }

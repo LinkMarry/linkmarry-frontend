@@ -7,15 +7,15 @@ import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import Divider from "~/userinterface/component/Divider.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import View from "~/userinterface/core/View.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorRsvp = (
     {
         value: {rsvp},
         update
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     return (
         <EditorInspectorWrapper type={'rsvp'} toggle={{

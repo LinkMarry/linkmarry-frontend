@@ -5,8 +5,8 @@ import {css} from "@linaria/core";
 import Checkbox from "~/userinterface/component/Checkbox.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import View from "~/userinterface/core/View.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorBride = (
@@ -15,7 +15,7 @@ const EditorInspectorBride = (
             baseInfo
         },
         update
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     return (
         <EditorInspectorWrapper type={'bride'}>

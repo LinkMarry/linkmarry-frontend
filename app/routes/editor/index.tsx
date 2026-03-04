@@ -12,7 +12,6 @@ import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts
 import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
 import {desktopStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
 import EditorPreview from "~/routes/editor/component/EditorPreview.tsx";
-import {toDomain} from "~/infrastructure/network/value/WeddingDto.ts";
 import EditorInspector from "~/routes/editor/component/EditorInspector.tsx";
 import View from "~/userinterface/core/View.tsx";
 
@@ -109,7 +108,7 @@ const Editor = () => {
                             backgroundMusics={musics}
                         />
                     )}
-                    <EditorPreview wedding={toDomain(wedding, true)} ui={desktopStyle}/>
+                    <EditorPreview wedding={wedding} ui={desktopStyle}/>
                 </EditorNavigationBar>
             </View>
         </View>

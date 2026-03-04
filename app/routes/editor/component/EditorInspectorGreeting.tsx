@@ -9,6 +9,7 @@ import type Binding from "~/shared/Binding.ts";
 import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import {GreetingDesignList, greetingDesignMap} from "~/infrastructure/network/enumeration/GreetingDesign.ts";
 import View from "~/userinterface/core/View.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 const greetingSampleList: {
     title: string;
@@ -41,7 +42,7 @@ const greetingSampleList: {
 ];
 
 
-const EditorInspectorGreeting = ({value, update}: Binding<WeddingDto>) => {
+const EditorInspectorGreeting = ({value, update}: Binding<Wedding>) => {
     return (
         <EditorInspectorWrapper type={'greeting'}>
             {value.greeting.greetingDesign === 'TEXT' && (

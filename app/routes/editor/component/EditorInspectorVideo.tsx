@@ -2,17 +2,17 @@ import Text from "~/userinterface/component/Text.tsx";
 import Input from "~/userinterface/component/Input.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import Divider from "~/userinterface/component/Divider.tsx";
 import {css} from "@linaria/core";
 import View from "~/userinterface/core/View.tsx";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorVideo = (
     {
         value: {video},
         update
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     return (
         <EditorInspectorWrapper type={'video'} toggle={{

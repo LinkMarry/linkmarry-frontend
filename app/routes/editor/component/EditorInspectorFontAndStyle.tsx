@@ -2,7 +2,6 @@ import {type ComponentPropsWithoutRef, useState} from 'react';
 import Text from "~/userinterface/component/Text.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
 import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
 import {
     type WeddingDesignColor,
@@ -13,18 +12,18 @@ import {
 } from "~/infrastructure/network/value/WeddingDesign.ts";
 import View from "~/userinterface/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import Spacer from "~/userinterface/component/Spacer.tsx";
 import {type FontFamily, fontFamilyList} from "~/userinterface/foundation/text/TextType.ts";
 import Icon from "~/userinterface/foundation/Icon.tsx";
 import BasePopover from "~/userinterface/component/BasePopover.tsx";
 import {HexColorPicker} from "react-colorful";
+import type Wedding from "~/infrastructure/network/value/Wedding.ts";
 
 
 const EditorInspectorFontAndStyle = (
     {
         value: {weddingDesign},
         update
-    }: Binding<WeddingDto>
+    }: Binding<Wedding>
 ) => {
     const [showColorPicker, setShowColorPicker] = useState(false);
 
