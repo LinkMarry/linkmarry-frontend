@@ -176,6 +176,13 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
 
 function SnowfallEffect() {
     const {deviceSize} = useResponsive();
+    const currentMonth = new Date().getMonth() + 1;
+    const isWinter = [12, 1, 2].includes(currentMonth);
+
+    if (!isWinter) {
+        return null;
+    }
+
     return (
         <Snowfall
             radius={deviceSize === 'desktop' ? [1.5, 3.0] : [0.5, 3.0]}
