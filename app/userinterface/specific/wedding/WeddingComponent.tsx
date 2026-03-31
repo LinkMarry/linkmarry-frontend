@@ -112,7 +112,7 @@ function WeddingComponent(
 
     return (
         <RootStyle ref={rootRef} fontFamily={weddingDesignFont}>
-            {showAutoplayUnlockElement && (
+            {showAutoplayUnlockElement && autoplay && (
                 <div className={'override-font'} ref={autoplayUnlockRef} style={{
                     position: 'fixed',
                     background: 'transparent',
