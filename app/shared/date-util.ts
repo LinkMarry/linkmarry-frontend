@@ -10,13 +10,13 @@ export function getTimeAgo(date: Date): string {
 
     let timeAgo;
     if (yearsAgo >= 1) {
-        timeAgo = `${yearsAgo} year${yearsAgo > 1 ? 's' : ''} ago`;
+        timeAgo = `${yearsAgo}년 전`;
     } else if (monthsAgo >= 1) {
-        timeAgo = `${monthsAgo} month${monthsAgo > 1 ? 's' : ''} ago`;
+        timeAgo = `${monthsAgo}달 전`;
     } else if (weeksAgo >= 1) {
-        timeAgo = `${weeksAgo} week${weeksAgo > 1 ? 's' : ''} ago`;
+        timeAgo = `${weeksAgo}주 전`;
     } else if (daysAgo >= 1) {
-        timeAgo = `${daysAgo} day${daysAgo > 1 ? 's' : ''} ago`;
+        timeAgo = `${daysAgo}일 전`;
     } else {
         timeAgo = format(date, 'h:mm a');
     }

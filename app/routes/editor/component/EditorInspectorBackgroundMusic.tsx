@@ -40,7 +40,7 @@ const EditorInspectorBackgroundMusic = (
         const files = event.target.files;
         if (!files || !files.length || !inputRef.current) return;
 
-        const data = await uploadFile(files[0], url);
+        const data = await uploadFile(files[0], url, 'MUSIC');
 
         update(draft => {
             draft.backgroundMusic.backgroundMusicUrl = data.url;

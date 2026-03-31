@@ -1,15 +1,16 @@
 import fileApi from "~/infrastructure/network/api/file-api";
 import {useCallback} from "react";
 import type Upload from "~/infrastructure/network/value/Upload";
+import type {FileType} from "~/infrastructure/network/enumeration/FileType.ts";
 
 export default function useUpload() {
-    const uploadFile = useCallback(async (file: File, url: string): Promise<Upload> => {
-        const {data} = await fileApi.upload(file, url);
+    const uploadFile = useCallback(async (file: File, url: string, type: FileType): Promise<Upload> => {
+        const {data} = await fileApi.upload(file, url, type);
         return data;
     }, []);
 
-    const uploadFiles = useCallback(async (files: FileList, url: string): Promise<Upload[]> => {
-        const uploadPromises = Array.from(files).map(file => fileApi.upload(file, url));
+    const uploadFiles = useCallback(async (files: FileList, url: string, type: FileType): Promise<Upload[]> => {
+        const uploadPromises = Array.from(files).map(file => fileApi.upload(file, url, type));
         const results = await Promise.allSettled(uploadPromises);
         return results
             .map(result => result.status === 'fulfilled' ? result.value.data : null)

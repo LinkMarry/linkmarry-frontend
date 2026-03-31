@@ -1,6 +1,5 @@
 export const FileTypeList = [
     'IMG',
-    'FILE',
-    'EMOJI',
+    'MUSIC'
 ] as const;
-export type FileTypes = typeof FileTypeList[number];
+export type FileType = typeof FileTypeList[number];

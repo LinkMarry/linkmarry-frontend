@@ -29,7 +29,7 @@ const FileUploadBox = ({id, value, label, weddingUrl, onChange}: Props) => {
 
         setIsFetching(true);
 
-        const data = await uploadFile(files[0], weddingUrl);
+        const data = await uploadFile(files[0], weddingUrl, 'IMG');
         onChange(data);
 
         setIsFetching(false);

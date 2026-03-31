@@ -38,10 +38,10 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
         try {
             if (typeof value === 'string') {
                 if (files.length !== 1) return;
-                const {url} = await uploadFile(files[0], weddingUrl);
+                const {url} = await uploadFile(files[0], weddingUrl, 'IMG');
                 onChange(url as V);
             } else if (Array.isArray(value)) {
-                const uploads = await uploadFiles(files, weddingUrl);
+                const uploads = await uploadFiles(files, weddingUrl, 'IMG');
                 onChange([...value, ...uploads.map(i => i.url)] as V);
             }
         } catch (error) {
