@@ -1,6 +1,5 @@
 const OpeningValues = {
     NONE: 'NONE',
-    LETTERING: 'LETTERING',
     TYPING: 'TYPING',
 } as const;
 
@@ -11,9 +10,6 @@ export const openingMap: Record<Opening, {
 }> = {
     [OpeningValues.NONE]: {
         korean: '선택안함'
-    },
-    [OpeningValues.LETTERING]: {
-        korean: '레터링'
     },
     [OpeningValues.TYPING]: {
         korean: '타이핑'

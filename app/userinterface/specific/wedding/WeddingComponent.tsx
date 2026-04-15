@@ -25,6 +25,7 @@ import RsvpDialog from "~/userinterface/specific/wedding/dialog/rsvp/RsvpDialog.
 import { styled } from "@linaria/react";
 import type { FontFamily } from "~/userinterface/foundation/text/TextType.ts";
 import type { WeddingMode } from "~/userinterface/specific/wedding/WeddingMode.ts";
+import OpeningView from "~/userinterface/specific/wedding/component/openingview/OpeningView.tsx";
 
 
 interface WeddingComponentProps {
@@ -172,6 +173,7 @@ function WeddingComponent(
             {wedding.waterMark && mode === 'default' && (
                 <WaterMarkSheet url={wedding.url} />
             )}
+            <OpeningView key={wedding.weddingDesign.openingText} weddingDesign={wedding.weddingDesign} />
         </RootStyle>
     );
 }
@@ -184,6 +186,7 @@ const RootStyle = styled.div<{
     max-width: 436px;
     align-items: stretch;
     background: white;
+    position: relative;
 
     *:not(.override-font):not(.override-font *) {
         font-family: ${props => props.fontFamily || 'inherit'};

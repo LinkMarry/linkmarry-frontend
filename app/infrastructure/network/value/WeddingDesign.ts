@@ -107,6 +107,6 @@ export const dummyWeddingDesign: WeddingDesign = {
     weddingDesignFont: 'Pretendard',
     weddingDesignFontSize: 'basic',
     titleImgUrl: 'https://axoeono6ygrw.objectstorage.ap-chuncheon-1.oci.customer-oci.com/n/axoeono6ygrw/b/linkmarry/o/samplesample_3.png',
-    opening: 'LETTERING',
+    opening: 'TYPING',
     openingText: "We're getting married!"
 };
