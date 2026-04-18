@@ -9,6 +9,7 @@ import {format} from "date-fns";
 import View from "~/userinterface/core/View.tsx";
 import FadeIn from "~/userinterface/specific/fadein/FadeIn";
 import {ko} from "date-fns/locale";
+import {getCalendar} from "~/shared/date-util";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -171,54 +172,6 @@ function WeddingDayTemplate(
                 />
             )}
         </View>
-    );
-}
-
-function getCalendar(date: Date) {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-
-    // 첫 번째 날과 마지막 날 구하기
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const firstDayOfWeek = firstDay.getDay();
-    const lastDate = lastDay.getDate();
-
-    const calendar = [];
-    let week = [];
-
-    // 첫 번째 주의 빈 칸 채우기
-    for (let i = 0; i < firstDayOfWeek; i++) {
-        week.push(null);
-    }
-
-    // 날짜 추가
-    for (let date = 1; date <= lastDate; date++) {
-        week.push(date);
-
-        // 주가 끝나면 새로운 주를 시작
-        if (week.length === 7) {
-            calendar.push(week);
-            week = [];
-        }
-    }
-
-    // 마지막 주의 빈 칸 채우기
-    while (week.length < 7) {
-        week.push(null);
-    }
-
-    if (week.length > 0) {
-        calendar.push(week);
-    }
-
-    return calendar.map(week =>
-        week.map(day => ({
-            day,
-            isWeddingDay: day === date.getDate()
-            // date.getMonth() === date.getMonth() &&
-            // date.getFullYear() === date.getFullYear()
-        }))
     );
 }
 

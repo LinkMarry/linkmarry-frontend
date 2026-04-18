@@ -98,8 +98,10 @@ function WeddingComponent(
         return () => {
             window.removeEventListener('click', unlock);
             window.removeEventListener('keydown', unlock);
-            autoplayUnlockElement.removeEventListener('touchstart', unlock);
-            autoplayUnlockElement.removeEventListener('touchend', unlock);
+            if (autoplayUnlockElement) {
+                autoplayUnlockElement.removeEventListener('touchstart', unlock);
+                autoplayUnlockElement.removeEventListener('touchend', unlock);
+            }
         };
     }, [autoplay]);
 
@@ -239,68 +241,96 @@ const ContentBody = (
                 mode={mode}
             />
             {wedding.position.map(index => {
-                const view: Record<Position, ReactNode> = {
-                    0: <InvitationLetterTemplate
-                        key={index}
-                        baseInfo={wedding.baseInfo}
-                        greeting={wedding.greeting}
-                        mode={mode}
-                    />,
-                    1: <WeddingDayTemplate
-                        key={index}
-                        baseInfo={wedding.baseInfo}
-                        weddingSchedule={wedding.weddingSchedule}
-                    />,
-                    2: <MoneyInfoTemplate
-                        key={index}
-                        baseInfo={wedding.baseInfo}
-                        moneyInfo={wedding.moneyInfo}
-                        mode={mode}
-                    />,
-                    3: <GalleryTemplate
-                        key={index}
-                        rootRef={rootRef}
-                        gallery={wedding.gallery}
-                        mode={mode}
-                    />,
-                    4: <LocationTemplate
-                        key={index}
-                        weddingDesignColor={weddingDesignColor}
-                        weddingPlace={wedding.weddingPlace}
-                        mode={mode}
-                    />,
-                    5: <VideoTemplate
-                        key={index}
-                        video={wedding.video}
-                        rootRef={rootRef}
-                        mode={mode}
-                    />,
-                    6: <CongratulationsTemplate
-                        key={index}
-                        baseInfo={wedding.baseInfo}
-                        phone={wedding.phone}
-                        weddingDesignColor={weddingDesignColor}
-                        mode={mode}
-                    />,
-                    7: <GuestCommentsTemplate
-                        key={index}
-                        weddingDesignColor={weddingDesignColor}
-                        url={wedding.url}
-                        guestComments={localComments}
-                        guestComment={wedding.guestComment}
-                        mode={mode}
-                        onRefresh={handleRefresh}
-                    />,
-                    8: <RsvpTemplate
-                        key={index}
-                        rsvp={wedding.rsvp}
-                        weddingDesignColor={weddingDesignColor}
-                        baseInfo={wedding.baseInfo}
-                        weddingSchedule={wedding.weddingSchedule}
-                        onClickCreateRsvp={onClickCreateRsvp}
-                    />
-                };
-                return view[index as Position];
+                switch (index as Position) {
+                    case 0:
+                        return (
+                            <InvitationLetterTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                greeting={wedding.greeting}
+                                mode={mode}
+                            />
+                        );
+                    case 1:
+                        return (
+                            <WeddingDayTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                weddingSchedule={wedding.weddingSchedule}
+                            />
+                        );
+                    case 2:
+                        return (
+                            <MoneyInfoTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                moneyInfo={wedding.moneyInfo}
+                                mode={mode}
+                            />
+                        );
+                    case 3:
+                        return (
+                            <GalleryTemplate
+                                key={index}
+                                rootRef={rootRef}
+                                gallery={wedding.gallery}
+                                mode={mode}
+                            />
+                        );
+                    case 4:
+                        return (
+                            <LocationTemplate
+                                key={index}
+                                weddingDesignColor={weddingDesignColor}
+                                weddingPlace={wedding.weddingPlace}
+                                mode={mode}
+                            />
+                        );
+                    case 5:
+                        return (
+                            <VideoTemplate
+                                key={index}
+                                video={wedding.video}
+                                rootRef={rootRef}
+                                mode={mode}
+                            />
+                        );
+                    case 6:
+                        return (
+                            <CongratulationsTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                phone={wedding.phone}
+                                weddingDesignColor={weddingDesignColor}
+                                mode={mode}
+                            />
+                        );
+                    case 7:
+                        return (
+                            <GuestCommentsTemplate
+                                key={index}
+                                weddingDesignColor={weddingDesignColor}
+                                url={wedding.url}
+                                guestComments={localComments}
+                                guestComment={wedding.guestComment}
+                                mode={mode}
+                                onRefresh={handleRefresh}
+                            />
+                        );
+                    case 8:
+                        return (
+                            <RsvpTemplate
+                                key={index}
+                                rsvp={wedding.rsvp}
+                                weddingDesignColor={weddingDesignColor}
+                                baseInfo={wedding.baseInfo}
+                                weddingSchedule={wedding.weddingSchedule}
+                                onClickCreateRsvp={onClickCreateRsvp}
+                            />
+                        );
+                    default:
+                        return null;
+                }
             })}
             <FooterTemplate
                 url={wedding.url}
