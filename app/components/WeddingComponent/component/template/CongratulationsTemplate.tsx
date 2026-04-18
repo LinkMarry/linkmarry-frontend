@@ -5,7 +5,8 @@ import Button from "~/components/core/Button.tsx";
 import {css} from "@linaria/core";
 import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 import type BaseInfo from "~/api/value/BaseInfo.ts";
-import ContactingCongratulationDialog from "~/components/WeddingComponent/component/dialog/ContactingCongratulationDialog.tsx";
+import ContactingCongratulationDialog
+    from "~/components/WeddingComponent/component/dialog/ContactingCongratulationDialog.tsx";
 import type Phone from "~/api/value/Phone.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
@@ -80,10 +81,10 @@ function CongratulationsTemplate(
                                 gap: 8px;
                                 align-items: center;
                             `}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
+                                <Text weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{first.korean}&nbsp;</Text>
-                                <Text font={'GangwonEduAll'} weight={100} size={24}>
+                                <Text weight={100} size={24}>
                                     {first.name}
                                 </Text>
                             </View>
@@ -127,10 +128,10 @@ function CongratulationsTemplate(
                                 gap: 8px;
                                 align-items: center;
                             `}>
-                                <Text font={'GangwonEduAll'} weight={100} size={24} ui={css`
+                                <Text weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{second.korean}&nbsp;</Text>
-                                <Text font={'GangwonEduAll'} weight={100} size={24}>
+                                <Text weight={100} size={24}>
                                     {second.name}
                                 </Text>
                             </View>
