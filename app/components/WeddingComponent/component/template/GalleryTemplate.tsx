@@ -140,7 +140,13 @@ const GallerySlide = (
         });
     }, [gallery.galleryDesign, getGridImgWidth]);
 
-    const rootWidth = rootRef.current?.getBoundingClientRect().width;
+    const [rootWidth, setRootWidth] = useState<number | undefined>(undefined);
+
+    useEffect(() => {
+        if (rootRef.current) {
+            setRootWidth(rootRef.current.getBoundingClientRect().width);
+        }
+    }, [rootRef]);
 
     return (
         <View ui={css`

@@ -625,7 +625,7 @@ const section4Data = [
         isHot: false
     },
     {
-        src: '/home/section4-dream-WeddingComponent.png',
+        src: '/home/section4-dream-wedding.png',
         title: 'Dream Wedding',
         category: 'Romantic',
         isHot: false

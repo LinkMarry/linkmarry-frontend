@@ -21,6 +21,13 @@ interface Props {
 const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
     const [initialCurrentImageIndex] = useState(currentImageIndex);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const [rootWidth, setRootWidth] = useState<number | undefined>(undefined);
+
+    useEffect(() => {
+        if (rootRef.current) {
+            setRootWidth(rootRef.current.getBoundingClientRect().width);
+        }
+    }, [rootRef]);
 
     const getGridImgWidth = useCallback((): number => {
         return rootRef.current?.getBoundingClientRect().width ?? 0;
@@ -68,8 +75,8 @@ const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageInd
                 `,
                 baseDialogContentStyle
             )} style={{
-                minWidth: rootRef.current?.getBoundingClientRect().width,
-                maxWidth: rootRef.current?.getBoundingClientRect().width
+                minWidth: rootWidth,
+                maxWidth: rootWidth
             }}>
                 <View ui={css`
                     flex-direction: row !important;
@@ -98,7 +105,7 @@ const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageInd
                         <Slide
                             key={index}
                             src={img}
-                            rootWidth={rootRef.current?.getBoundingClientRect().width ?? 0}
+                            rootWidth={rootWidth ?? 0}
                         />
                     ))}
                 </View>

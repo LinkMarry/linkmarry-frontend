@@ -82,7 +82,7 @@ const CreateWeddingDialog = ({value, update}: Binding<Wedding>) => {
                                 value={`wedding/${value.url}`}
                                 onChange={event => {
                                     const value = event.target.value;
-                                    if (value.startsWith('WeddingComponent/')) {
+                                    if (value.startsWith('wedding/')) {
                                         update(draft => {
                                             draft.url = value.slice(8);
                                         });

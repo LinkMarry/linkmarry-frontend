@@ -13,7 +13,7 @@ export const defaultGallery: Gallery = {
     galleryDesign: 'SLIDE',
     galleryZoom: true,
     galleryFullScreen: true,
-    imgList: []
+    imgList: [],
 };
 
 export const dummyGallery: Gallery = {

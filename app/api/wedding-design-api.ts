@@ -4,7 +4,7 @@ import index from "~/api/index.ts";
 import type PatchWeddingDesignRequest from "~/api/value/request/admin/PatchWeddingDesignRequest.ts";
 import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
-const PATH = 'WeddingComponent-design-preset';
+const PATH = 'wedding-design-preset';
 
 async function createWeddingDesign(request: CreateWeddingDesignRequest): Promise<ResponseVoid> {
     const {data} = await index.post(`${PATH}`, request);
