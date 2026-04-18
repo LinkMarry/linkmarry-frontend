@@ -87,18 +87,23 @@ const CreateWeddingDialog = ({ value, update }: Binding<Wedding>) => {
                                 value={value.url}
                                 onChange={event => update(draft => {
                                     const rawValue = event.target.value;
-                                    if (/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\-_]/.test(rawValue)) {
-                                        setUrlFormatError('띄어쓰기, 특수기호, 이모지는 입력할 수 없어요.');
+                                    // 공백을 미리 하이픈(-)으로 치환합니다.
+                                    const spaceHandledValue = rawValue.replace(/\s+/g, '-');
+                                    
+                                    // 공백이 하이픈으로 바뀐 후, 여전히 유효하지 않은 특수기호나 이모지가 있는지 검사합니다.
+                                    if (/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\-_]/.test(spaceHandledValue)) {
+                                        setUrlFormatError('특수기호, 이모지는 입력할 수 없어요.');
                                     } else {
                                         setUrlFormatError('');
                                     }
-                                    draft.url = rawValue
-                                        // 영문, 숫자, 한글, 붙임표(-, _)만 허용 (공백표, 이모지, 특수문자 등 모든 불안정한 문자 제거)
-                                        .replace(/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\-_]/g, '') 
+                                    
+                                    draft.url = spaceHandledValue
+                                        // 영문, 숫자, 한글, 붙임표(-, _)만 허용
+                                        .replace(/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\-_]/g, '')
                                         .toLowerCase();
                                     setIsError(false);
                                 })}
-                                placeholder={'영문입력'}
+                                placeholder={'나만의 특별한 도메인'}
                             />
                             {urlFormatError && (
                                 <Text type={'p3'} ui={css`
