@@ -17,6 +17,8 @@ const Input = forwardRef(({ placeholder, hasLabel = true, prefix, ui, ...props }
                 display: flex;
                 position: relative;
                 flex-direction: row !important;
+                width: 100%;
+                min-width: 0;
             `,
             ui
         )}>
@@ -29,6 +31,7 @@ const Input = forwardRef(({ placeholder, hasLabel = true, prefix, ui, ...props }
                 border: none;
                 flex: 1;
                 width: 100%;
+                min-width: 0;
                 outline: 1px solid var(--g-300);
                 border-radius: 8px;
                 padding: 0 16px;
