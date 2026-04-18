@@ -47,7 +47,7 @@ function InvitationLetterTemplate(
                 )}
                 {greeting.greetingDesign === 'TEXT' && (
                     <FadeIn>
-                        <Text weight={300} size={12} ui={css`
+                        <Text weight={300} size={20} ui={css`
                             color: var(--g-600);
                             word-break: break-all;
                             text-align: center;
@@ -73,16 +73,15 @@ function InvitationLetterTemplate(
                     <Divider style={{width: 140}}/>
                 </FadeIn>
                 <FadeIn delay={600}>
-                    <Text weight={300} size={14} ui={css`
+                    <Text weight={300} size={18} ui={css`
+                        display: flex;
                         color: var(--g-600);
+                        line-height: 130%;
+                        flex-direction: row !important;
+                        align-items: center;
+                        gap: 8px;
                     `}>
-                        <View ui={css`
-                            flex-direction: row !important;
-                            align-items: center;
-                            gap: 8px;
-                        `}>
-                            <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
-                        </View>
+                        <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
                     </Text>
                 </FadeIn>
             </View>
@@ -92,8 +91,9 @@ function InvitationLetterTemplate(
 
 function GreetingContent(props: { text: string }) {
     return (
-        <Text size={14} weight={300} ui={css`
+        <Text size={18} weight={300} ui={css`
             color: var(--g-600);
+            line-height: 130%;
             overflow: hidden;
             word-break: break-all;
             white-space: pre-wrap;
