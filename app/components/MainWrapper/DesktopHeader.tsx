@@ -53,9 +53,9 @@ export default function DesktopHeader() {
                         <DesktopHeaderItem text={'청첩장 만들기'} onClick={() => {
                             navigate('/editor');
                         }} />
-                        <DesktopHeaderItem text={'웨딩 포스터'} onClick={() => {
-                            navigate('/poster');
-                        }} />
+                        {/*<DesktopHeaderItem text={'웨딩 포스터'} onClick={() => {*/}
+                        {/*    navigate('/poster');*/}
+                        {/*}} />*/}
                         <DesktopHeaderItem text={'공지사항'} onClick={() => {
                             navigate('/notification');
                         }} />
