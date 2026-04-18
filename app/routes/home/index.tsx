@@ -1,15 +1,15 @@
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
+import MainWrapper from "~/components/MainWrapper";
 import {css, cx} from "@linaria/core";
-import Text from "~/userinterface/component/Text.tsx";
-import View from "~/userinterface/core/View.tsx";
-import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
-import Button from "~/userinterface/component/Button.tsx";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
+import Text from "~/components/core/Text.tsx";
+import View from "~/components/core/View.tsx";
+import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/components/responsive.tsx";
+import Button from "~/components/core/Button.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Icon from "~/components/core/icon";
 import {useNavigate} from "react-router";
 import {type ComponentPropsWithoutRef, useState} from "react";
-import {NAVER_STORE_URL} from "~/shared/constant.ts";
-import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
+import {NAVER_STORE_URL} from "~/lib/constant.ts";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
 import {Snowfall} from "react-snowfall";
 import ClientRendering from "~/ClientRendering.tsx";
 import useResponsive from "~/hook/useResponsive.ts";
@@ -625,7 +625,7 @@ const section4Data = [
         isHot: false
     },
     {
-        src: '/home/section4-dream-wedding.png',
+        src: '/home/section4-dream-WeddingComponent.png',
         title: 'Dream Wedding',
         category: 'Romantic',
         isHot: false

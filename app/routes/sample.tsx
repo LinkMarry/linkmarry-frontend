@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
 import {css} from "@linaria/core";
-import {dummyWedding} from "~/infrastructure/network/value/Wedding.ts";
-import WeddingComponent from "~/userinterface/specific/wedding/WeddingComponent.tsx";
-import View from "~/userinterface/core/View.tsx";
-import Text from "~/userinterface/component/Text.tsx";
-import SelectDesignSheet from "~/userinterface/specific/wedding/component/selectdesignsheet/SelectDesignSheet.tsx";
+import {dummyWedding} from "~/api/value/Wedding.ts";
+import WeddingComponent from "~/components/WeddingComponent";
+import View from "~/components/core/View.tsx";
+import Text from "~/components/core/Text.tsx";
+import SelectDesignSheet from "~/components/WeddingComponent/component/SelectDesignSheet.tsx";
 import {useSearchParams} from "react-router";
-import {responsive} from "~/hook/ResponsiveSwitch.tsx";
+import {responsive} from "~/components/responsive.tsx";
 import ClientRendering from "~/ClientRendering.tsx";
-import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
+import weddingDesignApi from "~/api/wedding-design-api.ts";
 import type {Route} from "./+types/sample";
 
 

@@ -1,13 +1,13 @@
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
-import FormToggle from "~/userinterface/component/FormToggle.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
+import FormToggleSet from "~/components/core/FormToggleSet.tsx";
+import FormToggle from "~/components/core/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
+import type Binding from "~/lib/Binding.ts";
 import {formatDate} from "date-fns";
-import View from "~/userinterface/core/View.tsx";
+import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorWeddingSchedule = (

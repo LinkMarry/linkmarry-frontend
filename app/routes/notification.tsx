@@ -1,15 +1,15 @@
 import React, {type ComponentPropsWithoutRef, useMemo, useState} from 'react';
 import type {Route} from './+types/notification'
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
+import MainWrapper from "~/components/MainWrapper";
 import {css, cx} from "@linaria/core";
-import {responsive} from "~/hook/ResponsiveSwitch.tsx";
-import View from "~/userinterface/core/View.tsx";
-import Text from "~/userinterface/component/Text.tsx";
-import notificationApi from "~/infrastructure/network/api/notification-api.ts";
-import type Notification from "~/infrastructure/network/value/Notification.ts";
-import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/infrastructure/network/enumeration/Tag.ts";
+import {responsive} from "~/components/responsive.tsx";
+import View from "~/components/core/View.tsx";
+import Text from "~/components/core/Text.tsx";
+import notificationApi from "~/api/notification-api.ts";
+import type Notification from "~/api/value/Notification.ts";
+import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/api/enumeration/Tag.ts";
 import {compareDesc, format} from "date-fns";
-import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
 import {useNavigate} from "react-router";
 
 

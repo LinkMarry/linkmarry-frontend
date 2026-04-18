@@ -1,8 +1,8 @@
 import React, {type ComponentPropsWithoutRef} from "react";
-import Icon, {type IconType} from "~/userinterface/foundation/Icon.tsx";
-import View from "~/userinterface/core/View.tsx";
+import Icon, {type IconType} from "~/components/core/icon";
+import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import Text from "~/userinterface/component/Text.tsx";
+import Text from "~/components/core/Text.tsx";
 
 
 interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<'div'> {

@@ -1,11 +1,11 @@
 import {useState} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
+import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Dialog from "~/components/core/dialog/Dialog.tsx";
 import {useAuth} from "~/hook/useAuth.tsx";
-import Loading from "~/userinterface/specific/Loading.tsx";
-import View from "~/userinterface/core/View.tsx";
+import Loading from "~/components/core/Loading.tsx";
+import View from "~/components/core/View.tsx";
 
 function MyPageInfo() {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);

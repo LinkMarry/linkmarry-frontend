@@ -1,14 +1,14 @@
 import {useState} from 'react';
-import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
-import Input from "~/userinterface/component/Input.tsx";
+import Dialog from "~/components/core/dialog/Dialog.tsx";
+import Input from "~/components/core/Input.tsx";
 import {useNavigate, useParams} from "react-router";
-import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
-import Text from "~/userinterface/component/Text.tsx";
+import weddingApi from "~/api/wedding-api.ts";
+import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
-import type Binding from "~/shared/Binding.ts";
-import Icon from "~/userinterface/foundation/Icon.tsx";
-import View from "~/userinterface/core/View.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Binding from "~/lib/Binding.ts";
+import Icon from "~/components/core/icon";
+import View from "~/components/core/View.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const CreateWeddingDialog = ({value, update}: Binding<Wedding>) => {
@@ -82,7 +82,7 @@ const CreateWeddingDialog = ({value, update}: Binding<Wedding>) => {
                                 value={`wedding/${value.url}`}
                                 onChange={event => {
                                     const value = event.target.value;
-                                    if (value.startsWith('wedding/')) {
+                                    if (value.startsWith('WeddingComponent/')) {
                                         update(draft => {
                                             draft.url = value.slice(8);
                                         });

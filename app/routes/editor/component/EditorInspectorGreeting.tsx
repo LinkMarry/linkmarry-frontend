@@ -1,15 +1,15 @@
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import Textarea from "~/userinterface/component/Textarea.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
+import Textarea from "~/components/core/Textarea.tsx";
 import {css} from "@linaria/core";
-import Select from "~/userinterface/component/Select.tsx";
-import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
+import Select from "~/components/core/Select.tsx";
+import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import {type WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
-import {GreetingDesignList, greetingDesignMap} from "~/infrastructure/network/enumeration/GreetingDesign.ts";
-import View from "~/userinterface/core/View.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Binding from "~/lib/Binding.ts";
+import {type WeddingDto} from "~/api/value/WeddingDto.ts";
+import {GreetingDesignList, greetingDesignMap} from "~/api/enumeration/GreetingDesign.ts";
+import View from "~/components/core/View.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 const greetingSampleList: {
     title: string;

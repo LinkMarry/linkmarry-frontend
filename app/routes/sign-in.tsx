@@ -1,9 +1,9 @@
 import {css} from "@linaria/core";
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
-import Text from "~/userinterface/component/Text.tsx";
+import MainWrapper from "~/components/MainWrapper";
+import Text from "~/components/core/Text.tsx";
 import {useAuth} from "~/hook/useAuth.tsx";
-import View from "~/userinterface/core/View.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
+import View from "~/components/core/View.tsx";
+import Icon from "~/components/core/icon";
 
 function SignIn() {
     const {signInWithKakao} = useAuth();

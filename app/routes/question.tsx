@@ -1,11 +1,11 @@
 // import React from 'react';
-// import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
+// import MainWrapper from "~/components/pattern/header/index.tsx";
 // import {css} from "@linaria/core";
-// import {responsive} from "~/hook/ResponsiveSwitch.tsx";
-// import Text from "~/userinterface/components/Text.tsx";
-// import View from "~/userinterface/core/View.tsx";
+// import {responsive} from "~/hook/responsive.tsx";
+// import Text from "~/components/components/Text.tsx";
+// import View from "~/components/core/View.tsx";
 // import type {Route} from "./+types/question";
-// import Icon from "~/userinterface/foundation/Icon.tsx";
+// import Icon from "~/components/foundation/index.tsx";
 //
 // export async function loader() {
 //     return {};

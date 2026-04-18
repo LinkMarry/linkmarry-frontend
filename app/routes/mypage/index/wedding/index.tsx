@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react';
 import { css, cx } from "@linaria/core";
-import Text from "~/userinterface/component/Text.tsx";
-import View from "~/userinterface/core/View.tsx";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Button from "~/userinterface/component/Button.tsx";
-import Icon, { type IconType } from "~/userinterface/foundation/Icon.tsx";
-import { hideScrollBarStyle, interactionEffectStyles } from "~/userinterface/css.util.ts";
-import Spacer from "~/userinterface/component/Spacer.tsx";
-import Popover from "~/userinterface/pattern/Popover.tsx";
-import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
-import Loading from "~/userinterface/specific/Loading.tsx";
-import type WeddingInfo from "~/infrastructure/network/value/WeddingInfo.ts";
-import type WeddingStatistics from "~/infrastructure/network/value/WeddingStatistics.ts";
-import type Comment from "~/infrastructure/network/value/Comment.ts";
-import { getTimeAgo } from "~/shared/date-util.ts";
+import Text from "~/components/core/Text.tsx";
+import View from "~/components/core/View.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Button from "~/components/core/Button.tsx";
+import Icon, { type IconType } from "~/components/core/icon";
+import { hideScrollBarStyle, interactionEffectStyles } from "~/components/css.util.ts";
+import Spacer from "~/components/core/Spacer.tsx";
+import Popover from "~/components/core/Popover.tsx";
+import weddingApi from "~/api/wedding-api.ts";
+import Loading from "~/components/core/Loading.tsx";
+import type WeddingInfo from "~/api/value/WeddingInfo.ts";
+import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
+import type Comment from "~/api/value/Comment.ts";
+import { getTimeAgo } from "~/lib/date-util.ts";
 import { useNavigate } from "react-router";
-import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
-import RemoveWatermarkDialog from "~/userinterface/specific/dialog/RemoveWatermarkDialog.tsx";
-import { getWeddingUrl } from "~/shared/string-util.ts";
+import Dialog from "~/components/core/dialog/Dialog.tsx";
+import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
+import { getWeddingUrl } from "~/lib/string-util.ts";
 import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts";
-import { desktopStyle, notDesktopStyle, responsive } from "~/hook/ResponsiveSwitch.tsx";
+import { desktopStyle, notDesktopStyle, responsive } from "~/components/responsive.tsx";
 
 function MyPageWedding() {
     const {

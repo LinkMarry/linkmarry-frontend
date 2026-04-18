@@ -1,8 +1,8 @@
 import React from 'react';
 import type {Route} from './+types/notification-detail';
-import notificationApi from "~/infrastructure/network/api/notification-api.ts";
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
-import NotificationDetailComp from "~/userinterface/NotificationDetailComp.tsx";
+import notificationApi from "~/api/notification-api.ts";
+import MainWrapper from "~/components/MainWrapper";
+import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
 
 
 export async function loader({params}: Route.LoaderArgs) {
@@ -18,7 +18,7 @@ function NotificationDetail(
 ) {
     return (
         <MainWrapper>
-            <NotificationDetailComp notification={loaderData}/>
+            <NotificationDetailContent notification={loaderData}/>
         </MainWrapper>
     );
 }

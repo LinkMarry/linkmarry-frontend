@@ -5,7 +5,7 @@ const routes = [
         index("routes/home/index.tsx"),
         route("sign-in", "routes/sign-in.tsx"),
         route("login/oauth2/code/kakao", "routes/kakao-redirect.tsx"),
-        route("wedding/:url", "routes/wedding.tsx"),
+        route("WeddingComponent/:url", "routes/wedding.tsx"),
         route("sample", "routes/sample.tsx"),
         route("link", "routes/link.tsx"),
         ...prefix("notification", [
@@ -21,7 +21,7 @@ const routes = [
                     route("info", "routes/mypage/index/info/index.tsx"),
                 ]),
                 layout("routes/mypage/detail/layout.tsx", [
-                    route("wedding/:url", "routes/mypage/detail/stat/index.tsx")
+                    route("WeddingComponent/:url", "routes/mypage/detail/stat/index.tsx")
                 ])
             ])),
             route("editor/:url?", "routes/editor/index.tsx"),

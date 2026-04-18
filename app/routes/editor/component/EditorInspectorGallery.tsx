@@ -1,15 +1,15 @@
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import PhotoUploadBox from "~/userinterface/specific/PhotoUploadBox.tsx";
-import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
-import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
-import FormToggle from "~/userinterface/component/FormToggle.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
+import PhotoUploadBox from "~/components/PhotoUploadBox.tsx";
+import SegmentedButton from "~/components/core/SegmentedButton.tsx";
+import FormToggleSet from "~/components/core/FormToggleSet.tsx";
+import FormToggle from "~/components/core/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import {GalleryDesignList, galleryDesignMap} from "~/infrastructure/network/enumeration/GalleryDesign.ts";
-import View from "~/userinterface/core/View.tsx";
+import type Binding from "~/lib/Binding.ts";
+import {GalleryDesignList, galleryDesignMap} from "~/api/enumeration/GalleryDesign.ts";
+import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorGallery = (

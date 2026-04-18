@@ -1,19 +1,19 @@
 import {useState} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import FormToggleSet from "~/userinterface/component/FormToggleSet.tsx";
-import FormToggle from "~/userinterface/component/FormToggle.tsx";
+import Text from "~/components/core/Text.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Input from "~/components/core/Input.tsx";
+import FormToggleSet from "~/components/core/FormToggleSet.tsx";
+import FormToggle from "~/components/core/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import {getPlaceholder} from "~/infrastructure/network/value/WeddingPlace.ts";
-import Button from "~/userinterface/component/Button.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
+import type Binding from "~/lib/Binding.ts";
+import {getPlaceholder} from "~/api/value/WeddingPlace.ts";
+import Button from "~/components/core/Button.tsx";
+import Icon from "~/components/core/icon";
 import {css} from "@linaria/core";
-import View from "~/userinterface/core/View.tsx";
-import KakaoMapDialog from "~/userinterface/specific/dialog/KakaoMapDialog.tsx";
-import {formatPhone} from "~/shared/format-util.ts";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import View from "~/components/core/View.tsx";
+import KakaoMapDialog from "~/components/KakaoMapDialog.tsx";
+import {formatPhone} from "~/lib/format-util.ts";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorWeddingPlace = (

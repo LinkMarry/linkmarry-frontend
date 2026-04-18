@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
-import Text from "~/userinterface/component/Text.tsx";
+import weddingDesignApi from "~/api/wedding-design-api.ts";
+import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
-import View from "~/userinterface/core/View.tsx";
-import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
+import View from "~/components/core/View.tsx";
+import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
 // todo: refactor
 const ManageWeddingDesign = () => {

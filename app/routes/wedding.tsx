@@ -1,8 +1,8 @@
-import WeddingComponent from "~/userinterface/specific/wedding/WeddingComponent.tsx";
-import Text from "~/userinterface/component/Text.tsx";
+import WeddingComponent from "~/components/WeddingComponent";
+import Text from "~/components/core/Text.tsx";
 import { css } from "@linaria/core";
-import View from "~/userinterface/core/View.tsx";
-import { responsive } from "~/hook/ResponsiveSwitch.tsx";
+import View from "~/components/core/View.tsx";
+import { responsive } from "~/components/responsive.tsx";
 import useWedding from "~/hook/useWedding.ts";
 import { Navigate, useParams, useSearchParams } from "react-router";
 import ClientRendering from "~/ClientRendering.tsx";

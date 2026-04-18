@@ -1,16 +1,16 @@
-import Text from "~/userinterface/component/Text.tsx";
+import Text from "~/components/core/Text.tsx";
 import {css, cx} from "@linaria/core";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Spacer from "~/userinterface/component/Spacer.tsx";
-import Button from "~/userinterface/component/Button.tsx";
-import {mobileStyle, notMobileStyle} from "~/hook/ResponsiveSwitch.tsx";
-import type WeddingStatistics from "~/infrastructure/network/value/WeddingStatistics.ts";
-import Loading from "~/userinterface/specific/Loading.tsx";
-import View from "~/userinterface/core/View.tsx";
-import {getRsvpText} from "~/infrastructure/network/value/RsvpInfo.ts";
-import {downloadExcelFromRsvpInfo} from "~/shared/excel-util.ts";
+import Divider from "~/components/core/Divider.tsx";
+import Spacer from "~/components/core/Spacer.tsx";
+import Button from "~/components/core/Button.tsx";
+import {mobileStyle, notMobileStyle} from "~/components/responsive.tsx";
+import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
+import Loading from "~/components/core/Loading.tsx";
+import View from "~/components/core/View.tsx";
+import {getRsvpText} from "~/api/value/RsvpInfo.ts";
+import {downloadExcelFromRsvpInfo} from "~/lib/excel-util.ts";
 import useMyPageStat from "~/routes/mypage/detail/stat/useMyPageStat.ts";
-import {textStyles} from "~/userinterface/foundation/text/TextType.ts";
+import {textStyles} from "~/components/core/text/TextType.ts";
 
 const CellStyle = cx(
     css`

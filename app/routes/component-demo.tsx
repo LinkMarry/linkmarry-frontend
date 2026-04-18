@@ -1,16 +1,18 @@
 import {useState} from 'react';
-import Button, {type ButtonSize, type ButtonType} from "~/userinterface/component/Button.tsx";
-import Divider, {type DividerSize} from "~/userinterface/component/Divider.tsx";
-import Checkbox from "~/userinterface/component/Checkbox.tsx";
-import Toggle from "~/userinterface/component/Toggle.tsx";
+import Button, {type ButtonSize, type ButtonType} from "~/components/core/Button.tsx";
+import Divider, {type DividerSize} from "~/components/core/Divider.tsx";
+import Checkbox from "~/components/core/Checkbox.tsx";
+import Toggle from "~/components/core/Toggle.tsx";
 import {css} from "@linaria/core";
-import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
-import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import Select from "~/userinterface/component/Select.tsx";
-import Textarea from "~/userinterface/component/Textarea.tsx";
-import Popover from "~/userinterface/pattern/Popover.tsx";
-import View from "~/userinterface/core/View.tsx";
+import Dialog from "~/components/core/dialog/Dialog.tsx";
+import SegmentedButton from "~/components/core/SegmentedButton.tsx";
+import Input from "~/components/core/Input.tsx";
+import Select from "~/components/core/Select.tsx";
+import Textarea from "~/components/core/Textarea.tsx";
+import Popover from "~/components/core/Popover.tsx";
+import View from "~/components/core/View.tsx";
+import Loading from "~/components/core/Loading.tsx";
+import LoadingOverlay from "~/components/core/LoadingOverlay.tsx";
 
 function ComponentDemo() {
     const buttonSizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -130,6 +132,16 @@ function ComponentDemo() {
                     setSelectedSelectIndex(index);
                 }}
             />
+            <Loading/>
+            <div style={{
+                position: 'relative',
+                width: 100,
+                height: 100,
+                borderRadius: 10,
+                overflow: 'hidden',
+            }}>
+                <LoadingOverlay/>
+            </div>
         </View>
     );
 }

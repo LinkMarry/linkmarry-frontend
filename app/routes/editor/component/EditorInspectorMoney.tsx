@@ -1,15 +1,15 @@
 import {useState} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import Textarea from "~/userinterface/component/Textarea.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
+import Textarea from "~/components/core/Textarea.tsx";
 import {css} from "@linaria/core";
-import FormToggle from "~/userinterface/component/FormToggle.tsx";
-import Checkbox from "~/userinterface/component/Checkbox.tsx";
+import FormToggle from "~/components/core/FormToggle.tsx";
+import Checkbox from "~/components/core/Checkbox.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import Dialog from "~/userinterface/pattern/dialog/Dialog.tsx";
-import View from "~/userinterface/core/View.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Binding from "~/lib/Binding.ts";
+import Dialog from "~/components/core/dialog/Dialog.tsx";
+import View from "~/components/core/View.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorMoney = (

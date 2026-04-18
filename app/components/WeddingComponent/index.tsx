@@ -1,0 +1,345 @@
+import { type RefObject, useEffect, useRef, useState } from 'react';
+import type Wedding from "~/api/value/Wedding.ts";
+import MoneyInfoTemplate from "~/components/WeddingComponent/component/template/MoneyInfoTemplate.tsx";
+import FooterTemplate from "~/components/WeddingComponent/component/template/FooterTemplate.tsx";
+import { weddingDesignFontSizeMap } from "~/api/value/WeddingDesign.ts";
+import GuestCommentsTemplate from "~/components/WeddingComponent/component/template/GuestCommentsTemplate.tsx";
+import { increaseFontSize } from "~/lib/dom-util.ts";
+import CongratulationsTemplate from "~/components/WeddingComponent/component/template/CongratulationsTemplate.tsx";
+import WeddingDayTemplate from "~/components/WeddingComponent/component/template/WeddingDayTemplate.tsx";
+import LocationTemplate from "~/components/WeddingComponent/component/template/LocationTemplate.tsx";
+import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+import GalleryTemplate from "~/components/WeddingComponent/component/template/GalleryTemplate.tsx";
+import VideoTemplate from "~/components/WeddingComponent/component/template/VideoTemplate.tsx";
+import InvitationLetterTemplate from "~/components/WeddingComponent/component/template/InvitationLetterTemplate.tsx";
+import weddingApi from "~/api/wedding-api.ts";
+import type Comment from "~/api/value/Comment.ts";
+import CreateRsvpDialog from "~/components/WeddingComponent/component/dialog/CreateRsvpDialog.tsx";
+import { Helmet } from "react-helmet-async";
+import RsvpTemplate from "~/components/WeddingComponent/component/template/RsvpTemplate.tsx";
+import WaterMarkSheet from "~/components/WeddingComponent/component/WaterMarkSheet.tsx";
+import { type Position } from "~/api/value/Position.ts";
+import { useCookies } from "react-cookie";
+import { useSearchParams } from "react-router";
+import RsvpDialog from "~/components/WeddingComponent/component/dialog/RsvpDialog.tsx";
+import { styled } from "@linaria/react";
+import type { FontFamily } from "~/components/core/text/TextType.ts";
+import type { WeddingMode } from "~/components/WeddingComponent/WeddingMode.ts";
+import OpeningView from "~/components/WeddingComponent/component/OpeningView.tsx";
+
+
+interface WeddingComponentProps {
+    wedding: Wedding;
+    onChangeWedding?: (wedding: Wedding) => void;
+    mode?: WeddingMode;
+    onRefresh?: () => void;
+}
+
+function WeddingComponent(
+    {
+        wedding,
+        mode = 'default',
+        onRefresh
+    }: WeddingComponentProps
+) {
+    const [searchParams] = useSearchParams();
+    const rsvp = searchParams.get('rsvp') === 'true';
+    const cookieKey = `hide_RsvpDialog_${wedding.url}`;
+    const [cookies] = useCookies([cookieKey]);
+
+    const [showRsvpDialog, setShowRsvpDialog] = useState(false);
+
+    const autoplay = wedding.backgroundMusic.effect && mode !== 'preview' && wedding.backgroundMusic.backgroundMusicActivate;
+    const audioRef = useRef<HTMLAudioElement>(null);
+    const autoplayUnlockRef = useRef<HTMLDivElement>(null)
+    const [showAutoplayUnlockElement, setShowAutoplayUnlockElement] = useState(mode !== 'preview');
+
+    useEffect(() => {
+        if (mode === 'preview' || !wedding.rsvp.startPopupStatus || rsvp) {
+            setShowRsvpDialog(false);
+            return;
+        }
+        setShowRsvpDialog(cookies[cookieKey] === undefined);
+    }, [cookieKey, cookies, mode, rsvp, wedding.rsvp.startPopupStatus]);
+
+    useEffect(() => {
+        const autoplayUnlockElement = autoplayUnlockRef.current;
+
+        if (!autoplayUnlockElement || !autoplay) return;
+
+        const unlock = () => {
+            const context = new window.AudioContext(); // 미리 생성하지 말고 제스처 이벤트 안에서 생성하는 것도 방법
+            context.resume()
+                .then(() => {
+                    const audioElement = audioRef.current;
+
+                    console.log('AudioContext resumed by user gesture');
+                    setShowAutoplayUnlockElement(false);
+
+                    audioElement?.play().catch(console.error);
+
+                    window.removeEventListener('click', unlock);
+                    window.removeEventListener('keydown', unlock);
+                    autoplayUnlockElement.removeEventListener('touchstart', unlock);
+                    autoplayUnlockElement.removeEventListener('touchend', unlock);
+                })
+                .catch((err) => {
+                    console.error('Failed to resume AudioContext:', err);
+                });
+        };
+
+        // 여러 제스처에 이벤트 등록
+        window.addEventListener('click', unlock);
+        window.addEventListener('keydown', unlock);
+        autoplayUnlockElement.addEventListener('touchstart', unlock);
+        autoplayUnlockElement.addEventListener('touchend', unlock);
+
+        // 클린업
+        return () => {
+            window.removeEventListener('click', unlock);
+            window.removeEventListener('keydown', unlock);
+            if (autoplayUnlockElement) {
+                autoplayUnlockElement.removeEventListener('touchstart', unlock);
+                autoplayUnlockElement.removeEventListener('touchend', unlock);
+            }
+        };
+    }, [autoplay]);
+
+    const [showCreateRsvpDialog, setShowCreateRsvpDialog] = useState(rsvp);
+    const rootRef = useRef<HTMLDivElement>(null);
+
+    const { weddingDesignFontSize, weddingDesignFont } = wedding.weddingDesign;
+    const { addFontSize } = weddingDesignFontSizeMap[weddingDesignFontSize];
+    // eslint-disable-next-line react-hooks/refs
+    increaseFontSize(rootRef, addFontSize);
+
+    return (
+        <RootStyle ref={rootRef} fontFamily={weddingDesignFont}>
+            {showAutoplayUnlockElement && autoplay && (
+                <div className={'override-font'} ref={autoplayUnlockRef} style={{
+                    position: 'fixed',
+                    background: 'transparent',
+                    width: '100vw',
+                    height: '100vh',
+                    left: 0,
+                    top: 0,
+                    zIndex: 9999,
+                }}></div>
+            )}
+            {wedding.backgroundMusic.backgroundMusicUrl && (
+                <audio
+                    className={'override-font'}
+                    ref={audioRef}
+                    src={wedding.backgroundMusic.backgroundMusicUrl}
+                    loop={true}
+                    style={{ display: 'none' }}
+                />
+            )}
+            <Helmet>
+                <meta property={'og:title'} content={wedding.linkShare.urlTitle} />
+                <meta property={'og:description'} content={wedding.linkShare.urlContent} />
+                <meta property={'og:image'} content={wedding.linkShare.urlImgUrl} />
+                <meta property={'og:url'} content={wedding.url} />
+                <meta property={'og:type'} content={'website'} />
+
+                <title>{wedding.linkShare.urlTitle}</title>
+            </Helmet>
+            <ContentBody
+                wedding={wedding}
+                onRefresh={onRefresh}
+                rootRef={rootRef}
+                onClickCreateRsvp={() => setShowRsvpDialog(true)}
+                mode={mode}
+            />
+            {showRsvpDialog && (
+                <RsvpDialog
+                    url={wedding.url}
+                    baseInfo={wedding.baseInfo}
+                    weddingSchedule={wedding.weddingSchedule}
+                    weddingPlace={wedding.weddingPlace}
+                    rsvp={wedding.rsvp}
+                    onConfirm={() => {
+                        setShowRsvpDialog(false);
+                        setShowCreateRsvpDialog(true);
+                    }}
+                    dismiss={() => setShowRsvpDialog(false)}
+                />
+            )}
+            {showCreateRsvpDialog && (
+                <CreateRsvpDialog
+                    url={wedding.url}
+                    rsvp={wedding.rsvp}
+                    dismiss={() => setShowCreateRsvpDialog(false)}
+                />
+            )}
+            {wedding.waterMark && mode === 'default' && (
+                <WaterMarkSheet url={wedding.url} />
+            )}
+            <OpeningView key={wedding.weddingDesign.openingText} weddingDesign={wedding.weddingDesign} />
+        </RootStyle>
+    );
+}
+
+const RootStyle = styled.div<{
+    fontFamily: FontFamily;
+}>`
+    display: flex;
+    flex-direction: column;
+    max-width: 436px;
+    align-items: stretch;
+    background: white;
+    position: relative;
+
+    *:not(.override-font):not(.override-font *) {
+        font-family: ${props => props.fontFamily || 'inherit'};
+    }
+`;
+
+const ContentBody = (
+    {
+        wedding,
+        onRefresh,
+        rootRef,
+        onClickCreateRsvp,
+        mode
+    }: {
+        wedding: Wedding;
+        onRefresh?: () => void;
+        rootRef: RefObject<HTMLDivElement | null>;
+        onClickCreateRsvp: () => void;
+        mode: WeddingMode;
+    }
+) => {
+    const { weddingDesignColor } = wedding.weddingDesign;
+    const [localComments, setLocalComments] = useState<Comment[]>(wedding.guestCommentList);
+
+    // Update local state if the prop changes
+    useEffect(() => {
+        setLocalComments(wedding.guestCommentList);
+    }, [wedding.guestCommentList]);
+
+    const handleRefresh = async () => {
+        if (onRefresh) {
+            onRefresh();
+        } else {
+            try {
+                const { data } = await weddingApi.getComments(wedding.url);
+                setLocalComments(data);
+            } catch (error) {
+                console.error("Failed to refresh comments:", error);
+            }
+        }
+    };
+
+    return (
+        <>
+            <PreviewTemplate
+                weddingDesign={wedding.weddingDesign}
+                baseInfo={wedding.baseInfo}
+                weddingPlace={wedding.weddingPlace}
+                weddingSchedule={wedding.weddingSchedule}
+                mode={mode}
+            />
+            {wedding.position.map(index => {
+                switch (index as Position) {
+                    case 0:
+                        return (
+                            <InvitationLetterTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                greeting={wedding.greeting}
+                                mode={mode}
+                            />
+                        );
+                    case 1:
+                        return (
+                            <WeddingDayTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                weddingSchedule={wedding.weddingSchedule}
+                            />
+                        );
+                    case 2:
+                        return (
+                            <MoneyInfoTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                moneyInfo={wedding.moneyInfo}
+                                mode={mode}
+                            />
+                        );
+                    case 3:
+                        return (
+                            <GalleryTemplate
+                                key={index}
+                                rootRef={rootRef}
+                                gallery={wedding.gallery}
+                                mode={mode}
+                            />
+                        );
+                    case 4:
+                        return (
+                            <LocationTemplate
+                                key={index}
+                                weddingDesignColor={weddingDesignColor}
+                                weddingPlace={wedding.weddingPlace}
+                                mode={mode}
+                            />
+                        );
+                    case 5:
+                        return (
+                            <VideoTemplate
+                                key={index}
+                                video={wedding.video}
+                                rootRef={rootRef}
+                                mode={mode}
+                            />
+                        );
+                    case 6:
+                        return (
+                            <CongratulationsTemplate
+                                key={index}
+                                baseInfo={wedding.baseInfo}
+                                phone={wedding.phone}
+                                weddingDesignColor={weddingDesignColor}
+                                mode={mode}
+                            />
+                        );
+                    case 7:
+                        return (
+                            <GuestCommentsTemplate
+                                key={index}
+                                weddingDesignColor={weddingDesignColor}
+                                url={wedding.url}
+                                guestComments={localComments}
+                                guestComment={wedding.guestComment}
+                                mode={mode}
+                                onRefresh={handleRefresh}
+                            />
+                        );
+                    case 8:
+                        return (
+                            <RsvpTemplate
+                                key={index}
+                                rsvp={wedding.rsvp}
+                                weddingDesignColor={weddingDesignColor}
+                                baseInfo={wedding.baseInfo}
+                                weddingSchedule={wedding.weddingSchedule}
+                                onClickCreateRsvp={onClickCreateRsvp}
+                            />
+                        );
+                    default:
+                        return null;
+                }
+            })}
+            <FooterTemplate
+                url={wedding.url}
+                background={weddingDesignColor}
+                linkShare={wedding.linkShare}
+                weddingPlace={wedding.weddingPlace}
+            />
+        </>
+    );
+};
+
+export default WeddingComponent;

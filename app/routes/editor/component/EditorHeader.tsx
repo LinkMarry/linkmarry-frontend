@@ -1,11 +1,11 @@
 import {css, cx} from "@linaria/core";
-import Logo from "~/userinterface/specific/Logo.tsx";
+import Logo from "~/components/Logo.tsx";
 import {useNavigate} from "react-router";
-import Spacer from "~/userinterface/component/Spacer.tsx";
-import Button from "~/userinterface/component/Button.tsx";
-import {desktopStyle, notDesktopStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
-import Text from "~/userinterface/component/Text.tsx";
-import View from "~/userinterface/core/View.tsx";
+import Spacer from "~/components/core/Spacer.tsx";
+import Button from "~/components/core/Button.tsx";
+import {desktopStyle, notDesktopStyle, responsive} from "~/components/responsive.tsx";
+import Text from "~/components/core/Text.tsx";
+import View from "~/components/core/View.tsx";
 
 
 interface Props {

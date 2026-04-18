@@ -1,5 +1,5 @@
 import {createContext, useContext} from "react";
-import type InfoMember from "~/infrastructure/network/value/InfoMember";
+import type InfoMember from "~/api/value/InfoMember";
 
 
 type AuthValue = {
