@@ -3,12 +3,12 @@ import {
     type EditorNavigationBarType,
     editorNavigationBarTypeList, editorNavigationBarTypeMap
 } from "~/routes/editor/component/EditorNavigationBarType.ts";
-import View from "~/userinterface/core/View.tsx";
+import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/userinterface/css.util.ts";
-import Icon from "~/userinterface/foundation/Icon.tsx";
-import Text from "~/userinterface/component/Text.tsx";
-import {desktopStyle, notDesktopStyle} from "~/hook/ResponsiveSwitch.tsx";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util.ts";
+import Icon from "~/components/core/icon";
+import Text from "~/components/core/Text.tsx";
+import {desktopStyle, notDesktopStyle} from "~/components/responsive.tsx";
 import useResponsive from "~/hook/useResponsive.ts";
 
 

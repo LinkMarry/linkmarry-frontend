@@ -1,20 +1,20 @@
 import {type ComponentPropsWithoutRef, useEffect, useState} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
-import TabBar from "~/userinterface/component/TabBar.tsx";
-import PhotoUploadBox from "~/userinterface/specific/PhotoUploadBox.tsx";
-import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
+import Text from "~/components/core/Text.tsx";
+import TabBar from "~/components/core/TabBar.tsx";
+import PhotoUploadBox from "~/components/PhotoUploadBox.tsx";
+import SegmentedButton from "~/components/core/SegmentedButton.tsx";
+import Icon from "~/components/core/icon";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import {type OpeningText, openingTextList} from "~/infrastructure/network/value/WeddingDesign.ts";
-import type Binding from "~/shared/Binding.ts";
-import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
-import {openingList, openingMap} from "~/infrastructure/network/enumeration/Opening.ts";
-import Select from "~/userinterface/component/Select.tsx";
-import {groupedByCategory} from "~/infrastructure/network/value/GroupedWeddingDesignPresets.ts";
-import Loading from "~/userinterface/specific/Loading.tsx";
-import View from "~/userinterface/core/View.tsx";
+import {type OpeningText, openingTextList} from "~/api/value/WeddingDesign.ts";
+import type Binding from "~/lib/Binding.ts";
+import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
+import {openingList, openingMap} from "~/api/enumeration/Opening.ts";
+import Select from "~/components/core/Select.tsx";
+import {groupedByCategory} from "~/api/value/GroupedWeddingDesignPresets.ts";
+import Loading from "~/components/core/Loading.tsx";
+import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 export interface WeddingDesignProps extends Binding<Wedding> {

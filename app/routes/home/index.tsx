@@ -1,15 +1,15 @@
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
+import MainWrapper from "~/components/MainWrapper";
 import {css, cx} from "@linaria/core";
-import Text from "~/userinterface/component/Text.tsx";
-import View from "~/userinterface/core/View.tsx";
-import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
-import Button from "~/userinterface/component/Button.tsx";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
+import Text from "~/components/core/Text.tsx";
+import View from "~/components/core/View.tsx";
+import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/components/responsive.tsx";
+import Button from "~/components/core/Button.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Icon from "~/components/core/icon";
 import {useNavigate} from "react-router";
 import {type ComponentPropsWithoutRef, useState} from "react";
-import {NAVER_STORE_URL} from "~/shared/constant.ts";
-import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
+import {NAVER_STORE_URL} from "~/lib/constant.ts";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
 import {Snowfall} from "react-snowfall";
 import ClientRendering from "~/ClientRendering.tsx";
 import useResponsive from "~/hook/useResponsive.ts";
@@ -682,7 +682,7 @@ function Section4({onViewSample}: Section4Props) {
                             line-height: 150%;
                         }
                     `}>
-                        100가지가 넘는 다양한 스타일, 나만의 청첩장을 무료로 제작
+                        다양한 스타일, 나만의 청첩장을 무료로 제작
                     </Text>
                 </View>
                 <View ui={cx(
@@ -1200,7 +1200,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                             line-height: 140%;
                                         }
                                     `}>
-                                        8,700원
+                                        12,800원
                                     </Text>
                                 </View>
                             </View>

@@ -1,14 +1,14 @@
 import React, {useEffect, useRef} from 'react';
-import NotificationDetailComp from "~/userinterface/NotificationDetailComp.tsx";
-import notificationApi from "~/infrastructure/network/api/notification-api.ts";
+import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
+import notificationApi from "~/api/notification-api.ts";
 import {compareDesc} from "date-fns";
 import type {Route} from './+types/privacy-policy';
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
-import View from "~/userinterface/core/View.tsx";
-import Text from "~/userinterface/component/Text.tsx";
+import MainWrapper from "~/components/MainWrapper";
+import View from "~/components/core/View.tsx";
+import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Spacer from "~/userinterface/component/Spacer.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Spacer from "~/components/core/Spacer.tsx";
 import {Navigate, useNavigate} from "react-router";
 
 
@@ -47,7 +47,7 @@ function PrivacyPolicy(
 
     return (
         <MainWrapper scrollRef={scrollRef}>
-            <NotificationDetailComp notification={selectedNotification}/>
+            <NotificationDetailContent notification={selectedNotification}/>
 
             <View ui={css`
                 align-items: center;

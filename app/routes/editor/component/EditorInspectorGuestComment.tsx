@@ -1,17 +1,17 @@
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
-import FormToggle from "~/userinterface/component/FormToggle.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
+import SegmentedButton from "~/components/core/SegmentedButton.tsx";
+import FormToggle from "~/components/core/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
+import type Binding from "~/lib/Binding.ts";
 import {
     GuestCommentDesignList,
     guestCommentDesignMap
-} from "~/infrastructure/network/enumeration/GuestCommentDesign.ts";
-import View from "~/userinterface/core/View.tsx";
+} from "~/api/enumeration/GuestCommentDesign.ts";
+import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
-import Textarea from "~/userinterface/component/Textarea.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import Textarea from "~/components/core/Textarea.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorGuestComment = (

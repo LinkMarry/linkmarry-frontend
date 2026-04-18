@@ -4,7 +4,7 @@ import {CookiesProvider} from "react-cookie";
 import config from "~/config.ts";
 import './app.css'
 import {HelmetProvider} from "react-helmet-async";
-import HelmetMetaTags from "~/application/seo/HelmetMetaTags.tsx";
+import HelmetMetaTags from "~/components/HelmetMetaTags.tsx";
 
 export function Layout(
     {

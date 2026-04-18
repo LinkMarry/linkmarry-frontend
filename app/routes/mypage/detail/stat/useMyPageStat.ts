@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import type WeddingStatistics from "~/infrastructure/network/value/WeddingStatistics.ts";
-import type RsvpInfo from "~/infrastructure/network/value/RsvpInfo.ts";
-import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
+import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
+import type RsvpInfo from "~/api/value/RsvpInfo.ts";
+import weddingApi from "~/api/wedding-api.ts";
 import {useNavigate, useParams} from "react-router";
-import type {WeddingDto} from "~/infrastructure/network/value/WeddingDto.ts";
+import type {WeddingDto} from "~/api/value/WeddingDto.ts";
 
 const useMyPageStat = () => {
     const {url} = useParams();

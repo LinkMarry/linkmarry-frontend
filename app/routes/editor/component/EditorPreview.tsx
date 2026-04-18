@@ -1,14 +1,14 @@
 import {useState} from 'react';
-import Spacer from "~/userinterface/component/Spacer.tsx";
-import Text from "~/userinterface/component/Text.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/userinterface/css.util.ts";
-import WeddingComponent from "~/userinterface/specific/wedding/WeddingComponent.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import Spacer from "~/components/core/Spacer.tsx";
+import Text from "~/components/core/Text.tsx";
+import Icon from "~/components/core/icon";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util.ts";
+import WeddingComponent from "~/components/WeddingComponent";
+import type Wedding from "~/api/value/Wedding.ts";
 import {useAutoFocus} from "~/hook/useAutoFocus.ts";
-import Toggle from "~/userinterface/component/Toggle.tsx";
+import Toggle from "~/components/core/Toggle.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import View from "~/userinterface/core/View.tsx";
+import View from "~/components/core/View.tsx";
 
 interface Props {
     wedding: Wedding;

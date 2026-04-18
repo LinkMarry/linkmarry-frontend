@@ -1,10 +1,10 @@
 import {type PropsWithChildren, useCallback, useEffect, useState} from "react";
 import {useNavigate} from "react-router";
-import type InfoMember from "~/infrastructure/network/value/InfoMember.ts";
+import type InfoMember from "~/api/value/InfoMember.ts";
 import useJwt from "~/hook/useJwt.ts";
 import config from "~/config.ts";
-import kakaoApi from "~/infrastructure/network/api/kakao-api.ts";
-import memberApi from "~/infrastructure/network/api/member-api.ts";
+import kakaoApi from "~/api/kakao-api.ts";
+import memberApi from "~/api/member-api.ts";
 import { AuthContext } from "./useAuth";
 
 export const AuthProvider = ({children}: PropsWithChildren) => {

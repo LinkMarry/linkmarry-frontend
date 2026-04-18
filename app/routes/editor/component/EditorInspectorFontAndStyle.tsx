@@ -1,22 +1,22 @@
 import {type ComponentPropsWithoutRef, useState} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
+import Text from "~/components/core/Text.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import SegmentedButton from "~/userinterface/component/SegmentedButton.tsx";
+import type Binding from "~/lib/Binding.ts";
+import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import {
     type WeddingDesignColor,
     isPaperColor,
     weddingDesignDefaultColorList,
     weddingDesignFontSizeList,
     weddingDesignFontSizeMap, weddingDesignPaperColorList
-} from "~/infrastructure/network/value/WeddingDesign.ts";
-import View from "~/userinterface/core/View.tsx";
+} from "~/api/value/WeddingDesign.ts";
+import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import {type FontFamily, fontFamilyList} from "~/userinterface/foundation/text/TextType.ts";
-import Icon from "~/userinterface/foundation/Icon.tsx";
-import BasePopover from "~/userinterface/component/BasePopover.tsx";
+import {type FontFamily, fontFamilyList} from "~/components/core/text/TextType.ts";
+import Icon from "~/components/core/icon";
+import BasePopover from "~/components/core/BasePopover.tsx";
 import {HexColorPicker} from "react-colorful";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorFontAndStyle = (

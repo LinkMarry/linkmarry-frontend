@@ -1,11 +1,11 @@
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import Divider from "~/userinterface/component/Divider.tsx";
+import type Binding from "~/lib/Binding.ts";
+import Divider from "~/components/core/Divider.tsx";
 import {css} from "@linaria/core";
-import View from "~/userinterface/core/View.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import View from "~/components/core/View.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorVideo = (

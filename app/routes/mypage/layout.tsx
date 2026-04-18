@@ -1,8 +1,8 @@
-import MainWrapper from "~/userinterface/pattern/header/MainWrapper.tsx";
+import MainWrapper from "~/components/MainWrapper";
 import {Outlet} from "react-router";
 import {css} from "@linaria/core";
-import {responsive} from "~/hook/ResponsiveSwitch.tsx";
-import View from "~/userinterface/core/View.tsx";
+import {responsive} from "~/components/responsive.tsx";
+import View from "~/components/core/View.tsx";
 
 
 function Layout() {

@@ -1,4 +1,4 @@
-import type {IconType} from "~/userinterface/foundation/Icon.tsx";
+import type {IconType} from "~/components/core/icon";
 
 
 export const editorNavigationBarTypeList = [

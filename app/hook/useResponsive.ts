@@ -1,5 +1,5 @@
 import {useMediaQuery} from "react-responsive";
-import {breakpoints} from "~/hook/ResponsiveSwitch.tsx";
+import {breakpoints} from "~/components/responsive.tsx";
 
 type DeviceSize = 'mobile' | 'tablet' | 'desktop';
 

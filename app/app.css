@@ -41,98 +41,98 @@
 
 @font-face {
     font-family: iceJaram;
-    src: url('/app/userinterface/foundation/text/fonts/iceJaram.ttf') format('truetype');
+    src: url('/app/components/core/text/fonts/iceJaram.ttf') format('truetype');
 }
 
 @font-face {
     font-family: GyeonggiBatang;
-    src: url('/app/userinterface/foundation/text/fonts/GyeonggiBatang_Bold.ttf') format('truetype');
+    src: url('/app/components/core/text/fonts/GyeonggiBatang_Bold.ttf') format('truetype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: GyeonggiBatang;
-    src: url('/app/userinterface/foundation/text/fonts/GyeonggiBatang_Regular.ttf') format('truetype');
+    src: url('/app/components/core/text/fonts/GyeonggiBatang_Regular.ttf') format('truetype');
     font-weight: 400;
 }
 
 @font-face {
     font-family: UnrealScienceOrbit;
-    src: url('/app/userinterface/foundation/text/fonts/UnrealScienceOrbit.ttf') format('truetype');
+    src: url('/app/components/core/text/fonts/UnrealScienceOrbit.ttf') format('truetype');
 }
 
 @font-face {
     font-family: UnrealScienceMedicine;
-    src: url('/app/userinterface/foundation/text/fonts/UnrealScienceMedicine.ttf') format('truetype');
+    src: url('/app/components/core/text/fonts/UnrealScienceMedicine.ttf') format('truetype');
 }
 
 @font-face {
     font-family: KoPubWorldBatang;
-    src: url('/app/userinterface/foundation/text/fonts/KoPubWorld Batang_Pro Bold.otf') format('opentype');
+    src: url('/app/components/core/text/fonts/KoPubWorld Batang_Pro Bold.otf') format('opentype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: KoPubWorldBatang;
-    src: url('/app/userinterface/foundation/text/fonts/KoPubWorld Batang_Pro Medium.otf') format('opentype');
+    src: url('/app/components/core/text/fonts/KoPubWorld Batang_Pro Medium.otf') format('opentype');
     font-weight: 500;
 }
 
 @font-face {
     font-family: KoPubWorldBatang;
-    src: url('/app/userinterface/foundation/text/fonts/KoPubWorld Batang_Pro Light.otf') format('opentype');
+    src: url('/app/components/core/text/fonts/KoPubWorld Batang_Pro Light.otf') format('opentype');
     font-weight: 300;
 }
 
 @font-face {
     font-family: TheFaceShopInklipquid;
-    src: url('/app/userinterface/foundation/text/fonts/THEFACESHOP INKLIPQUID.ttf') format('truetype');
+    src: url('/app/components/core/text/fonts/THEFACESHOP INKLIPQUID.ttf') format('truetype');
 }
 
 @font-face {
     font-family: KyoboHandwriting2020;
-    src: url('/app/userinterface/foundation/text/fonts/KyoboHandwriting2020.otf') format('opentype');
+    src: url('/app/components/core/text/fonts/KyoboHandwriting2020.otf') format('opentype');
 }
 
 @font-face {
     font-family: BR;
-    src: url('/app/userinterface/foundation/text/fonts/BR_R.otf') format('opentype');
+    src: url('/app/components/core/text/fonts/BR_R.otf') format('opentype');
     font-weight: 400;
 }
 
 @font-face {
     font-family: BR;
-    src: url('/app/userinterface/foundation/text/fonts/BR_B.otf') format('opentype');
+    src: url('/app/components/core/text/fonts/BR_B.otf') format('opentype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: Eulyoo1945;
-    src: url("/app/userinterface/foundation/text/fonts/Eulyoo1945-Regular.woff2") format('woff');
+    src: url("/app/components/core/text/fonts/Eulyoo1945-Regular.woff2") format('woff');
     font-weight: 400;
 }
 
 @font-face {
     font-family: Eulyoo1945;
-    src: url("/app/userinterface/foundation/text/fonts/Eulyoo1945-SemiBold.woff2") format('woff');
+    src: url("/app/components/core/text/fonts/Eulyoo1945-SemiBold.woff2") format('woff');
     font-weight: 600;
 }
 
 @font-face {
     font-family: tvN;
-    src: url("/app/userinterface/foundation/text/fonts/tvNBold.otf") format('opentype');
+    src: url("/app/components/core/text/fonts/tvNBold.otf") format('opentype');
     font-weight: 700;
 }
 
 @font-face {
     font-family: tvN;
-    src: url("/app/userinterface/foundation/text/fonts/tvNMedium.otf") format('opentype');
+    src: url("/app/components/core/text/fonts/tvNMedium.otf") format('opentype');
     font-weight: 500;
 }
 
 @font-face {
     font-family: tvN;
-    src: url("/app/userinterface/foundation/text/fonts/tvNLight.otf") format('opentype');
+    src: url("/app/components/core/text/fonts/tvNLight.otf") format('opentype');
     font-weight: 300;
 }
 
@@ -166,7 +166,7 @@
 
 @font-face {
     font-family: BlackHanSans;
-    src: url("/app/userinterface/foundation/text/fonts/BlackHanSans.ttf") format('truetype');
+    src: url("/app/components/core/text/fonts/BlackHanSans.ttf") format('truetype');
     font-weight: 700;
 }
 

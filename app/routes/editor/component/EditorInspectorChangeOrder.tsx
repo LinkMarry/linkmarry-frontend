@@ -1,15 +1,15 @@
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
+import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
-import Icon from "~/userinterface/foundation/Icon.tsx";
+import Icon from "~/components/core/icon";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import {DragDropContext, Draggable, Droppable, type DropResult} from "@hello-pangea/dnd";
-import View from "~/userinterface/core/View.tsx";
-import {reorderedItems} from "~/shared/dnd-util.ts";
-import type Binding from "~/shared/Binding.ts";
-import {positionMap} from "~/infrastructure/network/value/Position.ts";
-import {type Position} from "~/infrastructure/network/value/Position.ts";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import View from "~/components/core/View.tsx";
+import {reorderedItems} from "~/lib/dnd-util.ts";
+import type Binding from "~/lib/Binding.ts";
+import {positionMap} from "~/api/value/Position.ts";
+import {type Position} from "~/api/value/Position.ts";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorChangeOrder = (

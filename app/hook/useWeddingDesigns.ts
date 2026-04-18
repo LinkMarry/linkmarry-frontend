@@ -1,7 +1,7 @@
-import {groupedByCategory} from "~/infrastructure/network/value/GroupedWeddingDesignPresets";
-import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api";
+import {groupedByCategory} from "~/api/value/GroupedWeddingDesignPresets";
+import weddingDesignApi from "~/api/wedding-design-api.ts";
 import {useState} from "react";
-import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
+import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
 const useWeddingDesigns = (weddingDesigns: WeddingDesignPreset[]) => {
     const [selectedCategory, setSelectedCategory] = useState<string>('전체');

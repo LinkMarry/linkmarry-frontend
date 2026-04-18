@@ -1,8 +1,8 @@
 // import EditorInspectorWrapper from "~/feature/editor/components/inspector/EditorInspectorWrapper";
-// import {Column} from "~/userinterface/core/FlexLayout";
-// import Text from "~/userinterface/components/Text";
-// import Input from "~/userinterface/components/Input";
-// import PhotoUploadBox from "~/userinterface/specific/PhotoUploadBox";
+// import {Column} from "~/components/core/FlexLayout";
+// import Text from "~/components/components/Text";
+// import Input from "~/components/components/Input";
+// import PhotoUploadBox from "~/components/specific/PhotoUploadBox";
 // import {css} from "@linaria/core";
 
 const EditorInspectorAi = () => {

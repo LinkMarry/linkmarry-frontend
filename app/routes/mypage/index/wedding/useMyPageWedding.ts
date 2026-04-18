@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
-import type WeddingDashboard from "~/infrastructure/network/value/WeddingDashboard.ts";
-import type WeddingInfo from "~/infrastructure/network/value/WeddingInfo.ts";
-import weddingApi from "~/infrastructure/network/api/wedding-api.ts";
+import type WeddingDashboard from "~/api/value/WeddingDashboard.ts";
+import type WeddingInfo from "~/api/value/WeddingInfo.ts";
+import weddingApi from "~/api/wedding-api.ts";
 
 const useMyPageWedding = () => {
     const [weddings, setWeddings] = useState<WeddingDashboard>();

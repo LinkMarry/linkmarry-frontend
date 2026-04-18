@@ -1,0 +1,80 @@
+import {type ComponentProps} from 'react';
+import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+import {css, cx} from "@linaria/core";
+import View from "~/components/core/View.tsx";
+import Text from "~/components/core/Text.tsx";
+import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import {format} from "date-fns";
+import {getDetails} from "~/api/value/WeddingSchedule.ts";
+import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
+
+function NaturalGardenPreviewTemplate(
+    {
+        weddingDesign,
+        baseInfo,
+        weddingPlace,
+        weddingSchedule
+    }: ComponentProps<typeof PreviewTemplate>
+) {
+    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+    const {isValidDate, date} = getDetails(weddingSchedule);
+
+    return (
+        <View ui={cx(
+            'override-font',
+            fontFamilyStyle.KyoboHandwriting2020,
+            css`
+                gap: 44px;
+                padding-top: 40px;
+                padding-bottom: 52px;
+                background-color: #F7F7F2;
+
+                * {
+                    color: #5D4037;
+                }
+            `
+        )}>
+            <img src={'/NaturalGardenDeco.svg'} alt="" width={'100%'}/>
+            <View ui={css`
+                gap: 40px;
+                padding: 0 32px;
+            `}>
+                <View as={'img'} src={weddingDesign.titleImgUrl} ui={css`
+                    height: 512px;
+                    border-radius: 500px 500px 0 0;
+                    object-fit: cover;
+                    box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.04) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.08) inset;
+                `}/>
+                <View ui={css`
+                    gap: 20px;
+                `}>
+                    <Text weight={400} size={28}>
+                        <View ui={css`
+                            flex-direction: row !important;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 32px;
+                        `}>
+                            <span>{first.name}</span>
+                            <span>&</span>
+                            <span>{second.name}</span>
+                        </View>
+                    </Text>
+                    <Text size={18} weight={300}>
+                        <View ui={css`
+                            gap: 6px;
+                            align-items: center;
+                        `}>
+                            {isValidDate && (
+                                <span>{format(date, 'yyyy. MM. dd E HH:mm')}</span>
+                            )}
+                            <span>{weddingPlace.placeName} ({weddingPlace.floorHall})</span>
+                        </View>
+                    </Text>
+                </View>
+            </View>
+        </View>
+    );
+}
+
+export default NaturalGardenPreviewTemplate;

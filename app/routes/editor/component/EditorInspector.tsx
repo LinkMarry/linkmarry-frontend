@@ -1,6 +1,6 @@
 import {type ReactElement} from 'react';
 import {type EditorNavigationBarType} from "~/routes/editor/component/EditorNavigationBarType.ts";
-import View from "~/userinterface/core/View.tsx";
+import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import EditorInspectorDesign, {
     type WeddingDesignProps
@@ -24,9 +24,9 @@ import EditorInspectorVideo from "~/routes/editor/component/EditorInspectorVideo
 import EditorInspectorUrlShare from "~/routes/editor/component/EditorInspectorUrlShare.tsx";
 import EditorInspectorWeddingSchedule from "~/routes/editor/component/EditorInspectorWeddingSchedule.tsx";
 import EditorInspectorWeddingPlace from "~/routes/editor/component/EditorInspectorWeddingPlace.tsx";
-import type Binding from "~/shared/Binding.ts";
-import {responsive} from "~/hook/ResponsiveSwitch.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Binding from "~/lib/Binding.ts";
+import {responsive} from "~/components/responsive.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 interface Props extends Binding<Wedding>, WeddingDesignProps, BackgroundMusicProps {
     currentNavType: EditorNavigationBarType;

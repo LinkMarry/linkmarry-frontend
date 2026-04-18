@@ -1,15 +1,15 @@
 import {type ComponentProps, type ReactNode} from 'react';
-import Text from "~/userinterface/component/Text.tsx";
-import Spacer from "~/userinterface/component/Spacer.tsx";
-import Toggle from "~/userinterface/component/Toggle.tsx";
-import {responsive} from "~/hook/ResponsiveSwitch.tsx";
+import Text from "~/components/core/Text.tsx";
+import Spacer from "~/components/core/Spacer.tsx";
+import Toggle from "~/components/core/Toggle.tsx";
+import {responsive} from "~/components/responsive.tsx";
 import {css, cx} from "@linaria/core";
 import {editorNavigationBarTypeMap} from "~/routes/editor/component/EditorNavigationBarType.ts";
 import {type EditorNavigationBarType} from "~/routes/editor/component/EditorNavigationBarType.ts";
-import Divider from "~/userinterface/component/Divider.tsx";
-import Icon from "~/userinterface/foundation/Icon.tsx";
-import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
-import View from "~/userinterface/core/View.tsx";
+import Divider from "~/components/core/Divider.tsx";
+import Icon from "~/components/core/icon";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
+import View from "~/components/core/View.tsx";
 
 interface Props {
     type: EditorNavigationBarType;

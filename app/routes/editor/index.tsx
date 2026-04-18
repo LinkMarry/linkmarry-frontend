@@ -3,17 +3,17 @@ import EditorHeader from "~/routes/editor/component/EditorHeader.tsx";
 import {css, cx} from "@linaria/core";
 import EditorNavigationBar from "~/routes/editor/component/EditorNavigationBar.tsx";
 import {type EditorNavigationBarType} from "~/routes/editor/component/EditorNavigationBarType.ts";
-import {hideScrollBarStyle} from "~/userinterface/css.util.ts";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
 import useEditor from "~/routes/editor/useEditor.ts";
 import CreateWeddingDialog from "~/routes/editor/component/CreateWeddingDialog.tsx";
 import {useNavigate, useSearchParams} from "react-router";
-import RemoveWatermarkDialog from "~/userinterface/specific/dialog/RemoveWatermarkDialog.tsx";
-import weddingDesignApi from "~/infrastructure/network/api/wedding-design-api.ts";
-import type WeddingDesignPreset from "~/infrastructure/network/value/WeddingDesignPreset.ts";
-import {desktopStyle, responsive} from "~/hook/ResponsiveSwitch.tsx";
+import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
+import weddingDesignApi from "~/api/wedding-design-api.ts";
+import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
+import {desktopStyle, responsive} from "~/components/responsive.tsx";
 import EditorPreview from "~/routes/editor/component/EditorPreview.tsx";
 import EditorInspector from "~/routes/editor/component/EditorInspector.tsx";
-import View from "~/userinterface/core/View.tsx";
+import View from "~/components/core/View.tsx";
 
 function useDesignId() {
     const [searchParams] = useSearchParams();

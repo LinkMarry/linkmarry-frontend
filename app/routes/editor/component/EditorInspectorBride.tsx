@@ -1,12 +1,12 @@
-import Text from "~/userinterface/component/Text.tsx";
-import Input from "~/userinterface/component/Input.tsx";
-import Spacer from "~/userinterface/component/Spacer.tsx";
+import Text from "~/components/core/Text.tsx";
+import Input from "~/components/core/Input.tsx";
+import Spacer from "~/components/core/Spacer.tsx";
 import {css} from "@linaria/core";
-import Checkbox from "~/userinterface/component/Checkbox.tsx";
+import Checkbox from "~/components/core/Checkbox.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
-import type Binding from "~/shared/Binding.ts";
-import View from "~/userinterface/core/View.tsx";
-import type Wedding from "~/infrastructure/network/value/Wedding.ts";
+import type Binding from "~/lib/Binding.ts";
+import View from "~/components/core/View.tsx";
+import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorBride = (
