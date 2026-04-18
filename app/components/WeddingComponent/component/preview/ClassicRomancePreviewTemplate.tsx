@@ -51,9 +51,9 @@ function ClassicRomancePreviewTemplate(
                         align-items: center;
                         flex: 1;
                     `}>
-                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName.toUpperCase()}</span>
+                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName.toUpperCase() || first.name}</span>
                         <span>&</span>
-                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName.toUpperCase()}</span>
+                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName.toUpperCase() || second.name}</span>
                     </View>
                 </Text>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2" viewBox="0 0 364 2" fill="none">

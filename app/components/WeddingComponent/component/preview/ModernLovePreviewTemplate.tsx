@@ -3,7 +3,6 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
 import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
@@ -47,9 +46,9 @@ function ModernLovePreviewTemplate(
                     align-items: center;
                     gap: 36px;
                 `}>
-                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName}</span>
+                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName || first.name}</span>
                     <span>&</span>
-                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName}</span>
+                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName || second.name}</span>
                 </View>
             </Text>
         </View>

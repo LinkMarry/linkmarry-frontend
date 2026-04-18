@@ -49,8 +49,8 @@ function PureLovePreviewTemplate(
                     gap: 12px;
                     text-align: center;
                 `}>
-                    <span style={{whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName}</span>
-                    <span style={{whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName}</span>
+                    <span style={{whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName || first.name}</span>
+                    <span style={{whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName || second.name}</span>
                 </View>
             </Text>
             <View ui={css`
