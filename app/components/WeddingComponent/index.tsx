@@ -1,4 +1,4 @@
-import { type RefObject, useEffect, useRef, useState } from 'react';
+import { type RefObject, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type Wedding from "~/api/value/Wedding.ts";
 import MoneyInfoTemplate from "~/components/WeddingComponent/component/template/MoneyInfoTemplate.tsx";
 import FooterTemplate from "~/components/WeddingComponent/component/template/FooterTemplate.tsx";
@@ -110,8 +110,33 @@ function WeddingComponent(
 
     const { weddingDesignFontSize, weddingDesignFont } = wedding.weddingDesign;
     const { addFontSize } = weddingDesignFontSizeMap[weddingDesignFontSize];
-    // eslint-disable-next-line react-hooks/refs
-    increaseFontSize(rootRef, addFontSize);
+
+    useLayoutEffect(() => {
+        if (!rootRef.current) return;
+
+        const applyFont = () => {
+            increaseFontSize(rootRef, addFontSize);
+        };
+
+        // Apply immediately
+        applyFont();
+
+        // Observe for dynamically added child elements (like comments on refresh)
+        let timeoutId: number;
+        const observer = new MutationObserver((mutations) => {
+            if (mutations.some(m => m.addedNodes.length > 0)) {
+                clearTimeout(timeoutId);
+                timeoutId = window.setTimeout(applyFont, 50);
+            }
+        });
+
+        observer.observe(rootRef.current, { childList: true, subtree: true });
+
+        return () => {
+            clearTimeout(timeoutId);
+            observer.disconnect();
+        };
+    }, [addFontSize, wedding]);
 
     return (
         <RootStyle ref={rootRef} fontFamily={weddingDesignFont}>
