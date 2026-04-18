@@ -67,8 +67,9 @@ const Input = forwardRef(({ placeholder, hasLabel = true, prefix, ui, ...props }
                         textStyles.p2.normal,
                         css`
                             flex: 1;
-                            height: 100%;
                             min-width: 0;
+                            height: auto;
+                            line-height: normal;
                             border: none;
                             outline: none;
                             background: transparent;
