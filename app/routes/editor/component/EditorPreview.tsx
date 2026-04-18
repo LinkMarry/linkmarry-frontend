@@ -32,7 +32,7 @@ const EditorPreview = ({wedding, ui}: Props) => {
                     max-height: 733px;
                     overflow-y: scroll;
                     overflow-x: hidden;
-                    width: 380px;
+                    width: 420px;
                     border-radius: 36px;
                     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
                 `,
