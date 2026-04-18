@@ -1,9 +1,9 @@
-import {type ComponentProps, type ReactNode} from 'react';
+import { type ComponentProps, type ReactNode } from 'react';
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import Button from "~/components/core/Button.tsx";
 import Text from "~/components/core/Text.tsx";
-import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import {css, cx, type LinariaClassName} from "@linaria/core";
+import { baseDialogContentStyle } from "~/components/core/dialog/baseDialogContentStyle.ts";
+import { css, cx, type LinariaClassName } from "@linaria/core";
 import View from "~/components/core/View.tsx";
 
 interface DialogProps {
@@ -51,6 +51,7 @@ function Dialog(
                     <Text type={'p2'} ui={css`
                         color: var(--g-500);
                         text-align: center;
+                        white-space: pre-wrap;
                     `}>{description}</Text>
                 </View>
                 {children}
@@ -66,9 +67,9 @@ function Dialog(
                             buttonType: 'tonal',
                             onClick: dismiss,
                             ...dismissButtonProps
-                        }}/>
+                        }} />
                     )}
-                    <Button {...confirmButtonProps}/>
+                    <Button {...confirmButtonProps} />
                 </View>
             </View>
         </BaseDialog>
