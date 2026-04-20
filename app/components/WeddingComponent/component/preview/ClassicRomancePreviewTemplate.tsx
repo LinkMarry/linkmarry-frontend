@@ -45,8 +45,7 @@ function ClassicRomancePreviewTemplate(
                     display: flex;
                     align-self: stretch;
                 `}>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 20px;
                         align-items: center;
                         flex: 1;

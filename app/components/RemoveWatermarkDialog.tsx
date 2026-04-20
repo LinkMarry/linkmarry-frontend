@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
@@ -6,49 +5,28 @@ import Icon from "~/components/core/icon";
 import Spacer from "~/components/core/Spacer.tsx";
 import {CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_WEDDING_URL, TERMS_OR_USE_URL} from "~/lib/constant.ts";
 import Input from "~/components/core/Input.tsx";
-import {formatPhone} from "~/lib/format-util.ts";
 import Button from "~/components/core/Button.tsx";
-import naverApi from "~/api/naver-api.ts";
-import {useNavigate} from "react-router";
-import {isAxiosError} from "axios";
-import weddingApi from "~/api/wedding-api.ts";
 import View from "~/components/core/View.tsx";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import {interactionEffectStyles} from "~/components/css.util.ts";
+import {useRemoveWatermarkDialog} from "./useRemoveWatermarkDialog.ts";
 
 interface Props {
+    show: boolean;
     url: string;
     dismiss: () => void;
 }
 
-const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
-    const [phone, setPhone] = useState('');
-    const navigate = useNavigate();
-
-    const removeWatermark = async () => {
-        try {
-            await naverApi.order(phone);
-        } catch (error) {
-            console.log(error);
-            return;
-        }
-
-        try {
-            await weddingApi.removeWatermark(url);
-            alert('워터마크 제거 완료!');
-            navigate(0);
-        } catch (error) {
-            console.error(error);
-            if (isAxiosError(error) && error.response && error.status === 404) {
-                alert(`워터마크 제거 실패 - ${error.response.data.message}`);
-            } else {
-                alert('워터마크 제거 실패 - 고객센터에 문의하세요');
-            }
-        }
-    };
+const RemoveWatermarkDialog = ({show, url, dismiss}: Props) => {
+    const {
+        phone,
+        removeWatermark,
+        handlePhoneChange
+    } = useRemoveWatermarkDialog({ url });
 
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     gap: 32px;
@@ -60,9 +38,8 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                 `,
                 baseDialogContentStyle
             )}>
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
-                    flex-direction: row !important;
                 `}>
                     <Text type={'h5'} bold={true}>워터마크 제거</Text>
                     <Spacer/>
@@ -82,9 +59,8 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                         gap: 8px;
                     `}>
                         <Text type={'caption1'}>1. 네이버 스토어에서 청첩장 구매</Text>
-                        <View onClick={() => window.open(NAVER_STORE_WEDDING_URL)} ui={css`
+                        <View onClick={() => window.open(NAVER_STORE_WEDDING_URL)} flexDirection={"row"} ui={css`
                             gap: 15px;
-                            flex-direction: row !important;
                             background-color: #3FC911;
                             height: 44px;
                             border-radius: 8px;
@@ -104,11 +80,7 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
                         <Text type={'caption1'}>2. 구매한 네이버 계정의 전화번호 입력</Text>
                         <Input
                             value={phone}
-                            onChange={event => {
-                                const value = event.target.value;
-                                const formatedPhone = formatPhone(value);
-                                setPhone(formatedPhone);
-                            }}
+                            onChange={event => handlePhoneChange(event.target.value)}
                             placeholder={'전화번호'}
                         />
                     </View>
@@ -154,3 +126,4 @@ const RemoveWatermarkDialog = ({url, dismiss}: Props) => {
 };
 
 export default RemoveWatermarkDialog;
+

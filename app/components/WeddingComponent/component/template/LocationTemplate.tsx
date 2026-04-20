@@ -1,13 +1,13 @@
-import {useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 import Text from "~/components/core/Text.tsx";
-import {css, cx} from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import type WeddingPlace from "~/api/value/WeddingPlace.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import View from "~/components/core/View.tsx";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import {backgroundStyle} from "~/api/value/WeddingDesign.ts";
+import { backgroundStyle } from "~/api/value/WeddingDesign.ts";
 import Button from "~/components/core/Button.tsx";
-import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
+import type { WeddingMode } from "~/components/WeddingComponent/WeddingMode.ts";
 
 
 interface LocationProps {
@@ -27,7 +27,7 @@ function LocationTemplate(
     const weddingPlaceRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace], mode === 'preview');
     useEffect(() => {
-        const {kakao} = window as any;
+        const { kakao } = window as any;
         if (!kakao || !kakao.maps || !kakaoMapRef.current) {
             return;
         }
@@ -53,8 +53,8 @@ function LocationTemplate(
             align-items: stretch;
             padding: 72px 0;
         `} style={{
-            background: backgroundStyle(weddingDesignColor)
-        }}>
+                background: backgroundStyle(weddingDesignColor)
+            }}>
             <View ui={css`
                 gap: 40px;
             `}>
@@ -156,7 +156,7 @@ function LocationTemplate(
                     <Button text={'길 찾기'} onClick={() => window.open(weddingPlace.placeUrl)} ui={css`
                         align-self: stretch;
                         margin: 0 24px;
-                    `}/>
+                    `} />
                 )}
             </View>
         </View>

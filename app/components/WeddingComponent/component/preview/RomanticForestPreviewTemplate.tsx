@@ -62,8 +62,7 @@ function RomanticForestPreviewTemplate(
                 width: calc(100% - 32px * 2);
                 position: absolute;
             `}>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: flex-start;
                 `}>
                     <span>{first.korean} {first.name}</span>

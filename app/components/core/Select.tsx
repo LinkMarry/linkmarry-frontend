@@ -36,10 +36,9 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
         )} onClick={() => {
             setOpenOptions(i => !i);
         }} {...props}>
-            <View ui={css`
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
                 gap: 4px;
-                flex-direction: row !important;
                 padding: 12px 16px;
                 width: 100%;
                 border: 1px solid var(--g-300);
@@ -78,9 +77,8 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
                     z-index: 100;
                 `}>
                     {items.map((item, index) => (
-                        <View key={index} ui={css`
+                        <View key={index} flexDirection={"row"} ui={css`
                             align-items: center;
-                            flex-direction: row !important;
                             padding: 12px 16px;
                             cursor: pointer;
 

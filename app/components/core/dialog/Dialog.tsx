@@ -7,6 +7,7 @@ import { css, cx, type LinariaClassName } from "@linaria/core";
 import View from "~/components/core/View.tsx";
 
 interface DialogProps {
+    show: boolean;
     title: string;
     description?: string;
     dismiss: () => void;
@@ -18,6 +19,7 @@ interface DialogProps {
 
 function Dialog(
     {
+        show,
         title,
         description,
         dismiss,
@@ -28,7 +30,8 @@ function Dialog(
     }: DialogProps
 ) {
     return (
-        <BaseDialog dismiss={dismiss} ui={ui}>
+        <BaseDialog show={show} dismiss={dismiss} ui={ui}>
+
             <View ui={cx(
                 css`
                     width: 90vw;
@@ -55,8 +58,7 @@ function Dialog(
                     `}>{description}</Text>
                 </View>
                 {children}
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 12px;
                     & > * {
                         flex: 1;

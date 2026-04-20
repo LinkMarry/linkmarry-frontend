@@ -1,16 +1,16 @@
 import Text from "~/components/core/Text.tsx";
-import {css, cx} from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import Divider from "~/components/core/Divider.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Button from "~/components/core/Button.tsx";
-import {mobileStyle, notMobileStyle} from "~/components/responsive.tsx";
+import { mobileStyle, notMobileStyle } from "~/components/responsive.tsx";
 import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
 import Loading from "~/components/core/Loading.tsx";
 import View from "~/components/core/View.tsx";
-import {getRsvpText} from "~/api/value/RsvpInfo.ts";
-import {downloadExcelFromRsvpInfo} from "~/lib/excel-util.ts";
+import { getRsvpText } from "~/api/value/RsvpInfo.ts";
+import { downloadExcelFromRsvpInfo } from "~/lib/excel-util.ts";
 import useMyPageStat from "~/routes/mypage/detail/stat/useMyPageStat.ts";
-import {textStyles} from "~/components/core/text/TextType.ts";
+import { textStyles } from "~/components/core/text/TextType.ts";
 
 const CellStyle = cx(
     css`
@@ -22,7 +22,7 @@ const CellStyle = cx(
 );
 
 const MyPageStat = () => {
-    const {statistics, wedding, rsvpInfoList} = useMyPageStat();
+    const { statistics, wedding, rsvpInfoList } = useMyPageStat();
 
     return (
         <View ui={css`
@@ -47,16 +47,15 @@ const MyPageStat = () => {
                         통계
                     </Text>
                     {statistics ? (
-                        <Stats statistics={statistics}/>
+                        <Stats statistics={statistics} />
                     ) : (
-                        <Loading/>
+                        <Loading />
                     )}
                 </View>
                 <View ui={css`
                     gap: 8px;
                 `}>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         align-items: flex-end;
                     `}>
                         <Text type={'caption1'} bold={true} ui={css`
@@ -64,7 +63,7 @@ const MyPageStat = () => {
                         `}>
                             RSVP
                         </Text>
-                        <Spacer/>
+                        <Spacer />
                         {wedding?.rsvp.rsvpActivate && (
                             <Button
                                 text={'Excel 파일 다운받기'} trailingIcon={'StopArrowDown'} size={'small'}
@@ -94,36 +93,36 @@ const MyPageStat = () => {
                                     border-spacing: 0;
                                 `}>
                                     <thead>
-                                    <tr>
-                                        <td className={cx(CellStyle, css`
+                                        <tr>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>이름
-                                        </td>
-                                        <td className={cx(CellStyle, css`
+                                            </td>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>참석측
-                                        </td>
-                                        <td className={cx(CellStyle, css`
+                                            </td>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>식사 여부
-                                        </td>
-                                        <td className={cx(CellStyle, css`
+                                            </td>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>참석 인원
-                                        </td>
-                                        <td className={cx(CellStyle, css`
+                                            </td>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>전화번호
-                                        </td>
-                                        <td className={cx(CellStyle, css`
+                                            </td>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>버스 탑승 여부
-                                        </td>
-                                        <td className={cx(CellStyle, css`
+                                            </td>
+                                            <td className={cx(CellStyle, css`
                                             color: var(--g-500);
                                         `)}>추가 전달사항
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     </thead>
                                     {rsvpInfoList ? rsvpInfoList.map(rsvp => (
                                         <tr key={rsvp.id} className={css`
@@ -154,7 +153,7 @@ const MyPageStat = () => {
                                     )) : (
                                         <Loading ui={css`
                                             margin-top: 40px;
-                                        `}/>
+                                        `} />
                                     )}
                                 </table>
                             </View>
@@ -168,10 +167,10 @@ const MyPageStat = () => {
                                 <Text type={'p3'} ui={css`
                                     color: var(--g-500);
                                 `}><View as={'span'} onClick={() => {
-                                    if (wedding) {
-                                        window.open(`/editor/${wedding.url}`);
-                                    }
-                                }} ui={css`
+                                        if (wedding) {
+                                            window.open(`/editor/${wedding.url}`);
+                                        }
+                                    }} ui={css`
                                     cursor: pointer;
                                     text-decoration: underline;
                                 `}>에디터</View>에서 활성화 할 수 있습니다</Text>
@@ -179,7 +178,7 @@ const MyPageStat = () => {
                         )
                     )}
                 </View>
-                <Spacer h={64}/>
+                <Spacer h={64} />
             </View>
         </View>
     );
@@ -192,31 +191,30 @@ interface StatsProps {
 const Stats = (props: StatsProps) => {
     return (
         <>
-            <MobileStats {...props}/>
-            <NotMobileStats {...props}/>
+            <MobileStats {...props} />
+            <NotMobileStats {...props} />
         </>
     );
 }
 
-const NotMobileStats = ({statistics}: StatsProps) => {
+const NotMobileStats = ({ statistics }: StatsProps) => {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 gap: 24px;
             `,
             notMobileStyle
         )}>
-            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
-            <Divider direction={'vertical'}/>
-            <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
-            <Divider direction={'vertical'}/>
-            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
+            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`} />
+            <Divider direction={'vertical'} />
+            <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`} />
+            <Divider direction={'vertical'} />
+            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`} />
         </View>
     )
 }
 
-const MobileStats = ({statistics}: StatsProps) => {
+const MobileStats = ({ statistics }: StatsProps) => {
     return (
         <View ui={cx(
             css`
@@ -224,9 +222,9 @@ const MobileStats = ({statistics}: StatsProps) => {
             `,
             mobileStyle
         )}>
-            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`}/>
-            <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`}/>
-            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`}/>
+            <StatCell title={'총 참석 가능 인원'} value={`${statistics.totalRsvpVisitorCnt}명`} />
+            <StatCell title={'식사 인원'} value={`${statistics.totalMealCnt}명`} />
+            <StatCell title={'링크 클릭 횟수'} value={`${statistics.totalVisitorCnt}회`} />
         </View>
     )
 };
@@ -239,13 +237,13 @@ interface StatCellProps {
 const StatCell = (props: StatCellProps) => {
     return (
         <>
-            <MobileStatCell {...props}/>
-            <NotMobileStatCell {...props}/>
+            <MobileStatCell {...props} />
+            <NotMobileStatCell {...props} />
         </>
     );
 }
 
-const NotMobileStatCell = ({title, value}: StatCellProps) => {
+const NotMobileStatCell = ({ title, value }: StatCellProps) => {
     return (
         <View ui={cx(
             css`
@@ -263,18 +261,15 @@ const NotMobileStatCell = ({title, value}: StatCellProps) => {
     );
 }
 
-const MobileStatCell = ({title, value}: StatCellProps) => {
+const MobileStatCell = ({ title, value }: StatCellProps) => {
     return (
-        <View ui={cx(
-            css`
-                flex-direction: row !important;
-            `,
+        <View flexDirection={"row"} ui={cx(
             mobileStyle
         )}>
             <Text type={'p3'} ui={css`
                 color: var(--g-500);
             `}>{title}</Text>
-            <Spacer/>
+            <Spacer />
             <Text type={'p3'} bold={true} ui={css`
                 color: var(--g-600);
             `}>{value}</Text>

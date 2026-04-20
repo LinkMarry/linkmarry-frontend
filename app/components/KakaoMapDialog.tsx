@@ -1,15 +1,17 @@
-import {type ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
-import {css, cx} from "@linaria/core";
+import { type ChangeEvent } from 'react';
+import { css, cx } from "@linaria/core";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import View from "~/components/core/View.tsx";
 import Button from "~/components/core/Button.tsx";
 import Text from "~/components/core/Text.tsx";
-import type WeddingPlace from "~/api/value/WeddingPlace.ts";
 import Icon from "~/components/core/icon";
-import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import {textStyles} from "~/components/core/text/TextType.ts";
+import { baseDialogContentStyle } from "~/components/core/dialog/baseDialogContentStyle.ts";
+import { textStyles } from "~/components/core/text/TextType.ts";
+import { useKakaoMapDialog } from "./useKakaoMapDialog.ts";
+import type WeddingPlace from "~/api/value/WeddingPlace.ts";
 
 interface KakaoMapDialogProps {
+    show: boolean;
     weddingPlace: WeddingPlace;
     onChange: (weddingPlace: WeddingPlace) => void;
     dismiss: () => void;
@@ -17,87 +19,26 @@ interface KakaoMapDialogProps {
 
 function KakaoMapDialog(
     {
+        show,
         weddingPlace,
         onChange,
         dismiss
     }: KakaoMapDialogProps
 ) {
-    const kakaoMap = useRef<HTMLDivElement>(null);
-    const [places, setPlaces] = useState<any[]>([]);
-    const [selectedPlace, setSelectedPlace] = useState<any>();
-    const [searchText, setSearchText] = useState('');
-    const [map, setMap] = useState<any>();
-
-    const keywordSearch = useCallback((keyword: string, option?: any) => {
-        const {kakao} = window as any;
-
-        const ps = new kakao.maps.services.Places();
-
-        ps.keywordSearch(keyword, (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
-
-            setPlaces(result);
-
-            const first = result[0];
-            if (first) {
-                map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
-            }
-        }, option);
-    }, [map]);
-
-    const searchAddress = useCallback((coords: any) => {
-        const {kakao} = window as any;
-        if (!kakao || !kakao.maps) return;
-
-        const geocoder = new kakao.maps.services.Geocoder();
-
-        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
-
-            const keyword = result[0].address.address_name;
-            keywordSearch(keyword, {
-                location: coords,
-                radius: 50
-            });
-        });
-    }, [keywordSearch]);
-
-    useEffect(() => {
-        const {kakao} = window as any;
-        if (!kakao || !kakao.maps || !map) return;
-
-        // Marker 설정
-        const marker = new kakao.maps.Marker({
-            position: map.getCenter(), // 초기 마커 위치 (지도의 중앙)
-            map, // 지도 객체와 연결
-        });
-
-        // 지도가 움직일 때 마커의 위치를 중앙으로 유지
-        kakao.maps.event.addListener(map, 'center_changed', () => {
-            const center = map.getCenter(); // 지도 중심 좌표 가져오기
-            marker.setPosition(center); // 마커 위치를 지도 중심으로 업데이트
-        });
-
-        // 움직임 멈췄을 때 중심 좌표로 주소 및 장소 검색
-        kakao.maps.event.addListener(map, 'dragend', () => {
-            const center = map.getCenter();
-            searchAddress(center); // 주소 검색
-        });
-    }, [map, searchAddress]);
-
-    useEffect(() => {
-        const {kakao} = window as any;
-        if (!kakao || !kakao.maps) return;
-
-        const map = new kakao.maps.Map(kakaoMap.current, {
-            center: new kakao.maps.LatLng(37.5665851, 126.9782038),
-            level: 5, // 확대 레벨
-        });
-        setMap(map);
-    }, []);
+    const {
+        kakaoMapRef,
+        places,
+        selectedPlace,
+        searchText,
+        setSearchText,
+        keywordSearch,
+        handleSelectPlace,
+        confirmSelection
+    } = useKakaoMapDialog({ show, weddingPlace, onChange, dismiss });
 
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     width: 90vw;
@@ -108,8 +49,7 @@ function KakaoMapDialog(
                 `,
                 baseDialogContentStyle
             )}>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
                     padding-right: 20px;
                 `}>
@@ -139,13 +79,13 @@ function KakaoMapDialog(
                     }} size={28} ui={css`
                         fill: var(--g-500);
                         cursor: pointer;
-                    `}/>
+                    `} />
                 </View>
-                <View ref={kakaoMap} ui={css`
+                <View ref={kakaoMapRef} ui={css`
                     display: flex;
                     flex: 1;
                     position: relative;
-                `}/>
+                `} />
                 {/* 결과 출력 */}
                 <View ui={css`
                     gap: 10px;
@@ -182,13 +122,7 @@ function KakaoMapDialog(
                                             border: 1px solid var(--g-800);
                                         ` : undefined
                                     )}
-                                    onClick={() => {
-                                        if (selected) {
-                                            setSelectedPlace(undefined);
-                                        } else {
-                                            setSelectedPlace(place);
-                                        }
-                                    }}
+                                    onClick={() => handleSelectPlace(place)}
                                 >
                                     <Text type={'p2'}>{place.address_name}</Text>
                                     <Text type={'p3'} ui={css`
@@ -196,23 +130,13 @@ function KakaoMapDialog(
                                         color: var(--g-500);
                                         cursor: pointer;
                                     `} onClick={() => {
-                                        window.open(place.place_url, '_blank');
-                                    }}>{place.place_name}</Text>
+                                            window.open(place.place_url, '_blank');
+                                        }}>{place.place_name}</Text>
                                 </View>
                             );
                         })}
                     </View>
-                    <Button text={'선택'} enabled={selectedPlace !== undefined} onClick={() => {
-                        onChange({
-                            ...weddingPlace,
-                            x: selectedPlace.x,
-                            y: selectedPlace.y,
-                            placeUrl: selectedPlace.place_url,
-                            placeName: selectedPlace.place_name,
-                            addressName: selectedPlace.address_name,
-                        })
-                        dismiss();
-                    }}/>
+                    <Button text={'선택'} enabled={selectedPlace !== undefined} onClick={confirmSelection} />
                 </View>
             </View>
         </BaseDialog>
@@ -220,3 +144,4 @@ function KakaoMapDialog(
 }
 
 export default KakaoMapDialog;
+

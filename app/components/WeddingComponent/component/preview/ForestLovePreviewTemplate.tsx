@@ -31,9 +31,8 @@ function ForestLovePreviewTemplate(
                 object-fit: cover;
             `}/>
             {isValidDate && (
-                <View ui={cx(
+                <View flexDirection={"row"} ui={cx(
                     css`
-                        flex-direction: row !important;
                         justify-content: space-between;
                         position: absolute;
                         bottom: 28px;
@@ -60,9 +59,8 @@ function ForestLovePreviewTemplate(
                     </Text>
                 </View>
             )}
-            <View ui={cx(
+            <View flexDirection={"row"} ui={cx(
                 css`
-                    flex-direction: row !important;
                     position: absolute;
                     top: 32px;
                     left: 20px;

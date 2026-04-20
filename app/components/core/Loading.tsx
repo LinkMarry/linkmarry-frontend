@@ -13,9 +13,8 @@ function Loading(
     }: Props
 ) {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 justify-content: center;
                 gap: 8px;
             `,

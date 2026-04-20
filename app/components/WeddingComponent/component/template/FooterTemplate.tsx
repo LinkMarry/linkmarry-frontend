@@ -112,19 +112,17 @@ function FooterTemplate(
                 padding: 32px 0;
             `}
             >
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     cursor: pointer;
                     align-items: center;
                     gap: 8px;
-                    flex-direction: row !important;
                 `} onClick={shareToKakao}>
                     <Icon iconType={'Kakao'} size={20}/>
                     <Text size={14} weight={300} ui={css`
                         color: var(--g-600);
                     `}>카카오톡으로 청첩장 보내기</Text>
                 </View>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 4px;
                     align-items: center;
                 `}>

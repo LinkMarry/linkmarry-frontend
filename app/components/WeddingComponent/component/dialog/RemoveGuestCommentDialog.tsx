@@ -11,6 +11,7 @@ import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContent
 import View from "~/components/core/View.tsx";
 
 interface RemoveGuestCommentDialogProps {
+    show: boolean;
     url: string;
     selectedGuestComment: Comment;
     dismiss: () => void;
@@ -19,6 +20,7 @@ interface RemoveGuestCommentDialogProps {
 
 function RemoveGuestCommentDialog(
     {
+        show,
         url,
         selectedGuestComment,
         dismiss,
@@ -53,7 +55,8 @@ function RemoveGuestCommentDialog(
     };
 
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     gap: 48px;

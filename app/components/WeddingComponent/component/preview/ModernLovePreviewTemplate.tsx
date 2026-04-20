@@ -41,8 +41,7 @@ function ModernLovePreviewTemplate(
             <Text size={40} weight={400} ui={css`
                 color: #556B2F;
             `}>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
                     gap: 36px;
                 `}>

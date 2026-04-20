@@ -80,9 +80,8 @@ const DearMyLovePreviewTemplate = (
                         position: absolute;
                     `}/>
                 </View>
-                <View ui={cx(
+                <View flexDirection={"row"} ui={cx(
                     css`
-                        flex-direction: row !important;
                         gap: 48px;
                         font-size: 20px;
                         font-weight: 400;

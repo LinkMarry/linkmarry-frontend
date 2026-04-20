@@ -1,118 +1,103 @@
-import {useEffect, useState} from 'react';
-import EditorHeader from "~/routes/editor/component/EditorHeader.tsx";
-import {css, cx} from "@linaria/core";
-import EditorNavigationBar from "~/routes/editor/component/EditorNavigationBar.tsx";
-import {type EditorNavigationBarType} from "~/routes/editor/component/EditorNavigationBarType.ts";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
-import useEditor from "~/routes/editor/useEditor.ts";
+import { css } from "@linaria/core";
+import useWeddingInvitationEditorScreen from "~/routes/editor/useWeddingInvitationEditorScreen.ts";
 import CreateWeddingDialog from "~/routes/editor/component/CreateWeddingDialog.tsx";
-import {useNavigate, useSearchParams} from "react-router";
 import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
-import weddingDesignApi from "~/api/wedding-design-api.ts";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
-import {desktopStyle, responsive} from "~/components/responsive.tsx";
+import { desktopStyle } from "~/components/responsive.tsx";
 import EditorPreview from "~/routes/editor/component/EditorPreview.tsx";
 import EditorInspector from "~/routes/editor/component/EditorInspector.tsx";
+import EditorShell from "~/components/EditorShell.tsx";
+import EditorHeader from "~/components/EditorHeader.tsx";
+import EditorNavigationBar from "~/components/EditorNavigationBar.tsx";
+import Button from "~/components/core/Button.tsx";
+import { editorNavigationBarTypeList, editorNavigationBarTypeMap } from "~/routes/editor/component/EditorNavigationBarType.ts";
 import View from "~/components/core/View.tsx";
 
-function useDesignId() {
-    const [searchParams] = useSearchParams();
-    const designId = searchParams.get('designId');
 
-    return designId ? Number(designId) : null;
-}
+const WeddingInvitationEditorScreen = () => {
+    const {
+        wedding,
+        updateWedding,
+        isSaving,
+        musics,
+        selectedNav,
+        setSelectedNav,
+        openInspector,
+        toggleInspector,
+        weddingDesigns,
+        showRemoveWatermarkDialog,
+        setShowRemoveWatermarkDialog,
+        handleShowPreview,
+        handleRemoveWatermark
+    } = useWeddingInvitationEditorScreen();
 
-const Editor = () => {
-    const designId = useDesignId();
-    const [selectedNav, setSelectedNav] = useState<EditorNavigationBarType>('design');
-    const [openInspector, setOpenInspector] = useState(true);
-    const {wedding, updateWedding, isSaving, musics} = useEditor();
-    const [weddingDesigns, setWeddingDesigns] = useState<WeddingDesignPreset[]>();
-    const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
-    const navigate = useNavigate();
-
-    const onAppear = async () => {
-        const {data} = await weddingDesignApi.getWeddingDesignPresets();
-        setWeddingDesigns(data);
-    };
-
-    useEffect(() => {
-        onAppear().then();
-    }, []);
-
-    useEffect(() => {
-        if (designId === null || !weddingDesigns) return;
-
-        const weddingDesign = weddingDesigns.find(i => i.id === designId);
-        if (weddingDesign) {
-            updateWedding(draft => {
-                draft.weddingDesign.weddingDesignName = weddingDesign.name;
-            });
-        }
-    }, [designId, updateWedding, weddingDesigns]);
+    const navItems = editorNavigationBarTypeList.map(type => ({
+        id: type,
+        label: editorNavigationBarTypeMap[type].navigationBarText,
+        icon: editorNavigationBarTypeMap[type].icon
+    }));
 
     return (
-        <View ui={cx(
-            css`
-                width: 100vw;
-                height: 100dvh;
-                overflow: hidden;
-                background: var(--g-100);
-            `,
-            hideScrollBarStyle
-        )}>
-            {showRemoveWatermarkDialog && (
-                <RemoveWatermarkDialog
-                    url={wedding.url}
-                    dismiss={() => setShowRemoveWatermarkDialog(false)}
+        <EditorShell
+            dialogs={(
+                <>
+                    <RemoveWatermarkDialog
+                        show={showRemoveWatermarkDialog}
+                        url={wedding.url}
+                        dismiss={() => setShowRemoveWatermarkDialog(false)}
+                    />
+                    <CreateWeddingDialog
+                        value={wedding}
+                        update={updateWedding}
+                    />
+                </>
+            )}
+
+            header={(
+                <EditorHeader
+                    statusText={isSaving ? '저장 중...' : undefined}
+                    actions={(
+                        <>
+                            <View flexDirection={"row"} ui={css`
+                                align-items: flex-start;
+                                gap: 8px;
+                                
+                                @media (min-width: 1025px) {
+                                    display: none;
+                                }
+                            `}>
+                                <Button text={'미리보기'} size={'small'} buttonType={'tonal'} onClick={handleShowPreview} />
+                                <Button text={'워터마크 제거'} size={'small'} onClick={handleRemoveWatermark} />
+                            </View>
+                            <Button text={'워터마크 제거'} size={'medium'} onClick={handleRemoveWatermark} ui={desktopStyle} />
+                        </>
+                    )}
                 />
             )}
-            <CreateWeddingDialog
-                value={wedding}
-                update={updateWedding}
-            />
-            <View ui={css`
-                flex: 1;
-                overflow: hidden;
-                background: white;
-
-                ${responsive.notDesktop} {
-                    max-width: 720px;
-                    width: 100%;
-                    margin: 0 auto;
-                }
-            `}>
-                <EditorHeader
-                    onShowPreview={() => {
-                        navigate(`/wedding/${wedding.url}`);
-                    }}
-                    onRemoveWatermark={() => {
-                        setShowRemoveWatermarkDialog(true);
-                    }}
-                    isSaving={isSaving}
-                />
+            navigationBar={(
                 <EditorNavigationBar
-                    currentNavType={selectedNav}
-                    onChangeNavType={type => setSelectedNav(type)}
+                    items={navItems}
+                    currentId={selectedNav}
+                    onChange={id => setSelectedNav(id as any)}
                     openInspector={openInspector}
-                    onToggleInspector={() => {
-                        setOpenInspector(i => !i);
-                    }}
-                >
-                    {openInspector && (
-                        <EditorInspector
-                            value={wedding}
-                            update={updateWedding}
-                            currentNavType={selectedNav}
-                            weddingDesigns={weddingDesigns}
-                            backgroundMusics={musics}
-                        />
-                    )}
-                    <EditorPreview wedding={wedding} ui={desktopStyle}/>
-                </EditorNavigationBar>
-            </View>
-        </View>
+                    onToggleInspector={toggleInspector}
+                />
+            )}
+            inspector={openInspector && (
+                <EditorInspector
+                    value={wedding}
+                    update={updateWedding}
+                    currentNavType={selectedNav}
+                    weddingDesigns={weddingDesigns}
+                    backgroundMusics={musics}
+                />
+            )}
+            preview={(
+                <EditorPreview wedding={wedding} ui={desktopStyle} />
+            )}
+        />
     );
 };
 
-export default Editor;
+
+export default WeddingInvitationEditorScreen;
+

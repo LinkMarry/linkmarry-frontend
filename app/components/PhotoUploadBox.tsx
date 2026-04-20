@@ -92,8 +92,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
                 onChange={handleInput}
             />
             {isEmpty ? (
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 8px;
                     align-items: center;
                 `}>
@@ -103,9 +102,8 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
                     `}>사진을 첨부해 주세요</Text>
                 </View>
             ) : (
-                <View ui={cx(
+                <View flexDirection={"row"} ui={cx(
                     css`
-                        flex-direction: row !important;
                         gap: 6px;
                         align-self: stretch;
                         overflow-x: scroll;

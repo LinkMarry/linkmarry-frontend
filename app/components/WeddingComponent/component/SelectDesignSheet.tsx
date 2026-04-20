@@ -13,6 +13,7 @@ import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 import useResponsive from "~/hook/useResponsive.ts";
 
 interface SelectDesignSheetProps {
+    show: boolean;
     designName: WeddingDesignName;
     onChangeDesignName: (designName: WeddingDesignName) => void;
     dismiss: () => void;
@@ -23,14 +24,23 @@ interface SelectDesignSheetProps {
 const SelectDesignSheet = (props: SelectDesignSheetProps) => {
     const {deviceSize} = useResponsive();
 
+    if (!props.show && deviceSize === 'mobile') {
+        return null;
+    }
+
     if (deviceSize === 'mobile') {
         return <MobileSelectDesignSheet {...props}/>;
+    }
+
+    if (!props.show) {
+        return null;
     }
 
     return <NotMobileSelectDesignSheet {...props}/>;
 };
 
-const MobileSelectDesignSheet = ({onChangeDesignName, dismiss, weddingDesigns, ui}: SelectDesignSheetProps) => {
+
+const MobileSelectDesignSheet = ({show, onChangeDesignName, dismiss, weddingDesigns, ui}: SelectDesignSheetProps) => {
     const {
         selectedCategory,
         setSelectedCategory,
@@ -38,7 +48,8 @@ const MobileSelectDesignSheet = ({onChangeDesignName, dismiss, weddingDesigns, u
         selectedWeddingDesigns
     } = useWeddingDesigns(weddingDesigns);
     return (
-        <BaseDialog dismiss={dismiss} ui={mobileStyle}>
+        <BaseDialog show={show} dismiss={dismiss} ui={mobileStyle}>
+
             <View ui={cx(
                 css`
                     justify-content: flex-end;
@@ -134,9 +145,8 @@ const NotMobileSelectDesignSheet = ({onChangeDesignName, weddingDesigns}: Select
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
             />
-            <View ui={cx(
+            <View flexDirection={"row"} ui={cx(
                 css`
-                    flex-direction: row !important;
                     gap: 14px;
                     overflow-x: scroll;
                 `,

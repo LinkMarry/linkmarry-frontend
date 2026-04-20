@@ -74,13 +74,11 @@ const FileUploadBox = ({id, value, label, weddingUrl, onChange}: Props) => {
                 `}>업로드한 사진은 대표 이미지로 등록됩니다.</Text>
             </View>
             {!isEmpty && (
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 6px;
                     height: 40px;
                 `}>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         align-items: center;
                         padding: 0 12px;
                         background: var(--g-100);

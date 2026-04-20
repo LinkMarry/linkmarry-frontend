@@ -136,29 +136,27 @@ function GuestCommentsTemplate(
                         />
                     </FadeIn>
                 </View>
-                {showRemoveGuestCommentDialog && selectedRemoveGuestComment && (
-                    <RemoveGuestCommentDialog
-                        selectedGuestComment={selectedRemoveGuestComment}
-                        url={url}
-                        dismiss={() => setShowRemoveGuestCommentDialog(false)}
-                        onRefresh={onRefresh}
-                    />
-                )}
-                {showGuestCommentsDetailDialog && (
-                    <GuestCommentsDetailDialog
-                        comments={guestComments}
-                        guestComment={guestComment}
-                        onRemove={handleRemove}
-                        dismiss={() => setShowGuestCommentsDetailDialog(false)}
-                    />
-                )}
-                {showCreateGuestCommentDialog && (
-                    <CreateGuestCommentDialog
-                        url={url}
-                        dismiss={() => setShowCreateGuestCommentDialog(false)}
-                        onRefresh={onRefresh}
-                    />
-                )}
+                <RemoveGuestCommentDialog
+                    show={showRemoveGuestCommentDialog && !!selectedRemoveGuestComment}
+                    selectedGuestComment={selectedRemoveGuestComment!}
+                    url={url}
+                    dismiss={() => setShowRemoveGuestCommentDialog(false)}
+                    onRefresh={onRefresh}
+                />
+                <GuestCommentsDetailDialog
+                    show={showGuestCommentsDetailDialog}
+                    comments={guestComments}
+                    guestComment={guestComment}
+                    onRemove={handleRemove}
+                    dismiss={() => setShowGuestCommentsDetailDialog(false)}
+                />
+                <CreateGuestCommentDialog
+                    show={showCreateGuestCommentDialog}
+                    url={url}
+                    dismiss={() => setShowCreateGuestCommentDialog(false)}
+                    onRefresh={onRefresh}
+                />
+
             </View>
         </FadeIn>
     );
@@ -197,8 +195,7 @@ function GuestComments(
             );
         case 'STICKER':
             return (
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 20px;
                 `}>
                     {trimArray(comments, 2).map((comment, index) => (
@@ -236,8 +233,7 @@ export function BasicGuestComment(
         `} style={{
                 background: backgroundStyle(background)
             }} {...props}>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 gap: 8px;
                 align-items: center;
             `}>

@@ -1,19 +1,19 @@
-import {useEffect, useState} from 'react';
-import {css} from "@linaria/core";
-import {dummyWedding} from "~/api/value/Wedding.ts";
+import { useEffect, useState } from 'react';
+import { css } from "@linaria/core";
+import { dummyWedding } from "~/api/value/Wedding.ts";
 import WeddingComponent from "~/components/WeddingComponent";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import SelectDesignSheet from "~/components/WeddingComponent/component/SelectDesignSheet.tsx";
-import {useSearchParams} from "react-router";
-import {responsive} from "~/components/responsive.tsx";
+import { useSearchParams } from "react-router";
+import { responsive } from "~/components/responsive.tsx";
 import ClientRendering from "~/ClientRendering.tsx";
 import weddingDesignApi from "~/api/wedding-design-api.ts";
-import type {Route} from "./+types/sample";
+import type { Route } from "./+types/sample";
 
 
 export async function loader() {
-    const {data} = await weddingDesignApi.getWeddingDesignPresets();
+    const { data } = await weddingDesignApi.getWeddingDesignPresets();
     return data;
 }
 
@@ -50,8 +50,7 @@ const Sample = (
 
     return (
         <ClientRendering>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 justify-content: center;
                 padding: 64px 0;
                 position: relative;
@@ -60,8 +59,8 @@ const Sample = (
                     padding: 0;
                 }
             `} style={{
-                background: wedding.weddingDesign.weddingDesignColor
-            }}>
+                    background: wedding.weddingDesign.weddingDesignColor
+                }}>
                 <View ui={css`
                     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
                     border-radius: 16px;
@@ -94,23 +93,23 @@ const Sample = (
                         margin: 12px;
                     `}>스타일 선택</Text>
                 </View>
-                {showSelectDesignSheet && (
-                    <SelectDesignSheet
-                        designName={wedding.weddingDesign.weddingDesignName}
-                        onChangeDesignName={designName => {
-                            setSearchParams({
-                                designName
-                            });
-                        }}
-                        dismiss={() => setShowSelectDesignSheet(false)}
-                        weddingDesigns={loaderData}
-                        ui={css`
-                            max-width: 436px;
-                            overflow: hidden;
-                            width: 100vw;
-                        `}
-                    />
-                )}
+                <SelectDesignSheet
+                    show={showSelectDesignSheet}
+                    designName={wedding.weddingDesign.weddingDesignName}
+                    onChangeDesignName={designName => {
+                        setSearchParams({
+                            designName
+                        });
+                    }}
+                    dismiss={() => setShowSelectDesignSheet(false)}
+                    weddingDesigns={loaderData}
+                    ui={css`
+                        max-width: 436px;
+                        overflow: hidden;
+                        width: 100vw;
+                    `}
+                />
+
             </View>
         </ClientRendering>
     );

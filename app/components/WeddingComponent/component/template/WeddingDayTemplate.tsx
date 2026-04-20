@@ -82,14 +82,12 @@ function WeddingDayTemplate(
                             gap: 8px;
                             margin: 24px 19px;
                         `}>
-                            <View as={'thead'} className={css`
+                            <View as={'thead'} flexDirection={"row"} className={css`
                                 display: flex;
-                                flex-direction: row !important;
                                 padding: 12px 14px;
                             `}>
-                                <View as={'tr'} className={css`
+                                <View as={'tr'} flexDirection={"row"} className={css`
                                     display: flex;
-                                    flex-direction: row !important;
                                     justify-content: space-between;
                                     color: var(--g-500);
                                     flex: 1;
@@ -113,9 +111,8 @@ function WeddingDayTemplate(
                                 gap: 4px;
                             `}>
                                 {calendar && calendar.map((week, weekIndex) => (
-                                    <View as={'tr'} key={weekIndex} className={css`
+                                    <View as={'tr'} key={weekIndex} flexDirection={"row"} className={css`
                                         display: flex;
-                                        flex-direction: row !important;
                                         align-items: flex-start;
                                     `}>
                                         {week.map((day, dayIndex) => (
@@ -125,10 +122,10 @@ function WeddingDayTemplate(
                                                         as={'td'}
                                                         key={dayIndex}
                                                         ref={provided.ref}
+                                                        flexDirection={"row"}
                                                         className={cx(
                                                             css`
                                                                 display: flex;
-                                                                flex-direction: row !important;
                                                                 align-items: center;
                                                                 justify-content: center;
                                                                 flex: 1;

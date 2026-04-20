@@ -11,6 +11,7 @@ import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContent
 import View from "~/components/core/View.tsx";
 
 interface CreateGuestCommentDialogProps {
+    show: boolean;
     url: string;
     dismiss: () => void;
     onRefresh: () => void;
@@ -18,6 +19,7 @@ interface CreateGuestCommentDialogProps {
 
 function CreateGuestCommentDialog(
     {
+        show,
         url,
         dismiss,
         onRefresh
@@ -59,7 +61,8 @@ function CreateGuestCommentDialog(
     };
 
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     gap: 48px;

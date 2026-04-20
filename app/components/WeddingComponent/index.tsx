@@ -176,27 +176,26 @@ function WeddingComponent(
                 onClickCreateRsvp={() => setShowRsvpDialog(true)}
                 mode={mode}
             />
-            {showRsvpDialog && (
-                <RsvpDialog
-                    url={wedding.url}
-                    baseInfo={wedding.baseInfo}
-                    weddingSchedule={wedding.weddingSchedule}
-                    weddingPlace={wedding.weddingPlace}
-                    rsvp={wedding.rsvp}
-                    onConfirm={() => {
-                        setShowRsvpDialog(false);
-                        setShowCreateRsvpDialog(true);
-                    }}
-                    dismiss={() => setShowRsvpDialog(false)}
-                />
-            )}
-            {showCreateRsvpDialog && (
-                <CreateRsvpDialog
-                    url={wedding.url}
-                    rsvp={wedding.rsvp}
-                    dismiss={() => setShowCreateRsvpDialog(false)}
-                />
-            )}
+            <RsvpDialog
+                show={showRsvpDialog}
+                url={wedding.url}
+                baseInfo={wedding.baseInfo}
+                weddingSchedule={wedding.weddingSchedule}
+                weddingPlace={wedding.weddingPlace}
+                rsvp={wedding.rsvp}
+                onConfirm={() => {
+                    setShowRsvpDialog(false);
+                    setShowCreateRsvpDialog(true);
+                }}
+                dismiss={() => setShowRsvpDialog(false)}
+            />
+            <CreateRsvpDialog
+                show={showCreateRsvpDialog}
+                url={wedding.url}
+                rsvp={wedding.rsvp}
+                dismiss={() => setShowCreateRsvpDialog(false)}
+            />
+
             {wedding.waterMark && mode === 'default' && (
                 <WaterMarkSheet url={wedding.url} />
             )}

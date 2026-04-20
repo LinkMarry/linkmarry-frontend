@@ -68,19 +68,19 @@ function ComponentDemo() {
                 OnChange={setToggleChecked}
             />
             <Button text={'show dialog'} onClick={() => setShowDialog(true)}/>
-            {showDialog && (
-                <Dialog
-                    title={'Title'}
-                    description={'Description'}
-                    dismiss={() => setShowDialog(false)}
-                    dismissButtonProps={{
-                        text: 'Cancel'
-                    }}
-                    confirmButtonProps={{
-                        text: 'Confirm'
-                    }}
-                />
-            )}
+            <Dialog
+                show={showDialog}
+                title={'Title'}
+                description={'Description'}
+                dismiss={() => setShowDialog(false)}
+                dismissButtonProps={{
+                    text: 'Cancel'
+                }}
+                confirmButtonProps={{
+                    text: 'Confirm'
+                }}
+            />
+
             <Popover
                 items={[
                     {

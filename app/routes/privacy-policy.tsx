@@ -1,19 +1,19 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
 import notificationApi from "~/api/notification-api.ts";
-import {compareDesc} from "date-fns";
-import type {Route} from './+types/privacy-policy';
+import { compareDesc } from "date-fns";
+import type { Route } from './+types/privacy-policy';
 import MainWrapper from "~/components/MainWrapper";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import {css} from "@linaria/core";
+import { css } from "@linaria/core";
 import Divider from "~/components/core/Divider.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
-import {Navigate, useNavigate} from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 
 export async function loader() {
-    const {data} = await notificationApi.getPrivacyPolicyNotifications();
+    const { data } = await notificationApi.getPrivacyPolicyNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date))
     };
@@ -41,13 +41,13 @@ function PrivacyPolicy(
 
     if (!selectedNotification) {
         return (
-            <Navigate to={'/privacy-policy'}/>
+            <Navigate to={'/privacy-policy'} />
         );
     }
 
     return (
         <MainWrapper scrollRef={scrollRef}>
-            <NotificationDetailContent notification={selectedNotification}/>
+            <NotificationDetailContent notification={selectedNotification} />
 
             <View ui={css`
                 align-items: center;
@@ -60,14 +60,13 @@ function PrivacyPolicy(
                     flex: 1;
                 `}>
                     <Text type={'p1'} bold={true}>개인정보 처리방침 목록</Text>
-                    <Spacer h={16}/>
+                    <Spacer h={16} />
                     {notifications.map((notification, index) => (
                         <>
-                            <Divider/>
+                            <Divider />
                             <View key={notification.id} onClick={() => {
                                 navigate(`/privacy-policy/${notification.date}`);
-                            }} ui={css`
-                                flex-direction: row !important;
+                            }} flexDirection={"row"} ui={css`
                                 gap: 16px;
                                 padding: 16px 0;
                                 cursor: pointer;
@@ -76,7 +75,7 @@ function PrivacyPolicy(
                                 <Text>{notification.title}</Text>
                             </View>
                             {index === notifications.length - 1 && (
-                                <Divider/>
+                                <Divider />
                             )}
                         </>
                     ))}

@@ -4,50 +4,57 @@ import View from "~/components/core/View.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface BaseDialogProps {
+    show: boolean;
     ui?: LinariaClassName;
     dismiss: () => void;
     children?: React.ReactNode;
 }
 
-export default function BaseDialog({ui, dismiss, children}: BaseDialogProps) {
+export default function BaseDialog({show, ui, dismiss, children}: BaseDialogProps) {
+    if (!show) return null;
+
+    return (
+        <InnerDialog ui={ui} dismiss={dismiss}>
+            {children}
+        </InnerDialog>
+    );
+}
+
+function InnerDialog({ui, dismiss, children}: Omit<BaseDialogProps, 'show'>) {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
-        dialogRef.current?.showModal();
+        const dialog = dialogRef.current;
+        if (dialog) {
+            dialog.showModal();
+        }
     }, []);
 
     return (
-        <View as={'dialog'} ref={dialogRef}
+        <View as={'dialog'} ref={dialogRef} flexDirection={"row"}
               ui={cx(
-                  css`
-                      flex-direction: row !important;
-                      align-items: center;
-                      justify-content: center;
-                      width: 100vw;
-                      min-width: 100vw;
-                      height: 100dvh;
-                      min-height: 100dvh;
-                      border: none;
-                      outline: none;
-                      background: none;
-                  `,
+                  baseDialogStyle,
                   'override-font',
                   fadeInAnimationStyle,
                   ui
               )}
+              onClose={dismiss}
         >
             {children}
-            <View ui={css`
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                position: fixed;
-                background: black;
-                opacity: 0.5;
-            `} onClick={() => {
-                dismiss();
-            }}/>
         </View>
     );
 }
+
+const baseDialogStyle = css`
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+    margin: auto;
+    
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+`;

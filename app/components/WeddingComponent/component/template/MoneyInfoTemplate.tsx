@@ -1,17 +1,17 @@
-import {useRef, useState} from 'react';
-import {css, cx} from "@linaria/core";
+import { useRef, useState } from 'react';
+import { css, cx } from "@linaria/core";
 import type MoneyInfo from "~/api/value/MoneyInfo.ts";
-import {getMoneyInfoByBrideMarkFirst, type MoneyInfoByBrideMarkFirst} from "~/api/value/MoneyInfo.ts";
+import { getMoneyInfoByBrideMarkFirst, type MoneyInfoByBrideMarkFirst } from "~/api/value/MoneyInfo.ts";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
 import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst, type BaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import { getBaseInfoByBrideMarkFirst, type BaseInfoByBrideMarkFirst } from "~/api/value/BaseInfo.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
 import Button from "~/components/core/Button.tsx";
-import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
+import type { WeddingMode } from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface Props {
     baseInfo: BaseInfo;
@@ -52,7 +52,7 @@ function MoneyInfoTemplate(
                         white-space: pre-line;
                     `}>{moneyInfo.infoContent}</Text>
                 </View>
-                <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo}/>
+                <MoneyInfoComponent baseInfo={baseInfo} moneyInfo={moneyInfo} />
             </View>
         </View>
     );
@@ -69,7 +69,7 @@ function MoneyInfoComponent(
         moneyInfo
     }: MoneyInfoProps
 ) {
-    const {first: firstBaseInfo, second: secondBaseInfo} = getBaseInfoByBrideMarkFirst(baseInfo);
+    const { first: firstBaseInfo, second: secondBaseInfo } = getBaseInfoByBrideMarkFirst(baseInfo);
     const {
         first,
         firstFather,
@@ -114,15 +114,14 @@ interface MoneyInfoContainerProps {
     kakaoStatus: boolean;
 }
 
-const MoneyInfoContainer = ({baseInfo, me, father, mother, kakaoStatus}: MoneyInfoContainerProps) => {
+const MoneyInfoContainer = ({ baseInfo, me, father, mother, kakaoStatus }: MoneyInfoContainerProps) => {
     const [toggle, setToggle] = useState(false);
     return (
         <View ui={css`
             border-radius: 12px;
             background: var(--g-100);
         `}>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
                 padding: 10px 20px;
                 cursor: pointer;
@@ -130,7 +129,7 @@ const MoneyInfoContainer = ({baseInfo, me, father, mother, kakaoStatus}: MoneyIn
                 <Text type={'p3'} bold={true} ui={css`
                     color: var(--g-600);
                 `}>{baseInfo.korean}측</Text>
-                <Spacer/>
+                <Spacer />
                 <Icon iconType={'ExpandArrow'} ui={cx(
                     css`
                         fill: var(--g-400);
@@ -140,18 +139,18 @@ const MoneyInfoContainer = ({baseInfo, me, father, mother, kakaoStatus}: MoneyIn
                     ` : css`
                         rotate: -90deg;
                     `
-                )}/>
+                )} />
             </View>
             {toggle && (
                 <>
                     {me.toggle && (
-                        <MoneyCell moneyInfo={me} kakaoStatus={kakaoStatus}/>
+                        <MoneyCell moneyInfo={me} kakaoStatus={kakaoStatus} />
                     )}
                     {father.toggle && (
-                        <MoneyCell moneyInfo={father} kakaoStatus={kakaoStatus}/>
+                        <MoneyCell moneyInfo={father} kakaoStatus={kakaoStatus} />
                     )}
                     {mother.toggle && (
-                        <MoneyCell moneyInfo={mother} kakaoStatus={kakaoStatus}/>
+                        <MoneyCell moneyInfo={mother} kakaoStatus={kakaoStatus} />
                     )}
                 </>
             )}
@@ -164,7 +163,7 @@ interface MoneyCellProps {
     kakaoStatus: boolean;
 }
 
-function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
+function MoneyCell({ moneyInfo, kakaoStatus }: MoneyCellProps) {
     const fullBankNumber = `${moneyInfo.bankName} ${moneyInfo.bankNumber}`;
     return (
         <View ui={css`
@@ -173,30 +172,28 @@ function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
             background: white;
             border-top: 1px solid var(--g-100);
         `}>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 gap: 4px;
             `}>
                 <Text type={'p3'}>{moneyInfo.korean}</Text>
                 <Text type={'p3'}>{moneyInfo.nameMoneyInfo}</Text>
             </View>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
                 border-radius: 4px;
             `}>
                 <Text type={'p3'}>{fullBankNumber}</Text>
-                <Spacer/>
+                <Spacer />
                 <Icon iconType={'Copy'} size={20} ui={css`
                     fill: var(--g-400);
                 `} onClick={async () => {
-                    try {
-                        await navigator.clipboard.writeText(fullBankNumber);
-                        alert("복사되었습니다. 원하는 곳에 붙여넣기하여 주세요.");
-                    } catch (error) {
-                        console.error(error);
-                    }
-                }}/>
+                        try {
+                            await navigator.clipboard.writeText(fullBankNumber);
+                            alert("복사되었습니다. 원하는 곳에 붙여넣기하여 주세요.");
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    }} />
             </View>
             {kakaoStatus && (
                 <Button

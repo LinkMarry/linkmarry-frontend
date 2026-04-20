@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Text from "~/components/core/Text.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Input from "~/components/core/Input.tsx";
@@ -6,19 +6,19 @@ import FormToggleSet from "~/components/core/FormToggleSet.tsx";
 import FormToggle from "~/components/core/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/component/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {getPlaceholder} from "~/api/value/WeddingPlace.ts";
+import { getPlaceholder } from "~/api/value/WeddingPlace.ts";
 import Button from "~/components/core/Button.tsx";
 import Icon from "~/components/core/icon";
-import {css} from "@linaria/core";
+import { css } from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import KakaoMapDialog from "~/components/KakaoMapDialog.tsx";
-import {formatPhone} from "~/lib/format-util.ts";
+import { formatPhone } from "~/lib/format-util.ts";
 import type Wedding from "~/api/value/Wedding.ts";
 
 
 const EditorInspectorWeddingPlace = (
     {
-        value: {weddingPlace},
+        value: { weddingPlace },
         update
     }: Binding<Wedding>
 ) => {
@@ -26,15 +26,15 @@ const EditorInspectorWeddingPlace = (
 
     return (
         <EditorInspectorWrapper type={'weddingPlace'}>
-            {showKakaoMapDialog && (
-                <KakaoMapDialog
-                    weddingPlace={weddingPlace}
-                    onChange={weddingPlace => update(draft => {
-                        draft.weddingPlace = weddingPlace;
-                    })}
-                    dismiss={() => setShowKakaoMapDialog(false)}
-                />
-            )}
+            <KakaoMapDialog
+                show={showKakaoMapDialog}
+                weddingPlace={weddingPlace}
+                onChange={weddingPlace => update(draft => {
+                    draft.weddingPlace = weddingPlace;
+                })}
+                dismiss={() => setShowKakaoMapDialog(false)}
+            />
+
             <View ui={css`
                 gap: 12px;
             `}>
@@ -42,9 +42,8 @@ const EditorInspectorWeddingPlace = (
                     draft.weddingPlace.placeName = event.target.value;
                 })} ui={css`
                     pointer-events: none;
-                `}/>
-                <View ui={css`
-                    flex-direction: row !important;
+                `} />
+                <View flexDirection={"row"} ui={css`
                     gap: 12px;
                 `}>
                     <Input placeholder={'주소'} value={weddingPlace.addressName} onChange={event => update(draft => {
@@ -53,20 +52,20 @@ const EditorInspectorWeddingPlace = (
                         flex: 1;
                         min-width: 0;
                         pointer-events: none;
-                    `}/>
+                    `} />
                     <Button text={'검색'} buttonType={'tonal'} ui={css`
                         height: auto;
-                    `} onClick={() => setShowKakaoMapDialog(true)}/>
+                    `} onClick={() => setShowKakaoMapDialog(true)} />
                 </View>
                 <Input placeholder={'층/홀'} value={weddingPlace.floorHall} onChange={event => update(draft => {
                     draft.weddingPlace.floorHall = event.target.value;
-                })}/>
+                })} />
                 <Input placeholder={'연락처'} value={weddingPlace.placeTel} onChange={event => update(draft => {
                     const value = event.target.value;
                     draft.weddingPlace.placeTel = formatPhone(value);
-                })}/>
+                })} />
             </View>
-            <Divider/>
+            <Divider />
             <View ui={css`
                 gap: 12px;
             `}>
@@ -87,8 +86,7 @@ const EditorInspectorWeddingPlace = (
                         return input;
                     } else {
                         return (
-                            <View ui={css`
-                                flex-direction: row !important;
+                            <View flexDirection={"row"} ui={css`
                                 gap: 12px;
                                 align-items: center;
                             `} key={index}>
@@ -98,16 +96,16 @@ const EditorInspectorWeddingPlace = (
                                     justify-content: center;
                                     align-items: center;
                                 `} onClick={() => {
-                                    const copiedPlaceTransportation = [...weddingPlace.placeTransportation];
-                                    copiedPlaceTransportation.splice(index, 1);
-                                    update(draft => {
-                                        draft.weddingPlace.placeTransportation = copiedPlaceTransportation;
-                                    });
-                                }}>
+                                        const copiedPlaceTransportation = [...weddingPlace.placeTransportation];
+                                        copiedPlaceTransportation.splice(index, 1);
+                                        update(draft => {
+                                            draft.weddingPlace.placeTransportation = copiedPlaceTransportation;
+                                        });
+                                    }}>
                                     <Icon iconType={'Trash'} width={24} height={24} ui={css`
                                         padding: 8px;
                                         cursor: pointer;
-                                    `}/>
+                                    `} />
                                 </View>
                             </View>
                         );
@@ -117,19 +115,19 @@ const EditorInspectorWeddingPlace = (
                     update(draft => {
                         draft.weddingPlace.placeTransportation.push('');
                     })
-                }}/>
+                }} />
             </View>
-            <Divider/>
+            <Divider />
             <FormToggleSet>
                 <FormToggle checked={weddingPlace.placeStatus} OnChange={checked => update(draft => {
                     draft.weddingPlace.placeStatus = checked;
-                })} label={'지도 표시'}/>
+                })} label={'지도 표시'} />
                 <FormToggle checked={weddingPlace.placeLock} OnChange={checked => update(draft => {
                     draft.weddingPlace.placeLock = checked;
-                })} label={'지도 잠금'}/>
+                })} label={'지도 잠금'} />
                 <FormToggle checked={weddingPlace.placeNav} OnChange={checked => update(draft => {
                     draft.weddingPlace.placeNav = checked;
-                })} label={'네비게이션'}/>
+                })} label={'네비게이션'} />
             </FormToggleSet>
         </EditorInspectorWrapper>
     );

@@ -70,11 +70,10 @@ function Popover(
                 ui
             )} {...props}>
                 {items.map((item, index) => (
-                    <View key={index} ui={cx(
+                    <View key={index} flexDirection={"row"} ui={cx(
                         css`
                             gap: 8px;
                             align-items: center;
-                            flex-direction: row !important;
                             padding: 8px 12px;
                             border-radius: 6px;
                         `,

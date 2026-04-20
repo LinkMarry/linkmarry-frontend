@@ -29,8 +29,7 @@ function Wedding() {
 
     return (
         <ClientRendering>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 justify-content: center;
                 padding: 64px 0;
 

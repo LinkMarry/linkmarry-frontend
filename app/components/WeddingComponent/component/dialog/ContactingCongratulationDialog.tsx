@@ -1,18 +1,19 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import Text from "~/components/core/Text.tsx";
 import type Phone from "~/api/value/Phone.ts";
 import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import { getBaseInfoByBrideMarkFirst } from "~/api/value/BaseInfo.ts";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
-import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
+import { baseDialogContentStyle } from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
-import {css, cx} from "@linaria/core";
-import {styled} from "@linaria/react";
-import {textStyles} from "~/components/core/text/TextType.ts";
+import { css, cx } from "@linaria/core";
+import { styled } from "@linaria/react";
+import { textStyles } from "~/components/core/text/TextType.ts";
 
 interface ContactTemplateDialogProps {
+    show: boolean;
     baseInfo: BaseInfo;
     phone: Phone;
     dismiss: () => void;
@@ -26,6 +27,7 @@ interface Tel {
 
 function ContactingCongratulationDialog(
     {
+        show,
         baseInfo,
         phone,
         dismiss
@@ -33,7 +35,7 @@ function ContactingCongratulationDialog(
 ) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
+    const { first, second } = getBaseInfoByBrideMarkFirst(baseInfo);
     const tels = ((): Tel[] => {
         const groomTels: Tel[] = [
             {
@@ -81,7 +83,7 @@ function ContactingCongratulationDialog(
     })();
 
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
             <View ui={cx(
                 css`
                     width: 90vw;
@@ -103,9 +105,7 @@ function ContactingCongratulationDialog(
                         color: var(--g-400);
                     `}>축하의 마음을 전하세요</Text>
                 </View>
-                <View ui={css`
-                    flex-direction: row !important;
-                `}>
+                <View flexDirection={"row"}>
                     <View
                         ui={cx(
                             SelectorStyle,
@@ -135,15 +135,13 @@ function ContactingCongratulationDialog(
                     gap: 16px;
                 `}>
                     {tels.map((tel, index) => (
-                        <View key={index} ui={css`
-                            flex-direction: row !important;
+                        <View key={index} flexDirection={"row"} ui={css`
                             padding: 20px 16px;
                             align-items: center;
                             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
                             border-radius: 8px;
                         `}>
-                            <View ui={css`
-                                flex-direction: row !important;
+                            <View flexDirection={"row"} ui={css`
                                 gap: 12px;
                                 align-items: center;
                             `}>
@@ -152,7 +150,7 @@ function ContactingCongratulationDialog(
                                     color: var(--g-400);
                                 `}>{tel.familyName}</Text>
                             </View>
-                            <Spacer/>
+                            <Spacer />
                             <View ui={css`
                                 gap: 12px;
                                 align-items: center;
@@ -162,14 +160,14 @@ function ContactingCongratulationDialog(
                                 }}>
                                     <Icon iconType={'Chat'} size={20} ui={css`
                                         fill: var(--g-600);
-                                    `}/>
+                                    `} />
                                 </S.iconWrapper>
                                 <S.iconWrapper onClick={() => {
                                     window.open(`tel:${tel.tel}`);
                                 }}>
                                     <Icon iconType={'Call'} size={20} ui={css`
                                         fill: var(--g-600);
-                                    `}/>
+                                    `} />
                                 </S.iconWrapper>
                             </View>
                         </View>

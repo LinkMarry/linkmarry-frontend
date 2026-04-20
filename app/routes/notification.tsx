@@ -1,24 +1,27 @@
-import React, {type ComponentPropsWithoutRef, useMemo, useState} from 'react';
-import type {Route} from './+types/notification'
+import React, { type ComponentPropsWithoutRef, useMemo, useState } from 'react';
+import type { Route } from './+types/notification'
 import MainWrapper from "~/components/MainWrapper";
-import {css, cx} from "@linaria/core";
-import {responsive} from "~/components/responsive.tsx";
+import { css, cx } from "@linaria/core";
+import { responsive } from "~/components/responsive.tsx";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import notificationApi from "~/api/notification-api.ts";
 import type Notification from "~/api/value/Notification.ts";
-import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/api/enumeration/Tag.ts";
-import {compareDesc, format} from "date-fns";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
-import {useNavigate} from "react-router";
+import { tagToKoreanRecord, type TagWithAll, TagWithAllList } from "~/api/enumeration/Tag.ts";
+import { compareDesc, format } from "date-fns";
+import { hideScrollBarStyle } from "~/components/css.util.ts";
+import { useNavigate } from "react-router";
 
 
 export async function loader() {
-    const {data} = await notificationApi.getNotifications();
+    const { data } = await notificationApi.getNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date))
     };
 }
+
+
+import { useNotificationScreen } from "./useNotificationScreen.ts";
 
 
 function Notification(
@@ -28,14 +31,12 @@ function Notification(
         }
     }: Route.ComponentProps
 ) {
-    const [queryTag, setQueryTag] = useState<TagWithAll>('ALL');
-    const navigate = useNavigate();
-    const filteredNotifications = useMemo(() => {
-        if (queryTag === 'ALL') {
-            return notifications;
-        }
-        return notifications.filter(i => i.tag === queryTag);
-    }, [queryTag]);
+    const {
+        queryTag,
+        setQueryTag,
+        filteredNotifications,
+        handleNotificationClick
+    } = useNotificationScreen({ notifications });
 
     return (
         <MainWrapper>
@@ -54,9 +55,8 @@ function Notification(
                     gap: 24px;
                 `}>
                     <Text type={'h5'} bold={true}>공지사항</Text>
-                    <View ui={cx(
+                    <View flexDirection={"row"} ui={cx(
                         css`
-                            flex-direction: row !important;
                             gap: 8px;
                             overflow-x: scroll;
                         `,
@@ -78,9 +78,7 @@ function Notification(
                             <NotificationCell
                                 key={notification.id}
                                 notification={notification}
-                                onClick={() => {
-                                    navigate(`/notification/${notification.id}`);
-                                }}
+                                onClick={() => handleNotificationClick(notification.id)}
                             />
                         )) : (
                             <Text ui={css`
@@ -97,6 +95,7 @@ function Notification(
         </MainWrapper>
     );
 }
+
 
 interface TagCellProps extends ComponentPropsWithoutRef<'div'> {
     tag: TagWithAll;
@@ -140,9 +139,12 @@ function NotificationCell(
     }: NotificationCellProps
 ) {
     return (
-        <View {...props} ui={css`
+        <View {...props} flexDirection={"row"} ui={css`
+            ${responsive.notDesktop} {
+                flex-direction: column;
+            }
+            
             ${responsive.desktop} {
-                flex-direction: row !important;
                 padding: 12px 20px;
             }
 

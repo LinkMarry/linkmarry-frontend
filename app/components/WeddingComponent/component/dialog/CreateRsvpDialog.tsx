@@ -1,22 +1,23 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import {css, cx} from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import Spacer from "~/components/core/Spacer.tsx";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
 import Button from "~/components/core/Button.tsx";
 import weddingApi from "~/api/wedding-api.ts";
-import {GuestTypeList, guestTypeMap} from "~/api/enumeration/GuestType.ts";
+import { GuestTypeList, guestTypeMap } from "~/api/enumeration/GuestType.ts";
 import type Rsvp from "~/api/value/Rsvp.ts";
 import Dialog from "~/components/core/dialog/Dialog.tsx";
 import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Input from "~/components/core/Input.tsx";
-import {formatPhone} from "~/lib/format-util.ts";
-import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
+import { formatPhone } from "~/lib/format-util.ts";
+import { baseDialogContentStyle } from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
 
 interface CreateRsvpDialogProps {
+    show: boolean;
     url: string;
     rsvp: Rsvp;
     dismiss: () => void;
@@ -24,11 +25,13 @@ interface CreateRsvpDialogProps {
 
 function CreateRsvpDialog(
     {
+        show,
         url,
         rsvp,
         dismiss
     }: CreateRsvpDialogProps
 ) {
+
     const [guestType, setGuestType] = useState(0);
     const [isAttend, setIsAttend] = useState(0);
     const [isMeal, setIsMeal] = useState(0);
@@ -56,20 +59,9 @@ function CreateRsvpDialog(
         dismiss();
     }
 
-    // TODO: Refactoring
-    // 참석의사 팝업이 떠있을 때 외부 내용 스크롤이 안 되도록 함
-    useEffect(() => {
-        // 팝업이 마운트될 때 스크롤을 막음
-        document.body.style.overflow = 'hidden';
-
-        // 팝업이 언마운트(닫힘)될 때 스크롤을 다시 허용
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, []);
-
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     max-width: 436px;
@@ -81,15 +73,14 @@ function CreateRsvpDialog(
                 `,
                 baseDialogContentStyle
             )}>
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
-                    flex-direction: row !important;
                     position: relative;
                     padding: 24px 0;
                 `}>
-                    <Spacer/>
+                    <Spacer />
                     <Text type={'p2'}>참석 의사 전달</Text>
-                    <Spacer/>
+                    <Spacer />
                     <Icon
                         iconType={'CrossLine'}
                         size={20}
@@ -102,7 +93,7 @@ function CreateRsvpDialog(
                         onClick={dismiss}
                     />
                 </View>
-                <Divider/>
+                <Divider />
                 <View ui={css`
                     gap: 36px;
                     padding: 36px 40px;
@@ -194,8 +185,7 @@ function CreateRsvpDialog(
                             <View ui={css`
                                 gap: 8px;
                             `}>
-                                <View ui={css`
-                                    flex-direction: row !important;
+                                <View flexDirection={"row"} ui={css`
                                     align-items: center;
                                     gap: 8px;
                                 `}>
@@ -226,23 +216,23 @@ function CreateRsvpDialog(
                             </View>
                         )}
                     </View>
-                    <Button text={'참석의사 전달하기'} onClick={() => setShowConfirmCreateRsvpDialog(true)}/>
+                    <Button text={'참석의사 전달하기'} onClick={() => setShowConfirmCreateRsvpDialog(true)} />
                 </View>
             </View>
-            {showConfirmCreateRsvpDialog && (
-                <Dialog
-                    title={'참석의사 전달'}
-                    description={'참석 의사 전달 시 수정이 불가능합니다.'}
-                    dismiss={() => setShowConfirmCreateRsvpDialog(false)}
-                    dismissButtonProps={{
-                        text: '닫기'
-                    }}
-                    confirmButtonProps={{
-                        text: '확인',
-                        onClick: createRsvp
-                    }}
-                />
-            )}
+            <Dialog
+                show={showConfirmCreateRsvpDialog}
+                title={'참석의사 전달'}
+                description={'참석 의사 전달 시 수정이 불가능합니다.'}
+                dismiss={() => setShowConfirmCreateRsvpDialog(false)}
+                dismissButtonProps={{
+                    text: '닫기'
+                }}
+                confirmButtonProps={{
+                    text: '확인',
+                    onClick: createRsvp
+                }}
+            />
+
         </BaseDialog>
     );
 }

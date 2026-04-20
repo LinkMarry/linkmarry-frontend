@@ -102,10 +102,10 @@ function Button(
     return (
         <View
             as={'button'}
+            flexDirection={"row"}
             className={cx(
                 css`
                     display: flex;
-                    flex-direction: row !important;
                     align-items: center;
                     justify-content: center;
                     outline: none;

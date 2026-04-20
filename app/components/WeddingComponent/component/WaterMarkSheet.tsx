@@ -19,9 +19,8 @@ function WaterMarkSheet(
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 position: fixed;
                 bottom: 0;
                 left: 50%;
@@ -35,12 +34,12 @@ function WaterMarkSheet(
             fadeInAnimationStyle,
             'override-font'
         )}>
-            {showRemoveWatermarkDialog && (
-                <RemoveWatermarkDialog
-                    url={url}
-                    dismiss={() => setShowRemoveWatermarkDialog(false)}
-                />
-            )}
+            <RemoveWatermarkDialog
+                show={showRemoveWatermarkDialog}
+                url={url}
+                dismiss={() => setShowRemoveWatermarkDialog(false)}
+            />
+
             <View ui={css`
                 gap: 28px;
                 padding: 32px 24px;

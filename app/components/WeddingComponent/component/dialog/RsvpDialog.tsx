@@ -16,6 +16,7 @@ import View from "~/components/core/View.tsx";
 import {useEffect} from "react";
 
 interface RsvpDialogProps {
+    show: boolean;
     url: string;
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
@@ -27,6 +28,7 @@ interface RsvpDialogProps {
 
 function RsvpDialog(
     {
+        show,
         url,
         baseInfo,
         weddingSchedule,
@@ -36,6 +38,7 @@ function RsvpDialog(
         dismiss
     }: RsvpDialogProps
 ) {
+
     const cookieKey = `hide_RsvpDialog_${url}`;
     const [, setCookie] = useCookies([cookieKey]);
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
@@ -43,20 +46,9 @@ function RsvpDialog(
     const isValidDate = !isNaN(date.getTime());
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
-    // TODO: Refactoring
-    // 참석의사 팝업이 떠있을 때 외부 내용 스크롤이 안 되도록 함
-    useEffect(() => {
-        // 팝업이 마운트될 때 스크롤을 막음
-        document.body.style.overflow = 'hidden';
-
-        // 팝업이 언마운트(닫힘)될 때 스크롤을 다시 허용
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, []);
-
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     gap: 48px;

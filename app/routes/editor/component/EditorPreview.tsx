@@ -51,9 +51,8 @@ const PreviewSetting = () => {
 
     return (
         <View ui={cx(previewSettingStyle, openSetting ? previewSettingOpenStyle : previewSettingClosedStyle)}>
-            <View ui={cx(
+            <View flexDirection={"row"} ui={cx(
                 css`
-                    flex-direction: row !important;
                     align-items: center;
                     padding: 6px;
                     border-radius: 6px;
@@ -69,8 +68,7 @@ const PreviewSetting = () => {
                 <Icon iconType={'ExpandArrow'} width={18} height={18}
                       ui={cx(iconBaseStyle, openSetting ? iconOpenStyle : iconClosedStyle)}/>
             </View>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
                 padding: 6px;
             `}>

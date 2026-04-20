@@ -1,12 +1,16 @@
-import {css} from "@linaria/core";
+import { css } from "@linaria/core";
 import MainWrapper from "~/components/MainWrapper";
 import Text from "~/components/core/Text.tsx";
-import {useAuth} from "~/hook/useAuth.tsx";
+import { useAuth } from "~/hook/useAuth.tsx";
 import View from "~/components/core/View.tsx";
 import Icon from "~/components/core/icon";
 
+import { useSignInScreen } from "./useSignInScreen.ts";
+
+
 function SignIn() {
-    const {signInWithKakao} = useAuth();
+    const { signInWithKakao } = useSignInScreen();
+
 
     return (
         <MainWrapper hasFooter={false}>
@@ -22,7 +26,7 @@ function SignIn() {
                 `}>
                     <View as={'img'} src="/linkmarry.png" alt="" width={72} height={72} ui={css`
                         border-radius: 18px;
-                    `}/>
+                    `} />
                     <View ui={css`
                         gap: 4px;
                         align-items: center;
@@ -33,8 +37,7 @@ function SignIn() {
                         `}>모바일 청접장으로 결혼을 더욱 특별하게</Text>
                     </View>
                 </View>
-                <View onClick={signInWithKakao} ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} onClick={signInWithKakao} ui={css`
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
@@ -46,12 +49,11 @@ function SignIn() {
                     border-radius: 6px;
                     color: black;
                 `}>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 6px;
                         align-items: center;
                     `}>
-                        <Icon iconType={'Kakao'} size={24}/>
+                        <Icon iconType={'Kakao'} size={24} />
                         <Text type={'p3'} bold={true}>카카오 로그인</Text>
                     </View>
                 </View>

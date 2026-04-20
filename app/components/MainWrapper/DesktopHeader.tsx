@@ -8,7 +8,7 @@ import Icon from "~/components/core/icon";
 import Popover from "~/components/core/Popover.tsx";
 import View from "~/components/core/View.tsx";
 import { useAuth } from "~/hook/useAuth.tsx";
-import { NAVER_STORE_URL, NOTIFICATION_URL } from "~/lib/constant.ts";
+import { NAVER_STORE_URL } from "~/lib/constant.ts";
 import { notMobileStyle } from "~/components/responsive.tsx";
 import { interactionEffectStyles } from "~/components/css.util.ts";
 import ClientRendering from "~/ClientRendering.tsx";
@@ -20,9 +20,8 @@ export default function DesktopHeader() {
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
 
     return (
-        <View as={'header'} ui={cx(
+        <View as={'header'} flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 align-items: center;
                 justify-content: center;
                 width: 100vw;
@@ -33,20 +32,17 @@ export default function DesktopHeader() {
             `,
             notMobileStyle
         )}>
-            <View ui={css`
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
-                flex-direction: row !important;
                 max-width: 1100px;
                 flex: 1;
             `}>
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     gap: 40px;
                     align-items: center;
-                    flex-direction: row !important;
                 `}>
                     <LogoInHeader />
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 12px;
                         align-items: center;
                     `}>
@@ -116,9 +112,8 @@ function DesktopHeaderItem({ text, hasPopover = false, ...props }: {
     hasPopover?: boolean;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 gap: 8px;
                 align-items: center;
                 padding: 8px 16px;

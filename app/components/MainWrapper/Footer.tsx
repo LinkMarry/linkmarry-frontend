@@ -32,12 +32,13 @@ function Footer() {
                     gap: 72px;
                     padding-bottom: 72px;
                 `}>
-                    <View ui={css`
+                    <View flexDirection={"row"} ui={css`
                         gap: 24px;
+                        flex-direction: column;
 
                         ${responsive.notMobile} {
-                            flex-direction: row !important;
                             justify-content: space-between;
+                            flex-direction: row;
                         }
                     `}>
                         <View ui={css`
@@ -52,8 +53,7 @@ function Footer() {
                                 color: var(--g-500);
                             `}>고객센터 운영시간 연중무휴 24시간 운영</Text>
                         </View>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             ${responsive.mobile} {
                                 flex-direction: column !important;
                                 gap: 16px;
@@ -92,10 +92,9 @@ function Footer() {
                         gap: 4px;
                         align-items: flex-start;
                     `}>
-                        <View ui={cx(
+                        <View flexDirection={"row"} ui={cx(
                             css`
                                 gap: 16px;
-                                flex-direction: row !important;
                                 align-items: flex-start;
                             `,
                             desktopStyle
@@ -106,10 +105,9 @@ function Footer() {
                                 `}>{text}</Text>
                             ))}
                         </View>
-                        <View ui={cx(
+                        <View flexDirection={"row"} ui={cx(
                             css`
                                 gap: 16px;
-                                flex-direction: row !important;
                                 align-items: flex-start;
                             `,
                             desktopStyle

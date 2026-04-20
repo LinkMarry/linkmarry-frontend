@@ -11,6 +11,7 @@ import {css, cx} from "@linaria/core";
 import {styled} from "@linaria/react";
 
 interface Props {
+    show: boolean;
     dismiss: () => void;
     currentImageIndex: number;
     setCurrentImageIndex: Dispatch<SetStateAction<number | undefined>>;
@@ -18,7 +19,8 @@ interface Props {
     rootRef: RefObject<HTMLDivElement | null>;
 }
 
-const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
+const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
+
     const [initialCurrentImageIndex] = useState(currentImageIndex);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [rootWidth, setRootWidth] = useState<number | undefined>(undefined);
@@ -65,7 +67,8 @@ const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageInd
     }, [initialCurrentImageIndex, getGridImgWidth, handleScroll]);
 
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     align-self: stretch;
@@ -78,8 +81,7 @@ const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageInd
                 minWidth: rootWidth,
                 maxWidth: rootWidth
             }}>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     padding: 28px;
                 `}>
                     <Spacer/>
@@ -88,10 +90,9 @@ const GalleryTemplateFullView = ({dismiss, currentImageIndex, setCurrentImageInd
                         cursor: pointer;
                     `} onClick={dismiss}/>
                 </View>
-                <View ui={cx(
+                <View flexDirection={"row"} ui={cx(
                     css`
                         flex: 1;
-                        flex-direction: row !important;
                         align-items: center;
                         scroll-snap-type: x mandatory;
                         overflow-x: scroll;
@@ -155,8 +156,7 @@ function Indicator(
     }
 ) {
     return (
-        <View ui={css`
-            flex-direction: row !important;
+        <View flexDirection={"row"} ui={css`
             align-items: center;
             justify-content: space-between;
             padding: 28px 45px;

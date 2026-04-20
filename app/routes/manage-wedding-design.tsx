@@ -1,20 +1,11 @@
-import {useEffect, useState} from 'react';
-import weddingDesignApi from "~/api/wedding-design-api.ts";
+import { useManageWeddingDesignScreen } from "./useManageWeddingDesignScreen.ts";
 import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
 import View from "~/components/core/View.tsx";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
-// todo: refactor
+
 const ManageWeddingDesign = () => {
-    const [presets, setPresets] = useState<WeddingDesignPreset[]>();
-
-    useEffect(() => {
-        (async () => {
-            const {data} = await weddingDesignApi.getWeddingDesignPresets();
-            setPresets(data);
-        })();
-    }, []);
+    const { presets } = useManageWeddingDesignScreen();
 
     return (
         <View>
@@ -45,8 +36,7 @@ const Item = ({text}: ItemProps) => {
                 aspectRatio: '9 / 16',
                 background: 'gray'
             }}></div>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
             `}>
                 <Text type={'p3'}>{text}</Text>
@@ -56,4 +46,5 @@ const Item = ({text}: ItemProps) => {
 };
 
 export default ManageWeddingDesign;
+
 

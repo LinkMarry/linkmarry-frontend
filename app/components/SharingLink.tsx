@@ -37,8 +37,7 @@ const SharingLink = ({title, button, background, Style}: Props) => {
             `}>
                 <Text type={'p3'} bold={true}>{title}</Text>
                 {button && (
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 8px;
                     `}>
                         <Button text={'모바일 청첩장'} buttonType={'tonal'} ui={css`
@@ -56,8 +55,7 @@ const SharingLink = ({title, button, background, Style}: Props) => {
                         )}
                     </View>
                 )}
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
                     gap: 4px;
                 `}>

@@ -38,7 +38,7 @@ function SoulmatePreviewTemplate(
                 bottom: 0;
                 width: 100%;
             `}/>
-            <View ui={css`
+            <View flexDirection={"row"} ui={css`
                 position: absolute;
                 bottom: 16px;
                 left: 28px;
@@ -46,7 +46,6 @@ function SoulmatePreviewTemplate(
                 align-items: center;
                 justify-content: space-between;
                 color: #D9C4B0;
-                flex-direction: row !important;
             `}>
                 <Text font={'MuseumCulturalFoundationClassic'} size={20} weight={200}>
                     {first.korean}

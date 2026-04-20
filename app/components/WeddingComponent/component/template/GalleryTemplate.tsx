@@ -36,15 +36,15 @@ function GalleryTemplate(
             background: white;
             padding: 92px 0;
         `}>
-            {currentImageIdx !== undefined && gallery.galleryFullScreen && (
-                <GalleryTemplateFullView
-                    dismiss={() => setCurrentImageIdx(undefined)}
-                    currentImageIndex={currentImageIdx}
-                    setCurrentImageIndex={setCurrentImageIdx}
-                    gallery={gallery}
-                    rootRef={rootRef}
-                />
-            )}
+            <GalleryTemplateFullView
+                show={currentImageIdx !== undefined && gallery.galleryFullScreen}
+                dismiss={() => setCurrentImageIdx(undefined)}
+                currentImageIndex={currentImageIdx ?? 0}
+                setCurrentImageIndex={setCurrentImageIdx}
+                gallery={gallery}
+                rootRef={rootRef}
+            />
+
             <FadeIn>
                 <Text size={20} weight={300} ui={css`
                     color: var(--g-600);
@@ -154,9 +154,8 @@ const GallerySlide = (
             align-self: stretch;
             overflow-x: hidden;
         `}>
-            <View ui={cx(
+            <View flexDirection={"row"} ui={cx(
                 css`
-                    flex-direction: row !important;
                     gap: 8px;
                     scroll-snap-type: x mandatory;
                     overflow-x: scroll;
@@ -168,9 +167,9 @@ const GallerySlide = (
                     <View
                         as={'img'}
                         key={index}
+                        flexDirection={"row"}
                         ui={cx(
                             css`
-                                flex-direction: row !important;
                                 height: 517px;
                                 scroll-snap-align: center;
                                 object-fit: cover;
@@ -248,15 +247,13 @@ function GalleryStyleIndicator(
 ) {
     switch (galleryDesign) {
         case 'SLIDE':
-            return <View ui={css`
-                flex-direction: row !important;
+            return <View flexDirection={"row"} ui={css`
                 gap: 8px;
                 align-self: center;
             `}>
                 {Array.from({ length: imgListLength }, (_, index) => index).map((i, index) => (
-                    <View key={index} ui={cx(
+                    <View key={index} flexDirection={"row"} ui={cx(
                         css`
-                            flex-direction: row !important;
                             width: 8px;
                             height: 8px;
                             border-radius: 4px;
@@ -271,8 +268,7 @@ function GalleryStyleIndicator(
             </View>;
         case 'HIGHLIGHT':
             return (
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
                     justify-content: space-between;
                     padding: 0 45px;

@@ -6,7 +6,7 @@ import {
     type PropsWithChildren
 } from 'react';
 import {type FontFamily, type TextType, textStyles} from "~/components/core/text/TextType";
-import {cx, type LinariaClassName} from "@linaria/core";
+import {css, cx, type LinariaClassName} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 
 
@@ -17,8 +17,17 @@ interface Props extends PropsWithChildren<ComponentPropsWithRef<'div'>> {
     size?: number;
     lineHeight?: CSSProperties['lineHeight'];
     bold?: boolean;
+    flexDirection?: 'row' | 'column';
     ui?: LinariaClassName | string;
 }
+
+const rowStyle = css`
+    flex-direction: row;
+`;
+
+const columnStyle = css`
+    flex-direction: column;
+`;
 
 function Text(
     {
@@ -28,12 +37,14 @@ function Text(
         size,
         lineHeight,
         bold = false,
+        flexDirection,
         ui,
         children,
         ...props
     }: Props,
     ref: ForwardedRef<HTMLDivElement>
 ) {
+
     let textStyle: LinariaClassName | undefined;
     if (type) {
         if (bold) {
@@ -48,6 +59,7 @@ function Text(
             ref={ref}
             className={cx(
                 textStyle,
+                flexDirection === 'row' ? rowStyle : (flexDirection === 'column' ? columnStyle : undefined),
                 ui
             )}
             style={{

@@ -79,8 +79,7 @@ function WeddingDayTemplateDDay(
                 remainingTime={remainingTime}
             />
             <FadeIn>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 4px;
                 `}>
                     <Text size={14} weight={300}>{first.name}</Text>
@@ -113,8 +112,7 @@ function RemainTimeComponent(
     //     case 'style1':
     //         return (
     return (
-        <View ui={css`
-            flex-direction: row !important;
+        <View flexDirection={"row"} ui={css`
             gap: 12px;
             align-items: center;
             padding: 0 50px;

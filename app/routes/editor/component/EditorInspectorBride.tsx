@@ -26,8 +26,7 @@ const EditorInspectorBride = (
                 <View ui={css`
                     gap: 8px;
                 `}>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 8px;
                     `}>
                         <Input placeholder={'성'} value={baseInfo.brideFirstName} onChange={event => update(draft => {
@@ -40,8 +39,7 @@ const EditorInspectorBride = (
                             draft.baseInfo.brideFamilyName = event.target.value;
                         })}/>
                     </View>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 8px;
                     `}>
                         <Input placeholder={'영문 이름'} value={baseInfo.brideEnglishName}
@@ -59,8 +57,7 @@ const EditorInspectorBride = (
                 gap: 12px;
             `}>
                 <Text type={'p3'} bold={true}>신부 아버지</Text>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 8px;
                     align-items: center;
                 `}>
@@ -81,8 +78,7 @@ const EditorInspectorBride = (
                         flex: 1;
                     `}/>
                 </View>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: flex-start;
                     gap: 8px;
                 `}>
@@ -99,8 +95,7 @@ const EditorInspectorBride = (
                 gap: 12px;
             `}>
                 <Text type={'p3'} bold={true}>신부 어머니</Text>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     gap: 8px;
                     align-items: center;
                 `}>
@@ -121,8 +116,7 @@ const EditorInspectorBride = (
                         flex: 1;
                     `}/>
                 </View>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: flex-start;
                     gap: 8px;
                 `}>

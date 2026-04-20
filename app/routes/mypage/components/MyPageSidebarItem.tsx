@@ -13,11 +13,10 @@ interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<'div'> {
 
 function MyPageSidebarItem({icon, text, selected = false, ...props}: MyPageSidebarItemProps) {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
                 align-items: center;
                 gap: 8px;
-                flex-direction: row !important;
                 padding: 16px;
                 cursor: pointer;
                 transition: 0.1s background;

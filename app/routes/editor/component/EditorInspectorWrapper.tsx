@@ -45,8 +45,7 @@ const EditorInspectorWrapper = ({type, toggle, hasDivider = true, children}: Pro
             `,
             hideScrollBarStyle
         )}>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 align-items: center;
             `}>
                 <Text type={'p1'} bold={true}>{editorNavigationBarTypeMap[type].inspectorText}</Text>

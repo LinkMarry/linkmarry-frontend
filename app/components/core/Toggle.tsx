@@ -24,9 +24,8 @@ function Toggle(
     ref?: ForwardedRef<HTMLInputElement>
 ) {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 position: relative;
                 width: fit-content;
             `,
@@ -42,7 +41,6 @@ function Toggle(
                 }}
                 ui={cx(
                     css`
-                        flex-direction: row !important;
                         width: 60px;
                         height: 32px;
                         appearance: none;

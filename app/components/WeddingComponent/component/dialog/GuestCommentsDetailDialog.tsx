@@ -12,6 +12,7 @@ import View from "~/components/core/View.tsx";
 import {hideScrollBarStyle} from "~/components/css.util.ts";
 
 interface GuestCommentsDetailDialogProps {
+    show: boolean;
     comments: Comment[];
     guestComment: GuestComment;
     onRemove: (comment: Comment) => void;
@@ -20,13 +21,15 @@ interface GuestCommentsDetailDialogProps {
 
 function GuestCommentsDetailDialog(
     {
+        show,
         comments,
         onRemove,
         dismiss
     }: GuestCommentsDetailDialogProps
 ) {
     return (
-        <BaseDialog dismiss={dismiss}>
+        <BaseDialog show={show} dismiss={dismiss}>
+
             <View ui={cx(
                 css`
                     max-width: 436px;
@@ -40,8 +43,7 @@ function GuestCommentsDetailDialog(
                     animation: none;
                 `
             )}>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                     align-items: center;
                     height: 81px;
                     position: relative;

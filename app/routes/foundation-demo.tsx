@@ -29,8 +29,7 @@ function FoundationDemo() {
                 gap: 20px;
             `}>
                 {fontFamilyList.map(font => (
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         align-items: flex-start;
                     `}>
                         <Text type={'p3'} ui={css`

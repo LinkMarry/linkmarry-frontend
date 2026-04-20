@@ -38,20 +38,20 @@ function MyPageWedding() {
             gap: 24px;
             flex: 1;
         `}>
-            {showRemoveWeddingDialog && (
-                <Dialog
-                    title={'정말 청첩장을\n삭제하시겠습니까?'}
-                    description={'모든 청첩장 정보가 삭제됩니다.'}
-                    dismiss={() => setShowRemoveWeddingDialog(false)}
-                    dismissButtonProps={{
-                        text: '취소'
-                    }}
-                    confirmButtonProps={{
-                        text: '삭제',
-                        onClick: removeWedding
-                    }}
-                />
-            )}
+            <Dialog
+                show={showRemoveWeddingDialog}
+                title={'정말 청첩장을\n삭제하시겠습니까?'}
+                description={'모든 청첩장 정보가 삭제됩니다.'}
+                dismiss={() => setShowRemoveWeddingDialog(false)}
+                dismissButtonProps={{
+                    text: '취소'
+                }}
+                confirmButtonProps={{
+                    text: '삭제',
+                    onClick: removeWedding
+                }}
+            />
+
             <Text type={'h5'} bold={true}>모바일 청첩장</Text>
             <View ui={css`
                 gap: 16px;
@@ -139,22 +139,21 @@ function WeddingCell({ weddingInfo, onRemoveWedding }: WeddingCellProps) {
     };
 
     return (
-        <View ui={css`
+        <View flexDirection={"row"} ui={css`
             gap: 16px;
-            flex-direction: row !important;
             height: 360px;
 
             ${responsive.mobile} {
                 height: 144px;
             }
-        ;
         `}>
-            {showRemoveWatermarkDialog && selectedRemoveWatermarkWedding && (
-                <RemoveWatermarkDialog
-                    url={selectedRemoveWatermarkWedding.url}
-                    dismiss={() => setShowRemoveWatermarkDialog(false)}
-                />
-            )}
+            <RemoveWatermarkDialog
+                show={showRemoveWatermarkDialog && !!selectedRemoveWatermarkWedding}
+                url={selectedRemoveWatermarkWedding?.url ?? ''}
+                dismiss={() => setShowRemoveWatermarkDialog(false)}
+            />
+
+
             <View as={'img'} src={weddingInfo.img || undefined} ui={css`
                 width: calc(360px * 9 / 16);
 
@@ -175,8 +174,7 @@ function WeddingCell({ weddingInfo, onRemoveWedding }: WeddingCellProps) {
                 <View ui={css`
                     gap: 8px;
                 `}>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         align-items: flex-end;
                         gap: 8px;
                     `}>
@@ -187,8 +185,7 @@ function WeddingCell({ weddingInfo, onRemoveWedding }: WeddingCellProps) {
                             <Text type={'p1'} bold={true} ui={css`
                                 color: var(--g-800);
                             `}>{weddingInfo.name}</Text>
-                            <View onClick={() => window.open(weddingUrl)} ui={css`
-                                flex-direction: row !important;
+                            <View flexDirection={"row"} onClick={() => window.open(weddingUrl)} ui={css`
                                 gap: 4px;
                                 align-items: center;
                                 cursor: pointer;
@@ -202,8 +199,7 @@ function WeddingCell({ weddingInfo, onRemoveWedding }: WeddingCellProps) {
                                 `} />
                             </View>
                         </View>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             align-items: center;
                             gap: 8px;
                         `}>
@@ -251,9 +247,8 @@ function WeddingCell({ weddingInfo, onRemoveWedding }: WeddingCellProps) {
                     <Divider ui={desktopStyle} />
                 </View>
                 {/*content*/}
-                <View ui={cx(
+                <View flexDirection={"row"} ui={cx(
                     css`
-                        flex-direction: row !important;
                         gap: 16px;
                         flex: 1;
                         min-height: 0;
@@ -390,8 +385,7 @@ function WeddingCellPopover(
 function CommentCell({ comment, onRemove }: { comment: Comment, onRemove: () => void }) {
     return (
         <View>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 gap: 4px;
                 align-items: flex-end;
             `}>
@@ -425,8 +419,7 @@ function StatisticsCell({ title, value }: {
     value: string;
 }) {
     return (
-        <View ui={css`
-            flex-direction: row !important;
+        <View flexDirection={"row"} ui={css`
             align-items: flex-start;
         `}>
             <Text type={'p3'} ui={css`

@@ -22,17 +22,17 @@ const EditorInspectorMoney = (
 
     return (
         <EditorInspectorWrapper type={'money'}>
-            {showHelperDialog && (
-                <Dialog
-                    title={'카카오페이 링크 연동 방법'}
-                    dismiss={() => setShowHelperDialog(false)}
-                    confirmButtonProps={{
-                        text: '닫기',
-                        onClick: () => setShowHelperDialog(false)
-                    }}
-                >
-                    <View ui={css`
-                        flex-direction: row !important;
+            <Dialog
+                show={showHelperDialog}
+                title={'카카오페이 링크 연동 방법'}
+                dismiss={() => setShowHelperDialog(false)}
+                confirmButtonProps={{
+                    text: '닫기',
+                    onClick: () => setShowHelperDialog(false)
+                }}
+            >
+
+                    <View flexDirection={"row"} ui={css`
                         gap: 16px;
                         align-items: flex-start;
                     `}>
@@ -62,8 +62,8 @@ const EditorInspectorMoney = (
                         </View>
                     </View>
                 </Dialog>
-            )}
             <View ui={css`
+
                 gap: 12px;
             `}>
                 <Text type={'p3'} bold={true}>제목</Text>
@@ -104,8 +104,7 @@ const EditorInspectorMoney = (
                 })} label={'신랑'}/>
                 {moneyInfo.groomToggle && (
                     <>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             gap: 12px;
                             align-items: flex-start;
                         `}>
@@ -143,8 +142,7 @@ const EditorInspectorMoney = (
                 })} label={'신부'}/>
                 {moneyInfo.brideToggle && (
                     <>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             gap: 12px;
                         `}>
                             <Input placeholder={'예금주'} value={moneyInfo.brideNameMoneyInfo}
@@ -181,10 +179,9 @@ const EditorInspectorMoney = (
                 })} label={'신랑 아버지'}/>
                 {moneyInfo.groomFatherToggle && (
                     <>
-                        <View ui={css`
+                        <View flexDirection={"row"} ui={css`
                             gap: 12px;
                             align-items: flex-start;
-                            flex-direction: row !important;
                         `}>
                             <Input placeholder={'예금주'} value={moneyInfo.groomFatherNameMoneyInfo}
                                    onChange={event => update(draft => {
@@ -220,8 +217,7 @@ const EditorInspectorMoney = (
                 })} label={'신랑 어머니'}/>
                 {moneyInfo.groomMotherToggle && (
                     <>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             align-items: flex-start;
                             gap: 12px;
                         `}>
@@ -259,8 +255,7 @@ const EditorInspectorMoney = (
                 })} label={'신부 아버지'}/>
                 {moneyInfo.brideFatherToggle && (
                     <>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             gap: 12px;
                         `}>
                             <Input placeholder={'예금주'} value={moneyInfo.brideFatherNameMoneyInfo}
@@ -297,8 +292,7 @@ const EditorInspectorMoney = (
                 })} label={'신부 어머니'}/>
                 {moneyInfo.brideMotherToggle && (
                     <>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             gap: 12px;
                             align-items: flex-start;
                         `}>

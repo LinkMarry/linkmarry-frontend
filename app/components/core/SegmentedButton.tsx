@@ -10,9 +10,8 @@ const SegmentedButton = ({items, selectedTab, onChange, ui}: {
     ui?: LinariaClassName;
 }) => {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 background: var(--g-100);
                 border-radius: 12px;
                 height: 48px;
@@ -46,8 +45,7 @@ const Item = ({selected, text, ...props}: {
     text: string;
 } & ComponentPropsWithoutRef<'div'>) => {
     return (
-        <View ui={css`
-            flex-direction: row !important;
+        <View flexDirection={"row"} ui={css`
             flex: 1;
             justify-content: center;
             align-items: center;

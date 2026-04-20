@@ -8,7 +8,7 @@ import Icon, { type IconType } from "~/components/core/icon";
 import Divider from "~/components/core/Divider.tsx";
 import View from "~/components/core/View.tsx";
 import { useAuth } from "~/hook/useAuth.tsx";
-import { NAVER_STORE_URL, NOTIFICATION_URL } from "~/lib/constant.ts";
+import { NAVER_STORE_URL } from "~/lib/constant.ts";
 import { mobileStyle } from "~/components/responsive.tsx";
 import { interactionEffectStyles } from "~/components/css.util.ts";
 import { LogoInHeader } from "./Header.tsx";
@@ -95,10 +95,9 @@ function MobileHeaderContent(props: {
     setOpenDetail: Dispatch<SetStateAction<boolean>>;
 }) {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
                 align-items: center;
-                flex-direction: row !important;
                 width: 100vw;
                 height: 60px;
                 background: white;
@@ -126,9 +125,8 @@ function MobileHeaderItem(props: {
     icon?: IconType;
 } & ComponentPropsWithoutRef<'div'>) {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 gap: 8px;
                 padding: 12px 16px;
             `,

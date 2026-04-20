@@ -37,9 +37,8 @@ function NotificationDetailContent(
                     <Text>{notification.date}</Text>
                     <Text>{notification.name}</Text>
                 </View>
-                <View ui={cx(
+                <View flexDirection={"row"} ui={cx(
                     css`
-                        flex-direction: row !important;
                         gap: 8px;
                         overflow-x: scroll;
                     `,

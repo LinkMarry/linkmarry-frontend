@@ -60,8 +60,7 @@ function CongratulationsTemplate(
                                 align-self: stretch;
                                 word-break: break-all;
                             `}>
-                                <View ui={css`
-                                    flex-direction: row !important;
+                                <View flexDirection={"row"} ui={css`
                                     align-items: center;
                                     justify-content: center;
                                     gap: 4px;
@@ -76,15 +75,14 @@ function CongratulationsTemplate(
                                     {first.motherName}의 {first.familyName}
                                 </View>
                             </Text>
-                            <View ui={css`
-                                flex-direction: row !important;
+                            <View flexDirection={"row"} ui={css`
                                 gap: 8px;
                                 align-items: center;
                             `}>
                                 <Text weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{first.korean}&nbsp;</Text>
-                                <Text weight={100} size={24}>
+                                <Text weight={100} size={18}>
                                     {first.name}
                                 </Text>
                             </View>
@@ -107,8 +105,7 @@ function CongratulationsTemplate(
                                 align-self: stretch;
                                 word-break: break-all;
                             `}>
-                                <View ui={css`
-                                    flex-direction: row !important;
+                                <View flexDirection={"row"} ui={css`
                                     align-items: center;
                                     justify-content: center;
                                     gap: 4px;
@@ -123,15 +120,14 @@ function CongratulationsTemplate(
                                     {second.motherName}의 {second.familyName}
                                 </View>
                             </Text>
-                            <View ui={css`
-                                flex-direction: row !important;
+                            <View flexDirection={"row"} ui={css`
                                 gap: 8px;
                                 align-items: center;
                             `}>
                                 <Text weight={100} size={24} ui={css`
                                     color: var(--g-600);
                                 `}>{second.korean}&nbsp;</Text>
-                                <Text weight={100} size={24}>
+                                <Text weight={100} size={18}>
                                     {second.name}
                                 </Text>
                             </View>
@@ -149,13 +145,13 @@ function CongratulationsTemplate(
                 </FadeIn>
             </View>
 
-            {showContactingCongratulationDialog && (
-                <ContactingCongratulationDialog
-                    baseInfo={baseInfo}
-                    phone={phone}
-                    dismiss={() => setShowContactingCongratulationDialog(false)}
-                />
-            )}
+            <ContactingCongratulationDialog
+                show={showContactingCongratulationDialog}
+                baseInfo={baseInfo}
+                phone={phone}
+                dismiss={() => setShowContactingCongratulationDialog(false)}
+            />
+
         </View>
     );
 }

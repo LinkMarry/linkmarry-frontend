@@ -1,34 +1,27 @@
 import MainWrapper from "~/components/MainWrapper";
-import {css, cx} from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import View from "~/components/core/View.tsx";
-import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/components/responsive.tsx";
+import { desktopStyle, mobileStyle, notMobileStyle, responsive } from "~/components/responsive.tsx";
 import Button from "~/components/core/Button.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Icon from "~/components/core/icon";
-import {useNavigate} from "react-router";
-import {type ComponentPropsWithoutRef, useState} from "react";
-import {NAVER_STORE_URL} from "~/lib/constant.ts";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
-import {Snowfall} from "react-snowfall";
+import { type ComponentPropsWithoutRef, useState } from "react";
+import { hideScrollBarStyle } from "~/components/css.util.ts";
+import { Snowfall } from "react-snowfall";
 import ClientRendering from "~/ClientRendering.tsx";
 import useResponsive from "~/hook/useResponsive.ts";
 
 
+import { useHomeScreen } from "./useHomeScreen.ts";
+
+
 function Home() {
-    const navigate = useNavigate();
-
-    const handleViewSample = () => {
-        navigate('/sample');
-    };
-
-    const handleCreateWedding = () => {
-        navigate('/editor');
-    };
-
-    const handleNavigateNaverStore = () => {
-        window.open(NAVER_STORE_URL);
-    };
+    const {
+        handleViewSample,
+        handleCreateWedding,
+        handleNavigateNaverStore
+    } = useHomeScreen();
 
     return (
         <MainWrapper>
@@ -37,22 +30,23 @@ function Home() {
                     onViewSample={handleViewSample}
                     onCreateWedding={handleCreateWedding}
                 />
-                <Section2/>
-                <Section3/>
-                <Section4 onViewSample={handleViewSample}/>
-                <Section5/>
-                <Section6 onNavigateNaverStore={handleNavigateNaverStore}/>
+                <Section2 />
+                <Section3 />
+                <Section4 onViewSample={handleViewSample} />
+                <Section5 />
+                <Section6 onNavigateNaverStore={handleNavigateNaverStore} />
             </View>
         </MainWrapper>
     );
 }
+
 
 interface Section1Props {
     onViewSample: () => void;
     onCreateWedding: () => void;
 }
 
-function Section1({onViewSample, onCreateWedding}: Section1Props) {
+function Section1({ onViewSample, onCreateWedding }: Section1Props) {
     return (
         <View ui={css`
             background: #FCFBF9;
@@ -61,7 +55,7 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
             padding: 100px 0;
         `}>
             <ClientRendering>
-                <SnowfallEffect/>
+                <SnowfallEffect />
             </ClientRendering>
             <View ui={css`
                 max-width: 1100px;
@@ -105,23 +99,21 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                             다양한 스타일, 나만의 청첩장을 무료로 제작
                         </Text>
                     </View>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 8px;
                     `}>
                         <Button text={'초대장 만들기'} onClick={onCreateWedding} ui={css`
                             box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.28);
-                        `}/>
+                        `} />
                         <Button text={'샘플 보기'} buttonType={'outlined'} onClick={onViewSample} ui={css`
                             background: white !important;
                             outline: none !important;
                             box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
-                        `}/>
+                        `} />
                     </View>
                 </View>
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     position: relative;
-                    flex-direction: row !important;
                     padding: 0 20px;
                     align-items: center;
                 `}>
@@ -130,12 +122,12 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                         left: 0;
                         bottom: 0;
                         z-index: 10;
-                    `}/>
+                    `} />
                     <img src={'/home/shape1.svg'} alt={'shape1'} className={css`
                         position: absolute;
                         right: 0;
                         top: 0;
-                    `}/>
+                    `} />
                     <img src={'/home/section1-phone1.png'} alt={'phone1'} className={css`
                         height: 331px;
                         width: 160px;
@@ -145,7 +137,7 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                             width: 100px;
                             height: 207px;
                         }
-                    `}/>
+                    `} />
                     <img src={'/home/section1-phone2.png'} alt={'phone2'} className={css`
                         height: 370px;
                         width: 180px;
@@ -156,7 +148,7 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                             width: 120px;
                             height: 248px;
                         }
-                    `}/>
+                    `} />
                     <img src={'/home/section1-phone3.png'} alt={'phone3'} className={css`
                         height: 331px;
                         width: 160px;
@@ -167,7 +159,7 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                             width: 100px;
                             height: 207px;
                         }
-                    `}/>
+                    `} />
                 </View>
             </View>
         </View>
@@ -175,7 +167,7 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
 }
 
 function SnowfallEffect() {
-    const {deviceSize} = useResponsive();
+    const { deviceSize } = useResponsive();
     const currentMonth = new Date().getMonth() + 1;
     const isWinter = [12, 1, 2].includes(currentMonth);
 
@@ -235,26 +227,23 @@ function Section2() {
                         디자인은 아름답게, 기능은 편리하게.{'\n'}하객과 신랑신부 모두를 배려한 기능을 담았습니다.
                     </Text>
                 </View>
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     ${responsive.desktop} {
-                        flex-direction: row !important;
                         gap: 16px;
                     }
 
                     ${responsive.notDesktop} {
+                        flex-direction: column;
                         gap: 24px;
                         padding: 0 20px;
                     }
                 `}>
-                    <View ui={css`
+                    <View flexDirection={"row"} ui={css`
                         gap: 16px;
 
                         ${responsive.desktop} {
                             flex: 1;
-                        }
-
-                        ${responsive.notDesktop} {
-                            flex-direction: row !important;
+                            flex-direction: column;
                         }
                     `}>
                         <Section2Item
@@ -268,17 +257,14 @@ function Section2() {
                             iconSrc={'/home/Location Point.svg'}
                         />
                     </View>
-                    <Divider direction={'vertical'} ui={desktopStyle}/>
+                    <Divider direction={'vertical'} ui={desktopStyle} />
 
-                    <View ui={css`
+                    <View flexDirection={"row"} ui={css`
                         gap: 16px;
 
                         ${responsive.desktop} {
                             flex: 1;
-                        }
-
-                        ${responsive.notDesktop} {
-                            flex-direction: row !important;
+                            flex-direction: column;
                         }
                     `}>
                         <Section2Item
@@ -294,17 +280,14 @@ function Section2() {
                             iconSrc={'/home/Heart.svg'}
                         />
                     </View>
-                    <Divider direction={'vertical'} ui={desktopStyle}/>
+                    <Divider direction={'vertical'} ui={desktopStyle} />
 
-                    <View ui={css`
+                    <View flexDirection={"row"} ui={css`
                         gap: 16px;
 
                         ${responsive.desktop} {
                             flex: 1;
-                        }
-
-                        ${responsive.notDesktop} {
-                            flex-direction: row !important;
+                            flex-direction: column;
                         }
                     `}>
                         <Section2Item
@@ -331,7 +314,7 @@ interface Section2ItemProps {
     iconSrc: string;
 }
 
-function Section2Item({title, description, iconSrc}: Section2ItemProps) {
+function Section2Item({ title, description, iconSrc }: Section2ItemProps) {
     return (
         <View ui={css`
             gap: 24px;
@@ -356,7 +339,7 @@ function Section2Item({title, description, iconSrc}: Section2ItemProps) {
                 <img src={iconSrc} alt={title} className={css`
                     width: 24px;
                     height: 24px;
-                `}/>
+                `} />
             </View>
             <View ui={css`
                 gap: 6px;
@@ -455,16 +438,14 @@ function Section3() {
                     `}>
                         실제 사용자들의 생생한 후기
                     </Text>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    <View flexDirection={"row"} ui={css`
                         gap: 12px;
                         align-items: center;
                     `}>
-                        <View ui={css`
-                            flex-direction: row !important;
+                        <View flexDirection={"row"} ui={css`
                             gap: 2px;
                         `}>
-                            {Array.from({length: 5}).map((_, index) => (
+                            {Array.from({ length: 5 }).map((_, index) => (
                                 <img
                                     key={index}
                                     src={'/home/Star.svg'}
@@ -489,9 +470,8 @@ function Section3() {
                     gap: 20px;
                     align-items: center;
                 `}>
-                    <View ui={cx(
+                    <View flexDirection={"row"} ui={cx(
                         css`
-                            flex-direction: row !important;
                             gap: 20px;
                             width: 100%;
                             overflow-x: auto;
@@ -500,15 +480,14 @@ function Section3() {
                         hideScrollBarStyle
                     )}>
                         {reviewData.map((review, index) => (
-                            <Section3ReviewItem key={index} review={review}/>
+                            <Section3ReviewItem key={index} review={review} />
                         ))}
                     </View>
                     <Icon iconType={'ExpandArrow'} size={24} ui={css`
                         fill: var(--p-500);
                         rotate: 270deg;
-                    `}/>
-                    <View ui={css`
-                        flex-direction: row !important;
+                    `} />
+                    <View flexDirection={"row"} ui={css`
                         gap: 20px;
                     `}>
                         {[
@@ -522,7 +501,7 @@ function Section3() {
                                 width: 60px;
                                 height: 80px;
                                 object-fit: cover;
-                            `}/>
+                            `} />
                         ))}
                     </View>
                 </View>
@@ -550,16 +529,14 @@ function Section3ReviewItem(
             background: white;
             justify-content: space-between;
         `}>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 gap: 8px;
                 align-items: center;
             `}>
-                <View ui={css`
-                    flex-direction: row !important;
+                <View flexDirection={"row"} ui={css`
                 `}>
-                    {Array.from({length: 5}).map((_, index) => (
-                        <img key={index} src={'/home/Star1.svg'} alt={`Star ${index}`}/>
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <img key={index} src={'/home/Star1.svg'} alt={`Star ${index}`} />
                     ))}
                 </View>
                 <Text type={'caption2'} ui={css`
@@ -575,8 +552,7 @@ function Section3ReviewItem(
                     {review.content}
                 </Text>
             </View>
-            <View ui={css`
-                flex-direction: row !important;
+            <View flexDirection={"row"} ui={css`
                 gap: 8px;
                 align-items: center;
             `}>
@@ -590,7 +566,7 @@ function Section3ReviewItem(
                 `}>
                     <Icon iconType={'PersonFill'} size={24} ui={css`
                         fill: var(--g-400);
-                    `}/>
+                    `} />
                 </View>
                 <View>
                     <Text type={'caption2'} ui={css`
@@ -642,7 +618,7 @@ interface Section4Props {
     onViewSample: () => void;
 }
 
-function Section4({onViewSample}: Section4Props) {
+function Section4({ onViewSample }: Section4Props) {
     return (
         <View ui={css`
             background: #FDFBF8;
@@ -692,9 +668,8 @@ function Section4({onViewSample}: Section4Props) {
                     `,
                     hideScrollBarStyle
                 )}>
-                    <View ui={css`
+                    <View flexDirection={"row"} ui={css`
                         display: flex;
-                        flex-direction: row !important;
                         gap: 44px;
                         width: fit-content;
                         margin: 0 auto;
@@ -709,12 +684,11 @@ function Section4({onViewSample}: Section4Props) {
                                     height: 360px;
                                     border-radius: 20px;
                                     box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.16);
-                                `}/>
+                                `} />
                                 <View ui={css`
                                     padding: 0 4px;
                                 `}>
-                                    <View ui={css`
-                                        flex-direction: row !important;
+                                    <View flexDirection={"row"} ui={css`
                                         align-items: center;
                                     `}>
                                         <Text font={'Abhaya Libre'} size={20} ui={css`
@@ -821,12 +795,8 @@ function Section5() {
                         복잡한 과정 없이 3분 만에 완성하세요.
                     </Text>
                 </View>
-                <View ui={css`
+                <View flexDirection={"row"} ui={css`
                     gap: 100px;
-
-                    ${responsive.desktop} {
-                        flex-direction: row !important;
-                    }
 
                     ${responsive.notDesktop} {
                         flex-direction: column-reverse !important;
@@ -865,7 +835,7 @@ function Section5() {
                     <img src={phoneSrc} alt={'phone'} className={css`
                         width: 204px;
                         height: 423px;
-                    `}/>
+                    `} />
                 </View>
             </View>
         </View>
@@ -879,11 +849,10 @@ interface Section5ItemProps extends ComponentPropsWithoutRef<'div'> {
     description: string;
 }
 
-function Section5Item({index, selected, title, description, ...props}: Section5ItemProps) {
+function Section5Item({ index, selected, title, description, ...props }: Section5ItemProps) {
     return (
-        <View {...props} ui={cx(
+        <View {...props} flexDirection={"row"} ui={cx(
             css`
-                flex-direction: row !important;
                 position: relative;
                 padding: 20px 24px;
                 width: 557px;
@@ -966,7 +935,7 @@ interface Section6Props {
     onNavigateNaverStore: () => void;
 }
 
-function Section6({onNavigateNaverStore}: Section6Props) {
+function Section6({ onNavigateNaverStore }: Section6Props) {
     return (
         <View ui={css`
             background: var(--p-100);
@@ -1076,9 +1045,8 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                     }
                                 `}
                             />
-                            <View ui={css`
+                            <View flexDirection={"row"} ui={css`
                                 padding: 56px 0;
-                                flex-direction: row !important;
                                 gap: 50px;
                                 justify-content: center;
 
@@ -1097,7 +1065,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                         height: 132px;
                                         border-radius: 10px;
                                     }
-                                `}/>
+                                `} />
                                 <img src={'/home/section6-phone2.png'} alt={'phone2'} className={css`
                                     width: 140px;
                                     height: 290px;
@@ -1109,7 +1077,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                         height: 132px;
                                         border-radius: 10px;
                                     }
-                                `}/>
+                                `} />
                                 <img src={'/home/section6-phone3.png'} alt={'phone3'} className={css`
                                     width: 140px;
                                     height: 290px;
@@ -1121,7 +1089,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                         height: 132px;
                                         border-radius: 10px;
                                     }
-                                `}/>
+                                `} />
                             </View>
                         </View>
                         <View ui={css`
@@ -1156,8 +1124,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                 )}>
                                     29,800원
                                 </Text>
-                                <View ui={css`
-                                    flex-direction: row !important;
+                                <View flexDirection={"row"} ui={css`
                                     align-items: center;
                                     gap: 26px;
 
@@ -1165,8 +1132,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                                         gap: 12px;
                                     }
                                 `}>
-                                    <View ui={css`
-                                        flex-direction: row !important;
+                                    <View flexDirection={"row"} ui={css`
                                         gap: 12px;
                                         align-items: center;
                                     `}>
@@ -1210,7 +1176,7 @@ function Section6({onNavigateNaverStore}: Section6Props) {
                         text={'네이버스토어 바로가기'}
                         onClick={onNavigateNaverStore}
                         leadingIcon={(
-                            <img src="/naver.svg" alt=""/>
+                            <img src="/naver.svg" alt="" />
                         )}
                         ui={css`
                             background: #03C75A !important;

@@ -67,8 +67,7 @@ interface ItemProps extends ComponentPropsWithRef<'div'> {
 
 const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
-        <View ref={ref} ui={css`
-            flex-direction: row !important;
+        <View ref={ref} flexDirection={"row"} ui={css`
             align-items: center;
             padding: 12px 16px;
             border-radius: 8px;

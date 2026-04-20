@@ -12,10 +12,9 @@ const TabBar = ({items, selectedTab, onChange, ui}: {
     ui?: LinariaClassName;
 }) => {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             hideScrollBarStyle,
             css`
-                flex-direction: row !important;
                 gap: 8px;
                 overflow-x: scroll;
             `,

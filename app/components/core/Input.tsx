@@ -12,11 +12,10 @@ interface Props extends ComponentPropsWithRef<'input'> {
 
 const Input = forwardRef(({ placeholder, hasLabel = true, prefix, ui, ...props }: Props, ref: ForwardedRef<HTMLInputElement>) => {
     return (
-        <View ui={cx(
+        <View flexDirection={"row"} ui={cx(
             css`
                 display: flex;
                 position: relative;
-                flex-direction: row !important;
                 width: 100%;
                 min-width: 0;
             `,
