@@ -1,0 +1,118 @@
+import {type PropsWithChildren, useState} from 'react';
+import Spacer from "~/components/core/Spacer.tsx";
+import Text from "~/components/core/Text.tsx";
+import Icon from "~/components/core/icon";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util.ts";
+import {useAutoFocus} from "~/hook/useAutoFocus.ts";
+import Toggle from "~/components/core/Toggle.tsx";
+import {css, cx, type LinariaClassName} from "@linaria/core";
+import View from "~/components/core/View.tsx";
+
+interface EditorPreviewProps extends PropsWithChildren {
+    ui?: LinariaClassName;
+}
+
+function EditorPreview({ui, children}: EditorPreviewProps) {
+    return (
+        <View ui={cx(
+            css`
+                align-items: center;
+                justify-content: center;
+                background: var(--g-100);
+                position: relative;
+                flex: 1;
+            `,
+            ui
+        )}>
+            <View ui={cx(
+                css`
+                    max-height: 733px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    width: 420px;
+                    border-radius: 36px;
+                    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+                `,
+                hideScrollBarStyle
+            )}>
+                {children}
+            </View>
+            <PreviewSetting/>
+        </View>
+    );
+}
+
+function PreviewSetting() {
+    const [openSetting, setOpenSetting] = useState(false);
+    const {autoFocus, setAutoFocus} = useAutoFocus();
+
+    return (
+        <View ui={cx(previewSettingStyle, openSetting ? previewSettingOpenStyle : previewSettingClosedStyle)}>
+            <View flexDirection={"row"} ui={cx(
+                css`
+                    align-items: center;
+                    padding: 6px;
+                    border-radius: 6px;
+                `,
+                interactionEffectStyles.strong
+            )} onClick={() => {
+                setOpenSetting(i => !i);
+            }}>
+                <Text type={'p3'} bold={true} ui={css`
+                    color: var(--g-800);
+                `}>미리보기 설정</Text>
+                <Spacer/>
+                <Icon iconType={'ExpandArrow'} width={18} height={18}
+                      ui={cx(iconBaseStyle, openSetting ? iconOpenStyle : iconClosedStyle)}/>
+            </View>
+            <View flexDirection={"row"} ui={css`
+                align-items: center;
+                padding: 6px;
+            `}>
+                <Text type={'p3'} ui={css`
+                    color: var(--g-600);
+                `}>자동포커스</Text>
+                <Spacer/>
+                <Toggle checked={autoFocus} OnChange={checked => setAutoFocus(checked)}/>
+            </View>
+        </View>
+    );
+}
+
+
+const previewSettingStyle = css`
+    gap: 4px;
+    width: 220px;
+    padding: 10px;
+    background: white;
+    border-radius: 12px;
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    transition: 0.2s max-height ease-out;
+    overflow: hidden;
+`;
+
+const previewSettingOpenStyle = css`
+    max-height: 104px; // hard code
+`;
+
+const previewSettingClosedStyle = css`
+    max-height: 56px;
+`;
+
+const iconBaseStyle = css`
+    fill: var(--g-400);
+    transition: 0.2s rotate ease-out;
+`;
+
+const iconOpenStyle = css`
+    rotate: 90deg;
+`;
+
+const iconClosedStyle = css`
+    rotate: -90deg;
+`;
+
+export default EditorPreview;
+

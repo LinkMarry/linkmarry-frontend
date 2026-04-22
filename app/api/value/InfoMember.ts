@@ -12,4 +12,7 @@ export default interface InfoMember {
 
     // 유저 역할
     role: UserRole;
+
+    // 포스터 결제 여부(기본값 false)
+    accessPoster: boolean;
 }

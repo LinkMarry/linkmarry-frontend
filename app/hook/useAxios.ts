@@ -1,4 +1,4 @@
-import index from "~/api";
+import api from "~/api";
 import {AxiosError, type InternalAxiosRequestConfig} from "axios";
 import memberApi from "~/api/member-api.ts";
 import {useNavigate} from "react-router";
@@ -72,9 +72,9 @@ const useAxios = () => {
             const {data: accessToken} = await memberApi.refresh(jwt.refreshToken);
 
             refresh(accessToken);
-            index.defaults.headers.Authorization = accessToken;
+            api.defaults.headers.Authorization = accessToken;
             config.headers.Authorization = accessToken;
-            return index(config);
+            return api(config);
         } catch (refreshError) {
             clearToken();
             navigate('/sign-in');
@@ -85,10 +85,10 @@ const useAxios = () => {
         }
     }, [clearToken, jwt.refreshToken, navigate, refresh]);
 
-    index.interceptors.request.clear();
-    index.interceptors.response.clear();
-    index.interceptors.request.use(requestHandler, res => res);
-    index.interceptors.response.use(response => response, errorResponseHandler);
+    api.interceptors.request.clear();
+    api.interceptors.response.clear();
+    api.interceptors.request.use(requestHandler, res => res);
+    api.interceptors.response.use(response => response, errorResponseHandler);
 };
 
 export default useAxios;

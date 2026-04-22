@@ -1,11 +1,11 @@
-import index from "~/api/index.ts";
+import api from "~/api/index.ts";
 import type Jwt from "~/api/value/Jwt.ts";
 import {type ResponseData} from "~/api/value/Response.ts";
 
 const PATH = 'kakao';
 
 async function authorize(code: string): Promise<ResponseData<Jwt>> {
-    const {data} = await index.get(PATH, {
+    const {data} = await api.get(PATH, {
         params: {
             code
         },

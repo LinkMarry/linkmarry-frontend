@@ -1,6 +1,6 @@
 import {type ResponseData} from "~/api/value/Response.ts";
 import type Upload from "~/api/value/Upload.ts";
-import index from "~/api/index.ts";
+import api from "~/api/index.ts";
 import type Music from "~/api/value/Music.ts";
 import type {FileType} from "~/api/enumeration/FileType.ts";
 
@@ -20,7 +20,7 @@ function validateImageSize(file: File, maxSizeMB: number = 20) {
 async function upload(file: File, url: string, type: FileType): Promise<ResponseData<Upload>> {
     validateImageSize(file, 20);
 
-    const {data} = await index.postForm(`${PATH}/upload`, {
+    const {data} = await api.postForm(`${PATH}/upload`, {
         file,
         url,
         type,
@@ -29,7 +29,7 @@ async function upload(file: File, url: string, type: FileType): Promise<Response
 }
 
 async function getMusics(): Promise<ResponseData<Music[]>> {
-    const {data} = await index.get(`${PATH}/music`);
+    const {data} = await api.get(`${PATH}/music`);
     return data;
 }
 

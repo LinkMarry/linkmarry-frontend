@@ -1,4 +1,4 @@
-import React, { type ComponentPropsWithoutRef, useMemo, useState } from 'react';
+import React, { type ComponentPropsWithoutRef } from 'react';
 import type { Route } from './+types/notification'
 import MainWrapper from "~/components/MainWrapper";
 import { css, cx } from "@linaria/core";
@@ -10,7 +10,7 @@ import type Notification from "~/api/value/Notification.ts";
 import { tagToKoreanRecord, type TagWithAll, TagWithAllList } from "~/api/enumeration/Tag.ts";
 import { compareDesc, format } from "date-fns";
 import { hideScrollBarStyle } from "~/components/css.util.ts";
-import { useNavigate } from "react-router";
+import { useNotificationScreen } from "./useNotificationScreen.ts";
 
 
 export async function loader() {
@@ -21,7 +21,6 @@ export async function loader() {
 }
 
 
-import { useNotificationScreen } from "./useNotificationScreen.ts";
 
 
 function Notification(

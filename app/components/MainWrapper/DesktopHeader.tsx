@@ -47,11 +47,11 @@ export default function DesktopHeader() {
                         align-items: center;
                     `}>
                         <DesktopHeaderItem text={'청첩장 만들기'} onClick={() => {
-                            navigate('/editor');
+                            navigate('/editor/invitation');
                         }} />
-                        {/*<DesktopHeaderItem text={'웨딩 포스터'} onClick={() => {*/}
-                        {/*    navigate('/poster');*/}
-                        {/*}} />*/}
+                        <DesktopHeaderItem text={'웨딩 포스터'} onClick={() => {
+                            navigate('/editor/poster');
+                        }} />
                         <DesktopHeaderItem text={'공지사항'} onClick={() => {
                             navigate('/notification');
                         }} />

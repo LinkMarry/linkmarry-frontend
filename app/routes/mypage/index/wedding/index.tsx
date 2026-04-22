@@ -65,7 +65,7 @@ function MyPageWedding() {
                         <Button
                             text={'청첩장 만들기'}
                             buttonType={'tonal'}
-                            onClick={() => navigate('/editor')}
+                            onClick={() => navigate('/wedding-invitation')}
                         />
                     </View>
                 ) : weddings.weddingInfo.map(wedding => (

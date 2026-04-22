@@ -62,11 +62,11 @@ export default function MobileHeader() {
                         gap: 8px;
                     `}>
                         <MobileHeaderItem text={'청첩장 만들기'} onClick={() => {
-                            navigate('/editor');
+                            navigate('/editor/invitation');
                         }} />
-                        {/*<MobileHeaderItem text={'웨딩 포스터'} onClick={() => {*/}
-                        {/*    navigate('/poster');*/}
-                        {/*}} />*/}
+                        <MobileHeaderItem text={'웨딩 포스터'} onClick={() => {
+                            navigate('/editor/poster');
+                        }} />
                         <MobileHeaderItem text={'공지사항'} onClick={() => {
                             navigate('/notification');
                         }} />

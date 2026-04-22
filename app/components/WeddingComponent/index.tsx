@@ -54,6 +54,7 @@ function WeddingComponent(
     const autoplayUnlockRef = useRef<HTMLDivElement>(null)
     const [showAutoplayUnlockElement, setShowAutoplayUnlockElement] = useState(mode !== 'preview');
 
+    // TODO: Resolve
     useEffect(() => {
         if (mode === 'preview' || !wedding.rsvp.startPopupStatus || rsvp) {
             setShowRsvpDialog(false);

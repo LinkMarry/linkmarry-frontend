@@ -1,28 +1,28 @@
 import type CreateWeddingDesignRequest from "~/api/value/request/admin/CreateWeddingDesignRequest.ts";
 import {type ResponseData, type ResponseVoid} from "~/api/value/Response.ts";
-import index from "~/api/index.ts";
+import api from "~/api/index.ts";
 import type PatchWeddingDesignRequest from "~/api/value/request/admin/PatchWeddingDesignRequest.ts";
 import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
 const PATH = 'wedding-design-preset';
 
 async function createWeddingDesign(request: CreateWeddingDesignRequest): Promise<ResponseVoid> {
-    const {data} = await index.post(`${PATH}`, request);
+    const {data} = await api.post(`${PATH}`, request);
     return data;
 }
 
 async function patchWeddingDesign(request: PatchWeddingDesignRequest): Promise<ResponseVoid> {
-    const {data} = await index.patch(`${PATH}`, request);
+    const {data} = await api.patch(`${PATH}`, request);
     return data;
 }
 
 async function getWeddingDesignPresets(): Promise<ResponseData<WeddingDesignPreset[]>> {
-    const {data} = await index.get(`${PATH}`);
+    const {data} = await api.get(`${PATH}`);
     return data;
 }
 
 async function removeWeddingDesign(id: number): Promise<ResponseVoid> {
-    const {data} = await index.delete(`${PATH}/${id}`);
+    const {data} = await api.delete(`${PATH}/${id}`);
     return data;
 }
 

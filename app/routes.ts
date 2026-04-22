@@ -24,10 +24,11 @@ const routes = [
                     route("wedding/:url", "routes/mypage/detail/stat/index.tsx")
                 ])
             ])),
-            route("editor/:url?", "routes/editor/index.tsx"),
+            ...prefix("editor", [
+                route("invitation/:url?", "routes/editor/wedding-invitation/index.tsx"),
+                route("poster", "routes/editor/wedding-poster/index.tsx"),
+            ]),
         ]),
-        // layout("routes/admin-route.tsx", []),
-
     ])
 ] satisfies RouteConfig;
 
