@@ -13,38 +13,38 @@ interface Props {
     children?: ReactNode;
 }
 
-function MainWrapper(
-    {
-        hasHeader = true,
-        hasFooter = true,
-        ui,
-        scrollRef,
-        children
-    }: Props
-) {
+function MainWrapper({hasHeader = true, hasFooter = true, ui, scrollRef, children}: Props) {
     return (
-        <View ui={cx(
-            css`
-                width: 100vw;
-                height: 100dvh;
-                overflow: hidden;
-            `,
-            ui
-        )}>
-            {hasHeader && <Header/>}
-            <View ref={scrollRef} ui={cx(
+        <View
+            ui={cx(
                 css`
-                    overflow-y: scroll;
-                    flex: 1;
+                    width: 100vw;
+                    height: 100dvh;
+                    overflow: hidden;
                 `,
-                hideScrollBarStyle
-            )}>
-                <View as={'main'} ui={css`
-                    flex: 1;
-                `}>
+                ui,
+            )}
+        >
+            {hasHeader && <Header />}
+            <View
+                ref={scrollRef}
+                ui={cx(
+                    css`
+                        overflow-y: scroll;
+                        flex: 1;
+                    `,
+                    hideScrollBarStyle,
+                )}
+            >
+                <View
+                    as={"main"}
+                    ui={css`
+                        flex: 1;
+                    `}
+                >
                     {children}
                 </View>
-                {hasFooter && <Footer/>}
+                {hasFooter && <Footer />}
             </View>
         </View>
     );

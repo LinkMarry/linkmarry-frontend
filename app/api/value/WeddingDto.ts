@@ -29,7 +29,6 @@ import {type Position} from "~/api/value/Position.ts";
 import type Wedding from "~/api/value/Wedding.ts";
 import {dummyComments} from "~/api/value/Comment.ts";
 
-
 export interface WeddingDto {
     // URL 값
     url: string;

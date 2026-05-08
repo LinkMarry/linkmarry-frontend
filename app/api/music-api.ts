@@ -2,7 +2,7 @@ import {type ResponseData} from "~/api/value/Response.ts";
 import type Music from "~/api/value/Music.ts";
 import api from "~/api/index.ts";
 
-const PATH = 'music';
+const PATH = "music";
 
 async function getMusics(): Promise<ResponseData<Music[]>> {
     const {data} = await api.get(`${PATH}`);
@@ -10,7 +10,7 @@ async function getMusics(): Promise<ResponseData<Music[]>> {
 }
 
 const musicApi = {
-    getMusics
+    getMusics,
 };
 
 export default musicApi;

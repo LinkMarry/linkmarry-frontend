@@ -1,10 +1,4 @@
-import {
-    isValidElement,
-    type ReactNode,
-    type RefObject,
-    useEffect,
-    useState
-} from 'react';
+import {isValidElement, type ReactNode, type RefObject, useEffect, useState} from "react";
 import View from "~/components/core/View.tsx";
 import useFadeIn from "~/components/core/fadein/useFadeIn.ts";
 import {css, cx, type LinariaClassName} from "@linaria/core";
@@ -12,7 +6,7 @@ import {css, cx, type LinariaClassName} from "@linaria/core";
 type Provided<T = any> = {
     style: LinariaClassName;
     ref: RefObject<T>;
-}
+};
 
 interface Props {
     delay?: number;
@@ -21,14 +15,7 @@ interface Props {
     children: ((provided: Provided) => ReactNode) | ReactNode;
 }
 
-function FadeIn(
-    {
-        delay,
-        ui,
-        as,
-        children
-    }: Props
-) {
+function FadeIn({delay, ui, as, children}: Props) {
     const {ref, isVisible} = useFadeIn();
     const [delayedIsVisible, setDelayedIsVisible] = useState(false);
 
@@ -46,20 +33,20 @@ function FadeIn(
         css`
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+            transition:
+                opacity 1.4s ease-out,
+                transform 1.4s ease-out;
         `,
-        delayedIsVisible ? css`
-            opacity: 1;
-            transform: translateY(0);
-        ` : undefined
-    )
+        delayedIsVisible
+            ? css`
+                  opacity: 1;
+                  transform: translateY(0);
+              `
+            : undefined,
+    );
 
     if (typeof children === "function") {
-        return (
-            <>
-                {children({style, ref})}
-            </>
-        );
+        return <>{children({style, ref})}</>;
     } else if (isValidElement(children)) {
         return (
             <View
@@ -71,7 +58,7 @@ function FadeIn(
                         flex-direction: column;
                     `,
                     style,
-                    ui
+                    ui,
                 )}
             >
                 {children}
@@ -83,4 +70,3 @@ function FadeIn(
 }
 
 export default FadeIn;
-

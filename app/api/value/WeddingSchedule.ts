@@ -15,27 +15,27 @@ export default interface WeddingSchedule {
 }
 
 export const defaultWeddingSchedule: WeddingSchedule = {
-    weddingDate: '',
-    weddingTime: '',
+    weddingDate: "",
+    weddingTime: "",
     calendar: true,
-    dday: true
-}
+    dday: true,
+};
 
 export const dummyWeddingSchedule: WeddingSchedule = {
     weddingDate: "2026-06-02",
     weddingTime: "15:30",
     calendar: true,
     dday: true,
-}
+};
 
 export function getDetails(weddingSchedule: WeddingSchedule) {
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
-    const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
+    const date = parse(dateString, "yyyy-MM-dd HH:mm", new Date());
     const isValidDate = !isNaN(date.getTime());
 
     return {
         dateString,
         date,
-        isValidDate
-    }
+        isValidDate,
+    };
 }

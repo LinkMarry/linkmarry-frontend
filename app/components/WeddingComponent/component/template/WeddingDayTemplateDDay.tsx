@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
 import type WeddingSchedule from "~/api/value/WeddingSchedule.ts";
@@ -14,19 +14,14 @@ type RemainTime = {
     hours: number;
     minutes: number;
     seconds: number;
-}
+};
 
 interface Props {
     baseInfo: BaseInfo;
     weddingSchedule: WeddingSchedule;
 }
 
-function WeddingDayTemplateDDay(
-    {
-        baseInfo,
-        weddingSchedule,
-    }: Props
-) {
+function WeddingDayTemplateDDay({baseInfo, weddingSchedule}: Props) {
     const [remainingTime, setRemainingTime] = useState<RemainTime>({
         days: 0,
         hours: 0,
@@ -56,7 +51,7 @@ function WeddingDayTemplateDDay(
                 days: Math.floor(timeDiff / (1000 * 60 * 60 * 24)), // 남은 일수
                 hours: Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
                 minutes: Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)),
-                seconds: Math.floor((timeDiff % (1000 * 60)) / 1000)
+                seconds: Math.floor((timeDiff % (1000 * 60)) / 1000),
             });
         };
 
@@ -71,141 +66,201 @@ function WeddingDayTemplateDDay(
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
-        <View ui={css`
-            align-items: center;
-            gap: 24px;
-        `}>
-            <RemainTimeComponent
-                remainingTime={remainingTime}
-            />
+        <View
+            ui={css`
+                align-items: center;
+                gap: 24px;
+            `}
+        >
+            <RemainTimeComponent remainingTime={remainingTime} />
             <FadeIn>
-                <View flexDirection={"row"} ui={css`
-                    gap: 4px;
-                `}>
-                    <Text size={14} weight={300}>{first.name}</Text>
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        gap: 4px;
+                    `}
+                >
+                    <Text size={14} weight={300}>
+                        {first.name}
+                    </Text>
                     <Icon
-                        iconType={'HeartFill'}
+                        iconType={"HeartFill"}
                         size={16}
                         ui={css`
                             fill: black;
                         `}
                     />
-                    <Text size={14} weight={300}>{second.name}의 결혼식이</Text>
-                    <Text size={14} weight={300} ui={css`
-                        color: var(--p-800);
-                    `}>{remainingTime.days}</Text>
-                    <Text size={14} weight={300}>일 남았습니다.</Text>
+                    <Text size={14} weight={300}>
+                        {second.name}의 결혼식이
+                    </Text>
+                    <Text
+                        size={14}
+                        weight={300}
+                        ui={css`
+                            color: var(--p-800);
+                        `}
+                    >
+                        {remainingTime.days}
+                    </Text>
+                    <Text size={14} weight={300}>
+                        일 남았습니다.
+                    </Text>
                 </View>
             </FadeIn>
         </View>
     );
 }
 
-function RemainTimeComponent(
-    {
-        remainingTime
-    }: {
-        remainingTime: RemainTime
-    }
-) {
+function RemainTimeComponent({remainingTime}: {remainingTime: RemainTime}) {
     // switch (dDayStyle) {
     //     case 'style1':
     //         return (
     return (
-        <View flexDirection={"row"} ui={css`
-            gap: 12px;
-            align-items: center;
-            padding: 0 50px;
-        `}>
+        <View
+            flexDirection={"row"}
+            ui={css`
+                gap: 12px;
+                align-items: center;
+                padding: 0 50px;
+            `}
+        >
             <FadeIn>
                 <S.dateCell>
-                    <Text size={12} weight={400} ui={css`
-                        color: var(--g-300);
-                    `}>DAYS</Text>
-                    <Text size={24} weight={300} ui={css`
-                        color: var(--g-600);
-                    `}>{remainingTime.days}</Text>
+                    <Text
+                        size={12}
+                        weight={400}
+                        ui={css`
+                            color: var(--g-300);
+                        `}
+                    >
+                        DAYS
+                    </Text>
+                    <Text
+                        size={24}
+                        weight={300}
+                        ui={css`
+                            color: var(--g-600);
+                        `}
+                    >
+                        {remainingTime.days}
+                    </Text>
                 </S.dateCell>
             </FadeIn>
             <FadeIn delay={120}>
                 <S.dateCell>
-                    <Text size={12} weight={400} ui={css`
-                        color: var(--g-300);
-                    `}>HOUR</Text>
-                    <Text size={24} weight={300} ui={css`
-                        color: var(--g-600);
-                    `}>{remainingTime.hours}</Text>
+                    <Text
+                        size={12}
+                        weight={400}
+                        ui={css`
+                            color: var(--g-300);
+                        `}
+                    >
+                        HOUR
+                    </Text>
+                    <Text
+                        size={24}
+                        weight={300}
+                        ui={css`
+                            color: var(--g-600);
+                        `}
+                    >
+                        {remainingTime.hours}
+                    </Text>
                 </S.dateCell>
             </FadeIn>
             <FadeIn delay={240}>
                 <S.dateCell>
-                    <Text size={12} weight={400} ui={css`
-                        color: var(--g-300);
-                    `}>MIN</Text>
-                    <Text size={24} weight={300} ui={css`
-                        color: var(--g-600);
-                    `}>{remainingTime.minutes}</Text>
+                    <Text
+                        size={12}
+                        weight={400}
+                        ui={css`
+                            color: var(--g-300);
+                        `}
+                    >
+                        MIN
+                    </Text>
+                    <Text
+                        size={24}
+                        weight={300}
+                        ui={css`
+                            color: var(--g-600);
+                        `}
+                    >
+                        {remainingTime.minutes}
+                    </Text>
                 </S.dateCell>
             </FadeIn>
             <FadeIn delay={360}>
                 <S.dateCell>
-                    <Text size={12} weight={400} ui={css`
-                        color: var(--g-300);
-                    `}>SEC</Text>
-                    <Text size={24} weight={300} ui={css`
-                        color: var(--g-600);
-                    `}>{remainingTime.seconds}</Text>
+                    <Text
+                        size={12}
+                        weight={400}
+                        ui={css`
+                            color: var(--g-300);
+                        `}
+                    >
+                        SEC
+                    </Text>
+                    <Text
+                        size={24}
+                        weight={300}
+                        ui={css`
+                            color: var(--g-600);
+                        `}
+                    >
+                        {remainingTime.seconds}
+                    </Text>
                 </S.dateCell>
             </FadeIn>
         </View>
     );
-        //     )
-        // case 'style2':
-        //     return (
-        //         <Row $alignItems={'flex-end'}>
-        //             <Column $gap={4} $alignItems={'center'}>
-        //                 <Text size={12} weight={400} ui={css`
-        //                     color: var(--g-300);
-        //                 `}>SEC</Text>
-        //                 <Text size={24} weight={300} ui={css`
-        //                     color: var(--g-600);
-        //                 `}>{remainingTime.days}</Text>
-        //             </Column>
-        //             <Text size={24} weight={300} ui={css`
-        //                 color: var(--g-600);
-        //             `} style={{width: 28, textAlign: 'center'}}>:</Text>
-        //             <Column $gap={4} $alignItems={'center'}>
-        //                 <Text size={12} weight={400} ui={css`
-        //                     color: var(--g-300);
-        //                 `}>HOUR</Text>
-        //                 <Text size={24} weight={300} ui={css`
-        //                     color: var(--g-600);
-        //                 `}>{remainingTime.hours}</Text>
-        //             </Column>
-        //             <Text size={24} weight={300} ui={css`
-        //                 color: var(--g-600);
-        //             `} style={{width: 28, textAlign: 'center'}}>:</Text>
-        //             <Column $gap={4} $alignItems={'center'}>
-        //                 <Text size={12} weight={400} ui={css`
-        //                     color: var(--g-300);
-        //                 `}>MIN</Text>
-        //                 <Text size={24} weight={300} ui={css`
-        //                     color: var(--g-600);
-        //                 `}>{remainingTime.minutes}</Text>
-        //             </Column>
-        //             <Text size={24} weight={300} ui={css`
-        //                 color: var(--g-600);
-        //             `} style={{width: 28, textAlign: 'center'}}>:</Text>
-        //             <Column $gap={4} $alignItems={'center'}>
-        //                 <Text size={12} weight={400} ui={css`
-        //                     color: var(--g-300);
-        //                 `}>SEC</Text>
-        //                 <Text size={24} weight={300} ui={css`
-        //                     color: var(--g-600);
-        //                 `}>{remainingTime.seconds}</Text>
-        //             </Column>
-        //         </Row>
-        //     )
+    //     )
+    // case 'style2':
+    //     return (
+    //         <Row $alignItems={'flex-end'}>
+    //             <Column $gap={4} $alignItems={'center'}>
+    //                 <Text size={12} weight={400} ui={css`
+    //                     color: var(--g-300);
+    //                 `}>SEC</Text>
+    //                 <Text size={24} weight={300} ui={css`
+    //                     color: var(--g-600);
+    //                 `}>{remainingTime.days}</Text>
+    //             </Column>
+    //             <Text size={24} weight={300} ui={css`
+    //                 color: var(--g-600);
+    //             `} style={{width: 28, textAlign: 'center'}}>:</Text>
+    //             <Column $gap={4} $alignItems={'center'}>
+    //                 <Text size={12} weight={400} ui={css`
+    //                     color: var(--g-300);
+    //                 `}>HOUR</Text>
+    //                 <Text size={24} weight={300} ui={css`
+    //                     color: var(--g-600);
+    //                 `}>{remainingTime.hours}</Text>
+    //             </Column>
+    //             <Text size={24} weight={300} ui={css`
+    //                 color: var(--g-600);
+    //             `} style={{width: 28, textAlign: 'center'}}>:</Text>
+    //             <Column $gap={4} $alignItems={'center'}>
+    //                 <Text size={12} weight={400} ui={css`
+    //                     color: var(--g-300);
+    //                 `}>MIN</Text>
+    //                 <Text size={24} weight={300} ui={css`
+    //                     color: var(--g-600);
+    //                 `}>{remainingTime.minutes}</Text>
+    //             </Column>
+    //             <Text size={24} weight={300} ui={css`
+    //                 color: var(--g-600);
+    //             `} style={{width: 28, textAlign: 'center'}}>:</Text>
+    //             <Column $gap={4} $alignItems={'center'}>
+    //                 <Text size={12} weight={400} ui={css`
+    //                     color: var(--g-300);
+    //                 `}>SEC</Text>
+    //                 <Text size={24} weight={300} ui={css`
+    //                     color: var(--g-600);
+    //                 `}>{remainingTime.seconds}</Text>
+    //             </Column>
+    //         </Row>
+    //     )
     // }
 }
 
@@ -221,11 +276,11 @@ const S = {
         gap: 4px;
         background: white;
         box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.16);
-    `
-}
+    `,
+};
 
 function parseDate(dateString: string): Date {
-    const [year, month, day] = dateString.split('-').map(Number);
+    const [year, month, day] = dateString.split("-").map(Number);
     return new Date(year, month - 1, day); // month는 0부터 시작하므로 1을 빼줍니다.
 }
 

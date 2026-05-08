@@ -7,8 +7,7 @@ export default interface Music {
 }
 
 export function getMusicName(music: Music) {
-    const lst = music.name.split('.')
-        .map(i => i.replaceAll('_', ' '));
+    const lst = music.name.split(".").map(i => i.replaceAll("_", " "));
     lst.pop();
-    return lst.join('.');
+    return lst.join(".");
 }

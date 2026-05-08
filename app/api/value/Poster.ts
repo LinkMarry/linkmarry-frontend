@@ -17,10 +17,10 @@ export interface Poster {
 
 export function makeDefaultPoster(): Poster {
     return {
-        imageUrl: '',
-        brideName: '',
-        groomName: '',
-        weddingDate: '',
+        imageUrl: "",
+        brideName: "",
+        groomName: "",
+        weddingDate: "",
         styleId: undefined,
-    }
+    };
 }

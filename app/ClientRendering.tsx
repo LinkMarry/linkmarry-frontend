@@ -1,8 +1,6 @@
 import {type PropsWithChildren, useEffect, useState} from "react";
 
-
-function ClientRendering({children}: PropsWithChildren
-) {
+function ClientRendering({children}: PropsWithChildren) {
     const [isReady, setIsReady] = useState(false);
     useEffect(() => setIsReady(true), []);
 

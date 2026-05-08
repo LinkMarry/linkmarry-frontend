@@ -5,19 +5,19 @@ export function increaseFontSize(ref: RefObject<HTMLElement | null>, increment: 
         // containerRef 아래 모든 요소 가져오기
         const elements = ref.current.querySelectorAll("*");
 
-        elements.forEach((element) => {
+        elements.forEach(element => {
             const htmlElement = element as HTMLElement;
             if (!htmlElement) return;
 
             const computedStyle = window.getComputedStyle(htmlElement);
             const currentFontSize = parseFloat(computedStyle.fontSize);
 
-            if (!htmlElement.dataset.originalFontSize && !htmlElement.classList.contains('override-font')) {
+            if (!htmlElement.dataset.originalFontSize && !htmlElement.classList.contains("override-font")) {
                 htmlElement.dataset.originalFontSize = `${currentFontSize}`; // 원래 크기 저장
             }
         });
 
-        elements.forEach((element) => {
+        elements.forEach(element => {
             const htmlElement = element as HTMLElement;
             if (!htmlElement) return;
 
@@ -29,6 +29,6 @@ export function increaseFontSize(ref: RefObject<HTMLElement | null>, increment: 
 
             // 원래 크기에서만 증가값을 더함
             htmlElement.style.fontSize = `${parsedOriginalFontSize + increment}px`;
-        })
+        });
     }
 }

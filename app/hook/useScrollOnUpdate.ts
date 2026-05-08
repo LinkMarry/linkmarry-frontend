@@ -1,5 +1,5 @@
-import { type RefObject, useEffect, useRef } from "react";
-import { useAutoFocus } from "~/hook/useAutoFocus.ts";
+import {type RefObject, useEffect, useRef} from "react";
+import {useAutoFocus} from "~/hook/useAutoFocus.ts";
 
 type DependencyList = readonly unknown[];
 
@@ -14,7 +14,7 @@ export default function useScrollOnUpdate<T extends HTMLElement>(
     enable: boolean,
 ) {
     const isMounted = useRef(false);
-    const { autoFocus } = useAutoFocus();
+    const {autoFocus} = useAutoFocus();
 
     useEffect(() => {
         if (!isMounted.current) {
@@ -27,7 +27,7 @@ export default function useScrollOnUpdate<T extends HTMLElement>(
         scrollRequestsInTick++;
 
         scheduledScroll = () => {
-            ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+            ref.current?.scrollIntoView({behavior: "smooth", block: "center"});
         };
 
         if (!resetScrollRequestsTick) {

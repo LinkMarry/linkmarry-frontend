@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router";
-import { NAVER_STORE_URL } from "~/lib/constant.ts";
+import {useNavigate} from "react-router";
+import {NAVER_STORE_URL} from "~/lib/constant.ts";
 
 export function useHomeScreen() {
     const navigate = useNavigate();
 
     const handleViewSample = () => {
-        navigate('/sample');
+        navigate("/sample");
     };
 
     const handleCreateWedding = () => {
-        navigate('/wedding-invitation');
+        navigate("/wedding-invitation");
     };
 
     const handleNavigateNaverStore = () => {
@@ -19,6 +19,6 @@ export function useHomeScreen() {
     return {
         handleViewSample,
         handleCreateWedding,
-        handleNavigateNaverStore
+        handleNavigateNaverStore,
     };
 }

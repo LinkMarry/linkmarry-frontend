@@ -4,11 +4,11 @@ import {useAuth} from "~/hook/useAuth.tsx";
 const AdminRoute = () => {
     const {member} = useAuth();
 
-    if (member?.role !== 'ROLE_ADMIN') {
-        return <Navigate to={'/'}/>
+    if (member?.role !== "ROLE_ADMIN") {
+        return <Navigate to={"/"} />;
     }
 
-    return <Outlet/>;
+    return <Outlet />;
 };
 
 export default AdminRoute;

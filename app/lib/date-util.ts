@@ -18,7 +18,7 @@ export function getTimeAgo(date: Date): string {
     } else if (daysAgo >= 1) {
         timeAgo = `${daysAgo}일 전`;
     } else {
-        timeAgo = format(date, 'h:mm a');
+        timeAgo = format(date, "h:mm a");
     }
 
     return timeAgo;
@@ -65,8 +65,7 @@ export function getCalendar(date: Date) {
     return calendar.map(week =>
         week.map(day => ({
             day,
-            isWeddingDay: day === date.getDate()
-        }))
+            isWeddingDay: day === date.getDate(),
+        })),
     );
 }
-

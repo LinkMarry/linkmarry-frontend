@@ -8,16 +8,22 @@ const MyPageDetailSidebar = () => {
     const navigate = useNavigate();
 
     return (
-        <View ui={cx(
-            css`
-                gap: 32px;
-                width: 216px;
-            `,
-            notMobileStyle
-        )}>
-            <MyPageSidebarItem icon={'ExpandArrow'} text={'돌아가기'} onClick={() => {
-                navigate(-1);
-            }}/>
+        <View
+            ui={cx(
+                css`
+                    gap: 32px;
+                    width: 216px;
+                `,
+                notMobileStyle,
+            )}
+        >
+            <MyPageSidebarItem
+                icon={"ExpandArrow"}
+                text={"돌아가기"}
+                onClick={() => {
+                    navigate(-1);
+                }}
+            />
         </View>
     );
 };

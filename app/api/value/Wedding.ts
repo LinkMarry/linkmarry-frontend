@@ -21,19 +21,9 @@ export default interface Wedding extends WeddingDto {
 }
 
 export const dummyWedding: Wedding = {
-    url: 'sample',
-    name: 'sample',
-    position: [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-    ],
+    url: "sample",
+    name: "sample",
+    position: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     weddingDesign: dummyWeddingDesign,
     baseInfo: dummyBaseInfo,
     weddingSchedule: dummyWeddingSchedule,
@@ -49,4 +39,4 @@ export const dummyWedding: Wedding = {
     rsvp: dummyRsvp,
     gallery: dummyGallery,
     waterMark: false,
-}
+};

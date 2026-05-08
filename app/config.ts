@@ -5,7 +5,7 @@ const config = {
     kakao: {
         javascriptKey: import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY,
         redirectUri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
-    }
+    },
 };
 
 export default config;

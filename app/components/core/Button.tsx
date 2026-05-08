@@ -5,7 +5,7 @@ import {styled} from "@linaria/react";
 import {textStyles} from "~/components/core/text/TextType.ts";
 import View from "~/components/core/View.tsx";
 
-export type ButtonSize = 'large' | 'medium' | 'small';
+export type ButtonSize = "large" | "medium" | "small";
 
 const buttonSizeStyles: Record<ButtonSize, LinariaClassName> = {
     large: cx(
@@ -15,7 +15,7 @@ const buttonSizeStyles: Record<ButtonSize, LinariaClassName> = {
             gap: 6px;
             height: 44px;
         `,
-        textStyles.p3.normal
+        textStyles.p3.normal,
     ),
     medium: cx(
         css`
@@ -24,7 +24,7 @@ const buttonSizeStyles: Record<ButtonSize, LinariaClassName> = {
             gap: 5px;
             height: 37px;
         `,
-        textStyles.caption1.normal
+        textStyles.caption1.normal,
     ),
     small: cx(
         css`
@@ -33,10 +33,10 @@ const buttonSizeStyles: Record<ButtonSize, LinariaClassName> = {
             gap: 4px;
             height: 30px;
         `,
-        textStyles.caption2.normal
+        textStyles.caption2.normal,
     ),
-}
-export type ButtonType = 'filled' | 'outlined' | 'tonal';
+};
+export type ButtonType = "filled" | "outlined" | "tonal";
 
 const buttonTypeStyles: Record<ButtonType, LinariaClassName> = {
     filled: css`
@@ -51,7 +51,7 @@ const buttonTypeStyles: Record<ButtonType, LinariaClassName> = {
     tonal: css`
         background: var(--g-100);
         color: var(--g-500);
-    `
+    `,
 };
 
 const buttonTypeIconStyles: Record<ButtonType, LinariaClassName> = {
@@ -63,17 +63,16 @@ const buttonTypeIconStyles: Record<ButtonType, LinariaClassName> = {
     `,
     tonal: css`
         fill: var(--g-500);
-    `
-}
-
+    `,
+};
 
 const iconSizeMap: Record<ButtonSize, number> = {
     large: 18,
     medium: 16,
-    small: 14
+    small: 14,
 };
 
-interface Props extends ComponentPropsWithRef<'button'> {
+interface Props extends ComponentPropsWithRef<"button"> {
     text: string;
     size?: ButtonSize;
     buttonType?: ButtonType;
@@ -84,24 +83,15 @@ interface Props extends ComponentPropsWithRef<'button'> {
 }
 
 function Button(
-    {
-        text,
-        size = 'large',
-        buttonType = 'filled',
-        leadingIcon,
-        trailingIcon,
-        enabled = true,
-        ui,
-        ...props
-    }: Props,
-    ref: ForwardedRef<HTMLButtonElement>
+    {text, size = "large", buttonType = "filled", leadingIcon, trailingIcon, enabled = true, ui, ...props}: Props,
+    ref: ForwardedRef<HTMLButtonElement>,
 ) {
     const iconColor = buttonTypeIconStyles[buttonType];
     const iconSize = iconSizeMap[size];
 
     return (
         <View
-            as={'button'}
+            as={"button"}
             flexDirection={"row"}
             className={cx(
                 css`
@@ -112,7 +102,9 @@ function Button(
                     border: none;
                     word-break: keep-all;
                     white-space: nowrap;
-                    transition: 0.1s scale ease-in-out, 0.1s opacity;
+                    transition:
+                        0.1s scale ease-in-out,
+                        0.1s opacity;
 
                     &:disabled {
                         opacity: 0.65;
@@ -131,33 +123,30 @@ function Button(
                         }
                     }
                 `,
-                'override-font',
+                "override-font",
                 buttonSizeStyles[size],
                 buttonTypeStyles[buttonType],
-                ui
+                ui,
             )}
             ref={ref}
             disabled={!enabled}
             {...props}
         >
-            {leadingIcon && (
-                isIconType(leadingIcon) ? (
-                    <Icon iconType={leadingIcon} size={iconSize} ui={iconColor}/>
+            {leadingIcon &&
+                (isIconType(leadingIcon) ? (
+                    <Icon iconType={leadingIcon} size={iconSize} ui={iconColor} />
                 ) : (
                     leadingIcon
-                )
-            )}
+                ))}
             {text}
-            {trailingIcon && (
-                isIconType(trailingIcon) ? (
-                    <Icon iconType={trailingIcon} size={iconSize} ui={iconColor}/>
+            {trailingIcon &&
+                (isIconType(trailingIcon) ? (
+                    <Icon iconType={trailingIcon} size={iconSize} ui={iconColor} />
                 ) : (
                     trailingIcon
-                )
-            )}
+                ))}
         </View>
-    )
+    );
 }
-
 
 export default forwardRef(Button);

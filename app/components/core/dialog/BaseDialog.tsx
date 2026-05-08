@@ -20,7 +20,7 @@ export default function BaseDialog({show, ui, dismiss, children}: BaseDialogProp
     );
 }
 
-function InnerDialog({ui, dismiss, children}: Omit<BaseDialogProps, 'show'>) {
+function InnerDialog({ui, dismiss, children}: Omit<BaseDialogProps, "show">) {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
@@ -31,14 +31,12 @@ function InnerDialog({ui, dismiss, children}: Omit<BaseDialogProps, 'show'>) {
     }, []);
 
     return (
-        <View as={'dialog'} ref={dialogRef} flexDirection={"row"}
-              ui={cx(
-                  baseDialogStyle,
-                  'override-font',
-                  fadeInAnimationStyle,
-                  ui
-              )}
-              onClose={dismiss}
+        <View
+            as={"dialog"}
+            ref={dialogRef}
+            flexDirection={"row"}
+            ui={cx(baseDialogStyle, "override-font", fadeInAnimationStyle, ui)}
+            onClose={dismiss}
         >
             {children}
         </View>
@@ -53,7 +51,7 @@ const baseDialogStyle = css`
     background: none;
     padding: 0;
     margin: auto;
-    
+
     &::backdrop {
         background: rgba(0, 0, 0, 0.5);
     }

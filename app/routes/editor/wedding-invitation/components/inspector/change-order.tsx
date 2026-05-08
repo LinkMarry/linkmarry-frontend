@@ -1,4 +1,4 @@
-import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from 'react';
+import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
 import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
 import Icon from "~/components/core/icon";
@@ -11,13 +11,7 @@ import {positionMap} from "~/api/value/Position.ts";
 import {type Position} from "~/api/value/Position.ts";
 import type Wedding from "~/api/value/Wedding.ts";
 
-
-const WeddingInvitationEditorInspectorChangeOrder = (
-    {
-        value: {position},
-        update,
-    }: Binding<Wedding>
-) => {
+const WeddingInvitationEditorInspectorChangeOrder = ({value: {position}, update}: Binding<Wedding>) => {
     const onDragEnd = (result: DropResult) => {
         const items = reorderedItems(result, position);
 
@@ -29,19 +23,19 @@ const WeddingInvitationEditorInspectorChangeOrder = (
     };
 
     return (
-        <EditorInspectorWrapper type={'changeOrder'}>
+        <EditorInspectorWrapper type={"changeOrder"}>
             <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId={'EditorInspectorChangeOrder-droppable'}>
+                <Droppable droppableId={"EditorInspectorChangeOrder-droppable"}>
                     {provided => (
-                        <View ref={provided.innerRef} ui={css`
-                            gap: 12px;
-                        `} {...provided.droppableProps}>
+                        <View
+                            ref={provided.innerRef}
+                            ui={css`
+                                gap: 12px;
+                            `}
+                            {...provided.droppableProps}
+                        >
                             {position.map((item, index) => (
-                                <Draggable
-                                    key={String(item)}
-                                    draggableId={String(item)}
-                                    index={index}
-                                >
+                                <Draggable key={String(item)} draggableId={String(item)} index={index}>
                                     {provided => (
                                         <Item
                                             {...provided.draggableProps}
@@ -61,31 +55,48 @@ const WeddingInvitationEditorInspectorChangeOrder = (
     );
 };
 
-interface ItemProps extends ComponentPropsWithRef<'div'> {
+interface ItemProps extends ComponentPropsWithRef<"div"> {
     text: string;
 }
 
 const Item = forwardRef(({text, ...props}: ItemProps, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
-        <View ref={ref} flexDirection={"row"} ui={css`
-            align-items: center;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid var(--g-300);
-            background: white;
-        `} {...props}>
-            <Text type={'p2'} ui={css`
-                flex: 1;
-            `}>{text}</Text>
-            <View ui={css`
-                display: flex;
-            `}>
-                <Icon iconType={'Hamburger'} width={24} height={24} ui={css`
-                    fill: var(--g-600);
-                `}/>
+        <View
+            ref={ref}
+            flexDirection={"row"}
+            ui={css`
+                align-items: center;
+                padding: 12px 16px;
+                border-radius: 8px;
+                border: 1px solid var(--g-300);
+                background: white;
+            `}
+            {...props}
+        >
+            <Text
+                type={"p2"}
+                ui={css`
+                    flex: 1;
+                `}
+            >
+                {text}
+            </Text>
+            <View
+                ui={css`
+                    display: flex;
+                `}
+            >
+                <Icon
+                    iconType={"Hamburger"}
+                    width={24}
+                    height={24}
+                    ui={css`
+                        fill: var(--g-600);
+                    `}
+                />
             </View>
         </View>
-    )
-})
+    );
+});
 
 export default WeddingInvitationEditorInspectorChangeOrder;

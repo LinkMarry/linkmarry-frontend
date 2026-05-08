@@ -12,74 +12,111 @@ import {kakaoButtonList, kakaoButtonMap} from "~/api/enumeration/KakaoButton.ts"
 import View from "~/components/core/View.tsx";
 import type Wedding from "~/api/value/Wedding.ts";
 
-
-const EditorInspectorKakaotalkInvitationLetter = (
-    {
-        value: {url, linkShare},
-        update
-    }: Binding<Wedding>
-) => {
+const EditorInspectorKakaotalkInvitationLetter = ({value: {url, linkShare}, update}: Binding<Wedding>) => {
     return (
-        <EditorInspectorWrapper type={'kakaotalkInvitationLetter'}>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>제목</Text>
-                <Input hasLabel={false} value={linkShare.kakaoTitle} onChange={event => update(draft => {
-                    draft.linkShare.kakaoTitle = event.target.value;
-                })}/>
-            </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>내용</Text>
-                <Textarea hasLabel={false} value={linkShare.kakaoContent} onChange={event => update(draft => {
-                    draft.linkShare.kakaoContent = event.target.value;
-                })} ui={css`
-                    height: 194px;
-                `}/>
-            </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>사진 첨부</Text>
-                <PhotoUploadBox
-                    id={'EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl'}
-                    value={linkShare.kakaoImgUrl}
-                    weddingUrl={url}
-                    onChange={newValue => update(draft => {
-                        draft.linkShare.kakaoImgUrl = newValue;
-                    })}
+        <EditorInspectorWrapper type={"kakaotalkInvitationLetter"}>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    제목
+                </Text>
+                <Input
+                    hasLabel={false}
+                    value={linkShare.kakaoTitle}
+                    onChange={event =>
+                        update(draft => {
+                            draft.linkShare.kakaoTitle = event.target.value;
+                        })
+                    }
                 />
             </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>버튼 추가</Text>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    내용
+                </Text>
+                <Textarea
+                    hasLabel={false}
+                    value={linkShare.kakaoContent}
+                    onChange={event =>
+                        update(draft => {
+                            draft.linkShare.kakaoContent = event.target.value;
+                        })
+                    }
+                    ui={css`
+                        height: 194px;
+                    `}
+                />
+            </View>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    사진 첨부
+                </Text>
+                <PhotoUploadBox
+                    id={"EditorInspectorKakaotalkInvitationLetter-kakaoImgUrl"}
+                    value={linkShare.kakaoImgUrl}
+                    weddingUrl={url}
+                    onChange={newValue =>
+                        update(draft => {
+                            draft.linkShare.kakaoImgUrl = newValue;
+                        })
+                    }
+                />
+            </View>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    버튼 추가
+                </Text>
                 <SegmentedButton
                     items={kakaoButtonList.map(i => kakaoButtonMap[i].korean)}
                     selectedTab={kakaoButtonList.indexOf(linkShare.kakaoButton)}
-                    onChange={tab => update(draft => {
-                        draft.linkShare.kakaoButton = kakaoButtonList[tab];
-                    })}
+                    onChange={tab =>
+                        update(draft => {
+                            draft.linkShare.kakaoButton = kakaoButtonList[tab];
+                        })
+                    }
                 />
             </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>스타일</Text>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    스타일
+                </Text>
                 <SegmentedButton
                     items={kakaoStyleList.map(i => getKoreanByKakaoStyle(i))}
                     selectedTab={kakaoStyleList.indexOf(linkShare.kakaoStyle)}
-                    onChange={tab => update(draft => {
-                        draft.linkShare.kakaoStyle = kakaoStyleList[tab];
-                    })}
+                    onChange={tab =>
+                        update(draft => {
+                            draft.linkShare.kakaoStyle = kakaoStyleList[tab];
+                        })
+                    }
                 />
             </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>미리보기</Text>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    미리보기
+                </Text>
                 <SharingLink
                     title={linkShare.kakaoTitle}
                     button={linkShare.kakaoButton}

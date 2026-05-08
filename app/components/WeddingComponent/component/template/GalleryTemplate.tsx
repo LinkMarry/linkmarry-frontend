@@ -1,15 +1,15 @@
-import { type RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import {type RefObject, useCallback, useEffect, useRef, useState} from "react";
 import Text from "~/components/core/Text.tsx";
-import { hideScrollBarStyle } from "~/components/css.util.ts";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import type Gallery from "~/api/value/Gallery.ts";
 import Icon from "~/components/core/icon";
 import View from "~/components/core/View.tsx";
 import GalleryTemplateFullView from "~/components/WeddingComponent/component/template/GalleryTemplateFullView.tsx";
-import type { GalleryDesign } from "~/api/enumeration/GalleryDesign.ts";
-import { css, cx } from "@linaria/core";
-import type { WeddingMode } from "~/components/WeddingComponent/WeddingMode.ts";
+import type {GalleryDesign} from "~/api/enumeration/GalleryDesign.ts";
+import {css, cx} from "@linaria/core";
+import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface GalleryTemplateProps {
     rootRef: RefObject<HTMLDivElement | null>;
@@ -17,25 +17,22 @@ interface GalleryTemplateProps {
     mode: WeddingMode;
 }
 
-function GalleryTemplate(
-    {
-        rootRef,
-        gallery,
-        mode
-    }: GalleryTemplateProps
-) {
+function GalleryTemplate({rootRef, gallery, mode}: GalleryTemplateProps) {
     const galleryRef = useRef<HTMLDivElement>(null);
-    useScrollOnUpdate(galleryRef, [gallery], mode === 'preview');
+    useScrollOnUpdate(galleryRef, [gallery], mode === "preview");
 
     const [currentImageIdx, setCurrentImageIdx] = useState<number>();
 
     return (
-        <View ref={galleryRef} ui={css`
-            gap: 40px;
-            align-items: center;
-            background: white;
-            padding: 92px 0;
-        `}>
+        <View
+            ref={galleryRef}
+            ui={css`
+                gap: 40px;
+                align-items: center;
+                background: white;
+                padding: 92px 0;
+            `}
+        >
             <GalleryTemplateFullView
                 show={currentImageIdx !== undefined && gallery.galleryFullScreen}
                 dismiss={() => setCurrentImageIdx(undefined)}
@@ -46,31 +43,41 @@ function GalleryTemplate(
             />
 
             <FadeIn>
-                <Text size={20} weight={300} ui={css`
-                    color: var(--g-600);
-                `}>{gallery.galleryTitle}</Text>
+                <Text
+                    size={20}
+                    weight={300}
+                    ui={css`
+                        color: var(--g-600);
+                    `}
+                >
+                    {gallery.galleryTitle}
+                </Text>
             </FadeIn>
-            {(gallery.galleryDesign === 'SLIDE' || gallery.galleryDesign === 'HIGHLIGHT') ? (
-                <GallerySlide
-                    rootRef={rootRef}
-                    gallery={gallery}
-                    onClickImage={index => setCurrentImageIdx(index)}
-                />
+            {gallery.galleryDesign === "SLIDE" || gallery.galleryDesign === "HIGHLIGHT" ? (
+                <GallerySlide rootRef={rootRef} gallery={gallery} onClickImage={index => setCurrentImageIdx(index)} />
             ) : (
-                <View ui={css`
-                    display: grid !important;
-                    grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
-                    margin: 0 18px;
-                    gap: 4px;
-                `}>
+                <View
+                    ui={css`
+                        display: grid !important;
+                        grid-template-columns: repeat(3, 1fr); /* 3열 구성 */
+                        margin: 0 18px;
+                        gap: 4px;
+                    `}
+                >
                     {gallery.imgList.map((img, index) => (
-                        <View as={'img'} ui={css`
-                            width: 100%;
-                            aspect-ratio: 1;
-                            object-fit: cover;
-                            object-position: top;
-                            border-radius: 4px;
-                        `} key={index} src={img} onClick={() => setCurrentImageIdx(index)} />
+                        <View
+                            as={"img"}
+                            ui={css`
+                                width: 100%;
+                                aspect-ratio: 1;
+                                object-fit: cover;
+                                object-position: top;
+                                border-radius: 4px;
+                            `}
+                            key={index}
+                            src={img}
+                            onClick={() => setCurrentImageIdx(index)}
+                        />
                     ))}
                 </View>
             )}
@@ -78,17 +85,15 @@ function GalleryTemplate(
     );
 }
 
-const GallerySlide = (
-    {
-        rootRef,
-        gallery,
-        onClickImage
-    }: {
-        rootRef: RefObject<HTMLDivElement | null>;
-        gallery: Gallery;
-        onClickImage: (index: number) => void;
-    }
-) => {
+const GallerySlide = ({
+    rootRef,
+    gallery,
+    onClickImage,
+}: {
+    rootRef: RefObject<HTMLDivElement | null>;
+    gallery: Gallery;
+    onClickImage: (index: number) => void;
+}) => {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0); // 현재 보여지는 이미지의 인덱스를 추적
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -96,10 +101,10 @@ const GallerySlide = (
         let imageWidth = rootRef.current?.getBoundingClientRect().width ?? 0;
 
         switch (gallery.galleryDesign) {
-            case 'SLIDE':
+            case "SLIDE":
                 imageWidth += -34 * 2 + 8; // image width - container horizontal padding + gap
                 break;
-            case 'HIGHLIGHT':
+            case "HIGHLIGHT":
                 imageWidth += 8; // image width + gap
                 break;
             default:
@@ -127,10 +132,10 @@ const GallerySlide = (
 
     useEffect(() => {
         const container = scrollContainerRef.current;
-        container?.addEventListener('scroll', handleScroll);
+        container?.addEventListener("scroll", handleScroll);
 
         return () => {
-            container?.removeEventListener('scroll', handleScroll);
+            container?.removeEventListener("scroll", handleScroll);
         };
     }, [handleScroll]);
 
@@ -149,23 +154,29 @@ const GallerySlide = (
     }, [rootRef]);
 
     return (
-        <View ui={css`
-            gap: 20px;
-            align-self: stretch;
-            overflow-x: hidden;
-        `}>
-            <View flexDirection={"row"} ui={cx(
-                css`
-                    gap: 8px;
-                    scroll-snap-type: x mandatory;
-                    overflow-x: scroll;
-                    overflow-y: hidden;
-                `,
-                hideScrollBarStyle
-            )} ref={scrollContainerRef}>
+        <View
+            ui={css`
+                gap: 20px;
+                align-self: stretch;
+                overflow-x: hidden;
+            `}
+        >
+            <View
+                flexDirection={"row"}
+                ui={cx(
+                    css`
+                        gap: 8px;
+                        scroll-snap-type: x mandatory;
+                        overflow-x: scroll;
+                        overflow-y: hidden;
+                    `,
+                    hideScrollBarStyle,
+                )}
+                ref={scrollContainerRef}
+            >
                 {gallery.imgList.map((img, index) => (
                     <View
-                        as={'img'}
+                        as={"img"}
                         key={index}
                         flexDirection={"row"}
                         ui={cx(
@@ -175,25 +186,31 @@ const GallerySlide = (
                                 object-fit: cover;
                                 object-position: top;
                             `,
-                            gallery.galleryDesign === 'SLIDE' ? css`
-                                &:first-child {
-                                    margin-left: 34px;
-                                }
+                            gallery.galleryDesign === "SLIDE"
+                                ? css`
+                                      &:first-child {
+                                          margin-left: 34px;
+                                      }
 
-                                &:last-child {
-                                    margin-right: 34px;
-                                }
+                                      &:last-child {
+                                          margin-right: 34px;
+                                      }
 
-                                border-radius: 12px;
-                            ` : undefined
+                                      border-radius: 12px;
+                                  `
+                                : undefined,
                         )}
-                        style={gallery.galleryDesign === 'SLIDE' ? {
-                            maxWidth: rootWidth && rootWidth - 34 * 2,
-                            minWidth: rootWidth && rootWidth - 34 * 2
-                        } : {
-                            maxWidth: rootWidth,
-                            minWidth: rootWidth
-                        }}
+                        style={
+                            gallery.galleryDesign === "SLIDE"
+                                ? {
+                                      maxWidth: rootWidth && rootWidth - 34 * 2,
+                                      minWidth: rootWidth && rootWidth - 34 * 2,
+                                  }
+                                : {
+                                      maxWidth: rootWidth,
+                                      minWidth: rootWidth,
+                                  }
+                        }
                         src={img}
                         onClick={() => onClickImage(index)}
                     />
@@ -205,22 +222,22 @@ const GallerySlide = (
                 galleryDesign={gallery.galleryDesign}
                 onClick={type => {
                     switch (type) {
-                        case 'moveLeft':
+                        case "moveLeft":
                             if (currentImageIndex > 0) {
                                 const imgWidth = getGridImgWidth();
                                 const left = imgWidth * (currentImageIndex - 1);
                                 scrollContainerRef.current?.scrollTo({
-                                    left
+                                    left,
                                 });
                                 setCurrentImageIndex(currentImageIndex - 1);
                             }
                             break;
-                        case 'moveRight':
+                        case "moveRight":
                             if (currentImageIndex < gallery.imgList.length - 1) {
                                 const imgWidth = getGridImgWidth();
                                 const left = imgWidth * (currentImageIndex + 1);
                                 scrollContainerRef.current?.scrollTo({
-                                    left
+                                    left,
                                 });
                                 setCurrentImageIndex(currentImageIndex + 1);
                             }
@@ -230,69 +247,92 @@ const GallerySlide = (
             />
         </View>
     );
-}
+};
 
-function GalleryStyleIndicator(
-    {
-        imgListLength,
-        currentImageIndex,
-        galleryDesign,
-        onClick,
-    }: {
-        imgListLength: number;
-        currentImageIndex: number;
-        galleryDesign: GalleryDesign;
-        onClick: (type: 'moveLeft' | 'moveRight') => void;
-    }
-) {
+function GalleryStyleIndicator({
+    imgListLength,
+    currentImageIndex,
+    galleryDesign,
+    onClick,
+}: {
+    imgListLength: number;
+    currentImageIndex: number;
+    galleryDesign: GalleryDesign;
+    onClick: (type: "moveLeft" | "moveRight") => void;
+}) {
     switch (galleryDesign) {
-        case 'SLIDE':
-            return <View flexDirection={"row"} ui={css`
-                gap: 8px;
-                align-self: center;
-            `}>
-                {Array.from({ length: imgListLength }, (_, index) => index).map((i, index) => (
-                    <View key={index} flexDirection={"row"} ui={cx(
-                        css`
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 4px;
-                        `,
-                        i === currentImageIndex ? css`
-                            background: black;
-                        ` : css`
-                            background: var(--g-200);
-                        `
-                    )} />
-                ))}
-            </View>;
-        case 'HIGHLIGHT':
+        case "SLIDE":
             return (
-                <View flexDirection={"row"} ui={css`
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 0 45px;
-                `}>
-                    <Icon iconType={'ExpandArrow'} size={24} ui={css`
-                        fill: var(--g-500);
-                        cursor: pointer;
-                    `} onClick={() => {
-                            onClick('moveLeft');
-                        }} />
-                    <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-                    <Icon iconType={'ExpandArrow'} size={24} ui={css`
-                        rotate: 180deg;
-                        fill: var(--g-500);
-                        cursor: pointer;
-                    `} onClick={() => {
-                            onClick('moveRight');
-                        }} />
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        gap: 8px;
+                        align-self: center;
+                    `}
+                >
+                    {Array.from({length: imgListLength}, (_, index) => index).map((i, index) => (
+                        <View
+                            key={index}
+                            flexDirection={"row"}
+                            ui={cx(
+                                css`
+                                    width: 8px;
+                                    height: 8px;
+                                    border-radius: 4px;
+                                `,
+                                i === currentImageIndex
+                                    ? css`
+                                          background: black;
+                                      `
+                                    : css`
+                                          background: var(--g-200);
+                                      `,
+                            )}
+                        />
+                    ))}
                 </View>
             );
-        case 'GRID':
+        case "HIGHLIGHT":
+            return (
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0 45px;
+                    `}
+                >
+                    <Icon
+                        iconType={"ExpandArrow"}
+                        size={24}
+                        ui={css`
+                            fill: var(--g-500);
+                            cursor: pointer;
+                        `}
+                        onClick={() => {
+                            onClick("moveLeft");
+                        }}
+                    />
+                    <Text size={14} weight={300}>
+                        {currentImageIndex + 1}/{imgListLength}
+                    </Text>
+                    <Icon
+                        iconType={"ExpandArrow"}
+                        size={24}
+                        ui={css`
+                            rotate: 180deg;
+                            fill: var(--g-500);
+                            cursor: pointer;
+                        `}
+                        onClick={() => {
+                            onClick("moveRight");
+                        }}
+                    />
+                </View>
+            );
+        case "GRID":
             return null;
     }
 }
-
 
 export default GalleryTemplate;

@@ -23,8 +23,8 @@ export default interface Notification {
 export const dummyNotifications: Notification[] = [
     {
         id: 0,
-        name: '운영자',
-        title: '개인정보 처리방침 개정안내',
+        name: "운영자",
+        title: "개인정보 처리방침 개정안내",
         content: `안녕하세요. 링크메리 입니다.
 
 링크메리 서비스를 이용해주시는 회원 여러분께 감사드리며, 링크메리 개인정보 처리방침 변경에 대한 안내 말씀 드립니다.
@@ -41,15 +41,15 @@ export const dummyNotifications: Notification[] = [
 회사는 앞으로도 이용자의 개인정보를 보다 안전하게 보호할 것을 약속드리며, 신뢰받는 서비스로 보답하겠습니다.
 
 감사합니다.`,
-        date: '2024.12.26',
-        tag: 'NOTIFICATION'
+        date: "2024.12.26",
+        tag: "NOTIFICATION",
     },
     {
         id: 1,
-        name: '운영자',
-        title: '1.1 버전 업데이트 안내',
-        content: '업데이트 됐수다',
-        date: '2025.1.1',
-        tag: 'UPDATE'
-    }
-]
+        name: "운영자",
+        title: "1.1 버전 업데이트 안내",
+        content: "업데이트 됐수다",
+        date: "2025.1.1",
+        tag: "UPDATE",
+    },
+];

@@ -3,7 +3,7 @@ import api from "~/api/index.ts";
 import type NotificationRequest from "~/api/value/request/NotificationRequest.ts";
 import type Notification from "~/api/value/Notification.ts";
 
-const PATH = 'notification';
+const PATH = "notification";
 
 async function createNotification(req: NotificationRequest): Promise<ResponseVoid> {
     const {data} = await api.post(PATH, req);
@@ -12,14 +12,14 @@ async function createNotification(req: NotificationRequest): Promise<ResponseVoi
 
 async function getNotifications(): Promise<ResponseData<Notification[]>> {
     const {data} = await api.get(PATH, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
 
 async function getNotification(id: number): Promise<ResponseData<Notification>> {
     const {data} = await api.get(`${PATH}/${id}`, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -45,7 +45,7 @@ const notificationApi = {
     getNotification,
     editNotification,
     getPrivacyPolicyNotifications,
-    getTermsNotifications
+    getTermsNotifications,
 };
 
 export default notificationApi;

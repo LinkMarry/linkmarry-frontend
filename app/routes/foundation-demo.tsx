@@ -4,53 +4,79 @@ import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import Divider from "~/components/core/Divider.tsx";
 
-const text = '가나다라마바사ABCDEFG12345'
+const text = "가나다라마바사ABCDEFG12345";
 
 function FoundationDemo() {
     return (
-        <View ui={css`
-            gap: 20px;
-            align-items: flex-start;
-            padding: 20px;
-        `}>
-            <View ui={css`
+        <View
+            ui={css`
+                gap: 20px;
                 align-items: flex-start;
-            `}>
-                {textTypes.map((type) => (
+                padding: 20px;
+            `}
+        >
+            <View
+                ui={css`
+                    align-items: flex-start;
+                `}
+            >
+                {textTypes.map(type => (
                     <>
                         <Text type={type}>{text}</Text>
-                        <Text type={type} bold={true}>{text}</Text>
+                        <Text type={type} bold={true}>
+                            {text}
+                        </Text>
                     </>
                 ))}
             </View>
-            <Divider/>
-            <View ui={css`
-                align-items: flex-start;
-                gap: 20px;
-            `}>
+            <Divider />
+            <View
+                ui={css`
+                    align-items: flex-start;
+                    gap: 20px;
+                `}
+            >
                 {fontFamilyList.map(font => (
-                    <View flexDirection={"row"} ui={css`
-                        align-items: flex-start;
-                    `}>
-                        <Text type={'p3'} ui={css`
-                            width: 256px;
-                        `}>{font}</Text>
-                        <View ui={css`
+                    <View
+                        flexDirection={"row"}
+                        ui={css`
                             align-items: flex-start;
-                        `}>
-                            <Text type={'h3'} weight={100} font={font}>{text}</Text>
-                            <Text type={'h3'} weight={500} font={font}>{text}</Text>
-                            <Text type={'h3'} weight={700} font={font}>{text}</Text>
+                        `}
+                    >
+                        <Text
+                            type={"p3"}
+                            ui={css`
+                                width: 256px;
+                            `}
+                        >
+                            {font}
+                        </Text>
+                        <View
+                            ui={css`
+                                align-items: flex-start;
+                            `}
+                        >
+                            <Text type={"h3"} weight={100} font={font}>
+                                {text}
+                            </Text>
+                            <Text type={"h3"} weight={500} font={font}>
+                                {text}
+                            </Text>
+                            <Text type={"h3"} weight={700} font={font}>
+                                {text}
+                            </Text>
                         </View>
                     </View>
                 ))}
             </View>
-            <Divider/>
-            <View ui={css`
-                display: flex;
-                flex-wrap: wrap;
-                width: 256px;
-            `}>
+            <Divider />
+            <View
+                ui={css`
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 256px;
+                `}
+            >
                 {/*TODO*/}
                 {/*{allCasesOfEnum(IconType)*/}
                 {/*    .map((icon) => (*/}

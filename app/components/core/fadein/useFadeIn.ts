@@ -13,8 +13,8 @@ const useFadeIn = (threshold = 0.6) => {
                 }
             },
             {
-                threshold
-            }
+                threshold,
+            },
         );
 
         if (ref.current) observer.observe(ref.current);

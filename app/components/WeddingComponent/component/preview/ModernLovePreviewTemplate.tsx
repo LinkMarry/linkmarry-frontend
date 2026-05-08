@@ -1,4 +1,4 @@
-import {type ComponentProps} from 'react';
+import {type ComponentProps} from "react";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
@@ -6,48 +6,72 @@ import Text from "~/components/core/Text.tsx";
 import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function ModernLovePreviewTemplate(
-    {
-        weddingDesign,
-        baseInfo
-    }: ComponentProps<typeof PreviewTemplate>
-) {
+function ModernLovePreviewTemplate({weddingDesign, baseInfo}: ComponentProps<typeof PreviewTemplate>) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
-        <View ui={cx(
-            'override-font',
-            fontFamilyStyle.UnrealScienceMedicine,
-            css`
-                padding: 108px 32px 40px 32px;
-                position: relative;
-                gap: 36px;
-            `
-        )}>
-            <View as={'img'} src={weddingDesign.titleImgUrl} ui={css`
-                min-height: 580px;
-                border-radius: 500px;
-                object-fit: cover;
-                box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.08) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.08) inset;
-            `}/>
-            <Text size={60} weight={400} ui={css`
-                position: absolute;
-                white-space: nowrap;
-                color: #556B2F;
-                text-align: center;
-                top: 68px;
-                left: 50%;
-                transform: translateX(-50%);
-            `}>Together Forever</Text>
-            <Text size={40} weight={400} ui={css`
-                color: #556B2F;
-            `}>
-                <View flexDirection={"row"} ui={css`
-                    align-items: center;
+        <View
+            ui={cx(
+                "override-font",
+                fontFamilyStyle.UnrealScienceMedicine,
+                css`
+                    padding: 108px 32px 40px 32px;
+                    position: relative;
                     gap: 36px;
-                `}>
-                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName || first.name}</span>
+                `,
+            )}
+        >
+            <View
+                as={"img"}
+                src={weddingDesign.titleImgUrl}
+                ui={css`
+                    min-height: 580px;
+                    border-radius: 500px;
+                    object-fit: cover;
+                    box-shadow:
+                        0 -4px 4px 0 rgba(0, 0, 0, 0.08) inset,
+                        0 4px 4px 0 rgba(0, 0, 0, 0.08) inset;
+                `}
+            />
+            <Text
+                size={60}
+                weight={400}
+                ui={css`
+                    position: absolute;
+                    white-space: nowrap;
+                    color: #556b2f;
+                    text-align: center;
+                    top: 68px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                `}
+            >
+                Together Forever
+            </Text>
+            <Text
+                size={40}
+                weight={400}
+                ui={css`
+                    color: #556b2f;
+                `}
+            >
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        align-items: center;
+                        gap: 36px;
+                    `}
+                >
+                    <span
+                        style={{flex: 1, minWidth: 0, textAlign: "center", whiteSpace: "wrap", wordBreak: "break-all"}}
+                    >
+                        {first.englishName || first.name}
+                    </span>
                     <span>&</span>
-                    <span style={{flex: 1, minWidth: 0, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName || second.name}</span>
+                    <span
+                        style={{flex: 1, minWidth: 0, textAlign: "center", whiteSpace: "wrap", wordBreak: "break-all"}}
+                    >
+                        {second.englishName || second.name}
+                    </span>
                 </View>
             </Text>
         </View>

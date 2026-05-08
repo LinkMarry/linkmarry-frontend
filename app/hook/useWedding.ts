@@ -19,14 +19,14 @@ const useWedding = () => {
         if (isFirstVisitor) {
             const date = new Date();
             date.setDate(date.getDate() + 365);
-            setCookie(cookieKey, 'false', {
-                expires: date
+            setCookie(cookieKey, "false", {
+                expires: date,
             });
         }
 
         try {
             const {data} = await weddingApi.getWeddingInvitation(url, {
-                firstVisitor: isFirstVisitor
+                firstVisitor: isFirstVisitor,
             });
             setWedding(data);
         } catch (error) {
@@ -44,8 +44,8 @@ const useWedding = () => {
     return {
         wedding,
         getWedding,
-        isError
-    }
+        isError,
+    };
 };
 
 export default useWedding;

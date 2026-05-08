@@ -10,27 +10,43 @@ function MyPageIndexSidebar() {
     const {signOut} = useAuth();
 
     return (
-        <View ui={cx(
-            css`
-                gap: 32px;
-                width: 216px;
-            `,
-            notMobileStyle
-        )}>
-            <View ui={css`
-                gap: 4px;
-            `}>
-                <MyPageSidebarItem icon={'Envelope'} text={'모바일 청첩장'} selected={currentSidebar === 'wedding'}
-                                   onClick={() => navigate('wedding')}/>
-                <MyPageSidebarItem icon={'PersonLine'} text={'회원정보'} selected={currentSidebar === 'info'}
-                                   onClick={() => navigate('info')}/>
+        <View
+            ui={cx(
+                css`
+                    gap: 32px;
+                    width: 216px;
+                `,
+                notMobileStyle,
+            )}
+        >
+            <View
+                ui={css`
+                    gap: 4px;
+                `}
+            >
+                <MyPageSidebarItem
+                    icon={"Envelope"}
+                    text={"모바일 청첩장"}
+                    selected={currentSidebar === "wedding"}
+                    onClick={() => navigate("wedding")}
+                />
+                <MyPageSidebarItem
+                    icon={"PersonLine"}
+                    text={"회원정보"}
+                    selected={currentSidebar === "info"}
+                    onClick={() => navigate("info")}
+                />
             </View>
-            <MyPageSidebarItem icon={'StopArrow'} text={'로그아웃'} selected={currentSidebar === 'logout'} onClick={() => {
-                signOut();
-            }}/>
+            <MyPageSidebarItem
+                icon={"StopArrow"}
+                text={"로그아웃"}
+                selected={currentSidebar === "logout"}
+                onClick={() => {
+                    signOut();
+                }}
+            />
         </View>
     );
 }
-
 
 export default MyPageIndexSidebar;

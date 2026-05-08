@@ -1,8 +1,8 @@
-import React, { type ReactNode } from 'react';
-import { css, cx } from "@linaria/core";
-import { hideScrollBarStyle } from "~/components/css.util.ts";
+import React, {type ReactNode} from "react";
+import {css, cx} from "@linaria/core";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
 import View from "~/components/core/View.tsx";
-import { responsive } from "~/components/responsive.tsx";
+import {responsive} from "~/components/responsive.tsx";
 
 interface EditorShellProps {
     header: ReactNode;
@@ -12,49 +12,53 @@ interface EditorShellProps {
     dialogs?: ReactNode;
 }
 
-const EditorShell = ({
-    header,
-    navigationBar,
-    inspector,
-    preview,
-    dialogs
-}: EditorShellProps) => {
+const EditorShell = ({header, navigationBar, inspector, preview, dialogs}: EditorShellProps) => {
     return (
-        <View ui={cx(
-            css`
-                width: 100vw;
-                height: 100dvh;
-                overflow: hidden;
-                background: var(--g-100);
-            `,
-            hideScrollBarStyle
-        )}>
+        <View
+            ui={cx(
+                css`
+                    width: 100vw;
+                    height: 100dvh;
+                    overflow: hidden;
+                    background: var(--g-100);
+                `,
+                hideScrollBarStyle,
+            )}
+        >
             {dialogs}
-            <View ui={css`
-                flex: 1;
-                overflow: hidden;
-                background: white;
-
-                ${responsive.notDesktop} {
-                    max-width: 720px;
-                    width: 100%;
-                    margin: 0 auto;
-                }
-            `}>
-                {header}
-                <View flexDirection={"row"} ui={css`
+            <View
+                ui={css`
                     flex: 1;
-                    min-height: 0;
-                    
+                    overflow: hidden;
+                    background: white;
+
                     ${responsive.notDesktop} {
-                        flex-direction: column-reverse !important;
+                        max-width: 720px;
+                        width: 100%;
+                        margin: 0 auto;
                     }
-                `}>
-                    {navigationBar}
-                    <View flexDirection={"row"} ui={css`
+                `}
+            >
+                {header}
+                <View
+                    flexDirection={"row"}
+                    ui={css`
                         flex: 1;
                         min-height: 0;
-                    `}>
+
+                        ${responsive.notDesktop} {
+                            flex-direction: column-reverse !important;
+                        }
+                    `}
+                >
+                    {navigationBar}
+                    <View
+                        flexDirection={"row"}
+                        ui={css`
+                            flex: 1;
+                            min-height: 0;
+                        `}
+                    >
                         {inspector}
                         {preview}
                     </View>

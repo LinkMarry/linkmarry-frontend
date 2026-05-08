@@ -12,7 +12,7 @@ import {type WeddingDto} from "~/api/value/WeddingDto.ts";
 import type Comment from "~/api/value/Comment.ts";
 import type RsvpInfo from "~/api/value/RsvpInfo.ts";
 
-const PATH = 'wedding';
+const PATH = "wedding";
 
 /**
  * URL 중복 확인
@@ -59,7 +59,7 @@ async function editWedding(req: WeddingDto): Promise<ResponseVoid> {
  */
 async function getWeddingInvitation(url: string, req: WeddingRequest): Promise<ResponseData<Wedding>> {
     const {data} = await api.post(`${PATH}/${url}`, req, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -85,7 +85,7 @@ async function changeWeddingUrl(originUrl: string, newUrl: string): Promise<Resp
  */
 async function createRsvp(req: RsvpRequest): Promise<ResponseVoid> {
     const {data} = await api.post(`${PATH}/rsvp`, req, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -95,7 +95,7 @@ async function createRsvp(req: RsvpRequest): Promise<ResponseVoid> {
  */
 async function createComment(req: GuestCommentRequest): Promise<ResponseVoid> {
     const {data} = await api.post(`${PATH}/comment`, req, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -105,7 +105,7 @@ async function createComment(req: GuestCommentRequest): Promise<ResponseVoid> {
  */
 async function editComment(req: EditCommentRequest): Promise<ResponseVoid> {
     const {data} = await api.patch(`${PATH}/comment`, req, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -115,7 +115,7 @@ async function editComment(req: EditCommentRequest): Promise<ResponseVoid> {
  */
 async function removeComment(req: DeleteCommentRequest): Promise<ResponseVoid> {
     const {data} = await api.delete(`${PATH}/comment`, {
-        data: req
+        data: req,
     });
     return data;
 }
@@ -125,7 +125,7 @@ async function removeComment(req: DeleteCommentRequest): Promise<ResponseVoid> {
  */
 async function getComments(url: string): Promise<ResponseData<Comment[]>> {
     const {data} = await api.get(`${PATH}/comment/${url}`, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -143,7 +143,7 @@ async function getStatistics(url: string): Promise<ResponseData<WeddingStatistic
  */
 async function shareLink(url: string): Promise<ResponseVoid> {
     const {data} = await api.post(`${PATH}/link/${url}`, undefined, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -181,7 +181,7 @@ const weddingApi = {
     getStatistics,
     shareLink,
     removeWatermark,
-    getRsvp
-}
+    getRsvp,
+};
 
 export default weddingApi;

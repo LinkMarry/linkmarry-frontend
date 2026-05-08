@@ -1,4 +1,4 @@
-import {type ChangeEvent, useRef, useState} from 'react';
+import {type ChangeEvent, useRef, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
 import {css, cx} from "@linaria/core";
@@ -16,14 +16,14 @@ interface Props<V = string | string[]> {
     onChange: (newValue: V) => void;
 }
 
-const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}: Props<V>) => {
+const PhotoUploadBox = <V = string | string[],>({id, value, weddingUrl, onChange}: Props<V>) => {
     const isEmpty = (() => {
-        if (typeof value === 'string') {
+        if (typeof value === "string") {
             return value.length === 0;
         } else if (Array.isArray(value)) {
             return value.length === 0;
         } else {
-            throw Error('Type error');
+            throw Error("Type error");
         }
     })();
     const [isFetching, setIsFetching] = useState(false);
@@ -36,12 +36,12 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
         setIsFetching(true);
 
         try {
-            if (typeof value === 'string') {
+            if (typeof value === "string") {
                 if (files.length !== 1) return;
-                const {url} = await uploadFile(files[0], weddingUrl, 'IMG');
+                const {url} = await uploadFile(files[0], weddingUrl, "IMG");
                 onChange(url as V);
             } else if (Array.isArray(value)) {
-                const uploads = await uploadFiles(files, weddingUrl, 'IMG');
+                const uploads = await uploadFiles(files, weddingUrl, "IMG");
                 onChange([...value, ...uploads.map(i => i.url)] as V);
             }
         } catch (error) {
@@ -49,7 +49,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
         } finally {
             setIsFetching(false);
             if (inputRef.current) {
-                inputRef.current.value = '';
+                inputRef.current.value = "";
             }
         }
     };
@@ -64,7 +64,7 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
 
     return (
         <View
-            as={isEmpty ? 'label' : undefined}
+            as={isEmpty ? "label" : undefined}
             htmlFor={isEmpty ? id : undefined}
             ui={cx(
                 css`
@@ -78,50 +78,65 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
                     padding: 20px;
                     overflow: hidden;
                 `,
-                isEmpty ? css`
-                    cursor: pointer;
-                ` : undefined
+                isEmpty
+                    ? css`
+                          cursor: pointer;
+                      `
+                    : undefined,
             )}
         >
             <VoidInput
                 ref={inputRef}
                 id={id}
-                type={'file'}
-                accept={'image/*'}
+                type={"file"}
+                accept={"image/*"}
                 multiple={Array.isArray(value)}
                 onChange={handleInput}
             />
             {isEmpty ? (
-                <View flexDirection={"row"} ui={css`
-                    gap: 8px;
-                    align-items: center;
-                `}>
-                    <Icon iconType={'AddPhoto'}/>
-                    <Text type={'p2'} ui={css`
-                        color: var(--g-900);
-                    `}>사진을 첨부해 주세요</Text>
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        gap: 8px;
+                        align-items: center;
+                    `}
+                >
+                    <Icon iconType={"AddPhoto"} />
+                    <Text
+                        type={"p2"}
+                        ui={css`
+                            color: var(--g-900);
+                        `}
+                    >
+                        사진을 첨부해 주세요
+                    </Text>
                 </View>
             ) : (
-                <View flexDirection={"row"} ui={cx(
-                    css`
-                        gap: 6px;
-                        align-self: stretch;
-                        overflow-x: scroll;
-                        min-height: 106px;
-                    `,
-                    hideScrollBarStyle
-                )}>
-                    {typeof value === 'string' && (
-                        <View ui={css`
-                            margin: 0 auto;
-                        `}>
-                            <Image src={value} dismiss={() => onChange('' as V)}/>
+                <View
+                    flexDirection={"row"}
+                    ui={cx(
+                        css`
+                            gap: 6px;
+                            align-self: stretch;
+                            overflow-x: scroll;
+                            min-height: 106px;
+                        `,
+                        hideScrollBarStyle,
+                    )}
+                >
+                    {typeof value === "string" && (
+                        <View
+                            ui={css`
+                                margin: 0 auto;
+                            `}
+                        >
+                            <Image src={value} dismiss={() => onChange("" as V)} />
                         </View>
                     )}
                     {Array.isArray(value) && (
                         <>
                             <View
-                                as={'label'}
+                                as={"label"}
                                 htmlFor={id}
                                 ui={css`
                                     gap: 2px;
@@ -131,27 +146,41 @@ const PhotoUploadBox = <V = string | string[]>({id, value, weddingUrl, onChange}
                                     min-height: 106px;
                                     background: var(--g-100);
                                     cursor: pointer;
-                                `}>
-                                <Icon iconType={'AddPhoto'} width={24} height={24} ui={css`
-                                    fill: var(--g-500);
-                                `}/>
-                                <Text type={'caption2'} ui={css`
-                                    color: var(--g-500);
-                                `}>사진 첨부</Text>
+                                `}
+                            >
+                                <Icon
+                                    iconType={"AddPhoto"}
+                                    width={24}
+                                    height={24}
+                                    ui={css`
+                                        fill: var(--g-500);
+                                    `}
+                                />
+                                <Text
+                                    type={"caption2"}
+                                    ui={css`
+                                        color: var(--g-500);
+                                    `}
+                                >
+                                    사진 첨부
+                                </Text>
                             </View>
                             {value.map((value, index) => (
-                                <Image key={index} dismiss={() => handleRemove(index)} src={value}/>
+                                <Image key={index} dismiss={() => handleRemove(index)} src={value} />
                             ))}
                         </>
                     )}
                 </View>
             )}
-            <Text type={'caption1'} ui={css`
-                color: var(--g-400);
-            `}>업로드한 사진은 대표 이미지로 등록됩니다.</Text>
-            {isFetching && (
-                <LoadingOverlay/>
-            )}
+            <Text
+                type={"caption1"}
+                ui={css`
+                    color: var(--g-400);
+                `}
+            >
+                업로드한 사진은 대표 이미지로 등록됩니다.
+            </Text>
+            {isFetching && <LoadingOverlay />}
         </View>
     );
 };
@@ -164,15 +193,19 @@ interface ImageProps {
 const Image = ({dismiss, src}: ImageProps) => {
     return (
         <AddRemoveButton dismiss={dismiss}>
-            <View as={'img'} src={src} ui={css`
-                min-width: 106px;
-                width: 106px;
-                min-height: 106px;
-                height: 106px;
-                object-fit: cover;
-            `}/>
+            <View
+                as={"img"}
+                src={src}
+                ui={css`
+                    min-width: 106px;
+                    width: 106px;
+                    min-height: 106px;
+                    height: 106px;
+                    object-fit: cover;
+                `}
+            />
         </AddRemoveButton>
-    )
+    );
 };
 
 export default PhotoUploadBox;

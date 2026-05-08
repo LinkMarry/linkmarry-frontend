@@ -5,13 +5,7 @@ import ClientRendering from "~/ClientRendering.tsx";
 const PrivateRoute = () => {
     const {authorized} = useAuth();
 
-    return <ClientRendering>
-        {authorized ? (
-            <Outlet/>
-        ) : (
-            <Navigate to={'/sign-in'} replace={true}/>
-        )}
-    </ClientRendering>
+    return <ClientRendering>{authorized ? <Outlet /> : <Navigate to={"/sign-in"} replace={true} />}</ClientRendering>;
 };
 
 export default PrivateRoute;

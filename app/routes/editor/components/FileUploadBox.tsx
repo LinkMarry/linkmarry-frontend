@@ -1,4 +1,4 @@
-import {type ChangeEvent, useRef, useState} from 'react';
+import {type ChangeEvent, useRef, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
 import {css, cx} from "@linaria/core";
@@ -29,16 +29,16 @@ const FileUploadBox = ({id, value, label, weddingUrl, onChange}: Props) => {
 
         setIsFetching(true);
 
-        const data = await uploadFile(files[0], weddingUrl, 'IMG');
+        const data = await uploadFile(files[0], weddingUrl, "IMG");
         onChange(data);
 
         setIsFetching(false);
-        inputRef.current.value = '';
+        inputRef.current.value = "";
     };
 
     return (
         <View
-            as={isEmpty ? 'label' : undefined}
+            as={isEmpty ? "label" : undefined}
             htmlFor={isEmpty ? id : undefined}
             ui={cx(
                 css`
@@ -49,66 +49,101 @@ const FileUploadBox = ({id, value, label, weddingUrl, onChange}: Props) => {
                     height: 172px;
                     padding: 20px;
                 `,
-                isEmpty ? css`
-                    cursor: pointer;
-                ` : undefined
+                isEmpty
+                    ? css`
+                          cursor: pointer;
+                      `
+                    : undefined,
             )}
         >
-            <View ui={css`
-                gap: 12px;
-                align-items: center;
-            `}>
+            <View
+                ui={css`
+                    gap: 12px;
+                    align-items: center;
+                `}
+            >
                 <VoidInput
                     ref={inputRef}
                     id={id}
-                    type={'file'}
-                    accept={'video/*'}
+                    type={"file"}
+                    accept={"video/*"}
                     multiple={Array.isArray(value)}
                     onChange={handleInput}
                 />
-                <Text type={'p2'} ui={css`
-                    color: var(--g-900);
-                `}>파일을 첨부해 주세요</Text>
-                <Text type={'caption1'} ui={css`
-                    color: var(--g-400);
-                `}>업로드한 사진은 대표 이미지로 등록됩니다.</Text>
+                <Text
+                    type={"p2"}
+                    ui={css`
+                        color: var(--g-900);
+                    `}
+                >
+                    파일을 첨부해 주세요
+                </Text>
+                <Text
+                    type={"caption1"}
+                    ui={css`
+                        color: var(--g-400);
+                    `}
+                >
+                    업로드한 사진은 대표 이미지로 등록됩니다.
+                </Text>
             </View>
             {!isEmpty && (
-                <View flexDirection={"row"} ui={css`
-                    gap: 6px;
-                    height: 40px;
-                `}>
-                    <View flexDirection={"row"} ui={css`
-                        align-items: center;
-                        padding: 0 12px;
-                        background: var(--g-100);
-                        flex: 1;
-                        min-width: 0;
-                        border-radius: 8px;
-                    `}>
-                        <Text type={'caption1'} ui={css`
-                            color: var(--g-800);
-                        `}>{label}</Text>
-                        <Spacer/>
-                    </View>
-                    <View ui={cx(
-                        css`
-                            display: flex;
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        gap: 6px;
+                        height: 40px;
+                    `}
+                >
+                    <View
+                        flexDirection={"row"}
+                        ui={css`
                             align-items: center;
-                            justify-content: center;
-                            padding: 8px;
-                            cursor: pointer;
-                            border-radius: 6px;
-                        `,
-                        interactionEffectStyles.strong
-                    )} onClick={() => onChange({
-                        name: '',
-                        url: '',
-                        byte: 0
-                    })}>
-                        <Icon iconType={'Trash'} width={24} height={24} ui={css`
-                            fill: var(--g-600);
-                        `}/>
+                            padding: 0 12px;
+                            background: var(--g-100);
+                            flex: 1;
+                            min-width: 0;
+                            border-radius: 8px;
+                        `}
+                    >
+                        <Text
+                            type={"caption1"}
+                            ui={css`
+                                color: var(--g-800);
+                            `}
+                        >
+                            {label}
+                        </Text>
+                        <Spacer />
+                    </View>
+                    <View
+                        ui={cx(
+                            css`
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 8px;
+                                cursor: pointer;
+                                border-radius: 6px;
+                            `,
+                            interactionEffectStyles.strong,
+                        )}
+                        onClick={() =>
+                            onChange({
+                                name: "",
+                                url: "",
+                                byte: 0,
+                            })
+                        }
+                    >
+                        <Icon
+                            iconType={"Trash"}
+                            width={24}
+                            height={24}
+                            ui={css`
+                                fill: var(--g-600);
+                            `}
+                        />
                     </View>
                 </View>
             )}

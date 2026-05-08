@@ -1,4 +1,4 @@
-import {type ComponentPropsWithoutRef, useState} from 'react';
+import {type ComponentPropsWithoutRef, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
@@ -8,7 +8,8 @@ import {
     isPaperColor,
     weddingDesignDefaultColorList,
     weddingDesignFontSizeList,
-    weddingDesignFontSizeMap, weddingDesignPaperColorList
+    weddingDesignFontSizeMap,
+    weddingDesignPaperColorList,
 } from "~/api/value/WeddingDesign.ts";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
@@ -18,100 +19,132 @@ import BasePopover from "~/components/core/BasePopover.tsx";
 import {HexColorPicker} from "react-colorful";
 import type Wedding from "~/api/value/Wedding.ts";
 
-
-const EditorInspectorFontAndStyle = (
-    {
-        value: {weddingDesign},
-        update
-    }: Binding<Wedding>
-) => {
+const EditorInspectorFontAndStyle = ({value: {weddingDesign}, update}: Binding<Wedding>) => {
     const [showColorPicker, setShowColorPicker] = useState(false);
 
     const handleColorChanged = (color: WeddingDesignColor) => {
         update(draft => {
             draft.weddingDesign.weddingDesignColor = color;
-        })
+        });
     };
 
     return (
-        <EditorInspectorWrapper type={'fontAndStyle'} hasDivider={false}>
-            <View ui={css`
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            `}>
+        <EditorInspectorWrapper type={"fontAndStyle"} hasDivider={false}>
+            <View
+                ui={css`
+                    display: grid !important;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 16px;
+                `}
+            >
                 {fontFamilyList.map((item, index) => (
                     <FontItem
                         key={index}
                         fontFamily={item}
                         selected={item === weddingDesign.weddingDesignFont}
-                        onClick={() => update(draft => {
-                            draft.weddingDesign.weddingDesignFont = item;
-                        })}
+                        onClick={() =>
+                            update(draft => {
+                                draft.weddingDesign.weddingDesignFont = item;
+                            })
+                        }
                     />
                 ))}
             </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>폰트 크기</Text>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    폰트 크기
+                </Text>
                 <SegmentedButton
                     items={weddingDesignFontSizeList.map(i => weddingDesignFontSizeMap[i].korean)}
                     selectedTab={weddingDesignFontSizeList.indexOf(weddingDesign.weddingDesignFontSize)}
-                    onChange={tab => update(draft => {
-                        draft.weddingDesign.weddingDesignFontSize = weddingDesignFontSizeList[tab];
-                    })}
+                    onChange={tab =>
+                        update(draft => {
+                            draft.weddingDesign.weddingDesignFontSize = weddingDesignFontSizeList[tab];
+                        })
+                    }
                 />
             </View>
-            <View ui={css`
-                gap: 12px;
-            `}>
-                <Text type={'p3'} bold={true}>배경 색상</Text>
-                <View ui={css`
-                    gap: 20px;
-                `}>
-                    <View ui={css`
-                        gap: 4px;
-                    `}>
-                        <Text type={'caption1'} ui={css`
-                            color: var(--g-500);
-                        `}>단색</Text>
-                        <View ui={css`
-                            display: grid !important;
-                            grid-template-columns: repeat(4, 1fr);
-                            gap: 8px;
-                        `}>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
+                <Text type={"p3"} bold={true}>
+                    배경 색상
+                </Text>
+                <View
+                    ui={css`
+                        gap: 20px;
+                    `}
+                >
+                    <View
+                        ui={css`
+                            gap: 4px;
+                        `}
+                    >
+                        <Text
+                            type={"caption1"}
+                            ui={css`
+                                color: var(--g-500);
+                            `}
+                        >
+                            단색
+                        </Text>
+                        <View
+                            ui={css`
+                                display: grid !important;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 8px;
+                            `}
+                        >
                             {weddingDesignDefaultColorList.map((color, index) => (
                                 <ColorItem
                                     key={index}
                                     color={color}
                                     selected={color === weddingDesign.weddingDesignColor}
-                                    onClick={() => update(draft => {
-                                        draft.weddingDesign.weddingDesignColor = color;
-                                    })}
+                                    onClick={() =>
+                                        update(draft => {
+                                            draft.weddingDesign.weddingDesignColor = color;
+                                        })
+                                    }
                                 />
                             ))}
-                            <View ui={css`
-                                align-items: center;
-                                justify-content: center;
-                                aspect-ratio: 1;
-                                border-radius: 8px;
-                                cursor: pointer;
-                                outline: 1px solid var(--g-200);
-                                position: relative;
-                            `} onClick={() => {
-                                setShowColorPicker(true);
-                            }}>
-                                <Text type={'caption1'} ui={css`
-                                    color: var(--g-500);
-                                `}>직접 선택</Text>
+                            <View
+                                ui={css`
+                                    align-items: center;
+                                    justify-content: center;
+                                    aspect-ratio: 1;
+                                    border-radius: 8px;
+                                    cursor: pointer;
+                                    outline: 1px solid var(--g-200);
+                                    position: relative;
+                                `}
+                                onClick={() => {
+                                    setShowColorPicker(true);
+                                }}
+                            >
+                                <Text
+                                    type={"caption1"}
+                                    ui={css`
+                                        color: var(--g-500);
+                                    `}
+                                >
+                                    직접 선택
+                                </Text>
                                 {showColorPicker && (
-                                    <BasePopover ui={css`
-                                        position: absolute;
-                                        top: 60px;
-                                        right: -12px;
-                                        z-index: 2;
-                                    `} dismiss={() => setShowColorPicker(false)}>
+                                    <BasePopover
+                                        ui={css`
+                                            position: absolute;
+                                            top: 60px;
+                                            right: -12px;
+                                            z-index: 2;
+                                        `}
+                                        dismiss={() => setShowColorPicker(false)}
+                                    >
                                         <HexColorPicker
                                             color={weddingDesign.weddingDesignColor}
                                             onChange={handleColorChanged}
@@ -121,25 +154,36 @@ const EditorInspectorFontAndStyle = (
                             </View>
                         </View>
                     </View>
-                    <View ui={css`
-                        gap: 4px;
-                    `}>
-                        <Text type={'caption1'} ui={css`
-                            color: var(--g-500);
-                        `}>페이퍼</Text>
-                        <View ui={css`
-                            display: grid !important;
-                            grid-template-columns: repeat(4, 1fr);
-                            gap: 8px;
-                        `}>
+                    <View
+                        ui={css`
+                            gap: 4px;
+                        `}
+                    >
+                        <Text
+                            type={"caption1"}
+                            ui={css`
+                                color: var(--g-500);
+                            `}
+                        >
+                            페이퍼
+                        </Text>
+                        <View
+                            ui={css`
+                                display: grid !important;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 8px;
+                            `}
+                        >
                             {weddingDesignPaperColorList.map((color, index) => (
                                 <ColorItem
                                     key={index}
                                     color={color}
                                     selected={color === weddingDesign.weddingDesignColor}
-                                    onClick={() => update(draft => {
-                                        draft.weddingDesign.weddingDesignColor = color;
-                                    })}
+                                    onClick={() =>
+                                        update(draft => {
+                                            draft.weddingDesign.weddingDesignColor = color;
+                                        })
+                                    }
                                 />
                             ))}
                         </View>
@@ -150,42 +194,62 @@ const EditorInspectorFontAndStyle = (
     );
 };
 
-interface FontItemProps extends ComponentPropsWithoutRef<'div'> {
+interface FontItemProps extends ComponentPropsWithoutRef<"div"> {
     fontFamily: FontFamily;
     selected: boolean;
 }
 
 const FontItem = ({fontFamily, selected, ...props}: FontItemProps) => {
     return (
-        <View ui={cx(
-            css`
-                border-radius: 6px;
-                cursor: pointer;
-                min-width: 0;
-            `,
-            selected ? css`
-                outline: 1px solid black;
-            ` : undefined
-        )} {...props}>
-            <View ui={css`
-                padding: 2px 0 4px 6px;
-                border-bottom: 1px solid var(--g-100);
-            `}>
-                <Text type={'caption2'} font={fontFamily} bold={true} ui={css`
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                `}>{fontFamily}</Text>
+        <View
+            ui={cx(
+                css`
+                    border-radius: 6px;
+                    cursor: pointer;
+                    min-width: 0;
+                `,
+                selected
+                    ? css`
+                          outline: 1px solid black;
+                      `
+                    : undefined,
+            )}
+            {...props}
+        >
+            <View
+                ui={css`
+                    padding: 2px 0 4px 6px;
+                    border-bottom: 1px solid var(--g-100);
+                `}
+            >
+                <Text
+                    type={"caption2"}
+                    font={fontFamily}
+                    bold={true}
+                    ui={css`
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    `}
+                >
+                    {fontFamily}
+                </Text>
             </View>
-            <Text type={'p3'} font={fontFamily} ui={css`
-                padding: 6px 6px 2px 6px;
-            `}>
-                특별한 결혼을 위해<br/>링크메리
+            <Text
+                type={"p3"}
+                font={fontFamily}
+                ui={css`
+                    padding: 6px 6px 2px 6px;
+                `}
+            >
+                특별한 결혼을 위해
+                <br />
+                링크메리
             </Text>
         </View>
     );
-}
+};
 
-interface ColorItemProps extends ComponentPropsWithoutRef<'div'> {
+interface ColorItemProps extends ComponentPropsWithoutRef<"div"> {
     color: WeddingDesignColor;
     selected: boolean;
 }
@@ -199,14 +263,19 @@ const ColorItem = ({color, selected, ...props}: ColorItemProps) => {
             {...props}
         >
             {selected && (
-                <Icon iconType={'CheckLine'} width={20} height={20} ui={css`
-                    position: absolute;
-                    top: 8px;
-                    right: 8px;
-                `}/>
+                <Icon
+                    iconType={"CheckLine"}
+                    width={20}
+                    height={20}
+                    ui={css`
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                    `}
+                />
             )}
         </View>
-    )
+    );
 };
 
 export default EditorInspectorFontAndStyle;

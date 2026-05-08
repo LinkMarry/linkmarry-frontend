@@ -9,7 +9,7 @@ const Providers = () => {
     return (
         <AuthProvider>
             <AutoFocusProvider>
-                <Outlet/>
+                <Outlet />
             </AutoFocusProvider>
         </AuthProvider>
     );

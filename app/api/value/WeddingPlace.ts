@@ -37,13 +37,13 @@ export type PlaceTransportation = string[];
 export function getPlaceholder(index: number): string {
     switch (index) {
         case 0:
-            return '버스';
+            return "버스";
         case 1:
-            return '지하철';
+            return "지하철";
         case 2:
-            return '주차안내';
+            return "주차안내";
         default:
-            return '';
+            return "";
     }
 }
 
@@ -55,11 +55,11 @@ export const defaultWeddingPlace: WeddingPlace = {
     addressName: "",
     floorHall: "",
     placeTel: "",
-    placeTransportation: ["", '', ''],
+    placeTransportation: ["", "", ""],
     placeStatus: true,
     placeLock: true,
-    placeNav: true
-}
+    placeNav: true,
+};
 
 export const dummyWeddingPlace: WeddingPlace = {
     x: 126.97689786832184,
@@ -69,12 +69,8 @@ export const dummyWeddingPlace: WeddingPlace = {
     addressName: "서울 종로구 세종로 1-1",
     placeTel: "02-187-3021",
     floorHall: "야외 웨딩홀",
-    placeTransportation: [
-        "경북궁 앞 버스정류장 101번",
-        "경북궁역 0호선",
-        "경북궁 공용주차장 (발렛가능)"
-    ],
+    placeTransportation: ["경북궁 앞 버스정류장 101번", "경북궁역 0호선", "경북궁 공용주차장 (발렛가능)"],
     placeStatus: true,
     placeLock: true,
     placeNav: true,
-}
+};

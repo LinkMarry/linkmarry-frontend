@@ -11,9 +11,8 @@ export const responsive = {
     desktop: `@media (min-width: ${breakpoints.tablet + 1}px)`,
     notMobile: `@media (min-width: ${breakpoints.mobile + 1}px)`,
     notTablet: `@media (max-width: ${breakpoints.mobile}px) and (min-width: ${breakpoints.tablet + 1}px)`,
-    notDesktop: `@media (max-width: ${breakpoints.tablet}px)`
+    notDesktop: `@media (max-width: ${breakpoints.tablet}px)`,
 };
-
 
 export const mobileStyle = css`
     ${responsive.notMobile} {
@@ -38,7 +37,6 @@ export const notTabletStyle = css`
         display: none;
     }
 `;
-
 
 export const desktopStyle = css`
     ${responsive.notDesktop} {

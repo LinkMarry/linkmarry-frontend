@@ -11,7 +11,7 @@ import Button from "~/components/core/Button.tsx";
 import {
     type WeddingInvitationEditorNavigationBarType,
     WeddingInvitationEditorNavigationBarTypeList,
-    weddingInvitationEditorNavigationBarTypeRecord
+    weddingInvitationEditorNavigationBarTypeRecord,
 } from "~/routes/editor/domain.ts";
 import View from "~/components/core/View.tsx";
 import type Binding from "~/lib/Binding.ts";
@@ -34,16 +34,14 @@ import EditorInspectorPhone from "~/routes/editor/wedding-invitation/components/
 import EditorInspectorGuestComment from "~/routes/editor/wedding-invitation/components/inspector/guest-comment.tsx";
 import EditorInspectorFontAndStyle from "~/routes/editor/wedding-invitation/components/inspector/font-and-style.tsx";
 import EditorInspectorUrlShare from "~/routes/editor/wedding-invitation/components/inspector/url-share.tsx";
-import EditorInspectorKakaotalkInvitationLetter
-    from "~/routes/editor/wedding-invitation/components/inspector/kakaotalk-invitation-letter.tsx";
+import EditorInspectorKakaotalkInvitationLetter from "~/routes/editor/wedding-invitation/components/inspector/kakaotalk-invitation-letter.tsx";
 import WeddingInvitationEditorInspectorChangeOrder from "~/routes/editor/wedding-invitation/components/inspector/change-order.tsx";
 import WeddingComponent from "~/components/WeddingComponent";
-
 
 const navItems = WeddingInvitationEditorNavigationBarTypeList.map(type => ({
     id: type,
     label: weddingInvitationEditorNavigationBarTypeRecord[type].navigationBarText,
-    icon: weddingInvitationEditorNavigationBarTypeRecord[type].icon
+    icon: weddingInvitationEditorNavigationBarTypeRecord[type].icon,
 }));
 
 const WeddingInvitationEditorScreen = () => {
@@ -60,46 +58,56 @@ const WeddingInvitationEditorScreen = () => {
         showRemoveWatermarkDialog,
         setShowRemoveWatermarkDialog,
         handleShowPreview,
-        handleRemoveWatermark
+        handleRemoveWatermark,
     } = useWeddingInvitationEditorScreen();
 
     return (
         <EditorShell
-            dialogs={(
+            dialogs={
                 <>
                     <RemoveWatermarkDialog
                         show={showRemoveWatermarkDialog}
                         url={wedding.url}
                         dismiss={() => setShowRemoveWatermarkDialog(false)}
                     />
-                    <CreateWeddingDialog
-                        value={wedding}
-                        update={updateWedding}
-                    />
+                    <CreateWeddingDialog value={wedding} update={updateWedding} />
                 </>
-            )}
-            header={(
+            }
+            header={
                 <EditorHeader
-                    statusText={isSaving ? '저장 중...' : undefined}
-                    actions={(
+                    statusText={isSaving ? "저장 중..." : undefined}
+                    actions={
                         <>
-                            <View flexDirection={"row"} ui={css`
-                                align-items: flex-start;
-                                gap: 8px;
+                            <View
+                                flexDirection={"row"}
+                                ui={css`
+                                    align-items: flex-start;
+                                    gap: 8px;
 
-                                @media (min-width: 1025px) {
-                                    display: none;
-                                }
-                            `}>
-                                <Button text={'미리보기'} size={'small'} buttonType={'tonal'} onClick={handleShowPreview}/>
-                                <Button text={'워터마크 제거'} size={'small'} onClick={handleRemoveWatermark}/>
+                                    @media (min-width: 1025px) {
+                                        display: none;
+                                    }
+                                `}
+                            >
+                                <Button
+                                    text={"미리보기"}
+                                    size={"small"}
+                                    buttonType={"tonal"}
+                                    onClick={handleShowPreview}
+                                />
+                                <Button text={"워터마크 제거"} size={"small"} onClick={handleRemoveWatermark} />
                             </View>
-                            <Button text={'워터마크 제거'} size={'medium'} onClick={handleRemoveWatermark} ui={desktopStyle}/>
+                            <Button
+                                text={"워터마크 제거"}
+                                size={"medium"}
+                                onClick={handleRemoveWatermark}
+                                ui={desktopStyle}
+                            />
                         </>
-                    )}
+                    }
                 />
-            )}
-            navigationBar={(
+            }
+            navigationBar={
                 <EditorNavigationBar
                     items={navItems}
                     currentId={selectedNav}
@@ -107,27 +115,28 @@ const WeddingInvitationEditorScreen = () => {
                     openInspector={openInspector}
                     onToggleInspector={toggleInspector}
                 />
-            )}
-            inspector={openInspector && (
-                <EditorInspectorShell>
-                    <EditorInspectorContent
-                        value={wedding}
-                        update={updateWedding}
-                        currentNavType={selectedNav}
-                        weddingDesigns={weddingDesigns}
-                        backgroundMusics={musics}
-                    />
-                </EditorInspectorShell>
-            )}
-            preview={(
+            }
+            inspector={
+                openInspector && (
+                    <EditorInspectorShell>
+                        <EditorInspectorContent
+                            value={wedding}
+                            update={updateWedding}
+                            currentNavType={selectedNav}
+                            weddingDesigns={weddingDesigns}
+                            backgroundMusics={musics}
+                        />
+                    </EditorInspectorShell>
+                )
+            }
+            preview={
                 <EditorPreview ui={desktopStyle}>
-                    <WeddingComponent wedding={wedding} mode={'preview'}/>
+                    <WeddingComponent wedding={wedding} mode={"preview"} />
                 </EditorPreview>
-            )}
+            }
         />
     );
 };
-
 
 interface EditorInspectorProps extends Binding<Wedding> {
     currentNavType: WeddingInvitationEditorNavigationBarType;
@@ -135,45 +144,29 @@ interface EditorInspectorProps extends Binding<Wedding> {
     backgroundMusics?: Music[];
 }
 
-function EditorInspectorContent(
-    {
-        currentNavType,
-        value,
-        update,
-        weddingDesigns,
-        backgroundMusics,
-    }: EditorInspectorProps
-) {
+function EditorInspectorContent({
+    currentNavType,
+    value,
+    update,
+    weddingDesigns,
+    backgroundMusics,
+}: EditorInspectorProps) {
     switch (currentNavType) {
-        case 'design':
-            return (
-                <EditorInspectorDesign value={value} update={update} weddingDesigns={weddingDesigns}/>
-            );
-        case 'groom':
-            return (
-                <EditorInspectorGroom value={value} update={update}/>
-            );
-        case 'bride':
-            return (
-                <WeddingInvitationEditorBrideInspector value={value} update={update}/>
-            );
-        case 'greeting':
-            return (
-                <EditorInspectorGreeting value={value} update={update}/>
-            );
-        case 'weddingSchedule':
-            return (
-                <EditorInspectorWeddingSchedule value={value} update={update}/>
-            );
-        case 'weddingPlace':
-            return (
-                <EditorInspectorWeddingPlace value={value} update={update}/>
-            );
-        case 'gallery':
-            return (
-                <EditorInspectorGallery value={value} update={update}/>
-            );
-        case 'backgroundMusic':
+        case "design":
+            return <EditorInspectorDesign value={value} update={update} weddingDesigns={weddingDesigns} />;
+        case "groom":
+            return <EditorInspectorGroom value={value} update={update} />;
+        case "bride":
+            return <WeddingInvitationEditorBrideInspector value={value} update={update} />;
+        case "greeting":
+            return <EditorInspectorGreeting value={value} update={update} />;
+        case "weddingSchedule":
+            return <EditorInspectorWeddingSchedule value={value} update={update} />;
+        case "weddingPlace":
+            return <EditorInspectorWeddingPlace value={value} update={update} />;
+        case "gallery":
+            return <EditorInspectorGallery value={value} update={update} />;
+        case "backgroundMusic":
             return (
                 <WeddingInvitationEditorBackgroundMusicInspector
                     value={value}
@@ -181,47 +174,27 @@ function EditorInspectorContent(
                     backgroundMusics={backgroundMusics}
                 />
             );
-        case 'money':
-            return (
-                <WeddingInvitationEditorEditorMoneyInspector value={value} update={update}/>
-            );
-        case 'video':
-            return (
-                <WeddingInvitationEditorEditorVideoInspector value={value} update={update}/>
-            );
-        case 'rsvp':
-            return (
-                <WeddingInvitationEditorEditorRsvpInspector value={value} update={update}/>
-            );
-        case 'phone':
-            return (
-                <EditorInspectorPhone value={value} update={update}/>
-            );
-        case 'guestComment':
-            return (
-                <EditorInspectorGuestComment value={value} update={update}/>
-            );
-        case 'fontAndStyle':
-            return (
-                <EditorInspectorFontAndStyle value={value} update={update}/>
-            );
-        case 'urlShare':
-            return (
-                <EditorInspectorUrlShare value={value} update={update}/>
-            );
-        case 'kakaotalkInvitationLetter':
-            return (
-                <EditorInspectorKakaotalkInvitationLetter value={value} update={update}/>
-            );
-        case 'changeOrder':
-            return (
-                <WeddingInvitationEditorInspectorChangeOrder value={value} update={update}/>
-            );
+        case "money":
+            return <WeddingInvitationEditorEditorMoneyInspector value={value} update={update} />;
+        case "video":
+            return <WeddingInvitationEditorEditorVideoInspector value={value} update={update} />;
+        case "rsvp":
+            return <WeddingInvitationEditorEditorRsvpInspector value={value} update={update} />;
+        case "phone":
+            return <EditorInspectorPhone value={value} update={update} />;
+        case "guestComment":
+            return <EditorInspectorGuestComment value={value} update={update} />;
+        case "fontAndStyle":
+            return <EditorInspectorFontAndStyle value={value} update={update} />;
+        case "urlShare":
+            return <EditorInspectorUrlShare value={value} update={update} />;
+        case "kakaotalkInvitationLetter":
+            return <EditorInspectorKakaotalkInvitationLetter value={value} update={update} />;
+        case "changeOrder":
+            return <WeddingInvitationEditorInspectorChangeOrder value={value} update={update} />;
         default:
             return null;
     }
 }
 
-
 export default WeddingInvitationEditorScreen;
-

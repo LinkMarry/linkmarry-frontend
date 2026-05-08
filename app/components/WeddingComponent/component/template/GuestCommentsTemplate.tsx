@@ -1,12 +1,12 @@
-import { type ComponentPropsWithoutRef, useRef, useState } from 'react';
-import { css } from "@linaria/core";
+import {type ComponentPropsWithoutRef, useRef, useState} from "react";
+import {css} from "@linaria/core";
 import type Comment from "~/api/value/Comment.ts";
 import Text from "~/components/core/Text.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
-import { type GuestCommentDesign } from "~/api/enumeration/GuestCommentDesign.ts";
-import { trimArray } from "~/lib/array-util.ts";
-import { trimString } from "~/lib/string-util.ts";
+import {type GuestCommentDesign} from "~/api/enumeration/GuestCommentDesign.ts";
+import {trimArray} from "~/lib/array-util.ts";
+import {trimString} from "~/lib/string-util.ts";
 import Button from "~/components/core/Button.tsx";
 import type GuestComment from "~/api/value/GuestComment.ts";
 import RemoveGuestCommentDialog from "~/components/WeddingComponent/component/dialog/RemoveGuestCommentDialog.tsx";
@@ -16,8 +16,8 @@ import weddingApi from "~/api/wedding-api.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
-import { backgroundStyle, type WeddingDesignColor } from "~/api/value/WeddingDesign.ts";
-import type { WeddingMode } from "~/components/WeddingComponent/WeddingMode.ts";
+import {backgroundStyle, type WeddingDesignColor} from "~/api/value/WeddingDesign.ts";
+import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface GuestCommentsTemplateProps {
     weddingDesignColor: string;
@@ -28,37 +28,36 @@ interface GuestCommentsTemplateProps {
     onRefresh: () => void;
 }
 
-function GuestCommentsTemplate(
-    {
-        weddingDesignColor,
-        url,
-        guestComments,
-        guestComment,
-        mode,
-        onRefresh
-    }: GuestCommentsTemplateProps
-) {
+function GuestCommentsTemplate({
+    weddingDesignColor,
+    url,
+    guestComments,
+    guestComment,
+    mode,
+    onRefresh,
+}: GuestCommentsTemplateProps) {
     const [selectedRemoveGuestComment, setSelectedRemoveGuestComment] = useState<Comment>();
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
     const [showGuestCommentsDetailDialog, setShowGuestCommentsDetailDialog] = useState(false);
 
     const guestCommentRef = useRef<HTMLDivElement>(null);
-    useScrollOnUpdate(guestCommentRef, [guestComment], mode === 'preview');
+    useScrollOnUpdate(guestCommentRef, [guestComment], mode === "preview");
 
     const handleRemove = async (comment: Comment) => {
-        if (mode === 'preview' || mode === 'sample') { // 에디터(preview) 또는 샘플 모드일 때
-            if (window.confirm('방명록을 삭제하시겠습니까?')) {
+        if (mode === "preview" || mode === "sample") {
+            // 에디터(preview) 또는 샘플 모드일 때
+            if (window.confirm("방명록을 삭제하시겠습니까?")) {
                 try {
                     await weddingApi.removeComment({
                         url: url,
                         id: comment.id,
-                        password: undefined
+                        password: undefined,
                     });
                     onRefresh();
                 } catch (error) {
-                    console.error('방명록 삭제 실패', error);
-                    alert('방명록 삭제에 실패했습니다.');
+                    console.error("방명록 삭제 실패", error);
+                    alert("방명록 삭제에 실패했습니다.");
                 }
             }
         } else {
@@ -69,67 +68,98 @@ function GuestCommentsTemplate(
 
     return (
         <FadeIn>
-            <View ref={guestCommentRef} ui={css`
-                gap: 40px;
-                padding: 92px 30px;
-                align-items: stretch;
-                min-height: 500px;
-                justify-content: center;
-            `} style={{
-                    background: backgroundStyle(weddingDesignColor)
-                }}>
-                <View ui={css`
+            <View
+                ref={guestCommentRef}
+                ui={css`
                     gap: 40px;
-                `}>
-                    <View ui={css`
-                        gap: 12px;
-                        align-items: center;
-                    `}>
+                    padding: 92px 30px;
+                    align-items: stretch;
+                    min-height: 500px;
+                    justify-content: center;
+                `}
+                style={{
+                    background: backgroundStyle(weddingDesignColor),
+                }}
+            >
+                <View
+                    ui={css`
+                        gap: 40px;
+                    `}
+                >
+                    <View
+                        ui={css`
+                            gap: 12px;
+                            align-items: center;
+                        `}
+                    >
                         <FadeIn>
-                            <Text size={20} weight={300} ui={css`
-                                color: var(--g-600);
-                                word-break: break-all;
-                                text-align: center;
-                            `}>{guestComment.title}</Text>
+                            <Text
+                                size={20}
+                                weight={300}
+                                ui={css`
+                                    color: var(--g-600);
+                                    word-break: break-all;
+                                    text-align: center;
+                                `}
+                            >
+                                {guestComment.title}
+                            </Text>
                         </FadeIn>
                         <FadeIn delay={160}>
-                            <Text size={16} weight={300} ui={css`
-                                color: var(--g-600);
-                                word-break: break-all;
-                                text-align: center;
-                                white-space: pre-line;
-                            `}>{guestComment.content}</Text>
+                            <Text
+                                size={16}
+                                weight={300}
+                                ui={css`
+                                    color: var(--g-600);
+                                    word-break: break-all;
+                                    text-align: center;
+                                    white-space: pre-line;
+                                `}
+                            >
+                                {guestComment.content}
+                            </Text>
                         </FadeIn>
                     </View>
                     {!guestComment.privateContent && (
                         <FadeIn delay={320}>
-                            <View ui={css`
-                                gap: 12px;
-                            `}>
+                            <View
+                                ui={css`
+                                    gap: 12px;
+                                `}
+                            >
                                 <GuestComments
                                     comments={guestComments}
-                                    background={'white'}
+                                    background={"white"}
                                     design={guestComment.guestCommentDesign}
                                     onRemove={handleRemove}
                                 />
-                                <Text size={14} weight={300} ui={css`
-                                    color: var(--g-600);
-                                    align-self: flex-end;
-                                    padding-right: 4px;
-                                    cursor: pointer;
-                                `} onClick={() => {
+                                <Text
+                                    size={14}
+                                    weight={300}
+                                    ui={css`
+                                        color: var(--g-600);
+                                        align-self: flex-end;
+                                        padding-right: 4px;
+                                        cursor: pointer;
+                                    `}
+                                    onClick={() => {
                                         setShowGuestCommentsDetailDialog(true);
-                                    }}>전체보기</Text>
+                                    }}
+                                >
+                                    전체보기
+                                </Text>
                             </View>
                         </FadeIn>
                     )}
                 </View>
-                <View ui={css`
-                    align-self: center;
-                `}>
+                <View
+                    ui={css`
+                        align-self: center;
+                    `}
+                >
                     <FadeIn delay={480}>
                         <Button
-                            text={'방명록 작성하기'}
+                            text={"방명록 작성하기"}
                             onClick={() => {
                                 setShowCreateGuestCommentDialog(true);
                             }}
@@ -156,7 +186,6 @@ function GuestCommentsTemplate(
                     dismiss={() => setShowCreateGuestCommentDialog(false)}
                     onRefresh={onRefresh}
                 />
-
             </View>
         </FadeIn>
     );
@@ -169,20 +198,15 @@ interface GuestCommentsProps {
     onRemove: (comment: Comment) => void;
 }
 
-function GuestComments(
-    {
-        comments,
-        design,
-        background,
-        onRemove,
-    }: GuestCommentsProps
-) {
+function GuestComments({comments, design, background, onRemove}: GuestCommentsProps) {
     switch (design) {
-        case 'BASIC':
+        case "BASIC":
             return (
-                <View ui={css`
-                    gap: 12px;
-                `}>
+                <View
+                    ui={css`
+                        gap: 12px;
+                    `}
+                >
                     {trimArray(comments, 3).map((comment, index) => (
                         <BasicGuestComment
                             key={index}
@@ -193,11 +217,14 @@ function GuestComments(
                     ))}
                 </View>
             );
-        case 'STICKER':
+        case "STICKER":
             return (
-                <View flexDirection={"row"} ui={css`
-                    gap: 20px;
-                `}>
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        gap: 20px;
+                    `}
+                >
                     {trimArray(comments, 2).map((comment, index) => (
                         <StickerGuestComment
                             key={index}
@@ -211,76 +238,91 @@ function GuestComments(
     }
 }
 
-interface GuestCommentProps extends ComponentPropsWithoutRef<'div'> {
+interface GuestCommentProps extends ComponentPropsWithoutRef<"div"> {
     comment: Comment;
     background: WeddingDesignColor;
     onRemove: () => void;
 }
 
-export function BasicGuestComment(
-    {
-        comment,
-        background,
-        onRemove,
-        ...props
-    }: GuestCommentProps
-) {
+export function BasicGuestComment({comment, background, onRemove, ...props}: GuestCommentProps) {
     return (
-        <View ui={css`
-            gap: 16px;
-            padding: 24px;
-            border-radius: 12px;
-        `} style={{
-                background: backgroundStyle(background)
-            }} {...props}>
-            <View flexDirection={"row"} ui={css`
-                gap: 8px;
-                align-items: center;
-            `}>
-                <Text size={18} weight={300} ui={css`
-                    color: var(--g-600);
-                `}>
+        <View
+            ui={css`
+                gap: 16px;
+                padding: 24px;
+                border-radius: 12px;
+            `}
+            style={{
+                background: backgroundStyle(background),
+            }}
+            {...props}
+        >
+            <View
+                flexDirection={"row"}
+                ui={css`
+                    gap: 8px;
+                    align-items: center;
+                `}
+            >
+                <Text
+                    size={18}
+                    weight={300}
+                    ui={css`
+                        color: var(--g-600);
+                    `}
+                >
                     From. {comment.name}
                 </Text>
-                <Text size={12} weight={300} ui={css`
-                    color: var(--g-300);
-                `}>
+                <Text
+                    size={12}
+                    weight={300}
+                    ui={css`
+                        color: var(--g-300);
+                    `}
+                >
                     {trimString(comment.createdDate, 10)}
                 </Text>
                 <Spacer />
-                <Icon iconType={'CrossLine'} size={20} ui={css`
-                    cursor: pointer;
-                    fill: var(--g-300);
-                `} onClick={onRemove} />
+                <Icon
+                    iconType={"CrossLine"}
+                    size={20}
+                    ui={css`
+                        cursor: pointer;
+                        fill: var(--g-300);
+                    `}
+                    onClick={onRemove}
+                />
             </View>
-            <Text size={16} weight={300} ui={css`
-                color: var(--g-600);
-            `}>
+            <Text
+                size={16}
+                weight={300}
+                ui={css`
+                    color: var(--g-600);
+                `}
+            >
                 {comment.comment}
             </Text>
         </View>
     );
 }
 
-export function StickerGuestComment(
-    {
-        comment,
-        background,
-        onRemove
-    }: GuestCommentProps
-) {
+export function StickerGuestComment({comment, background, onRemove}: GuestCommentProps) {
     return (
-        <View ui={css`
-            gap: 8px;
-            align-items: flex-start;
-            height: 228px;
-            flex: 1;
-            padding: 12px;
-        `} style={{
-                background: backgroundStyle(background)
-            }}>
+        <View
+            ui={css`
+                gap: 8px;
+                align-items: flex-start;
+                height: 228px;
+                flex: 1;
+                padding: 12px;
+            `}
+            style={{
+                background: backgroundStyle(background),
+            }}
+        >
             <Icon
-                iconType={'CrossLine'} size={20}
+                iconType={"CrossLine"}
+                size={20}
                 ui={css`
                     align-self: flex-end;
                     cursor: pointer;
@@ -288,24 +330,46 @@ export function StickerGuestComment(
                 `}
                 onClick={onRemove}
             />
-            <View ui={css`
-                flex: 1;
-                align-items: flex-start;
-            `}>
-                <Text size={16} weight={300} ui={css`
-                    color: var(--g-600);
-                `}>{comment.comment}</Text>
-                <Spacer />
-                <View ui={css`
-                    gap: 4px;
+            <View
+                ui={css`
+                    flex: 1;
                     align-items: flex-start;
-                `}>
-                    <Text size={16} weight={300} ui={css`
+                `}
+            >
+                <Text
+                    size={16}
+                    weight={300}
+                    ui={css`
                         color: var(--g-600);
-                    `}>from. {comment.name}</Text>
-                    <Text size={12} weight={300} ui={css`
-                        color: var(--g-300);
-                    `}>{trimString(comment.createdDate, 10)}</Text>
+                    `}
+                >
+                    {comment.comment}
+                </Text>
+                <Spacer />
+                <View
+                    ui={css`
+                        gap: 4px;
+                        align-items: flex-start;
+                    `}
+                >
+                    <Text
+                        size={16}
+                        weight={300}
+                        ui={css`
+                            color: var(--g-600);
+                        `}
+                    >
+                        from. {comment.name}
+                    </Text>
+                    <Text
+                        size={12}
+                        weight={300}
+                        ui={css`
+                            color: var(--g-300);
+                        `}
+                    >
+                        {trimString(comment.createdDate, 10)}
+                    </Text>
                 </View>
             </View>
         </View>

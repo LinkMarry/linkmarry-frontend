@@ -1,1 +1,1 @@
-export type WeddingMode = 'default' | 'preview' | 'sample';
+export type WeddingMode = "default" | "preview" | "sample";

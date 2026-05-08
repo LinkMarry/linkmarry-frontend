@@ -4,22 +4,28 @@ import type Jwt from "~/api/value/Jwt";
 import api from "~/api";
 
 const useJwt = () => {
-    const [cookie, setCookie, removeCookie] = useCookies(['accessToken', 'refreshToken']);
+    const [cookie, setCookie, removeCookie] = useCookies(["accessToken", "refreshToken"]);
 
-    const setToken = useCallback((jwt: Jwt) => {
-        setCookie('accessToken', jwt.accessToken);
-        setCookie('refreshToken', jwt.refreshToken);
-        api.defaults.headers.common.Authorization = jwt.accessToken;
-    }, [setCookie]);
+    const setToken = useCallback(
+        (jwt: Jwt) => {
+            setCookie("accessToken", jwt.accessToken);
+            setCookie("refreshToken", jwt.refreshToken);
+            api.defaults.headers.common.Authorization = jwt.accessToken;
+        },
+        [setCookie],
+    );
 
     const clearToken = useCallback(() => {
-        removeCookie('accessToken');
-        removeCookie('refreshToken');
+        removeCookie("accessToken");
+        removeCookie("refreshToken");
     }, [removeCookie]);
 
-    const refresh = useCallback((accessToken: string) => {
-        setCookie('accessToken', accessToken);
-    }, [setCookie]);
+    const refresh = useCallback(
+        (accessToken: string) => {
+            setCookie("accessToken", accessToken);
+        },
+        [setCookie],
+    );
 
     return {
         jwt: {
@@ -28,8 +34,8 @@ const useJwt = () => {
         },
         setToken,
         clearToken,
-        refresh
-    }
+        refresh,
+    };
 };
 
 export default useJwt;

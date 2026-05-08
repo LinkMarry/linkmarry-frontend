@@ -9,8 +9,7 @@ export const hideScrollBarStyle = css`
     }
 `;
 
-
-type InteractionEffect = 'normal' | 'strong';
+type InteractionEffect = "normal" | "strong";
 export const interactionEffectStyles: Record<InteractionEffect, LinariaClassName> = {
     normal: css`
         &:hover {
@@ -35,5 +34,5 @@ export const interactionEffectStyles: Record<InteractionEffect, LinariaClassName
 
         cursor: pointer;
         transition: 0.1s background;
-    `
-}
+    `,
+};

@@ -24,7 +24,7 @@ const useMyPageWedding = () => {
     useEffect(() => {
         (async () => {
             await fetchData();
-        })()
+        })();
     }, [fetchData]);
 
     const removeWedding = useCallback(async () => {
@@ -44,8 +44,8 @@ const useMyPageWedding = () => {
         setShowRemoveWeddingDialog,
         weddings,
         removeWedding,
-        setSelectedWedding
-    }
+        setSelectedWedding,
+    };
 };
 
 export default useMyPageWedding;

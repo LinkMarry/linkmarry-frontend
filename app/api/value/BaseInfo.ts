@@ -1,5 +1,4 @@
 export default interface BaseInfo {
-
     // 신랑 이름 성
     groomFirstName: string;
 
@@ -80,33 +79,33 @@ export default interface BaseInfo {
 }
 
 export const defaultBaseInfo: BaseInfo = {
-    groomFirstName: '',
-    groomLastName: '',
-    groomEnglishName: '',
-    groomFatherFirstName: '',
+    groomFirstName: "",
+    groomLastName: "",
+    groomEnglishName: "",
+    groomFatherFirstName: "",
     groomFatherLastName: "",
     groomFatherStatus: false,
     groomMotherFirstName: "",
-    groomMotherLastName: '',
+    groomMotherLastName: "",
     groomMotherStatus: false,
     groomFamilyName: "아들",
-    groomFatherFamilyName: '아버지',
-    groomMotherFamilyName: '어머니',
+    groomFatherFamilyName: "아버지",
+    groomMotherFamilyName: "어머니",
     brideFirstName: "",
-    brideLastName: '',
-    brideEnglishName: '',
+    brideLastName: "",
+    brideEnglishName: "",
     brideFatherFirstName: "",
     brideFatherLastName: "",
     brideFatherStatus: false,
     brideMotherFirstName: "",
-    brideMotherLastName: '',
+    brideMotherLastName: "",
     brideMotherStatus: false,
     brideFamilyName: "딸",
-    brideFatherFamilyName: '아버지',
-    brideMotherFamilyName: '어머니',
+    brideFatherFamilyName: "아버지",
+    brideMotherFamilyName: "어머니",
     statusFlower: false,
     brideMarkFirst: false,
-}
+};
 
 export const dummyBaseInfo: BaseInfo = {
     groomFirstName: "김",
@@ -148,7 +147,7 @@ export type BaseInfoByBrideMarkFirst = {
     motherStatus: boolean;
     familyName: string;
     korean: string;
-}
+};
 
 // firstname + lastname 임시
 export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
@@ -165,7 +164,7 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
         motherName: baseInfo.groomMotherFirstName + baseInfo.groomMotherLastName,
         motherStatus: baseInfo.groomMotherStatus,
         familyName: baseInfo.groomFamilyName,
-        korean: '신랑'
+        korean: "신랑",
     };
 
     const brideInfo: BaseInfoByBrideMarkFirst = {
@@ -178,18 +177,18 @@ export function getBaseInfoByBrideMarkFirst(baseInfo: BaseInfo): {
         motherName: baseInfo.brideMotherFirstName + baseInfo.brideMotherLastName,
         motherStatus: baseInfo.brideMotherStatus,
         familyName: baseInfo.brideFamilyName,
-        korean: '신부'
+        korean: "신부",
     };
 
     if (baseInfo.brideMarkFirst) {
         return {
             first: brideInfo,
             second: groomInfo,
-        }
+        };
     } else {
         return {
             first: groomInfo,
-            second: brideInfo
-        }
+            second: brideInfo,
+        };
     }
 }

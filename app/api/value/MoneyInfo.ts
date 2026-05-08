@@ -1,5 +1,4 @@
 export default interface MoneyInfo {
-
     // 축의금 제목
     infoTitle: string;
 
@@ -133,8 +132,8 @@ export const defaultMoneyInfo: MoneyInfo = {
     brideMotherBankName: "",
     brideMotherBankNumber: "",
     brideMotherKakaoUrl: "",
-    brideMotherToggle: false
-}
+    brideMotherToggle: false,
+};
 
 export const dummyMoneyInfo: MoneyInfo = {
     infoTitle: "축의금",
@@ -169,8 +168,8 @@ export const dummyMoneyInfo: MoneyInfo = {
     brideMotherBankName: "",
     brideMotherBankNumber: "",
     brideMotherKakaoUrl: "",
-    brideMotherToggle: false
-}
+    brideMotherToggle: false,
+};
 
 export type MoneyInfoByBrideMarkFirst = {
     bankName: string;
@@ -179,9 +178,12 @@ export type MoneyInfoByBrideMarkFirst = {
     kakaoUrl: string;
     nameMoneyInfo: string;
     korean: string;
-}
+};
 
-export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirst: boolean): {
+export function getMoneyInfoByBrideMarkFirst(
+    moneyInfo: MoneyInfo,
+    brideMarkFirst: boolean,
+): {
     first: MoneyInfoByBrideMarkFirst;
     firstFather: MoneyInfoByBrideMarkFirst;
     firstMother: MoneyInfoByBrideMarkFirst;
@@ -196,7 +198,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         toggle: moneyInfo.groomToggle,
         kakaoUrl: moneyInfo.groomKakaoUrl,
         nameMoneyInfo: moneyInfo.groomNameMoneyInfo,
-        korean: '신랑'
+        korean: "신랑",
     };
 
     const groomFatherMoneyInfo: MoneyInfoByBrideMarkFirst = {
@@ -205,7 +207,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         toggle: moneyInfo.groomFatherToggle,
         kakaoUrl: moneyInfo.groomFatherKakaoUrl,
         nameMoneyInfo: moneyInfo.groomFatherNameMoneyInfo,
-        korean: '아버지'
+        korean: "아버지",
     };
 
     const groomMotherMoneyInfo: MoneyInfoByBrideMarkFirst = {
@@ -214,7 +216,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         toggle: moneyInfo.groomMotherToggle,
         kakaoUrl: moneyInfo.groomMotherKakaoUrl,
         nameMoneyInfo: moneyInfo.groomMotherNameMoneyInfo,
-        korean: '어머니'
+        korean: "어머니",
     };
 
     const brideMoneyInfo: MoneyInfoByBrideMarkFirst = {
@@ -223,7 +225,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         toggle: moneyInfo.brideToggle,
         kakaoUrl: moneyInfo.brideKakaoUrl,
         nameMoneyInfo: moneyInfo.brideNameMoneyInfo,
-        korean: '신부'
+        korean: "신부",
     };
 
     const brideFatherMoneyInfo: MoneyInfoByBrideMarkFirst = {
@@ -232,7 +234,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         toggle: moneyInfo.brideFatherToggle,
         kakaoUrl: moneyInfo.brideFatherKakaoUrl,
         nameMoneyInfo: moneyInfo.brideFatherNameMoneyInfo,
-        korean: '아버지'
+        korean: "아버지",
     };
 
     const brideMotherMoneyInfo: MoneyInfoByBrideMarkFirst = {
@@ -241,7 +243,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
         toggle: moneyInfo.brideMotherToggle,
         kakaoUrl: moneyInfo.brideMotherKakaoUrl,
         nameMoneyInfo: moneyInfo.brideMotherNameMoneyInfo,
-        korean: '어머니'
+        korean: "어머니",
     };
 
     if (brideMarkFirst) {
@@ -252,8 +254,8 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
             second: groomMoneyInfo,
             secondFather: groomFatherMoneyInfo,
             secondMother: groomMotherMoneyInfo,
-            kakaoStatus: moneyInfo.kakaoStatus
-        }
+            kakaoStatus: moneyInfo.kakaoStatus,
+        };
     } else {
         return {
             first: groomMoneyInfo,
@@ -262,7 +264,7 @@ export function getMoneyInfoByBrideMarkFirst(moneyInfo: MoneyInfo, brideMarkFirs
             second: brideMoneyInfo,
             secondFather: brideFatherMoneyInfo,
             secondMother: brideMotherMoneyInfo,
-            kakaoStatus: moneyInfo.kakaoStatus
-        }
+            kakaoStatus: moneyInfo.kakaoStatus,
+        };
     }
 }

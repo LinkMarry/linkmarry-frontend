@@ -1,22 +1,15 @@
-import {type PropsWithChildren} from 'react';
+import {type PropsWithChildren} from "react";
 import {styled} from "@linaria/react";
 
 interface Props extends PropsWithChildren {
     content: React.ReactNode;
 }
 
-function ToolTip(
-    {
-        content,
-        children
-    }: Props
-) {
+function ToolTip({content, children}: Props) {
     return (
         <ToolTipStyle>
             {children}
-            <ContentStyle>
-                {content}
-            </ContentStyle>
+            <ContentStyle>{content}</ContentStyle>
         </ToolTipStyle>
     );
 }
@@ -47,6 +40,5 @@ const ToolTipStyle = styled.div`
         opacity: 1;
     }
 `;
-
 
 export default ToolTip;

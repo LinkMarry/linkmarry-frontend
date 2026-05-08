@@ -26,80 +26,94 @@ interface RsvpDialogProps {
     dismiss: () => void;
 }
 
-function RsvpDialog(
-    {
-        show,
-        url,
-        baseInfo,
-        weddingSchedule,
-        weddingPlace,
-        rsvp,
-        onConfirm,
-        dismiss
-    }: RsvpDialogProps
-) {
-
+function RsvpDialog({show, url, baseInfo, weddingSchedule, weddingPlace, rsvp, onConfirm, dismiss}: RsvpDialogProps) {
     const cookieKey = `hide_RsvpDialog_${url}`;
     const [, setCookie] = useCookies([cookieKey]);
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
-    const date = parse(dateString, 'yyyy-MM-dd HH:mm', new Date());
+    const date = parse(dateString, "yyyy-MM-dd HH:mm", new Date());
     const isValidDate = !isNaN(date.getTime());
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
         <BaseDialog show={show} dismiss={dismiss}>
-
-            <View ui={cx(
-                css`
-                    gap: 48px;
-                    max-width: 436px;
-                    width: 90vw;
-                    border-radius: 12px;
-                    background: white;
-                    padding: 44px 24px;
-                `,
-                baseDialogContentStyle
-            )}>
-                <View ui={css`
-                    gap: 24px;
-                `}>
-                    <View ui={css`
-                        gap: 4px;
-                        align-items: center;
-                    `}>
-                        <Text type={'p1'} bold={true} ui={css`
-                            word-break: break-all;
-                            text-align: center;
-                        `}>{rsvp.rsvpTitle}</Text>
-                        <Text type={'caption1'} ui={css`
-                            word-break: break-all;
-                            text-align: center;
-                            color: var(--g-400);
-                        `}>{rsvp.rsvpContent}</Text>
-                    </View>
-                    <Divider/>
-                    <Text type={'caption1'}>
-                        <View ui={css`
+            <View
+                ui={cx(
+                    css`
+                        gap: 48px;
+                        max-width: 436px;
+                        width: 90vw;
+                        border-radius: 12px;
+                        background: white;
+                        padding: 44px 24px;
+                    `,
+                    baseDialogContentStyle,
+                )}
+            >
+                <View
+                    ui={css`
+                        gap: 24px;
+                    `}
+                >
+                    <View
+                        ui={css`
+                            gap: 4px;
                             align-items: center;
-                        `}>
-                            <span>{first.korean} {first.name} & {second.korean} {second.name}</span>
-                            {isValidDate && (
-                                <span>{format(date, 'yyyy년 M월 d일 EEEE a h시 m분', {locale: ko})}</span>
-                            )}
-                            <span>{weddingPlace.placeName} ({weddingPlace.floorHall})</span>
+                        `}
+                    >
+                        <Text
+                            type={"p1"}
+                            bold={true}
+                            ui={css`
+                                word-break: break-all;
+                                text-align: center;
+                            `}
+                        >
+                            {rsvp.rsvpTitle}
+                        </Text>
+                        <Text
+                            type={"caption1"}
+                            ui={css`
+                                word-break: break-all;
+                                text-align: center;
+                                color: var(--g-400);
+                            `}
+                        >
+                            {rsvp.rsvpContent}
+                        </Text>
+                    </View>
+                    <Divider />
+                    <Text type={"caption1"}>
+                        <View
+                            ui={css`
+                                align-items: center;
+                            `}
+                        >
+                            <span>
+                                {first.korean} {first.name} & {second.korean} {second.name}
+                            </span>
+                            {isValidDate && <span>{format(date, "yyyy년 M월 d일 EEEE a h시 m분", {locale: ko})}</span>}
+                            <span>
+                                {weddingPlace.placeName} ({weddingPlace.floorHall})
+                            </span>
                         </View>
                     </Text>
                 </View>
-                <View ui={css`
-                    gap: 12px;
-                    align-items: center;
-                    align-self: stretch;
-                `}>
-                    <Button text={'참석의사 전달하기'} onClick={onConfirm} ui={css`
+                <View
+                    ui={css`
+                        gap: 12px;
+                        align-items: center;
                         align-self: stretch;
-                    `}/>
+                    `}
+                >
+                    <Button
+                        text={"참석의사 전달하기"}
+                        onClick={onConfirm}
+                        ui={css`
+                            align-self: stretch;
+                        `}
+                    />
                     <Text
-                        type={'caption1'}
+                        type={"caption1"}
                         ui={css`
                             color: var(--g-400);
                             cursor: pointer;
@@ -108,12 +122,14 @@ function RsvpDialog(
                             // Tomorrow
                             const date = addDays(new Date(), 1);
 
-                            setCookie(cookieKey, 'true', {
-                                expires: date
+                            setCookie(cookieKey, "true", {
+                                expires: date,
                             });
                             dismiss();
                         }}
-                    >오늘 하루 보지 않기</Text>
+                    >
+                        오늘 하루 보지 않기
+                    </Text>
                 </View>
             </View>
         </BaseDialog>

@@ -4,10 +4,10 @@ import MyPageIndexSidebar from "~/routes/mypage/index/components/MyPageIndexSide
 function Layout() {
     return (
         <>
-            <MyPageIndexSidebar/>
-            <Outlet/>
+            <MyPageIndexSidebar />
+            <Outlet />
         </>
-    )
+    );
 }
 
 export default Layout;

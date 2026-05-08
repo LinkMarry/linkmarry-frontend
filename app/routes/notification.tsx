@@ -1,90 +1,87 @@
-import React, { type ComponentPropsWithoutRef } from 'react';
-import type { Route } from './+types/notification'
+import React, {type ComponentPropsWithoutRef} from "react";
+import type {Route} from "./+types/notification";
 import MainWrapper from "~/components/MainWrapper";
-import { css, cx } from "@linaria/core";
-import { responsive } from "~/components/responsive.tsx";
+import {css, cx} from "@linaria/core";
+import {responsive} from "~/components/responsive.tsx";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import notificationApi from "~/api/notification-api.ts";
 import type Notification from "~/api/value/Notification.ts";
-import { tagToKoreanRecord, type TagWithAll, TagWithAllList } from "~/api/enumeration/Tag.ts";
-import { compareDesc, format } from "date-fns";
-import { hideScrollBarStyle } from "~/components/css.util.ts";
-import { useNotificationScreen } from "./useNotificationScreen.ts";
-
+import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/api/enumeration/Tag.ts";
+import {compareDesc, format} from "date-fns";
+import {hideScrollBarStyle} from "~/components/css.util.ts";
+import {useNotificationScreen} from "./useNotificationScreen.ts";
 
 export async function loader() {
-    const { data } = await notificationApi.getNotifications();
+    const {data} = await notificationApi.getNotifications();
     return {
-        notifications: data.sort((a, b) => compareDesc(a.date, b.date))
+        notifications: data.sort((a, b) => compareDesc(a.date, b.date)),
     };
 }
 
-
-
-
-function Notification(
-    {
-        loaderData: {
-            notifications
-        }
-    }: Route.ComponentProps
-) {
-    const {
-        queryTag,
-        setQueryTag,
-        filteredNotifications,
-        handleNotificationClick
-    } = useNotificationScreen({ notifications });
+function Notification({loaderData: {notifications}}: Route.ComponentProps) {
+    const {queryTag, setQueryTag, filteredNotifications, handleNotificationClick} = useNotificationScreen({
+        notifications,
+    });
 
     return (
         <MainWrapper>
-            <View ui={css`
-                align-items: center;
-                padding: 72px 16px 40px 16px;
+            <View
+                ui={css`
+                    align-items: center;
+                    padding: 72px 16px 40px 16px;
 
-                ${responsive.notDesktop} {
-                    padding-top: 24px;
-                }
-            `}>
-                <View ui={css`
-                    max-width: 720px;
-                    width: 100%;
-                    flex: 1;
-                    gap: 24px;
-                `}>
-                    <Text type={'h5'} bold={true}>공지사항</Text>
-                    <View flexDirection={"row"} ui={cx(
-                        css`
-                            gap: 8px;
-                            overflow-x: scroll;
-                        `,
-                        hideScrollBarStyle
-                    )}>
+                    ${responsive.notDesktop} {
+                        padding-top: 24px;
+                    }
+                `}
+            >
+                <View
+                    ui={css`
+                        max-width: 720px;
+                        width: 100%;
+                        flex: 1;
+                        gap: 24px;
+                    `}
+                >
+                    <Text type={"h5"} bold={true}>
+                        공지사항
+                    </Text>
+                    <View
+                        flexDirection={"row"}
+                        ui={cx(
+                            css`
+                                gap: 8px;
+                                overflow-x: scroll;
+                            `,
+                            hideScrollBarStyle,
+                        )}
+                    >
                         {TagWithAllList.map(tag => (
-                            <TagCell
-                                key={tag}
-                                tag={tag}
-                                selected={queryTag === tag}
-                                onClick={() => setQueryTag(tag)}
-                            />
+                            <TagCell key={tag} tag={tag} selected={queryTag === tag} onClick={() => setQueryTag(tag)} />
                         ))}
                     </View>
-                    <View ui={css`
-                        border-top: 1px solid var(--g-200);
-                    `}>
-                        {filteredNotifications.length !== 0 ? filteredNotifications.map(notification => (
-                            <NotificationCell
-                                key={notification.id}
-                                notification={notification}
-                                onClick={() => handleNotificationClick(notification.id)}
-                            />
-                        )) : (
-                            <Text ui={css`
-                                text-align: center;
-                                margin-top: 32px;
-                                color: var(--g-600);
-                            `}>
+                    <View
+                        ui={css`
+                            border-top: 1px solid var(--g-200);
+                        `}
+                    >
+                        {filteredNotifications.length !== 0 ? (
+                            filteredNotifications.map(notification => (
+                                <NotificationCell
+                                    key={notification.id}
+                                    notification={notification}
+                                    onClick={() => handleNotificationClick(notification.id)}
+                                />
+                            ))
+                        ) : (
+                            <Text
+                                ui={css`
+                                    text-align: center;
+                                    margin-top: 32px;
+                                    color: var(--g-600);
+                                `}
+                            >
                                 공지가 없습니다
                             </Text>
                         )}
@@ -95,76 +92,87 @@ function Notification(
     );
 }
 
-
-interface TagCellProps extends ComponentPropsWithoutRef<'div'> {
+interface TagCellProps extends ComponentPropsWithoutRef<"div"> {
     tag: TagWithAll;
     selected: boolean;
 }
 
-function TagCell(
-    {
-        tag,
-        selected,
-        ...props
-    }: TagCellProps
-) {
+function TagCell({tag, selected, ...props}: TagCellProps) {
     return (
-        <Text type={'p3'} lineHeight={'normal'} ui={cx(
-            css`
-                padding: 8px 14px;
-                border-radius: 36px;
-                cursor: pointer;
-                word-break: keep-all;
-            `,
-            selected ? css`
-                background: var(--g-800);
-                color: var(--g-50);
-            ` : css`
-                border: 1px solid var(--g-200);
-                color: var(--g-700);
-            `
-        )} {...props}>{tagToKoreanRecord[tag]}</Text>
-    )
+        <Text
+            type={"p3"}
+            lineHeight={"normal"}
+            ui={cx(
+                css`
+                    padding: 8px 14px;
+                    border-radius: 36px;
+                    cursor: pointer;
+                    word-break: keep-all;
+                `,
+                selected
+                    ? css`
+                          background: var(--g-800);
+                          color: var(--g-50);
+                      `
+                    : css`
+                          border: 1px solid var(--g-200);
+                          color: var(--g-700);
+                      `,
+            )}
+            {...props}
+        >
+            {tagToKoreanRecord[tag]}
+        </Text>
+    );
 }
 
-interface NotificationCellProps extends ComponentPropsWithoutRef<'div'> {
+interface NotificationCellProps extends ComponentPropsWithoutRef<"div"> {
     notification: Notification;
 }
 
-function NotificationCell(
-    {
-        notification,
-        ...props
-    }: NotificationCellProps
-) {
+function NotificationCell({notification, ...props}: NotificationCellProps) {
     return (
-        <View {...props} flexDirection={"row"} ui={css`
-            ${responsive.notDesktop} {
-                flex-direction: column;
-            }
-            
-            ${responsive.desktop} {
-                padding: 12px 20px;
-            }
+        <View
+            {...props}
+            flexDirection={"row"}
+            ui={css`
+                ${responsive.notDesktop} {
+                    flex-direction: column;
+                }
 
-            padding: 12px 0;
-            cursor: pointer;
-        `}>
-            <Text type={'caption1'} bold={true} ui={css`
-                color: var(--g-800);
-                width: 128px;
-            `}>
+                ${responsive.desktop} {
+                    padding: 12px 20px;
+                }
+
+                padding: 12px 0;
+                cursor: pointer;
+            `}
+        >
+            <Text
+                type={"caption1"}
+                bold={true}
+                ui={css`
+                    color: var(--g-800);
+                    width: 128px;
+                `}
+            >
                 {tagToKoreanRecord[notification.tag]}
             </Text>
-            <Text type={'p3'} ui={css`
-                color: var(--g-900);
-                flex: 1;
-            `}>
+            <Text
+                type={"p3"}
+                ui={css`
+                    color: var(--g-900);
+                    flex: 1;
+                `}
+            >
                 {notification.title}
             </Text>
-            <Text type={'p3'} ui={css`
-                color: var(--g-500);
-            `}>
+            <Text
+                type={"p3"}
+                ui={css`
+                    color: var(--g-500);
+                `}
+            >
                 {format(notification.date, "yyyy.MM.dd")}
             </Text>
         </View>

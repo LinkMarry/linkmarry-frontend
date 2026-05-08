@@ -1,4 +1,4 @@
-import {type PropsWithChildren, useState} from 'react';
+import {type PropsWithChildren, useState} from "react";
 import Spacer from "~/components/core/Spacer.tsx";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
@@ -14,30 +14,34 @@ interface EditorPreviewProps extends PropsWithChildren {
 
 function EditorPreview({ui, children}: EditorPreviewProps) {
     return (
-        <View ui={cx(
-            css`
-                align-items: center;
-                justify-content: center;
-                background: var(--g-100);
-                position: relative;
-                flex: 1;
-            `,
-            ui
-        )}>
-            <View ui={cx(
+        <View
+            ui={cx(
                 css`
-                    max-height: 733px;
-                    overflow-y: scroll;
-                    overflow-x: hidden;
-                    width: 420px;
-                    border-radius: 36px;
-                    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--g-100);
+                    position: relative;
+                    flex: 1;
                 `,
-                hideScrollBarStyle
-            )}>
+                ui,
+            )}
+        >
+            <View
+                ui={cx(
+                    css`
+                        max-height: 733px;
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+                        width: 420px;
+                        border-radius: 36px;
+                        box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+                    `,
+                    hideScrollBarStyle,
+                )}
+            >
                 {children}
             </View>
-            <PreviewSetting/>
+            <PreviewSetting />
         </View>
     );
 }
@@ -48,37 +52,58 @@ function PreviewSetting() {
 
     return (
         <View ui={cx(previewSettingStyle, openSetting ? previewSettingOpenStyle : previewSettingClosedStyle)}>
-            <View flexDirection={"row"} ui={cx(
-                css`
+            <View
+                flexDirection={"row"}
+                ui={cx(
+                    css`
+                        align-items: center;
+                        padding: 6px;
+                        border-radius: 6px;
+                    `,
+                    interactionEffectStyles.strong,
+                )}
+                onClick={() => {
+                    setOpenSetting(i => !i);
+                }}
+            >
+                <Text
+                    type={"p3"}
+                    bold={true}
+                    ui={css`
+                        color: var(--g-800);
+                    `}
+                >
+                    미리보기 설정
+                </Text>
+                <Spacer />
+                <Icon
+                    iconType={"ExpandArrow"}
+                    width={18}
+                    height={18}
+                    ui={cx(iconBaseStyle, openSetting ? iconOpenStyle : iconClosedStyle)}
+                />
+            </View>
+            <View
+                flexDirection={"row"}
+                ui={css`
                     align-items: center;
                     padding: 6px;
-                    border-radius: 6px;
-                `,
-                interactionEffectStyles.strong
-            )} onClick={() => {
-                setOpenSetting(i => !i);
-            }}>
-                <Text type={'p3'} bold={true} ui={css`
-                    color: var(--g-800);
-                `}>미리보기 설정</Text>
-                <Spacer/>
-                <Icon iconType={'ExpandArrow'} width={18} height={18}
-                      ui={cx(iconBaseStyle, openSetting ? iconOpenStyle : iconClosedStyle)}/>
-            </View>
-            <View flexDirection={"row"} ui={css`
-                align-items: center;
-                padding: 6px;
-            `}>
-                <Text type={'p3'} ui={css`
-                    color: var(--g-600);
-                `}>자동포커스</Text>
-                <Spacer/>
-                <Toggle checked={autoFocus} OnChange={checked => setAutoFocus(checked)}/>
+                `}
+            >
+                <Text
+                    type={"p3"}
+                    ui={css`
+                        color: var(--g-600);
+                    `}
+                >
+                    자동포커스
+                </Text>
+                <Spacer />
+                <Toggle checked={autoFocus} OnChange={checked => setAutoFocus(checked)} />
             </View>
         </View>
     );
 }
-
 
 const previewSettingStyle = css`
     gap: 4px;
@@ -115,4 +140,3 @@ const iconClosedStyle = css`
 `;
 
 export default EditorPreview;
-

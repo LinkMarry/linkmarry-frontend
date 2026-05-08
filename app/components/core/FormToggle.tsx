@@ -1,10 +1,10 @@
-import {type ComponentPropsWithoutRef} from 'react';
+import {type ComponentPropsWithoutRef} from "react";
 import {css} from "@linaria/core";
 import Text from "~/components/core/Text";
 import Toggle from "~/components/core/Toggle";
 import View from "~/components/core/View.tsx";
 
-interface Props extends ComponentPropsWithoutRef<'div'> {
+interface Props extends ComponentPropsWithoutRef<"div"> {
     checked: boolean;
     OnChange: (checked: boolean) => void;
     label: string;
@@ -12,19 +12,27 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 const FormToggle = ({checked, OnChange, label}: Props) => {
     return (
-        <View flexDirection={"row"} ui={css`
-            gap: 4px;
-            align-items: center;
-            padding: 0 16px;
-            min-height: 52px;
-            border-radius: 8px;
-            border: 1px solid var(--g-300);
-        `}>
-            <Text type={'p2'} ui={css`
-                flex: 1;
-                color: var(--g-800);
-            `}>{label}</Text>
-            <Toggle checked={checked} OnChange={OnChange}/>
+        <View
+            flexDirection={"row"}
+            ui={css`
+                gap: 4px;
+                align-items: center;
+                padding: 0 16px;
+                min-height: 52px;
+                border-radius: 8px;
+                border: 1px solid var(--g-300);
+            `}
+        >
+            <Text
+                type={"p2"}
+                ui={css`
+                    flex: 1;
+                    color: var(--g-800);
+                `}
+            >
+                {label}
+            </Text>
+            <Toggle checked={checked} OnChange={OnChange} />
         </View>
     );
 };

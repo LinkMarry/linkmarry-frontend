@@ -34,13 +34,13 @@ export default interface RsvpInfo {
 
 export function getRsvpText(rsvp: RsvpInfo): string {
     if (!rsvp.isAttend) {
-        return '불참';
+        return "불참";
     }
 
     switch (rsvp.guestType) {
-        case 'GROOM':
-            return '신랑측';
-        case 'BRIDE':
-            return '신부측';
+        case "GROOM":
+            return "신랑측";
+        case "BRIDE":
+            return "신부측";
     }
 }

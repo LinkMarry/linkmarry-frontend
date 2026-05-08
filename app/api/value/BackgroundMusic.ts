@@ -12,15 +12,16 @@ export default interface BackgroundMusic {
 }
 
 export const defaultBackgroundMusic: BackgroundMusic = {
-    backgroundMusicUrl: '',
-    backgroundMusicName: '',
+    backgroundMusicUrl: "",
+    backgroundMusicName: "",
     effect: true,
-    backgroundMusicActivate: true
-}
+    backgroundMusicActivate: true,
+};
 
 export const dummyBackgroundMusic: BackgroundMusic = {
-    backgroundMusicUrl: "https://axqjyyk4dfhw.compat.objectstorage.ap-chuncheon-1.oraclecloud.com/linkmarry/sample/music/As_Time_Goes_By.mp3",
+    backgroundMusicUrl:
+        "https://axqjyyk4dfhw.compat.objectstorage.ap-chuncheon-1.oraclecloud.com/linkmarry/sample/music/As_Time_Goes_By.mp3",
     backgroundMusicName: "As_Time_Goes_By.mp3",
     effect: true,
-    backgroundMusicActivate: true
-}
+    backgroundMusicActivate: true,
+};

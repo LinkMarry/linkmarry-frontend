@@ -6,16 +6,19 @@ export default interface GroupedWeddingDesignPresets {
 }
 
 export function groupedByCategory(presets: WeddingDesignPreset[]): GroupedWeddingDesignPresets[] {
-    const grouped = presets.reduce((acc, preset) => {
-        if (!acc[preset.category]) {
-            acc[preset.category] = [];
-        }
-        acc[preset.category].push(preset);
-        return acc;
-    }, {} as Record<string, WeddingDesignPreset[]>);
+    const grouped = presets.reduce(
+        (acc, preset) => {
+            if (!acc[preset.category]) {
+                acc[preset.category] = [];
+            }
+            acc[preset.category].push(preset);
+            return acc;
+        },
+        {} as Record<string, WeddingDesignPreset[]>,
+    );
 
     return Object.keys(grouped).map(category => ({
         category,
-        items: grouped[category]
+        items: grouped[category],
     }));
 }

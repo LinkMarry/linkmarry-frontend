@@ -16,29 +16,34 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-function Divider(
-    {
-        size = "small",
-        direction = "horizontal",
-        ui,
-        ...props
-    }: Props
-) {
-    return <div className={cx(
-        css`
-            background: var(--g-100);
-        `,
-        direction === 'horizontal' ? css`
-            min-width: 100%;
-        ` : css`
-            min-height: 100%;
-        `,
-        ui
-    )} style={direction === 'horizontal' ? {
-        minHeight: dividerSizeMap[size]
-    } : {
-        minWidth: dividerSizeMap[size]
-    }} {...props} />;
+function Divider({size = "small", direction = "horizontal", ui, ...props}: Props) {
+    return (
+        <div
+            className={cx(
+                css`
+                    background: var(--g-100);
+                `,
+                direction === "horizontal"
+                    ? css`
+                          min-width: 100%;
+                      `
+                    : css`
+                          min-height: 100%;
+                      `,
+                ui,
+            )}
+            style={
+                direction === "horizontal"
+                    ? {
+                          minHeight: dividerSizeMap[size],
+                      }
+                    : {
+                          minWidth: dividerSizeMap[size],
+                      }
+            }
+            {...props}
+        />
+    );
 }
 
 export default Divider;

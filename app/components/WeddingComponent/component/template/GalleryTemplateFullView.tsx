@@ -1,4 +1,4 @@
-import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef, useState} from 'react';
+import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef, useState} from "react";
 import type Gallery from "~/api/value/Gallery.ts";
 import {hideScrollBarStyle} from "~/components/css.util.ts";
 import Icon from "~/components/core/icon";
@@ -20,7 +20,6 @@ interface Props {
 }
 
 const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
-
     const [initialCurrentImageIndex] = useState(currentImageIndex);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [rootWidth, setRootWidth] = useState<number | undefined>(undefined);
@@ -34,7 +33,6 @@ const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentIm
     const getGridImgWidth = useCallback((): number => {
         return rootRef.current?.getBoundingClientRect().width ?? 0;
     }, [rootRef]);
-
 
     const handleScroll = useCallback(() => {
         const getScrollPosition = () => {
@@ -55,59 +53,69 @@ const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentIm
 
     useEffect(() => {
         const container = scrollContainerRef.current;
-        container?.addEventListener('scroll', handleScroll);
+        container?.addEventListener("scroll", handleScroll);
 
         scrollContainerRef.current?.scrollTo({
-            left: getGridImgWidth() * initialCurrentImageIndex
+            left: getGridImgWidth() * initialCurrentImageIndex,
         });
 
         return () => {
-            container?.removeEventListener('scroll', handleScroll);
-        }
+            container?.removeEventListener("scroll", handleScroll);
+        };
     }, [initialCurrentImageIndex, getGridImgWidth, handleScroll]);
 
     return (
         <BaseDialog show={show} dismiss={dismiss}>
-
-            <View ui={cx(
-                css`
-                    align-self: stretch;
-                    overflow-x: hidden;
-                    background: white;
-                    height: 100dvh;
-                `,
-                baseDialogContentStyle
-            )} style={{
-                minWidth: rootWidth,
-                maxWidth: rootWidth
-            }}>
-                <View flexDirection={"row"} ui={css`
-                    padding: 28px;
-                `}>
-                    <Spacer/>
-                    <Icon iconType={'CrossLine'} size={24} ui={css`
-                        fill: var(--g-500);
-                        cursor: pointer;
-                    `} onClick={dismiss}/>
-                </View>
-                <View flexDirection={"row"} ui={cx(
+            <View
+                ui={cx(
                     css`
-                        flex: 1;
-                        align-items: center;
-                        scroll-snap-type: x mandatory;
-                        overflow-x: scroll;
-                        overflow-y: hidden !important;
-                        overscroll-behavior: contain;
-                        touch-action: pan-x;
+                        align-self: stretch;
+                        overflow-x: hidden;
+                        background: white;
+                        height: 100dvh;
                     `,
-                    hideScrollBarStyle
-                )} ref={scrollContainerRef}>
+                    baseDialogContentStyle,
+                )}
+                style={{
+                    minWidth: rootWidth,
+                    maxWidth: rootWidth,
+                }}
+            >
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        padding: 28px;
+                    `}
+                >
+                    <Spacer />
+                    <Icon
+                        iconType={"CrossLine"}
+                        size={24}
+                        ui={css`
+                            fill: var(--g-500);
+                            cursor: pointer;
+                        `}
+                        onClick={dismiss}
+                    />
+                </View>
+                <View
+                    flexDirection={"row"}
+                    ui={cx(
+                        css`
+                            flex: 1;
+                            align-items: center;
+                            scroll-snap-type: x mandatory;
+                            overflow-x: scroll;
+                            overflow-y: hidden !important;
+                            overscroll-behavior: contain;
+                            touch-action: pan-x;
+                        `,
+                        hideScrollBarStyle,
+                    )}
+                    ref={scrollContainerRef}
+                >
                     {gallery.imgList.map((img, index) => (
-                        <Slide
-                            key={index}
-                            src={img}
-                            rootWidth={rootWidth ?? 0}
-                        />
+                        <Slide key={index} src={img} rootWidth={rootWidth ?? 0} />
                     ))}
                 </View>
                 <Indicator
@@ -115,22 +123,22 @@ const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentIm
                     currentImageIndex={currentImageIndex}
                     onClick={type => {
                         switch (type) {
-                            case 'moveLeft':
+                            case "moveLeft":
                                 if (currentImageIndex > 0) {
                                     const imgWidth = getGridImgWidth();
                                     const left = imgWidth * (currentImageIndex - 1);
                                     scrollContainerRef.current?.scrollTo({
-                                        left
+                                        left,
                                     });
                                     setCurrentImageIndex(currentImageIndex - 1);
                                 }
                                 break;
-                            case 'moveRight':
+                            case "moveRight":
                                 if (currentImageIndex < gallery.imgList.length - 1) {
                                     const imgWidth = getGridImgWidth();
                                     const left = imgWidth * (currentImageIndex + 1);
                                     scrollContainerRef.current?.scrollTo({
-                                        left
+                                        left,
                                     });
                                     setCurrentImageIndex(currentImageIndex + 1);
                                 }
@@ -143,51 +151,55 @@ const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentIm
     );
 };
 
-
-function Indicator(
-    {
-        imgListLength,
-        currentImageIndex,
-        onClick,
-    }: {
-        imgListLength: number;
-        currentImageIndex: number;
-        onClick: (type: 'moveLeft' | 'moveRight') => void;
-    }
-) {
+function Indicator({
+    imgListLength,
+    currentImageIndex,
+    onClick,
+}: {
+    imgListLength: number;
+    currentImageIndex: number;
+    onClick: (type: "moveLeft" | "moveRight") => void;
+}) {
     return (
-        <View flexDirection={"row"} ui={css`
-            align-items: center;
-            justify-content: space-between;
-            padding: 28px 45px;
-        `}>
-            <Icon iconType={'ExpandArrow'} size={24} ui={css`
-                fill: var(--g-500);
-                cursor: pointer;
-            `} onClick={() => {
-                onClick('moveLeft');
-            }}/>
-            <Text size={14} weight={300}>{currentImageIndex + 1}/{imgListLength}</Text>
-            <Icon iconType={'ExpandArrow'} size={24} ui={css`
-                rotate: 180deg;
-                fill: var(--g-500);
-                cursor: pointer;
-            `} onClick={() => {
-                onClick('moveRight');
-            }}/>
+        <View
+            flexDirection={"row"}
+            ui={css`
+                align-items: center;
+                justify-content: space-between;
+                padding: 28px 45px;
+            `}
+        >
+            <Icon
+                iconType={"ExpandArrow"}
+                size={24}
+                ui={css`
+                    fill: var(--g-500);
+                    cursor: pointer;
+                `}
+                onClick={() => {
+                    onClick("moveLeft");
+                }}
+            />
+            <Text size={14} weight={300}>
+                {currentImageIndex + 1}/{imgListLength}
+            </Text>
+            <Icon
+                iconType={"ExpandArrow"}
+                size={24}
+                ui={css`
+                    rotate: 180deg;
+                    fill: var(--g-500);
+                    cursor: pointer;
+                `}
+                onClick={() => {
+                    onClick("moveRight");
+                }}
+            />
         </View>
     );
 }
 
-const Slide = (
-    {
-        src,
-        rootWidth,
-    }: {
-        src: string;
-        rootWidth: number;
-    }
-) => {
+const Slide = ({src, rootWidth}: {src: string; rootWidth: number}) => {
     const imgRef = useRef<HTMLImageElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [alignTop, setAlignTop] = useState(false);
@@ -210,10 +222,10 @@ const Slide = (
             style={{
                 minWidth: rootWidth,
                 maxWidth: rootWidth,
-                alignItems: alignTop ? 'flex-start' : 'center',
+                alignItems: alignTop ? "flex-start" : "center",
             }}
         >
-            <SlideImg ref={imgRef} src={src}/>
+            <SlideImg ref={imgRef} src={src} />
         </SlideWrapper>
     );
 };

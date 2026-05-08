@@ -1,4 +1,4 @@
-import {type ComponentPropsWithoutRef, useEffect, useState} from 'react';
+import {type ComponentPropsWithoutRef, useEffect, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import TabBar from "~/components/core/TabBar.tsx";
 import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
@@ -16,18 +16,11 @@ import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import type Wedding from "~/api/value/Wedding.ts";
 
-
 export interface WeddingDesignProps extends Binding<Wedding> {
     weddingDesigns?: WeddingDesignPreset[];
 }
 
-const EditorInspectorDesign = (
-    {
-        value: {url, weddingDesign},
-        update,
-        weddingDesigns
-    }: WeddingDesignProps
-) => {
+const EditorInspectorDesign = ({value: {url, weddingDesign}, update, weddingDesigns}: WeddingDesignProps) => {
     const groupedCategories = weddingDesigns && groupedByCategory(weddingDesigns);
     const [selectedCategory, setSelectedCategory] = useState<string>();
     const categories = groupedCategories?.map(i => i.category);
@@ -40,86 +33,136 @@ const EditorInspectorDesign = (
     }, [groupedCategories]);
 
     return (
-        <EditorInspectorWrapper type={'design'} hasDivider={false}>
+        <EditorInspectorWrapper type={"design"} hasDivider={false}>
             {/*디자인*/}
-            <View ui={css`
-                gap: 12px;
-            `}>
+            <View
+                ui={css`
+                    gap: 12px;
+                `}
+            >
                 {categories ? (
-                    <TabBar items={categories} selectedTab={categories.indexOf(selectedCategory!)} onChange={tab => {
-                        setSelectedCategory(categories[tab]);
-                    }}/>
+                    <TabBar
+                        items={categories}
+                        selectedTab={categories.indexOf(selectedCategory!)}
+                        onChange={tab => {
+                            setSelectedCategory(categories[tab]);
+                        }}
+                    />
                 ) : (
-                    <Loading ui={css`
-                        margin: 40px 0;
-                    `}/>
+                    <Loading
+                        ui={css`
+                            margin: 40px 0;
+                        `}
+                    />
                 )}
-                <View ui={css`
-                    display: grid !important;
-                    grid-template-columns: repeat(3, 1fr);
-                    grid-row-gap: 32px;
-                    grid-column-gap: 12px;
-                `}>
-                    {selectedWeddingDesigns && selectedWeddingDesigns.map((design, index) => (
-                        <Item key={index} design={design} selected={design.name === weddingDesign.weddingDesignName}
-                              onClick={() => update(draft => {
-                                  draft.weddingDesign.weddingDesignName = design.name;
-                              })}/>
-                    ))}
+                <View
+                    ui={css`
+                        display: grid !important;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-row-gap: 32px;
+                        grid-column-gap: 12px;
+                    `}
+                >
+                    {selectedWeddingDesigns &&
+                        selectedWeddingDesigns.map((design, index) => (
+                            <Item
+                                key={index}
+                                design={design}
+                                selected={design.name === weddingDesign.weddingDesignName}
+                                onClick={() =>
+                                    update(draft => {
+                                        draft.weddingDesign.weddingDesignName = design.name;
+                                    })
+                                }
+                            />
+                        ))}
                 </View>
             </View>
 
             {/*대표 사진*/}
-            <View ui={cx(css`display: flex;
-                flex-direction: column;
-                align-items: stretch;`, css`
-                gap: 12px;
-            `)}>
-                <Text type={'p3'} bold={true}>대표 사진</Text>
+            <View
+                ui={cx(
+                    css`
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                    `,
+                    css`
+                        gap: 12px;
+                    `,
+                )}
+            >
+                <Text type={"p3"} bold={true}>
+                    대표 사진
+                </Text>
                 <PhotoUploadBox
-                    id={'EditorInspectorDesign-titleImgUrl'}
+                    id={"EditorInspectorDesign-titleImgUrl"}
                     value={weddingDesign.titleImgUrl}
                     weddingUrl={url}
-                    onChange={value => update(draft => {
-                        draft.weddingDesign.titleImgUrl = value;
-                    })}
+                    onChange={value =>
+                        update(draft => {
+                            draft.weddingDesign.titleImgUrl = value;
+                        })
+                    }
                 />
             </View>
 
             {/*오프닝*/}
-            <View ui={cx(css`display: flex;
-                flex-direction: column;
-                align-items: stretch;`, css`
-                gap: 12px;
-            `)}>
-                <View ui={cx(css`display: flex;
-                    flex-direction: column;
-                    align-items: stretch;`, css`
-                    gap: 12px;
-                `)}>
-                    <Text type={'p3'} bold={true}>오프닝 애니메이션</Text>
+            <View
+                ui={cx(
+                    css`
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                    `,
+                    css`
+                        gap: 12px;
+                    `,
+                )}
+            >
+                <View
+                    ui={cx(
+                        css`
+                            display: flex;
+                            flex-direction: column;
+                            align-items: stretch;
+                        `,
+                        css`
+                            gap: 12px;
+                        `,
+                    )}
+                >
+                    <Text type={"p3"} bold={true}>
+                        오프닝 애니메이션
+                    </Text>
                     <SegmentedButton
                         items={openingList.map(i => openingMap[i].korean)}
                         selectedTab={openingList.indexOf(weddingDesign.opening)}
                         onChange={tab => {
                             update(draft => {
                                 draft.weddingDesign.opening = openingList[tab];
-                            })
+                            });
                         }}
                     />
                 </View>
-                <View ui={css`display: flex;
-                    flex-direction: column;
-                    gap: 12px;
-                    align-items: stretch;
-                `}>
-                    <Text type={'p3'} bold={true}>문구</Text>
+                <View
+                    ui={css`
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                        align-items: stretch;
+                    `}
+                >
+                    <Text type={"p3"} bold={true}>
+                        문구
+                    </Text>
                     <Select
-                        selected={openingTextList.indexOf(weddingDesign.openingText)} items={[...openingTextList]}
+                        selected={openingTextList.indexOf(weddingDesign.openingText)}
+                        items={[...openingTextList]}
                         OnChange={index => {
                             update(draft => {
                                 draft.weddingDesign.openingText = openingTextList[index] as OpeningText;
-                            })
+                            });
                         }}
                     />
                 </View>
@@ -128,7 +171,7 @@ const EditorInspectorDesign = (
     );
 };
 
-interface ItemProps extends ComponentPropsWithoutRef<'div'> {
+interface ItemProps extends ComponentPropsWithoutRef<"div"> {
     design: WeddingDesignPreset;
     selected: boolean;
 }
@@ -137,7 +180,7 @@ const Item = ({design, selected, ...props}: ItemProps) => {
     return (
         <View ui={itemContainerStyle} {...props}>
             <View
-                as={'img'}
+                as={"img"}
                 src={design.img}
                 ui={css`
                     aspect-ratio: 9 / 16;
@@ -145,19 +188,30 @@ const Item = ({design, selected, ...props}: ItemProps) => {
                     border-radius: 8px;
                 `}
             />
-            <View flexDirection={"row"} ui={css`display: flex;
-                align-items: center;`}>
-                <Text type={'p3'}
-                      ui={cx(itemTextStyle, selected ? itemTextSelectedStyle : itemTextUnselectedStyle)}>{design.name}</Text>
+            <View
+                flexDirection={"row"}
+                ui={css`
+                    display: flex;
+                    align-items: center;
+                `}
+            >
+                <Text type={"p3"} ui={cx(itemTextStyle, selected ? itemTextSelectedStyle : itemTextUnselectedStyle)}>
+                    {design.name}
+                </Text>
                 {selected && (
-                    <Icon iconType={'CheckLine'} width={18} height={18} ui={css`
-                        fill: #22A2FC;
-                    `}/>
+                    <Icon
+                        iconType={"CheckLine"}
+                        width={18}
+                        height={18}
+                        ui={css`
+                            fill: #22a2fc;
+                        `}
+                    />
                 )}
             </View>
         </View>
-    )
-}
+    );
+};
 
 export default EditorInspectorDesign;
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {useCallback, useEffect, useRef, useState} from "react";
 import type WeddingPlace from "~/api/value/WeddingPlace.ts";
 
 interface UseKakaoMapDialogProps {
@@ -8,50 +8,60 @@ interface UseKakaoMapDialogProps {
     dismiss: () => void;
 }
 
-export function useKakaoMapDialog({ show, weddingPlace, onChange, dismiss }: UseKakaoMapDialogProps) {
+export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKakaoMapDialogProps) {
     const kakaoMapRef = useRef<HTMLDivElement>(null);
     const [places, setPlaces] = useState<any[]>([]);
     const [selectedPlace, setSelectedPlace] = useState<any>();
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState("");
     const [map, setMap] = useState<any>();
 
-    const keywordSearch = useCallback((keyword: string, option?: any) => {
-        const { kakao } = window as any;
-        if (!kakao || !kakao.maps) return;
+    const keywordSearch = useCallback(
+        (keyword: string, option?: any) => {
+            const {kakao} = window as any;
+            if (!kakao || !kakao.maps) return;
 
-        const ps = new kakao.maps.services.Places();
+            const ps = new kakao.maps.services.Places();
 
-        ps.keywordSearch(keyword, (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
+            ps.keywordSearch(
+                keyword,
+                (result: any, status: any) => {
+                    if (status !== kakao.maps.services.Status.OK) return;
 
-            setPlaces(result);
+                    setPlaces(result);
 
-            const first = result[0];
-            if (first) {
-                map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
-            }
-        }, option);
-    }, [map]);
+                    const first = result[0];
+                    if (first) {
+                        map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
+                    }
+                },
+                option,
+            );
+        },
+        [map],
+    );
 
-    const searchAddress = useCallback((coords: any) => {
-        const { kakao } = window as any;
-        if (!kakao || !kakao.maps) return;
+    const searchAddress = useCallback(
+        (coords: any) => {
+            const {kakao} = window as any;
+            if (!kakao || !kakao.maps) return;
 
-        const geocoder = new kakao.maps.services.Geocoder();
+            const geocoder = new kakao.maps.services.Geocoder();
 
-        geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
-            if (status !== kakao.maps.services.Status.OK) return;
+            geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
+                if (status !== kakao.maps.services.Status.OK) return;
 
-            const keyword = result[0].address.address_name;
-            keywordSearch(keyword, {
-                location: coords,
-                radius: 50
+                const keyword = result[0].address.address_name;
+                keywordSearch(keyword, {
+                    location: coords,
+                    radius: 50,
+                });
             });
-        });
-    }, [keywordSearch]);
+        },
+        [keywordSearch],
+    );
 
     useEffect(() => {
-        const { kakao } = window as any;
+        const {kakao} = window as any;
         if (!kakao || !kakao.maps || !map) return;
 
         // Marker 설정
@@ -61,13 +71,13 @@ export function useKakaoMapDialog({ show, weddingPlace, onChange, dismiss }: Use
         });
 
         // 지도가 움직일 때 마커의 위치를 중앙으로 유지
-        kakao.maps.event.addListener(map, 'center_changed', () => {
+        kakao.maps.event.addListener(map, "center_changed", () => {
             const center = map.getCenter(); // 지도 중심 좌표 가져오기
             marker.setPosition(center); // 마커 위치를 지도 중심으로 업데이트
         });
 
         // 움직임 멈췄을 때 중심 좌표로 주소 및 장소 검색
-        kakao.maps.event.addListener(map, 'dragend', () => {
+        kakao.maps.event.addListener(map, "dragend", () => {
             const center = map.getCenter();
             searchAddress(center); // 주소 검색
         });
@@ -75,8 +85,8 @@ export function useKakaoMapDialog({ show, weddingPlace, onChange, dismiss }: Use
 
     useEffect(() => {
         if (!show) return;
-        
-        const { kakao } = window as any;
+
+        const {kakao} = window as any;
         if (!kakao || !kakao.maps || !kakaoMapRef.current) return;
 
         const mapInstance = new kakao.maps.Map(kakaoMapRef.current, {
@@ -115,6 +125,6 @@ export function useKakaoMapDialog({ show, weddingPlace, onChange, dismiss }: Use
         setSearchText,
         keywordSearch,
         handleSelectPlace,
-        confirmSelection
+        confirmSelection,
     };
 }

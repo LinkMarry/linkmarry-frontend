@@ -3,17 +3,14 @@ import type {PosterPreset} from "~/api/value/PosterPreset.ts";
 import posterApi from "~/api/poster-api.ts";
 import {useImmer} from "use-immer";
 import {makeDefaultPoster, type Poster} from "~/api/value/Poster.ts";
-import type {
-    WeddingPosterEditorNavigationBarType
-} from "~/routes/editor/domain.ts";
+import type {WeddingPosterEditorNavigationBarType} from "~/routes/editor/domain.ts";
 
 export function useWeddingPosterEditor() {
-
     const [poster, updatePoster] = useImmer<Poster>(makeDefaultPoster());
     const [posterPresets, setPosterPresets] = useState<PosterPreset[]>();
 
     // UI States
-    const [selectedNav, setSelectedNav] = useState<WeddingPosterEditorNavigationBarType>('design');
+    const [selectedNav, setSelectedNav] = useState<WeddingPosterEditorNavigationBarType>("design");
     const [openInspector, setOpenInspector] = useState(true);
 
     const toggleInspector = () => {

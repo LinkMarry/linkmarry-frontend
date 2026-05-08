@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect} from "react";
 
 /**
  * 브라우저 확대(줌) 방지 훅
@@ -11,8 +11,8 @@ function usePreventZoom(enable: boolean) {
 
         // 모바일 핀치 줌 방지
         const viewport = document.querySelector('meta[name="viewport"]');
-        const original = viewport?.getAttribute('content') ?? 'width=device-width, initial-scale=1';
-        viewport?.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+        const original = viewport?.getAttribute("content") ?? "width=device-width, initial-scale=1";
+        viewport?.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
 
         // PC 브라우저 확대 방지: Ctrl + 휠
         const handleWheel = (e: WheelEvent) => {
@@ -23,18 +23,18 @@ function usePreventZoom(enable: boolean) {
 
         // PC 브라우저 확대 방지: Ctrl + +/-/0 키보드 단축키
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+            if (e.ctrlKey && (e.key === "+" || e.key === "-" || e.key === "=" || e.key === "0")) {
                 e.preventDefault();
             }
         };
 
-        window.addEventListener('wheel', handleWheel, { passive: false });
-        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener("wheel", handleWheel, {passive: false});
+        window.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            viewport?.setAttribute('content', original);
-            window.removeEventListener('wheel', handleWheel);
-            window.removeEventListener('keydown', handleKeyDown);
+            viewport?.setAttribute("content", original);
+            window.removeEventListener("wheel", handleWheel);
+            window.removeEventListener("keydown", handleKeyDown);
         };
     }, [enable]);
 }

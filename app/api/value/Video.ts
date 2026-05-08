@@ -22,26 +22,26 @@ export type VideoFileType = boolean;
 export const videoFileTypeList: VideoFileType[] = [true, false];
 export function getKoreanByVideoFileType(videoFileType: VideoFileType): string {
     if (videoFileType) {
-        return '파일로 첨부'
+        return "파일로 첨부";
     } else {
-        return 'URL로 첨부'
+        return "URL로 첨부";
     }
 }
 
 export const defaultVideo: Video = {
-    videoTitle: '',
-    videoUrl: '',
-    videoFileUrl: '',
-    videoName: '',
+    videoTitle: "",
+    videoUrl: "",
+    videoFileUrl: "",
+    videoName: "",
     videoActivate: true,
-    videoFileType: false
+    videoFileType: false,
 };
 
 export const dummyVideo: Video = {
     videoTitle: "저희의 결혼식을 위한 영상입니다.",
     videoUrl: "https://www.youtube.com/embed/D1lNjuUj2c8",
-    videoFileUrl: '',
-    videoName: '결혼.mp4',
+    videoFileUrl: "",
+    videoName: "결혼.mp4",
     videoActivate: true,
     videoFileType: false,
 };

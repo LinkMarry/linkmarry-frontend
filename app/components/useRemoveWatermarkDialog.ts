@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { useNavigate } from "react-router";
+import {useState} from "react";
+import {useNavigate} from "react-router";
 import naverApi from "~/api/naver-api.ts";
 import weddingApi from "~/api/wedding-api.ts";
-import { isAxiosError } from "axios";
-import { formatPhone } from "~/lib/format-util.ts";
+import {isAxiosError} from "axios";
+import {formatPhone} from "~/lib/format-util.ts";
 
 interface UseRemoveWatermarkDialogProps {
     url: string;
 }
 
-export function useRemoveWatermarkDialog({ url }: UseRemoveWatermarkDialogProps) {
-    const [phone, setPhone] = useState('');
+export function useRemoveWatermarkDialog({url}: UseRemoveWatermarkDialogProps) {
+    const [phone, setPhone] = useState("");
     const navigate = useNavigate();
 
     const removeWatermark = async () => {
@@ -23,14 +23,14 @@ export function useRemoveWatermarkDialog({ url }: UseRemoveWatermarkDialogProps)
 
         try {
             await weddingApi.removeWatermark(url);
-            alert('워터마크 제거 완료!');
+            alert("워터마크 제거 완료!");
             navigate(0);
         } catch (error) {
             console.error(error);
             if (isAxiosError(error) && error.response && error.status === 404) {
                 alert(`워터마크 제거 실패 - ${error.response.data.message}`);
             } else {
-                alert('워터마크 제거 실패 - 고객센터에 문의하세요');
+                alert("워터마크 제거 실패 - 고객센터에 문의하세요");
             }
         }
     };
@@ -43,6 +43,6 @@ export function useRemoveWatermarkDialog({ url }: UseRemoveWatermarkDialogProps)
     return {
         phone,
         removeWatermark,
-        handlePhoneChange
+        handlePhoneChange,
     };
 }

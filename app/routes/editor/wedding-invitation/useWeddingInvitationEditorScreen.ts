@@ -3,7 +3,7 @@ import {useImmer} from "use-immer";
 import {makeDefaultWedding, type WeddingDto} from "~/api/value/WeddingDto.ts";
 import weddingApi from "~/api/wedding-api.ts";
 import {useNavigate, useParams, useSearchParams} from "react-router";
-import lodash from 'lodash';
+import lodash from "lodash";
 import type Music from "~/api/value/Music.ts";
 import musicApi from "~/api/music-api.ts";
 import {isAxiosError} from "axios";
@@ -16,7 +16,7 @@ const {throttle} = lodash;
 
 function useDesignId() {
     const [searchParams] = useSearchParams();
-    const designId = searchParams.get('designId');
+    const designId = searchParams.get("designId");
 
     return designId ? Number(designId) : null;
 }
@@ -26,27 +26,30 @@ export function useWeddingInvitationEditorScreen() {
     const designId = useDesignId();
     const navigate = useNavigate();
 
-    const [wedding, updateWedding] = useImmer<Wedding>(makeDefaultWedding('', ''));
+    const [wedding, updateWedding] = useImmer<Wedding>(makeDefaultWedding("", ""));
     const [isSaving, setIsSaving] = useState(false);
     const [musics, setMusics] = useState<Music[]>();
 
     // UI States
-    const [selectedNav, setSelectedNav] = useState<WeddingInvitationEditorNavigationBarType>('design');
+    const [selectedNav, setSelectedNav] = useState<WeddingInvitationEditorNavigationBarType>("design");
     const [openInspector, setOpenInspector] = useState(true);
     const [weddingDesigns, setWeddingDesigns] = useState<WeddingDesignPreset[]>();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
     // eslint-disable-next-line
-    const throttledEditWedding = useCallback(throttle(async (updatedWedding: WeddingDto) => {
-        if (updatedWedding.url === '' || updatedWedding.name === '') return;
+    const throttledEditWedding = useCallback(
+        throttle(async (updatedWedding: WeddingDto) => {
+            if (updatedWedding.url === "" || updatedWedding.name === "") return;
 
-        setIsSaving(false);
-        try {
-            await weddingApi.editWedding(updatedWedding);
-        } catch (error) {
-            console.error(error);
-        }
-    }, 3000), []);
+            setIsSaving(false);
+            try {
+                await weddingApi.editWedding(updatedWedding);
+            } catch (error) {
+                console.error(error);
+            }
+        }, 3000),
+        [],
+    );
 
     useEffect(() => {
         if (wedding) {
@@ -64,7 +67,7 @@ export function useWeddingInvitationEditorScreen() {
         } catch (error) {
             if (isAxiosError(error) && error.status === 404) {
                 console.error(error);
-                navigate('/');
+                navigate("/");
             }
         }
     });
@@ -124,7 +127,7 @@ export function useWeddingInvitationEditorScreen() {
         showRemoveWatermarkDialog,
         setShowRemoveWatermarkDialog,
         handleShowPreview,
-        handleRemoveWatermark
+        handleRemoveWatermark,
     };
 }
 

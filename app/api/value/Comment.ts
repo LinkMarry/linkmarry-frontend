@@ -17,6 +17,6 @@ export const dummyComments: Comment[] = [
         id: 3,
         name: "김지민",
         comment: "진짜 행복하게 잘 살아야해!!!!",
-        createdDate: "2025-02-06T08:45:38.339792"
-    }
-]
+        createdDate: "2025-02-06T08:45:38.339792",
+    },
+];

@@ -1,7 +1,6 @@
 import {createContext, useContext} from "react";
 import type InfoMember from "~/api/value/InfoMember";
 
-
 type AuthValue = {
     member?: InfoMember;
     authorized: boolean;
@@ -19,4 +18,4 @@ export const useAuth = () => {
         throw new Error("useAuth must be used within a AuthProvider");
     }
     return value;
-}
+};

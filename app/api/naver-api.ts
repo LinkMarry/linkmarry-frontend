@@ -1,7 +1,7 @@
 import api from "~/api/index.ts";
 import {type ResponseVoid} from "~/api/value/Response.ts";
 
-const PATH = 'naver';
+const PATH = "naver";
 
 async function order(tel: string): Promise<ResponseVoid> {
     const {data} = await api.post(`${PATH}/order?tel=${tel}`);
@@ -9,7 +9,7 @@ async function order(tel: string): Promise<ResponseVoid> {
 }
 
 const naverApi = {
-    order
+    order,
 };
 
 export default naverApi;

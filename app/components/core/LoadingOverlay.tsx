@@ -4,9 +4,9 @@ function LoadingOverlay() {
     return (
         <LoadingOverlayStyle>
             <DotsLoader>
-                <Dot/>
-                <Dot/>
-                <Dot/>
+                <Dot />
+                <Dot />
+                <Dot />
             </DotsLoader>
         </LoadingOverlayStyle>
     );
@@ -32,7 +32,7 @@ const DotsLoader = styled.div`
     justify-content: center;
     align-items: center;
     gap: 5px; /* 점들 간의 간격 */
-`
+`;
 
 const Dot = styled.div`
     width: 8px;
@@ -51,15 +51,16 @@ const Dot = styled.div`
     &:nth-child(3) {
         animation-delay: 0.6s;
     }
-    
+
     @keyframes dot-blink {
-        0%, 100% {
+        0%,
+        100% {
             opacity: 0;
         }
         50% {
             opacity: 1;
         }
     }
-`
+`;
 
 export default LoadingOverlay;

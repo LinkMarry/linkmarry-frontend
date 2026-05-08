@@ -4,8 +4,7 @@ import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 
-
-interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<'div'> {
+interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<"div"> {
     icon: IconType;
     text: string;
     selected?: boolean;
@@ -13,29 +12,46 @@ interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<'div'> {
 
 function MyPageSidebarItem({icon, text, selected = false, ...props}: MyPageSidebarItemProps) {
     return (
-        <View flexDirection={"row"} ui={cx(
-            css`
-                align-items: center;
-                gap: 8px;
-                padding: 16px;
-                cursor: pointer;
-                transition: 0.1s background;
-                border-radius: 6px;
-            `,
-            selected ? css`
-                background: var(--g-100);
-            ` : css`
-                &:hover {
-                    background: var(--g-50);
-                }
-            `
-        )} {...props}>
-            <Icon iconType={icon} width={24} height={24} ui={css`
-                fill: var(--g-600);
-            `}/>
-            <Text type={'p2'} bold={true} ui={css`
-                color: var(--g-600);
-            `}>{text}</Text>
+        <View
+            flexDirection={"row"}
+            ui={cx(
+                css`
+                    align-items: center;
+                    gap: 8px;
+                    padding: 16px;
+                    cursor: pointer;
+                    transition: 0.1s background;
+                    border-radius: 6px;
+                `,
+                selected
+                    ? css`
+                          background: var(--g-100);
+                      `
+                    : css`
+                          &:hover {
+                              background: var(--g-50);
+                          }
+                      `,
+            )}
+            {...props}
+        >
+            <Icon
+                iconType={icon}
+                width={24}
+                height={24}
+                ui={css`
+                    fill: var(--g-600);
+                `}
+            />
+            <Text
+                type={"p2"}
+                bold={true}
+                ui={css`
+                    color: var(--g-600);
+                `}
+            >
+                {text}
+            </Text>
         </View>
     );
 }

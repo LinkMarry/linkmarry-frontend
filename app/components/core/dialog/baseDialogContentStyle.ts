@@ -10,5 +10,5 @@ export const baseDialogContentStyle = cx(
         overflow: auto;
     `,
     popupAnimationStyle,
-    hideScrollBarStyle
+    hideScrollBarStyle,
 );

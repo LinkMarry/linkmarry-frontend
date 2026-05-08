@@ -4,7 +4,7 @@ import api from "~/api/index.ts";
 import type PatchWeddingDesignRequest from "~/api/value/request/admin/PatchWeddingDesignRequest.ts";
 import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
-const PATH = 'wedding-design-preset';
+const PATH = "wedding-design-preset";
 
 async function createWeddingDesign(request: CreateWeddingDesignRequest): Promise<ResponseVoid> {
     const {data} = await api.post(`${PATH}`, request);
@@ -30,7 +30,7 @@ const weddingDesignApi = {
     createWeddingDesign,
     patchWeddingDesign,
     getWeddingDesignPresets,
-    removeWeddingDesign
-}
+    removeWeddingDesign,
+};
 
 export default weddingDesignApi;

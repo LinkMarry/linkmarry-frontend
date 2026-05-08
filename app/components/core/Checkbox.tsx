@@ -1,18 +1,19 @@
 import {
     type ComponentPropsWithoutRef,
     type ForwardedRef,
-    forwardRef, useEffect,
+    forwardRef,
+    useEffect,
     useImperativeHandle,
     useRef,
-    useState
-} from 'react';
+    useState,
+} from "react";
 import Icon from "~/components/core/icon";
 import Text from "~/components/core/Text";
 import View from "~/components/core/View.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {styled} from "@linaria/react";
 
-interface Props extends ComponentPropsWithoutRef<'div'> {
+interface Props extends ComponentPropsWithoutRef<"div"> {
     checked: boolean;
     OnChange: (checked: boolean) => void;
     label?: string;
@@ -25,16 +26,7 @@ export interface CheckboxRef {
     toggle: () => void;
 }
 
-function Checkbox(
-    {
-        checked = false,
-        OnChange,
-        label,
-        ui,
-        ...props
-    }: Props,
-    ref: ForwardedRef<CheckboxRef>
-) {
+function Checkbox({checked = false, OnChange, label, ui, ...props}: Props, ref: ForwardedRef<CheckboxRef>) {
     const [localChecked, setLocalChecked] = useState(checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
 
@@ -52,69 +44,84 @@ function Checkbox(
                 checkboxRef.current.checked = !checkboxRef.current.checked;
                 OnChange?.(checkboxRef.current.checked);
             }
-        }
+        },
     }));
 
     return (
-        <View flexDirection={"row"} ui={cx(
-            css`
-                align-items: center;
-                width: fit-content;
-            `,
-            ui
-        )} {...props}>
-            <View flexDirection={"row"} ui={css`
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                width: 40px;
-                height: 40px;
-            `}>
-                <View ui={cx(
-                    css`
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        width: 20px;
-                        height: 20px;
-                        border-radius: 4px;
-                    `,
-                    localChecked ? css`
-                        background: var(--g-900);
-                        border: none;
-                    ` : css`
-                        background: transparent;
-                        border: 1px solid var(--g-300);
-                    `
-                )}/>
+        <View
+            flexDirection={"row"}
+            ui={cx(
+                css`
+                    align-items: center;
+                    width: fit-content;
+                `,
+                ui,
+            )}
+            {...props}
+        >
+            <View
+                flexDirection={"row"}
+                ui={css`
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                `}
+            >
+                <View
+                    ui={cx(
+                        css`
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 4px;
+                        `,
+                        localChecked
+                            ? css`
+                                  background: var(--g-900);
+                                  border: none;
+                              `
+                            : css`
+                                  background: transparent;
+                                  border: 1px solid var(--g-300);
+                              `,
+                    )}
+                />
                 <CheckboxInputStyle
                     ref={checkboxRef}
-                    type={'checkbox'}
+                    type={"checkbox"}
                     checked={localChecked}
-                    onChange={(e) => {
+                    onChange={e => {
                         OnChange(e.target.checked);
                         setLocalChecked(e.target.checked);
                     }}
                 />
-                {localChecked && <Icon
-                    iconType={'CheckLine'}
-                    size={18}
-                    ui={css`
-                        fill: white;
-                        position: absolute;
-                        pointer-events: none;
-                    `}
-                />}
+                {localChecked && (
+                    <Icon
+                        iconType={"CheckLine"}
+                        size={18}
+                        ui={css`
+                            fill: white;
+                            position: absolute;
+                            pointer-events: none;
+                        `}
+                    />
+                )}
             </View>
             {label && (
                 <Text
-                    type={'p3'}
+                    type={"p3"}
                     ui={css`
                         cursor: pointer;
                     `}
                     onClick={() => OnChange?.(!checked)}
-                >{label}</Text>
+                >
+                    {label}
+                </Text>
             )}
         </View>
     );

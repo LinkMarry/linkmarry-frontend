@@ -1,91 +1,122 @@
-import { type ComponentPropsWithoutRef, useState } from 'react';
-import { css, cx } from "@linaria/core";
+import {type ComponentPropsWithoutRef, useState} from "react";
+import {css, cx} from "@linaria/core";
 import Spacer from "~/components/core/Spacer.tsx";
 import Button from "~/components/core/Button.tsx";
-import { useNavigate } from "react-router";
+import {useNavigate} from "react-router";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
 import Popover from "~/components/core/Popover.tsx";
 import View from "~/components/core/View.tsx";
-import { useAuth } from "~/hook/useAuth.tsx";
-import { NAVER_STORE_URL } from "~/lib/constant.ts";
-import { notMobileStyle } from "~/components/responsive.tsx";
-import { interactionEffectStyles } from "~/components/css.util.ts";
+import {useAuth} from "~/hook/useAuth.tsx";
+import {NAVER_STORE_URL} from "~/lib/constant.ts";
+import {notMobileStyle} from "~/components/responsive.tsx";
+import {interactionEffectStyles} from "~/components/css.util.ts";
 import ClientRendering from "~/ClientRendering.tsx";
-import { LogoInHeader } from "./Header.tsx";
+import {LogoInHeader} from "./Header.tsx";
 
 export default function DesktopHeader() {
-    const { authorized } = useAuth();
+    const {authorized} = useAuth();
     const navigate = useNavigate();
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
 
     return (
-        <View as={'header'} flexDirection={"row"} ui={cx(
-            css`
-                align-items: center;
-                justify-content: center;
-                width: 100vw;
-                min-height: 72px;
-                background: white;
-                border-bottom: 1px solid var(--g-200);
-                padding: 0 24px;
-            `,
-            notMobileStyle
-        )}>
-            <View flexDirection={"row"} ui={css`
-                align-items: center;
-                max-width: 1100px;
-                flex: 1;
-            `}>
-                <View flexDirection={"row"} ui={css`
-                    gap: 40px;
+        <View
+            as={"header"}
+            flexDirection={"row"}
+            ui={cx(
+                css`
                     align-items: center;
-                `}>
-                    <LogoInHeader />
-                    <View flexDirection={"row"} ui={css`
-                        gap: 12px;
+                    justify-content: center;
+                    width: 100vw;
+                    min-height: 72px;
+                    background: white;
+                    border-bottom: 1px solid var(--g-200);
+                    padding: 0 24px;
+                `,
+                notMobileStyle,
+            )}
+        >
+            <View
+                flexDirection={"row"}
+                ui={css`
+                    align-items: center;
+                    max-width: 1100px;
+                    flex: 1;
+                `}
+            >
+                <View
+                    flexDirection={"row"}
+                    ui={css`
+                        gap: 40px;
                         align-items: center;
-                    `}>
-                        <DesktopHeaderItem text={'청첩장 만들기'} onClick={() => {
-                            navigate('/editor/invitation');
-                        }} />
-                        <DesktopHeaderItem text={'웨딩 포스터'} onClick={() => {
-                            navigate('/editor/poster');
-                        }} />
-                        <DesktopHeaderItem text={'공지사항'} onClick={() => {
-                            navigate('/notification');
-                        }} />
-                        <DesktopHeaderItem text={'네이버스토어'} onClick={() => {
-                            window.open(NAVER_STORE_URL);
-                        }} />
+                    `}
+                >
+                    <LogoInHeader />
+                    <View
+                        flexDirection={"row"}
+                        ui={css`
+                            gap: 12px;
+                            align-items: center;
+                        `}
+                    >
+                        <DesktopHeaderItem
+                            text={"청첩장 만들기"}
+                            onClick={() => {
+                                navigate("/editor/invitation");
+                            }}
+                        />
+                        <DesktopHeaderItem
+                            text={"웨딩 포스터"}
+                            onClick={() => {
+                                navigate("/editor/poster");
+                            }}
+                        />
+                        <DesktopHeaderItem
+                            text={"공지사항"}
+                            onClick={() => {
+                                navigate("/notification");
+                            }}
+                        />
+                        <DesktopHeaderItem
+                            text={"네이버스토어"}
+                            onClick={() => {
+                                window.open(NAVER_STORE_URL);
+                            }}
+                        />
                     </View>
                 </View>
                 <Spacer />
                 <ClientRendering>
                     {authorized ? (
-                        <View ui={css`
-                            position: relative;
-                        `}>
-                            <DesktopHeaderItem text={'내 정보'} hasPopover={true} onClick={() => {
-                                setOpenMyInfoPopover(i => !i);
-                            }} />
+                        <View
+                            ui={css`
+                                position: relative;
+                            `}
+                        >
+                            <DesktopHeaderItem
+                                text={"내 정보"}
+                                hasPopover={true}
+                                onClick={() => {
+                                    setOpenMyInfoPopover(i => !i);
+                                }}
+                            />
                             {openMyInfoPopover && (
                                 <Popover
                                     items={[
                                         {
-                                            icon: 'Envelope',
-                                            text: '내 모바일 청첩장',
+                                            icon: "Envelope",
+                                            text: "내 모바일 청첩장",
                                             onClick: () => {
-                                                navigate('/mypage/wedding');
-                                            }
+                                                navigate("/mypage/wedding");
+                                            },
                                         },
                                         {
-                                            icon: 'PersonLine',
-                                            text: '회원정보',
+                                            icon: "PersonLine",
+                                            text: "회원정보",
                                             onClick: () => {
-                                                navigate('/mypage/info');
-                                            }
-                                        }
+                                                navigate("/mypage/info");
+                                            },
+                                        },
                                     ]}
                                     dismiss={() => {
                                         setOpenMyInfoPopover(false);
@@ -97,9 +128,14 @@ export default function DesktopHeader() {
                             )}
                         </View>
                     ) : (
-                        <Button text={'로그인'} buttonType={'outlined'} size={'medium'} onClick={() => {
-                            navigate('/sign-in');
-                        }} />
+                        <Button
+                            text={"로그인"}
+                            buttonType={"outlined"}
+                            size={"medium"}
+                            onClick={() => {
+                                navigate("/sign-in");
+                            }}
+                        />
                     )}
                 </ClientRendering>
             </View>
@@ -107,28 +143,47 @@ export default function DesktopHeader() {
     );
 }
 
-function DesktopHeaderItem({ text, hasPopover = false, ...props }: {
+function DesktopHeaderItem({
+    text,
+    hasPopover = false,
+    ...props
+}: {
     text: string;
     hasPopover?: boolean;
-} & ComponentPropsWithoutRef<'div'>) {
+} & ComponentPropsWithoutRef<"div">) {
     return (
-        <View flexDirection={"row"} ui={cx(
-            css`
-                gap: 8px;
-                align-items: center;
-                padding: 8px 16px;
-                border-radius: 6px;
-            `,
-            interactionEffectStyles.strong
-        )} {...props}>
-            <Text type={'p3'} bold={true} ui={css`
-                white-space: nowrap;
-            `}>{text}</Text>
+        <View
+            flexDirection={"row"}
+            ui={cx(
+                css`
+                    gap: 8px;
+                    align-items: center;
+                    padding: 8px 16px;
+                    border-radius: 6px;
+                `,
+                interactionEffectStyles.strong,
+            )}
+            {...props}
+        >
+            <Text
+                type={"p3"}
+                bold={true}
+                ui={css`
+                    white-space: nowrap;
+                `}
+            >
+                {text}
+            </Text>
             {hasPopover && (
-                <Icon iconType={'ExpandArrow'} width={20} height={20} ui={css`
-                    rotate: -90deg;
-                    fill: var(--g-400);
-                `} />
+                <Icon
+                    iconType={"ExpandArrow"}
+                    width={20}
+                    height={20}
+                    ui={css`
+                        rotate: -90deg;
+                        fill: var(--g-400);
+                    `}
+                />
             )}
         </View>
     );

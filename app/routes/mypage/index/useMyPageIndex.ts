@@ -8,19 +8,22 @@ function useMyPageIndex() {
     const localNavigate = useNavigate();
 
     const currentSidebar = useMemo(() => {
-        if (!pathname.startsWith('/mypage')) return;
-        const path = pathname.split('/')[2];
+        if (!pathname.startsWith("/mypage")) return;
+        const path = pathname.split("/")[2];
 
         return myPageIndexSidebarTypeList.find(type => type === path);
     }, [pathname]);
 
-    const navigate = useCallback((pathname: MyPageIndexSidebarType) => {
-        localNavigate(`/mypage/${pathname}`);
-    }, [localNavigate]);
+    const navigate = useCallback(
+        (pathname: MyPageIndexSidebarType) => {
+            localNavigate(`/mypage/${pathname}`);
+        },
+        [localNavigate],
+    );
 
     return {
         currentSidebar,
-        navigate
+        navigate,
     };
 }
 

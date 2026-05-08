@@ -86,97 +86,96 @@ import type {LinariaClassName} from "@linaria/core";
 import {styled} from "@linaria/react";
 
 export const ICON_TYPES = [
-    'AddEmoji',
-    'AddFill',
-    'AddLine',
-    'AddPhoto',
-    'AddRing',
-    'Alarm',
-    'AlarmDisabled',
-    'ArcticonsSpotistats',
-    'Book',
-    'BookmarkFill',
-    'BookmarkLine',
-    'Brush',
-    'Calendar',
-    'CalendarLine',
-    'Call',
-    'Camera',
-    'Chat',
-    'CheckFill',
-    'CheckLine',
-    'CheckRing',
-    'CirclePlay',
-    'Clipboard',
-    'Clock',
-    'Copy',
-    'CrossFill',
-    'CrossLine',
-    'CrossRing',
-    'Crown',
-    'CurveArrow',
-    'Detail',
-    'DoubleArrowLeft',
-    'Edit',
-    'EmailOpen',
-    'Envelope',
-    'ExclamationFill',
-    'ExclamationLine',
-    'ExpandArrow',
-    'ExternalLink',
-    'File',
-    'Hamburger',
-    'HeartFill',
-    'HeartLine',
-    'Hide',
-    'Home',
-    'Kakao',
-    'Link',
-    'LocationPoint',
-    'Logout',
-    'LoudSpeaker',
-    'Manage',
-    'Money',
-    'Moon',
-    'NormalArrow',
-    'Note',
-    'Pause',
-    'PenFill',
-    'PenLine',
-    'PersonFill',
-    'PersonLine',
-    'Phone',
-    'Photo',
-    'Photo2',
-    'Ping',
-    'Play',
-    'RadioFill',
-    'RadioLine',
-    'Search',
-    'Send',
-    'SendLine',
-    'Setting',
-    'Share',
-    'ShareLine',
-    'Show',
-    'Star',
-    'Stat',
-    'Statistics',
-    'StopArrow',
-    'StopArrowDown',
-    'Substack',
-    'Trash',
-    'Utensils',
-    'Video',
-    'Write'
+    "AddEmoji",
+    "AddFill",
+    "AddLine",
+    "AddPhoto",
+    "AddRing",
+    "Alarm",
+    "AlarmDisabled",
+    "ArcticonsSpotistats",
+    "Book",
+    "BookmarkFill",
+    "BookmarkLine",
+    "Brush",
+    "Calendar",
+    "CalendarLine",
+    "Call",
+    "Camera",
+    "Chat",
+    "CheckFill",
+    "CheckLine",
+    "CheckRing",
+    "CirclePlay",
+    "Clipboard",
+    "Clock",
+    "Copy",
+    "CrossFill",
+    "CrossLine",
+    "CrossRing",
+    "Crown",
+    "CurveArrow",
+    "Detail",
+    "DoubleArrowLeft",
+    "Edit",
+    "EmailOpen",
+    "Envelope",
+    "ExclamationFill",
+    "ExclamationLine",
+    "ExpandArrow",
+    "ExternalLink",
+    "File",
+    "Hamburger",
+    "HeartFill",
+    "HeartLine",
+    "Hide",
+    "Home",
+    "Kakao",
+    "Link",
+    "LocationPoint",
+    "Logout",
+    "LoudSpeaker",
+    "Manage",
+    "Money",
+    "Moon",
+    "NormalArrow",
+    "Note",
+    "Pause",
+    "PenFill",
+    "PenLine",
+    "PersonFill",
+    "PersonLine",
+    "Phone",
+    "Photo",
+    "Photo2",
+    "Ping",
+    "Play",
+    "RadioFill",
+    "RadioLine",
+    "Search",
+    "Send",
+    "SendLine",
+    "Setting",
+    "Share",
+    "ShareLine",
+    "Show",
+    "Star",
+    "Stat",
+    "Statistics",
+    "StopArrow",
+    "StopArrowDown",
+    "Substack",
+    "Trash",
+    "Utensils",
+    "Video",
+    "Write",
 ] as const;
 
-export type IconType = typeof ICON_TYPES[number];
+export type IconType = (typeof ICON_TYPES)[number];
 
 export function isIconType(value: unknown): value is IconType {
-    return typeof value === 'string' && ICON_TYPES.includes(value as IconType);
+    return typeof value === "string" && ICON_TYPES.includes(value as IconType);
 }
-
 
 interface Props extends SVGProps<SVGSVGElement> {
     iconType: IconType;
@@ -184,19 +183,10 @@ interface Props extends SVGProps<SVGSVGElement> {
     ui?: LinariaClassName;
 }
 
-function Icon(
-    {
-        iconType,
-        size = 24,
-        ui,
-        ...props
-    }: Props
-): ReactElement {
-
-
+function Icon({iconType, size = 24, ui, ...props}: Props): ReactElement {
     return (
         <IconWrapper className={ui}>
-            <IconContent width={size} height={size} iconType={iconType} {...props}/>
+            <IconContent width={size} height={size} iconType={iconType} {...props} />
         </IconWrapper>
     );
 }
@@ -213,173 +203,173 @@ interface IconContentProps extends SVGProps<SVGSVGElement> {
 
 const IconContent = ({iconType, ...svgProps}: IconContentProps) => {
     switch (iconType) {
-        case 'AddEmoji':
-            return <AddEmoji {...svgProps}/>;
-        case 'AddFill':
-            return <AddFill {...svgProps}/>;
-        case 'AddLine':
-            return <AddLine {...svgProps}/>;
-        case 'AddPhoto':
-            return <AddPhoto {...svgProps}/>;
-        case 'AddRing':
-            return <AddRing {...svgProps}/>;
-        case 'Alarm':
-            return <Alarm {...svgProps}/>;
-        case 'AlarmDisabled':
-            return <AlarmDisabled {...svgProps}/>;
-        case 'ArcticonsSpotistats':
-            return <ArcticonsSpotistats {...svgProps}/>;
-        case 'Book':
-            return <Book {...svgProps}/>;
-        case 'BookmarkFill':
-            return <BookmarkFill {...svgProps}/>;
-        case 'BookmarkLine':
-            return <BookmarkLine {...svgProps}/>;
-        case 'Brush':
-            return <Brush {...svgProps}/>;
-        case 'Calendar':
-            return <Calendar {...svgProps}/>;
-        case 'CalendarLine':
-            return <CalendarLine {...svgProps}/>;
-        case 'Call':
-            return <Call {...svgProps}/>;
-        case 'Camera':
-            return <Camera {...svgProps}/>;
-        case 'Chat':
-            return <Chat {...svgProps}/>;
-        case 'CheckFill':
-            return <CheckFill {...svgProps}/>;
-        case 'CheckLine':
-            return <CheckLine {...svgProps}/>;
-        case 'CheckRing':
-            return <CheckRing {...svgProps}/>;
-        case 'CirclePlay':
-            return <CirclePlay {...svgProps}/>;
-        case 'Clipboard':
-            return <Clipboard {...svgProps}/>;
-        case 'Clock':
-            return <Clock {...svgProps}/>;
-        case 'Copy':
-            return <Copy {...svgProps}/>;
-        case 'CrossFill':
-            return <CrossFill {...svgProps}/>;
-        case 'CrossLine':
-            return <CrossLine {...svgProps}/>;
-        case 'CrossRing':
-            return <CrossRing {...svgProps}/>;
-        case 'Crown':
-            return <Crown {...svgProps}/>;
-        case 'CurveArrow':
-            return <CurveArrow {...svgProps}/>;
-        case 'Detail':
-            return <Detail {...svgProps}/>;
-        case 'DoubleArrowLeft':
-            return <DoubleArrowLeft {...svgProps}/>;
-        case 'Edit':
-            return <Edit {...svgProps}/>;
-        case 'EmailOpen':
-            return <EmailOpen {...svgProps}/>;
-        case 'Envelope':
-            return <Envelope {...svgProps}/>;
-        case 'ExclamationFill':
-            return <ExclamationFill {...svgProps}/>;
-        case 'ExclamationLine':
-            return <ExclamationLine {...svgProps}/>;
-        case 'ExpandArrow':
-            return <ExpandArrow {...svgProps}/>;
-        case 'ExternalLink':
-            return <ExternalLink {...svgProps}/>;
-        case 'File':
-            return <File {...svgProps}/>;
-        case 'Hamburger':
-            return <Hamburger {...svgProps}/>;
-        case 'HeartFill':
-            return <HeartFill {...svgProps}/>;
-        case 'HeartLine':
-            return <HeartLine {...svgProps}/>;
-        case 'Hide':
-            return <Hide {...svgProps}/>;
-        case 'Home':
-            return <Home {...svgProps}/>;
-        case 'Kakao':
-            return <Kakao {...svgProps}/>;
-        case 'Link':
-            return <Link {...svgProps}/>;
-        case 'LocationPoint':
-            return <LocationPoint {...svgProps}/>;
-        case 'Logout':
-            return <Logout {...svgProps}/>;
-        case 'LoudSpeaker':
-            return <LoudSpeaker {...svgProps}/>;
-        case 'Manage':
-            return <Manage {...svgProps}/>;
-        case 'Money':
-            return <Money {...svgProps}/>;
-        case 'Moon':
-            return <Moon {...svgProps}/>;
-        case 'NormalArrow':
-            return <NormalArrow {...svgProps}/>;
-        case 'Note':
-            return <Note {...svgProps}/>;
-        case 'Pause':
-            return <Pause {...svgProps}/>;
-        case 'PenFill':
-            return <PenFill {...svgProps}/>;
-        case 'PenLine':
-            return <PenLine {...svgProps}/>;
-        case 'PersonFill':
-            return <PersonFill {...svgProps}/>;
-        case 'PersonLine':
-            return <PersonLine {...svgProps}/>;
-        case 'Phone':
-            return <Phone {...svgProps}/>;
-        case 'Photo':
-            return <Photo {...svgProps}/>;
-        case 'Photo2':
-            return <Photo2 {...svgProps}/>;
-        case 'Ping':
-            return <Ping {...svgProps}/>;
-        case 'Play':
-            return <Play {...svgProps}/>;
-        case 'RadioFill':
-            return <RadioFill {...svgProps}/>;
-        case 'RadioLine':
-            return <RadioLine {...svgProps}/>;
-        case 'Search':
-            return <Search {...svgProps}/>;
-        case 'Send':
-            return <Send {...svgProps}/>;
-        case 'SendLine':
-            return <SendLine {...svgProps}/>;
-        case 'Setting':
-            return <Setting {...svgProps}/>;
-        case 'Share':
-            return <Share {...svgProps}/>;
-        case 'ShareLine':
-            return <ShareLine {...svgProps}/>;
-        case 'Show':
-            return <Show {...svgProps}/>;
-        case 'Star':
-            return <Star {...svgProps}/>;
-        case 'Stat':
-            return <Stat {...svgProps}/>;
-        case 'Statistics':
-            return <Statistics {...svgProps}/>;
-        case 'StopArrow':
-            return <StopArrow {...svgProps}/>;
-        case 'StopArrowDown':
-            return <StopArrowDown {...svgProps}/>;
-        case 'Substack':
-            return <Substack {...svgProps}/>;
-        case 'Trash':
-            return <Trash {...svgProps}/>;
-        case 'Utensils':
-            return <Utensils {...svgProps}/>;
-        case 'Video':
-            return <Video {...svgProps}/>;
-        case 'Write':
-            return <Write {...svgProps}/>;
+        case "AddEmoji":
+            return <AddEmoji {...svgProps} />;
+        case "AddFill":
+            return <AddFill {...svgProps} />;
+        case "AddLine":
+            return <AddLine {...svgProps} />;
+        case "AddPhoto":
+            return <AddPhoto {...svgProps} />;
+        case "AddRing":
+            return <AddRing {...svgProps} />;
+        case "Alarm":
+            return <Alarm {...svgProps} />;
+        case "AlarmDisabled":
+            return <AlarmDisabled {...svgProps} />;
+        case "ArcticonsSpotistats":
+            return <ArcticonsSpotistats {...svgProps} />;
+        case "Book":
+            return <Book {...svgProps} />;
+        case "BookmarkFill":
+            return <BookmarkFill {...svgProps} />;
+        case "BookmarkLine":
+            return <BookmarkLine {...svgProps} />;
+        case "Brush":
+            return <Brush {...svgProps} />;
+        case "Calendar":
+            return <Calendar {...svgProps} />;
+        case "CalendarLine":
+            return <CalendarLine {...svgProps} />;
+        case "Call":
+            return <Call {...svgProps} />;
+        case "Camera":
+            return <Camera {...svgProps} />;
+        case "Chat":
+            return <Chat {...svgProps} />;
+        case "CheckFill":
+            return <CheckFill {...svgProps} />;
+        case "CheckLine":
+            return <CheckLine {...svgProps} />;
+        case "CheckRing":
+            return <CheckRing {...svgProps} />;
+        case "CirclePlay":
+            return <CirclePlay {...svgProps} />;
+        case "Clipboard":
+            return <Clipboard {...svgProps} />;
+        case "Clock":
+            return <Clock {...svgProps} />;
+        case "Copy":
+            return <Copy {...svgProps} />;
+        case "CrossFill":
+            return <CrossFill {...svgProps} />;
+        case "CrossLine":
+            return <CrossLine {...svgProps} />;
+        case "CrossRing":
+            return <CrossRing {...svgProps} />;
+        case "Crown":
+            return <Crown {...svgProps} />;
+        case "CurveArrow":
+            return <CurveArrow {...svgProps} />;
+        case "Detail":
+            return <Detail {...svgProps} />;
+        case "DoubleArrowLeft":
+            return <DoubleArrowLeft {...svgProps} />;
+        case "Edit":
+            return <Edit {...svgProps} />;
+        case "EmailOpen":
+            return <EmailOpen {...svgProps} />;
+        case "Envelope":
+            return <Envelope {...svgProps} />;
+        case "ExclamationFill":
+            return <ExclamationFill {...svgProps} />;
+        case "ExclamationLine":
+            return <ExclamationLine {...svgProps} />;
+        case "ExpandArrow":
+            return <ExpandArrow {...svgProps} />;
+        case "ExternalLink":
+            return <ExternalLink {...svgProps} />;
+        case "File":
+            return <File {...svgProps} />;
+        case "Hamburger":
+            return <Hamburger {...svgProps} />;
+        case "HeartFill":
+            return <HeartFill {...svgProps} />;
+        case "HeartLine":
+            return <HeartLine {...svgProps} />;
+        case "Hide":
+            return <Hide {...svgProps} />;
+        case "Home":
+            return <Home {...svgProps} />;
+        case "Kakao":
+            return <Kakao {...svgProps} />;
+        case "Link":
+            return <Link {...svgProps} />;
+        case "LocationPoint":
+            return <LocationPoint {...svgProps} />;
+        case "Logout":
+            return <Logout {...svgProps} />;
+        case "LoudSpeaker":
+            return <LoudSpeaker {...svgProps} />;
+        case "Manage":
+            return <Manage {...svgProps} />;
+        case "Money":
+            return <Money {...svgProps} />;
+        case "Moon":
+            return <Moon {...svgProps} />;
+        case "NormalArrow":
+            return <NormalArrow {...svgProps} />;
+        case "Note":
+            return <Note {...svgProps} />;
+        case "Pause":
+            return <Pause {...svgProps} />;
+        case "PenFill":
+            return <PenFill {...svgProps} />;
+        case "PenLine":
+            return <PenLine {...svgProps} />;
+        case "PersonFill":
+            return <PersonFill {...svgProps} />;
+        case "PersonLine":
+            return <PersonLine {...svgProps} />;
+        case "Phone":
+            return <Phone {...svgProps} />;
+        case "Photo":
+            return <Photo {...svgProps} />;
+        case "Photo2":
+            return <Photo2 {...svgProps} />;
+        case "Ping":
+            return <Ping {...svgProps} />;
+        case "Play":
+            return <Play {...svgProps} />;
+        case "RadioFill":
+            return <RadioFill {...svgProps} />;
+        case "RadioLine":
+            return <RadioLine {...svgProps} />;
+        case "Search":
+            return <Search {...svgProps} />;
+        case "Send":
+            return <Send {...svgProps} />;
+        case "SendLine":
+            return <SendLine {...svgProps} />;
+        case "Setting":
+            return <Setting {...svgProps} />;
+        case "Share":
+            return <Share {...svgProps} />;
+        case "ShareLine":
+            return <ShareLine {...svgProps} />;
+        case "Show":
+            return <Show {...svgProps} />;
+        case "Star":
+            return <Star {...svgProps} />;
+        case "Stat":
+            return <Stat {...svgProps} />;
+        case "Statistics":
+            return <Statistics {...svgProps} />;
+        case "StopArrow":
+            return <StopArrow {...svgProps} />;
+        case "StopArrowDown":
+            return <StopArrowDown {...svgProps} />;
+        case "Substack":
+            return <Substack {...svgProps} />;
+        case "Trash":
+            return <Trash {...svgProps} />;
+        case "Utensils":
+            return <Utensils {...svgProps} />;
+        case "Video":
+            return <Video {...svgProps} />;
+        case "Write":
+            return <Write {...svgProps} />;
     }
-}
+};
 
 export default Icon;

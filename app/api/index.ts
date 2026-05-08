@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL: config.baseUrl,
     headers: {
         "Access-Control-Allow-Origin": "*",
-    }
+    },
 });
 
 export default api;

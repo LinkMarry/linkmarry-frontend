@@ -1,49 +1,55 @@
-import { useState } from 'react';
+import {useState} from "react";
 import Text from "~/components/core/Text.tsx";
-import { css } from "@linaria/core";
+import {css} from "@linaria/core";
 import Divider from "~/components/core/Divider.tsx";
 import Dialog from "~/components/core/dialog/Dialog.tsx";
-import { useAuth } from "~/hook/useAuth.tsx";
+import {useAuth} from "~/hook/useAuth.tsx";
 import Loading from "~/components/core/Loading.tsx";
 import View from "~/components/core/View.tsx";
 
 function MyPageInfo() {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
-    const { member, removeMember } = useAuth();
+    const {member, removeMember} = useAuth();
 
     return (
-        <View ui={css`
-            gap: 24px;
-            flex: 1;
-        `}>
+        <View
+            ui={css`
+                gap: 24px;
+                flex: 1;
+            `}
+        >
             <Dialog
                 show={showRemoveMemberDialog}
-                title={'정말 멤버를 탈퇴하시겠습니까?'}
+                title={"정말 멤버를 탈퇴하시겠습니까?"}
                 dismiss={() => setShowRemoveMemberDialog(false)}
-                dismissButtonProps={{ text: '취소' }}
+                dismissButtonProps={{text: "취소"}}
                 confirmButtonProps={{
-                    text: '탈퇴',
+                    text: "탈퇴",
                     onClick: async () => {
                         await removeMember();
-                    }
+                    },
                 }}
             />
 
-            <Text type={'h5'} bold={true}>회원정보</Text>
-            <View ui={css`
-                gap: 8px;
-            `}>
+            <Text type={"h5"} bold={true}>
+                회원정보
+            </Text>
+            <View
+                ui={css`
+                    gap: 8px;
+                `}
+            >
                 {member ? (
                     <View>
-                        <Item title={'이름'} value={member.name} />
-                        <Item title={'이메일'} value={member.email} />
+                        <Item title={"이름"} value={member.name} />
+                        <Item title={"이메일"} value={member.email} />
                     </View>
                 ) : (
                     <Loading />
                 )}
                 <Divider />
                 <Text
-                    type={'p3'}
+                    type={"p3"}
                     ui={css`
                         color: var(--g-500);
                         text-decoration: underline;
@@ -56,36 +62,42 @@ function MyPageInfo() {
                     onClick={() => {
                         setShowRemoveMemberDialog(true);
                     }}
-                >{'회원탈퇴'}</Text>
+                >
+                    {"회원탈퇴"}
+                </Text>
             </View>
         </View>
     );
 }
 
-function Item(props: {
-    title: string;
-    value: string;
-}) {
+function Item(props: {title: string; value: string}) {
     return (
-        <View flexDirection={"row"} ui={css`
-            align-items: center;
-            height: 52px;
-        `}>
+        <View
+            flexDirection={"row"}
+            ui={css`
+                align-items: center;
+                height: 52px;
+            `}
+        >
             <Text
-                type={'p3'}
+                type={"p3"}
                 ui={css`
                     width: 122px;
                     color: var(--g-500);
                 `}
-            >{props.title}</Text>
+            >
+                {props.title}
+            </Text>
             <Text
-                type={'p3'}
+                type={"p3"}
                 ui={css`
                     width: 122px;
                     color: var(--g-600);
                 `}
                 bold={true}
-            >{props.value}</Text>
+            >
+                {props.value}
+            </Text>
         </View>
     );
 }

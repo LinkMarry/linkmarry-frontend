@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect} from "react";
 import {useSearchParams} from "react-router";
 import {useAuth} from "~/hook/useAuth.tsx";
 
@@ -7,7 +7,7 @@ function KakaoRedirect() {
     const [searchParams] = useSearchParams();
 
     useEffect(() => {
-        const code = searchParams.get('code');
+        const code = searchParams.get("code");
 
         if (code === null) return;
 

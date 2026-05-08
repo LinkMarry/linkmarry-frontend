@@ -21,38 +21,38 @@ function OpeningView({weddingDesign}: OpeningViewProps) {
                     style: css`
                         background: var(--g-400);
                     `,
-                    svgPath: "/opening/We’re getting married!.svg"
+                    svgPath: "/opening/We’re getting married!.svg",
                 };
             case "Welcome to Our Wedding":
                 return {
                     style: css`
                         background: var(--p-100);
                     `,
-                    svgPath: "/opening/Welcome to Our Wedding.svg"
+                    svgPath: "/opening/Welcome to Our Wedding.svg",
                 };
             case "저희 둘 결혼합니다":
                 return {
                     style: css`
-                        background: #F7F7F2;
+                        background: #f7f7f2;
                     `,
-                    svgPath: "/opening/저희 둘 결혼합니다.svg"
+                    svgPath: "/opening/저희 둘 결혼합니다.svg",
                 };
             case "새로운 시작을 함께해주세요":
                 return {
                     style: css`
                         background: var(--g-50);
                     `,
-                    svgPath: "/opening/새로운 시작을 함께해주세요.svg"
+                    svgPath: "/opening/새로운 시작을 함께해주세요.svg",
                 };
             default:
                 return {
                     style: css``,
-                    svgPath: ""
+                    svgPath: "",
                 };
         }
     }, [weddingDesign.openingText]);
 
-    const hide = weddingDesign.opening === 'NONE' || !visible;
+    const hide = weddingDesign.opening === "NONE" || !visible;
 
     useEffect(() => {
         if (hide) return;
@@ -91,16 +91,18 @@ function OpeningView({weddingDesign}: OpeningViewProps) {
                     opacity: 1;
                 `,
                 fading &&
-                css`
-                    opacity: 0;
-                `,
+                    css`
+                        opacity: 0;
+                    `,
                 style,
             )}
         >
-            <div className={css`
-                margin-top: 300px;
-            `}>
-                <img src={svgPath} alt={weddingDesign.openingText}/>
+            <div
+                className={css`
+                    margin-top: 300px;
+                `}
+            >
+                <img src={svgPath} alt={weddingDesign.openingText} />
             </div>
         </div>
     );

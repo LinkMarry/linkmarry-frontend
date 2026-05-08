@@ -1,4 +1,4 @@
-import {type ComponentProps} from 'react';
+import {type ComponentProps} from "react";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 import {css, cx} from "@linaria/core";
@@ -8,58 +8,79 @@ import {getDetails} from "~/api/value/WeddingSchedule.ts";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function ClassicRomancePreviewTemplate(
-    {
-        weddingDesign,
-        baseInfo,
-        weddingSchedule
-    }: ComponentProps<typeof PreviewTemplate>
-) {
+function ClassicRomancePreviewTemplate({
+    weddingDesign,
+    baseInfo,
+    weddingSchedule,
+}: ComponentProps<typeof PreviewTemplate>) {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
 
     return (
-        <View ui={cx(
-            fontFamilyStyle.GyeonggiBatang,
-            'override-font',
-            css`
-                gap: 28px;
-                padding: 90px 36px;
-                background-color: #F7F7F2;
+        <View
+            ui={cx(
+                fontFamilyStyle.GyeonggiBatang,
+                "override-font",
+                css`
+                    gap: 28px;
+                    padding: 90px 36px;
+                    background-color: #f7f7f2;
 
-                * {
-                    color: #989796;
-                }
-            `,
-        )}>
-            <View as={'img'} src={weddingDesign.titleImgUrl} ui={css`
-                min-height: 516px;
-                object-fit: cover;
-                box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.04) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.04) inset;
-            `}/>
-            <View ui={css`
-                gap: 12px;
-                align-items: center;
-            `}>
-                <Text size={36} weight={400} ui={css`
-                    display: flex;
-                    align-self: stretch;
-                `}>
-                    <View flexDirection={"row"} ui={css`
-                        gap: 20px;
-                        align-items: center;
-                        flex: 1;
-                    `}>
-                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{first.englishName.toUpperCase() || first.name}</span>
+                    * {
+                        color: #989796;
+                    }
+                `,
+            )}
+        >
+            <View
+                as={"img"}
+                src={weddingDesign.titleImgUrl}
+                ui={css`
+                    min-height: 516px;
+                    object-fit: cover;
+                    box-shadow:
+                        0 -4px 4px 0 rgba(0, 0, 0, 0.04) inset,
+                        0 4px 4px 0 rgba(0, 0, 0, 0.04) inset;
+                `}
+            />
+            <View
+                ui={css`
+                    gap: 12px;
+                    align-items: center;
+                `}
+            >
+                <Text
+                    size={36}
+                    weight={400}
+                    ui={css`
+                        display: flex;
+                        align-self: stretch;
+                    `}
+                >
+                    <View
+                        flexDirection={"row"}
+                        ui={css`
+                            gap: 20px;
+                            align-items: center;
+                            flex: 1;
+                        `}
+                    >
+                        <span style={{flex: 1, textAlign: "center", whiteSpace: "wrap", wordBreak: "break-all"}}>
+                            {first.englishName.toUpperCase() || first.name}
+                        </span>
                         <span>&</span>
-                        <span style={{flex: 1, textAlign: 'center', whiteSpace: 'wrap', wordBreak: 'break-all'}}>{second.englishName.toUpperCase() || second.name}</span>
+                        <span style={{flex: 1, textAlign: "center", whiteSpace: "wrap", wordBreak: "break-all"}}>
+                            {second.englishName.toUpperCase() || second.name}
+                        </span>
                     </View>
                 </Text>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2" viewBox="0 0 364 2" fill="none">
-                    <path d="M0 1H364" stroke="#C8C6C5" strokeOpacity="0.4"/>
+                    <path d="M0 1H364" stroke="#C8C6C5" strokeOpacity="0.4" />
                 </svg>
                 {isValidDate && (
-                    <Text size={20} weight={400}>{format(date, 'yyyy. MM. dd E HH:mm')}</Text>
+                    <Text size={20} weight={400}>
+                        {format(date, "yyyy. MM. dd E HH:mm")}
+                    </Text>
                 )}
             </View>
         </View>

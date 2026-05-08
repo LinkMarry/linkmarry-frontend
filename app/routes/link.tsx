@@ -1,9 +1,9 @@
-import {useEffect} from 'react';
+import {useEffect} from "react";
 import {Navigate, useSearchParams} from "react-router";
 
 const Link = () => {
     const [searchParams] = useSearchParams();
-    const url = searchParams.get('url');
+    const url = searchParams.get("url");
 
     useEffect(() => {
         if (url) {
@@ -12,7 +12,7 @@ const Link = () => {
     }, [url]);
 
     if (!url) {
-        return <Navigate to={'/'}/>
+        return <Navigate to={"/"} />;
     }
 
     return null;

@@ -3,21 +3,20 @@ import {
     type CSSProperties,
     type ForwardedRef,
     forwardRef,
-    type PropsWithChildren
-} from 'react';
+    type PropsWithChildren,
+} from "react";
 import {type FontFamily, type TextType, textStyles} from "~/components/core/text/TextType";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 
-
-interface Props extends PropsWithChildren<ComponentPropsWithRef<'div'>> {
+interface Props extends PropsWithChildren<ComponentPropsWithRef<"div">> {
     type?: TextType;
     font?: FontFamily;
-    weight?: CSSProperties['fontWeight'];
+    weight?: CSSProperties["fontWeight"];
     size?: number;
-    lineHeight?: CSSProperties['lineHeight'];
+    lineHeight?: CSSProperties["lineHeight"];
     bold?: boolean;
-    flexDirection?: 'row' | 'column';
+    flexDirection?: "row" | "column";
     ui?: LinariaClassName | string;
 }
 
@@ -30,21 +29,9 @@ const columnStyle = css`
 `;
 
 function Text(
-    {
-        type,
-        font,
-        weight,
-        size,
-        lineHeight,
-        bold = false,
-        flexDirection,
-        ui,
-        children,
-        ...props
-    }: Props,
-    ref: ForwardedRef<HTMLDivElement>
+    {type, font, weight, size, lineHeight, bold = false, flexDirection, ui, children, ...props}: Props,
+    ref: ForwardedRef<HTMLDivElement>,
 ) {
-
     let textStyle: LinariaClassName | undefined;
     if (type) {
         if (bold) {
@@ -59,14 +46,14 @@ function Text(
             ref={ref}
             className={cx(
                 textStyle,
-                flexDirection === 'row' ? rowStyle : (flexDirection === 'column' ? columnStyle : undefined),
-                ui
+                flexDirection === "row" ? rowStyle : flexDirection === "column" ? columnStyle : undefined,
+                ui,
             )}
             style={{
                 fontFamily: font,
                 fontSize: size,
                 fontWeight: weight,
-                lineHeight
+                lineHeight,
             }}
             {...props}
         >

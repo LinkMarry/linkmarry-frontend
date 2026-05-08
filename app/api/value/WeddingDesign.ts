@@ -29,33 +29,27 @@ export type WeddingDesignName = string;
 
 export type WeddingDesignColor = WeddingDesignDefaultColor | WeddingDesignPaperColor | string;
 
-
 export const weddingDesignDefaultColorList = [
-    '#FFFFFF',
-    '#F7F7F2',
-    '#F6F2F2',
-    '#FBF2F2',
-    '#FFFEF5',
-    '#EDF8F8',
-    '#ECECEC',
+    "#FFFFFF",
+    "#F7F7F2",
+    "#F6F2F2",
+    "#FBF2F2",
+    "#FFFEF5",
+    "#EDF8F8",
+    "#ECECEC",
 ] as const;
 
-export type WeddingDesignDefaultColor = typeof weddingDesignDefaultColorList[number];
+export type WeddingDesignDefaultColor = (typeof weddingDesignDefaultColorList)[number];
 
-export const weddingDesignPaperColorList = [
-    'paper1',
-    'paper2',
-    'paper3',
-    'paper4'
-] as const;
+export const weddingDesignPaperColorList = ["paper1", "paper2", "paper3", "paper4"] as const;
 
-export type WeddingDesignPaperColor = typeof weddingDesignPaperColorList[number];
+export type WeddingDesignPaperColor = (typeof weddingDesignPaperColorList)[number];
 
 export function isPaperColor(weddingDesignColor: WeddingDesignColor): boolean {
-    return weddingDesignColor.startsWith('paper');
+    return weddingDesignColor.startsWith("paper");
 }
 
-export function backgroundStyle(weddingDesignColor: WeddingDesignColor): CSSProperties['background'] {
+export function backgroundStyle(weddingDesignColor: WeddingDesignColor): CSSProperties["background"] {
     if (isPaperColor(weddingDesignColor)) {
         return `url("/paper/${weddingDesignColor}.png")`;
     } else {
@@ -63,50 +57,55 @@ export function backgroundStyle(weddingDesignColor: WeddingDesignColor): CSSProp
     }
 }
 
-export const weddingDesignFontSizeList = ['basic', 'large', 'extraLarge'] as const;
-export type WeddingDesignFontSize = typeof weddingDesignFontSizeList[number];
+export const weddingDesignFontSizeList = ["basic", "large", "extraLarge"] as const;
+export type WeddingDesignFontSize = (typeof weddingDesignFontSizeList)[number];
 
-export const weddingDesignFontSizeMap: Record<WeddingDesignFontSize, {
-    korean: string,
-    addFontSize: number
-}> = {
+export const weddingDesignFontSizeMap: Record<
+    WeddingDesignFontSize,
+    {
+        korean: string;
+        addFontSize: number;
+    }
+> = {
     basic: {
-        korean: '기본',
-        addFontSize: 0
+        korean: "기본",
+        addFontSize: 0,
     },
     large: {
-        korean: '크게',
-        addFontSize: 2
+        korean: "크게",
+        addFontSize: 2,
     },
     extraLarge: {
-        korean: '더 크게',
-        addFontSize: 4
-    }
+        korean: "더 크게",
+        addFontSize: 4,
+    },
 };
 
 export const defaultWeddingDesign: WeddingDesign = {
-    weddingDesignName: '',
-    weddingDesignColor: '#FFFFFF',
-    weddingDesignFont: 'Pretendard',
-    weddingDesignFontSize: 'basic',
-    titleImgUrl: '',
-    opening: 'NONE',
-    openingText: "We're getting married!"
-}
+    weddingDesignName: "",
+    weddingDesignColor: "#FFFFFF",
+    weddingDesignFont: "Pretendard",
+    weddingDesignFontSize: "basic",
+    titleImgUrl: "",
+    opening: "NONE",
+    openingText: "We're getting married!",
+};
 
 export const openingTextList = [
-    'We\'re getting married!', '저희 둘 결혼합니다',
-    'Welcome to Our Wedding',
-    '새로운 시작을 함께해주세요'
+    "We're getting married!",
+    "저희 둘 결혼합니다",
+    "Welcome to Our Wedding",
+    "새로운 시작을 함께해주세요",
 ] as const;
-export type OpeningText = typeof openingTextList[number];
+export type OpeningText = (typeof openingTextList)[number];
 
 export const dummyWeddingDesign: WeddingDesign = {
-    weddingDesignName: '모던 심플',
-    weddingDesignColor: '#FFFFFF',
-    weddingDesignFont: 'Pretendard',
-    weddingDesignFontSize: 'basic',
-    titleImgUrl: 'https://axoeono6ygrw.objectstorage.ap-chuncheon-1.oci.customer-oci.com/n/axoeono6ygrw/b/linkmarry/o/samplesample_3.png',
-    opening: 'TYPING',
-    openingText: "We're getting married!"
+    weddingDesignName: "모던 심플",
+    weddingDesignColor: "#FFFFFF",
+    weddingDesignFont: "Pretendard",
+    weddingDesignFontSize: "basic",
+    titleImgUrl:
+        "https://axoeono6ygrw.objectstorage.ap-chuncheon-1.oci.customer-oci.com/n/axoeono6ygrw/b/linkmarry/o/samplesample_3.png",
+    opening: "TYPING",
+    openingText: "We're getting married!",
 };

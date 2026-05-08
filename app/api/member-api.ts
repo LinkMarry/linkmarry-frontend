@@ -3,11 +3,11 @@ import api from "~/api/index.ts";
 import type InfoMember from "~/api/value/InfoMember.ts";
 import type EditMemberRequest from "~/api/value/request/EditMemberRequest.ts";
 
-const PATH = 'member';
+const PATH = "member";
 
 async function refresh(token: string): Promise<ResponseData<string>> {
     const {data} = await api.get(`${PATH}/refresh?token=${token}`, {
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
@@ -31,7 +31,7 @@ const memberApi = {
     refresh,
     getMyProfile,
     editMyProfile,
-    removeMember
+    removeMember,
 };
 
 export default memberApi;

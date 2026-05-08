@@ -1,7 +1,3 @@
-export const myPageIndexSidebarTypeList = [
-    'wedding',
-    'info',
-    'logout'
-] as const;
+export const myPageIndexSidebarTypeList = ["wedding", "info", "logout"] as const;
 
-export type MyPageIndexSidebarType = typeof myPageIndexSidebarTypeList[number];
+export type MyPageIndexSidebarType = (typeof myPageIndexSidebarTypeList)[number];

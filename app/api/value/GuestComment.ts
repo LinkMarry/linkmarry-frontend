@@ -15,14 +15,14 @@ export default interface GuestComment {
 
 export const defaultGuestComment: GuestComment = {
     title: "",
-    content: '저희 둘에게 하고 싶은 말을 남겨주세요',
-    guestCommentDesign: 'BASIC',
+    content: "저희 둘에게 하고 싶은 말을 남겨주세요",
+    guestCommentDesign: "BASIC",
     privateContent: true,
-}
+};
 
 export const dummyGuestComment: GuestComment = {
     title: "방명록",
     content: "저희 둘에게 하고 싶은 말을 남겨주세요",
-    guestCommentDesign: 'BASIC',
-    privateContent: false
+    guestCommentDesign: "BASIC",
+    privateContent: false,
 };

@@ -8,35 +8,35 @@ const routes = [
         route("wedding/:url", "routes/wedding.tsx"),
         route("sample", "routes/sample.tsx"),
         route("link", "routes/link.tsx"),
-        ...prefix("notification", [
-            index("routes/notification.tsx"),
-            route(":id", "routes/notification-detail.tsx")
-        ]),
+        ...prefix("notification", [index("routes/notification.tsx"), route(":id", "routes/notification-detail.tsx")]),
         route("privacy-policy/:date?", "routes/privacy-policy.tsx"),
         route("terms/:date?", "routes/terms.tsx"),
         layout("routes/private-route.tsx", [
-            layout("routes/mypage/layout.tsx", prefix("mypage", [
-                layout("routes/mypage/index/layout.tsx", [
-                    route("wedding", "routes/mypage/index/wedding/index.tsx"),
-                    route("info", "routes/mypage/index/info/index.tsx"),
+            layout(
+                "routes/mypage/layout.tsx",
+                prefix("mypage", [
+                    layout("routes/mypage/index/layout.tsx", [
+                        route("wedding", "routes/mypage/index/wedding/index.tsx"),
+                        route("info", "routes/mypage/index/info/index.tsx"),
+                    ]),
+                    layout("routes/mypage/detail/layout.tsx", [
+                        route("wedding/:url", "routes/mypage/detail/stat/index.tsx"),
+                    ]),
                 ]),
-                layout("routes/mypage/detail/layout.tsx", [
-                    route("wedding/:url", "routes/mypage/detail/stat/index.tsx")
-                ])
-            ])),
+            ),
             ...prefix("editor", [
                 route("invitation/:url?", "routes/editor/wedding-invitation/index.tsx"),
                 route("poster", "routes/editor/wedding-poster/index.tsx"),
             ]),
         ]),
-    ])
+    ]),
 ] satisfies RouteConfig;
 
 if (import.meta.env.DEV) {
     routes.push(
         ...prefix("development", [
             route("foundation", "routes/foundation-demo.tsx"),
-            route("component", "routes/component-demo.tsx")
+            route("component", "routes/component-demo.tsx"),
         ]),
     );
 }

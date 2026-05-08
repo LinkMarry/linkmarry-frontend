@@ -41,7 +41,7 @@ export const defaultRsvp: Rsvp = {
     attendEtcStatus: false,
     startPopupStatus: false,
     rsvpActivate: true,
-}
+};
 
 export const dummyRsvp: Rsvp = {
     rsvpTitle: "RSVP",
@@ -53,6 +53,5 @@ export const dummyRsvp: Rsvp = {
     attendBusStatus: true,
     attendEtcStatus: true,
     startPopupStatus: true,
-    rsvpActivate: true
+    rsvpActivate: true,
 };
-

@@ -1,40 +1,30 @@
-import {
-    type ChangeEvent,
-    type ComponentPropsWithRef,
-    type ForwardedRef,
-    forwardRef
-} from 'react';
+import {type ChangeEvent, type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
 import View from "~/components/core/View.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
-interface Props extends ComponentPropsWithRef<'div'> {
+interface Props extends ComponentPropsWithRef<"div"> {
     checked: boolean;
     OnChange: (checked: boolean) => void;
     ui?: LinariaClassName;
 }
 
-
-function Toggle(
-    {
-        checked = false,
-        OnChange,
-        ui,
-        ...props
-    }: Props,
-    ref?: ForwardedRef<HTMLInputElement>
-) {
+function Toggle({checked = false, OnChange, ui, ...props}: Props, ref?: ForwardedRef<HTMLInputElement>) {
     return (
-        <View flexDirection={"row"} ui={cx(
-            css`
-                position: relative;
-                width: fit-content;
-            `,
-            ui
-        )} {...props}>
+        <View
+            flexDirection={"row"}
+            ui={cx(
+                css`
+                    position: relative;
+                    width: fit-content;
+                `,
+                ui,
+            )}
+            {...props}
+        >
             <View
-                as={'input'}
+                as={"input"}
                 ref={ref}
-                type={'checkbox'}
+                type={"checkbox"}
                 checked={checked}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => {
                     OnChange(event.target.checked);
@@ -49,31 +39,38 @@ function Toggle(
                         outline: none;
                         transition: 0.2s background ease-out;
                     `,
-                    checked ? css`
-                        background: var(--g-900);
-                    ` : css`
-                        background: var(--g-200);
-                    `
+                    checked
+                        ? css`
+                              background: var(--g-900);
+                          `
+                        : css`
+                              background: var(--g-200);
+                          `,
                 )}
             />
-            <View as={'span'} ui={cx(
-                css`
-                    position: absolute;
-                    width: 26px;
-                    height: 26px;
-                    background-color: white;
-                    border-radius: 100px;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-                    top: 3px;
-                    transition: 0.2s left ease-out;
-                    pointer-events: none;
-                `,
-                checked ? css`
-                    left: 30px;
-                ` : css`
-                    left: 3px;
-                `
-            )}/>
+            <View
+                as={"span"}
+                ui={cx(
+                    css`
+                        position: absolute;
+                        width: 26px;
+                        height: 26px;
+                        background-color: white;
+                        border-radius: 100px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+                        top: 3px;
+                        transition: 0.2s left ease-out;
+                        pointer-events: none;
+                    `,
+                    checked
+                        ? css`
+                              left: 30px;
+                          `
+                        : css`
+                              left: 3px;
+                          `,
+                )}
+            />
         </View>
     );
 }

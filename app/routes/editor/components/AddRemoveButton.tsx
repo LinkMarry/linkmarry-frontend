@@ -1,29 +1,26 @@
-import React, {type ComponentProps, type ForwardedRef, forwardRef} from 'react';
+import React, {type ComponentProps, type ForwardedRef, forwardRef} from "react";
 import Icon from "~/components/core/icon";
 import {css} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 
-interface Props extends ComponentProps<'div'> {
+interface Props extends ComponentProps<"div"> {
     dismiss: () => void;
     children?: React.ReactNode;
 }
 
-function AddRemoveButton(
-    {
-        dismiss,
-        children,
-        ...props
-    }: Props,
-    ref?: ForwardedRef<HTMLDivElement>
-) {
+function AddRemoveButton({dismiss, children, ...props}: Props, ref?: ForwardedRef<HTMLDivElement>) {
     return (
-        <View ref={ref} ui={css`
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        `} {...props}>
+        <View
+            ref={ref}
+            ui={css`
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            `}
+            {...props}
+        >
             <Icon
-                iconType={'CrossLine'}
+                iconType={"CrossLine"}
                 size={20}
                 ui={css`
                     fill: white;

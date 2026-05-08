@@ -2,20 +2,20 @@ import api from "~/api/index.ts";
 import type Jwt from "~/api/value/Jwt.ts";
 import {type ResponseData} from "~/api/value/Response.ts";
 
-const PATH = 'kakao';
+const PATH = "kakao";
 
 async function authorize(code: string): Promise<ResponseData<Jwt>> {
     const {data} = await api.get(PATH, {
         params: {
-            code
+            code,
         },
-        shouldAuthorizeRequest: false
+        shouldAuthorizeRequest: false,
     });
     return data;
 }
 
 const kakaoApi = {
-    authorize
+    authorize,
 };
 
 export default kakaoApi;

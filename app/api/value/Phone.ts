@@ -28,7 +28,7 @@ export const defaultPhone: Phone = {
     brideTel: "",
     brideFatherTel: "",
     brideMotherTel: "",
-    parentTel: false
+    parentTel: false,
 };
 
 export const dummyPhone: Phone = {
@@ -38,5 +38,5 @@ export const dummyPhone: Phone = {
     brideTel: "010-1234-5678",
     brideFatherTel: "010-1234-5678",
     brideMotherTel: "010-1234-5678",
-    parentTel: true
+    parentTel: true,
 };

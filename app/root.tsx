@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
-import { Outlet, ScrollRestoration, Scripts, Meta, Links } from "react-router";
-import { CookiesProvider } from "react-cookie";
+import React, {useEffect} from "react";
+import {Outlet, ScrollRestoration, Scripts, Meta, Links} from "react-router";
+import {CookiesProvider} from "react-cookie";
 import config from "~/config.ts";
-import './app.css'
-import { HelmetProvider } from "react-helmet-async";
+import "./app.css";
+import {HelmetProvider} from "react-helmet-async";
 import HelmetMetaTags from "~/components/HelmetMetaTags.tsx";
 
-export function Layout(
-    {
-        children,
-    }: {
-        children?: React.ReactNode,
-    }
-) {
+export function Layout({children}: {children?: React.ReactNode}) {
     return (
         <html lang="ko">
             <head>
@@ -22,19 +16,23 @@ export function Layout(
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="apple-touch-icon" href="/logo192.png" />
 
-                <link rel="preload"
+                <link
+                    rel="preload"
                     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-                    as="style" />
-                <link rel="preload"
+                    as="style"
+                />
+                <link
+                    rel="preload"
                     href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
-                    as="style" />
+                    as="style"
+                />
 
                 <link
                     rel="stylesheet"
                     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
                     media="print"
                     onLoad={event => {
-                        event.currentTarget.media = 'all';
+                        event.currentTarget.media = "all";
                     }}
                 />
 
@@ -43,7 +41,7 @@ export function Layout(
                     href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap"
                     media="print"
                     onLoad={event => {
-                        event.currentTarget.media = 'all';
+                        event.currentTarget.media = "all";
                     }}
                 />
 
@@ -52,32 +50,35 @@ export function Layout(
                     href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css"
                     media="print"
                     onLoad={event => {
-                        event.currentTarget.media = 'all';
+                        event.currentTarget.media = "all";
                     }}
                 />
 
                 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841271697"></script>
-                <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"
-                    integrity="sha384-dok87au0gKqJdxs7msEdBPNnKSRT+/mhTVzq+qOhcL464zXwvcrpjeWvyj1kCdq6"
-                    crossOrigin="anonymous"></script>
                 <script
-                    src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.kakao.javascriptKey}&libraries=services,clusterer,drawing`}></script>
+                    src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"
+                    integrity="sha384-dok87au0gKqJdxs7msEdBPNnKSRT+/mhTVzq+qOhcL464zXwvcrpjeWvyj1kCdq6"
+                    crossOrigin="anonymous"
+                ></script>
+                <script
+                    src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${config.kakao.javascriptKey}&libraries=services,clusterer,drawing`}
+                ></script>
 
-
-                {config.prd && (
-                    <script src={'/google-script.js'} />
-                )}
+                {config.prd && <script src={"/google-script.js"} />}
                 <Meta />
                 <Links />
             </head>
             <body>
                 <noscript>
-                    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5THQMPTZ" height="0" width="0"
+                    <iframe
+                        src="https://www.googletagmanager.com/ns.html?id=GTM-5THQMPTZ"
+                        height="0"
+                        width="0"
                         style={{
-                            display: 'none',
-                            visibility: 'hidden'
-                        }}>
-                    </iframe>
+                            display: "none",
+                            visibility: "hidden",
+                        }}
+                    ></iframe>
                 </noscript>
 
                 {children}
@@ -90,16 +91,15 @@ export function Layout(
 }
 
 export default function App() {
-
     useEffect(() => {
-        const { Kakao } = window as any;
+        const {Kakao} = window as any;
         if (Kakao && !Kakao.isInitialized()) {
             Kakao.init(config.kakao.javascriptKey);
         }
     }, []);
 
     return (
-        <CookiesProvider defaultSetOptions={{ path: '/' }}>
+        <CookiesProvider defaultSetOptions={{path: "/"}}>
             <HelmetProvider>
                 <HelmetMetaTags />
                 <Outlet />

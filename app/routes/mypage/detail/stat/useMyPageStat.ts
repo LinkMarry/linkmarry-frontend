@@ -14,7 +14,7 @@ const useMyPageStat = () => {
 
     useEffect(() => {
         if (!url) {
-            navigate('/');
+            navigate("/");
             return;
         }
 
@@ -41,8 +41,8 @@ const useMyPageStat = () => {
     return {
         statistics,
         wedding,
-        rsvpInfoList
-    }
-}
+        rsvpInfoList,
+    };
+};
 
 export default useMyPageStat;

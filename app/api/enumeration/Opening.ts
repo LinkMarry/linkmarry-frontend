@@ -1,19 +1,22 @@
 const OpeningValues = {
-    NONE: 'NONE',
-    TYPING: 'TYPING',
+    NONE: "NONE",
+    TYPING: "TYPING",
 } as const;
 
-export type Opening = typeof OpeningValues[keyof typeof OpeningValues];
+export type Opening = (typeof OpeningValues)[keyof typeof OpeningValues];
 
-export const openingMap: Record<Opening, {
-    korean: string;
-}> = {
+export const openingMap: Record<
+    Opening,
+    {
+        korean: string;
+    }
+> = {
     [OpeningValues.NONE]: {
-        korean: '선택안함'
+        korean: "선택안함",
     },
     [OpeningValues.TYPING]: {
-        korean: '타이핑'
-    }
+        korean: "타이핑",
+    },
 };
 
 export function fromKorean(korean: string): Opening | null {
