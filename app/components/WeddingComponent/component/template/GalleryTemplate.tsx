@@ -1,6 +1,5 @@
 import {type RefObject, useCallback, useEffect, useRef, useState} from "react";
 import Text from "~/components/core/Text.tsx";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import type Gallery from "~/api/value/Gallery.ts";
@@ -10,6 +9,7 @@ import GalleryTemplateFullView from "~/components/WeddingComponent/component/tem
 import type {GalleryDesign} from "~/api/enumeration/GalleryDesign.ts";
 import {css, cx} from "@linaria/core";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface GalleryTemplateProps {
     rootRef: RefObject<HTMLDivElement | null>;

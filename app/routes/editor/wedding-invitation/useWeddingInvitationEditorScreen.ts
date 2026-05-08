@@ -1,16 +1,14 @@
 import {useCallback, useEffect, useEffectEvent, useState} from "react";
 import {useImmer} from "use-immer";
 import {makeDefaultWedding, type WeddingDto} from "~/api/value/WeddingDto.ts";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 import {useNavigate, useParams, useSearchParams} from "react-router";
 import lodash from "lodash";
 import type Music from "~/api/value/Music.ts";
-import musicApi from "~/api/music-api.ts";
 import {isAxiosError} from "axios";
 import type Wedding from "~/api/value/Wedding.ts";
 import {type WeddingInvitationEditorNavigationBarType} from "~/routes/editor/domain.ts";
 import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
-import weddingDesignApi from "~/api/wedding-design-api.ts";
 
 const {throttle} = lodash;
 
@@ -36,20 +34,19 @@ export function useWeddingInvitationEditorScreen() {
     const [weddingDesigns, setWeddingDesigns] = useState<WeddingDesignPreset[]>();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
-    // eslint-disable-next-line
-    const throttledEditWedding = useCallback(
-        throttle(async (updatedWedding: WeddingDto) => {
-            if (updatedWedding.url === "" || updatedWedding.name === "") return;
+    const t = throttle(async (updatedWedding: WeddingDto) => {
+        if (updatedWedding.url === "" || updatedWedding.name === "") return;
 
-            setIsSaving(false);
-            try {
-                await weddingApi.editWedding(updatedWedding);
-            } catch (error) {
-                console.error(error);
-            }
-        }, 3000),
-        [],
-    );
+        setIsSaving(false);
+        try {
+            await api.wedding.editWedding(updatedWedding);
+        } catch (error) {
+            console.error(error);
+        }
+    }, 3000);
+
+    // eslint-disable-next-line
+    const throttledEditWedding = useCallback(t, []);
 
     useEffect(() => {
         if (wedding) {
@@ -62,7 +59,7 @@ export function useWeddingInvitationEditorScreen() {
         if (!url) return;
 
         try {
-            const {data} = await weddingApi.getWedding(url);
+            const {data} = await api.wedding.getWedding(url);
             updateWedding(data);
         } catch (error) {
             if (isAxiosError(error) && error.status === 404) {
@@ -73,12 +70,12 @@ export function useWeddingInvitationEditorScreen() {
     });
 
     const fetchMusics = useEffectEvent(async () => {
-        const {data} = await musicApi.getMusics();
+        const {data} = await api.music.getMusics();
         setMusics(data);
     });
 
     const fetchWeddingDesigns = useEffectEvent(async () => {
-        const {data} = await weddingDesignApi.getWeddingDesignPresets();
+        const {data} = await api.weddingDesign.getWeddingDesignPresets();
         setWeddingDesigns(data);
     });
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
-import notificationApi from "~/api/notification-api.ts";
+import {api} from "~/api/index.ts";
 import {compareDesc} from "date-fns";
 import type {Route} from "./+types/privacy-policy";
 import MainWrapper from "~/components/MainWrapper";
@@ -12,7 +12,7 @@ import Spacer from "~/components/core/Spacer.tsx";
 import Divider from "~/components/core/Divider.tsx";
 
 export async function loader() {
-    const {data} = await notificationApi.getTermsNotifications();
+    const {data} = await api.notification.getTermsNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date)),
     };

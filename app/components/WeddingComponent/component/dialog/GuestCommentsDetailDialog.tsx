@@ -9,7 +9,8 @@ import Icon from "~/components/core/icon";
 import type GuestComment from "~/api/value/GuestComment.ts";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
+
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface GuestCommentsDetailDialogProps {
     show: boolean;

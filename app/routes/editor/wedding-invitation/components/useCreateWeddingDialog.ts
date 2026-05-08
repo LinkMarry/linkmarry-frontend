@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useNavigate, useParams} from "react-router";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 import type Wedding from "~/api/value/Wedding.ts";
 import type Binding from "~/lib/Binding.ts";
 
@@ -17,7 +17,7 @@ export function useCreateWeddingDialog({value, update}: Binding<Wedding>) {
         setIsError(false);
 
         try {
-            await weddingApi.checkUrlConflict(value.url);
+            await api.wedding.checkUrlConflict(value.url);
         } catch (error) {
             console.error(error);
             setIsError(true);
@@ -27,7 +27,7 @@ export function useCreateWeddingDialog({value, update}: Binding<Wedding>) {
         }
 
         try {
-            await weddingApi.createWedding(value);
+            await api.wedding.createWedding(value);
             setShowCreateWeddingDialog(false);
             navigate(`/editor/${value.url}`);
         } finally {

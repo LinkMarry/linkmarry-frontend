@@ -7,7 +7,8 @@ import View from "~/components/core/View.tsx";
 import useUpload from "~/hook/useUpload.ts";
 import Spacer from "~/components/core/Spacer.tsx";
 import type Upload from "~/api/value/Upload.ts";
-import {interactionEffectStyles} from "~/components/css.util.ts";
+
+import {interactionEffectStyles} from "~/style/common.ts";
 
 interface Props {
     id: string;

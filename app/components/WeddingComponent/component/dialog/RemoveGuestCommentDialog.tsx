@@ -3,12 +3,12 @@ import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import Button from "~/components/core/Button.tsx";
-import weddingApi from "~/api/wedding-api.ts";
 import type Comment from "~/api/value/Comment.ts";
 import {isAxiosError} from "axios";
 import Input from "~/components/core/Input.tsx";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
+import {api} from "~/api/index.ts";
 
 interface RemoveGuestCommentDialogProps {
     show: boolean;
@@ -36,7 +36,7 @@ function RemoveGuestCommentDialog({
         }
 
         try {
-            await weddingApi.removeComment({
+            await api.wedding.removeComment({
                 url,
                 id: selectedGuestComment.id,
                 password: passwordRef.current.value,

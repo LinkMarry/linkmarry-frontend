@@ -1,8 +1,8 @@
 import React, {type ReactNode} from "react";
 import {css, cx} from "@linaria/core";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import View from "~/components/core/View.tsx";
 import {responsive} from "~/components/responsive.tsx";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface EditorShellProps {
     header: ReactNode;

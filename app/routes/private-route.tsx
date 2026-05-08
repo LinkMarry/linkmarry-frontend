@@ -1,11 +1,11 @@
 import {useAuth} from "~/hook/useAuth.tsx";
 import {Navigate, Outlet} from "react-router";
-import ClientRendering from "~/ClientRendering.tsx";
+import ClientOnly from "~/components/ClientRendering";
 
 const PrivateRoute = () => {
     const {authorized} = useAuth();
 
-    return <ClientRendering>{authorized ? <Outlet /> : <Navigate to={"/sign-in"} replace={true} />}</ClientRendering>;
+    return <ClientOnly>{authorized ? <Outlet /> : <Navigate to={"/sign-in"} replace={true} />}</ClientOnly>;
 };
 
 export default PrivateRoute;

@@ -5,9 +5,9 @@ import {css, cx} from "@linaria/core";
 import VoidInput from "~/components/core/VoidInput.ts";
 import View from "~/components/core/View.tsx";
 import AddRemoveButton from "~/routes/editor/components/AddRemoveButton.tsx";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import useUpload from "~/hook/useUpload.ts";
 import LoadingOverlay from "~/components/core/LoadingOverlay.tsx";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface Props<V = string | string[]> {
     id: string;

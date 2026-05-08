@@ -12,7 +12,7 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import GalleryTemplate from "~/components/WeddingComponent/component/template/GalleryTemplate.tsx";
 import VideoTemplate from "~/components/WeddingComponent/component/template/VideoTemplate.tsx";
 import InvitationLetterTemplate from "~/components/WeddingComponent/component/template/InvitationLetterTemplate.tsx";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 import type Comment from "~/api/value/Comment.ts";
 import CreateRsvpDialog from "~/components/WeddingComponent/component/dialog/CreateRsvpDialog.tsx";
 import {Helmet} from "react-helmet-async";
@@ -243,7 +243,7 @@ const ContentBody = ({
             onRefresh();
         } else {
             try {
-                const {data} = await weddingApi.getComments(wedding.url);
+                const {data} = await api.wedding.getComments(wedding.url);
                 setLocalComments(data);
             } catch (error) {
                 console.error("Failed to refresh comments:", error);

@@ -3,12 +3,12 @@ import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import Button from "~/components/core/Button.tsx";
-import weddingApi from "~/api/wedding-api.ts";
 import Input from "~/components/core/Input.tsx";
 import Textarea from "~/components/core/Textarea.tsx";
 import Icon from "~/components/core/icon";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
+import {api} from "~/api/index.ts";
 
 interface CreateGuestCommentDialogProps {
     show: boolean;
@@ -39,7 +39,7 @@ function CreateGuestCommentDialog({show, url, dismiss, onRefresh}: CreateGuestCo
         }
 
         try {
-            await weddingApi.createComment({
+            await api.wedding.createComment({
                 comment: commentRef.current.value,
                 name: nameRef.current.value,
                 password: passwordRef.current.value,

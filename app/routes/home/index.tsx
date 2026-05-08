@@ -7,12 +7,12 @@ import Button from "~/components/core/Button.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Icon from "~/components/core/icon";
 import {type ComponentPropsWithoutRef, useState} from "react";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import {Snowfall} from "react-snowfall";
-import ClientRendering from "~/ClientRendering.tsx";
+import ClientOnly from "~/components/ClientRendering.tsx";
 import useResponsive from "~/hook/useResponsive.ts";
 
 import {useHomeScreen} from "./useHomeScreen.ts";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 function Home() {
     const {handleViewSample, handleCreateWedding, handleNavigateNaverStore} = useHomeScreen();
@@ -46,9 +46,9 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
                 padding: 100px 0;
             `}
         >
-            <ClientRendering>
+            <ClientOnly>
                 <SnowfallEffect />
-            </ClientRendering>
+            </ClientOnly>
             <View
                 ui={css`
                     max-width: 1100px;

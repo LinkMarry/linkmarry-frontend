@@ -1,11 +1,11 @@
 import React, {type ComponentPropsWithoutRef, type ReactNode} from "react";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util.ts";
 import Icon, {type IconType} from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
 import {desktopStyle, notDesktopStyle} from "~/components/responsive.tsx";
 import useResponsive from "~/hook/useResponsive.ts";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
 export interface EditorNavigationItem<Id> {
     id: Id;

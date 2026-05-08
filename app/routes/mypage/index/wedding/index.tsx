@@ -5,10 +5,9 @@ import View from "~/components/core/View.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Button from "~/components/core/Button.tsx";
 import Icon, {type IconType} from "~/components/core/icon";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util.ts";
 import Spacer from "~/components/core/Spacer.tsx";
 import Popover from "~/components/core/Popover.tsx";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 import Loading from "~/components/core/Loading.tsx";
 import type WeddingInfo from "~/api/value/WeddingInfo.ts";
 import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
@@ -20,6 +19,7 @@ import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
 import {getWeddingUrl} from "~/lib/string-util.ts";
 import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts";
 import {desktopStyle, notDesktopStyle, responsive} from "~/components/responsive.tsx";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
 function MyPageWedding() {
     const {showRemoveWeddingDialog, setShowRemoveWeddingDialog, weddings, removeWedding, setSelectedWedding} =
@@ -115,7 +115,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
     useEffect(() => {
         (async () => {
             try {
-                const {data} = await weddingApi.getStatistics(weddingInfo.url);
+                const {data} = await api.wedding.getStatistics(weddingInfo.url);
                 setStatistics(data);
             } catch (error) {
                 console.error(error);
@@ -124,7 +124,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
 
         const fetchComments = async () => {
             try {
-                const {data} = await weddingApi.getComments(weddingInfo.url);
+                const {data} = await api.wedding.getComments(weddingInfo.url);
                 setComments(data);
             } catch (error) {
                 console.error(error);
@@ -137,12 +137,12 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
     const handleRemoveComment = async (comment: Comment) => {
         if (window.confirm("정말 삭제하시겠습니까?")) {
             try {
-                await weddingApi.removeComment({
+                await api.wedding.removeComment({
                     url: weddingInfo.url,
                     id: comment.id,
                     password: undefined,
                 });
-                const {data} = await weddingApi.getComments(weddingInfo.url);
+                const {data} = await api.wedding.getComments(weddingInfo.url);
                 setComments(data);
             } catch (error) {
                 console.error("방명록 삭제 실패", error);

@@ -10,9 +10,9 @@ import View from "~/components/core/View.tsx";
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {notMobileStyle} from "~/components/responsive.tsx";
-import {interactionEffectStyles} from "~/components/css.util.ts";
-import ClientRendering from "~/ClientRendering.tsx";
+import ClientOnly from "~/components/ClientRendering.tsx";
 import {LogoInHeader} from "./Header.tsx";
+import {interactionEffectStyles} from "~/style/common.ts";
 
 export default function DesktopHeader() {
     const {authorized} = useAuth();
@@ -86,7 +86,7 @@ export default function DesktopHeader() {
                     </View>
                 </View>
                 <Spacer />
-                <ClientRendering>
+                <ClientOnly>
                     {authorized ? (
                         <View
                             ui={css`
@@ -137,7 +137,7 @@ export default function DesktopHeader() {
                             }}
                         />
                     )}
-                </ClientRendering>
+                </ClientOnly>
             </View>
         </View>
     );

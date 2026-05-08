@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import fadeInAnimationStyle from "~/components/core/animation/fadeInAnimationStyle.ts";
+import fadeInAnimationStyle from "~/style/animation";
 import View from "~/components/core/View.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 

@@ -10,8 +10,8 @@ import View from "~/components/core/View.tsx";
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {mobileStyle} from "~/components/responsive.tsx";
-import {interactionEffectStyles} from "~/components/css.util.ts";
 import {LogoInHeader} from "./Header.tsx";
+import {interactionEffectStyles} from "~/style/common.ts";
 
 export default function MobileHeader() {
     const {authorized, signOut} = useAuth();

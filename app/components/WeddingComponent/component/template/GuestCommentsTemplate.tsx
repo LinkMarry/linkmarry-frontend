@@ -12,12 +12,12 @@ import type GuestComment from "~/api/value/GuestComment.ts";
 import RemoveGuestCommentDialog from "~/components/WeddingComponent/component/dialog/RemoveGuestCommentDialog.tsx";
 import GuestCommentsDetailDialog from "~/components/WeddingComponent/component/dialog/GuestCommentsDetailDialog.tsx";
 import CreateGuestCommentDialog from "~/components/WeddingComponent/component/dialog/CreateGuestCommentDialog.tsx";
-import weddingApi from "~/api/wedding-api.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
 import {backgroundStyle, type WeddingDesignColor} from "~/api/value/WeddingDesign.ts";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
+import {api} from "~/api/index.ts";
 
 interface GuestCommentsTemplateProps {
     weddingDesignColor: string;
@@ -49,7 +49,7 @@ function GuestCommentsTemplate({
             // 에디터(preview) 또는 샘플 모드일 때
             if (window.confirm("방명록을 삭제하시겠습니까?")) {
                 try {
-                    await weddingApi.removeComment({
+                    await api.wedding.removeComment({
                         url: url,
                         id: comment.id,
                         password: undefined,

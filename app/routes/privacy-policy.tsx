@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from "react";
 import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
-import notificationApi from "~/api/notification-api.ts";
 import {compareDesc} from "date-fns";
 import type {Route} from "./+types/privacy-policy";
 import MainWrapper from "~/components/MainWrapper";
@@ -10,9 +9,10 @@ import {css} from "@linaria/core";
 import Divider from "~/components/core/Divider.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import {Navigate, useNavigate} from "react-router";
+import {api} from "~/api/index.ts";
 
 export async function loader() {
-    const {data} = await notificationApi.getPrivacyPolicyNotifications();
+    const {data} = await api.notification.getPrivacyPolicyNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date)),
     };

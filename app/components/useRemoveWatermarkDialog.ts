@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {useNavigate} from "react-router";
-import naverApi from "~/api/naver-api.ts";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 import {isAxiosError} from "axios";
 import {formatPhone} from "~/lib/format-util.ts";
 
@@ -15,14 +14,14 @@ export function useRemoveWatermarkDialog({url}: UseRemoveWatermarkDialogProps) {
 
     const removeWatermark = async () => {
         try {
-            await naverApi.order(phone);
+            await api.naver.order(phone);
         } catch (error) {
             console.log(error);
             return;
         }
 
         try {
-            await weddingApi.removeWatermark(url);
+            await api.wedding.removeWatermark(url);
             alert("워터마크 제거 완료!");
             navigate(0);
         } catch (error) {

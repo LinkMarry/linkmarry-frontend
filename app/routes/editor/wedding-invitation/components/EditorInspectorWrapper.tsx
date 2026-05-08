@@ -8,8 +8,8 @@ import {weddingInvitationEditorNavigationBarTypeRecord} from "~/routes/editor/do
 import {type WeddingInvitationEditorNavigationBarType} from "~/routes/editor/domain.ts";
 import Divider from "~/components/core/Divider.tsx";
 import Icon from "~/components/core/icon";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import View from "~/components/core/View.tsx";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface Props {
     type: WeddingInvitationEditorNavigationBarType;

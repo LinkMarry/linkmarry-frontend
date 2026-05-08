@@ -1,19 +1,19 @@
 import React, {type ComponentPropsWithoutRef} from "react";
-import type {Route} from "./+types/notification";
 import MainWrapper from "~/components/MainWrapper";
 import {css, cx} from "@linaria/core";
 import {responsive} from "~/components/responsive.tsx";
+import type {Route} from "./+types/notification";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import notificationApi from "~/api/notification-api.ts";
 import type Notification from "~/api/value/Notification.ts";
 import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/api/enumeration/Tag.ts";
 import {compareDesc, format} from "date-fns";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import {useNotificationScreen} from "./useNotificationScreen.ts";
+import {hideScrollBarStyle} from "~/style/common.ts";
+import {api} from "~/api/index.ts";
 
 export async function loader() {
-    const {data} = await notificationApi.getNotifications();
+    const {data} = await api.notification.getNotifications();
     return {
         notifications: data.sort((a, b) => compareDesc(a.date, b.date)),
     };

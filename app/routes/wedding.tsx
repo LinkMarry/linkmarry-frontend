@@ -5,7 +5,7 @@ import View from "~/components/core/View.tsx";
 import {responsive} from "~/components/responsive.tsx";
 import useWedding from "~/hook/useWedding.ts";
 import {Navigate, useParams, useSearchParams} from "react-router";
-import ClientRendering from "~/ClientRendering.tsx";
+import ClientOnly from "~/components/ClientRendering";
 import usePreventZoom from "~/hook/usePreventZoom.ts";
 
 function Wedding() {
@@ -28,7 +28,7 @@ function Wedding() {
     }
 
     return (
-        <ClientRendering>
+        <ClientOnly>
             <View
                 flexDirection={"row"}
                 ui={css`
@@ -69,7 +69,7 @@ function Wedding() {
                     </Text>
                 )}
             </View>
-        </ClientRendering>
+        </ClientOnly>
     );
 }
 

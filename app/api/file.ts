@@ -1,6 +1,6 @@
 import {type ResponseData} from "~/api/value/Response.ts";
 import type Upload from "~/api/value/Upload.ts";
-import api from "~/api/index.ts";
+import {httpClient} from "~/api/index.ts";
 import type Music from "~/api/value/Music.ts";
 import type {FileType} from "~/api/enumeration/FileType.ts";
 
@@ -17,10 +17,10 @@ function validateImageSize(file: File, maxSizeMB: number = 20) {
     alert("이미지가 너무 큽니다. 20MB 이하의 이미지를 업로드 해주세요.");
 }
 
-async function upload(file: File, url: string, type: FileType): Promise<ResponseData<Upload>> {
+export async function upload(file: File, url: string, type: FileType): Promise<ResponseData<Upload>> {
     validateImageSize(file, 20);
 
-    const {data} = await api.postForm(`${PATH}/upload`, {
+    const {data} = await httpClient.postForm(`${PATH}/upload`, {
         file,
         url,
         type,
@@ -28,14 +28,7 @@ async function upload(file: File, url: string, type: FileType): Promise<Response
     return data;
 }
 
-async function getMusics(): Promise<ResponseData<Music[]>> {
-    const {data} = await api.get(`${PATH}/music`);
+export async function getMusics(): Promise<ResponseData<Music[]>> {
+    const {data} = await httpClient.get(`${PATH}/music`);
     return data;
 }
-
-const fileApi = {
-    upload,
-    getMusics,
-};
-
-export default fileApi;

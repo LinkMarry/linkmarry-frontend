@@ -1,6 +1,7 @@
 import {css, cx} from "@linaria/core";
-import popupAnimationStyle from "~/components/core/animation/popupAnimationStyle.ts";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
+import popupAnimationStyle from "~/style/animation";
+
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 export const baseDialogContentStyle = cx(
     css`

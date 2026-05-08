@@ -2,7 +2,7 @@ import {useParams} from "react-router";
 import {useCallback, useEffect, useState} from "react";
 import type Wedding from "~/api/value/Wedding.ts";
 import {useCookies} from "react-cookie";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 
 const useWedding = () => {
     const {url} = useParams();
@@ -25,7 +25,7 @@ const useWedding = () => {
         }
 
         try {
-            const {data} = await weddingApi.getWeddingInvitation(url, {
+            const {data} = await api.wedding.getWeddingInvitation(url, {
                 firstVisitor: isFirstVisitor,
             });
             setWedding(data);

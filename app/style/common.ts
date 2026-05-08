@@ -10,6 +10,7 @@ export const hideScrollBarStyle = css`
 `;
 
 type InteractionEffect = "normal" | "strong";
+
 export const interactionEffectStyles: Record<InteractionEffect, LinariaClassName> = {
     normal: css`
         &:hover {

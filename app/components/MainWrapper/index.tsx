@@ -3,7 +3,8 @@ import Header from "~/components/MainWrapper/Header.tsx";
 import Footer from "~/components/MainWrapper/Footer.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import View from "~/components/core/View.tsx";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
+
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface Props {
     hasHeader?: boolean;

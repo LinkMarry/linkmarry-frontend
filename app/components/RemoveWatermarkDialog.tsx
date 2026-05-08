@@ -8,8 +8,8 @@ import Input from "~/components/core/Input.tsx";
 import Button from "~/components/core/Button.tsx";
 import View from "~/components/core/View.tsx";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import {interactionEffectStyles} from "~/components/css.util.ts";
 import {useRemoveWatermarkDialog} from "./useRemoveWatermarkDialog.ts";
+import {interactionEffectStyles} from "~/style/common.ts";
 
 interface Props {
     show: boolean;

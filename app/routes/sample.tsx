@@ -7,12 +7,12 @@ import Text from "~/components/core/Text.tsx";
 import SelectDesignSheet from "~/components/WeddingComponent/component/SelectDesignSheet.tsx";
 import {useSearchParams} from "react-router";
 import {responsive} from "~/components/responsive.tsx";
-import ClientRendering from "~/ClientRendering.tsx";
-import weddingDesignApi from "~/api/wedding-design-api.ts";
+import ClientOnly from "~/components/ClientRendering";
 import type {Route} from "./+types/sample";
+import {api} from "~/api/index.ts";
 
 export async function loader() {
-    const {data} = await weddingDesignApi.getWeddingDesignPresets();
+    const {data} = await api.weddingDesign.getWeddingDesignPresets();
     return data;
 }
 
@@ -44,7 +44,7 @@ const Sample = ({loaderData}: Route.ComponentProps) => {
     }, [searchParams]);
 
     return (
-        <ClientRendering>
+        <ClientOnly>
             <View
                 flexDirection={"row"}
                 ui={css`
@@ -119,7 +119,7 @@ const Sample = ({loaderData}: Route.ComponentProps) => {
                     `}
                 />
             </View>
-        </ClientRendering>
+        </ClientOnly>
     );
 };
 

@@ -2,11 +2,11 @@ import {type PropsWithChildren, useState} from "react";
 import Spacer from "~/components/core/Spacer.tsx";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util.ts";
 import {useAutoFocus} from "~/hook/useAutoFocus.ts";
 import Toggle from "~/components/core/Toggle.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import View from "~/components/core/View.tsx";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
 interface EditorPreviewProps extends PropsWithChildren {
     ui?: LinariaClassName;

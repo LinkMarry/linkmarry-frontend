@@ -3,8 +3,7 @@ import {useNavigate} from "react-router";
 import type InfoMember from "~/api/value/InfoMember.ts";
 import useJwt from "~/hook/useJwt.ts";
 import config from "~/config.ts";
-import kakaoApi from "~/api/kakao-api.ts";
-import memberApi from "~/api/member-api.ts";
+import {api} from "~/api/index.ts";
 import {AuthContext} from "./useAuth";
 
 export const AuthProvider = ({children}: PropsWithChildren) => {
@@ -24,7 +23,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
     const signIn = useCallback(
         async (code: string) => {
             try {
-                const {data} = await kakaoApi.authorize(code);
+                const {data} = await api.kakao.authorize(code);
                 setToken(data);
             } catch (error) {
                 console.error(error);
@@ -41,7 +40,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
 
     const removeMember = useCallback(async () => {
         try {
-            await memberApi.removeMember();
+            await api.member.removeMember();
             clearToken();
             navigate("/", {replace: true});
         } catch (error) {
@@ -51,7 +50,7 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
 
     const fetchMember = useCallback(async () => {
         try {
-            const {data} = await memberApi.getMyProfile();
+            const {data} = await api.member.getMyProfile();
             setMember(data);
         } catch (error) {
             console.error(error);

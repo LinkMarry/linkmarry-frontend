@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
+import {api} from "~/api/index.ts";
 import type WeddingDashboard from "~/api/value/WeddingDashboard.ts";
 import type WeddingInfo from "~/api/value/WeddingInfo.ts";
-import weddingApi from "~/api/wedding-api.ts";
 
 const useMyPageWedding = () => {
     const [weddings, setWeddings] = useState<WeddingDashboard>();
@@ -17,7 +17,7 @@ const useMyPageWedding = () => {
     const fetchData = useCallback(async () => {
         clearData();
 
-        const {data} = await weddingApi.getMyWedding();
+        const {data} = await api.wedding.getMyWedding();
         setWeddings(data);
     }, [clearData]);
 
@@ -31,7 +31,7 @@ const useMyPageWedding = () => {
         if (!selectedWedding) return;
 
         try {
-            await weddingApi.removeWedding(selectedWedding.url);
+            await api.wedding.removeWedding(selectedWedding.url);
             setShowRemoveWeddingDialog(false);
             await fetchData();
         } catch (error) {

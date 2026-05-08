@@ -1,5 +1,5 @@
 import {useState} from "react";
-import fadeInAnimationStyle from "~/components/core/animation/fadeInAnimationStyle.ts";
+import fadeInAnimationStyle from "~/style/animation";
 import Button from "~/components/core/Button.tsx";
 import Text from "~/components/core/Text.tsx";
 import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";

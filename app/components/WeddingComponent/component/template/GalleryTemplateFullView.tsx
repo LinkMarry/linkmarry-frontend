@@ -1,6 +1,5 @@
 import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef, useState} from "react";
 import type Gallery from "~/api/value/Gallery.ts";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import Icon from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
@@ -9,6 +8,7 @@ import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContent
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import {styled} from "@linaria/react";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface Props {
     show: boolean;

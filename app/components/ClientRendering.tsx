@@ -1,6 +1,6 @@
 import {type PropsWithChildren, useEffect, useState} from "react";
 
-function ClientRendering({children}: PropsWithChildren) {
+function ClientOnly({children}: PropsWithChildren) {
     const [isReady, setIsReady] = useState(false);
     useEffect(() => setIsReady(true), []);
 
@@ -11,4 +11,4 @@ function ClientRendering({children}: PropsWithChildren) {
     return <>{children}</>;
 }
 
-export default ClientRendering;
+export default ClientOnly;

@@ -1,5 +1,4 @@
 import {groupedByCategory} from "~/api/value/GroupedWeddingDesignPresets";
-import weddingDesignApi from "~/api/wedding-design-api.ts";
 import {useState} from "react";
 import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 

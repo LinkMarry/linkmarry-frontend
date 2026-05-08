@@ -1,6 +1,6 @@
 import {useEffect, useEffectEvent, useState} from "react";
 import type {PosterPreset} from "~/api/value/PosterPreset.ts";
-import posterApi from "~/api/poster-api.ts";
+import {api} from "~/api/index.ts";
 import {useImmer} from "use-immer";
 import {makeDefaultPoster, type Poster} from "~/api/value/Poster.ts";
 import type {WeddingPosterEditorNavigationBarType} from "~/routes/editor/domain.ts";
@@ -18,7 +18,7 @@ export function useWeddingPosterEditor() {
     };
 
     const fetchPosterPresets = useEffectEvent(async () => {
-        const {data} = await posterApi.getPosterPresets();
+        const {data} = await api.poster.getPosterPresets();
         setPosterPresets(data);
     });
 

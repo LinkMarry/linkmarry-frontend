@@ -3,9 +3,9 @@ import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import {responsive} from "~/components/responsive.tsx";
 import Text from "~/components/core/Text.tsx";
-import {hideScrollBarStyle} from "~/components/css.util.ts";
 import Markdown from "react-markdown";
 import type Notification from "~/api/value/Notification.ts";
+import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface NotificationDetailCompProps {
     notification: Notification;

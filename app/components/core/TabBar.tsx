@@ -1,8 +1,8 @@
 import {type ComponentPropsWithoutRef} from "react";
-import {hideScrollBarStyle, interactionEffectStyles} from "~/components/css.util";
 import Text from "~/components/core/Text";
 import View from "~/components/core/View.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
+import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
 const TabBar = ({
     items,

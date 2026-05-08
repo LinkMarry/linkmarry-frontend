@@ -1,11 +1,11 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx} from "@linaria/core";
 import Spacer from "~/components/core/Spacer.tsx";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
 import Button from "~/components/core/Button.tsx";
-import weddingApi from "~/api/wedding-api.ts";
+import {api} from "~/api/index.ts";
 import {GuestTypeList, guestTypeMap} from "~/api/enumeration/GuestType.ts";
 import type Rsvp from "~/api/value/Rsvp.ts";
 import Dialog from "~/components/core/dialog/Dialog.tsx";
@@ -36,7 +36,7 @@ function CreateRsvpDialog({show, url, rsvp, dismiss}: CreateRsvpDialogProps) {
     const [guestComment, setGuestComment] = useState("");
 
     const createRsvp = async () => {
-        await weddingApi.createRsvp({
+        await api.wedding.createRsvp({
             url,
             guestType: guestType === 0 ? "BRIDE" : "GROOM",
             isAttend: isAttend === 0,

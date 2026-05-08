@@ -1,7 +1,7 @@
 import {useCookies} from "react-cookie";
 import {useCallback} from "react";
 import type Jwt from "~/api/value/Jwt";
-import api from "~/api";
+import {httpClient} from "~/api/index.ts";
 
 const useJwt = () => {
     const [cookie, setCookie, removeCookie] = useCookies(["accessToken", "refreshToken"]);
@@ -10,7 +10,7 @@ const useJwt = () => {
         (jwt: Jwt) => {
             setCookie("accessToken", jwt.accessToken);
             setCookie("refreshToken", jwt.refreshToken);
-            api.defaults.headers.common.Authorization = jwt.accessToken;
+            httpClient.defaults.headers.common.Authorization = jwt.accessToken;
         },
         [setCookie],
     );
