@@ -1,8 +1,11 @@
-import type CreateWeddingDesignRequest from "~/api/value/request/admin/CreateWeddingDesignRequest.ts";
-import {type ResponseData, type ResponseVoid} from "~/api/value/Response.ts";
+import type {
+    CreateWeddingDesignRequest,
+    ResponseData,
+    ResponseVoid,
+    PatchWeddingDesignRequest,
+    WeddingDesignPreset,
+} from "~/domain";
 import {httpClient} from "~/api/index.ts";
-import type PatchWeddingDesignRequest from "~/api/value/request/admin/PatchWeddingDesignRequest.ts";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
 const PATH = "wedding-design-preset";
 

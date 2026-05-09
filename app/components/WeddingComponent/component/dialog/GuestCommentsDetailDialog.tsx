@@ -1,12 +1,11 @@
 import {css, cx} from "@linaria/core";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import type Comment from "~/api/value/Comment.ts";
+import type {Comment,GuestComment} from "~/domain";
 import {BasicGuestComment} from "~/components/WeddingComponent/component/template/GuestCommentsTemplate.tsx";
 import Text from "~/components/core/Text.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Icon from "~/components/core/icon";
-import type GuestComment from "~/api/value/GuestComment.ts";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
 

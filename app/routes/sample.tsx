@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {css} from "@linaria/core";
-import {dummyWedding} from "~/api/value/Wedding.ts";
+import {dummyWedding} from "~/domain";
 import WeddingComponent from "~/components/WeddingComponent";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";

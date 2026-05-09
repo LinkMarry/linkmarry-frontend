@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from "react";
-import type WeddingPlace from "~/api/value/WeddingPlace.ts";
+import type {WeddingPlace} from "~/domain";
 
 interface UseKakaoMapDialogProps {
     show: boolean;

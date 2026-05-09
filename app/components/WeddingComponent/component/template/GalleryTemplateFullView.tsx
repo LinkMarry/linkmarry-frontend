@@ -1,5 +1,5 @@
 import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef, useState} from "react";
-import type Gallery from "~/api/value/Gallery.ts";
+import type {Gallery} from "~/domain";
 import Icon from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";

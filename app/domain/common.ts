@@ -1,28 +1,39 @@
 import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
 
-export default interface LinkShare {
-    // 카카오톡 공유 이미지 url
+export interface ResponseData<T> {
+    status: number;
+    success: boolean;
+    state: string;
+    message: string;
+    data: T;
+}
+
+export interface ResponseVoid {
+    status: number;
+    success: boolean;
+    state: string;
+    message: string;
+}
+
+export interface Upload {
+    url: string;
+    name: string;
+    byte: number;
+}
+
+export interface Jwt {
+    accessToken?: string;
+    refreshToken?: string;
+}
+
+export interface LinkShare {
     kakaoImgUrl: string;
-
-    // 카카오톡 공유 제목
     kakaoTitle: string;
-
-    // 카카오톡 공유 내용
     kakaoContent: string;
-
-    // 카카오 버튼 종류
     kakaoButton: KakaoButton;
-
-    // true → 가로 false → 세로
     kakaoStyle: boolean;
-
-    // 링크 공유 이미지 url
     urlImgUrl: string;
-
-    // 링크 공유 제목
     urlTitle: string;
-
-    // 링크 공유 내용
     urlContent: string;
 }
 

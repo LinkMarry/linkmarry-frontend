@@ -1,9 +1,8 @@
 import {useRef} from "react";
 import Divider from "~/components/core/Divider.tsx";
 import Text from "~/components/core/Text.tsx";
-import type Greeting from "~/api/value/Greeting.ts";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import type {Greeting,BaseInfo} from "~/domain";
+import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import {css, cx} from "@linaria/core";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";

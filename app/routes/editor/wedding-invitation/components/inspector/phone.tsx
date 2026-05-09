@@ -6,7 +6,7 @@ import type Binding from "~/lib/Binding.ts";
 import {formatPhone} from "~/lib/format-util.ts";
 import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorPhone = ({value: {phone}, update}: Binding<Wedding>) => {
     return (

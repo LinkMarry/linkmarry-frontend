@@ -9,7 +9,7 @@ import type Binding from "~/lib/Binding.ts";
 import {GalleryDesignList, galleryDesignMap} from "~/api/enumeration/GalleryDesign.ts";
 import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorGallery = ({value: {url, gallery}, update}: Binding<Wedding>) => {
     return (

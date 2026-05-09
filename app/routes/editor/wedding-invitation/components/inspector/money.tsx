@@ -9,7 +9,7 @@ import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/component
 import type Binding from "~/lib/Binding.ts";
 import Dialog from "~/components/core/dialog/Dialog.tsx";
 import View from "~/components/core/View.tsx";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorMoney = ({value: {moneyInfo}, update}: Binding<Wedding>) => {
     const [showHelperDialog, setShowHelperDialog] = useState(false);

@@ -1,7 +1,7 @@
 import {type ComponentPropsWithoutRef} from "react";
 import Icon, {type IconType} from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
-import fadeInAnimationStyle from "~/style/animation";
+import {fadeInAnimationStyle} from "~/style/animation";
 import BasePopover from "~/components/core/BasePopover.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import View from "~/components/core/View.tsx";

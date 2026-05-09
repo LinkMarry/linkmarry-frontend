@@ -5,11 +5,9 @@ import Divider from "~/components/core/Divider.tsx";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import Icon from "~/components/core/icon";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import {getBaseInfoByBrideMarkFirst,getDetails,backgroundStyle} from "~/domain";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import View from "~/components/core/View.tsx";
-import {getDetails} from "~/api/value/WeddingSchedule.ts";
-import {backgroundStyle} from "~/api/value/WeddingDesign.ts";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
 function WhiteMomentPreviewTemplate({

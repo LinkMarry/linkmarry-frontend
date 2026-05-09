@@ -1,7 +1,5 @@
-import {type ResponseData} from "~/api/value/Response.ts";
-import type Upload from "~/api/value/Upload.ts";
+import {type ResponseData,Upload,Music} from "~/domain";
 import {httpClient} from "~/api/index.ts";
-import type Music from "~/api/value/Music.ts";
 import type {FileType} from "~/api/enumeration/FileType.ts";
 
 const PATH = "file";

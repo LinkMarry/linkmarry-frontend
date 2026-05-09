@@ -3,7 +3,7 @@ import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import Button from "~/components/core/Button.tsx";
-import type Comment from "~/api/value/Comment.ts";
+import type {Comment} from "~/domain";
 import {isAxiosError} from "axios";
 import Input from "~/components/core/Input.tsx";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";

@@ -6,7 +6,7 @@ import {css} from "@linaria/core";
 import type Binding from "~/lib/Binding.ts";
 import Icon from "~/components/core/icon";
 import View from "~/components/core/View.tsx";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 import {useCreateWeddingDialog} from "./useCreateWeddingDialog.ts";
 
 const CreateWeddingDialog = ({value, update}: Binding<Wedding>) => {

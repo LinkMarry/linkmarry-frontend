@@ -1,16 +1,13 @@
 import Text from "~/components/core/Text.tsx";
-import {backgroundStyle, type WeddingDesignColor} from "~/api/value/WeddingDesign.ts";
+import {backgroundStyle, type WeddingDesignColor,BaseInfo,WeddingSchedule,Rsvp} from "~/domain";
 import Button from "~/components/core/Button.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Icon from "~/components/core/icon";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
-import type WeddingSchedule from "~/api/value/WeddingSchedule.ts";
+import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import {css} from "@linaria/core";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import type Rsvp from "~/api/value/Rsvp.ts";
 import View from "~/components/core/View.tsx";
 
 interface RsvpTemplateProps {

@@ -1,6 +1,6 @@
 import {type PropsWithChildren, useCallback, useEffect, useState} from "react";
 import {useNavigate} from "react-router";
-import type InfoMember from "~/api/value/InfoMember.ts";
+import type {InfoMember} from "~/domain";
 import useJwt from "~/hook/useJwt.ts";
 import config from "~/config.ts";
 import {api} from "~/api/index.ts";

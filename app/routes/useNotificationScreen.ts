@@ -1,6 +1,6 @@
 import {useMemo, useState} from "react";
 import {useNavigate} from "react-router";
-import type Notification from "~/api/value/Notification.ts";
+import type {Notification} from "~/domain";
 import {type TagWithAll} from "~/api/enumeration/Tag.ts";
 
 interface UseNotificationScreenProps {

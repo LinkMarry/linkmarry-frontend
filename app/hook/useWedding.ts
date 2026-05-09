@@ -1,6 +1,6 @@
 import {useParams} from "react-router";
 import {useCallback, useEffect, useState} from "react";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 import {useCookies} from "react-cookie";
 import {api} from "~/api/index.ts";
 

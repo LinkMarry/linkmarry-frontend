@@ -3,9 +3,8 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
 import {format} from "date-fns";
-import {getDetails} from "~/api/value/WeddingSchedule.ts";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
 function NaturalGardenPreviewTemplate({

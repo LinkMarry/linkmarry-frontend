@@ -6,14 +6,14 @@ import FormToggleSet from "~/components/core/FormToggleSet.tsx";
 import FormToggle from "~/components/core/FormToggle.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {getPlaceholder} from "~/api/value/WeddingPlace.ts";
+import {getPlaceholder} from "~/domain";
 import Button from "~/components/core/Button.tsx";
 import Icon from "~/components/core/icon";
 import {css} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import KakaoMapDialog from "~/components/KakaoMapDialog.tsx";
 import {formatPhone} from "~/lib/format-util.ts";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorWeddingPlace = ({value: {weddingPlace}, update}: Binding<Wedding>) => {
     const [showKakaoMapDialog, setShowKakaoMapDialog] = useState(false);

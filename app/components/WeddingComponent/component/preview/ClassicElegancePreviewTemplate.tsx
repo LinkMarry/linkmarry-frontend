@@ -3,9 +3,8 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import {differenceInDays, format} from "date-fns";
-import {getDetails} from "~/api/value/WeddingSchedule.ts";
+import {getDetails,getBaseInfoByBrideMarkFirst} from "~/domain";
 import View from "~/components/core/View.tsx";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 
 function ClassicElegancePreviewTemplate({
     weddingDesign,

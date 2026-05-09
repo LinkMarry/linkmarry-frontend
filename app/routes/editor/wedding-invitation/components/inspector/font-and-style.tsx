@@ -10,14 +10,13 @@ import {
     weddingDesignFontSizeList,
     weddingDesignFontSizeMap,
     weddingDesignPaperColorList,
-} from "~/api/value/WeddingDesign.ts";
+Wedding} from "~/domain";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import {type FontFamily, fontFamilyList} from "~/components/core/text/TextType.ts";
 import Icon from "~/components/core/icon";
 import BasePopover from "~/components/core/BasePopover.tsx";
 import {HexColorPicker} from "react-colorful";
-import type Wedding from "~/api/value/Wedding.ts";
 
 const EditorInspectorFontAndStyle = ({value: {weddingDesign}, update}: Binding<Wedding>) => {
     const [showColorPicker, setShowColorPicker] = useState(false);

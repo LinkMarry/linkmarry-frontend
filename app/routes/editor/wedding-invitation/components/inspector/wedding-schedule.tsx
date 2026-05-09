@@ -7,7 +7,7 @@ import type Binding from "~/lib/Binding.ts";
 import {formatDate} from "date-fns";
 import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorWeddingSchedule = ({value: {weddingSchedule}, update}: Binding<Wedding>) => {
     return (

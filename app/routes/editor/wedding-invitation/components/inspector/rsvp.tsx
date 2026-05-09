@@ -8,7 +8,7 @@ import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/component
 import Divider from "~/components/core/Divider.tsx";
 import type Binding from "~/lib/Binding.ts";
 import View from "~/components/core/View.tsx";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const WeddingInvitationEditorRsvpInspector = ({value: {rsvp}, update}: Binding<Wedding>) => {
     return (

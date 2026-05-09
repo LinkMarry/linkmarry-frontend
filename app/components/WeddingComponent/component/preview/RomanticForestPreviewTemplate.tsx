@@ -2,11 +2,10 @@ import {type ComponentProps} from "react";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import {getDetails} from "~/api/value/WeddingSchedule.ts";
+import {getDetails,getBaseInfoByBrideMarkFirst} from "~/domain";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import Spacer from "~/components/core/Spacer.tsx";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
 function RomanticForestPreviewTemplate({

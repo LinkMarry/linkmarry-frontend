@@ -2,7 +2,7 @@ import {type RefObject, useCallback, useEffect, useRef, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import type Gallery from "~/api/value/Gallery.ts";
+import type {Gallery} from "~/domain";
 import Icon from "~/components/core/icon";
 import View from "~/components/core/View.tsx";
 import GalleryTemplateFullView from "~/components/WeddingComponent/component/template/GalleryTemplateFullView.tsx";

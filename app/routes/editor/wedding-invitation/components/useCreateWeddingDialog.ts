@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useNavigate, useParams} from "react-router";
 import {api} from "~/api/index.ts";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 import type Binding from "~/lib/Binding.ts";
 
 export function useCreateWeddingDialog({value, update}: Binding<Wedding>) {

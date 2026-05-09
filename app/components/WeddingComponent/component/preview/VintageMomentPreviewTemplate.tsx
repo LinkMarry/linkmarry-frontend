@@ -3,7 +3,7 @@ import {css, cx} from "@linaria/core";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import Text from "~/components/core/Text.tsx";
 import View from "~/components/core/View.tsx";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
 const VintageMomentPreviewTemplate = ({baseInfo, weddingDesign}: ComponentProps<typeof PreviewTemplate>) => {

@@ -1,8 +1,8 @@
 import {type RefObject, useEffect, useLayoutEffect, useRef, useState} from "react";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding,Comment,type Position} from "~/domain";
 import MoneyInfoTemplate from "~/components/WeddingComponent/component/template/MoneyInfoTemplate.tsx";
 import FooterTemplate from "~/components/WeddingComponent/component/template/FooterTemplate.tsx";
-import {weddingDesignFontSizeMap} from "~/api/value/WeddingDesign.ts";
+import {weddingDesignFontSizeMap} from "~/domain";
 import GuestCommentsTemplate from "~/components/WeddingComponent/component/template/GuestCommentsTemplate.tsx";
 import {increaseFontSize} from "~/lib/dom-util.ts";
 import CongratulationsTemplate from "~/components/WeddingComponent/component/template/CongratulationsTemplate.tsx";
@@ -13,12 +13,10 @@ import GalleryTemplate from "~/components/WeddingComponent/component/template/Ga
 import VideoTemplate from "~/components/WeddingComponent/component/template/VideoTemplate.tsx";
 import InvitationLetterTemplate from "~/components/WeddingComponent/component/template/InvitationLetterTemplate.tsx";
 import {api} from "~/api/index.ts";
-import type Comment from "~/api/value/Comment.ts";
 import CreateRsvpDialog from "~/components/WeddingComponent/component/dialog/CreateRsvpDialog.tsx";
 import {Helmet} from "react-helmet-async";
 import RsvpTemplate from "~/components/WeddingComponent/component/template/RsvpTemplate.tsx";
 import WaterMarkSheet from "~/components/WeddingComponent/component/WaterMarkSheet.tsx";
-import {type Position} from "~/api/value/Position.ts";
 import {useCookies} from "react-cookie";
 import {useSearchParams} from "react-router";
 import RsvpDialog from "~/components/WeddingComponent/component/dialog/RsvpDialog.tsx";

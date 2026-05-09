@@ -8,7 +8,7 @@ import Icon from "~/components/core/icon";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import {textStyles} from "~/components/core/text/TextType.ts";
 import {useKakaoMapDialog} from "./useKakaoMapDialog.ts";
-import type WeddingPlace from "~/api/value/WeddingPlace.ts";
+import type {WeddingPlace} from "~/domain";
 
 interface KakaoMapDialogProps {
     show: boolean;

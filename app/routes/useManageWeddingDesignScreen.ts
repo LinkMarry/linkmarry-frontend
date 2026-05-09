@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {api} from "~/api/index.ts";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
+import type {WeddingDesignPreset} from "~/domain";
 
 export function useManageWeddingDesignScreen() {
     const [presets, setPresets] = useState<WeddingDesignPreset[]>();

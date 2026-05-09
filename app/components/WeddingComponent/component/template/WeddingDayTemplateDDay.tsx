@@ -1,9 +1,8 @@
 import {useEffect, useMemo, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
-import type WeddingSchedule from "~/api/value/WeddingSchedule.ts";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import type {WeddingSchedule,BaseInfo} from "~/domain";
+import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";

@@ -1,14 +1,11 @@
 import {useCallback, useEffect, useEffectEvent, useState} from "react";
 import {useImmer} from "use-immer";
-import {makeDefaultWedding, type WeddingDto} from "~/api/value/WeddingDto.ts";
+import {makeDefaultWedding, type WeddingDto,Music,Wedding,WeddingDesignPreset} from "~/domain";
 import {api} from "~/api/index.ts";
 import {useNavigate, useParams, useSearchParams} from "react-router";
 import lodash from "lodash";
-import type Music from "~/api/value/Music.ts";
 import {isAxiosError} from "axios";
-import type Wedding from "~/api/value/Wedding.ts";
 import {type WeddingInvitationEditorNavigationBarType} from "~/routes/editor/domain.ts";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 
 const {throttle} = lodash;
 

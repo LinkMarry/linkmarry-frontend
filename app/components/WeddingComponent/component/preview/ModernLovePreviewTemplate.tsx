@@ -3,7 +3,7 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
 function ModernLovePreviewTemplate({weddingDesign, baseInfo}: ComponentProps<typeof PreviewTemplate>) {

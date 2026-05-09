@@ -1,7 +1,5 @@
-import {type ResponseData, type ResponseVoid} from "~/api/value/Response.ts";
+import type {ResponseData, ResponseVoid, InfoMember, EditMemberRequest} from "~/domain";
 import {httpClient} from "~/api/index.ts";
-import type InfoMember from "~/api/value/InfoMember.ts";
-import type EditMemberRequest from "~/api/value/request/EditMemberRequest.ts";
 
 const PATH = "member";
 

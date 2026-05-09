@@ -1,14 +1,13 @@
 import {type Dispatch, type SetStateAction} from "react";
 import useWeddingDesigns from "~/hook/useWeddingDesigns.ts";
 import TabBar from "~/components/core/TabBar.tsx";
-import {type WeddingDesignName} from "~/api/value/WeddingDesign.ts";
-import fadeInAnimationStyle from "~/style/animation";
+import type {WeddingDesignName, WeddingDesignPreset} from "~/domain";
+import {fadeInAnimationStyle} from "~/style/animation";
 import {mobileStyle, notMobileStyle} from "~/components/responsive.tsx";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
 import useResponsive from "~/hook/useResponsive.ts";
 import {hideScrollBarStyle} from "~/style/common.ts";
 

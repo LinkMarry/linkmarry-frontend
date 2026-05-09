@@ -3,13 +3,11 @@ import Text from "~/components/core/Text.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Button from "~/components/core/Button.tsx";
 import {css} from "@linaria/core";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
+import {getBaseInfoByBrideMarkFirst,backgroundStyle} from "~/domain";
+import type {BaseInfo,Phone} from "~/domain";
 import ContactingCongratulationDialog from "~/components/WeddingComponent/component/dialog/ContactingCongratulationDialog.tsx";
-import type Phone from "~/api/value/Phone.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import {backgroundStyle} from "~/api/value/WeddingDesign.ts";
 import View from "~/components/core/View.tsx";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 

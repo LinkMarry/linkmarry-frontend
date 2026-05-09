@@ -1,5 +1,5 @@
 import {useRef, type RefObject, useState, useLayoutEffect} from "react";
-import type Video from "~/api/value/Video.ts";
+import type {Video} from "~/domain";
 import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";

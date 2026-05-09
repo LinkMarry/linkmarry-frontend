@@ -1,12 +1,9 @@
 import {useRef, useState} from "react";
 import {css, cx} from "@linaria/core";
-import type MoneyInfo from "~/api/value/MoneyInfo.ts";
-import {getMoneyInfoByBrideMarkFirst, type MoneyInfoByBrideMarkFirst} from "~/api/value/MoneyInfo.ts";
+import type {MoneyInfo,getMoneyInfoByBrideMarkFirst, type MoneyInfoByBrideMarkFirst,BaseInfo,getBaseInfoByBrideMarkFirst, type BaseInfoByBrideMarkFirst} from "~/domain";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst, type BaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";

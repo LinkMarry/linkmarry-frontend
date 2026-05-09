@@ -1,5 +1,5 @@
 import {httpClient} from "~/api/index.ts";
-import {type ResponseVoid} from "~/api/value/Response.ts";
+import {type ResponseVoid} from "~/domain";
 
 const PATH = "naver";
 

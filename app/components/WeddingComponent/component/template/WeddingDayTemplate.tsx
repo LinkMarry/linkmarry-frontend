@@ -1,9 +1,8 @@
 import Text from "~/components/core/Text.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import {css, cx} from "@linaria/core";
-import type WeddingSchedule from "~/api/value/WeddingSchedule.ts";
-import {getDetails} from "~/api/value/WeddingSchedule.ts";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
+import type {WeddingSchedule,BaseInfo} from "~/domain";
+import {getDetails} from "~/domain";
 import WeddingDayTemplateDDay from "~/components/WeddingComponent/component/template/WeddingDayTemplateDDay.tsx";
 import {format} from "date-fns";
 import View from "~/components/core/View.tsx";

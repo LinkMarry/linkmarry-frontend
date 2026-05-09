@@ -3,8 +3,7 @@ import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import previewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import {getDetails} from "~/api/value/WeddingSchedule.ts";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import {getDetails,getBaseInfoByBrideMarkFirst} from "~/domain";
 import View from "~/components/core/View.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 

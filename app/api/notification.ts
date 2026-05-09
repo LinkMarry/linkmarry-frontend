@@ -1,7 +1,5 @@
-import {type ResponseData, type ResponseVoid} from "~/api/value/Response.ts";
+import type {ResponseData, ResponseVoid, NotificationRequest, Notification} from "~/domain";
 import {httpClient} from "~/api/index.ts";
-import type NotificationRequest from "~/api/value/request/NotificationRequest.ts";
-import type Notification from "~/api/value/Notification.ts";
 
 const PATH = "notification";
 

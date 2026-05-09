@@ -12,8 +12,7 @@ import Text from "~/components/core/Text.tsx";
 import Input from "~/components/core/Input.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import type {Poster} from "~/api/value/Poster.ts";
-import type {PosterPreset} from "~/api/value/PosterPreset.ts";
+import type {Poster,PosterPreset} from "~/domain";
 import {
     WeddingPosterEditorNavigationBarTypeList,
     weddingPosterEditorNavigationBarTypeRecord,

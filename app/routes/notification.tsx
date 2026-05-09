@@ -5,7 +5,7 @@ import {responsive} from "~/components/responsive.tsx";
 import type {Route} from "./+types/notification";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import type Notification from "~/api/value/Notification.ts";
+import type {Notification} from "~/domain";
 import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/api/enumeration/Tag.ts";
 import {compareDesc, format} from "date-fns";
 import {useNotificationScreen} from "./useNotificationScreen.ts";

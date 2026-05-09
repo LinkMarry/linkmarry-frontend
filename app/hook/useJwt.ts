@@ -1,6 +1,6 @@
 import {useCookies} from "react-cookie";
 import {useCallback} from "react";
-import type Jwt from "~/api/value/Jwt";
+import type {Jwt} from "~/domain";
 import {httpClient} from "~/api/index.ts";
 
 const useJwt = () => {

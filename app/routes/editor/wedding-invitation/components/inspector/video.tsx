@@ -5,7 +5,7 @@ import type Binding from "~/lib/Binding.ts";
 import Divider from "~/components/core/Divider.tsx";
 import {css} from "@linaria/core";
 import View from "~/components/core/View.tsx";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorVideo = ({value: {video}, update}: Binding<Wedding>) => {
     return (

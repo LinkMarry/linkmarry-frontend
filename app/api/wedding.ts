@@ -1,16 +1,19 @@
-import type Wedding from "~/api/value/Wedding.ts";
+import type {
+    Wedding,
+    ResponseData,
+    ResponseVoid,
+    WeddingDashboard,
+    WeddingRequest,
+    RsvpRequest,
+    GuestCommentRequest,
+    EditCommentRequest,
+    DeleteCommentRequest,
+    WeddingStatistics,
+    WeddingDto,
+    Comment,
+    RsvpInfo
+} from "~/domain";
 import {httpClient} from "~/api/index.ts";
-import {type ResponseData, type ResponseVoid} from "~/api/value/Response.ts";
-import type WeddingDashboard from "~/api/value/WeddingDashboard.ts";
-import type WeddingRequest from "~/api/value/request/WeddingRequest.ts";
-import type RsvpRequest from "~/api/value/request/RsvpRequest.ts";
-import type GuestCommentRequest from "~/api/value/request/GuestCommentRequest.ts";
-import type EditCommentRequest from "~/api/value/request/EditCommentRequest.ts";
-import type DeleteCommentRequest from "~/api/value/request/DeleteCommentRequest.ts";
-import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
-import {type WeddingDto} from "~/api/value/WeddingDto.ts";
-import type Comment from "~/api/value/Comment.ts";
-import type RsvpInfo from "~/api/value/RsvpInfo.ts";
 
 const PATH = "wedding";
 

@@ -8,7 +8,7 @@ import {GuestCommentDesignList, guestCommentDesignMap} from "~/api/enumeration/G
 import View from "~/components/core/View.tsx";
 import {css} from "@linaria/core";
 import Textarea from "~/components/core/Textarea.tsx";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorGuestComment = ({value: {guestComment}, update}: Binding<Wedding>) => {
     return (

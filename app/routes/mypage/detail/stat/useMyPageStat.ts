@@ -1,8 +1,6 @@
 import {useEffect, useState} from "react";
-import type WeddingStatistics from "~/api/value/WeddingStatistics.ts";
-import type RsvpInfo from "~/api/value/RsvpInfo.ts";
+import type {WeddingStatistics,RsvpInfo,WeddingDto} from "~/domain";
 import {useNavigate, useParams} from "react-router";
-import type {WeddingDto} from "~/api/value/WeddingDto.ts";
 import {api} from "~/api/index.ts";
 
 const useMyPageStat = () => {

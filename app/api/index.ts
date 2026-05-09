@@ -30,16 +30,6 @@ export const api = {
     weddingDesign,
 };
 
-export {
-    file,
-    kakao,
-    member,
-    music,
-    naver,
-    notification,
-    poster,
-    wedding,
-    weddingDesign,
-};
+export {file, kakao, member, music, naver, notification, poster, wedding, weddingDesign};
 
 export default httpClient;

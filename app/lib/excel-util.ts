@@ -1,6 +1,5 @@
 import * as XLSX from "xlsx";
-import type RsvpInfo from "~/api/value/RsvpInfo";
-import type Rsvp from "~/api/value/Rsvp";
+import type {RsvpInfo, Rsvp} from "~/domain";
 
 type ClearedRsvpInfo = Omit<RsvpInfo, "id" | "createdDate">;
 

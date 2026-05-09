@@ -7,7 +7,7 @@ import Icon from "~/components/core/icon";
 import Button from "~/components/core/Button.tsx";
 import {api} from "~/api/index.ts";
 import {GuestTypeList, guestTypeMap} from "~/api/enumeration/GuestType.ts";
-import type Rsvp from "~/api/value/Rsvp.ts";
+import type {Rsvp} from "~/domain";
 import Dialog from "~/components/core/dialog/Dialog.tsx";
 import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import Divider from "~/components/core/Divider.tsx";

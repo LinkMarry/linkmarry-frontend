@@ -1,6 +1,5 @@
 import {httpClient} from "~/api/index.ts";
-import type Jwt from "~/api/value/Jwt.ts";
-import {type ResponseData} from "~/api/value/Response.ts";
+import type {Jwt,type ResponseData} from "~/domain";
 
 const PATH = "kakao";
 

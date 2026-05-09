@@ -1,4 +1,4 @@
-import type WeddingDesign from "~/api/value/WeddingDesign.ts";
+import type {WeddingDesign} from "~/domain";
 
 import {useMemo, useEffect, useState} from "react";
 import {css, cx, type LinariaClassName} from "@linaria/core";

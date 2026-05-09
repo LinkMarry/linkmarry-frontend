@@ -1,6 +1,6 @@
 import {type ReactNode, useEffect, useRef} from "react";
 import View from "~/components/core/View.tsx";
-import fadeInAnimationStyle from "~/style/animation";
+import {fadeInAnimationStyle} from "~/style/animation";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface BasePopoverProps {

@@ -15,9 +15,7 @@ import {
 } from "~/routes/editor/domain.ts";
 import View from "~/components/core/View.tsx";
 import type Binding from "~/lib/Binding.ts";
-import type Wedding from "~/api/value/Wedding.ts";
-import type WeddingDesignPreset from "~/api/value/WeddingDesignPreset.ts";
-import type Music from "~/api/value/Music.ts";
+import type {Wedding,WeddingDesignPreset,Music} from "~/domain";
 import EditorInspectorShell from "~/routes/editor/components/EditorInspectorShell.tsx";
 import EditorInspectorDesign from "~/routes/editor/wedding-invitation/components/inspector/design.tsx";
 import EditorInspectorGroom from "~/routes/editor/wedding-invitation/components/inspector/groom.tsx";

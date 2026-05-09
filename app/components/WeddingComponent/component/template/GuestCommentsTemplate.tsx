@@ -1,6 +1,6 @@
 import {type ComponentPropsWithoutRef, useRef, useState} from "react";
 import {css} from "@linaria/core";
-import type Comment from "~/api/value/Comment.ts";
+import type {Comment,GuestComment,backgroundStyle, type WeddingDesignColor} from "~/domain";
 import Text from "~/components/core/Text.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
@@ -8,14 +8,12 @@ import {type GuestCommentDesign} from "~/api/enumeration/GuestCommentDesign.ts";
 import {trimArray} from "~/lib/array-util.ts";
 import {trimString} from "~/lib/string-util.ts";
 import Button from "~/components/core/Button.tsx";
-import type GuestComment from "~/api/value/GuestComment.ts";
 import RemoveGuestCommentDialog from "~/components/WeddingComponent/component/dialog/RemoveGuestCommentDialog.tsx";
 import GuestCommentsDetailDialog from "~/components/WeddingComponent/component/dialog/GuestCommentsDetailDialog.tsx";
 import CreateGuestCommentDialog from "~/components/WeddingComponent/component/dialog/CreateGuestCommentDialog.tsx";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
-import {backgroundStyle, type WeddingDesignColor} from "~/api/value/WeddingDesign.ts";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 import {api} from "~/api/index.ts";
 

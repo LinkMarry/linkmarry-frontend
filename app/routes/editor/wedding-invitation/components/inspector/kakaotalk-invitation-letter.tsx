@@ -7,10 +7,10 @@ import SharingLink from "~/routes/editor/components/SharingLink.tsx";
 import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {getKoreanByKakaoStyle, kakaoStyleList} from "~/api/value/LinkShare.ts";
+import {getKoreanByKakaoStyle, kakaoStyleList} from "~/domain";
 import {kakaoButtonList, kakaoButtonMap} from "~/api/enumeration/KakaoButton.ts";
 import View from "~/components/core/View.tsx";
-import type Wedding from "~/api/value/Wedding.ts";
+import type {Wedding} from "~/domain";
 
 const EditorInspectorKakaotalkInvitationLetter = ({value: {url, linkShare}, update}: Binding<Wedding>) => {
     return (

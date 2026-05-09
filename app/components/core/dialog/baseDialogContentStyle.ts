@@ -1,5 +1,5 @@
 import {css, cx} from "@linaria/core";
-import popupAnimationStyle from "~/style/animation";
+import {popupAnimationStyle} from "~/style/animation";
 
 import {hideScrollBarStyle} from "~/style/common.ts";
 

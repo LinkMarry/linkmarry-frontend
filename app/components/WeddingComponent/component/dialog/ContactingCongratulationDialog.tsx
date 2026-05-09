@@ -1,9 +1,8 @@
 import {useState} from "react";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import Text from "~/components/core/Text.tsx";
-import type Phone from "~/api/value/Phone.ts";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
-import {getBaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
+import type {Phone,BaseInfo} from "~/domain";
+import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";

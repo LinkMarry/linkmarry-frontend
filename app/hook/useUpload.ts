@@ -1,6 +1,6 @@
 import {api} from "~/api/index.ts";
 import {useCallback} from "react";
-import type Upload from "~/api/value/Upload";
+import type {Upload} from "~/domain";
 import type {FileType} from "~/api/enumeration/FileType.ts";
 
 export default function useUpload() {

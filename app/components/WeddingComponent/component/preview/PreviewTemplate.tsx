@@ -1,8 +1,5 @@
 import {useRef} from "react";
-import type WeddingSchedule from "~/api/value/WeddingSchedule.ts";
-import type WeddingPlace from "~/api/value/WeddingPlace.ts";
-import type BaseInfo from "~/api/value/BaseInfo.ts";
-import type WeddingDesign from "~/api/value/WeddingDesign.ts";
+import type {WeddingSchedule,WeddingPlace,BaseInfo,WeddingDesign} from "~/domain";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import View from "~/components/core/View.tsx";
 import WhiteMomentPreviewTemplate from "~/components/WeddingComponent/component/preview/WhiteMomentPreviewTemplate.tsx";
