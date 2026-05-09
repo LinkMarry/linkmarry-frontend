@@ -11,7 +11,7 @@ import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {notMobileStyle} from "~/components/responsive.tsx";
 import ClientOnly from "~/components/ClientRendering.tsx";
-import {LogoInHeader} from "./Header.tsx";
+import LogoInHeader from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 
 export default function DesktopHeader() {
