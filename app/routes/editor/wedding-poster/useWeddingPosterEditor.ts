@@ -1,5 +1,5 @@
 import {useEffect, useEffectEvent, useState} from "react";
-import type {PosterPreset,makeDefaultPoster, type Poster} from "~/domain";
+import {type PosterPreset, makeDefaultPoster, type Poster} from "~/domain";
 import {api} from "~/api/index.ts";
 import {useImmer} from "use-immer";
 import type {WeddingPosterEditorNavigationBarType} from "~/routes/editor/domain.ts";

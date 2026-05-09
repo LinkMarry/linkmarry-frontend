@@ -1,6 +1,6 @@
 import {css, cx} from "@linaria/core";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import type {Comment,GuestComment} from "~/domain";
+import type {Comment, GuestComment} from "~/domain";
 import {BasicGuestComment} from "~/components/WeddingComponent/component/template/GuestCommentsTemplate.tsx";
 import Text from "~/components/core/Text.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
@@ -19,7 +19,7 @@ interface GuestCommentsDetailDialogProps {
     dismiss: () => void;
 }
 
-function GuestCommentsDetailDialog({show, comments, onRemove, dismiss}: GuestCommentsDetailDialogProps) {
+const GuestCommentsDetailDialog = ({show, comments, onRemove, dismiss}: GuestCommentsDetailDialogProps) => {
     return (
         <BaseDialog show={show} dismiss={dismiss}>
             <View
@@ -91,6 +91,6 @@ function GuestCommentsDetailDialog({show, comments, onRemove, dismiss}: GuestCom
             </View>
         </BaseDialog>
     );
-}
+};
 
 export default GuestCommentsDetailDialog;

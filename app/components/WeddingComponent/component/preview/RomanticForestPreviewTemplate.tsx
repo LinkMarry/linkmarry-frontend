@@ -2,17 +2,17 @@ import {type ComponentProps} from "react";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import {getDetails,getBaseInfoByBrideMarkFirst} from "~/domain";
+import {getDetails, getBaseInfoByBrideMarkFirst} from "~/domain";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import Spacer from "~/components/core/Spacer.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function RomanticForestPreviewTemplate({
+const RomanticForestPreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {isValidDate, date} = getDetails(weddingSchedule);
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
@@ -96,6 +96,6 @@ function RomanticForestPreviewTemplate({
             </Text>
         </View>
     );
-}
+};
 
 export default RomanticForestPreviewTemplate;

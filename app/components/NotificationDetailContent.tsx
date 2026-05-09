@@ -11,7 +11,7 @@ interface NotificationDetailCompProps {
     notification: Notification;
 }
 
-function NotificationDetailContent({notification}: NotificationDetailCompProps) {
+const NotificationDetailContent = ({notification}: NotificationDetailCompProps) => {
     return (
         <View
             ui={css`
@@ -71,6 +71,6 @@ function NotificationDetailContent({notification}: NotificationDetailCompProps) 
             </View>
         </View>
     );
-}
+};
 
 export default NotificationDetailContent;

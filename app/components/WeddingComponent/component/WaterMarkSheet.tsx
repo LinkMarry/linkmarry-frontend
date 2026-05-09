@@ -10,7 +10,7 @@ interface Props {
     url: string;
 }
 
-function WaterMarkSheet({url}: Props) {
+const WaterMarkSheet = ({url}: Props) => {
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
     return (
@@ -82,6 +82,6 @@ function WaterMarkSheet({url}: Props) {
             </View>
         </View>
     );
-}
+};
 
 export default WaterMarkSheet;

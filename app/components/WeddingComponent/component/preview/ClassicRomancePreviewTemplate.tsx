@@ -1,17 +1,17 @@
 import {type ComponentProps} from "react";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function ClassicRomancePreviewTemplate({
+const ClassicRomancePreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
 
@@ -84,6 +84,6 @@ function ClassicRomancePreviewTemplate({
             </View>
         </View>
     );
-}
+};
 
 export default ClassicRomancePreviewTemplate;

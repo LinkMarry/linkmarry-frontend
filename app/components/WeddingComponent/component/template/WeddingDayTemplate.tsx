@@ -1,7 +1,7 @@
 import Text from "~/components/core/Text.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import {css, cx} from "@linaria/core";
-import type {WeddingSchedule,BaseInfo} from "~/domain";
+import type {WeddingSchedule, BaseInfo} from "~/domain";
 import {getDetails} from "~/domain";
 import WeddingDayTemplateDDay from "~/components/WeddingComponent/component/template/WeddingDayTemplateDDay.tsx";
 import {format} from "date-fns";
@@ -15,7 +15,7 @@ interface Props {
     weddingSchedule: WeddingSchedule;
 }
 
-function WeddingDayTemplate({baseInfo, weddingSchedule}: Props) {
+const WeddingDayTemplate = ({baseInfo, weddingSchedule}: Props) => {
     const {date, isValidDate} = getDetails(weddingSchedule);
     const calendar = isValidDate ? getCalendar(date) : null;
 
@@ -212,6 +212,6 @@ function WeddingDayTemplate({baseInfo, weddingSchedule}: Props) {
             {weddingSchedule.dday && <WeddingDayTemplateDDay baseInfo={baseInfo} weddingSchedule={weddingSchedule} />}
         </View>
     );
-}
+};
 
 export default WeddingDayTemplate;

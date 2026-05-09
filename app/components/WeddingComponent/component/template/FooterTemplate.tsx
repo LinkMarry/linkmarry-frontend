@@ -3,7 +3,7 @@ import Text from "~/components/core/Text.tsx";
 import {css} from "@linaria/core";
 import {backgroundStyle} from "~/domain";
 import Icon from "~/components/core/icon";
-import type {LinkShare,WeddingPlace} from "~/domain";
+import type {LinkShare, WeddingPlace} from "~/domain";
 import {getWeddingUrl} from "~/lib/string-util.ts";
 import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
 import View from "~/components/core/View.tsx";
@@ -15,7 +15,7 @@ interface FooterTemplateProps extends ComponentPropsWithoutRef<"div"> {
     weddingPlace: WeddingPlace;
 }
 
-function FooterTemplate({url, background, linkShare, weddingPlace, ...props}: FooterTemplateProps) {
+const FooterTemplate = ({url, background, linkShare, weddingPlace, ...props}: FooterTemplateProps) => {
     const shareToKakao = useCallback(() => {
         const {
             Kakao: {Share},
@@ -169,6 +169,6 @@ function FooterTemplate({url, background, linkShare, weddingPlace, ...props}: Fo
             </View>
         </View>
     );
-}
+};
 
 export default FooterTemplate;

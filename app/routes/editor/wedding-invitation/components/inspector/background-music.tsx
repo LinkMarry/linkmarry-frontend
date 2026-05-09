@@ -8,7 +8,7 @@ import Icon from "~/components/core/icon";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import View from "~/components/core/View.tsx";
 import type Binding from "~/lib/Binding.ts";
-import type {Music,Wedding} from "~/domain";
+import type {Music, Wedding} from "~/domain";
 import VoidInput from "~/components/core/VoidInput.ts";
 import useUpload from "~/hook/useUpload.ts";
 import Loading from "~/components/core/Loading.tsx";

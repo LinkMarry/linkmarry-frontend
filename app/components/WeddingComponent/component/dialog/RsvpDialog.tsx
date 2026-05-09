@@ -2,7 +2,7 @@ import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import {css, cx} from "@linaria/core";
 import Divider from "~/components/core/Divider.tsx";
 import Text from "~/components/core/Text.tsx";
-import type {BaseInfo,WeddingSchedule,WeddingPlace,Rsvp} from "~/domain";
+import type {BaseInfo, WeddingSchedule, WeddingPlace, Rsvp} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {addDays, format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
@@ -23,7 +23,16 @@ interface RsvpDialogProps {
     dismiss: () => void;
 }
 
-function RsvpDialog({show, url, baseInfo, weddingSchedule, weddingPlace, rsvp, onConfirm, dismiss}: RsvpDialogProps) {
+const RsvpDialog = ({
+    show,
+    url,
+    baseInfo,
+    weddingSchedule,
+    weddingPlace,
+    rsvp,
+    onConfirm,
+    dismiss,
+}: RsvpDialogProps) => {
     const cookieKey = `hide_RsvpDialog_${url}`;
     const [, setCookie] = useCookies([cookieKey]);
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
@@ -131,6 +140,6 @@ function RsvpDialog({show, url, baseInfo, weddingSchedule, weddingPlace, rsvp, o
             </View>
         </BaseDialog>
     );
-}
+};
 
 export default RsvpDialog;

@@ -1,5 +1,5 @@
 import {useRef} from "react";
-import type {WeddingSchedule,WeddingPlace,BaseInfo,WeddingDesign} from "~/domain";
+import type {WeddingSchedule, WeddingPlace, BaseInfo, WeddingDesign} from "~/domain";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import View from "~/components/core/View.tsx";
 import WhiteMomentPreviewTemplate from "~/components/WeddingComponent/component/preview/WhiteMomentPreviewTemplate.tsx";
@@ -29,7 +29,7 @@ export interface PreviewTemplateProps {
     mode: WeddingMode;
 }
 
-function PreviewTemplate(props: PreviewTemplateProps) {
+const PreviewTemplate = (props: PreviewTemplateProps) => {
     const previewRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(previewRef, [props.weddingDesign.weddingDesignName], props.mode === "preview");
 
@@ -72,6 +72,6 @@ function PreviewTemplate(props: PreviewTemplateProps) {
         }
     };
     return <View ref={previewRef}>{content()}</View>;
-}
+};
 
 export default PreviewTemplate;

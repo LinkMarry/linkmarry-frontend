@@ -1,5 +1,5 @@
 import {type RefObject, useEffect, useLayoutEffect, useRef, useState} from "react";
-import type {Wedding,Comment,type Position} from "~/domain";
+import type {Wedding, Comment, Position} from "~/domain";
 import MoneyInfoTemplate from "~/components/WeddingComponent/component/template/MoneyInfoTemplate.tsx";
 import FooterTemplate from "~/components/WeddingComponent/component/template/FooterTemplate.tsx";
 import {weddingDesignFontSizeMap} from "~/domain";
@@ -32,7 +32,7 @@ interface WeddingComponentProps {
     onRefresh?: () => void;
 }
 
-function WeddingComponent({wedding, mode = "default", onRefresh}: WeddingComponentProps) {
+const WeddingComponent = ({wedding, mode = "default", onRefresh}: WeddingComponentProps) => {
     const [searchParams] = useSearchParams();
     const rsvp = searchParams.get("rsvp") === "true";
     const cookieKey = `hide_RsvpDialog_${wedding.url}`;
@@ -198,7 +198,7 @@ function WeddingComponent({wedding, mode = "default", onRefresh}: WeddingCompone
             <OpeningView key={wedding.weddingDesign.openingText} weddingDesign={wedding.weddingDesign} />
         </RootStyle>
     );
-}
+};
 
 const RootStyle = styled.div<{
     fontFamily: FontFamily;

@@ -2,7 +2,7 @@ import {type ComponentProps} from "react";
 import {css, cx} from "@linaria/core";
 import {format} from "date-fns";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";

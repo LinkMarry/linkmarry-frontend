@@ -18,7 +18,7 @@ export async function loader() {
     };
 }
 
-function PrivacyPolicy({loaderData: {notifications}, params: {date}}: Route.ComponentProps) {
+const PrivacyPolicy = ({loaderData: {notifications}, params: {date}}: Route.ComponentProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const selectedNotification = date ? notifications.find(i => i.date === date) : notifications[0];
@@ -78,6 +78,6 @@ function PrivacyPolicy({loaderData: {notifications}, params: {date}}: Route.Comp
             </View>
         </MainWrapper>
     );
-}
+};
 
 export default PrivacyPolicy;

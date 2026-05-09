@@ -14,7 +14,7 @@ import ClientOnly from "~/components/ClientRendering.tsx";
 import LogoInHeader from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 
-export default function DesktopHeader() {
+const DesktopHeader = () => {
     const {authorized} = useAuth();
     const navigate = useNavigate();
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
@@ -141,16 +141,16 @@ export default function DesktopHeader() {
             </View>
         </View>
     );
-}
+};
 
-function DesktopHeaderItem({
+const DesktopHeaderItem = ({
     text,
     hasPopover = false,
     ...props
 }: {
     text: string;
     hasPopover?: boolean;
-} & ComponentPropsWithoutRef<"div">) {
+} & ComponentPropsWithoutRef<"div">) => {
     return (
         <View
             flexDirection={"row"}
@@ -187,4 +187,6 @@ function DesktopHeaderItem({
             )}
         </View>
     );
-}
+};
+
+export default DesktopHeader;

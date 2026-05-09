@@ -5,17 +5,17 @@ import Divider from "~/components/core/Divider.tsx";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import Icon from "~/components/core/icon";
-import {getBaseInfoByBrideMarkFirst,getDetails,backgroundStyle} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails, backgroundStyle} from "~/domain";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import View from "~/components/core/View.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function WhiteMomentPreviewTemplate({
+const WhiteMomentPreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingPlace,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
 
@@ -104,6 +104,6 @@ function WhiteMomentPreviewTemplate({
             </View>
         </View>
     );
-}
+};
 
 export default WhiteMomentPreviewTemplate;

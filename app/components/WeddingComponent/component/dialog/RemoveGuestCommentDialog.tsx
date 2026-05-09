@@ -18,13 +18,13 @@ interface RemoveGuestCommentDialogProps {
     onRefresh: () => void;
 }
 
-function RemoveGuestCommentDialog({
+const RemoveGuestCommentDialog = ({
     show,
     url,
     selectedGuestComment,
     dismiss,
     onRefresh,
-}: RemoveGuestCommentDialogProps) {
+}: RemoveGuestCommentDialogProps) => {
     const passwordRef = useRef<HTMLInputElement>(null);
 
     const onClickRemove = async () => {
@@ -90,6 +90,6 @@ function RemoveGuestCommentDialog({
             </View>
         </BaseDialog>
     );
-}
+};
 
 export default RemoveGuestCommentDialog;

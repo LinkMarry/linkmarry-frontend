@@ -3,11 +3,15 @@ import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import {getBaseInfoByBrideMarkFirst,getDetails,backgroundStyle} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails, backgroundStyle} from "~/domain";
 import View from "~/components/core/View.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function SoulmatePreviewTemplate({baseInfo, weddingDesign, weddingSchedule}: ComponentProps<typeof PreviewTemplate>) {
+const SoulmatePreviewTemplate = ({
+    baseInfo,
+    weddingDesign,
+    weddingSchedule,
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
 
@@ -90,6 +94,6 @@ function SoulmatePreviewTemplate({baseInfo, weddingDesign, weddingSchedule}: Com
             </Text>
         </View>
     );
-}
+};
 
 export default SoulmatePreviewTemplate;

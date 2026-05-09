@@ -17,7 +17,7 @@ interface CreateGuestCommentDialogProps {
     onRefresh: () => void;
 }
 
-function CreateGuestCommentDialog({show, url, dismiss, onRefresh}: CreateGuestCommentDialogProps) {
+const CreateGuestCommentDialog = ({show, url, dismiss, onRefresh}: CreateGuestCommentDialogProps) => {
     const nameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const commentRef = useRef<HTMLTextAreaElement>(null);
@@ -112,6 +112,6 @@ function CreateGuestCommentDialog({show, url, dismiss, onRefresh}: CreateGuestCo
             </View>
         </BaseDialog>
     );
-}
+};
 
 export default CreateGuestCommentDialog;

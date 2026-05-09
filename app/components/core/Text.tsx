@@ -28,10 +28,10 @@ const columnStyle = css`
     flex-direction: column;
 `;
 
-function Text(
+const Text = (
     {type, font, weight, size, lineHeight, bold = false, flexDirection, ui, children, ...props}: Props,
     ref: ForwardedRef<HTMLDivElement>,
-) {
+) => {
     let textStyle: LinariaClassName | undefined;
     if (type) {
         if (bold) {
@@ -60,6 +60,6 @@ function Text(
             {children}
         </span>
     );
-}
+};
 
 export default forwardRef(Text);

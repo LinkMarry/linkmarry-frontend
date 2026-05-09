@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useState} from "react";
 import Text from "~/components/core/Text.tsx";
 import Icon from "~/components/core/icon";
-import type {WeddingSchedule,BaseInfo} from "~/domain";
+import type {WeddingSchedule, BaseInfo} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
@@ -20,7 +20,7 @@ interface Props {
     weddingSchedule: WeddingSchedule;
 }
 
-function WeddingDayTemplateDDay({baseInfo, weddingSchedule}: Props) {
+const WeddingDayTemplateDDay = ({baseInfo, weddingSchedule}: Props) => {
     const [remainingTime, setRemainingTime] = useState<RemainTime>({
         days: 0,
         hours: 0,
@@ -108,9 +108,9 @@ function WeddingDayTemplateDDay({baseInfo, weddingSchedule}: Props) {
             </FadeIn>
         </View>
     );
-}
+};
 
-function RemainTimeComponent({remainingTime}: {remainingTime: RemainTime}) {
+const RemainTimeComponent = ({remainingTime}: {remainingTime: RemainTime}) => {
     // switch (dDayStyle) {
     //     case 'style1':
     //         return (
@@ -261,7 +261,7 @@ function RemainTimeComponent({remainingTime}: {remainingTime: RemainTime}) {
     //         </Row>
     //     )
     // }
-}
+};
 
 const S = {
     dateCell: styled.div`

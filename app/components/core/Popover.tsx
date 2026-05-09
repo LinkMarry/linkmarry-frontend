@@ -48,7 +48,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-function Popover({items, dismiss, ui, ...props}: Props) {
+const Popover = ({items, dismiss, ui, ...props}: Props) => {
     return (
         <BasePopover dismiss={dismiss}>
             <View
@@ -101,6 +101,6 @@ function Popover({items, dismiss, ui, ...props}: Props) {
             </View>
         </BasePopover>
     );
-}
+};
 
 export default Popover;

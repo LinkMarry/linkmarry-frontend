@@ -1,5 +1,5 @@
 import {httpClient} from "~/api/index.ts";
-import type {ResponseData,PosterPreset} from "~/domain";
+import type {ResponseData, PosterPreset} from "~/domain";
 
 const PATH = "/poster";
 

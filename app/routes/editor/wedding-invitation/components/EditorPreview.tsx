@@ -12,7 +12,7 @@ interface EditorPreviewProps extends PropsWithChildren {
     ui?: LinariaClassName;
 }
 
-function EditorPreview({ui, children}: EditorPreviewProps) {
+const EditorPreview = ({ui, children}: EditorPreviewProps) => {
     return (
         <View
             ui={cx(
@@ -44,9 +44,9 @@ function EditorPreview({ui, children}: EditorPreviewProps) {
             <PreviewSetting />
         </View>
     );
-}
+};
 
-function PreviewSetting() {
+const PreviewSetting = () => {
     const [openSetting, setOpenSetting] = useState(false);
     const {autoFocus, setAutoFocus} = useAutoFocus();
 
@@ -103,7 +103,7 @@ function PreviewSetting() {
             </View>
         </View>
     );
-}
+};
 
 const previewSettingStyle = css`
     gap: 4px;

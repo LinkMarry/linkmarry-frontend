@@ -1,6 +1,13 @@
 import {useRef, useState} from "react";
 import {css, cx} from "@linaria/core";
-import type {MoneyInfo,getMoneyInfoByBrideMarkFirst, type MoneyInfoByBrideMarkFirst,BaseInfo,getBaseInfoByBrideMarkFirst, type BaseInfoByBrideMarkFirst} from "~/domain";
+import {
+    type MoneyInfo,
+    getMoneyInfoByBrideMarkFirst,
+    type MoneyInfoByBrideMarkFirst,
+    type BaseInfo,
+    getBaseInfoByBrideMarkFirst,
+    type BaseInfoByBrideMarkFirst,
+} from "~/domain";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
@@ -16,7 +23,7 @@ interface Props {
     mode: WeddingMode;
 }
 
-function MoneyInfoTemplate({baseInfo, moneyInfo, mode}: Props) {
+const MoneyInfoTemplate = ({baseInfo, moneyInfo, mode}: Props) => {
     const moneyInfoRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(moneyInfoRef, [moneyInfo], mode === "preview");
 
@@ -66,14 +73,14 @@ function MoneyInfoTemplate({baseInfo, moneyInfo, mode}: Props) {
             </View>
         </View>
     );
-}
+};
 
 interface MoneyInfoProps {
     baseInfo: BaseInfo;
     moneyInfo: MoneyInfo;
 }
 
-function MoneyInfoComponent({baseInfo, moneyInfo}: MoneyInfoProps) {
+const MoneyInfoComponent = ({baseInfo, moneyInfo}: MoneyInfoProps) => {
     const {first: firstBaseInfo, second: secondBaseInfo} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {first, firstFather, firstMother, second, secondFather, secondMother} = getMoneyInfoByBrideMarkFirst(
         moneyInfo,
@@ -107,7 +114,7 @@ function MoneyInfoComponent({baseInfo, moneyInfo}: MoneyInfoProps) {
             </FadeIn>
         </View>
     );
-}
+};
 
 interface MoneyInfoContainerProps {
     baseInfo: BaseInfoByBrideMarkFirst;
@@ -177,7 +184,7 @@ interface MoneyCellProps {
     kakaoStatus: boolean;
 }
 
-function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
+const MoneyCell = ({moneyInfo, kakaoStatus}: MoneyCellProps) => {
     const fullBankNumber = `${moneyInfo.bankName} ${moneyInfo.bankNumber}`;
     return (
         <View
@@ -233,6 +240,6 @@ function MoneyCell({moneyInfo, kakaoStatus}: MoneyCellProps) {
             )}
         </View>
     );
-}
+};
 
 export default MoneyInfoTemplate;

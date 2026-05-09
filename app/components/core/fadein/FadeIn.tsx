@@ -15,7 +15,7 @@ interface Props {
     children: ((provided: Provided) => ReactNode) | ReactNode;
 }
 
-function FadeIn({delay, ui, as, children}: Props) {
+const FadeIn = ({delay, ui, as, children}: Props) => {
     const {ref, isVisible} = useFadeIn();
     const [delayedIsVisible, setDelayedIsVisible] = useState(false);
 
@@ -67,6 +67,6 @@ function FadeIn({delay, ui, as, children}: Props) {
     }
 
     return null;
-}
+};
 
 export default FadeIn;

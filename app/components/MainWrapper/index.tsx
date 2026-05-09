@@ -14,7 +14,7 @@ interface Props {
     children?: ReactNode;
 }
 
-function MainWrapper({hasHeader = true, hasFooter = true, ui, scrollRef, children}: Props) {
+const MainWrapper = ({hasHeader = true, hasFooter = true, ui, scrollRef, children}: Props) => {
     return (
         <View
             ui={cx(
@@ -49,6 +49,6 @@ function MainWrapper({hasHeader = true, hasFooter = true, ui, scrollRef, childre
             </View>
         </View>
     );
-}
+};
 
 export default MainWrapper;

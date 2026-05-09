@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-export default function Chat(props: SVGProps<SVGSVGElement>) {
+const Chat = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <g filter="url(#filter0_b_22_2597)">
@@ -13,4 +13,6 @@ export default function Chat(props: SVGProps<SVGSVGElement>) {
             </g>
         </svg>
     );
-}
+};
+
+export default Chat;

@@ -9,7 +9,7 @@ import Spacer from "~/components/core/Spacer.tsx";
 import Popover from "~/components/core/Popover.tsx";
 import {api} from "~/api/index.ts";
 import Loading from "~/components/core/Loading.tsx";
-import type {WeddingInfo,WeddingStatistics,Comment} from "~/domain";
+import type {WeddingInfo, WeddingStatistics, Comment} from "~/domain";
 import {getTimeAgo} from "~/lib/date-util.ts";
 import {useNavigate} from "react-router";
 import Dialog from "~/components/core/dialog/Dialog.tsx";
@@ -19,7 +19,7 @@ import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts"
 import {desktopStyle, notDesktopStyle, responsive} from "~/components/responsive.tsx";
 import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
-function MyPageWedding() {
+const MyPageWedding = () => {
     const {showRemoveWeddingDialog, setShowRemoveWeddingDialog, weddings, removeWedding, setSelectedWedding} =
         useMyPageWedding();
 
@@ -94,14 +94,14 @@ function MyPageWedding() {
             <Spacer h={32} />
         </View>
     );
-}
+};
 
 interface WeddingCellProps {
     weddingInfo: WeddingInfo;
     onRemoveWedding: () => void;
 }
 
-function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
+const WeddingCell = ({weddingInfo, onRemoveWedding}: WeddingCellProps) => {
     const [openDetailPopover, setOpenDetailPopover] = useState(false);
     const [statistics, setStatistics] = useState<WeddingStatistics>();
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
@@ -429,7 +429,7 @@ function WeddingCell({weddingInfo, onRemoveWedding}: WeddingCellProps) {
             </View>
         </View>
     );
-}
+};
 
 interface WeddingCellPopoverProps {
     dismiss: () => void;
@@ -439,13 +439,13 @@ interface WeddingCellPopoverProps {
     onRemoveWatermark: () => void;
 }
 
-function WeddingCellPopover({
+const WeddingCellPopover = ({
     dismiss,
     onViewStat,
     onRemoveWedding,
     onEditWedding,
     onRemoveWatermark,
-}: WeddingCellPopoverProps) {
+}: WeddingCellPopoverProps) => {
     return (
         <>
             <Popover
@@ -481,7 +481,7 @@ function WeddingCellPopover({
             />
         </>
     );
-}
+};
 
 function CommentCell({comment, onRemove}: {comment: Comment; onRemove: () => void}) {
     return (
@@ -534,7 +534,7 @@ function CommentCell({comment, onRemove}: {comment: Comment; onRemove: () => voi
     );
 }
 
-function StatisticsCell({title, value}: {title: string; value: string}) {
+const StatisticsCell = ({title, value}: {title: string; value: string}) => {
     return (
         <View
             flexDirection={"row"}
@@ -562,6 +562,6 @@ function StatisticsCell({title, value}: {title: string; value: string}) {
             </Text>
         </View>
     );
-}
+};
 
 export default MyPageWedding;

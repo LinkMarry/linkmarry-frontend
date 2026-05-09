@@ -1,5 +1,5 @@
 import Text from "~/components/core/Text.tsx";
-import {backgroundStyle, type WeddingDesignColor,BaseInfo,WeddingSchedule,Rsvp} from "~/domain";
+import {backgroundStyle, type WeddingDesignColor, type BaseInfo, type WeddingSchedule, type Rsvp} from "~/domain";
 import Button from "~/components/core/Button.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import Icon from "~/components/core/icon";
@@ -18,7 +18,7 @@ interface RsvpTemplateProps {
     onClickCreateRsvp: () => void;
 }
 
-function RsvpTemplate({rsvp, weddingDesignColor, baseInfo, weddingSchedule, onClickCreateRsvp}: RsvpTemplateProps) {
+const RsvpTemplate = ({rsvp, weddingDesignColor, baseInfo, weddingSchedule, onClickCreateRsvp}: RsvpTemplateProps) => {
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
     const date = parse(dateString, "yyyy-MM-dd HH:mm", new Date());
     const isValidDate = !isNaN(date.getTime());
@@ -164,6 +164,6 @@ function RsvpTemplate({rsvp, weddingDesignColor, baseInfo, weddingSchedule, onCl
             </View>
         </FadeIn>
     );
-}
+};
 
 export default RsvpTemplate;

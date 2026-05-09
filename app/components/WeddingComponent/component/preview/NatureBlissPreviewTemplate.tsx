@@ -3,17 +3,17 @@ import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
-import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import View from "~/components/core/View.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function NatureBlissPreviewTemplate({
+const NatureBlissPreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingPlace,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
@@ -62,6 +62,6 @@ function NatureBlissPreviewTemplate({
             />
         </View>
     );
-}
+};
 
 export default NatureBlissPreviewTemplate;

@@ -5,7 +5,7 @@ import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
 import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import Icon from "~/components/core/icon";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
-import {type OpeningText, openingTextList,WeddingDesignPreset,Wedding} from "~/domain";
+import {type OpeningText, openingTextList, type WeddingDesignPreset, type Wedding} from "~/domain";
 import type Binding from "~/lib/Binding.ts";
 import {openingList, openingMap} from "~/api/enumeration/Opening.ts";
 import Select from "~/components/core/Select.tsx";

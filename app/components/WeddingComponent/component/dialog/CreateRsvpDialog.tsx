@@ -23,7 +23,7 @@ interface CreateRsvpDialogProps {
     dismiss: () => void;
 }
 
-function CreateRsvpDialog({show, url, rsvp, dismiss}: CreateRsvpDialogProps) {
+const CreateRsvpDialog = ({show, url, rsvp, dismiss}: CreateRsvpDialogProps) => {
     const [guestType, setGuestType] = useState(0);
     const [isAttend, setIsAttend] = useState(0);
     const [isMeal, setIsMeal] = useState(0);
@@ -258,6 +258,6 @@ function CreateRsvpDialog({show, url, rsvp, dismiss}: CreateRsvpDialogProps) {
             />
         </BaseDialog>
     );
-}
+};
 
 export default CreateRsvpDialog;

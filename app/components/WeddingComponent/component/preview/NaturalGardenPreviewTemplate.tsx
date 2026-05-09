@@ -3,16 +3,16 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
-import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function NaturalGardenPreviewTemplate({
+const NaturalGardenPreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingPlace,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
 
@@ -88,6 +88,6 @@ function NaturalGardenPreviewTemplate({
             </View>
         </View>
     );
-}
+};
 
 export default NaturalGardenPreviewTemplate;

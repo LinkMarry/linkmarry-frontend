@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-export default function Share(props: SVGProps<SVGSVGElement>) {
+const Share = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="12" height="13" viewBox="0 0 12 13" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
@@ -9,4 +9,6 @@ export default function Share(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
+
+export default Share;

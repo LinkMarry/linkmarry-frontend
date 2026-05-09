@@ -26,7 +26,7 @@ export interface CheckboxRef {
     toggle: () => void;
 }
 
-function Checkbox({checked = false, OnChange, label, ui, ...props}: Props, ref: ForwardedRef<CheckboxRef>) {
+const Checkbox = ({checked = false, OnChange, label, ui, ...props}: Props, ref: ForwardedRef<CheckboxRef>) => {
     const [localChecked, setLocalChecked] = useState(checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
 
@@ -125,7 +125,7 @@ function Checkbox({checked = false, OnChange, label, ui, ...props}: Props, ref: 
             )}
         </View>
     );
-}
+};
 
 const CheckboxInputStyle = styled.input`
     position: absolute;

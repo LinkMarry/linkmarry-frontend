@@ -13,7 +13,7 @@ import {mobileStyle} from "~/components/responsive.tsx";
 import LogoInHeader from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 
-export default function MobileHeader() {
+const MobileHeader = () => {
     const {authorized, signOut} = useAuth();
     const [openDetail, setOpenDetail] = useState(false);
     const navigate = useNavigate();
@@ -125,9 +125,9 @@ export default function MobileHeader() {
     }
 
     return <MobileHeaderContent openDetail={openDetail} setOpenDetail={setOpenDetail} />;
-}
+};
 
-function MobileHeaderContent(props: {openDetail: boolean; setOpenDetail: Dispatch<SetStateAction<boolean>>}) {
+const MobileHeaderContent = (props: {openDetail: boolean; setOpenDetail: Dispatch<SetStateAction<boolean>>}) => {
     return (
         <View
             flexDirection={"row"}
@@ -160,14 +160,14 @@ function MobileHeaderContent(props: {openDetail: boolean; setOpenDetail: Dispatc
             />
         </View>
     );
-}
+};
 
-function MobileHeaderItem(
+const MobileHeaderItem = (
     props: {
         text: string;
         icon?: IconType;
     } & ComponentPropsWithoutRef<"div">,
-) {
+) => {
     return (
         <View
             flexDirection={"row"}
@@ -201,4 +201,6 @@ function MobileHeaderItem(
             </Text>
         </View>
     );
-}
+};
+
+export default MobileHeader;

@@ -1,6 +1,6 @@
 import {type PropsWithChildren, useEffect, useState} from "react";
 
-function ClientOnly({children}: PropsWithChildren) {
+const ClientOnly = ({children}: PropsWithChildren) => {
     const [isReady, setIsReady] = useState(false);
     useEffect(() => setIsReady(true), []);
 
@@ -9,6 +9,6 @@ function ClientOnly({children}: PropsWithChildren) {
     }
 
     return <>{children}</>;
-}
+};
 
 export default ClientOnly;

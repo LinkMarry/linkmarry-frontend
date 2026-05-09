@@ -17,7 +17,7 @@ interface GalleryTemplateProps {
     mode: WeddingMode;
 }
 
-function GalleryTemplate({rootRef, gallery, mode}: GalleryTemplateProps) {
+const GalleryTemplate = ({rootRef, gallery, mode}: GalleryTemplateProps) => {
     const galleryRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(galleryRef, [gallery], mode === "preview");
 
@@ -83,7 +83,7 @@ function GalleryTemplate({rootRef, gallery, mode}: GalleryTemplateProps) {
             )}
         </View>
     );
-}
+};
 
 const GallerySlide = ({
     rootRef,

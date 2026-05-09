@@ -8,7 +8,7 @@ interface Props extends ComponentProps<"div"> {
     children?: React.ReactNode;
 }
 
-function AddRemoveButton({dismiss, children, ...props}: Props, ref?: ForwardedRef<HTMLDivElement>) {
+const AddRemoveButton = ({dismiss, children, ...props}: Props, ref?: ForwardedRef<HTMLDivElement>) => {
     return (
         <View
             ref={ref}
@@ -36,6 +36,6 @@ function AddRemoveButton({dismiss, children, ...props}: Props, ref?: ForwardedRe
             {children}
         </View>
     );
-}
+};
 
 export default forwardRef(AddRemoveButton);

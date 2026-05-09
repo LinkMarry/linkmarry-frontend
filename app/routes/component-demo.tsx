@@ -14,7 +14,7 @@ import View from "~/components/core/View.tsx";
 import Loading from "~/components/core/Loading.tsx";
 import LoadingOverlay from "~/components/core/LoadingOverlay.tsx";
 
-function ComponentDemo() {
+const ComponentDemo = () => {
     const buttonSizes: ButtonSize[] = ["large", "medium", "small"];
     const buttonRoles: ButtonType[] = ["filled", "outlined", "tonal"];
 
@@ -163,6 +163,6 @@ function ComponentDemo() {
             </div>
         </View>
     );
-}
+};
 
 export default ComponentDemo;

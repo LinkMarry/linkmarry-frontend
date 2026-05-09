@@ -16,7 +16,7 @@ const detail1 = [
 ];
 const detail2 = ["사업자등록번호 : 176-24-01729", "통신판매업 신고 : 2024-경북포항-0787호"];
 
-function Footer() {
+const Footer = () => {
     const navigate = useNavigate();
 
     return (
@@ -192,13 +192,13 @@ function Footer() {
             </View>
         </View>
     );
-}
+};
 
 interface ItemProps extends ComponentPropsWithoutRef<"div"> {
     text: string;
 }
 
-function Item({text, ...props}: ItemProps) {
+const Item = ({text, ...props}: ItemProps) => {
     return (
         <Text
             type={"caption2"}
@@ -212,6 +212,6 @@ function Item({text, ...props}: ItemProps) {
             {text}
         </Text>
     );
-}
+};
 
 export default Footer;

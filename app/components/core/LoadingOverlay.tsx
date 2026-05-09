@@ -1,6 +1,6 @@
 import {styled} from "@linaria/react";
 
-function LoadingOverlay() {
+const LoadingOverlay = () => {
     return (
         <LoadingOverlayStyle>
             <DotsLoader>
@@ -10,7 +10,7 @@ function LoadingOverlay() {
             </DotsLoader>
         </LoadingOverlayStyle>
     );
-}
+};
 
 const LoadingOverlayStyle = styled.div`
     display: flex;

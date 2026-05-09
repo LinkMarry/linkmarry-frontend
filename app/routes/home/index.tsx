@@ -14,7 +14,7 @@ import useResponsive from "~/hook/useResponsive.ts";
 import {useHomeScreen} from "./useHomeScreen.ts";
 import {hideScrollBarStyle} from "~/style/common.ts";
 
-function Home() {
+const Home = () => {
     const {handleViewSample, handleCreateWedding, handleNavigateNaverStore} = useHomeScreen();
 
     return (
@@ -29,14 +29,14 @@ function Home() {
             </View>
         </MainWrapper>
     );
-}
+};
 
 interface Section1Props {
     onViewSample: () => void;
     onCreateWedding: () => void;
 }
 
-function Section1({onViewSample, onCreateWedding}: Section1Props) {
+const Section1 = ({onViewSample, onCreateWedding}: Section1Props) => {
     return (
         <View
             ui={css`
@@ -212,9 +212,9 @@ function Section1({onViewSample, onCreateWedding}: Section1Props) {
             </View>
         </View>
     );
-}
+};
 
-function SnowfallEffect() {
+const SnowfallEffect = () => {
     const {deviceSize} = useResponsive();
     const currentMonth = new Date().getMonth() + 1;
     const isWinter = [12, 1, 2].includes(currentMonth);
@@ -229,9 +229,9 @@ function SnowfallEffect() {
             snowflakeCount={deviceSize === "desktop" ? 100 : 50}
         />
     );
-}
+};
 
-function Section2() {
+const Section2 = () => {
     return (
         <View
             ui={css`
@@ -376,7 +376,7 @@ function Section2() {
             </View>
         </View>
     );
-}
+};
 
 interface Section2ItemProps {
     title: string;
@@ -384,7 +384,7 @@ interface Section2ItemProps {
     iconSrc: string;
 }
 
-function Section2Item({title, description, iconSrc}: Section2ItemProps) {
+const Section2Item = ({title, description, iconSrc}: Section2ItemProps) => {
     return (
         <View
             ui={css`
@@ -457,7 +457,7 @@ function Section2Item({title, description, iconSrc}: Section2ItemProps) {
             </View>
         </View>
     );
-}
+};
 
 interface Review {
     content: string;
@@ -495,7 +495,7 @@ const reviewData: Review[] = [
     },
 ];
 
-function Section3() {
+const Section3 = () => {
     return (
         <View
             ui={css`
@@ -636,13 +636,13 @@ function Section3() {
             </View>
         </View>
     );
-}
+};
 
 interface Section3ReviewItemProps {
     review: Review;
 }
 
-function Section3ReviewItem({review}: Section3ReviewItemProps) {
+const Section3ReviewItem = ({review}: Section3ReviewItemProps) => {
     return (
         <View
             ui={css`
@@ -737,7 +737,7 @@ function Section3ReviewItem({review}: Section3ReviewItemProps) {
             </View>
         </View>
     );
-}
+};
 
 const section4Data = [
     {
@@ -776,7 +776,7 @@ interface Section4Props {
     onViewSample: () => void;
 }
 
-function Section4({onViewSample}: Section4Props) {
+const Section4 = ({onViewSample}: Section4Props) => {
     return (
         <View
             ui={css`
@@ -936,9 +936,9 @@ function Section4({onViewSample}: Section4Props) {
             </View>
         </View>
     );
-}
+};
 
-function Section5() {
+const Section5 = () => {
     const [selectedCard, setSelectedCard] = useState(0);
 
     const phoneSrc = {
@@ -1062,7 +1062,7 @@ function Section5() {
             </View>
         </View>
     );
-}
+};
 
 interface Section5ItemProps extends ComponentPropsWithoutRef<"div"> {
     index: number;
@@ -1071,7 +1071,7 @@ interface Section5ItemProps extends ComponentPropsWithoutRef<"div"> {
     description: string;
 }
 
-function Section5Item({index, selected, title, description, ...props}: Section5ItemProps) {
+const Section5Item = ({index, selected, title, description, ...props}: Section5ItemProps) => {
     return (
         <View
             {...props}
@@ -1178,13 +1178,13 @@ function Section5Item({index, selected, title, description, ...props}: Section5I
             </View>
         </View>
     );
-}
+};
 
 interface Section6Props {
     onNavigateNaverStore: () => void;
 }
 
-function Section6({onNavigateNaverStore}: Section6Props) {
+const Section6 = ({onNavigateNaverStore}: Section6Props) => {
     return (
         <View
             ui={css`
@@ -1511,6 +1511,6 @@ function Section6({onNavigateNaverStore}: Section6Props) {
             </View>
         </View>
     );
-}
+};
 
 export default Home;

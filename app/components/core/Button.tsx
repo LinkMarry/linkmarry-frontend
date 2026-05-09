@@ -82,10 +82,10 @@ interface Props extends ComponentPropsWithRef<"button"> {
     ui?: LinariaClassName;
 }
 
-function Button(
+const Button = (
     {text, size = "large", buttonType = "filled", leadingIcon, trailingIcon, enabled = true, ui, ...props}: Props,
     ref: ForwardedRef<HTMLButtonElement>,
-) {
+) => {
     const iconColor = buttonTypeIconStyles[buttonType];
     const iconSize = iconSizeMap[size];
 
@@ -147,6 +147,6 @@ function Button(
                 ))}
         </View>
     );
-}
+};
 
 export default forwardRef(Button);

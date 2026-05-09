@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useEffectEvent, useState} from "react";
 import {useImmer} from "use-immer";
-import {makeDefaultWedding, type WeddingDto,Music,Wedding,WeddingDesignPreset} from "~/domain";
+import {makeDefaultWedding, type WeddingDto, type Music, type Wedding, type WeddingDesignPreset} from "~/domain";
 import {api} from "~/api/index.ts";
 import {useNavigate, useParams, useSearchParams} from "react-router";
 import lodash from "lodash";

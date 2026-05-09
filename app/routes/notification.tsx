@@ -19,7 +19,7 @@ export async function loader() {
     };
 }
 
-function Notification({loaderData: {notifications}}: Route.ComponentProps) {
+const Notification = ({loaderData: {notifications}}: Route.ComponentProps) => {
     const {queryTag, setQueryTag, filteredNotifications, handleNotificationClick} = useNotificationScreen({
         notifications,
     });
@@ -90,14 +90,14 @@ function Notification({loaderData: {notifications}}: Route.ComponentProps) {
             </View>
         </MainWrapper>
     );
-}
+};
 
 interface TagCellProps extends ComponentPropsWithoutRef<"div"> {
     tag: TagWithAll;
     selected: boolean;
 }
 
-function TagCell({tag, selected, ...props}: TagCellProps) {
+const TagCell = ({tag, selected, ...props}: TagCellProps) => {
     return (
         <Text
             type={"p3"}
@@ -124,13 +124,13 @@ function TagCell({tag, selected, ...props}: TagCellProps) {
             {tagToKoreanRecord[tag]}
         </Text>
     );
-}
+};
 
 interface NotificationCellProps extends ComponentPropsWithoutRef<"div"> {
     notification: Notification;
 }
 
-function NotificationCell({notification, ...props}: NotificationCellProps) {
+const NotificationCell = ({notification, ...props}: NotificationCellProps) => {
     return (
         <View
             {...props}
@@ -177,6 +177,6 @@ function NotificationCell({notification, ...props}: NotificationCellProps) {
             </Text>
         </View>
     );
-}
+};
 
 export default Notification;

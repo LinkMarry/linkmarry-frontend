@@ -5,7 +5,7 @@ import MyPageSidebarItem from "~/routes/mypage/components/MyPageSidebarItem.tsx"
 import {notMobileStyle} from "~/components/responsive.tsx";
 import View from "~/components/core/View.tsx";
 
-function MyPageIndexSidebar() {
+const MyPageIndexSidebar = () => {
     const {currentSidebar, navigate} = useMyPageIndex();
     const {signOut} = useAuth();
 
@@ -47,6 +47,6 @@ function MyPageIndexSidebar() {
             />
         </View>
     );
-}
+};
 
 export default MyPageIndexSidebar;

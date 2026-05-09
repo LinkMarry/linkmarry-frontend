@@ -8,7 +8,7 @@ interface Props extends ComponentPropsWithRef<"div"> {
     ui?: LinariaClassName;
 }
 
-function Toggle({checked = false, OnChange, ui, ...props}: Props, ref?: ForwardedRef<HTMLInputElement>) {
+const Toggle = ({checked = false, OnChange, ui, ...props}: Props, ref?: ForwardedRef<HTMLInputElement>) => {
     return (
         <View
             flexDirection={"row"}
@@ -73,6 +73,6 @@ function Toggle({checked = false, OnChange, ui, ...props}: Props, ref?: Forwarde
             />
         </View>
     );
-}
+};
 
 export default forwardRef(Toggle);

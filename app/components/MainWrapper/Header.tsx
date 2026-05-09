@@ -1,13 +1,13 @@
 import MobileHeader from "./MobileHeader.tsx";
 import DesktopHeader from "./DesktopHeader.tsx";
 
-function Header() {
+const Header = () => {
     return (
         <>
             <MobileHeader />
             <DesktopHeader />
         </>
     );
-}
+};
 
 export default Header;

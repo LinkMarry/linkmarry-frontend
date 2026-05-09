@@ -7,7 +7,7 @@ import {useAuth} from "~/hook/useAuth.tsx";
 import Loading from "~/components/core/Loading.tsx";
 import View from "~/components/core/View.tsx";
 
-function MyPageInfo() {
+const MyPageInfo = () => {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
     const {member, removeMember} = useAuth();
 
@@ -68,9 +68,9 @@ function MyPageInfo() {
             </View>
         </View>
     );
-}
+};
 
-function Item(props: {title: string; value: string}) {
+const Item = (props: {title: string; value: string}) => {
     return (
         <View
             flexDirection={"row"}
@@ -100,6 +100,6 @@ function Item(props: {title: string; value: string}) {
             </Text>
         </View>
     );
-}
+};
 
 export default MyPageInfo;

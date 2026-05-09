@@ -6,7 +6,7 @@ import "./app.css";
 import {HelmetProvider} from "react-helmet-async";
 import HelmetMetaTags from "~/components/HelmetMetaTags.tsx";
 
-export function Layout({children}: {children?: React.ReactNode}) {
+export const Layout = ({children}: {children?: React.ReactNode}) => {
     return (
         <html lang="ko">
             <head>
@@ -88,9 +88,9 @@ export function Layout({children}: {children?: React.ReactNode}) {
             </body>
         </html>
     );
-}
+};
 
-export default function App() {
+const App = () => {
     useEffect(() => {
         const {Kakao} = window as any;
         if (Kakao && !Kakao.isInitialized()) {
@@ -106,4 +106,6 @@ export default function App() {
             </HelmetProvider>
         </CookiesProvider>
     );
-}
+};
+
+export default App;

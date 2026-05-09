@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-function Hamburger(props: SVGProps<SVGSVGElement>) {
+const Hamburger = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="24" height="25" viewBox="0 0 24 25" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
@@ -17,6 +17,6 @@ function Hamburger(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
 
 export default Hamburger;

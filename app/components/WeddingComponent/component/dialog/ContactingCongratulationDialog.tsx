@@ -1,7 +1,7 @@
 import {useState} from "react";
 import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
 import Text from "~/components/core/Text.tsx";
-import type {Phone,BaseInfo} from "~/domain";
+import type {Phone, BaseInfo} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
@@ -24,7 +24,7 @@ interface Tel {
     tel: string;
 }
 
-function ContactingCongratulationDialog({show, baseInfo, phone, dismiss}: ContactTemplateDialogProps) {
+const ContactingCongratulationDialog = ({show, baseInfo, phone, dismiss}: ContactTemplateDialogProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
@@ -219,7 +219,7 @@ function ContactingCongratulationDialog({show, baseInfo, phone, dismiss}: Contac
             </View>
         </BaseDialog>
     );
-}
+};
 
 const SelectorStyle = css`
     height: 45px;

@@ -10,7 +10,7 @@ interface BaseDialogProps {
     children?: React.ReactNode;
 }
 
-export default function BaseDialog({show, ui, dismiss, children}: BaseDialogProps) {
+const BaseDialog = ({show, ui, dismiss, children}: BaseDialogProps) => {
     if (!show) return null;
 
     return (
@@ -18,9 +18,9 @@ export default function BaseDialog({show, ui, dismiss, children}: BaseDialogProp
             {children}
         </InnerDialog>
     );
-}
+};
 
-function InnerDialog({ui, dismiss, children}: Omit<BaseDialogProps, "show">) {
+const InnerDialog = ({ui, dismiss, children}: Omit<BaseDialogProps, "show">) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ function InnerDialog({ui, dismiss, children}: Omit<BaseDialogProps, "show">) {
             {children}
         </View>
     );
-}
+};
 
 const baseDialogStyle = css`
     align-items: center;
@@ -56,3 +56,5 @@ const baseDialogStyle = css`
         background: rgba(0, 0, 0, 0.5);
     }
 `;
+
+export default BaseDialog;

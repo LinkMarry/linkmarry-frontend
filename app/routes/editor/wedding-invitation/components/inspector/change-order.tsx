@@ -8,7 +8,7 @@ import View from "~/components/core/View.tsx";
 import {reorderedItems} from "~/lib/dnd-util.ts";
 import type Binding from "~/lib/Binding.ts";
 import {positionMap} from "~/domain";
-import {type Position,Wedding} from "~/domain";
+import {type Position, type Wedding} from "~/domain";
 
 const WeddingInvitationEditorInspectorChangeOrder = ({value: {position}, update}: Binding<Wedding>) => {
     const onDragEnd = (result: DropResult) => {

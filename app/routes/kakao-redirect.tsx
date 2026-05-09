@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {useSearchParams} from "react-router";
 import {useAuth} from "~/hook/useAuth.tsx";
 
-function KakaoRedirect() {
+const KakaoRedirect = () => {
     const {signIn} = useAuth();
     const [searchParams] = useSearchParams();
 
@@ -15,6 +15,6 @@ function KakaoRedirect() {
     }, [searchParams, signIn]);
 
     return null;
-}
+};
 
 export default KakaoRedirect;

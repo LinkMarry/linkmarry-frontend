@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-export default function Manage(props: SVGProps<SVGSVGElement>) {
+const Manage = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path d="M4 6.28571C4 5.02335 5.02335 4 6.28571 4H10.8571V10.8571H4V6.28571Z" fill="current" />
@@ -12,4 +12,6 @@ export default function Manage(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
+
+export default Manage;

@@ -3,15 +3,15 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css, cx} from "@linaria/core";
 import View from "~/components/core/View.tsx";
 import {format} from "date-fns";
-import {getDetails,getBaseInfoByBrideMarkFirst} from "~/domain";
+import {getDetails, getBaseInfoByBrideMarkFirst} from "~/domain";
 import Text from "~/components/core/Text.tsx";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function DreamWeddingPreviewTemplate({
+const DreamWeddingPreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
@@ -84,6 +84,6 @@ function DreamWeddingPreviewTemplate({
             </View>
         </View>
     );
-}
+};
 
 export default DreamWeddingPreviewTemplate;

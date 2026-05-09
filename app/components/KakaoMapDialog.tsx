@@ -17,7 +17,7 @@ interface KakaoMapDialogProps {
     dismiss: () => void;
 }
 
-function KakaoMapDialog({show, weddingPlace, onChange, dismiss}: KakaoMapDialogProps) {
+const KakaoMapDialog = ({show, weddingPlace, onChange, dismiss}: KakaoMapDialogProps) => {
     const {
         kakaoMapRef,
         places,
@@ -166,6 +166,6 @@ function KakaoMapDialog({show, weddingPlace, onChange, dismiss}: KakaoMapDialogP
             </View>
         </BaseDialog>
     );
-}
+};
 
 export default KakaoMapDialog;

@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-function Spacer({w, h, ui, ...props}: Props) {
+const Spacer = ({w, h, ui, ...props}: Props) => {
     return (
         <View
             ui={cx(
@@ -26,6 +26,6 @@ function Spacer({w, h, ui, ...props}: Props) {
             {...props}
         />
     );
-}
+};
 
 export default Spacer;

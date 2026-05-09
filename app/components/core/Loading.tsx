@@ -6,7 +6,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-function Loading({ui, ...props}: Props) {
+const Loading = ({ui, ...props}: Props) => {
     return (
         <View
             flexDirection={"row"}
@@ -24,9 +24,9 @@ function Loading({ui, ...props}: Props) {
             <LoadingItem />
         </View>
     );
-}
+};
 
-function LoadingItem() {
+const LoadingItem = () => {
     return (
         <View
             ui={css`
@@ -66,6 +66,6 @@ function LoadingItem() {
             `}
         />
     );
-}
+};
 
 export default Loading;

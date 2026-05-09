@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-export default function Calendar(props: SVGProps<SVGSVGElement>) {
+const Calendar = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
@@ -13,4 +13,6 @@ export default function Calendar(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
+
+export default Calendar;

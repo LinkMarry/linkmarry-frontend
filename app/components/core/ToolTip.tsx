@@ -5,14 +5,14 @@ interface Props extends PropsWithChildren {
     content: React.ReactNode;
 }
 
-function ToolTip({content, children}: Props) {
+const ToolTip = ({content, children}: Props) => {
     return (
         <ToolTipStyle>
             {children}
             <ContentStyle>{content}</ContentStyle>
         </ToolTipStyle>
     );
-}
+};
 
 const ContentStyle = styled.span`
     display: flex;

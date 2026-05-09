@@ -8,7 +8,7 @@ import {Navigate, useParams, useSearchParams} from "react-router";
 import ClientOnly from "~/components/ClientRendering";
 import usePreventZoom from "~/hook/usePreventZoom.ts";
 
-function Wedding() {
+const Wedding = () => {
     const {wedding, getWedding, isError} = useWedding();
     const {url} = useParams();
     const [searchParams] = useSearchParams();
@@ -71,6 +71,6 @@ function Wedding() {
             </View>
         </ClientOnly>
     );
-}
+};
 
 export default Wedding;

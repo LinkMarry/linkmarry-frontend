@@ -7,7 +7,7 @@ import Icon from "~/components/core/icon";
 
 import {useSignInScreen} from "./useSignInScreen.ts";
 
-function SignIn() {
+const SignIn = () => {
     const {signInWithKakao} = useSignInScreen();
 
     return (
@@ -87,6 +87,6 @@ function SignIn() {
             </View>
         </MainWrapper>
     );
-}
+};
 
 export default SignIn;

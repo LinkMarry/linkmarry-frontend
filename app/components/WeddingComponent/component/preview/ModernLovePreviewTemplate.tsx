@@ -6,7 +6,7 @@ import Text from "~/components/core/Text.tsx";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function ModernLovePreviewTemplate({weddingDesign, baseInfo}: ComponentProps<typeof PreviewTemplate>) {
+const ModernLovePreviewTemplate = ({weddingDesign, baseInfo}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     return (
         <View
@@ -76,6 +76,6 @@ function ModernLovePreviewTemplate({weddingDesign, baseInfo}: ComponentProps<typ
             </Text>
         </View>
     );
-}
+};
 
 export default ModernLovePreviewTemplate;

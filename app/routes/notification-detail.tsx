@@ -10,12 +10,12 @@ export async function loader({params}: Route.LoaderArgs) {
     return data;
 }
 
-function NotificationDetail({loaderData}: Route.ComponentProps) {
+const NotificationDetail = ({loaderData}: Route.ComponentProps) => {
     return (
         <MainWrapper>
             <NotificationDetailContent notification={loaderData} />
         </MainWrapper>
     );
-}
+};
 
 export default NotificationDetail;

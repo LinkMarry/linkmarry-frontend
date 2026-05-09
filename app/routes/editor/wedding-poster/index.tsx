@@ -12,7 +12,7 @@ import Text from "~/components/core/Text.tsx";
 import Input from "~/components/core/Input.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import type {Poster,PosterPreset} from "~/domain";
+import type {Poster, PosterPreset} from "~/domain";
 import {
     WeddingPosterEditorNavigationBarTypeList,
     weddingPosterEditorNavigationBarTypeRecord,
@@ -24,7 +24,7 @@ const navItems = WeddingPosterEditorNavigationBarTypeList.map(type => ({
     icon: weddingPosterEditorNavigationBarTypeRecord[type].icon,
 }));
 
-function WeddingPosterEditor() {
+const WeddingPosterEditor = () => {
     const {selectedNav, setSelectedNav, poster, updatePoster, posterPresets, openInspector, toggleInspector} =
         useWeddingPosterEditor();
 
@@ -71,13 +71,13 @@ function WeddingPosterEditor() {
             }
         />
     );
-}
+};
 
 interface EditorInspectorContentProps extends Binding<Poster> {
     posterPresets?: PosterPreset[];
 }
 
-function EditorInspectorContent({posterPresets, value, update}: EditorInspectorContentProps) {
+const EditorInspectorContent = ({posterPresets, value, update}: EditorInspectorContentProps) => {
     return (
         <EditorInspectorWrapper type={"bride"}>
             <View
@@ -122,6 +122,6 @@ function EditorInspectorContent({posterPresets, value, update}: EditorInspectorC
             </View>
         </EditorInspectorWrapper>
     );
-}
+};
 
 export default WeddingPosterEditor;

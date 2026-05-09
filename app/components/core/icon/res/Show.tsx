@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-export default function Show(props: SVGProps<SVGSVGElement>) {
+const Show = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
@@ -31,4 +31,6 @@ export default function Show(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
+
+export default Show;

@@ -17,7 +17,7 @@ interface DialogProps {
     children?: ReactNode;
 }
 
-function Dialog({
+const Dialog = ({
     show,
     title,
     description,
@@ -26,7 +26,7 @@ function Dialog({
     confirmButtonProps,
     ui,
     children,
-}: DialogProps) {
+}: DialogProps) => {
     return (
         <BaseDialog show={show} dismiss={dismiss} ui={ui}>
             <View
@@ -93,6 +93,6 @@ function Dialog({
             </View>
         </BaseDialog>
     );
-}
+};
 
 export default Dialog;

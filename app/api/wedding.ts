@@ -11,7 +11,7 @@ import type {
     WeddingStatistics,
     WeddingDto,
     Comment,
-    RsvpInfo
+    RsvpInfo,
 } from "~/domain";
 import {httpClient} from "~/api/index.ts";
 

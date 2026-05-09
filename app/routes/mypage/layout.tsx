@@ -4,7 +4,7 @@ import {css} from "@linaria/core";
 import {responsive} from "~/components/responsive.tsx";
 import View from "~/components/core/View.tsx";
 
-function Layout() {
+const Layout = () => {
     return (
         <MainWrapper>
             <View
@@ -37,6 +37,6 @@ function Layout() {
             </View>
         </MainWrapper>
     );
-}
+};
 
 export default Layout;

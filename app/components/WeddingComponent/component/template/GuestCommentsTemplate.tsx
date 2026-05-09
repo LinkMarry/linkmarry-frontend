@@ -1,6 +1,6 @@
 import {type ComponentPropsWithoutRef, useRef, useState} from "react";
 import {css} from "@linaria/core";
-import type {Comment,GuestComment,backgroundStyle, type WeddingDesignColor} from "~/domain";
+import {type Comment, type GuestComment, backgroundStyle, type WeddingDesignColor} from "~/domain";
 import Text from "~/components/core/Text.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Icon from "~/components/core/icon";
@@ -26,14 +26,14 @@ interface GuestCommentsTemplateProps {
     onRefresh: () => void;
 }
 
-function GuestCommentsTemplate({
+const GuestCommentsTemplate = ({
     weddingDesignColor,
     url,
     guestComments,
     guestComment,
     mode,
     onRefresh,
-}: GuestCommentsTemplateProps) {
+}: GuestCommentsTemplateProps) => {
     const [selectedRemoveGuestComment, setSelectedRemoveGuestComment] = useState<Comment>();
     const [showCreateGuestCommentDialog, setShowCreateGuestCommentDialog] = useState(false);
     const [showRemoveGuestCommentDialog, setShowRemoveGuestCommentDialog] = useState(false);
@@ -187,7 +187,7 @@ function GuestCommentsTemplate({
             </View>
         </FadeIn>
     );
-}
+};
 
 interface GuestCommentsProps {
     comments: Comment[];
@@ -196,7 +196,7 @@ interface GuestCommentsProps {
     onRemove: (comment: Comment) => void;
 }
 
-function GuestComments({comments, design, background, onRemove}: GuestCommentsProps) {
+const GuestComments = ({comments, design, background, onRemove}: GuestCommentsProps) => {
     switch (design) {
         case "BASIC":
             return (
@@ -234,7 +234,7 @@ function GuestComments({comments, design, background, onRemove}: GuestCommentsPr
                 </View>
             );
     }
-}
+};
 
 interface GuestCommentProps extends ComponentPropsWithoutRef<"div"> {
     comment: Comment;
@@ -242,7 +242,7 @@ interface GuestCommentProps extends ComponentPropsWithoutRef<"div"> {
     onRemove: () => void;
 }
 
-export function BasicGuestComment({comment, background, onRemove, ...props}: GuestCommentProps) {
+export const BasicGuestComment = ({comment, background, onRemove, ...props}: GuestCommentProps) => {
     return (
         <View
             ui={css`
@@ -302,9 +302,9 @@ export function BasicGuestComment({comment, background, onRemove, ...props}: Gue
             </Text>
         </View>
     );
-}
+};
 
-export function StickerGuestComment({comment, background, onRemove}: GuestCommentProps) {
+export const StickerGuestComment = ({comment, background, onRemove}: GuestCommentProps) => {
     return (
         <View
             ui={css`
@@ -372,6 +372,6 @@ export function StickerGuestComment({comment, background, onRemove}: GuestCommen
             </View>
         </View>
     );
-}
+};
 
 export default GuestCommentsTemplate;

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import type {WeddingStatistics,RsvpInfo,WeddingDto} from "~/domain";
+import type {WeddingStatistics, RsvpInfo, WeddingDto} from "~/domain";
 import {useNavigate, useParams} from "react-router";
 import {api} from "~/api/index.ts";
 

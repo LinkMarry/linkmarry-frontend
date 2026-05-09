@@ -15,7 +15,7 @@ import {
 } from "~/routes/editor/domain.ts";
 import View from "~/components/core/View.tsx";
 import type Binding from "~/lib/Binding.ts";
-import type {Wedding,WeddingDesignPreset,Music} from "~/domain";
+import type {Wedding, WeddingDesignPreset, Music} from "~/domain";
 import EditorInspectorShell from "~/routes/editor/components/EditorInspectorShell.tsx";
 import EditorInspectorDesign from "~/routes/editor/wedding-invitation/components/inspector/design.tsx";
 import EditorInspectorGroom from "~/routes/editor/wedding-invitation/components/inspector/groom.tsx";
@@ -142,13 +142,13 @@ interface EditorInspectorProps extends Binding<Wedding> {
     backgroundMusics?: Music[];
 }
 
-function EditorInspectorContent({
+const EditorInspectorContent = ({
     currentNavType,
     value,
     update,
     weddingDesigns,
     backgroundMusics,
-}: EditorInspectorProps) {
+}: EditorInspectorProps) => {
     switch (currentNavType) {
         case "design":
             return <EditorInspectorDesign value={value} update={update} weddingDesigns={weddingDesigns} />;
@@ -193,6 +193,6 @@ function EditorInspectorContent({
         default:
             return null;
     }
-}
+};
 
 export default WeddingInvitationEditorScreen;

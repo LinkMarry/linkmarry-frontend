@@ -10,7 +10,7 @@ interface MyPageSidebarItemProps extends ComponentPropsWithoutRef<"div"> {
     selected?: boolean;
 }
 
-function MyPageSidebarItem({icon, text, selected = false, ...props}: MyPageSidebarItemProps) {
+const MyPageSidebarItem = ({icon, text, selected = false, ...props}: MyPageSidebarItemProps) => {
     return (
         <View
             flexDirection={"row"}
@@ -54,6 +54,6 @@ function MyPageSidebarItem({icon, text, selected = false, ...props}: MyPageSideb
             </Text>
         </View>
     );
-}
+};
 
 export default MyPageSidebarItem;

@@ -13,7 +13,7 @@ interface VideoTemplateProps {
     mode: WeddingMode;
 }
 
-function VideoTemplate({video, rootRef, mode}: VideoTemplateProps) {
+const VideoTemplate = ({video, rootRef, mode}: VideoTemplateProps) => {
     const isYoutubeUrl = video.videoUrl.startsWith("https://www.youtube.com");
     const videoRef = useRef<HTMLDivElement>(null);
     const [videoWidth, setVideoWidth] = useState<number>();
@@ -118,6 +118,6 @@ function VideoTemplate({video, rootRef, mode}: VideoTemplateProps) {
             </View>
         </FadeIn>
     );
-}
+};
 
 export default VideoTemplate;

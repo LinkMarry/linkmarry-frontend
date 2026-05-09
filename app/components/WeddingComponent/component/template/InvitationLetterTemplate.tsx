@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import Divider from "~/components/core/Divider.tsx";
 import Text from "~/components/core/Text.tsx";
-import type {Greeting,BaseInfo} from "~/domain";
+import type {Greeting, BaseInfo} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 import {css, cx} from "@linaria/core";
@@ -15,7 +15,7 @@ interface InvitationLetterTemplateProps {
     mode: WeddingMode;
 }
 
-function InvitationLetterTemplate({baseInfo, greeting, mode}: InvitationLetterTemplateProps) {
+const InvitationLetterTemplate = ({baseInfo, greeting, mode}: InvitationLetterTemplateProps) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const invitationLetterRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(invitationLetterRef, [greeting], mode === "preview");
@@ -116,9 +116,9 @@ function InvitationLetterTemplate({baseInfo, greeting, mode}: InvitationLetterTe
             </View>
         </FadeIn>
     );
-}
+};
 
-function GreetingContent(props: {text: string}) {
+const GreetingContent = (props: {text: string}) => {
     return (
         <Text
             size={18}
@@ -135,6 +135,6 @@ function GreetingContent(props: {text: string}) {
             {props.text}
         </Text>
     );
-}
+};
 
 export default InvitationLetterTemplate;

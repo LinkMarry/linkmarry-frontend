@@ -2,7 +2,7 @@ import {css} from "@linaria/core";
 import {useNavigate} from "react-router";
 import Logo from "~/components/Logo.tsx";
 
-export default function LogoInHeader() {
+const LogoInHeader = () => {
     const navigate = useNavigate();
     return (
         <Logo
@@ -14,4 +14,6 @@ export default function LogoInHeader() {
             }}
         />
     );
-}
+};
+
+export default LogoInHeader;

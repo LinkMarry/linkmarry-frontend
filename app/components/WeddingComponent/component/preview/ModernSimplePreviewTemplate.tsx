@@ -3,15 +3,15 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import View from "~/components/core/View.tsx";
-import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function ModernSimplePreviewTemplate({
+const ModernSimplePreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingSchedule,
-}: ComponentProps<typeof PreviewTemplate>) {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
@@ -67,6 +67,6 @@ function ModernSimplePreviewTemplate({
             </View>
         </View>
     );
-}
+};
 
 export default ModernSimplePreviewTemplate;

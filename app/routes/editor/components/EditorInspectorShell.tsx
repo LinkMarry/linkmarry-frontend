@@ -7,7 +7,7 @@ interface EditorInspectorProps extends PropsWithChildren {
     ui?: LinariaClassName;
 }
 
-function EditorInspectorShell({ui, children}: EditorInspectorProps) {
+const EditorInspectorShell = ({ui, children}: EditorInspectorProps) => {
     return (
         <View
             ui={cx(
@@ -28,6 +28,6 @@ function EditorInspectorShell({ui, children}: EditorInspectorProps) {
             {children}
         </View>
     );
-}
+};
 
 export default EditorInspectorShell;

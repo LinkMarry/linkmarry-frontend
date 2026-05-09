@@ -3,11 +3,15 @@ import PreviewTemplate from "~/components/WeddingComponent/component/preview/Pre
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
-import {getBaseInfoByBrideMarkFirst,getDetails} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-function PureLovePreviewTemplate({weddingDesign, baseInfo, weddingSchedule}: ComponentProps<typeof PreviewTemplate>) {
+const PureLovePreviewTemplate = ({
+    weddingDesign,
+    baseInfo,
+    weddingSchedule,
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {isValidDate, date} = getDetails(weddingSchedule);
     return (
@@ -102,6 +106,6 @@ function PureLovePreviewTemplate({weddingDesign, baseInfo, weddingSchedule}: Com
             </View>
         </View>
     );
-}
+};
 
 export default PureLovePreviewTemplate;

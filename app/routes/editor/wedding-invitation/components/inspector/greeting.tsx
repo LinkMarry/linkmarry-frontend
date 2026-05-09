@@ -6,7 +6,7 @@ import Select from "~/components/core/Select.tsx";
 import SegmentedButton from "~/components/core/SegmentedButton.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {type WeddingDto,Wedding} from "~/domain";
+import {type WeddingDto, type Wedding} from "~/domain";
 import {GreetingDesignList, greetingDesignMap} from "~/api/enumeration/GreetingDesign.ts";
 import View from "~/components/core/View.tsx";
 

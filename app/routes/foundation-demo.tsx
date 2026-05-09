@@ -6,7 +6,7 @@ import Divider from "~/components/core/Divider.tsx";
 
 const text = "가나다라마바사ABCDEFG12345";
 
-function FoundationDemo() {
+const FoundationDemo = () => {
     return (
         <View
             ui={css`
@@ -87,6 +87,6 @@ function FoundationDemo() {
             </View>
         </View>
     );
-}
+};
 
 export default FoundationDemo;

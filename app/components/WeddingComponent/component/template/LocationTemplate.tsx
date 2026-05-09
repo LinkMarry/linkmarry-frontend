@@ -15,7 +15,7 @@ interface LocationProps {
     mode: WeddingMode;
 }
 
-function LocationTemplate({weddingDesignColor, weddingPlace, mode}: LocationProps) {
+const LocationTemplate = ({weddingDesignColor, weddingPlace, mode}: LocationProps) => {
     const kakaoMapRef = useRef<HTMLDivElement>(null);
     const weddingPlaceRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace], mode === "preview");
@@ -228,6 +228,6 @@ function LocationTemplate({weddingDesignColor, weddingPlace, mode}: LocationProp
             </View>
         </View>
     );
-}
+};
 
 export default LocationTemplate;

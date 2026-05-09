@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-function Statistics(props: SVGProps<SVGSVGElement>) {
+const Statistics = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="52" height="52" viewBox="0 0 52 52" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
@@ -29,6 +29,6 @@ function Statistics(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
 
 export default Statistics;

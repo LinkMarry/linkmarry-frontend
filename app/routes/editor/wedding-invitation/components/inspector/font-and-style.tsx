@@ -10,7 +10,8 @@ import {
     weddingDesignFontSizeList,
     weddingDesignFontSizeMap,
     weddingDesignPaperColorList,
-Wedding} from "~/domain";
+    type Wedding,
+} from "~/domain";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import {type FontFamily, fontFamilyList} from "~/components/core/text/TextType.ts";

@@ -1,6 +1,6 @@
 import {type SVGProps} from "react";
 
-function PenLine(props: SVGProps<SVGSVGElement>) {
+const PenLine = (props: SVGProps<SVGSVGElement>) => {
     return (
         <svg width="20" height="21" viewBox="0 0 20 21" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
@@ -15,6 +15,6 @@ function PenLine(props: SVGProps<SVGSVGElement>) {
             />
         </svg>
     );
-}
+};
 
 export default PenLine;

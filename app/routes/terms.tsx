@@ -18,7 +18,7 @@ export async function loader() {
     };
 }
 
-function Terms({loaderData: {notifications}, params: {date}}: Route.ComponentProps) {
+const Terms = ({loaderData: {notifications}, params: {date}}: Route.ComponentProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const selectedNotification = date ? notifications.find(i => i.date === date) : notifications[0];
@@ -78,6 +78,6 @@ function Terms({loaderData: {notifications}, params: {date}}: Route.ComponentPro
             </View>
         </MainWrapper>
     );
-}
+};
 
 export default Terms;
