@@ -1,7 +1,7 @@
 import React, {type ComponentPropsWithoutRef} from "react";
 import MainWrapper from "~/components/MainWrapper";
 import {css, cx} from "@linaria/core";
-import {responsive} from "~/components/responsive.tsx";
+import {responsive} from "~/style/responsive.tsx";
 import type {Route} from "./+types/notification";
 import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";

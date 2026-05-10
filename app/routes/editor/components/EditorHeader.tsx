@@ -2,7 +2,7 @@ import {css} from "@linaria/core";
 import Logo from "~/components/Logo.tsx";
 import {useNavigate} from "react-router";
 import Spacer from "~/components/core/Spacer.tsx";
-import {responsive} from "~/components/responsive.tsx";
+import {responsive} from "~/style/responsive";
 import Text from "~/components/core/Text.tsx";
 import View from "~/components/core/View.tsx";
 import React, {type ReactNode} from "react";

@@ -9,7 +9,7 @@ import Divider from "~/components/core/Divider.tsx";
 import View from "~/components/core/View.tsx";
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
-import {mobileStyle} from "~/components/responsive.tsx";
+import {mobileStyle} from "~/style/responsive.tsx";
 import LogoInHeader from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 

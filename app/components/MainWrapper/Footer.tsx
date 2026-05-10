@@ -5,7 +5,7 @@ import View from "~/components/core/View.tsx";
 import Divider from "~/components/core/Divider.tsx";
 import {BUSINESS_INFORMATION_URL, CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_URL} from "~/lib/constant.ts";
 import {useNavigate} from "react-router";
-import {desktopStyle, notDesktopStyle, responsive} from "~/components/responsive.tsx";
+import {desktopStyle, notDesktopStyle, responsive} from "~/style/responsive";
 
 const detail1 = [
     "산다(SANDA)",

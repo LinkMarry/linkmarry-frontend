@@ -6,7 +6,7 @@ import EditorInspectorShell from "~/routes/editor/components/EditorInspectorShel
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import Button from "~/components/core/Button.tsx";
-import {desktopStyle} from "~/components/responsive.tsx";
+import {desktopStyle} from "~/style/responsive";
 import {useWeddingPosterEditor} from "~/routes/editor/wedding-poster/useWeddingPosterEditor.ts";
 import Text from "~/components/core/Text.tsx";
 import Input from "~/components/core/Input.tsx";

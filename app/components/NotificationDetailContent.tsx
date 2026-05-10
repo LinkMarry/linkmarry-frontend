@@ -1,7 +1,7 @@
 import React from "react";
 import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
-import {responsive} from "~/components/responsive.tsx";
+import {responsive} from "~/style/responsive";
 import Text from "~/components/core/Text.tsx";
 import Markdown from "react-markdown";
 import type {Notification} from "~/domain";

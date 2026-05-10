@@ -9,8 +9,8 @@ import Popover from "~/components/core/Popover.tsx";
 import View from "~/components/core/View.tsx";
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
-import {notMobileStyle} from "~/components/responsive.tsx";
-import ClientOnly from "~/components/ClientRendering.tsx";
+import {notMobileStyle} from "~/style/responsive.tsx";
+import ClientOnly from "~/components/ClientOnly.tsx";
 import LogoInHeader from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 

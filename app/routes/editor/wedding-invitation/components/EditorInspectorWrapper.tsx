@@ -2,7 +2,7 @@ import {type ComponentProps, type ReactNode} from "react";
 import Text from "~/components/core/Text.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Toggle from "~/components/core/Toggle.tsx";
-import {responsive} from "~/components/responsive.tsx";
+import {responsive} from "~/style/responsive";
 import {css, cx} from "@linaria/core";
 import {weddingInvitationEditorNavigationBarTypeRecord} from "~/routes/editor/domain.ts";
 import {type WeddingInvitationEditorNavigationBarType} from "~/routes/editor/domain.ts";

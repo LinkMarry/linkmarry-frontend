@@ -1,6 +1,6 @@
 import View from "~/components/core/View.tsx";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import {responsive} from "~/components/responsive.tsx";
+import {responsive} from "~/style/responsive";
 import type {PropsWithChildren} from "react";
 
 interface EditorInspectorProps extends PropsWithChildren {

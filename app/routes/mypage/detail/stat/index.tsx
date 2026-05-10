@@ -3,7 +3,7 @@ import {css, cx} from "@linaria/core";
 import Divider from "~/components/core/Divider.tsx";
 import Spacer from "~/components/core/Spacer.tsx";
 import Button from "~/components/core/Button.tsx";
-import {mobileStyle, notMobileStyle} from "~/components/responsive.tsx";
+import {mobileStyle, notMobileStyle} from "~/style/responsive";
 import type {WeddingStatistics} from "~/domain";
 import Loading from "~/components/core/Loading.tsx";
 import View from "~/components/core/View.tsx";

@@ -1,11 +1,11 @@
 import {useMediaQuery} from "react-responsive";
-import {breakpoints} from "~/components/responsive.tsx";
+import {BREAK_POINT_MAP} from "~/style/responsive";
 
 type DeviceSize = "mobile" | "tablet" | "desktop";
 
 function useResponsive() {
-    const isMobile = useMediaQuery({maxWidth: breakpoints.mobile});
-    const isTablet = useMediaQuery({minWidth: breakpoints.mobile + 1, maxWidth: breakpoints.tablet});
+    const isMobile = useMediaQuery({maxWidth: BREAK_POINT_MAP.MOBILE});
+    const isTablet = useMediaQuery({minWidth: BREAK_POINT_MAP.MOBILE + 1, maxWidth: BREAK_POINT_MAP.TABLET});
 
     const deviceSize: DeviceSize = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
 

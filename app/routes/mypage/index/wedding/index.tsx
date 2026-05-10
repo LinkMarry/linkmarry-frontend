@@ -16,7 +16,7 @@ import Dialog from "~/components/core/dialog/Dialog.tsx";
 import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
 import {getWeddingUrl} from "~/lib/string-util.ts";
 import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts";
-import {desktopStyle, notDesktopStyle, responsive} from "~/components/responsive.tsx";
+import {desktopStyle, notDesktopStyle, responsive} from "~/style/responsive";
 import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
 const MyPageWedding = () => {

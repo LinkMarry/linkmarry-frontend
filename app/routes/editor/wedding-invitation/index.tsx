@@ -2,7 +2,7 @@ import {css} from "@linaria/core";
 import useWeddingInvitationEditorScreen from "~/routes/editor/wedding-invitation/useWeddingInvitationEditorScreen.ts";
 import CreateWeddingDialog from "~/routes/editor/wedding-invitation/components/CreateWeddingDialog.tsx";
 import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
-import {desktopStyle} from "~/components/responsive.tsx";
+import {desktopStyle} from "~/style/responsive";
 import EditorPreview from "~/routes/editor/wedding-invitation/components/EditorPreview.tsx";
 import EditorShell from "~/routes/editor/components/EditorShell.tsx";
 import EditorHeader from "~/routes/editor/components/EditorHeader.tsx";

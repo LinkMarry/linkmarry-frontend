@@ -2,7 +2,7 @@ import {css, cx} from "@linaria/core";
 import useMyPageIndex from "~/routes/mypage/index/useMyPageIndex.ts";
 import {useAuth} from "~/hook/useAuth.tsx";
 import MyPageSidebarItem from "~/routes/mypage/components/MyPageSidebarItem.tsx";
-import {notMobileStyle} from "~/components/responsive.tsx";
+import {notMobileStyle} from "~/style/responsive";
 import View from "~/components/core/View.tsx";
 
 const MyPageIndexSidebar = () => {

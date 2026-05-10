@@ -3,7 +3,7 @@ import View from "~/components/core/View.tsx";
 import {css, cx} from "@linaria/core";
 import Icon, {type IconType} from "~/components/core/icon";
 import Text from "~/components/core/Text.tsx";
-import {desktopStyle, notDesktopStyle} from "~/components/responsive.tsx";
+import {desktopStyle, notDesktopStyle} from "~/style/responsive";
 import useResponsive from "~/hook/useResponsive.ts";
 import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 

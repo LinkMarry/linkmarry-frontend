@@ -1,17 +1,17 @@
 import {css} from "@linaria/core";
 
-export const breakpoints = {
-    mobile: 767,
-    tablet: 1024,
-};
+export const BREAK_POINT_MAP = {
+    MOBILE: 767,
+    TABLET: 1024,
+} as const;
 
 export const responsive = {
-    mobile: `@media (max-width: ${breakpoints.mobile}px)`,
-    tablet: `@media (min-width: ${breakpoints.mobile + 1}px) and (max-width: ${breakpoints.tablet}px)`,
-    desktop: `@media (min-width: ${breakpoints.tablet + 1}px)`,
-    notMobile: `@media (min-width: ${breakpoints.mobile + 1}px)`,
-    notTablet: `@media (max-width: ${breakpoints.mobile}px) and (min-width: ${breakpoints.tablet + 1}px)`,
-    notDesktop: `@media (max-width: ${breakpoints.tablet}px)`,
+    mobile: `@media (max-width: ${BREAK_POINT_MAP.MOBILE}px)`,
+    tablet: `@media (min-width: ${BREAK_POINT_MAP.MOBILE + 1}px) and (max-width: ${BREAK_POINT_MAP.TABLET}px)`,
+    desktop: `@media (min-width: ${BREAK_POINT_MAP.TABLET + 1}px)`,
+    notMobile: `@media (min-width: ${BREAK_POINT_MAP.MOBILE + 1}px)`,
+    notTablet: `@media (max-width: ${BREAK_POINT_MAP.MOBILE}px) and (min-width: ${BREAK_POINT_MAP.TABLET + 1}px)`,
+    notDesktop: `@media (max-width: ${BREAK_POINT_MAP.TABLET}px)`,
 };
 
 export const mobileStyle = css`

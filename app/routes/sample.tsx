@@ -6,8 +6,8 @@ import View from "~/components/core/View.tsx";
 import Text from "~/components/core/Text.tsx";
 import SelectDesignSheet from "~/components/WeddingComponent/component/SelectDesignSheet.tsx";
 import {useSearchParams} from "react-router";
-import {responsive} from "~/components/responsive.tsx";
-import ClientOnly from "~/components/ClientRendering";
+import {responsive} from "~/style/responsive";
+import ClientOnly from "~/components/ClientOnly";
 import type {Route} from "./+types/sample";
 import {api} from "~/api/index.ts";
 
