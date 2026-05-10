@@ -3,9 +3,8 @@ import {css, cx} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
 import {format} from "date-fns";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import {getBaseInfoByBrideMarkFirst, getDetails, backgroundStyle} from "~/domain";
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import View from "~/components/core/View.tsx";
-import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
 const SoulmatePreviewTemplate = ({
     baseInfo,

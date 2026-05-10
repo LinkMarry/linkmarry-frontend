@@ -3,7 +3,7 @@ import View from "~/components/core/View.tsx";
 import useFadeIn from "~/components/core/fadein/useFadeIn.ts";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
-type Provided<T = any> = {
+type Provided<T = HTMLElement> = {
     style: LinariaClassName;
     ref: RefObject<T>;
 };

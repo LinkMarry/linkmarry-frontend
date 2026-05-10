@@ -10,7 +10,6 @@ import Button from "~/components/core/Button.tsx";
 import {useCookies} from "react-cookie";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import View from "~/components/core/View.tsx";
-import {useEffect} from "react";
 
 interface RsvpDialogProps {
     show: boolean;

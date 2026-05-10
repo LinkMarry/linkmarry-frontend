@@ -1,6 +1,5 @@
 import {type ComponentPropsWithoutRef} from "react";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import {styled} from "@linaria/react";
 import View from "~/components/core/View.tsx";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
@@ -9,7 +8,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-const Spacer = ({w, h, ui, ...props}: Props) => {
+const Spacer = ({w, h, ...props}: Props) => {
     return (
         <View
             ui={cx(

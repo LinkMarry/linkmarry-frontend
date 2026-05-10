@@ -1,4 +1,4 @@
-import {css, cx} from "@linaria/core";
+import {css} from "@linaria/core";
 import Logo from "~/components/Logo.tsx";
 import {useNavigate} from "react-router";
 import Spacer from "~/components/core/Spacer.tsx";

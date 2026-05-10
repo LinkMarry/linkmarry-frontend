@@ -2,18 +2,11 @@ import {type ComponentProps} from "react";
 import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import {css} from "@linaria/core";
 import Text from "~/components/core/Text.tsx";
-import {differenceInDays, format} from "date-fns";
-import {getDetails, getBaseInfoByBrideMarkFirst} from "~/domain";
 import View from "~/components/core/View.tsx";
 
 const ClassicElegancePreviewTemplate = ({
     weddingDesign,
-    baseInfo,
-    weddingSchedule,
-    weddingPlace,
 }: ComponentProps<typeof PreviewTemplate>) => {
-    const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
-    const {date, isValidDate} = getDetails(weddingSchedule);
 
     return (
         <View ui={"override-font"}>

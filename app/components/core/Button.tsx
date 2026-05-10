@@ -1,7 +1,6 @@
 import Icon, {type IconType, isIconType} from "~/components/core/icon";
-import {type ComponentPropsWithRef, type ForwardedRef, forwardRef, isValidElement, type ReactNode} from "react";
+import {type ComponentPropsWithRef, type ForwardedRef, forwardRef, type ReactNode} from "react";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import {styled} from "@linaria/react";
 import {textStyles} from "~/components/core/text/TextType.ts";
 import View from "~/components/core/View.tsx";
 

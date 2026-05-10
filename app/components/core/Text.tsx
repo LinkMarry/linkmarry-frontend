@@ -7,7 +7,6 @@ import {
 } from "react";
 import {type FontFamily, type TextType, textStyles} from "~/components/core/text/TextType";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import View from "~/components/core/View.tsx";
 
 interface Props extends PropsWithChildren<ComponentPropsWithRef<"div">> {
     type?: TextType;
