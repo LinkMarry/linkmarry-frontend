@@ -20,7 +20,7 @@ import {useState} from "react";
 
 import {css} from "@linaria/core";
 
-const ComponentDemo = () => {
+const ComponentDemoScreen = () => {
     const buttonSizes: ButtonSize[] = ["large", "medium", "small"];
     const buttonRoles: ButtonType[] = ["filled", "outlined", "tonal"];
 
@@ -171,4 +171,4 @@ const ComponentDemo = () => {
     );
 };
 
-export default ComponentDemo;
+export default ComponentDemoScreen;

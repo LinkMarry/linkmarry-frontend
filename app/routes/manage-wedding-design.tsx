@@ -3,7 +3,7 @@ import {useManageWeddingDesignScreen} from "./useManageWeddingDesignScreen.ts";
 
 import {css} from "@linaria/core";
 
-const ManageWeddingDesign = () => {
+const ManageWeddingDesignScreen = () => {
     const {presets} = useManageWeddingDesignScreen();
 
     return (
@@ -51,4 +51,4 @@ const Item = ({text}: ItemProps) => {
     );
 };
 
-export default ManageWeddingDesign;
+export default ManageWeddingDesignScreen;

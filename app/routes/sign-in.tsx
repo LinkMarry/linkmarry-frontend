@@ -1,11 +1,9 @@
 import {MainWrapper, Text, View, Icon} from "~/components";
 import {css} from "@linaria/core";
 
-import {useAuth} from "~/hook/useAuth.tsx";
-
 import {useSignInScreen} from "./useSignInScreen.ts";
 
-const SignIn = () => {
+const SignInScreen = () => {
     const {signInWithKakao} = useSignInScreen();
 
     return (
@@ -87,4 +85,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignInScreen;

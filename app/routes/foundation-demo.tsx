@@ -4,7 +4,7 @@ import {css} from "@linaria/core";
 
 const text = "가나다라마바사ABCDEFG12345";
 
-const FoundationDemo = () => {
+const FoundationDemoScreen = () => {
     return (
         <View
             ui={css`
@@ -87,4 +87,4 @@ const FoundationDemo = () => {
     );
 };
 
-export default FoundationDemo;
+export default FoundationDemoScreen;

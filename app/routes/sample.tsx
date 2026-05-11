@@ -14,7 +14,7 @@ export async function loader() {
     return data;
 }
 
-const Sample = ({loaderData}: Route.ComponentProps) => {
+const SampleScreen = ({loaderData}: Route.ComponentProps) => {
     const [wedding, setWedding] = useState(dummyWedding);
     const [showSelectDesignSheet, setShowSelectDesignSheet] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -121,4 +121,4 @@ const Sample = ({loaderData}: Route.ComponentProps) => {
     );
 };
 
-export default Sample;
+export default SampleScreen;

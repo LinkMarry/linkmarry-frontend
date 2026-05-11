@@ -11,7 +11,7 @@ import useResponsive from "~/hook/useResponsive.ts";
 import {useHomeScreen} from "./useHomeScreen.ts";
 import {hideScrollBarStyle} from "~/style/common.ts";
 
-const Home = () => {
+const HomeScreen = () => {
     const {handleViewSample, handleCreateWedding, handleNavigateNaverStore} = useHomeScreen();
 
     return (
@@ -1510,4 +1510,4 @@ const Section6 = ({onNavigateNaverStore}: Section6Props) => {
     );
 };
 
-export default Home;
+export default HomeScreen;

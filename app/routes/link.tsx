@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {Navigate, useSearchParams} from "react-router";
 
-const Link = () => {
+const LinkScreen = () => {
     const [searchParams] = useSearchParams();
     const url = searchParams.get("url");
 
@@ -18,4 +18,4 @@ const Link = () => {
     return null;
 };
 
-export default Link;
+export default LinkScreen;

@@ -7,7 +7,7 @@ import {Navigate, useParams, useSearchParams} from "react-router";
 
 import usePreventZoom from "~/hook/usePreventZoom.ts";
 
-const Wedding = () => {
+const WeddingScreen = () => {
     const {wedding, getWedding, isError} = useWedding();
     const {url} = useParams();
     const [searchParams] = useSearchParams();
@@ -72,4 +72,4 @@ const Wedding = () => {
     );
 };
 
-export default Wedding;
+export default WeddingScreen;

@@ -15,7 +15,7 @@ import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts"
 import {desktopStyle, notDesktopStyle, responsive} from "~/style/responsive";
 import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
-const MyPageWedding = () => {
+const MyPageWeddingScreen = () => {
     const {showRemoveWeddingDialog, setShowRemoveWeddingDialog, weddings, removeWedding, setSelectedWedding} =
         useMyPageWedding();
 
@@ -560,4 +560,4 @@ const StatisticsCell = ({title, value}: {title: string; value: string}) => {
     );
 };
 
-export default MyPageWedding;
+export default MyPageWeddingScreen;

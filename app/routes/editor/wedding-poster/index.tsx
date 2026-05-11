@@ -24,8 +24,8 @@ const navItems = WeddingPosterEditorNavigationBarTypeList.map(type => ({
     icon: weddingPosterEditorNavigationBarTypeRecord[type].icon,
 }));
 
-const WeddingPosterEditor = () => {
-    const {selectedNav, setSelectedNav, poster, updatePoster, posterPresets, openInspector, toggleInspector} =
+const WeddingPosterEditorScreen = () => {
+    const {selectedNav, setSelectedNav, poster, updatePoster, openInspector, toggleInspector} =
         useWeddingPosterEditor();
 
     return (
@@ -77,7 +77,7 @@ interface EditorInspectorContentProps extends Binding<Poster> {
     posterPresets?: PosterPreset[];
 }
 
-const EditorInspectorContent = ({posterPresets, value, update}: EditorInspectorContentProps) => {
+const EditorInspectorContent = ({update}: EditorInspectorContentProps) => {
     return (
         <EditorInspectorWrapper type={"bride"}>
             <View
@@ -124,4 +124,4 @@ const EditorInspectorContent = ({posterPresets, value, update}: EditorInspectorC
     );
 };
 
-export default WeddingPosterEditor;
+export default WeddingPosterEditorScreen;

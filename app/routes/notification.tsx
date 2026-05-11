@@ -19,7 +19,7 @@ export async function loader() {
     };
 }
 
-const Notification = ({loaderData: {notifications}}: Route.ComponentProps) => {
+const NotificationScreen = ({loaderData: {notifications}}: Route.ComponentProps) => {
     const {queryTag, setQueryTag, filteredNotifications, handleNotificationClick} = useNotificationScreen({
         notifications,
     });
@@ -179,4 +179,4 @@ const NotificationCell = ({notification, ...props}: NotificationCellProps) => {
     );
 };
 
-export default Notification;
+export default NotificationScreen;

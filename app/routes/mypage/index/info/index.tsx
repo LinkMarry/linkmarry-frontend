@@ -5,7 +5,7 @@ import {css} from "@linaria/core";
 
 import {useAuth} from "~/hook/useAuth.tsx";
 
-const MyPageInfo = () => {
+const MyPageInfoScreen = () => {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
     const {member, removeMember} = useAuth();
 
@@ -68,6 +68,8 @@ const MyPageInfo = () => {
     );
 };
 
+export default MyPageInfoScreen;
+
 const Item = (props: {title: string; value: string}) => {
     return (
         <View
@@ -100,4 +102,4 @@ const Item = (props: {title: string; value: string}) => {
     );
 };
 
-export default MyPageInfo;
+

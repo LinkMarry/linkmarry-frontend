@@ -1,7 +1,7 @@
 import {Navigate, Outlet} from "react-router";
 import {useAuth} from "~/hook/useAuth.tsx";
 
-const AdminRoute = () => {
+const AdminRouteScreen = () => {
     const {member} = useAuth();
 
     if (member?.role !== "ROLE_ADMIN") {
@@ -11,4 +11,4 @@ const AdminRoute = () => {
     return <Outlet />;
 };
 
-export default AdminRoute;
+export default AdminRouteScreen;

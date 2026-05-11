@@ -3,7 +3,7 @@ import useAxios from "~/hook/useAxios.ts";
 import {AutoFocusProvider} from "~/hook/AutoFocusProvider.tsx";
 import {AuthProvider} from "~/hook/AuthProvider.tsx";
 
-const Providers = () => {
+const ProvidersScreen = () => {
     useAxios();
 
     return (
@@ -15,4 +15,4 @@ const Providers = () => {
     );
 };
 
-export default Providers;
+export default ProvidersScreen;

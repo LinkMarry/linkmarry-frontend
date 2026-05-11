@@ -1,7 +1,7 @@
 import {Outlet} from "react-router";
 import config from "~/config.ts";
 
-const DevelopmentRoute = () => {
+const DevelopmentRouteScreen = () => {
     if (config.prd) {
         return null;
     }
@@ -9,4 +9,4 @@ const DevelopmentRoute = () => {
     return <Outlet />;
 };
 
-export default DevelopmentRoute;
+export default DevelopmentRouteScreen;

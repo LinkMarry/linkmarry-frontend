@@ -9,7 +9,7 @@ export async function loader({params}: Route.LoaderArgs) {
     return data;
 }
 
-const NotificationDetail = ({loaderData}: Route.ComponentProps) => {
+const NotificationDetailScreen = ({loaderData}: Route.ComponentProps) => {
     return (
         <MainWrapper>
             <NotificationDetailContent notification={loaderData} />
@@ -17,4 +17,4 @@ const NotificationDetail = ({loaderData}: Route.ComponentProps) => {
     );
 };
 
-export default NotificationDetail;
+export default NotificationDetailScreen;

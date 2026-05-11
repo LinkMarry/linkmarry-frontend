@@ -18,7 +18,7 @@ const CellStyle = cx(
     textStyles.p3.normal,
 );
 
-const MyPageStat = () => {
+const MyPageStatScreen = () => {
     const {statistics, wedding, rsvpInfoList} = useMyPageStat();
 
     return (
@@ -424,4 +424,4 @@ const MobileStatCell = ({title, value}: StatCellProps) => {
     );
 };
 
-export default MyPageStat;
+export default MyPageStatScreen;
