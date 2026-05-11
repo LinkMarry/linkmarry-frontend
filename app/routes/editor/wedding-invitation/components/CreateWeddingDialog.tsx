@@ -1,11 +1,9 @@
-import Dialog from "~/components/core/dialog/Dialog.tsx";
-import Input from "~/components/core/Input.tsx";
+import {Dialog, Input, Text, Icon, View} from "~/components";
 import {useNavigate} from "react-router";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
 import type Binding from "~/lib/Binding.ts";
-import Icon from "~/components/core/icon";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 import {useCreateWeddingDialog} from "./useCreateWeddingDialog.ts";
 

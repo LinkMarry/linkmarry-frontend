@@ -1,10 +1,11 @@
+import {Text, Icon, View} from "~/components";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
-import Icon from "~/components/core/icon";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import {DragDropContext, Draggable, Droppable, type DropResult} from "@hello-pangea/dnd";
-import View from "~/components/core/View.tsx";
+
 import {reorderedItems} from "~/lib/dnd-util.ts";
 import type Binding from "~/lib/Binding.ts";
 import {positionMap} from "~/domain";

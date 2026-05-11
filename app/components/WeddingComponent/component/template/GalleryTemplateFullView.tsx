@@ -1,11 +1,9 @@
+import {Icon, Text, BaseDialog, Spacer, View} from "~/components";
 import {type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useRef, useState} from "react";
 import type {Gallery} from "~/domain";
-import Icon from "~/components/core/icon";
-import Text from "~/components/core/Text.tsx";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 import {styled} from "@linaria/react";
 import {hideScrollBarStyle} from "~/style/common.ts";
@@ -19,7 +17,14 @@ interface Props {
     rootRef: RefObject<HTMLDivElement | null>;
 }
 
-const GalleryTemplateFullView = ({show, dismiss, currentImageIndex, setCurrentImageIndex, gallery, rootRef}: Props) => {
+export const GalleryTemplateFullView = ({
+    show,
+    dismiss,
+    currentImageIndex,
+    setCurrentImageIndex,
+    gallery,
+    rootRef,
+}: Props) => {
     const [initialCurrentImageIndex] = useState(currentImageIndex);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [rootWidth, setRootWidth] = useState<number | undefined>(undefined);
@@ -242,5 +247,3 @@ const SlideImg = styled.img`
     height: auto;
     object-fit: cover;
 `;
-
-export default GalleryTemplateFullView;

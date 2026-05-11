@@ -1,11 +1,9 @@
+import {Text, Spacer, Icon, View} from "~/components";
 import {type ComponentPropsWithoutRef} from "react";
 import {css} from "@linaria/core";
 import {type Comment, backgroundStyle, type WeddingDesignColor} from "~/domain";
-import Text from "~/components/core/Text.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
-import Icon from "~/components/core/icon";
+
 import {trimString} from "~/lib/string-util.ts";
-import View from "~/components/core/View.tsx";
 
 interface GuestCommentProps extends ComponentPropsWithoutRef<"div"> {
     comment: Comment;
@@ -144,5 +142,3 @@ export const StickerGuestComment = ({comment, background, onRemove}: GuestCommen
         </View>
     );
 };
-
-export default BasicGuestComment;

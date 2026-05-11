@@ -1,12 +1,10 @@
-import Text from "~/components/core/Text.tsx";
-import Divider from "~/components/core/Divider.tsx";
+import {Text, Divider, WeddingDayTemplateDDay, View, FadeIn} from "~/components";
 import {css, cx} from "@linaria/core";
 import type {WeddingSchedule, BaseInfo} from "~/domain";
 import {getDetails} from "~/domain";
-import WeddingDayTemplateDDay from "~/components/WeddingComponent/component/template/WeddingDayTemplateDDay.tsx";
+
 import {format} from "date-fns";
-import View from "~/components/core/View.tsx";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
+
 import {ko} from "date-fns/locale";
 import {getCalendar} from "~/lib/date-util.ts";
 
@@ -15,7 +13,7 @@ interface Props {
     weddingSchedule: WeddingSchedule;
 }
 
-const WeddingDayTemplate = ({baseInfo, weddingSchedule}: Props) => {
+export const WeddingDayTemplate = ({baseInfo, weddingSchedule}: Props) => {
     const {date, isValidDate} = getDetails(weddingSchedule);
     const calendar = isValidDate ? getCalendar(date) : null;
 
@@ -213,5 +211,3 @@ const WeddingDayTemplate = ({baseInfo, weddingSchedule}: Props) => {
         </View>
     );
 };
-
-export default WeddingDayTemplate;

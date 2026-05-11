@@ -1,13 +1,13 @@
+import {BaseDialog, Text, Button, Input, View} from "~/components";
 import {useRef} from "react";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
+
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import type {Comment} from "~/domain";
 import {isAxiosError} from "axios";
-import Input from "~/components/core/Input.tsx";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import View from "~/components/core/View.tsx";
+
 import {api} from "~/api/index.ts";
 
 interface RemoveGuestCommentDialogProps {
@@ -18,7 +18,7 @@ interface RemoveGuestCommentDialogProps {
     onRefresh: () => void;
 }
 
-const RemoveGuestCommentDialog = ({
+export const RemoveGuestCommentDialog = ({
     show,
     url,
     selectedGuestComment,
@@ -91,5 +91,3 @@ const RemoveGuestCommentDialog = ({
         </BaseDialog>
     );
 };
-
-export default RemoveGuestCommentDialog;

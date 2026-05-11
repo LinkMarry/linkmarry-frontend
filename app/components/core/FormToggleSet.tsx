@@ -1,14 +1,14 @@
+import {FormToggle, View} from "~/components";
 import {Children, isValidElement, type ReactElement, type ReactNode} from "react";
-import FormToggle from "~/components/core/FormToggle";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import View from "~/components/core/View.tsx";
 
 interface Props {
     ui?: LinariaClassName;
     children?: ReactNode;
 }
 
-const FormToggleSet = ({ui, children}: Props) => {
+export const FormToggleSet = ({ui, children}: Props) => {
     const filteredChildren = Children.toArray(children).filter(
         child => isValidElement(child) && child.type === FormToggle,
     ) as ReactElement<typeof FormToggle>[];
@@ -35,5 +35,3 @@ const FormToggleSet = ({ui, children}: Props) => {
         </View>
     );
 };
-
-export default FormToggleSet;

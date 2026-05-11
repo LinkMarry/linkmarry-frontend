@@ -1,6 +1,6 @@
 import {Helmet} from "react-helmet-async";
 
-const HelmetMetaTags = () => {
+export const HelmetMetaTags = () => {
     return (
         <Helmet
             link={[
@@ -51,5 +51,3 @@ const HelmetMetaTags = () => {
         </Helmet>
     );
 };
-
-export default HelmetMetaTags;

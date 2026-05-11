@@ -1,8 +1,9 @@
+import {Text, SegmentedButton, View, Icon, BasePopover} from "~/components";
 import {type ComponentPropsWithoutRef, useState} from "react";
-import Text from "~/components/core/Text.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import SegmentedButton from "~/components/core/SegmentedButton.tsx";
+
 import {
     type WeddingDesignColor,
     isPaperColor,
@@ -12,11 +13,10 @@ import {
     weddingDesignPaperColorList,
     type Wedding,
 } from "~/domain";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 import {type FontFamily, fontFamilyList} from "~/components/core/text/TextType.ts";
-import Icon from "~/components/core/icon";
-import BasePopover from "~/components/core/BasePopover.tsx";
+
 import {HexColorPicker} from "react-colorful";
 
 const EditorInspectorFontAndStyle = ({value: {weddingDesign}, update}: Binding<Wedding>) => {

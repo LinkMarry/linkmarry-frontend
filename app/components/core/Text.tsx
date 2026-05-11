@@ -27,7 +27,7 @@ const columnStyle = css`
     flex-direction: column;
 `;
 
-const Text = (
+const TextInner = (
     {type, font, weight, size, lineHeight, bold = false, flexDirection, ui, children, ...props}: Props,
     ref: ForwardedRef<HTMLDivElement>,
 ) => {
@@ -61,4 +61,4 @@ const Text = (
     );
 };
 
-export default forwardRef(Text);
+export const Text = forwardRef(TextInner);

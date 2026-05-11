@@ -1,12 +1,12 @@
+import {Text, View, FadeIn, Button} from "~/components";
 import {useEffect, useRef} from "react";
-import Text from "~/components/core/Text.tsx";
+
 import {css, cx} from "@linaria/core";
 import type {WeddingPlace} from "~/domain";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import View from "~/components/core/View.tsx";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
+
 import {backgroundStyle} from "~/domain";
-import Button from "~/components/core/Button.tsx";
+
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface LocationProps {
@@ -15,7 +15,7 @@ interface LocationProps {
     mode: WeddingMode;
 }
 
-const LocationTemplate = ({weddingDesignColor, weddingPlace, mode}: LocationProps) => {
+export const LocationTemplate = ({weddingDesignColor, weddingPlace, mode}: LocationProps) => {
     const kakaoMapRef = useRef<HTMLDivElement>(null);
     const weddingPlaceRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace], mode === "preview");
@@ -229,5 +229,3 @@ const LocationTemplate = ({weddingDesignColor, weddingPlace, mode}: LocationProp
         </View>
     );
 };
-
-export default LocationTemplate;

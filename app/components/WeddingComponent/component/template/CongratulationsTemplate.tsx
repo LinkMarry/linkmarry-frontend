@@ -1,14 +1,12 @@
+import {Text, Divider, Button, ContactingCongratulationDialog, FadeIn, View} from "~/components";
 import {useRef, useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import {css} from "@linaria/core";
 import {getBaseInfoByBrideMarkFirst, backgroundStyle} from "~/domain";
 import type {BaseInfo, Phone} from "~/domain";
-import ContactingCongratulationDialog from "~/components/WeddingComponent/component/dialog/ContactingCongratulationDialog.tsx";
+
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import View from "~/components/core/View.tsx";
+
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface CongratulationsProps {
@@ -18,7 +16,7 @@ interface CongratulationsProps {
     mode: WeddingMode;
 }
 
-const CongratulationsTemplate = ({baseInfo, phone, weddingDesignColor, mode}: CongratulationsProps) => {
+export const CongratulationsTemplate = ({baseInfo, phone, weddingDesignColor, mode}: CongratulationsProps) => {
     const [showContactingCongratulationDialog, setShowContactingCongratulationDialog] = useState(false);
 
     const congratulationsRef = useRef<HTMLDivElement>(null);
@@ -187,5 +185,3 @@ const CongratulationsTemplate = ({baseInfo, phone, weddingDesignColor, mode}: Co
         </View>
     );
 };
-
-export default CongratulationsTemplate;

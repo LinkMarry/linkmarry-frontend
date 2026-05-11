@@ -1,15 +1,13 @@
+import {NotificationDetailContent, MainWrapper, View, Text, Spacer, Divider} from "~/components";
 import React, {useEffect, useRef} from "react";
-import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
+
 import {api} from "~/api/index.ts";
 import {compareDesc} from "date-fns";
 import type {Route} from "./+types/privacy-policy";
-import MainWrapper from "~/components/MainWrapper";
+
 import {Navigate, useNavigate} from "react-router";
-import View from "~/components/core/View.tsx";
+
 import {css} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
-import Divider from "~/components/core/Divider.tsx";
 
 export async function loader() {
     const {data} = await api.notification.getTermsNotifications();

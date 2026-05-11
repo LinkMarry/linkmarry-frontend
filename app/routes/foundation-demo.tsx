@@ -1,8 +1,6 @@
+import {View, Text, Divider} from "~/components";
 import {fontFamilyList, textTypes} from "~/components/core/text/TextType.ts";
 import {css} from "@linaria/core";
-import View from "~/components/core/View.tsx";
-import Text from "~/components/core/Text.tsx";
-import Divider from "~/components/core/Divider.tsx";
 
 const text = "가나다라마바사ABCDEFG12345";
 

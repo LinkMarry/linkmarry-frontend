@@ -1,10 +1,8 @@
+import {BaseDialog, Button, Text, View} from "~/components";
 import {type ComponentProps, type ReactNode} from "react";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import Button from "~/components/core/Button.tsx";
-import Text from "~/components/core/Text.tsx";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import View from "~/components/core/View.tsx";
 
 interface DialogProps {
     show: boolean;
@@ -17,7 +15,7 @@ interface DialogProps {
     children?: ReactNode;
 }
 
-const Dialog = ({
+export const Dialog = ({
     show,
     title,
     description,
@@ -94,5 +92,3 @@ const Dialog = ({
         </BaseDialog>
     );
 };
-
-export default Dialog;

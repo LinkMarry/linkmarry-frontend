@@ -1,6 +1,7 @@
+import {View} from "~/components";
 import React, {useEffect, useRef} from "react";
 import {fadeInAnimationStyle} from "~/style/animation";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface BaseDialogProps {
@@ -10,7 +11,7 @@ interface BaseDialogProps {
     children?: React.ReactNode;
 }
 
-const BaseDialog = ({show, ui, dismiss, children}: BaseDialogProps) => {
+export const BaseDialog = ({show, ui, dismiss, children}: BaseDialogProps) => {
     if (!show) return null;
 
     return (
@@ -56,5 +57,3 @@ const baseDialogStyle = css`
         background: rgba(0, 0, 0, 0.5);
     }
 `;
-
-export default BaseDialog;

@@ -1,7 +1,7 @@
+import {Icon, View} from "~/components";
 import React, {type ComponentProps, type ForwardedRef, forwardRef} from "react";
-import Icon from "~/components/core/icon";
+
 import {css} from "@linaria/core";
-import View from "~/components/core/View.tsx";
 
 interface Props extends ComponentProps<"div"> {
     dismiss: () => void;

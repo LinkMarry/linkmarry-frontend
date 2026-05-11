@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 
-const useFadeIn = (threshold = 0.6) => {
+export const useFadeIn = (threshold = 0.6) => {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -24,5 +24,3 @@ const useFadeIn = (threshold = 0.6) => {
 
     return {ref, isVisible};
 };
-
-export default useFadeIn;

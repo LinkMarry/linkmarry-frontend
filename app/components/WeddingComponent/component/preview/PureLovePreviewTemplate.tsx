@@ -1,13 +1,13 @@
+import {PreviewTemplate, View, Text} from "~/components";
 import {type ComponentProps} from "react";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
+
 import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const PureLovePreviewTemplate = ({
+export const PureLovePreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingSchedule,
@@ -107,5 +107,3 @@ const PureLovePreviewTemplate = ({
         </View>
     );
 };
-
-export default PureLovePreviewTemplate;

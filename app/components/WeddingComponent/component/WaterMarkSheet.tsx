@@ -1,16 +1,14 @@
+import {Button, Text, RemoveWatermarkDialog, View} from "~/components";
 import {useState} from "react";
 import {fadeInAnimationStyle} from "~/style/animation";
-import Button from "~/components/core/Button.tsx";
-import Text from "~/components/core/Text.tsx";
-import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 
 interface Props {
     url: string;
 }
 
-const WaterMarkSheet = ({url}: Props) => {
+export const WaterMarkSheet = ({url}: Props) => {
     const [showRemoveWatermarkDialog, setShowRemoveWatermarkDialog] = useState(false);
 
     return (
@@ -83,5 +81,3 @@ const WaterMarkSheet = ({url}: Props) => {
         </View>
     );
 };
-
-export default WaterMarkSheet;

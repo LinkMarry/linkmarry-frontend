@@ -1,15 +1,13 @@
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
+import {BaseDialog, Divider, Text, Button, View} from "~/components";
 import {css, cx} from "@linaria/core";
-import Divider from "~/components/core/Divider.tsx";
-import Text from "~/components/core/Text.tsx";
+
 import type {BaseInfo, WeddingSchedule, WeddingPlace, Rsvp} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {addDays, format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
-import Button from "~/components/core/Button.tsx";
+
 import {useCookies} from "react-cookie";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import View from "~/components/core/View.tsx";
 
 interface RsvpDialogProps {
     show: boolean;
@@ -22,7 +20,7 @@ interface RsvpDialogProps {
     dismiss: () => void;
 }
 
-const RsvpDialog = ({
+export const RsvpDialog = ({
     show,
     url,
     baseInfo,
@@ -140,5 +138,3 @@ const RsvpDialog = ({
         </BaseDialog>
     );
 };
-
-export default RsvpDialog;

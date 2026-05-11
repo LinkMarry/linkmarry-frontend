@@ -1,8 +1,8 @@
+import {View} from "~/components";
 import {css, cx} from "@linaria/core";
 import MyPageSidebarItem from "~/routes/mypage/components/MyPageSidebarItem.tsx";
 import {useNavigate} from "react-router";
 import {notMobileStyle} from "~/style/responsive";
-import View from "~/components/core/View.tsx";
 
 const MyPageDetailSidebar = () => {
     const navigate = useNavigate();

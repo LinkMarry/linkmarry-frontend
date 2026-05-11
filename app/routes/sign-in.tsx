@@ -1,9 +1,7 @@
+import {MainWrapper, Text, View, Icon} from "~/components";
 import {css} from "@linaria/core";
-import MainWrapper from "~/components/MainWrapper";
-import Text from "~/components/core/Text.tsx";
+
 import {useAuth} from "~/hook/useAuth.tsx";
-import View from "~/components/core/View.tsx";
-import Icon from "~/components/core/icon";
 
 import {useSignInScreen} from "./useSignInScreen.ts";
 

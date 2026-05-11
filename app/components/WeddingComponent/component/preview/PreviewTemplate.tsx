@@ -1,24 +1,27 @@
+import {
+    View,
+    WhiteMomentPreviewTemplate,
+    ForestLovePreviewTemplate,
+    NatureBlissPreviewTemplate,
+    SoulmatePreviewTemplate,
+    ClassicElegancePreviewTemplate,
+    NaturalGardenPreviewTemplate,
+    ModernSimplePreviewTemplate,
+    RomanticForestPreviewTemplate,
+    DreamWeddingPreviewTemplate,
+    PureLovePreviewTemplate,
+    ModernLovePreviewTemplate,
+    ClassicRomancePreviewTemplate,
+    LovelyHighTeenPreviewTemplate,
+    VintageMomentPreviewTemplate,
+    PureNaturalPreviewTemplate,
+    VintageWeddingPreviewTemplate,
+    DearMyLovePreviewTemplate,
+} from "~/components";
 import {useRef} from "react";
 import type {WeddingSchedule, WeddingPlace, BaseInfo, WeddingDesign} from "~/domain";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import View from "~/components/core/View.tsx";
-import WhiteMomentPreviewTemplate from "~/components/WeddingComponent/component/preview/WhiteMomentPreviewTemplate.tsx";
-import ForestLovePreviewTemplate from "~/components/WeddingComponent/component/preview/ForestLovePreviewTemplate.tsx";
-import NatureBlissPreviewTemplate from "~/components/WeddingComponent/component/preview/NatureBlissPreviewTemplate.tsx";
-import SoulmatePreviewTemplate from "~/components/WeddingComponent/component/preview/SoulmatePreviewTemplate.tsx";
-import ClassicElegancePreviewTemplate from "~/components/WeddingComponent/component/preview/ClassicElegancePreviewTemplate.tsx";
-import NaturalGardenPreviewTemplate from "~/components/WeddingComponent/component/preview/NaturalGardenPreviewTemplate.tsx";
-import ModernSimplePreviewTemplate from "~/components/WeddingComponent/component/preview/ModernSimplePreviewTemplate.tsx";
-import RomanticForestPreviewTemplate from "~/components/WeddingComponent/component/preview/RomanticForestPreviewTemplate.tsx";
-import DreamWeddingPreviewTemplate from "~/components/WeddingComponent/component/preview/DreamWeddingPreviewTemplate.tsx";
-import PureLovePreviewTemplate from "~/components/WeddingComponent/component/preview/PureLovePreviewTemplate.tsx";
-import ModernLovePreviewTemplate from "~/components/WeddingComponent/component/preview/ModernLovePreviewTemplate.tsx";
-import ClassicRomancePreviewTemplate from "~/components/WeddingComponent/component/preview/ClassicRomancePreviewTemplate.tsx";
-import LovelyHighTeenPreviewTemplate from "~/components/WeddingComponent/component/preview/LovelyHighTeenPreviewTemplate.tsx";
-import VintageMomentPreviewTemplate from "~/components/WeddingComponent/component/preview/VintageMomentPreviewTemplate.tsx";
-import PureNaturalPreviewTemplate from "~/components/WeddingComponent/component/preview/PureNaturalPreviewTemplate.tsx";
-import VintageWeddingPreviewTemplate from "~/components/WeddingComponent/component/preview/VintageWeddingPreviewTemplate.tsx";
-import DearMyLovePreviewTemplate from "~/components/WeddingComponent/component/preview/DearMyLovePreviewTemplate.tsx";
+
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 export interface PreviewTemplateProps {
@@ -29,7 +32,7 @@ export interface PreviewTemplateProps {
     mode: WeddingMode;
 }
 
-const PreviewTemplate = (props: PreviewTemplateProps) => {
+export const PreviewTemplate = (props: PreviewTemplateProps) => {
     const previewRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(previewRef, [props.weddingDesign.weddingDesignName], props.mode === "preview");
 
@@ -73,5 +76,3 @@ const PreviewTemplate = (props: PreviewTemplateProps) => {
     };
     return <View ref={previewRef}>{content()}</View>;
 };
-
-export default PreviewTemplate;

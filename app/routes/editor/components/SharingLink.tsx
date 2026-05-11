@@ -1,8 +1,7 @@
+import {Text, Button, View} from "~/components";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
-import View from "~/components/core/View.tsx";
 
 interface Props {
     title: string;

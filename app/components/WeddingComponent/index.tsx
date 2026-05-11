@@ -1,29 +1,37 @@
+import {
+    MoneyInfoTemplate,
+    FooterTemplate,
+    GuestCommentsTemplate,
+    CongratulationsTemplate,
+    WeddingDayTemplate,
+    LocationTemplate,
+    PreviewTemplate,
+    GalleryTemplate,
+    VideoTemplate,
+    InvitationLetterTemplate,
+    CreateRsvpDialog,
+    RsvpTemplate,
+    WaterMarkSheet,
+    RsvpDialog,
+    OpeningView,
+} from "~/components";
 import {type RefObject, useEffect, useLayoutEffect, useRef, useState} from "react";
 import type {Wedding, Comment, Position} from "~/domain";
-import MoneyInfoTemplate from "~/components/WeddingComponent/component/template/MoneyInfoTemplate.tsx";
-import FooterTemplate from "~/components/WeddingComponent/component/template/FooterTemplate.tsx";
+
 import {weddingDesignFontSizeMap} from "~/domain";
-import GuestCommentsTemplate from "~/components/WeddingComponent/component/template/GuestCommentsTemplate.tsx";
+
 import {increaseFontSize} from "~/lib/dom-util.ts";
-import CongratulationsTemplate from "~/components/WeddingComponent/component/template/CongratulationsTemplate.tsx";
-import WeddingDayTemplate from "~/components/WeddingComponent/component/template/WeddingDayTemplate.tsx";
-import LocationTemplate from "~/components/WeddingComponent/component/template/LocationTemplate.tsx";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import GalleryTemplate from "~/components/WeddingComponent/component/template/GalleryTemplate.tsx";
-import VideoTemplate from "~/components/WeddingComponent/component/template/VideoTemplate.tsx";
-import InvitationLetterTemplate from "~/components/WeddingComponent/component/template/InvitationLetterTemplate.tsx";
+
 import {api} from "~/api/index.ts";
-import CreateRsvpDialog from "~/components/WeddingComponent/component/dialog/CreateRsvpDialog.tsx";
+
 import {Helmet} from "react-helmet-async";
-import RsvpTemplate from "~/components/WeddingComponent/component/template/RsvpTemplate.tsx";
-import WaterMarkSheet from "~/components/WeddingComponent/component/WaterMarkSheet.tsx";
+
 import {useCookies} from "react-cookie";
 import {useSearchParams} from "react-router";
-import RsvpDialog from "~/components/WeddingComponent/component/dialog/RsvpDialog.tsx";
+
 import {styled} from "@linaria/react";
 import type {FontFamily} from "~/components/core/text/TextType.ts";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
-import OpeningView from "~/components/WeddingComponent/component/OpeningView.tsx";
 
 interface WeddingComponentProps {
     wedding: Wedding;
@@ -32,7 +40,7 @@ interface WeddingComponentProps {
     onRefresh?: () => void;
 }
 
-const WeddingComponent = ({wedding, mode = "default", onRefresh}: WeddingComponentProps) => {
+export const WeddingComponent = ({wedding, mode = "default", onRefresh}: WeddingComponentProps) => {
     const [searchParams] = useSearchParams();
     const rsvp = searchParams.get("rsvp") === "true";
     const cookieKey = `hide_RsvpDialog_${wedding.url}`;
@@ -345,5 +353,3 @@ const ContentBody = ({
         </>
     );
 };
-
-export default WeddingComponent;

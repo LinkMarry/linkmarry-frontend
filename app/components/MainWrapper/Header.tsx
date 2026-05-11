@@ -1,7 +1,7 @@
-import MobileHeader from "./MobileHeader.tsx";
-import DesktopHeader from "./DesktopHeader.tsx";
+import {MobileHeader} from "./MobileHeader.tsx";
+import {DesktopHeader} from "./DesktopHeader.tsx";
 
-const Header = () => {
+export const Header = () => {
     return (
         <>
             <MobileHeader />
@@ -9,5 +9,3 @@ const Header = () => {
         </>
     );
 };
-
-export default Header;

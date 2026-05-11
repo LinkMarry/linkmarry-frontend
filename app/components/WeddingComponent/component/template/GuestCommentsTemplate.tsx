@@ -1,16 +1,21 @@
+import {
+    Text,
+    Button,
+    RemoveGuestCommentDialog,
+    GuestCommentsDetailDialog,
+    CreateGuestCommentDialog,
+    FadeIn,
+    View,
+} from "~/components";
 import {useRef, useState} from "react";
 import {css} from "@linaria/core";
 import {type Comment, type GuestComment, backgroundStyle, type WeddingDesignColor} from "~/domain";
-import Text from "~/components/core/Text.tsx";
+
 import {type GuestCommentDesign} from "~/api/enumeration/GuestCommentDesign.ts";
 import {trimArray} from "~/lib/array-util.ts";
-import Button from "~/components/core/Button.tsx";
-import RemoveGuestCommentDialog from "~/components/WeddingComponent/component/dialog/RemoveGuestCommentDialog.tsx";
-import GuestCommentsDetailDialog from "~/components/WeddingComponent/component/dialog/GuestCommentsDetailDialog.tsx";
-import CreateGuestCommentDialog from "~/components/WeddingComponent/component/dialog/CreateGuestCommentDialog.tsx";
+
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import View from "~/components/core/View.tsx";
+
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 import {api} from "~/api/index.ts";
 import {
@@ -27,7 +32,7 @@ interface GuestCommentsTemplateProps {
     onRefresh: () => void;
 }
 
-const GuestCommentsTemplate = ({
+export const GuestCommentsTemplate = ({
     weddingDesignColor,
     url,
     guestComments,
@@ -236,5 +241,3 @@ const GuestComments = ({comments, design, background, onRemove}: GuestCommentsPr
             );
     }
 };
-
-export default GuestCommentsTemplate;

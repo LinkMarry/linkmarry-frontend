@@ -1,5 +1,6 @@
+import {View} from "~/components";
 import {type ChangeEvent, type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface Props extends ComponentPropsWithRef<"div"> {
@@ -8,7 +9,7 @@ interface Props extends ComponentPropsWithRef<"div"> {
     ui?: LinariaClassName;
 }
 
-const Toggle = ({checked = false, OnChange, ui, ...props}: Props, ref?: ForwardedRef<HTMLInputElement>) => {
+const ToggleInner = ({checked = false, OnChange, ui, ...props}: Props, ref?: ForwardedRef<HTMLInputElement>) => {
     return (
         <View
             flexDirection={"row"}
@@ -75,4 +76,4 @@ const Toggle = ({checked = false, OnChange, ui, ...props}: Props, ref?: Forwarde
     );
 };
 
-export default forwardRef(Toggle);
+export const Toggle = forwardRef(ToggleInner);

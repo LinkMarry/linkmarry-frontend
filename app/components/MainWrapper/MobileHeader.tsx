@@ -1,19 +1,18 @@
+import {Spacer, Button, Text, Divider, View} from "~/components";
 import {type ComponentPropsWithoutRef, type Dispatch, type SetStateAction, useState} from "react";
 import {css, cx} from "@linaria/core";
-import Spacer from "~/components/core/Spacer.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import {useNavigate} from "react-router";
-import Text from "~/components/core/Text.tsx";
-import Icon, {type IconType} from "~/components/core/icon";
-import Divider from "~/components/core/Divider.tsx";
-import View from "~/components/core/View.tsx";
+
+import {Icon, type IconType} from "~/components/core/icon";
+
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {mobileStyle} from "~/style/responsive.tsx";
-import LogoInHeader from "./LogoInHeader.tsx";
+import {LogoInHeader} from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 
-const MobileHeader = () => {
+export const MobileHeader = () => {
     const {authorized, signOut} = useAuth();
     const [openDetail, setOpenDetail] = useState(false);
     const navigate = useNavigate();
@@ -202,5 +201,3 @@ const MobileHeaderItem = (
         </View>
     );
 };
-
-export default MobileHeader;

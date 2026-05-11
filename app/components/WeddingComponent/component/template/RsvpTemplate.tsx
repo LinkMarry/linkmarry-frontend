@@ -1,14 +1,10 @@
-import Text from "~/components/core/Text.tsx";
+import {Text, Button, Divider, Icon, FadeIn, View} from "~/components";
 import {backgroundStyle, type WeddingDesignColor, type BaseInfo, type WeddingSchedule, type Rsvp} from "~/domain";
-import Button from "~/components/core/Button.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import Icon from "~/components/core/icon";
+
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
 import {format, parse} from "date-fns";
 import {ko} from "date-fns/locale";
 import {css} from "@linaria/core";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import View from "~/components/core/View.tsx";
 
 interface RsvpTemplateProps {
     rsvp: Rsvp;
@@ -18,7 +14,13 @@ interface RsvpTemplateProps {
     onClickCreateRsvp: () => void;
 }
 
-const RsvpTemplate = ({rsvp, weddingDesignColor, baseInfo, weddingSchedule, onClickCreateRsvp}: RsvpTemplateProps) => {
+export const RsvpTemplate = ({
+    rsvp,
+    weddingDesignColor,
+    baseInfo,
+    weddingSchedule,
+    onClickCreateRsvp,
+}: RsvpTemplateProps) => {
     const dateString = `${weddingSchedule.weddingDate} ${weddingSchedule.weddingTime}`;
     const date = parse(dateString, "yyyy-MM-dd HH:mm", new Date());
     const isValidDate = !isNaN(date.getTime());
@@ -165,5 +167,3 @@ const RsvpTemplate = ({rsvp, weddingDesignColor, baseInfo, weddingSchedule, onCl
         </FadeIn>
     );
 };
-
-export default RsvpTemplate;

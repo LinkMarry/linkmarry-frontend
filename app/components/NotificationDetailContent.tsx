@@ -1,8 +1,9 @@
+import {View, Text} from "~/components";
 import React from "react";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 import {responsive} from "~/style/responsive";
-import Text from "~/components/core/Text.tsx";
+
 import Markdown from "react-markdown";
 import type {Notification} from "~/domain";
 import {hideScrollBarStyle} from "~/style/common.ts";
@@ -11,7 +12,7 @@ interface NotificationDetailCompProps {
     notification: Notification;
 }
 
-const NotificationDetailContent = ({notification}: NotificationDetailCompProps) => {
+export const NotificationDetailContent = ({notification}: NotificationDetailCompProps) => {
     return (
         <View
             ui={css`
@@ -72,5 +73,3 @@ const NotificationDetailContent = ({notification}: NotificationDetailCompProps) 
         </View>
     );
 };
-
-export default NotificationDetailContent;

@@ -1,14 +1,11 @@
-import MainWrapper from "~/components/MainWrapper";
+import {MainWrapper, Text, View, Button, Divider, Icon, ClientOnly} from "~/components";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import View from "~/components/core/View.tsx";
+
 import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/style/responsive.tsx";
-import Button from "~/components/core/Button.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import Icon from "~/components/core/icon";
+
 import {type ComponentPropsWithoutRef, useState} from "react";
 import {Snowfall} from "react-snowfall";
-import ClientOnly from "~/components/ClientOnly.tsx";
+
 import useResponsive from "~/hook/useResponsive.ts";
 
 import {useHomeScreen} from "./useHomeScreen.ts";

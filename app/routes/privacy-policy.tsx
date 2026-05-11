@@ -1,13 +1,11 @@
+import {NotificationDetailContent, MainWrapper, View, Text, Divider, Spacer} from "~/components";
 import React, {useEffect, useRef} from "react";
-import NotificationDetailContent from "~/components/NotificationDetailContent.tsx";
+
 import {compareDesc} from "date-fns";
 import type {Route} from "./+types/privacy-policy";
-import MainWrapper from "~/components/MainWrapper";
-import View from "~/components/core/View.tsx";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
-import Divider from "~/components/core/Divider.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
+
 import {Navigate, useNavigate} from "react-router";
 import {api} from "~/api/index.ts";
 

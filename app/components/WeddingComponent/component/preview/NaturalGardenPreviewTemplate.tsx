@@ -1,13 +1,13 @@
+import {PreviewTemplate, View, Text} from "~/components";
 import {type ComponentProps} from "react";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+
 import {css, cx} from "@linaria/core";
-import View from "~/components/core/View.tsx";
-import Text from "~/components/core/Text.tsx";
+
 import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
 import {format} from "date-fns";
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const NaturalGardenPreviewTemplate = ({
+export const NaturalGardenPreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingPlace,
@@ -89,5 +89,3 @@ const NaturalGardenPreviewTemplate = ({
         </View>
     );
 };
-
-export default NaturalGardenPreviewTemplate;

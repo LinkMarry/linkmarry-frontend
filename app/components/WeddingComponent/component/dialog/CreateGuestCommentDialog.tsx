@@ -1,13 +1,10 @@
+import {BaseDialog, Text, Button, Input, Textarea, Icon, View} from "~/components";
 import {useRef} from "react";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
+
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import Button from "~/components/core/Button.tsx";
-import Input from "~/components/core/Input.tsx";
-import Textarea from "~/components/core/Textarea.tsx";
-import Icon from "~/components/core/icon";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import View from "~/components/core/View.tsx";
+
 import {api} from "~/api/index.ts";
 
 interface CreateGuestCommentDialogProps {
@@ -17,7 +14,7 @@ interface CreateGuestCommentDialogProps {
     onRefresh: () => void;
 }
 
-const CreateGuestCommentDialog = ({show, url, dismiss, onRefresh}: CreateGuestCommentDialogProps) => {
+export const CreateGuestCommentDialog = ({show, url, dismiss, onRefresh}: CreateGuestCommentDialogProps) => {
     const nameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const commentRef = useRef<HTMLTextAreaElement>(null);
@@ -113,5 +110,3 @@ const CreateGuestCommentDialog = ({show, url, dismiss, onRefresh}: CreateGuestCo
         </BaseDialog>
     );
 };
-
-export default CreateGuestCommentDialog;

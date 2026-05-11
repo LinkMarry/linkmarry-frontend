@@ -1,13 +1,10 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
+import {Text, Input, SegmentedButton, FormToggleSet, FormToggle, View} from "~/components";
 import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
-import SegmentedButton from "~/components/core/SegmentedButton.tsx";
-import FormToggleSet from "~/components/core/FormToggleSet.tsx";
-import FormToggle from "~/components/core/FormToggle.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
 import {GalleryDesignList, galleryDesignMap} from "~/api/enumeration/GalleryDesign.ts";
-import View from "~/components/core/View.tsx";
+
 import {css} from "@linaria/core";
 import type {Wedding} from "~/domain";
 

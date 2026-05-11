@@ -1,11 +1,10 @@
-import WeddingComponent from "~/components/WeddingComponent";
-import Text from "~/components/core/Text.tsx";
+import {WeddingComponent, Text, View, ClientOnly} from "~/components";
 import {css} from "@linaria/core";
-import View from "~/components/core/View.tsx";
+
 import {responsive} from "~/style/responsive";
 import useWedding from "~/hook/useWedding.ts";
 import {Navigate, useParams, useSearchParams} from "react-router";
-import ClientOnly from "~/components/ClientOnly";
+
 import usePreventZoom from "~/hook/usePreventZoom.ts";
 
 const Wedding = () => {

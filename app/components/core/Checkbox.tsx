@@ -1,3 +1,4 @@
+import {Icon, Text, View} from "~/components";
 import {
     type ComponentPropsWithoutRef,
     type ForwardedRef,
@@ -7,9 +8,7 @@ import {
     useRef,
     useState,
 } from "react";
-import Icon from "~/components/core/icon";
-import Text from "~/components/core/Text";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {styled} from "@linaria/react";
 
@@ -26,7 +25,7 @@ export interface CheckboxRef {
     toggle: () => void;
 }
 
-const Checkbox = ({checked = false, OnChange, label, ui, ...props}: Props, ref: ForwardedRef<CheckboxRef>) => {
+const CheckboxInner = ({checked = false, OnChange, label, ui, ...props}: Props, ref: ForwardedRef<CheckboxRef>) => {
     const [localChecked, setLocalChecked] = useState(checked);
     const checkboxRef = useRef<HTMLInputElement>(null);
 
@@ -139,4 +138,4 @@ const CheckboxInputStyle = styled.input`
     outline: none;
 `;
 
-export default forwardRef(Checkbox);
+export const Checkbox = forwardRef(CheckboxInner);

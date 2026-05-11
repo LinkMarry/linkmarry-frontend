@@ -1,10 +1,7 @@
+import {BaseDialog, View, Button, Text, Icon} from "~/components";
 import {type ChangeEvent} from "react";
 import {css, cx} from "@linaria/core";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import View from "~/components/core/View.tsx";
-import Button from "~/components/core/Button.tsx";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import {textStyles} from "~/components/core/text/TextType.ts";
 import {useKakaoMapDialog} from "./useKakaoMapDialog.ts";
@@ -17,7 +14,7 @@ interface KakaoMapDialogProps {
     dismiss: () => void;
 }
 
-const KakaoMapDialog = ({show, weddingPlace, onChange, dismiss}: KakaoMapDialogProps) => {
+export const KakaoMapDialog = ({show, weddingPlace, onChange, dismiss}: KakaoMapDialogProps) => {
     const {
         kakaoMapRef,
         places,
@@ -167,5 +164,3 @@ const KakaoMapDialog = ({show, weddingPlace, onChange, dismiss}: KakaoMapDialogP
         </BaseDialog>
     );
 };
-
-export default KakaoMapDialog;

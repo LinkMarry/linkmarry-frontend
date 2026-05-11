@@ -183,7 +183,7 @@ interface Props extends SVGProps<SVGSVGElement> {
     ui?: LinariaClassName;
 }
 
-function Icon({iconType, size = 24, ui, ...props}: Props): ReactElement {
+export function Icon({iconType, size = 24, ui, ...props}: Props): ReactElement {
     return (
         <IconWrapper className={ui}>
             <IconContent width={size} height={size} iconType={iconType} {...props} />
@@ -371,5 +371,3 @@ const IconContent = ({iconType, ...svgProps}: IconContentProps) => {
             return <Write {...svgProps} />;
     }
 };
-
-export default Icon;

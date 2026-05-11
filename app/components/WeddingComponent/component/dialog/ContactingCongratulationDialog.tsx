@@ -1,12 +1,11 @@
+import {BaseDialog, Text, Spacer, Icon, View} from "~/components";
 import {useState} from "react";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
-import Text from "~/components/core/Text.tsx";
+
 import type {Phone, BaseInfo} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
-import Spacer from "~/components/core/Spacer.tsx";
-import Icon from "~/components/core/icon";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 import {styled} from "@linaria/react";
 import {textStyles} from "~/components/core/text/TextType.ts";
@@ -24,7 +23,7 @@ interface Tel {
     tel: string;
 }
 
-const ContactingCongratulationDialog = ({show, baseInfo, phone, dismiss}: ContactTemplateDialogProps) => {
+export const ContactingCongratulationDialog = ({show, baseInfo, phone, dismiss}: ContactTemplateDialogProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
@@ -240,5 +239,3 @@ const S = {
         cursor: pointer;
     `,
 };
-
-export default ContactingCongratulationDialog;

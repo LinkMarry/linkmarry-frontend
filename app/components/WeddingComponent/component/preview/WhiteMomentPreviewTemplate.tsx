@@ -1,16 +1,15 @@
+import {Text, Divider, Icon, PreviewTemplate, View} from "~/components";
 import {type ComponentProps} from "react";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import Divider from "~/components/core/Divider.tsx";
+
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
-import Icon from "~/components/core/icon";
+
 import {getBaseInfoByBrideMarkFirst, getDetails, backgroundStyle} from "~/domain";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import View from "~/components/core/View.tsx";
+
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const WhiteMomentPreviewTemplate = ({
+export const WhiteMomentPreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingPlace,
@@ -105,5 +104,3 @@ const WhiteMomentPreviewTemplate = ({
         </View>
     );
 };
-
-export default WhiteMomentPreviewTemplate;

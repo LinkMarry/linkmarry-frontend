@@ -1,19 +1,20 @@
+import {RemoveWatermarkDialog, Button, View, WeddingComponent} from "~/components";
 import {css} from "@linaria/core";
 import useWeddingInvitationEditorScreen from "~/routes/editor/wedding-invitation/useWeddingInvitationEditorScreen.ts";
 import CreateWeddingDialog from "~/routes/editor/wedding-invitation/components/CreateWeddingDialog.tsx";
-import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
+
 import {desktopStyle} from "~/style/responsive";
 import EditorPreview from "~/routes/editor/wedding-invitation/components/EditorPreview.tsx";
 import EditorShell from "~/routes/editor/components/EditorShell.tsx";
 import EditorHeader from "~/routes/editor/components/EditorHeader.tsx";
 import EditorNavigationBar from "~/routes/editor/components/EditorNavigationBar.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import {
     type WeddingInvitationEditorNavigationBarType,
     WeddingInvitationEditorNavigationBarTypeList,
     weddingInvitationEditorNavigationBarTypeRecord,
 } from "~/routes/editor/domain.ts";
-import View from "~/components/core/View.tsx";
+
 import type Binding from "~/lib/Binding.ts";
 import type {Wedding, WeddingDesignPreset, Music} from "~/domain";
 import EditorInspectorShell from "~/routes/editor/components/EditorInspectorShell.tsx";
@@ -34,7 +35,6 @@ import EditorInspectorFontAndStyle from "~/routes/editor/wedding-invitation/comp
 import EditorInspectorUrlShare from "~/routes/editor/wedding-invitation/components/inspector/url-share.tsx";
 import EditorInspectorKakaotalkInvitationLetter from "~/routes/editor/wedding-invitation/components/inspector/kakaotalk-invitation-letter.tsx";
 import WeddingInvitationEditorInspectorChangeOrder from "~/routes/editor/wedding-invitation/components/inspector/change-order.tsx";
-import WeddingComponent from "~/components/WeddingComponent";
 
 const navItems = WeddingInvitationEditorNavigationBarTypeList.map(type => ({
     id: type,

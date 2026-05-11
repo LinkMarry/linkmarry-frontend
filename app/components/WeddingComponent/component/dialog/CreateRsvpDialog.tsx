@@ -1,20 +1,14 @@
+import {BaseDialog, Spacer, Text, Icon, Button, Dialog, SegmentedButton, Divider, Input, View} from "~/components";
 import {useState} from "react";
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
+
 import {css, cx} from "@linaria/core";
-import Spacer from "~/components/core/Spacer.tsx";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
-import Button from "~/components/core/Button.tsx";
+
 import {api} from "~/api/index.ts";
 import {GuestTypeList, guestTypeMap} from "~/api/enumeration/GuestType.ts";
 import type {Rsvp} from "~/domain";
-import Dialog from "~/components/core/dialog/Dialog.tsx";
-import SegmentedButton from "~/components/core/SegmentedButton.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import Input from "~/components/core/Input.tsx";
+
 import {formatPhone} from "~/lib/format-util.ts";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import View from "~/components/core/View.tsx";
 
 interface CreateRsvpDialogProps {
     show: boolean;
@@ -23,7 +17,7 @@ interface CreateRsvpDialogProps {
     dismiss: () => void;
 }
 
-const CreateRsvpDialog = ({show, url, rsvp, dismiss}: CreateRsvpDialogProps) => {
+export const CreateRsvpDialog = ({show, url, rsvp, dismiss}: CreateRsvpDialogProps) => {
     const [guestType, setGuestType] = useState(0);
     const [isAttend, setIsAttend] = useState(0);
     const [isMeal, setIsMeal] = useState(0);
@@ -259,5 +253,3 @@ const CreateRsvpDialog = ({show, url, rsvp, dismiss}: CreateRsvpDialogProps) => 
         </BaseDialog>
     );
 };
-
-export default CreateRsvpDialog;

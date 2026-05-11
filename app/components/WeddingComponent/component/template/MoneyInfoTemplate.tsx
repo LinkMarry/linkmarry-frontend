@@ -1,3 +1,4 @@
+import {Spacer, Icon, Text, FadeIn, View, Button} from "~/components";
 import {useRef, useState} from "react";
 import {css, cx} from "@linaria/core";
 import {
@@ -8,13 +9,9 @@ import {
     getBaseInfoByBrideMarkFirst,
     type BaseInfoByBrideMarkFirst,
 } from "~/domain";
-import Spacer from "~/components/core/Spacer.tsx";
-import Icon from "~/components/core/icon";
-import Text from "~/components/core/Text.tsx";
+
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import View from "~/components/core/View.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface Props {
@@ -23,7 +20,7 @@ interface Props {
     mode: WeddingMode;
 }
 
-const MoneyInfoTemplate = ({baseInfo, moneyInfo, mode}: Props) => {
+export const MoneyInfoTemplate = ({baseInfo, moneyInfo, mode}: Props) => {
     const moneyInfoRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(moneyInfoRef, [moneyInfo], mode === "preview");
 
@@ -241,5 +238,3 @@ const MoneyCell = ({moneyInfo, kakaoStatus}: MoneyCellProps) => {
         </View>
     );
 };
-
-export default MoneyInfoTemplate;

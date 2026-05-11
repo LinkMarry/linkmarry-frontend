@@ -1,8 +1,7 @@
+import {Text, View, Divider} from "~/components";
 import {type ComponentPropsWithoutRef} from "react";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import View from "~/components/core/View.tsx";
-import Divider from "~/components/core/Divider.tsx";
+
 import {BUSINESS_INFORMATION_URL, CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_URL} from "~/lib/constant.ts";
 import {useNavigate} from "react-router";
 import {desktopStyle, notDesktopStyle, responsive} from "~/style/responsive";
@@ -16,7 +15,7 @@ const detail1 = [
 ];
 const detail2 = ["사업자등록번호 : 176-24-01729", "통신판매업 신고 : 2024-경북포항-0787호"];
 
-const Footer = () => {
+export const Footer = () => {
     const navigate = useNavigate();
 
     return (
@@ -213,5 +212,3 @@ const Item = ({text, ...props}: ItemProps) => {
         </Text>
     );
 };
-
-export default Footer;

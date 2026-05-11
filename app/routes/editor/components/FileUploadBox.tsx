@@ -1,11 +1,10 @@
+import {Text, Icon, VoidInput, View, Spacer} from "~/components";
 import {type ChangeEvent, useRef, useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
+
 import {css, cx} from "@linaria/core";
-import VoidInput from "~/components/core/VoidInput.ts";
-import View from "~/components/core/View.tsx";
+
 import useUpload from "~/hook/useUpload.ts";
-import Spacer from "~/components/core/Spacer.tsx";
+
 import type {Upload} from "~/domain";
 
 import {interactionEffectStyles} from "~/style/common.ts";

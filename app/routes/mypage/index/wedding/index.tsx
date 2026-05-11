@@ -1,19 +1,15 @@
+import {Text, View, Divider, Button, Spacer, Popover, Loading, Dialog, RemoveWatermarkDialog} from "~/components";
 import {useEffect, useState} from "react";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import View from "~/components/core/View.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import Button from "~/components/core/Button.tsx";
-import Icon, {type IconType} from "~/components/core/icon";
-import Spacer from "~/components/core/Spacer.tsx";
-import Popover from "~/components/core/Popover.tsx";
+
+import {Icon, type IconType} from "~/components/core/icon";
+
 import {api} from "~/api/index.ts";
-import Loading from "~/components/core/Loading.tsx";
+
 import type {WeddingInfo, WeddingStatistics, Comment} from "~/domain";
 import {getTimeAgo} from "~/lib/date-util.ts";
 import {useNavigate} from "react-router";
-import Dialog from "~/components/core/dialog/Dialog.tsx";
-import RemoveWatermarkDialog from "~/components/RemoveWatermarkDialog.tsx";
+
 import {getWeddingUrl} from "~/lib/string-util.ts";
 import useMyPageWedding from "~/routes/mypage/index/wedding/useMyPageWedding.ts";
 import {desktopStyle, notDesktopStyle, responsive} from "~/style/responsive";

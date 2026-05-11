@@ -1,12 +1,10 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
-import Textarea from "~/components/core/Textarea.tsx";
+import {Text, Input, Textarea, View} from "~/components";
 import {css} from "@linaria/core";
 import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
 import SharingLink from "~/routes/editor/components/SharingLink.tsx";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 
 const EditorInspectorUrlShare = ({value: {url, linkShare}, update}: Binding<Wedding>) => {

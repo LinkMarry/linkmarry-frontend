@@ -16,7 +16,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-const Divider = ({size = "small", direction = "horizontal", ui, ...props}: Props) => {
+export const Divider = ({size = "small", direction = "horizontal", ui, ...props}: Props) => {
     return (
         <div
             className={cx(
@@ -45,5 +45,3 @@ const Divider = ({size = "small", direction = "horizontal", ui, ...props}: Props
         />
     );
 };
-
-export default Divider;

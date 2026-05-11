@@ -1,18 +1,15 @@
+import {Text, Divider, FormToggle, Button, Icon, View, VoidInput, Loading, Spacer} from "~/components";
 import {type ChangeEvent, type ComponentPropsWithoutRef, useRef, useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import FormToggle from "~/components/core/FormToggle.tsx";
+
 import {css, cx} from "@linaria/core";
-import Button from "~/components/core/Button.tsx";
-import Icon from "~/components/core/icon";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
-import View from "~/components/core/View.tsx";
+
 import type Binding from "~/lib/Binding.ts";
 import type {Music, Wedding} from "~/domain";
-import VoidInput from "~/components/core/VoidInput.ts";
+
 import useUpload from "~/hook/useUpload.ts";
-import Loading from "~/components/core/Loading.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
+
 import {interactionEffectStyles} from "~/style/common.ts";
 
 export interface BackgroundMusicProps extends Binding<Wedding> {

@@ -1,13 +1,9 @@
+import {PreviewTemplate, Text, View} from "~/components";
 import {type ComponentProps} from "react";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+
 import {css} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import View from "~/components/core/View.tsx";
 
-const ClassicElegancePreviewTemplate = ({
-    weddingDesign,
-}: ComponentProps<typeof PreviewTemplate>) => {
-
+export const ClassicElegancePreviewTemplate = ({weddingDesign}: ComponentProps<typeof PreviewTemplate>) => {
     return (
         <View ui={"override-font"}>
             <View
@@ -67,5 +63,3 @@ const ClassicElegancePreviewTemplate = ({
         </View>
     );
 };
-
-export default ClassicElegancePreviewTemplate;

@@ -1,8 +1,7 @@
+import {Header, Footer, View} from "~/components";
 import {type ReactNode, type RefObject} from "react";
-import Header from "~/components/MainWrapper/Header.tsx";
-import Footer from "~/components/MainWrapper/Footer.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import View from "~/components/core/View.tsx";
 
 import {hideScrollBarStyle} from "~/style/common.ts";
 
@@ -14,7 +13,7 @@ interface Props {
     children?: ReactNode;
 }
 
-const MainWrapper = ({hasHeader = true, hasFooter = true, ui, scrollRef, children}: Props) => {
+export const MainWrapper = ({hasHeader = true, hasFooter = true, ui, scrollRef, children}: Props) => {
     return (
         <View
             ui={cx(
@@ -50,5 +49,3 @@ const MainWrapper = ({hasHeader = true, hasFooter = true, ui, scrollRef, childre
         </View>
     );
 };
-
-export default MainWrapper;

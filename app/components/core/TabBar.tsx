@@ -1,10 +1,10 @@
+import {Text, View} from "~/components";
 import {type ComponentPropsWithoutRef} from "react";
-import Text from "~/components/core/Text";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {hideScrollBarStyle, interactionEffectStyles} from "~/style/common.ts";
 
-const TabBar = ({
+export const TabBar = ({
     items,
     selectedTab,
     onChange,
@@ -93,5 +93,3 @@ const Item = ({
         </View>
     );
 };
-
-export default TabBar;

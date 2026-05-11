@@ -1,5 +1,6 @@
+import {View} from "~/components";
 import {type ReactNode, useEffect, useRef} from "react";
-import View from "~/components/core/View.tsx";
+
 import {fadeInAnimationStyle} from "~/style/animation";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
@@ -9,7 +10,7 @@ interface BasePopoverProps {
     children?: ReactNode;
 }
 
-const BasePopover = ({ui, dismiss, children}: BasePopoverProps) => {
+export const BasePopover = ({ui, dismiss, children}: BasePopoverProps) => {
     const rootRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -38,5 +39,3 @@ const BasePopover = ({ui, dismiss, children}: BasePopoverProps) => {
         </View>
     );
 };
-
-export default BasePopover;

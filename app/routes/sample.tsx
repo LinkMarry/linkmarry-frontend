@@ -1,13 +1,11 @@
+import {WeddingComponent, View, Text, SelectDesignSheet, ClientOnly} from "~/components";
 import {useEffect, useState} from "react";
 import {css} from "@linaria/core";
 import {dummyWedding} from "~/domain";
-import WeddingComponent from "~/components/WeddingComponent";
-import View from "~/components/core/View.tsx";
-import Text from "~/components/core/Text.tsx";
-import SelectDesignSheet from "~/components/WeddingComponent/component/SelectDesignSheet.tsx";
+
 import {useSearchParams} from "react-router";
 import {responsive} from "~/style/responsive";
-import ClientOnly from "~/components/ClientOnly";
+
 import type {Route} from "./+types/sample";
 import {api} from "~/api/index.ts";
 

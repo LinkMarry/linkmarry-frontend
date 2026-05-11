@@ -1,12 +1,8 @@
-import BaseDialog from "~/components/core/dialog/BaseDialog.tsx";
+import {BaseDialog, Text, Icon, Spacer, Input, Button, View} from "~/components";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
-import Spacer from "~/components/core/Spacer.tsx";
+
 import {CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_WEDDING_URL, TERMS_OR_USE_URL} from "~/lib/constant.ts";
-import Input from "~/components/core/Input.tsx";
-import Button from "~/components/core/Button.tsx";
-import View from "~/components/core/View.tsx";
+
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import {useRemoveWatermarkDialog} from "./useRemoveWatermarkDialog.ts";
 import {interactionEffectStyles} from "~/style/common.ts";
@@ -17,7 +13,7 @@ interface Props {
     dismiss: () => void;
 }
 
-const RemoveWatermarkDialog = ({show, url, dismiss}: Props) => {
+export const RemoveWatermarkDialog = ({show, url, dismiss}: Props) => {
     const {phone, removeWatermark, handlePhoneChange} = useRemoveWatermarkDialog({url});
 
     return (
@@ -171,5 +167,3 @@ const RemoveWatermarkDialog = ({show, url, dismiss}: Props) => {
         </BaseDialog>
     );
 };
-
-export default RemoveWatermarkDialog;

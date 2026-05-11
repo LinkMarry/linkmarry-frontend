@@ -1,11 +1,9 @@
+import {Text, Divider, Dialog, Loading, View} from "~/components";
 import {useState} from "react";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
-import Divider from "~/components/core/Divider.tsx";
-import Dialog from "~/components/core/dialog/Dialog.tsx";
+
 import {useAuth} from "~/hook/useAuth.tsx";
-import Loading from "~/components/core/Loading.tsx";
-import View from "~/components/core/View.tsx";
 
 const MyPageInfo = () => {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);

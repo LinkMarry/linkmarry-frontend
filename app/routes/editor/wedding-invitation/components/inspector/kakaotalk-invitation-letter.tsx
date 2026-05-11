@@ -1,15 +1,13 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
-import Textarea from "~/components/core/Textarea.tsx";
+import {Text, Input, Textarea, SegmentedButton, View} from "~/components";
 import {css} from "@linaria/core";
 import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
 import SharingLink from "~/routes/editor/components/SharingLink.tsx";
-import SegmentedButton from "~/components/core/SegmentedButton.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
 import {getKoreanByKakaoStyle, kakaoStyleList} from "~/domain";
 import {kakaoButtonList, kakaoButtonMap} from "~/api/enumeration/KakaoButton.ts";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 
 const EditorInspectorKakaotalkInvitationLetter = ({value: {url, linkShare}, update}: Binding<Wedding>) => {

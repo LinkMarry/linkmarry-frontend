@@ -1,12 +1,12 @@
+import {Text, Icon, View} from "~/components";
 import {type ComponentPropsWithoutRef, useCallback} from "react";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
 import {backgroundStyle} from "~/domain";
-import Icon from "~/components/core/icon";
+
 import type {LinkShare, WeddingPlace} from "~/domain";
 import {getWeddingUrl} from "~/lib/string-util.ts";
 import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
-import View from "~/components/core/View.tsx";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<"div"> {
     url: string;
@@ -15,7 +15,7 @@ interface FooterTemplateProps extends ComponentPropsWithoutRef<"div"> {
     weddingPlace: WeddingPlace;
 }
 
-const FooterTemplate = ({url, background, linkShare, weddingPlace, ...props}: FooterTemplateProps) => {
+export const FooterTemplate = ({url, background, linkShare, weddingPlace, ...props}: FooterTemplateProps) => {
     const shareToKakao = useCallback(() => {
         const {
             Kakao: {Share},
@@ -170,5 +170,3 @@ const FooterTemplate = ({url, background, linkShare, weddingPlace, ...props}: Fo
         </View>
     );
 };
-
-export default FooterTemplate;

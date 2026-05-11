@@ -1,13 +1,10 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
-import Textarea from "~/components/core/Textarea.tsx";
+import {Text, Input, Textarea, FormToggle, FormToggleSet, Divider, View} from "~/components";
 import {css} from "@linaria/core";
-import FormToggle from "~/components/core/FormToggle.tsx";
-import FormToggleSet from "~/components/core/FormToggleSet.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
-import Divider from "~/components/core/Divider.tsx";
+
 import type Binding from "~/lib/Binding.ts";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 
 const WeddingInvitationEditorRsvpInspector = ({value: {rsvp}, update}: Binding<Wedding>) => {

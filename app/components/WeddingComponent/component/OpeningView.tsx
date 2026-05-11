@@ -7,7 +7,7 @@ interface OpeningViewProps {
     weddingDesign: WeddingDesign;
 }
 
-const OpeningView = ({weddingDesign}: OpeningViewProps) => {
+export const OpeningView = ({weddingDesign}: OpeningViewProps) => {
     const [visible, setVisible] = useState(true);
     const [fading, setFading] = useState(false);
 
@@ -107,5 +107,3 @@ const OpeningView = ({weddingDesign}: OpeningViewProps) => {
         </div>
     );
 };
-
-export default OpeningView;

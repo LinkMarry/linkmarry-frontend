@@ -1,14 +1,14 @@
+import {PreviewTemplate, View, Text, Spacer} from "~/components";
 import {type ComponentProps} from "react";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 import {getDetails, getBaseInfoByBrideMarkFirst} from "~/domain";
-import Text from "~/components/core/Text.tsx";
+
 import {format} from "date-fns";
-import Spacer from "~/components/core/Spacer.tsx";
+
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const RomanticForestPreviewTemplate = ({
+export const RomanticForestPreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingSchedule,
@@ -97,5 +97,3 @@ const RomanticForestPreviewTemplate = ({
         </View>
     );
 };
-
-export default RomanticForestPreviewTemplate;

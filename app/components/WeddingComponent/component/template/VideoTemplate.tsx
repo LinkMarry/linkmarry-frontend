@@ -1,10 +1,10 @@
+import {Text, View, FadeIn} from "~/components";
 import {useRef, type RefObject, useState, useLayoutEffect} from "react";
 import type {Video} from "~/domain";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import View from "~/components/core/View.tsx";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
+
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 
 interface VideoTemplateProps {
@@ -13,7 +13,7 @@ interface VideoTemplateProps {
     mode: WeddingMode;
 }
 
-const VideoTemplate = ({video, rootRef, mode}: VideoTemplateProps) => {
+export const VideoTemplate = ({video, rootRef, mode}: VideoTemplateProps) => {
     const isYoutubeUrl = video.videoUrl.startsWith("https://www.youtube.com");
     const videoRef = useRef<HTMLDivElement>(null);
     const [videoWidth, setVideoWidth] = useState<number>();
@@ -119,5 +119,3 @@ const VideoTemplate = ({video, rootRef, mode}: VideoTemplateProps) => {
         </FadeIn>
     );
 };
-
-export default VideoTemplate;

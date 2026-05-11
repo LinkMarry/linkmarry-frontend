@@ -1,11 +1,10 @@
+import {Text, FadeIn, Icon, View, GalleryTemplateFullView} from "~/components";
 import {type RefObject, useCallback, useEffect, useRef, useState} from "react";
-import Text from "~/components/core/Text.tsx";
+
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
+
 import type {Gallery} from "~/domain";
-import Icon from "~/components/core/icon";
-import View from "~/components/core/View.tsx";
-import GalleryTemplateFullView from "~/components/WeddingComponent/component/template/GalleryTemplateFullView.tsx";
+
 import type {GalleryDesign} from "~/api/enumeration/GalleryDesign.ts";
 import {css, cx} from "@linaria/core";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
@@ -17,7 +16,7 @@ interface GalleryTemplateProps {
     mode: WeddingMode;
 }
 
-const GalleryTemplate = ({rootRef, gallery, mode}: GalleryTemplateProps) => {
+export const GalleryTemplate = ({rootRef, gallery, mode}: GalleryTemplateProps) => {
     const galleryRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(galleryRef, [gallery], mode === "preview");
 
@@ -334,5 +333,3 @@ function GalleryStyleIndicator({
             return null;
     }
 }
-
-export default GalleryTemplate;

@@ -1,17 +1,15 @@
+import {Text, TabBar, SegmentedButton, Icon, Select, Loading, View} from "~/components";
 import {type ComponentPropsWithoutRef, useEffect, useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import TabBar from "~/components/core/TabBar.tsx";
+
 import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
-import SegmentedButton from "~/components/core/SegmentedButton.tsx";
-import Icon from "~/components/core/icon";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import {type OpeningText, openingTextList, type WeddingDesignPreset, type Wedding} from "~/domain";
 import type Binding from "~/lib/Binding.ts";
 import {openingList, openingMap} from "~/api/enumeration/Opening.ts";
-import Select from "~/components/core/Select.tsx";
+
 import {groupedByCategory} from "~/domain";
-import Loading from "~/components/core/Loading.tsx";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
 
 export interface WeddingDesignProps extends Binding<Wedding> {

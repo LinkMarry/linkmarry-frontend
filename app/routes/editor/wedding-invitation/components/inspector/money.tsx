@@ -1,14 +1,11 @@
+import {Text, Input, Textarea, FormToggle, Checkbox, Dialog, View} from "~/components";
 import {useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
-import Textarea from "~/components/core/Textarea.tsx";
+
 import {css} from "@linaria/core";
-import FormToggle from "~/components/core/FormToggle.tsx";
-import Checkbox from "~/components/core/Checkbox.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import Dialog from "~/components/core/dialog/Dialog.tsx";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 
 const EditorInspectorMoney = ({value: {moneyInfo}, update}: Binding<Wedding>) => {

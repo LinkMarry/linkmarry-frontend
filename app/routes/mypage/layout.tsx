@@ -1,8 +1,7 @@
-import MainWrapper from "~/components/MainWrapper";
+import {MainWrapper, View} from "~/components";
 import {Outlet} from "react-router";
 import {css} from "@linaria/core";
 import {responsive} from "~/style/responsive";
-import View from "~/components/core/View.tsx";
 
 const Layout = () => {
     return (

@@ -1,7 +1,7 @@
+import {Text, View} from "~/components";
 import {useManageWeddingDesignScreen} from "./useManageWeddingDesignScreen.ts";
-import Text from "~/components/core/Text.tsx";
+
 import {css} from "@linaria/core";
-import View from "~/components/core/View.tsx";
 
 const ManageWeddingDesign = () => {
     const {presets} = useManageWeddingDesignScreen();

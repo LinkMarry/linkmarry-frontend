@@ -1,18 +1,24 @@
+import {
+    Checkbox,
+    Toggle,
+    Dialog,
+    SegmentedButton,
+    Input,
+    Select,
+    Textarea,
+    Popover,
+    View,
+    Loading,
+    LoadingOverlay,
+    Button,
+    type ButtonSize,
+    type ButtonType,
+    Divider,
+    type DividerSize,
+} from "~/components";
 import {useState} from "react";
-import Button, {type ButtonSize, type ButtonType} from "~/components/core/Button.tsx";
-import Divider, {type DividerSize} from "~/components/core/Divider.tsx";
-import Checkbox from "~/components/core/Checkbox.tsx";
-import Toggle from "~/components/core/Toggle.tsx";
+
 import {css} from "@linaria/core";
-import Dialog from "~/components/core/dialog/Dialog.tsx";
-import SegmentedButton from "~/components/core/SegmentedButton.tsx";
-import Input from "~/components/core/Input.tsx";
-import Select from "~/components/core/Select.tsx";
-import Textarea from "~/components/core/Textarea.tsx";
-import Popover from "~/components/core/Popover.tsx";
-import View from "~/components/core/View.tsx";
-import Loading from "~/components/core/Loading.tsx";
-import LoadingOverlay from "~/components/core/LoadingOverlay.tsx";
 
 const ComponentDemo = () => {
     const buttonSizes: ButtonSize[] = ["large", "medium", "small"];

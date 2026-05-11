@@ -5,7 +5,7 @@ interface Props extends PropsWithChildren {
     content: React.ReactNode;
 }
 
-const ToolTip = ({content, children}: Props) => {
+export const ToolTip = ({content, children}: Props) => {
     return (
         <ToolTipStyle>
             {children}
@@ -40,5 +40,3 @@ const ToolTipStyle = styled.div`
         opacity: 1;
     }
 `;
-
-export default ToolTip;

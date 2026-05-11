@@ -1,12 +1,12 @@
+import {Text, PreviewTemplate, View} from "~/components";
 import {type ComponentProps} from "react";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
-import {format} from "date-fns";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
-import View from "~/components/core/View.tsx";
 
-const SoulmatePreviewTemplate = ({
+import {format} from "date-fns";
+
+import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
+
+export const SoulmatePreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingSchedule,
@@ -94,5 +94,3 @@ const SoulmatePreviewTemplate = ({
         </View>
     );
 };
-
-export default SoulmatePreviewTemplate;

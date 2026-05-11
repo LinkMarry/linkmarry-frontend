@@ -1,12 +1,12 @@
+import {PreviewTemplate, View, Text} from "~/components";
 import {type ComponentProps} from "react";
 import {css, cx} from "@linaria/core";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
-import View from "~/components/core/View.tsx";
-import Text from "~/components/core/Text.tsx";
+
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const DearMyLovePreviewTemplate = ({baseInfo, weddingDesign}: ComponentProps<typeof PreviewTemplate>) => {
+export const DearMyLovePreviewTemplate = ({baseInfo, weddingDesign}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
 
     return (
@@ -144,5 +144,3 @@ const DearMyLovePreviewTemplate = ({baseInfo, weddingDesign}: ComponentProps<typ
         </View>
     );
 };
-
-export default DearMyLovePreviewTemplate;

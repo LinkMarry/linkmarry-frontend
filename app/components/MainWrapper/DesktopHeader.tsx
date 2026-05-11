@@ -1,20 +1,17 @@
+import {Spacer, Button, Text, Icon, Popover, View, ClientOnly} from "~/components";
 import {type ComponentPropsWithoutRef, useState} from "react";
 import {css, cx} from "@linaria/core";
-import Spacer from "~/components/core/Spacer.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import {useNavigate} from "react-router";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
-import Popover from "~/components/core/Popover.tsx";
-import View from "~/components/core/View.tsx";
+
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {notMobileStyle} from "~/style/responsive.tsx";
-import ClientOnly from "~/components/ClientOnly.tsx";
-import LogoInHeader from "./LogoInHeader.tsx";
+
+import {LogoInHeader} from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 
-const DesktopHeader = () => {
+export const DesktopHeader = () => {
     const {authorized} = useAuth();
     const navigate = useNavigate();
     const [openMyInfoPopover, setOpenMyInfoPopover] = useState(false);
@@ -188,5 +185,3 @@ const DesktopHeaderItem = ({
         </View>
     );
 };
-
-export default DesktopHeader;

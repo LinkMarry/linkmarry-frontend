@@ -1,8 +1,6 @@
+import {Text, Toggle, View} from "~/components";
 import {type ComponentPropsWithoutRef} from "react";
 import {css} from "@linaria/core";
-import Text from "~/components/core/Text";
-import Toggle from "~/components/core/Toggle";
-import View from "~/components/core/View.tsx";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
     checked: boolean;
@@ -10,7 +8,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     label: string;
 }
 
-const FormToggle = ({checked, OnChange, label}: Props) => {
+export const FormToggle = ({checked, OnChange, label}: Props) => {
     return (
         <View
             flexDirection={"row"}
@@ -36,5 +34,3 @@ const FormToggle = ({checked, OnChange, label}: Props) => {
         </View>
     );
 };
-
-export default FormToggle;

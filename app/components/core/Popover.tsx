@@ -1,10 +1,11 @@
+import {Text, BasePopover, View} from "~/components";
 import {type ComponentPropsWithoutRef} from "react";
-import Icon, {type IconType} from "~/components/core/icon";
-import Text from "~/components/core/Text.tsx";
+import {Icon, type IconType} from "~/components/core/icon";
+
 import {fadeInAnimationStyle} from "~/style/animation";
-import BasePopover from "~/components/core/BasePopover.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import View from "~/components/core/View.tsx";
+
 import {interactionEffectStyles} from "~/style/common.ts";
 
 type ItemType = "normal" | "destructive";
@@ -48,7 +49,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-const Popover = ({items, dismiss, ui, ...props}: Props) => {
+export const Popover = ({items, dismiss, ui, ...props}: Props) => {
     return (
         <BasePopover dismiss={dismiss}>
             <View
@@ -102,5 +103,3 @@ const Popover = ({items, dismiss, ui, ...props}: Props) => {
         </BasePopover>
     );
 };
-
-export default Popover;

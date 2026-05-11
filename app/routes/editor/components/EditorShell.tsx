@@ -1,6 +1,7 @@
+import {View} from "~/components";
 import React, {type ReactNode} from "react";
 import {css, cx} from "@linaria/core";
-import View from "~/components/core/View.tsx";
+
 import {responsive} from "~/style/responsive";
 import {hideScrollBarStyle} from "~/style/common.ts";
 

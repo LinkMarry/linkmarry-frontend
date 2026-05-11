@@ -1,12 +1,11 @@
+import {Text, Icon, VoidInput, View, LoadingOverlay} from "~/components";
 import {type ChangeEvent, useRef, useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
+
 import {css, cx} from "@linaria/core";
-import VoidInput from "~/components/core/VoidInput.ts";
-import View from "~/components/core/View.tsx";
+
 import AddRemoveButton from "~/routes/editor/components/AddRemoveButton.tsx";
 import useUpload from "~/hook/useUpload.ts";
-import LoadingOverlay from "~/components/core/LoadingOverlay.tsx";
+
 import {hideScrollBarStyle} from "~/style/common.ts";
 
 interface Props<V = string | string[]> {

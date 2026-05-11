@@ -1,15 +1,15 @@
+import {View, Button, Text, Input} from "~/components";
 import React from "react";
 import EditorShell from "~/routes/editor/components/EditorShell.tsx";
 import EditorHeader from "~/routes/editor/components/EditorHeader.tsx";
 import EditorNavigationBar from "~/routes/editor/components/EditorNavigationBar.tsx";
 import EditorInspectorShell from "~/routes/editor/components/EditorInspectorShell.tsx";
-import View from "~/components/core/View.tsx";
+
 import {css, cx} from "@linaria/core";
-import Button from "~/components/core/Button.tsx";
+
 import {desktopStyle} from "~/style/responsive";
 import {useWeddingPosterEditor} from "~/routes/editor/wedding-poster/useWeddingPosterEditor.ts";
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
 import type {Poster, PosterPreset} from "~/domain";

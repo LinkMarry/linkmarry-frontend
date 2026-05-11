@@ -1,10 +1,9 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
+import {Text, Input, Divider, View} from "~/components";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import Divider from "~/components/core/Divider.tsx";
+
 import {css} from "@linaria/core";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 
 const EditorInspectorVideo = ({value: {video}, update}: Binding<Wedding>) => {

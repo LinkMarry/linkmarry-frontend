@@ -1,13 +1,14 @@
+import {PreviewTemplate, View, Text} from "~/components";
 import {type ComponentProps} from "react";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+
 import {css, cx} from "@linaria/core";
-import View from "~/components/core/View.tsx";
+
 import {format} from "date-fns";
 import {getDetails, getBaseInfoByBrideMarkFirst} from "~/domain";
-import Text from "~/components/core/Text.tsx";
+
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const DreamWeddingPreviewTemplate = ({
+export const DreamWeddingPreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingSchedule,
@@ -85,5 +86,3 @@ const DreamWeddingPreviewTemplate = ({
         </View>
     );
 };
-
-export default DreamWeddingPreviewTemplate;

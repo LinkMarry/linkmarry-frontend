@@ -1,6 +1,7 @@
+import {View} from "~/components";
 import {isValidElement, type ReactNode, type RefObject, useEffect, useState} from "react";
-import View from "~/components/core/View.tsx";
-import useFadeIn from "~/components/core/fadein/useFadeIn.ts";
+
+import {useFadeIn} from "~/components/core/fadein/useFadeIn.ts";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 type Provided<T = HTMLElement> = {
@@ -15,7 +16,7 @@ interface Props {
     children: ((provided: Provided) => ReactNode) | ReactNode;
 }
 
-const FadeIn = ({delay, ui, as, children}: Props) => {
+export const FadeIn = ({delay, ui, as, children}: Props) => {
     const {ref, isVisible} = useFadeIn();
     const [delayedIsVisible, setDelayedIsVisible] = useState(false);
 
@@ -46,7 +47,7 @@ const FadeIn = ({delay, ui, as, children}: Props) => {
     );
 
     if (typeof children === "function") {
-        return <>{children({style, ref})}</>;
+        return <>{children({style, ref: ref as any})}</>;
     } else if (isValidElement(children)) {
         return (
             <View
@@ -68,5 +69,3 @@ const FadeIn = ({delay, ui, as, children}: Props) => {
 
     return null;
 };
-
-export default FadeIn;

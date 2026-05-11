@@ -1,12 +1,9 @@
-import Text from "~/components/core/Text.tsx";
+import {Text, Divider, Spacer, Button, Loading, View} from "~/components";
 import {css, cx} from "@linaria/core";
-import Divider from "~/components/core/Divider.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
-import Button from "~/components/core/Button.tsx";
+
 import {mobileStyle, notMobileStyle} from "~/style/responsive";
 import type {WeddingStatistics} from "~/domain";
-import Loading from "~/components/core/Loading.tsx";
-import View from "~/components/core/View.tsx";
+
 import {getRsvpText} from "~/domain";
 import {downloadExcelFromRsvpInfo} from "~/lib/excel-util.ts";
 import useMyPageStat from "~/routes/mypage/detail/stat/useMyPageStat.ts";

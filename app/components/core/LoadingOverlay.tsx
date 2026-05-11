@@ -1,6 +1,6 @@
 import {styled} from "@linaria/react";
 
-const LoadingOverlay = () => {
+export const LoadingOverlay = () => {
     return (
         <LoadingOverlayStyle>
             <DotsLoader>
@@ -62,5 +62,3 @@ const Dot = styled.div`
         }
     }
 `;
-
-export default LoadingOverlay;

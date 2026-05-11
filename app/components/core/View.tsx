@@ -19,9 +19,7 @@ const rowStyle = css`
     flex-direction: row;
 `;
 
-function View<T extends ElementType = "div">({as, ui, flexDirection = "column", ...props}: ViewProps<T>) {
+export function View<T extends ElementType = "div">({as, ui, flexDirection = "column", ...props}: ViewProps<T>) {
     const Component = as || "div";
     return <Component className={cx(baseStyle, flexDirection === "row" ? rowStyle : columnStyle, ui)} {...props} />;
 }
-
-export default View;

@@ -1,5 +1,6 @@
+import {View} from "~/components";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {textStyles} from "~/components/core/text/TextType.ts";
 
@@ -9,7 +10,7 @@ interface Props extends ComponentPropsWithRef<"textarea"> {
     ui?: LinariaClassName;
 }
 
-const Textarea = forwardRef(
+export const Textarea = forwardRef(
     ({placeholder, hasLabel = true, ui, ...props}: Props, ref: ForwardedRef<HTMLTextAreaElement>) => {
         return (
             <View
@@ -113,5 +114,3 @@ const Textarea = forwardRef(
         );
     },
 );
-
-export default Textarea;

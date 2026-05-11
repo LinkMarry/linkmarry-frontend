@@ -1,12 +1,13 @@
+import {View} from "~/components";
 import {type ComponentPropsWithoutRef} from "react";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-const Loading = ({ui, ...props}: Props) => {
+export const Loading = ({ui, ...props}: Props) => {
     return (
         <View
             flexDirection={"row"}
@@ -67,5 +68,3 @@ const LoadingItem = () => {
         />
     );
 };
-
-export default Loading;

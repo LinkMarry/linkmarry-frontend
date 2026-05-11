@@ -1,7 +1,6 @@
+import {Text, Icon, View} from "~/components";
 import {type ComponentPropsWithoutRef, useEffect, useRef, useState} from "react";
-import Text from "~/components/core/Text";
-import Icon from "~/components/core/icon";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
@@ -12,7 +11,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
     ui?: LinariaClassName;
 }
 
-const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) => {
+export const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) => {
     const [openOptions, setOpenOptions] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
 
@@ -145,5 +144,3 @@ const Select = ({items, selected, OnChange, placeholder, ui, ...props}: Props) =
         </View>
     );
 };
-
-export default Select;

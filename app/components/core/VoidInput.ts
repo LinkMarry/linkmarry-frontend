@@ -1,9 +1,7 @@
 import {styled} from "@linaria/react";
 
-const voidInput = styled.input`
+export const VoidInput = styled.input`
     display: none;
     width: 0;
     height: 0;
 `;
-
-export default voidInput;

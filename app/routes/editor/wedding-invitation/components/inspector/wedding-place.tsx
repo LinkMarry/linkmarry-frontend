@@ -1,17 +1,12 @@
+import {Text, Divider, Input, FormToggleSet, FormToggle, Button, Icon, View, KakaoMapDialog} from "~/components";
 import {useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Divider from "~/components/core/Divider.tsx";
-import Input from "~/components/core/Input.tsx";
-import FormToggleSet from "~/components/core/FormToggleSet.tsx";
-import FormToggle from "~/components/core/FormToggle.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
 import {getPlaceholder} from "~/domain";
-import Button from "~/components/core/Button.tsx";
-import Icon from "~/components/core/icon";
+
 import {css} from "@linaria/core";
-import View from "~/components/core/View.tsx";
-import KakaoMapDialog from "~/components/KakaoMapDialog.tsx";
+
 import {formatPhone} from "~/lib/format-util.ts";
 import type {Wedding} from "~/domain";
 

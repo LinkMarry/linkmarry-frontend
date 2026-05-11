@@ -1,11 +1,9 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
-import Spacer from "~/components/core/Spacer.tsx";
+import {Text, Input, Spacer, Checkbox, View} from "~/components";
 import {css} from "@linaria/core";
-import Checkbox from "~/components/core/Checkbox.tsx";
+
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import View from "~/components/core/View.tsx";
+
 import type {Wedding} from "~/domain";
 
 const EditorInspectorGroom = ({value: {baseInfo}, update}: Binding<Wedding>) => {

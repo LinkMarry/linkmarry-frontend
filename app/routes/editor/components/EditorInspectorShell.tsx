@@ -1,4 +1,4 @@
-import View from "~/components/core/View.tsx";
+import {View} from "~/components";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {responsive} from "~/style/responsive";
 import type {PropsWithChildren} from "react";

@@ -1,10 +1,8 @@
-import Text from "~/components/core/Text.tsx";
-import Input from "~/components/core/Input.tsx";
-import FormToggle from "~/components/core/FormToggle.tsx";
+import {Text, Input, FormToggle, View} from "~/components";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
 import {formatPhone} from "~/lib/format-util.ts";
-import View from "~/components/core/View.tsx";
+
 import {css} from "@linaria/core";
 import type {Wedding} from "~/domain";
 

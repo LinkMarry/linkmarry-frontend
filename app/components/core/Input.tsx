@@ -1,5 +1,6 @@
+import {View} from "~/components";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
-import View from "~/components/core/View.tsx";
+
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {textStyles} from "~/components/core/text/TextType.ts";
 
@@ -10,7 +11,7 @@ interface Props extends ComponentPropsWithRef<"input"> {
     ui?: LinariaClassName;
 }
 
-const Input = forwardRef(
+export const Input = forwardRef(
     ({placeholder, hasLabel = true, prefix, ui, ...props}: Props, ref: ForwardedRef<HTMLInputElement>) => {
         return (
             <View
@@ -170,5 +171,3 @@ const Input = forwardRef(
         );
     },
 );
-
-export default Input;

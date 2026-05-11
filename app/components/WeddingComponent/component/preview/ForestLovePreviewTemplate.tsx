@@ -1,17 +1,18 @@
+import {Text, View} from "~/components";
 import {type ComponentProps} from "react";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
+
 import {format} from "date-fns";
-import previewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
+import {PreviewTemplate} from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
 import {getDetails, getBaseInfoByBrideMarkFirst} from "~/domain";
-import View from "~/components/core/View.tsx";
+
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const ForestLovePreviewTemplate = ({
+export const ForestLovePreviewTemplate = ({
     weddingDesign,
     baseInfo,
     weddingSchedule,
-}: ComponentProps<typeof previewTemplate>) => {
+}: ComponentProps<typeof PreviewTemplate>) => {
     const {first, second} = getBaseInfoByBrideMarkFirst(baseInfo);
     const {date, isValidDate} = getDetails(weddingSchedule);
     return (
@@ -110,5 +111,3 @@ const ForestLovePreviewTemplate = ({
         </View>
     );
 };
-
-export default ForestLovePreviewTemplate;

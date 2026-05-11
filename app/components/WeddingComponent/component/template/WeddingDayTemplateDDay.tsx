@@ -1,10 +1,9 @@
+import {Text, Icon, FadeIn, View} from "~/components";
 import {useEffect, useMemo, useState} from "react";
-import Text from "~/components/core/Text.tsx";
-import Icon from "~/components/core/icon";
+
 import type {WeddingSchedule, BaseInfo} from "~/domain";
 import {getBaseInfoByBrideMarkFirst} from "~/domain";
-import FadeIn from "~/components/core/fadein/FadeIn.tsx";
-import View from "~/components/core/View.tsx";
+
 import {css} from "@linaria/core";
 import {styled} from "@linaria/react";
 
@@ -20,7 +19,7 @@ interface Props {
     weddingSchedule: WeddingSchedule;
 }
 
-const WeddingDayTemplateDDay = ({baseInfo, weddingSchedule}: Props) => {
+export const WeddingDayTemplateDDay = ({baseInfo, weddingSchedule}: Props) => {
     const [remainingTime, setRemainingTime] = useState<RemainTime>({
         days: 0,
         hours: 0,
@@ -282,5 +281,3 @@ function parseDate(dateString: string): Date {
     const [year, month, day] = dateString.split("-").map(Number);
     return new Date(year, month - 1, day); // month는 0부터 시작하므로 1을 빼줍니다.
 }
-
-export default WeddingDayTemplateDDay;

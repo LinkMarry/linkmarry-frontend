@@ -1,14 +1,14 @@
+import {Text, PreviewTemplate, View} from "~/components";
 import {type ComponentProps} from "react";
 import {css, cx} from "@linaria/core";
-import Text from "~/components/core/Text.tsx";
+
 import {format} from "date-fns";
 import {ko} from "date-fns/locale";
 import {getBaseInfoByBrideMarkFirst, getDetails} from "~/domain";
-import PreviewTemplate from "~/components/WeddingComponent/component/preview/PreviewTemplate.tsx";
-import View from "~/components/core/View.tsx";
+
 import {fontFamilyStyle} from "~/components/core/text/TextType.ts";
 
-const NatureBlissPreviewTemplate = ({
+export const NatureBlissPreviewTemplate = ({
     baseInfo,
     weddingDesign,
     weddingPlace,
@@ -63,5 +63,3 @@ const NatureBlissPreviewTemplate = ({
         </View>
     );
 };
-
-export default NatureBlissPreviewTemplate;

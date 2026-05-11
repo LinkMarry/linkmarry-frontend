@@ -1,8 +1,8 @@
-import Icon, {type IconType, isIconType} from "~/components/core/icon";
+import {View} from "~/components";
+import {Icon, type IconType, isIconType} from "~/components/core/icon";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef, type ReactNode} from "react";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 import {textStyles} from "~/components/core/text/TextType.ts";
-import View from "~/components/core/View.tsx";
 
 export type ButtonSize = "large" | "medium" | "small";
 
@@ -81,7 +81,7 @@ interface Props extends ComponentPropsWithRef<"button"> {
     ui?: LinariaClassName;
 }
 
-const Button = (
+const ButtonInner = (
     {text, size = "large", buttonType = "filled", leadingIcon, trailingIcon, enabled = true, ui, ...props}: Props,
     ref: ForwardedRef<HTMLButtonElement>,
 ) => {
@@ -148,4 +148,4 @@ const Button = (
     );
 };
 
-export default forwardRef(Button);
+export const Button = forwardRef(ButtonInner);
