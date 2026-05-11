@@ -15,10 +15,10 @@ function validateImageSize(file: File, maxSizeMB: number = 20) {
     alert("이미지가 너무 큽니다. 20MB 이하의 이미지를 업로드 해주세요.");
 }
 
-export async function upload(file: File, url: string, type: FileType): Promise<ResponseData<Upload>> {
+export async function upload(file: File, url: string, type: FileType) {
     validateImageSize(file, 20);
 
-    const {data} = await httpClient.postForm(`${PATH}/upload`, {
+    const {data} = await httpClient.postForm<ResponseData<Upload>>(`${PATH}/upload`, {
         file,
         url,
         type,
@@ -26,7 +26,7 @@ export async function upload(file: File, url: string, type: FileType): Promise<R
     return data;
 }
 
-export async function getMusics(): Promise<ResponseData<Music[]>> {
-    const {data} = await httpClient.get(`${PATH}/music`);
+export async function getMusics() {
+    const {data} = await httpClient.get<ResponseData<Music[]>>(`${PATH}/music`);
     return data;
 }

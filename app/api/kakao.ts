@@ -3,8 +3,8 @@ import type {Jwt, ResponseData} from "~/domain";
 
 const PATH = "kakao";
 
-export async function authorize(code: string): Promise<ResponseData<Jwt>> {
-    const {data} = await httpClient.get(PATH, {
+export async function authorize(code: string) {
+    const {data} = await httpClient.get<ResponseData<Jwt>>(PATH, {
         params: {
             code,
         },

@@ -1,18 +1,11 @@
 import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
 
-export interface ResponseData<T> {
+export interface ResponseData<T = undefined> {
     status: number;
     success: boolean;
     state: string;
     message: string;
     data: T;
-}
-
-export interface ResponseVoid {
-    status: number;
-    success: boolean;
-    state: string;
-    message: string;
 }
 
 export interface Upload {

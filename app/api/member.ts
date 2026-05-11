@@ -1,26 +1,26 @@
-import type {ResponseData, ResponseVoid, InfoMember, EditMemberRequest} from "~/domain";
+import type {ResponseData, InfoMember, EditMemberRequest} from "~/domain";
 import {httpClient} from "~/api/index.ts";
 
 const PATH = "member";
 
-export async function refresh(token: string): Promise<ResponseData<string>> {
-    const {data} = await httpClient.get(`${PATH}/refresh?token=${token}`, {
+export async function refresh(token: string) {
+    const {data} = await httpClient.get<ResponseData<string>>(`${PATH}/refresh?token=${token}`, {
         shouldAuthorizeRequest: false,
     });
     return data;
 }
 
-export async function getMyProfile(): Promise<ResponseData<InfoMember>> {
-    const {data} = await httpClient.get(`${PATH}/info`);
+export async function getMyProfile() {
+    const {data} = await httpClient.get<ResponseData<InfoMember>>(`${PATH}/info`);
     return data;
 }
 
-export async function editMyProfile(req: EditMemberRequest): Promise<ResponseVoid> {
-    const {data} = await httpClient.patch(`${PATH}/edit`, req);
+export async function editMyProfile(req: EditMemberRequest) {
+    const {data} = await httpClient.patch<ResponseData>(`${PATH}/edit`, req);
     return data;
 }
 
-export async function removeMember(): Promise<ResponseVoid> {
-    const {data} = await httpClient.delete(`${PATH}/remove`);
+export async function removeMember() {
+    const {data} = await httpClient.delete<ResponseData>(`${PATH}/remove`);
     return data;
 }
