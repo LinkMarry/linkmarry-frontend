@@ -8,7 +8,7 @@ import {Icon, type IconType} from "~/components/core/icon";
 
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
-import {mobileStyle} from "~/style/responsive.tsx";
+import {mobileStyle} from "~/style/responsive.ts";
 import {LogoInHeader} from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";
 

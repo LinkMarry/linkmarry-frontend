@@ -1,7 +1,7 @@
 import {MainWrapper, Text, View, Button, Divider, Icon, ClientOnly} from "~/components";
 import {css, cx} from "@linaria/core";
 
-import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/style/responsive.tsx";
+import {desktopStyle, mobileStyle, notMobileStyle, responsive} from "~/style/responsive.ts";
 
 import {type ComponentPropsWithoutRef, useState} from "react";
 import {Snowfall} from "react-snowfall";

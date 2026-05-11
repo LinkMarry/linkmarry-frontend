@@ -6,7 +6,7 @@ import {useNavigate} from "react-router";
 
 import {useAuth} from "~/hook/useAuth.tsx";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
-import {notMobileStyle} from "~/style/responsive.tsx";
+import {notMobileStyle} from "~/style/responsive.ts";
 
 import {LogoInHeader} from "./LogoInHeader.tsx";
 import {interactionEffectStyles} from "~/style/common.ts";

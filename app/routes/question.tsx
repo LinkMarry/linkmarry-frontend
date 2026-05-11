@@ -1,7 +1,7 @@
 // import React from 'react';
 // import MainWrapper from "~/components/pattern/header/index.tsx";
 // import {css} from "@linaria/core";
-// import {responsive} from "~/hook/responsive.tsx";
+// import {responsive} from "~/hook/responsive.ts";
 // import Text from "~/components/components/Text.tsx";
 // import View from "~/components/core/View.tsx";
 // import type {Route} from "./+types/question";

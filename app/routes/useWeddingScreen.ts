@@ -4,14 +4,14 @@ import type {Wedding} from "~/domain";
 import {useCookies} from "react-cookie";
 import {api} from "~/api/index.ts";
 
-const useWedding = () => {
+export const useWeddingScreen = () => {
     const {url} = useParams();
     const [wedding, setWedding] = useState<Wedding>();
     const [isError, setIsError] = useState(false);
     const cookieKey = `firstVisitor_${url}`;
     const [cookie, setCookie] = useCookies([cookieKey]);
 
-    const getWedding = useCallback(async () => {
+    const fetchWedding = useCallback(async () => {
         if (!url) return;
 
         const isFirstVisitor = !cookie[cookieKey];
@@ -35,17 +35,21 @@ const useWedding = () => {
         }
     }, [cookie, cookieKey, setCookie, url]);
 
+    const onAppear = useCallback(async () => {
+        fetchWedding().then();
+    }, [fetchWedding]);
+
+    const handleRefresh = useCallback(async () => {
+        fetchWedding().then();
+    }, [fetchWedding]);
+
     useEffect(() => {
-        (async () => {
-            await getWedding();
-        })();
-    }, [getWedding]);
+        onAppear().then();
+    }, [onAppear]);
 
     return {
         wedding,
-        getWedding,
+        handleRefresh,
         isError,
     };
 };
-
-export default useWedding;
