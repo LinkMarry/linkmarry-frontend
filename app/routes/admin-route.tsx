@@ -1,5 +1,5 @@
 import {Navigate, Outlet} from "react-router";
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 
 const AdminRouteScreen = () => {
     const {member} = useAuth();

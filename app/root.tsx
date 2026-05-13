@@ -5,6 +5,9 @@ import {CookiesProvider} from "react-cookie";
 import config from "~/config.ts";
 import "./app.css";
 import {HelmetProvider} from "react-helmet-async";
+import {AuthProvider} from "./context/auth";
+import {AutoFocusProvider} from "./context/auto-focus/provider";
+import useAxios from "./hook/useAxios";
 
 export const Layout = ({children}: {children?: React.ReactNode}) => {
     return (
@@ -92,7 +95,7 @@ export const Layout = ({children}: {children?: React.ReactNode}) => {
 
 const App = () => {
     useEffect(() => {
-        const {Kakao} = window as any;
+        const {Kakao} = window;
         if (Kakao && !Kakao.isInitialized()) {
             Kakao.init(config.kakao.javascriptKey);
         }
@@ -102,9 +105,21 @@ const App = () => {
         <CookiesProvider defaultSetOptions={{path: "/"}}>
             <HelmetProvider>
                 <HelmetMetaTags />
-                <Outlet />
+                <AppContent />
             </HelmetProvider>
         </CookiesProvider>
+    );
+};
+
+const AppContent = () => {
+    useAxios();
+
+    return (
+        <AuthProvider>
+            <AutoFocusProvider>
+                <Outlet />
+            </AutoFocusProvider>
+        </AuthProvider>
     );
 };
 

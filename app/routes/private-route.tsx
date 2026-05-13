@@ -1,5 +1,5 @@
 import {ClientOnly} from "~/components";
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 import {Navigate, Outlet} from "react-router";
 
 const PrivateRouteScreen = () => {

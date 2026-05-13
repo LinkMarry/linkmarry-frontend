@@ -1,7 +1,7 @@
 import {View} from "~/components";
 import {css, cx} from "@linaria/core";
 import useMyPageIndex from "~/routes/mypage/index/useMyPageIndex.ts";
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 import MyPageSidebarItem from "~/routes/mypage/components/MyPageSidebarItem.tsx";
 import {notMobileStyle} from "~/style/responsive";
 

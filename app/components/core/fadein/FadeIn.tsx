@@ -47,7 +47,7 @@ export const FadeIn = ({delay, ui, as, children}: Props) => {
     );
 
     if (typeof children === "function") {
-        return <>{children({style, ref: ref as any})}</>;
+        return <>{children({style, ref: ref as RefObject<HTMLElement>})}</>;
     } else if (isValidElement(children)) {
         return (
             <View

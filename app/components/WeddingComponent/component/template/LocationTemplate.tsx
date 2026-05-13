@@ -20,7 +20,7 @@ export const LocationTemplate = ({weddingDesignColor, weddingPlace, mode}: Locat
     const weddingPlaceRef = useRef<HTMLDivElement>(null);
     useScrollOnUpdate(weddingPlaceRef, [weddingPlace], mode === "preview");
     useEffect(() => {
-        const {kakao} = window as any;
+        const {kakao} = window;
         if (!kakao || !kakao.maps || !kakaoMapRef.current) {
             return;
         }

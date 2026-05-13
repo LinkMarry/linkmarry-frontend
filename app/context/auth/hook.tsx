@@ -1,19 +1,19 @@
-import {type PropsWithChildren, useCallback, useEffect, useState} from "react";
-import {useNavigate} from "react-router";
+import {useCallback, useContext, useEffect, useState} from "react";
 import type {InfoMember} from "~/domain";
-import useJwt from "~/hook/useJwt.ts";
-import config from "~/config.ts";
-import {api} from "~/api/index.ts";
-import {AuthContext} from "./useAuth";
+import {AuthContext, type AuthValue} from "./context";
+import config from "~/config";
+import {useNavigate} from "react-router";
+import useJwt from "~/hook/useJwt";
+import {api} from "~/api";
 
-export const AuthProvider = ({children}: PropsWithChildren) => {
+export const useAuthImpl = (): AuthValue => {
     const navigate = useNavigate();
     const [member, setMember] = useState<InfoMember>();
     const {jwt, setToken, clearToken} = useJwt();
-    const authorized: boolean = jwt.accessToken && jwt.refreshToken;
+    const authorized: boolean = !!(jwt.accessToken && jwt.refreshToken);
 
     const signInWithKakao = useCallback(() => {
-        const {Kakao} = window as any;
+        const {Kakao} = window;
         console.info(`signInWithKakao ${Kakao.Auth}`);
         Kakao?.Auth?.authorize({
             redirectUri: config.kakao.redirectUri,
@@ -63,19 +63,21 @@ export const AuthProvider = ({children}: PropsWithChildren) => {
         })();
     }, [fetchMember, jwt.accessToken]);
 
-    return (
-        <AuthContext.Provider
-            value={{
-                member,
-                authorized,
-                signInWithKakao,
-                signIn,
-                signOut,
-                removeMember,
-                fetchMember,
-            }}
-        >
-            {children}
-        </AuthContext.Provider>
-    );
+    return {
+        member,
+        authorized,
+        signInWithKakao,
+        signIn,
+        signOut,
+        removeMember,
+        fetchMember,
+    };
+};
+
+export const useAuth = () => {
+    const value = useContext(AuthContext);
+    if (!value) {
+        throw new Error("useAuth must be used within a AuthProvider");
+    }
+    return value;
 };

@@ -1,7 +1,7 @@
 import {Spacer, Text, Icon, Toggle, View} from "~/components";
 import {type PropsWithChildren, useState} from "react";
 
-import {useAutoFocus} from "~/hook/useAutoFocus.ts";
+import {useAutoFocus} from "~/context/auto-focus/hook";
 
 import {css, cx, type LinariaClassName} from "@linaria/core";
 

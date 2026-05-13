@@ -19,7 +19,7 @@ export const FooterTemplate = ({url, background, linkShare, weddingPlace, ...pro
     const shareToKakao = useCallback(() => {
         const {
             Kakao: {Share},
-        } = window as any;
+        } = window;
         const weddingUrl = getWeddingUrl(url);
         const rsvpWeddingUrl = (() => {
             const url = new URL(weddingUrl);

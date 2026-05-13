@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useSearchParams} from "react-router";
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 
 const KakaoRedirectScreen = () => {
     const {signIn} = useAuth();

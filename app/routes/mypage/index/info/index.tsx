@@ -3,7 +3,7 @@ import {useState} from "react";
 
 import {css} from "@linaria/core";
 
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 
 const MyPageInfoScreen = () => {
     const [showRemoveMemberDialog, setShowRemoveMemberDialog] = useState(false);
@@ -101,5 +101,3 @@ const Item = (props: {title: string; value: string}) => {
         </View>
     );
 };
-
-

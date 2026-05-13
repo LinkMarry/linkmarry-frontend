@@ -1,5 +1,5 @@
 import {type RefObject, useEffect, useRef} from "react";
-import {useAutoFocus} from "~/hook/useAutoFocus.ts";
+import {useAutoFocus} from "~/context/auto-focus/hook";
 
 type DependencyList = readonly unknown[];
 

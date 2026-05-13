@@ -4,7 +4,7 @@ import {css, cx} from "@linaria/core";
 
 import {useNavigate} from "react-router";
 
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {notMobileStyle} from "~/style/responsive.ts";
 

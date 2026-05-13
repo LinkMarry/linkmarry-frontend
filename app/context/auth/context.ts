@@ -1,7 +1,7 @@
-import {createContext, useContext} from "react";
+import {createContext} from "react";
 import type {InfoMember} from "~/domain";
 
-type AuthValue = {
+export type AuthValue = {
     member?: InfoMember;
     authorized: boolean;
     signInWithKakao: () => void;
@@ -11,11 +11,3 @@ type AuthValue = {
     fetchMember: () => Promise<void>;
 };
 export const AuthContext = createContext<AuthValue | null>(null);
-
-export const useAuth = () => {
-    const value = useContext(AuthContext);
-    if (!value) {
-        throw new Error("useAuth must be used within a AuthProvider");
-    }
-    return value;
-};

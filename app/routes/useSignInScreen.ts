@@ -1,9 +1,9 @@
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 
-export function useSignInScreen() {
+export const useSignInScreen = () => {
     const {signInWithKakao} = useAuth();
 
     return {
         signInWithKakao,
     };
-}
+};

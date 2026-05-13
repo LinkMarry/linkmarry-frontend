@@ -6,7 +6,7 @@ import {useNavigate} from "react-router";
 
 import {Icon, type IconType} from "~/components/core/icon";
 
-import {useAuth} from "~/hook/useAuth.tsx";
+import {useAuth} from "~/context/auth";
 import {NAVER_STORE_URL} from "~/lib/constant.ts";
 import {mobileStyle} from "~/style/responsive.ts";
 import {LogoInHeader} from "./LogoInHeader.tsx";

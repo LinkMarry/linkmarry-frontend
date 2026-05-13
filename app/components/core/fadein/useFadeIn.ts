@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 
 export const useFadeIn = (threshold = 0.6) => {
-    const ref = useRef(null);
+    const ref = useRef<HTMLElement>(null);
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {

@@ -10,28 +10,28 @@ interface UseKakaoMapDialogProps {
 
 export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKakaoMapDialogProps) {
     const kakaoMapRef = useRef<HTMLDivElement>(null);
-    const [places, setPlaces] = useState<any[]>([]);
-    const [selectedPlace, setSelectedPlace] = useState<any>();
+    const [places, setPlaces] = useState<KakaoPlaceResult[]>([]);
+    const [selectedPlace, setSelectedPlace] = useState<KakaoPlaceResult>();
     const [searchText, setSearchText] = useState("");
-    const [map, setMap] = useState<any>();
+    const [map, setMap] = useState<KakaoMap>();
 
     const keywordSearch = useCallback(
-        (keyword: string, option?: any) => {
-            const {kakao} = window as any;
+        (keyword: string, option?: KakaoKeywordSearchOptions) => {
+            const {kakao} = window;
             if (!kakao || !kakao.maps) return;
 
             const ps = new kakao.maps.services.Places();
 
             ps.keywordSearch(
                 keyword,
-                (result: any, status: any) => {
+                (result: KakaoPlaceResult[], status: string) => {
                     if (status !== kakao.maps.services.Status.OK) return;
 
                     setPlaces(result);
 
                     const first = result[0];
                     if (first) {
-                        map?.setCenter(new kakao.maps.LatLng(first.y, first.x));
+                        map?.setCenter(new kakao.maps.LatLng(Number(first.y), Number(first.x)));
                     }
                 },
                 option,
@@ -41,13 +41,13 @@ export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKa
     );
 
     const searchAddress = useCallback(
-        (coords: any) => {
-            const {kakao} = window as any;
+        (coords: KakaoLatLng) => {
+            const {kakao} = window;
             if (!kakao || !kakao.maps) return;
 
             const geocoder = new kakao.maps.services.Geocoder();
 
-            geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: any, status: any) => {
+            geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: KakaoGeocoderResult[], status: string) => {
                 if (status !== kakao.maps.services.Status.OK) return;
 
                 const keyword = result[0].address.address_name;
@@ -61,7 +61,7 @@ export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKa
     );
 
     useEffect(() => {
-        const {kakao} = window as any;
+        const {kakao} = window;
         if (!kakao || !kakao.maps || !map) return;
 
         // Marker 설정
@@ -86,7 +86,7 @@ export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKa
     useEffect(() => {
         if (!show) return;
 
-        const {kakao} = window as any;
+        const {kakao} = window;
         if (!kakao || !kakao.maps || !kakaoMapRef.current) return;
 
         const mapInstance = new kakao.maps.Map(kakaoMapRef.current, {
@@ -96,7 +96,7 @@ export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKa
         setMap(mapInstance);
     }, [show]);
 
-    const handleSelectPlace = (place: any) => {
+    const handleSelectPlace = (place: KakaoPlaceResult) => {
         if (selectedPlace?.id === place.id) {
             setSelectedPlace(undefined);
         } else {
@@ -108,8 +108,8 @@ export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKa
         if (!selectedPlace) return;
         onChange({
             ...weddingPlace,
-            x: selectedPlace.x,
-            y: selectedPlace.y,
+            x: Number(selectedPlace.x),
+            y: Number(selectedPlace.y),
             placeUrl: selectedPlace.place_url,
             placeName: selectedPlace.place_name,
             addressName: selectedPlace.address_name,
