@@ -5,10 +5,8 @@ import SharingLink from "~/routes/editor/components/SharingLink.tsx";
 
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {getKoreanByKakaoStyle, kakaoStyleList} from "~/domain";
-import {kakaoButtonList, kakaoButtonMap} from "~/api/enumeration/KakaoButton.ts";
-
-import type {Wedding} from "~/domain";
+import {kakaoStyleList, kakaoButtonList, type Wedding} from "~/domain";
+import {getKoreanByKakaoStyle, kakaoButtonMap} from "~/i18n/domain.ts";
 
 const EditorInspectorKakaotalkInvitationLetter = ({value: {url, linkShare}, update}: Binding<Wedding>) => {
     return (

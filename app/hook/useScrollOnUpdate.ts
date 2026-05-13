@@ -8,11 +8,11 @@ let scrollRequestsInTick = 0;
 let scheduledScroll: (() => void) | null = null;
 let resetScrollRequestsTick: ReturnType<typeof setTimeout> | null = null;
 
-export default function useScrollOnUpdate<T extends HTMLElement>(
+const useScrollOnUpdate = <T extends HTMLElement>(
     ref: RefObject<T | null>,
     triggerDeps: DependencyList,
     enable: boolean,
-) {
+) => {
     const isMounted = useRef(false);
     const {autoFocus} = useAutoFocus();
 
@@ -44,4 +44,6 @@ export default function useScrollOnUpdate<T extends HTMLElement>(
 
         // eslint-disable-next-line
     }, triggerDeps);
-}
+};
+
+export default useScrollOnUpdate;

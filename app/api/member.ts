@@ -1,4 +1,6 @@
-import type {ResponseData, InfoMember, EditMemberRequest} from "~/domain";
+import type {ResponseData, InfoMember} from "~/domain";
+import type {EditMemberRequest} from "~/api/request";
+
 import {httpClient} from "~/api/index.ts";
 
 const PATH = "member";

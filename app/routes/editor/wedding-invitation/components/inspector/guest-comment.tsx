@@ -1,11 +1,10 @@
 import {Text, Input, SegmentedButton, FormToggle, View, Textarea} from "~/components";
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {GuestCommentDesignList, guestCommentDesignMap} from "~/api/enumeration/GuestCommentDesign.ts";
-
 import {css} from "@linaria/core";
 
-import type {Wedding} from "~/domain";
+import {type Wedding, GuestCommentDesignList} from "~/domain";
+import {guestCommentDesignMap} from "~/i18n/domain.ts";
 
 const EditorInspectorGuestComment = ({value: {guestComment}, update}: Binding<Wedding>) => {
     return (

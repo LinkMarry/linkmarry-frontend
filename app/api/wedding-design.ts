@@ -1,9 +1,6 @@
-import type {
-    CreateWeddingDesignRequest,
-    ResponseData,
-    PatchWeddingDesignRequest,
-    WeddingDesignPreset,
-} from "~/domain";
+import type {ResponseData, WeddingDesignPreset} from "~/domain";
+import type {CreateWeddingDesignRequest, PatchWeddingDesignRequest} from "~/api/request";
+
 import {httpClient} from "~/api/index.ts";
 
 const PATH = "wedding-design-preset";

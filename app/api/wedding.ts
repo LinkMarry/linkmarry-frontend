@@ -1,17 +1,12 @@
+import type {Wedding, ResponseData, WeddingDashboard, WeddingStatistics, WeddingDto, Comment, RsvpInfo} from "~/domain";
 import type {
-    Wedding,
-    ResponseData,
-    WeddingDashboard,
-    WeddingRequest,
     RsvpRequest,
+    WeddingRequest,
     GuestCommentRequest,
     EditCommentRequest,
     DeleteCommentRequest,
-    WeddingStatistics,
-    WeddingDto,
-    Comment,
-    RsvpInfo,
-} from "~/domain";
+} from "~/api/request";
+
 import {httpClient} from "~/api/index.ts";
 
 const PATH = "wedding";

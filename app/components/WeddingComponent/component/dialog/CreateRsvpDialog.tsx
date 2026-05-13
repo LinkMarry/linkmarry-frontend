@@ -4,8 +4,8 @@ import {useState} from "react";
 import {css, cx} from "@linaria/core";
 
 import {api} from "~/api/index.ts";
-import {GuestTypeList, guestTypeMap} from "~/api/enumeration/GuestType.ts";
-import type {Rsvp} from "~/domain";
+import {type Rsvp, GuestTypeList} from "~/domain";
+import {guestTypeMap} from "~/i18n/domain.ts";
 
 import {formatPhone} from "~/lib/format-util.ts";
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";

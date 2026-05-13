@@ -3,8 +3,8 @@ import {css} from "@linaria/core";
 
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {type WeddingDto, type Wedding} from "~/domain";
-import {GreetingDesignList, greetingDesignMap} from "~/api/enumeration/GreetingDesign.ts";
+import {type Wedding, GreetingDesignList} from "~/domain";
+import {greetingDesignMap} from "~/i18n/domain.ts";
 
 const greetingSampleList: {
     title: string;

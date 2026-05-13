@@ -47,15 +47,19 @@ export function useKakaoMapDialog({show, weddingPlace, onChange, dismiss}: UseKa
 
             const geocoder = new kakao.maps.services.Geocoder();
 
-            geocoder.coord2Address(coords.getLng(), coords.getLat(), (result: KakaoGeocoderResult[], status: string) => {
-                if (status !== kakao.maps.services.Status.OK) return;
+            geocoder.coord2Address(
+                coords.getLng(),
+                coords.getLat(),
+                (result: KakaoGeocoderResult[], status: string) => {
+                    if (status !== kakao.maps.services.Status.OK) return;
 
-                const keyword = result[0].address.address_name;
-                keywordSearch(keyword, {
-                    location: coords,
-                    radius: 50,
-                });
-            });
+                    const keyword = result[0].address.address_name;
+                    keywordSearch(keyword, {
+                        location: coords,
+                        radius: 50,
+                    });
+                },
+            );
         },
         [keywordSearch],
     );

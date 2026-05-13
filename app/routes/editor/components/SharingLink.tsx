@@ -1,7 +1,7 @@
 import {Text, Button, View} from "~/components";
 import {css, cx} from "@linaria/core";
 
-import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
+import {type KakaoButton} from "~/domain";
 
 interface Props {
     title: string;

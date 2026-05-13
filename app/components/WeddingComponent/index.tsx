@@ -17,8 +17,7 @@ import {
 } from "~/components";
 import {type RefObject, useEffect, useLayoutEffect, useRef, useState} from "react";
 import type {Wedding, Comment, Position} from "~/domain";
-
-import {weddingDesignFontSizeMap} from "~/domain";
+import {weddingDesignFontSizeMap} from "~/i18n/domain.ts";
 
 import {increaseFontSize} from "~/lib/dom-util.ts";
 

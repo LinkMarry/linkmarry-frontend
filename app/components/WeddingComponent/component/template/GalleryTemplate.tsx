@@ -3,9 +3,8 @@ import {type RefObject, useCallback, useEffect, useRef, useState} from "react";
 
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 
-import type {Gallery} from "~/domain";
+import type {Gallery, GalleryDesign} from "~/domain";
 
-import type {GalleryDesign} from "~/api/enumeration/GalleryDesign.ts";
 import {css, cx} from "@linaria/core";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
 import {hideScrollBarStyle} from "~/style/common.ts";

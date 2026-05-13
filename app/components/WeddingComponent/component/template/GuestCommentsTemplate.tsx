@@ -9,9 +9,14 @@ import {
 } from "~/components";
 import {useRef, useState} from "react";
 import {css} from "@linaria/core";
-import {type Comment, type GuestComment, backgroundStyle, type WeddingDesignColor} from "~/domain";
+import {
+    type Comment,
+    type GuestComment,
+    backgroundStyle,
+    type WeddingDesignColor,
+    type GuestCommentDesign,
+} from "~/domain";
 
-import {type GuestCommentDesign} from "~/api/enumeration/GuestCommentDesign.ts";
 import {trimArray} from "~/lib/array-util.ts";
 
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";

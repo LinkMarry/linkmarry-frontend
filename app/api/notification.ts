@@ -1,4 +1,6 @@
-import type {ResponseData, NotificationRequest, Notification} from "~/domain";
+import type {ResponseData, Notification} from "~/domain";
+import type {NotificationRequest} from "~/api/request";
+
 import {httpClient} from "~/api/index.ts";
 
 const PATH = "notification";

@@ -1,24 +1,27 @@
-import {api} from "~/api/index.ts";
 import {useCallback} from "react";
-import type {Upload} from "~/domain";
-import type {FileType} from "~/api/enumeration/FileType.ts";
+import {api} from "~/api/index.ts";
+import {type FileType} from "~/domain";
 
-export default function useUpload() {
-    const uploadFile = useCallback(async (file: File, url: string, type: FileType): Promise<Upload> => {
+const useUpload = () => {
+    const uploadFile = useCallback(async (file: File, url: string, type: FileType) => {
         const {data} = await api.file.upload(file, url, type);
         return data;
     }, []);
 
-    const uploadFiles = useCallback(async (files: FileList, url: string, type: FileType): Promise<Upload[]> => {
-        const uploadPromises = Array.from(files).map(file => api.file.upload(file, url, type));
+    const uploadFiles = useCallback(async (files: FileList, url: string, type: FileType) => {
+        const fileArray = Array.from(files);
+
+        const uploadPromises = fileArray.map(file => api.file.upload(file, url, type));
+
         const results = await Promise.allSettled(uploadPromises);
-        return results
-            .map(result => (result.status === "fulfilled" ? result.value.data : null))
-            .filter((result): result is Upload => result !== null);
+
+        return results.flatMap(result => (result.status === "fulfilled" ? [result.value.data] : []));
     }, []);
 
     return {
         uploadFile,
         uploadFiles,
     };
-}
+};
+
+export default useUpload;

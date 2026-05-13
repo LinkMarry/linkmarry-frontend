@@ -8,8 +8,8 @@ import {DragDropContext, Draggable, Droppable, type DropResult} from "@hello-pan
 
 import {reorderedItems} from "~/lib/dnd-util.ts";
 import type Binding from "~/lib/Binding.ts";
-import {positionMap} from "~/domain";
 import {type Position, type Wedding} from "~/domain";
+import {positionMap} from "~/i18n/domain.ts";
 
 const WeddingInvitationEditorInspectorChangeOrder = ({value: {position}, update}: Binding<Wedding>) => {
     const onDragEnd = (result: DropResult) => {

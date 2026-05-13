@@ -5,8 +5,10 @@ import {css, cx} from "@linaria/core";
 import {responsive} from "~/style/responsive.ts";
 import type {Route} from "./+types/notification";
 
-import type {Notification} from "~/domain";
-import {tagToKoreanRecord, type TagWithAll, TagWithAllList} from "~/api/enumeration/Tag.ts";
+import type {Notification, TagWithAll} from "~/domain";
+import {TagWithAllList} from "~/domain";
+import {tagToKoreanRecord} from "~/i18n/domain.ts";
+
 import {compareDesc, format} from "date-fns";
 import {useNotificationScreen} from "./useNotificationScreen.ts";
 import {hideScrollBarStyle} from "~/style/common.ts";

@@ -4,9 +4,8 @@ import {type ComponentPropsWithoutRef, useCallback} from "react";
 import {css} from "@linaria/core";
 import {backgroundStyle} from "~/domain";
 
-import type {LinkShare, WeddingPlace} from "~/domain";
+import type {LinkShare, WeddingPlace, KakaoButton} from "~/domain";
 import {getWeddingUrl} from "~/lib/string-util.ts";
-import {type KakaoButton} from "~/api/enumeration/KakaoButton.ts";
 
 interface FooterTemplateProps extends ComponentPropsWithoutRef<"div"> {
     url: string;

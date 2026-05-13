@@ -3,7 +3,8 @@ import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
 
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
 import type Binding from "~/lib/Binding.ts";
-import {GalleryDesignList, galleryDesignMap} from "~/api/enumeration/GalleryDesign.ts";
+import {GalleryDesignList} from "~/domain";
+import {galleryDesignMap} from "~/i18n/domain.ts";
 
 import {css} from "@linaria/core";
 import type {Wedding} from "~/domain";

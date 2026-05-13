@@ -9,10 +9,10 @@ import {
     isPaperColor,
     weddingDesignDefaultColorList,
     weddingDesignFontSizeList,
-    weddingDesignFontSizeMap,
     weddingDesignPaperColorList,
     type Wedding,
 } from "~/domain";
+import {weddingDesignFontSizeMap} from "~/i18n/domain.ts";
 
 import {css, cx} from "@linaria/core";
 import {type FontFamily, fontFamilyList} from "~/components/core/text/TextType.ts";

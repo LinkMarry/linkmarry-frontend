@@ -4,9 +4,9 @@ import {type ComponentPropsWithoutRef, useEffect, useState} from "react";
 import PhotoUploadBox from "~/routes/editor/components/PhotoUploadBox.tsx";
 
 import EditorInspectorWrapper from "~/routes/editor/wedding-invitation/components/EditorInspectorWrapper.tsx";
-import {type OpeningText, openingTextList, type WeddingDesignPreset, type Wedding} from "~/domain";
+import {openingList, type OpeningText, openingTextList, type WeddingDesignPreset, type Wedding} from "~/domain";
+import {openingMap} from "~/i18n/domain.ts";
 import type Binding from "~/lib/Binding.ts";
-import {openingList, openingMap} from "~/api/enumeration/Opening.ts";
 
 import {groupedByCategory} from "~/domain";
 
@@ -26,7 +26,7 @@ const EditorInspectorDesign = ({value: {url, weddingDesign}, update, weddingDesi
         if (groupedCategories && selectedCategory === undefined) {
             setSelectedCategory(groupedCategories[0].category);
         }
-    }, [groupedCategories]);
+    }, [groupedCategories, selectedCategory]);
 
     return (
         <EditorInspectorWrapper type={"design"} hasDivider={false}>
