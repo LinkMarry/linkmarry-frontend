@@ -80,6 +80,20 @@ const EditorInspectorGreeting = ({value, update}: Binding<Wedding>) => {
             <View ui={css`
                 gap: 12px;
             `}>
+                <Text type={'p3'} bold={true}>부모님 성함 표시 여부</Text>
+                <SegmentedButton
+                    items={['표시', '미표시']}
+                    selectedTab={value.greeting.parentViewStatus ? 0 : 1}
+                    onChange={tab => {
+                        update(draft => {
+                            draft.greeting.parentViewStatus = tab === 0;
+                        })
+                    }}
+                />
+            </View>
+            <View ui={css`
+                gap: 12px;
+            `}>
                 <Text type={'p3'} bold={true}>디자인</Text>
                 <SegmentedButton
                     items={GreetingDesignList.map(i => greetingDesignMap[i].korean)}

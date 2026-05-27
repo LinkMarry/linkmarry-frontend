@@ -9,6 +9,7 @@ import {css, cx} from "@linaria/core";
 import FadeIn from "~/components/core/fadein/FadeIn.tsx";
 import View from "~/components/core/View.tsx";
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
+import type {BaseInfoByBrideMarkFirst} from "~/api/value/BaseInfo.ts";
 
 interface InvitationLetterTemplateProps {
     baseInfo: BaseInfo;
@@ -73,19 +74,49 @@ function InvitationLetterTemplate(
                     <Divider style={{width: 140}}/>
                 </FadeIn>
                 <FadeIn delay={600}>
-                    <Text weight={300} size={18} ui={css`
-                        display: flex;
-                        color: var(--g-600);
-                        line-height: 130%;
-                        flex-direction: row !important;
-                        align-items: center;
-                        gap: 8px;
-                    `}>
-                        <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
-                    </Text>
+                    {greeting.parentViewStatus ? (
+                        <View ui={css`
+                            gap: 12px;
+                            align-items: center;
+                        `}>
+                            <ParentNameBlock info={first}/>
+                            <ParentNameBlock info={second}/>
+                        </View>
+                    ) : (
+                        <Text weight={300} size={18} ui={css`
+                            display: flex;
+                            color: var(--g-600);
+                            line-height: 130%;
+                            flex-direction: row !important;
+                            align-items: center;
+                            gap: 8px;
+                        `}>
+                            <span>{first.korean} {first.name}</span><span>•</span><span>{second.korean} {second.name}</span>
+                        </Text>
+                    )}
                 </FadeIn>
             </View>
         </FadeIn>
+    );
+}
+
+function ParentNameBlock({info}: { info: BaseInfoByBrideMarkFirst }) {
+    return (
+        <Text weight={300} size={18} ui={css`
+            color: var(--g-600);
+            display: flex;
+            flex-direction: row !important;
+            align-items: center;
+            gap: 3px;
+        `}>
+            {info.fatherStatus && <img src={'/Flower.svg'} alt="" width={12} height={12}/>}
+            <span>{info.fatherName}</span>
+            <span>·</span>
+            {info.motherStatus && <img src={'/Flower.svg'} alt="" width={12} height={12}/>}
+            <span>{info.motherName}</span>
+            <span>의 {info.familyName}</span>
+            <span>{info.name}</span>
+        </Text>
     );
 }
 
