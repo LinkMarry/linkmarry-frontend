@@ -1,4 +1,4 @@
-import config from "~/config.ts";
+import config from "~/lib/config.ts";
 import axios from "axios";
 
 export const httpClient = axios.create({

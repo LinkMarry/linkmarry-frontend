@@ -11,6 +11,12 @@ All rights reserved.
 2. terminal에서 아래 명령어 실행
 
 ```bash
-npm i
-npm start
+pnpm install
+pnpm dev
+```
+
+Storybook:
+
+```bash
+pnpm storybook
 ```

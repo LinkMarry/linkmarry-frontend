@@ -1,4 +1,4 @@
-import {View} from "~/components";
+import {View} from "~/components/core/view";
 import {Icon, type IconType, isIconType} from "~/components/core/icon";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef, type ReactNode} from "react";
 import {css, cx, type LinariaClassName} from "@linaria/core";

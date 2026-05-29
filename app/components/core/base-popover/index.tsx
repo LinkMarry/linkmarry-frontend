@@ -1,4 +1,4 @@
-import {View} from "~/components";
+import {View} from "~/components/core/view";
 import {type ReactNode, useEffect, useRef} from "react";
 
 import {fadeInAnimationStyle} from "~/style/animation";

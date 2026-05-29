@@ -5,7 +5,7 @@ import {
     forwardRef,
     type PropsWithChildren,
 } from "react";
-import {type FontFamily, type TextType, textStyles} from "~/components/core/text/TextType";
+import {type FontFamily, type TextType, textStyles} from "./TextType";
 import {css, cx, type LinariaClassName} from "@linaria/core";
 
 interface Props extends PropsWithChildren<ComponentPropsWithRef<"div">> {

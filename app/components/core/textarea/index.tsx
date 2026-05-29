@@ -1,8 +1,8 @@
-import {View} from "~/components";
+import {View} from "~/components/core/view";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
 
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import {textStyles} from "~/components/core/text/TextType.ts";
+import {textStyles} from "~/components/core/text/TextType";
 
 interface Props extends ComponentPropsWithRef<"textarea"> {
     placeholder?: string;
@@ -94,7 +94,7 @@ export const Textarea = forwardRef(
                             0.1s left ease-out,
                             0.1s padding ease-out;
                         pointer-events: none;
-                        background: white; // It has problem that hide another object
+                        background: white;
                     `}
                 >
                     <View

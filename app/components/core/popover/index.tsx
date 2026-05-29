@@ -1,6 +1,8 @@
-import {Text, BasePopover, View} from "~/components";
-import {type ComponentPropsWithoutRef} from "react";
+import {BasePopover} from "~/components/core/base-popover";
 import {Icon, type IconType} from "~/components/core/icon";
+import {Text} from "~/components/core/text";
+import {View} from "~/components/core/view";
+import {type ComponentPropsWithoutRef} from "react";
 
 import {fadeInAnimationStyle} from "~/style/animation";
 

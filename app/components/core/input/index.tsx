@@ -1,8 +1,8 @@
-import {View} from "~/components";
+import {View} from "~/components/core/view";
 import {type ComponentPropsWithRef, type ForwardedRef, forwardRef} from "react";
 
 import {css, cx, type LinariaClassName} from "@linaria/core";
-import {textStyles} from "~/components/core/text/TextType.ts";
+import {textStyles} from "~/components/core/text/TextType";
 
 interface Props extends ComponentPropsWithRef<"input"> {
     placeholder?: string;

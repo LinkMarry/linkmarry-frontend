@@ -1,4 +1,6 @@
-import {Text, Toggle, View} from "~/components";
+import {Text} from "~/components/core/text";
+import {Toggle} from "~/components/core/toggle";
+import {View} from "~/components/core/view";
 import {type ComponentPropsWithoutRef} from "react";
 import {css} from "@linaria/core";
 

@@ -1,7 +1,7 @@
 import {useCallback, useContext, useEffect, useState} from "react";
 import type {InfoMember} from "~/domain";
 import {AuthContext, type AuthValue} from "./context";
-import config from "~/config";
+import config from "~/lib/config";
 import {useNavigate} from "react-router";
 import useJwt from "~/hook/useJwt";
 import {api} from "~/api";

@@ -1,4 +1,5 @@
-import {FormToggle, View} from "~/components";
+import {FormToggle} from "~/components/core/form-toggle";
+import {View} from "~/components/core/view";
 import {Children, isValidElement, type ReactElement, type ReactNode} from "react";
 
 import {css, cx, type LinariaClassName} from "@linaria/core";

@@ -2,7 +2,7 @@ import {HelmetMetaTags} from "~/components";
 import React, {useEffect} from "react";
 import {Outlet, ScrollRestoration, Scripts, Meta, Links} from "react-router";
 import {CookiesProvider} from "react-cookie";
-import config from "~/config.ts";
+import config from "~/lib/config";
 import "./app.css";
 import {HelmetProvider} from "react-helmet-async";
 import {AuthProvider} from "./context/auth";

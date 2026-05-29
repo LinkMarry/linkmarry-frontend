@@ -1,5 +1,5 @@
 import {Outlet} from "react-router";
-import config from "~/config.ts";
+import config from "~/lib/config";
 
 const DevelopmentRouteScreen = () => {
     if (config.prd) {
