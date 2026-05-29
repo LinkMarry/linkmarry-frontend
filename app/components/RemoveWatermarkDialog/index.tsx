@@ -4,7 +4,7 @@ import {css, cx} from "@linaria/core";
 import {CUSTOMER_SERVICE_CENTER_URL, NAVER_STORE_WEDDING_URL, TERMS_OR_USE_URL} from "~/lib/constant.ts";
 
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
-import {useRemoveWatermarkDialog} from "./useRemoveWatermarkDialog.ts";
+import {useRemoveWatermarkDialog} from "./hook.ts";
 import {interactionEffectStyles} from "~/style/common.ts";
 
 interface Props {

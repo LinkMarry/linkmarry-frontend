@@ -4,7 +4,7 @@ import {css, cx} from "@linaria/core";
 
 import {baseDialogContentStyle} from "~/components/core/dialog/baseDialogContentStyle.ts";
 import {textStyles} from "~/components/core/text/TextType.ts";
-import {useKakaoMapDialog} from "./useKakaoMapDialog.ts";
+import {useKakaoMapDialog} from "./hook.ts";
 import type {WeddingPlace} from "~/domain";
 
 interface KakaoMapDialogProps {

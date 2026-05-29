@@ -17,8 +17,6 @@ import {
     type GuestCommentDesign,
 } from "~/domain";
 
-import {trimArray} from "~/lib/array-util.ts";
-
 import useScrollOnUpdate from "~/hook/useScrollOnUpdate.ts";
 
 import type {WeddingMode} from "~/components/WeddingComponent/WeddingMode.ts";
@@ -216,7 +214,7 @@ const GuestComments = ({comments, design, background, onRemove}: GuestCommentsPr
                         gap: 12px;
                     `}
                 >
-                    {trimArray(comments, 3).map((comment, index) => (
+                    {comments.slice(3).map((comment, index) => (
                         <BasicGuestComment
                             key={index}
                             comment={comment}
@@ -234,7 +232,7 @@ const GuestComments = ({comments, design, background, onRemove}: GuestCommentsPr
                         gap: 20px;
                     `}
                 >
-                    {trimArray(comments, 2).map((comment, index) => (
+                    {comments.slice(2).map((comment, index) => (
                         <StickerGuestComment
                             key={index}
                             comment={comment}
