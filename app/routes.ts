@@ -2,30 +2,33 @@ import {type RouteConfig, index, route, layout, prefix} from "@react-router/dev/
 
 const routes = [
     index("routes/home/index.tsx"),
-    route("sign-in", "routes/sign-in.tsx"),
-    route("login/oauth2/code/kakao", "routes/kakao-redirect.tsx"),
-    route("wedding/:url", "routes/wedding.tsx"),
-    route("sample", "routes/sample.tsx"),
-    route("link", "routes/link.tsx"),
-    ...prefix("notification", [index("routes/notification.tsx"), route(":id", "routes/notification-detail.tsx")]),
-    route("privacy-policy/:date?", "routes/privacy-policy.tsx"),
-    route("terms/:date?", "routes/terms.tsx"),
-    layout("routes/private-route.tsx", [
+    route("sign-in", "routes/sign-in/index.tsx"),
+    route("login/oauth2/code/kakao", "routes/login/oauth2/code/kakao/index.tsx"),
+    route("wedding/:url", "routes/wedding/[url]/index.tsx"),
+    route("sample", "routes/sample/index.tsx"),
+    route("link", "routes/link/index.tsx"),
+    ...prefix("notification", [
+        index("routes/notification/index.tsx"), 
+        route(":id", "routes/notification/[id]/index.tsx")
+    ]),
+    route("privacy-policy/:date?", "routes/privacy-policy/[date]/index.tsx"),
+    route("terms/:date?", "routes/terms/[date]/index.tsx"),
+    layout("routes/_private/layout.tsx", [
         layout(
             "routes/mypage/layout.tsx",
             prefix("mypage", [
-                layout("routes/mypage/index/layout.tsx", [
-                    route("wedding", "routes/mypage/index/wedding/index.tsx"),
-                    route("info", "routes/mypage/index/info/index.tsx"),
+                layout("routes/mypage/_layout/layout.tsx", [
+                    route("wedding", "routes/mypage/wedding/index.tsx"),
+                    route("info", "routes/mypage/info/index.tsx"),
                 ]),
-                layout("routes/mypage/detail/layout.tsx", [
-                    route("wedding/:url", "routes/mypage/detail/stat/index.tsx"),
+                layout("routes/mypage/wedding/[url]/layout.tsx", [
+                    route("wedding/:url", "routes/mypage/wedding/[url]/index.tsx"),
                 ]),
             ]),
         ),
         ...prefix("editor", [
-            route("invitation/:url?", "routes/editor/wedding-invitation/index.tsx"),
-            route("poster", "routes/editor/wedding-poster/index.tsx"),
+            route("invitation/:url?", "routes/editor/invitation/[url]/index.tsx"),
+            route("poster", "routes/editor/poster/index.tsx"),
         ]),
     ]),
 ] satisfies RouteConfig;
@@ -33,8 +36,8 @@ const routes = [
 if (import.meta.env.DEV) {
     routes.push(
         ...prefix("development", [
-            route("foundation", "routes/foundation-demo.tsx"),
-            route("component", "routes/component-demo.tsx"),
+            route("foundation", "routes/development/foundation/index.tsx"),
+            route("component", "routes/development/component/index.tsx"),
         ]),
     );
 }
